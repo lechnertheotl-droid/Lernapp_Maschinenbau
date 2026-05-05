@@ -2653,6 +2653,583 @@ export const technischeMechanikSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-1-3 — Schnittkräfte N(x), Q(x), M(x)  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-3': {
+
+    // ── [0] Drei Schnittgrößen $N, Q, M$ ───────────────────────────────
+    0: [
+      tf(
+        'Die drei Schnittgrößen am Balken sind: Normalkraft $N(x)$ in Balkenachse, Querkraft $Q(x)$ senkrecht zur Achse, und Biegemoment $M(x)$ um die Querachse.',
+        true,
+        `**Ansatz:** Schnittprinzip: An jedem gedachten Querschnitt müssen drei Schnittgrößen wirken, damit beide Hälften des Balkens für sich im Gleichgewicht stehen.
+
+**Rechnung:** $N(x)$ — entlang der Balkenachse (Zug/Druck). $Q(x)$ — senkrecht zur Balkenachse (Scherbeanspruchung). $M(x)$ — Moment um die Querachse (Biegung).
+
+**Probe:** Drei Schnittgrößen passen genau zu den drei 2D-Gleichgewichtsbedingungen ($\\sum F_x, \\sum F_y, \\sum M$) für jede Balkenhälfte.
+
+**Typischer Fehler:** $N$ und $Q$ vertauschen — $N$ ist **längs**, $Q$ ist **quer**. Merkregel: "Normal" wie "in Normalrichtung der Schnittfläche" = entlang der Balkenachse.`,
+        [
+          'Drei Schnittgrößen pro Schnitt.',
+          '$N$ längs, $Q$ quer, $M$ Moment.',
+          'Drei Gleichgewichtsbedingungen → drei Schnittgrößen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'Welche Schnittgröße entspricht einer reinen Druck- oder Zugbeanspruchung in **Längsrichtung** des Balkens?',
+        ['$N(x)$ — Normalkraft', '$Q(x)$ — Querkraft', '$M(x)$ — Biegemoment', 'Keine — Druck/Zug entstehen erst durch Spannungen $\\sigma$.'],
+        0,
+        `**Ansatz:** Schnittgrößen sind nach ihrer Wirkrichtung relativ zur Balkenachse benannt: längs ($N$), quer ($Q$), drehend ($M$).
+
+**Rechnung:** Reine Längsbeanspruchung (Zug/Druck entlang der Balkenachse) wird durch die Normalkraft $N$ getragen. Sie erzeugt eine über den Querschnitt gleichmäßige Normalspannung $\\sigma = N/A$.
+
+**Probe:** Beispiel Pendelstab: trägt nur $N$ (Zug oder Druck), keine $Q$ und $M$. Definitionsgemäß biegestarr aber ohne Biegung.
+
+**Typischer Fehler:** $Q$ als "Druck" deuten — $Q$ ist Quer-, nicht Längskraft.`,
+        [
+          'Längs = entlang der Balkenachse.',
+          'Quer = senkrecht dazu.',
+          'Druck/Zug ⇒ Normalkraft.',
+        ],
+        {
+          1: '$Q$ wirkt **senkrecht** zur Balkenachse — sie erzeugt Schub, nicht Druck/Zug in Längsrichtung.',
+          2: '$M$ ist ein Moment (Drehwirkung), keine reine Längskraft. Verursacht Biegespannungen.',
+          3: 'Spannung $\\sigma$ entsteht **aus** der Schnittgröße $N$ ($\\sigma = N/A$). Ohne $N$ gäbe es keine Längsspannung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'An einem horizontalen Einfeldträger (Festlager A links, Loslager B rechts, $L = 6\\,\\text{m}$) hängt zwischen $A$ und $B$ eine vertikale Last $F = 1200\\,\\text{N}$ bei $x = 2\\,\\text{m}$. Welche Schnittgröße ist auf der Strecke $0 < x < 2\\,\\text{m}$ **konstant ungleich null**?',
+        ['Nur $N$', 'Nur $Q$', 'Nur $M$', '$N$ und $M$ gleichzeitig'],
+        1,
+        `**Ansatz:** Im Bereich vor der Last gibt es nur die Auflagerreaktion $R_A$ als äußere Vertikalkraft. Schnittprinzip auf das linke Stück anwenden.
+
+**Rechnung:** $R_A = F\\cdot(L-a)/L = 1200\\cdot 4/6 = 800\\,\\text{N}$. $\\sum F_y = 0$ am linken Stück: $R_A - Q(x) = 0 \\Rightarrow Q(x) = +R_A = 800\\,\\text{N}$ (konstant). $M(x) = R_A\\cdot x$ — linear, nicht konstant. $N(x) = 0$, weil keine horizontale Last.
+
+**Probe:** Bei $x = 0$: $M = 0$ (Randbedingung Festlager). Bei $x = 2$: $M = R_A\\cdot 2 = 1600\\,\\text{Nm}$ — beweist, dass $M$ nicht konstant ist.
+
+**Typischer Fehler:** $M$ als "konstant" wahrnehmen, weil "die Last erst bei $x = 2$ kommt". $M$ wächst aber linear bereits ab $x = 0$, weil $R_A$ am Hebelarm $x$ wirkt.`,
+        [
+          '$R_A$ ist die einzige äußere Kraft am linken Stück.',
+          '$\\sum F_y = 0$ liefert $Q(x)$.',
+          '$M(x) = R_A\\cdot x$ ist linear, nicht konstant.',
+        ],
+        {
+          0: '$N$ ist null in diesem Bereich (keine Längskräfte). Konstant null ist nicht "konstant ungleich null".',
+          2: '$M(x) = R_A\\cdot x$ wächst linear mit $x$ — also nicht konstant.',
+          3: '$N$ ist hier null, $M$ ist nicht konstant. Beide treffen die Bedingung "konstant ungleich null" nicht.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'Studentin schreibt: "Die Querkraft $Q$ hat dieselbe Einheit wie das Biegemoment $M$." Was ist falsch?',
+        [
+          '$Q$ ist eine **Kraft** (Einheit N), $M$ ist ein **Moment** (Einheit N·m). Sie unterscheiden sich um den Faktor Hebelarm.',
+          'Stimmt — beide sind Schnittgrößen, also gleiche Einheit.',
+          '$Q$ ist in N/m (Streckenlast), $M$ in N·m.',
+          'Beide sind dimensionslos, weil sie aus dem Gleichgewicht folgen.',
+        ],
+        0,
+        `**Ansatz:** Einheit folgt aus der Definition: $Q$ ist die senkrechte Schnittkraft, $M$ das resultierende Schnittmoment.
+
+**Rechnung:** $[Q] = \\text{N}$, $[M] = \\text{N}\\cdot\\text{m}$. Aus dem Differentialzusammenhang $Q = dM/dx$: $[Q] = [M]/[x] = \\text{N\\cdot m}/\\text{m} = \\text{N}$ ✓.
+
+**Probe:** Streckenlast $q$: $[q] = \\text{N/m}$ (Kraft pro Längeneinheit). $q = -dQ/dx$ ergibt $[q] = [Q]/[x] = \\text{N/m}$ ✓.
+
+**Typischer Fehler:** "Schnittgrößen haben alle dieselbe Einheit" — falsch, $N$, $Q$ in N, $M$ in N·m, $q$ in N/m. Vier verschiedene Einheiten.`,
+        [
+          'Einheiten aus den Definitionen.',
+          'Kraft N, Moment N·m.',
+          'Differentialzusammenhang $Q = dM/dx$.',
+        ],
+        {
+          1: 'Schnittgrößen haben **unterschiedliche** Einheiten — N, N·m, N/m. "Alle gleich" ist falsch.',
+          2: '$Q$ ist eine Punktgröße in N, nicht eine Streckenlast in N/m. Letztere wäre $q$.',
+          3: 'Schnittgrößen haben **physikalische** Einheiten, sie sind **nicht** dimensionslos.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      matching(
+        'Ordne jede Schnitt- bzw. Belastungsgröße ihrer Einheit und physikalischen Bedeutung zu.',
+        [
+          { left: 'Normalkraft $N(x)$', right: '$[\\text{N}]$, Längsbelastung (Zug/Druck) entlang der Balkenachse' },
+          { left: 'Querkraft $Q(x)$', right: '$[\\text{N}]$, Querbelastung senkrecht zur Balkenachse' },
+          { left: 'Biegemoment $M(x)$', right: '$[\\text{N}\\cdot\\text{m}]$, Biegebelastung um die Querachse' },
+          { left: 'Streckenlast $q(x)$', right: '$[\\text{N/m}]$, verteilte Belastung pro Längeneinheit' },
+        ],
+        `**Ansatz:** Einheit jeder Größe direkt aus der Definition.
+
+**Rechnung:** $N, Q$: Kräfte ⇒ N. $M$: Moment ⇒ N·m. $q$: Kraft pro Längeneinheit (Streckenlast) ⇒ N/m.
+
+**Probe:** Aus Differentialbeziehungen: $q = -dQ/dx$ ⇒ $[q] = [Q]/[x] = \\text{N/m}$ ✓. $Q = dM/dx$ ⇒ $[Q] = [M]/[x] = \\text{N}$ ✓.
+
+**Typischer Fehler:** $Q$ und $q$ verwechseln (groß vs. klein) — verschiedene Größen mit verschiedenen Einheiten. $Q$ ist Punktquerkraft, $q$ Streckenlast.`,
+        [
+          '$N, Q$: Kraft.',
+          '$M$: Moment (Kraft × Länge).',
+          '$q$: Kraft pro Länge (Streckenlast).',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+    ],
+
+    // ── [1] Differentialzusammenhang $Q = dM/dx$, $q = -dQ/dx$ ─────────
+    1: [
+      tf(
+        'Die Querkraft $Q(x)$ ist die Ableitung des Biegemoments $M(x)$ nach $x$.',
+        true,
+        `**Ansatz:** Differentialform der Gleichgewichtsbedingungen am infinitesimalen Balkenelement.
+
+**Rechnung:** Aus $\\sum M = 0$ am Element der Länge $dx$ folgt $dM = Q\\cdot dx \\Rightarrow Q = dM/dx$. Analog aus $\\sum F_y = 0$: $dQ = -q\\cdot dx \\Rightarrow q = -dQ/dx$.
+
+**Probe:** Praktisch: An Stellen mit konstantem $Q$ ist $M$ linear. An Stellen mit konstantem $q$ (Streckenlast) ist $Q$ linear und $M$ parabolisch.
+
+**Typischer Fehler:** Vorzeichen vertauschen: $q = +dQ/dx$ ist falsch. Konvention: $q$ nach unten = positiv ⇒ Querkraft nimmt ab ⇒ Minuszeichen.`,
+        [
+          'Aus Gleichgewicht am infinitesimalen Element.',
+          '$Q = dM/dx$ und $q = -dQ/dx$.',
+          'Folge: konstantes $Q$ ⇒ lineares $M$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      mc(
+        'Auf einem unbelasteten Balkenabschnitt ($q = 0$) ist die Querkraft $Q$ konstant. Was folgt für $M(x)$ auf diesem Abschnitt?',
+        ['$M$ ist konstant.', '$M$ verläuft linear in $x$.', '$M$ verläuft quadratisch in $x$.', '$M$ ist null.'],
+        1,
+        `**Ansatz:** $Q = dM/dx$. Wenn $Q$ konstant, dann ist $dM/dx$ konstant ⇒ $M$ linear.
+
+**Rechnung:** $M(x) = M_0 + Q\\cdot x$ — Geradengleichung mit Steigung $Q$ und Anfangsmoment $M_0$.
+
+**Probe:** Numerisch: $Q = 500\\,\\text{N}$ konstant von $x = 0$ ($M = 0$) bis $x = 2\\,\\text{m}$ ergibt $M(2) = 0 + 500\\cdot 2 = 1000\\,\\text{Nm}$ (lineare Zunahme).
+
+**Typischer Fehler:** Konstantes $Q$ mit konstantem $M$ verwechseln. Konstantes $Q$ heißt $M$ wächst gleichmäßig (linear), nicht dass $M$ konstant ist.`,
+        [
+          '$Q = dM/dx$.',
+          'Konstante Ableitung ⇒ lineare Funktion.',
+          '$M(x) = M_0 + Q\\cdot x$.',
+        ],
+        {
+          0: 'Konstant $M$ würde $dM/dx = 0 = Q$ bedeuten. Das widerspricht "$Q$ konstant ungleich null".',
+          2: 'Quadratisches $M$ entsteht bei **konstanter Streckenlast** (linear $Q$, parabolisch $M$). Hier ist $q = 0$, also $Q$ konstant ⇒ $M$ linear.',
+          3: '$M = 0$ widerspricht der Annahme einer Belastung. Außerdem $M_0$ kann ungleich null sein.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      ni(
+        'Bei einem Balken gilt $M(x) = 200x - 50x^2$ (in Nm, $x$ in m). Wie groß ist $Q(x = 1\\,\\text{m})$ in Newton?',
+        100, 0.5, 'N',
+        `**Ansatz:** $Q(x) = dM/dx$ — Polynom-Ableitung anwenden.
+
+**Rechnung:** $Q(x) = M'(x) = 200 - 100x$. Bei $x = 1$: $Q(1) = 200 - 100 = 100\\,\\text{N}$.
+
+**Probe:** Einheiten: $[M]/[x] = \\text{Nm/m} = \\text{N}$ ✓. Plausibilität: $Q(0) = 200\\,\\text{N}$ (am Auflager A), $Q(2) = 0$ (Vorzeichenwechsel — gefährliche Stelle), $Q(4) = -200\\,\\text{N}$ (am Auflager B).
+
+**Typischer Fehler:** $M(1)$ statt $M'(1)$ ausrechnen ⇒ $M(1) = 200 - 50 = 150\\,\\text{Nm}$. Das ist der Momentenwert, nicht die Querkraft.`,
+        [
+          '$Q(x) = dM/dx$.',
+          'Polynom-Ableitung: $200 - 100x$.',
+          'Bei $x = 1$: $200 - 100 = 100$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      mc(
+        'Studentin behauptet: "$q(x) = +dQ/dx$." Wo steckt der Fehler?',
+        [
+          'Vorzeichen falsch — die Standardkonvention lautet $q(x) = -dQ/dx$. Eine nach unten wirkende Streckenlast (positives $q$) lässt die Querkraft mit zunehmendem $x$ abnehmen.',
+          'Kein Fehler — beide Vorzeichen sind in unterschiedlichen Konventionen üblich.',
+          'Es muss $q(x) = +dM/dx$ heißen, nicht über $Q$.',
+          'Die Beziehung gilt nur für konstante Streckenlasten.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen folgt aus dem Gleichgewicht am infinitesimalen Element bei nach unten gerichteter $q$.
+
+**Rechnung:** $\\sum F_y = 0$ am Element: $Q(x) - Q(x+dx) - q\\cdot dx = 0 \\Rightarrow dQ/dx = -q$. Also $q = -dQ/dx$.
+
+**Probe:** Konstante Streckenlast $q > 0$: $Q$ nimmt linear ab ($dQ/dx = -q < 0$). Bei $q = 0$ (lastfrei): $Q$ konstant ($dQ/dx = 0$) ✓.
+
+**Typischer Fehler:** Beim Aufstellen von $\\sum F_y = 0$ das Vorzeichen der Streckenlast vergessen — $q$ wirkt nach unten, $Q$ wird dadurch reduziert.`,
+        [
+          'Konvention: $q$ nach unten = positiv.',
+          'Bei positivem $q$ nimmt $Q$ ab.',
+          'Daher: $q = -dQ/dx$.',
+        ],
+        {
+          1: 'Es ist eine **eindeutige** Konvention — Vorzeichen folgen aus den Definitionen, nicht aus persönlicher Wahl.',
+          2: '$dM/dx = Q$, nicht $q$. Verwechslung der beiden Differentialbeziehungen.',
+          3: 'Die Beziehung $q = -dQ/dx$ gilt **lokal** für jede stetige Streckenlast — auch für veränderliche.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      ni(
+        'Bei einem Balken mit konstanter Streckenlast $q = 100\\,\\text{N/m}$ und $Q(0) = 600\\,\\text{N}$: Wie groß ist $Q(x = 4\\,\\text{m})$ in Newton?',
+        200, 0.5, 'N',
+        `**Ansatz:** $dQ/dx = -q$. Integrieren: $Q(x) = Q(0) - q\\cdot x$.
+
+**Rechnung:** $Q(4) = 600 - 100\\cdot 4 = 200\\,\\text{N}$.
+
+**Probe:** Bei $x = 6$ wäre $Q(6) = 600 - 600 = 0$ — das ist die "gefährliche Stelle" mit $M_\\text{max}$ (sofern $x = 6$ im Balken liegt).
+
+**Typischer Fehler:** Plus-Zeichen einsetzen ($Q(4) = 600 + 400 = 1000\\,\\text{N}$) — wäre nur korrekt, wenn $q$ nach oben wirken würde (negative Streckenlast).`,
+        [
+          'Konvention: $dQ/dx = -q$.',
+          'Lineare Abnahme von $Q$ um $q$ pro Meter.',
+          '$Q(x) = Q_0 - q\\cdot x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+    ],
+
+    // ── [2] Sprung in $Q$ und Knick in $M$ bei Einzellast ─────────────
+    2: [
+      tf(
+        'An der Stelle, wo eine Einzellast $F$ (nach unten) angreift, springt die Querkraft $Q(x)$ um $-F$ — gleichzeitig erhält das Biegemoment $M(x)$ einen Knick.',
+        true,
+        `**Ansatz:** Einzellast als Dirac-artige Konzentration der Streckenlast — verursacht Sprung in $Q$ und Knick (Steigungswechsel) in $M$.
+
+**Rechnung:** Sprung in $Q$: $Q(a^+) - Q(a^-) = -F$ (Vorzeichen-Konvention: $F$ nach unten = positiv). $M$ ist stetig (kein Sprung in $M$), aber die Steigung $dM/dx = Q$ ändert sich abrupt — das ist der Knick.
+
+**Probe:** Einfeldträger mit Einzellast $F$ bei $x = a$: $Q(a^-) = +R_A$, $Q(a^+) = -R_B$. Differenz $= -R_A - R_B = -F$ (wegen $R_A + R_B = F$) ✓.
+
+**Typischer Fehler:** $M$ ebenfalls als unstetig zeichnen — $M$ ist stetig, hat aber einen Knick. Sprung gibt es nur bei einem **konzentrierten Moment** (z. B. eingeleitetes Drehmoment), nicht bei Einzelkraft.`,
+        [
+          'Einzellast = Konzentration von $q$.',
+          'Sprung in $Q$, Knick in $M$.',
+          'Sprung-Betrag = Lastbetrag.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Bei einem Einfeldträger mit einer Einzellast $F = 800\\,\\text{N}$ bei $x = a$: Was passiert mit $Q(x)$ am Lastangriff?',
+        [
+          '$Q$ springt um $-800\\,\\text{N}$ — von $+R_A$ auf $-R_B$.',
+          '$Q$ ist stetig — eine Einzellast beeinflusst nur das Moment.',
+          '$Q$ wird null an dieser Stelle.',
+          '$Q$ verdoppelt sich.',
+        ],
+        0,
+        `**Ansatz:** Sprungbetrag von $Q$ ist immer gleich der Last (mit Vorzeichen).
+
+**Rechnung:** $\\Delta Q = -F = -800\\,\\text{N}$. Beispiel mit $L = 4\\,\\text{m}, a = 1\\,\\text{m}$: $R_A = 800\\cdot 3/4 = 600\\,\\text{N}$, $R_B = 800\\cdot 1/4 = 200\\,\\text{N}$. $Q(a^-) = +600, Q(a^+) = -200 \\Rightarrow \\Delta Q = -800$ ✓.
+
+**Probe:** Auch wenn $Q(a)$ den Wert null annimmt (z. B. mittige Last bei symmetrischer Belastung), ist der Sprung trotzdem $-F$ — er führt von $+F/2$ auf $-F/2$.
+
+**Typischer Fehler:** "Einzellast nur Moment" — Einzellast wirkt erst aufs Gleichgewicht, dann auf Schnittgrößen. Querkraft springt **immer** an Einzellast.`,
+        [
+          'Sprungbetrag = Last (mit Vorzeichen).',
+          '$Q$ vor: $+R_A$, nach: $-R_B$.',
+          'Differenz: $-F$.',
+        ],
+        {
+          1: 'Falsch — Einzellasten erzeugen den charakteristischen $Q$-Sprung. Das Moment hat parallel dazu einen Knick.',
+          2: '$Q$ kann zwar null werden (z. B. bei mittiger Last), aber der **Sprung** ist trotzdem $-F$ — von $+F/2$ auf $-F/2$.',
+          3: 'Verdopplung wäre Sprung um $+F$ statt $-F$. Das Vorzeichen ist negativ (Last reduziert die Querkraft).',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'An einem Einfeldträger ($L = 5\\,\\text{m}$) wirkt eine Einzellast $F = 1500\\,\\text{N}$ nach unten bei $x = 2\\,\\text{m}$. Wie groß ist der **Sprungbetrag** $|\\Delta Q|$ am Lastangriff?',
+        ['$1500\\,\\text{N}$', '$0$', 'hängt von Hebelarmen ab', '$3000\\,\\text{N}$'],
+        0,
+        `**Ansatz:** Sprung von $Q$ entspricht **immer** dem Betrag der Einzellast — unabhängig vom Hebelarm oder der Position.
+
+**Rechnung:** $|\\Delta Q| = |F| = 1500\\,\\text{N}$.
+
+**Probe:** Mit konkreten Werten: $R_A = 1500\\cdot 3/5 = 900\\,\\text{N}$, $R_B = 1500\\cdot 2/5 = 600\\,\\text{N}$. $Q(a^-) = 900$, $Q(a^+) = 900 - 1500 = -600$. $|\\Delta Q| = |-600 - 900| = 1500\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Glauben, der Sprung hänge von der Position der Last ab — Position bestimmt nur den Wert von $Q$ vor und nach dem Sprung, aber der **Sprungbetrag** ist immer gleich $|F|$.`,
+        [
+          'Sprungbetrag = Lastbetrag.',
+          'Unabhängig von $a$ und $L$.',
+          '$|\\Delta Q| = |F|$.',
+        ],
+        {
+          1: '"Null Sprung" wäre eine stetige $Q$-Funktion — gilt nur bei lastfreiem Abschnitt.',
+          2: 'Hebelarme bestimmen $R_A, R_B$ (und damit $Q$-Werte), aber nicht den **Sprung** — der ist immer $|F|$.',
+          3: 'Doppelter Lastbetrag wäre nur, wenn die Last "doppelt wirkt" — z. B. zwei aufeinanderliegende Lasten.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Studierender skizziert $M(x)$ für einen Einfeldträger mit einer Einzellast und zeichnet die Linie als geschwungene (glatte) Kurve. Was ist falsch?',
+        [
+          '$M(x)$ ist zwischen Auflagern und Lastangriff **linear** (weil $Q$ konstant) — die Linie muss aus zwei Geradenstücken mit Knick unter der Last bestehen.',
+          'Die Kurve sollte glatt sein — Einzellasten verursachen keine Knicke.',
+          '$M(x)$ sollte quadratisch sein — wie bei Streckenlast.',
+          '$M(x)$ sollte konstant sein zwischen den Auflagern.',
+        ],
+        0,
+        `**Ansatz:** $M(x)$-Verlauf folgt aus $Q(x)$: $M = \\int Q\\,dx$. Konstantes $Q$ ⇒ lineares $M$.
+
+**Rechnung:** Bei Einfeldträger mit Einzellast: $Q = +R_A$ konstant für $0 < x < a$ ⇒ $M$ linear, $M(0)=0, M(a)=R_A\\cdot a$. Dann $Q = -R_B$ konstant für $a < x < L$ ⇒ wieder linear, von $M(a) = R_A\\cdot a$ auf $M(L) = 0$. Zwei Geradenstücke mit Knick bei $x = a$.
+
+**Probe:** Der Knick in $M$ entspricht dem Sprung in $Q$ (= Steigungssprung von $+R_A$ auf $-R_B$).
+
+**Typischer Fehler:** $M$-Verlauf wie eine Streckenlast-Parabel zeichnen, obwohl Einzellast vorliegt. Geradenstücke erkennen, parabolische Form nur bei verteilten Lasten.`,
+        [
+          '$Q$ konstant ⇒ $M$ linear (Geradenstücke).',
+          'Sprung in $Q$ ⇒ Knick in $M$.',
+          'Parabolisches $M$ nur bei Streckenlast.',
+        ],
+        {
+          1: 'Glatte Kurve würde $Q$ stetig bedeuten — bei Einzellast aber gibt es einen Sprung in $Q$ und damit einen Knick in $M$.',
+          2: 'Quadratisch (Parabel) gilt für **Streckenlast**, nicht für Einzellast. Einzellast führt zu linearen Stücken.',
+          3: 'Konstantes $M$ würde $Q = 0$ bedeuten — widerspricht den von null verschiedenen Lagerreaktionen.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Auf einen Einfeldträger ($L = 6\\,\\text{m}$) wirken zwei Einzellasten $F_1 = 500\\,\\text{N}$ bei $x_1 = 2\\,\\text{m}$ und $F_2 = 300\\,\\text{N}$ bei $x_2 = 4\\,\\text{m}$ (beide nach unten). Wie viele **Knicke** hat der $M(x)$-Verlauf?',
+        ['$0$', '$1$', '$2$', '$3$'],
+        2,
+        `**Ansatz:** Pro Einzellast ein Knick in $M$ (bzw. ein Sprung in $Q$).
+
+**Rechnung:** Zwei Einzellasten → zwei Knicke. Zwischen den Lasten und an den Rändern verläuft $M$ stückweise linear.
+
+**Probe:** Konkret: drei lineare Stücke ($0 < x < 2$, $2 < x < 4$, $4 < x < 6$), getrennt durch zwei Knicke bei $x = 2$ und $x = 4$. An den gelenkigen Lagern $x = 0$ und $x = 6$ ist $M = 0$.
+
+**Typischer Fehler:** "Drei Knicke" zählen, indem man die Auflager mitzählt — an den Auflagern ist $M = 0$, aber das ist eine **Randbedingung**, kein Knick im üblichen Sinn.`,
+        [
+          'Pro Einzellast ein Knick.',
+          'Zwei Lasten → zwei Knicke.',
+          'Auflager sind Randbedingungen, keine Knicke.',
+        ],
+        {
+          0: '"Null Knicke" wäre eine glatte Funktion — gilt nur bei stetigen Belastungen ohne Punktlasten.',
+          1: 'Ein Knick wäre richtig bei einer einzelnen Einzellast. Hier sind zwei Lasten.',
+          3: 'Drei Knicke entsprächen drei Einzellasten. Hier nur zwei.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+    ],
+
+    // ── [3] $M_{max}$ liegt bei $Q = 0$ (gefährliche Stelle) ──────────
+    3: [
+      tf(
+        'An der Stelle, wo die Querkraft $Q(x)$ ihr Vorzeichen wechselt (bzw. $Q = 0$ wird), liegt das Biegemoment $M(x)$ bei einem lokalen Extremum.',
+        true,
+        `**Ansatz:** Aus dem Differentialzusammenhang $Q = dM/dx$. Lokale Extrema einer Funktion liegen dort, wo die Ableitung null wird (notwendige Bedingung).
+
+**Rechnung:** $dM/dx = 0 \\Leftrightarrow Q(x) = 0$. Vorzeichenwechsel von $Q$ ⇒ entsprechender Vorzeichenwechsel von $dM/dx$ ⇒ Extremum.
+
+**Probe:** Einfeldträger mit Einzellast bei $a$: $Q = +R_A$ links, $-R_B$ rechts. $Q$ wechselt Vorzeichen exakt bei der Last ⇒ $M_\\text{max}$ liegt unter der Last ✓.
+
+**Typischer Fehler:** Maximum von $M$ an der Stelle suchen, wo $M = 0$ wird (Nullstelle) — Maximum liegt aber dort, wo $M' = Q = 0$.`,
+        [
+          'Extrema: $dM/dx = 0$.',
+          '$Q = dM/dx$.',
+          'Querkraft-Nullstelle = Momenten-Extremum.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['m-max'] },
+      ),
+      mc(
+        'Auf einem Einfeldträger mit gleichmäßig verteilter Streckenlast $q$ liegt das maximale Biegemoment ...',
+        ['... in der Balkenmitte ($x = L/2$).', '... am Festlager.', '... am Loslager.', '... nahe einem Auflager (Asymmetrie).'],
+        0,
+        `**Ansatz:** Stelle mit $Q(x) = 0$ finden. Bei symmetrischer Belastung liegt sie in der Mitte.
+
+**Rechnung:** $R_A = R_B = qL/2$. $Q(x) = R_A - q\\cdot x = qL/2 - qx$. Nullstelle: $qL/2 - qx = 0 \\Rightarrow x = L/2$. Dort $M_\\text{max} = qL^2/8$.
+
+**Probe:** Symmetrie: Aus $R_A = R_B$ und gleichmäßiger Last folgt symmetrischer $M$-Verlauf — Maximum muss in der Symmetrieachse $x = L/2$ liegen.
+
+**Typischer Fehler:** "Am Auflager" wegen größter Lagerreaktion — aber die Lagerreaktion ist eine **Querkraft**, kein Moment. An gelenkigen Auflagern ist $M = 0$.`,
+        [
+          'Symmetrie ⇒ $M_\\text{max}$ in der Mitte.',
+          '$Q(x) = 0$ finden.',
+          '$M_\\text{max} = qL^2/8$.',
+        ],
+        {
+          1: 'Am Festlager ist $M = 0$ (Randbedingung). Festlager überträgt nur Kräfte, keine Momente.',
+          2: 'Wie beim Festlager: $M(L) = 0$ am Loslager (gelenkig).',
+          3: 'Asymmetrie tritt nur bei asymmetrischer Last auf. Bei gleichmäßiger Streckenlast ist $M$-Verlauf symmetrisch ⇒ Maximum mittig.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['m-max'] },
+      ),
+      ni(
+        'Ein Einfeldträger ($L = 8\\,\\text{m}$) trägt eine konstante Streckenlast $q = 200\\,\\text{N/m}$. Wie groß ist $M_\\text{max}$ in der Balkenmitte (in N·m)?',
+        1600, 1, 'Nm',
+        `**Ansatz:** Bei symmetrischer Streckenlast: $M_\\text{max} = qL^2/8$ in der Mitte.
+
+**Rechnung:** $M_\\text{max} = 200\\cdot 8^2/8 = 200\\cdot 64/8 = 200\\cdot 8 = 1600\\,\\text{Nm}$.
+
+**Probe:** Über $R_A = qL/2 = 800\\,\\text{N}$ und Schnitt bei $x = 4$: $M(4) = R_A\\cdot 4 - q\\cdot 4\\cdot 2 = 800\\cdot 4 - 200\\cdot 8 = 3200 - 1600 = 1600\\,\\text{Nm}$ ✓ (Hebelarm der Resultierenden der Last bis $x = 4$ ist $4/2 = 2$).
+
+**Typischer Fehler:** Formel $qL^2/4$ verwenden (Faktor 2 statt 8 im Nenner) ⇒ $3200\\,\\text{Nm}$. Standardformel: $qL^2/8$ für Streckenlast auf Einfeldträger.`,
+        [
+          'Streckenlast auf Einfeldträger: $M_\\text{max} = qL^2/8$.',
+          '$200\\cdot 64/8 = 1600$.',
+          'Maximum mittig.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['m-max'] },
+      ),
+      mc(
+        'Studentin sucht $M_\\text{max}$, indem sie überall $M(x) = 0$ setzt und nach $x$ auflöst. Wo steckt der Fehler?',
+        [
+          'Sie sucht **Nullstellen** von $M$, nicht Extrema. Korrekt: $M_\\text{max}$ liegt dort, wo $dM/dx = Q(x) = 0$ — also Querkraft-Nullstellen, nicht Momenten-Nullstellen.',
+          'Kein Fehler — Maxima fallen in der Statik mit Nullstellen zusammen.',
+          'Sie muss $M\'\'(x) = 0$ setzen, das gibt Wendepunkte.',
+          'Die Suche nach $M_\\text{max}$ funktioniert nur grafisch, nicht analytisch.',
+        ],
+        0,
+        `**Ansatz:** Standardvorgehen aus der Analysis: Extrema einer Funktion bei Nullstellen ihrer **Ableitung**.
+
+**Rechnung:** $M_\\text{max}$ erfüllt $\\frac{dM}{dx} = 0 \\Leftrightarrow Q(x) = 0$. Wer $M(x) = 0$ setzt, findet die **Lager** (gelenkige Auflager mit $M = 0$).
+
+**Probe:** Einfeldträger, Streckenlast: $M(0) = M(L) = 0$ (Auflager) — keine Maxima. Maximum liegt bei $L/2$, dort ist aber $M \\neq 0$.
+
+**Typischer Fehler:** Mathematisches Standardvorgehen vergessen, weil "Schnittgrößen ungewohnt sind". Die Analysis bleibt dieselbe: Maximum = Ableitung null setzen.`,
+        [
+          'Maxima: Ableitung null setzen.',
+          '$M\' = Q$.',
+          'Querkraft-Nullstellen, nicht Momenten-Nullstellen.',
+        ],
+        {
+          1: 'Maxima und Nullstellen sind grundsätzlich verschiedene Konzepte. Bei $M$ liegen Nullstellen an den Lagern, das Maximum liegt dazwischen.',
+          2: '$M\'\'(x) = 0$ wären **Wendepunkte**, nicht Maxima. Korrekt: erste Ableitung ($M\' = Q$) null setzen.',
+          3: 'Falsch — die analytische Methode ($Q = 0$) liefert das Maximum exakt, ist sogar präziser als grafisch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['m-max'] },
+      ),
+      ni(
+        'Ein Einfeldträger ($L = 4\\,\\text{m}$) hat eine Einzellast $F = 800\\,\\text{N}$ bei $x = 1{,}5\\,\\text{m}$. Berechne $M_\\text{max}$ (in N·m).',
+        750, 1, 'Nm',
+        `**Ansatz:** Bei Einzellast: $M_\\text{max} = R_A\\cdot a$ (Maximum direkt unter der Last).
+
+**Rechnung:** $R_A = F\\cdot(L-a)/L = 800\\cdot 2{,}5/4 = 500\\,\\text{N}$. $M_\\text{max} = R_A\\cdot a = 500\\cdot 1{,}5 = 750\\,\\text{Nm}$.
+
+**Probe:** Standardformel $F\\cdot a(L-a)/L = 800\\cdot 1{,}5\\cdot 2{,}5/4 = 800\\cdot 3{,}75/4 = 750\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Hebelarm $L$ statt $a$ verwenden ⇒ $R_A\\cdot L = 500\\cdot 4 = 2000\\,\\text{Nm}$ — viel zu groß. $M_\\text{max}$ liegt **unter der Last**, nicht am gegenüberliegenden Auflager.`,
+        [
+          '$R_A = F(L-a)/L$.',
+          '$M_\\text{max} = R_A\\cdot a$.',
+          'Maximum unter der Last.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['m-max'] },
+      ),
+    ],
+
+    // ── [4] Randbedingung am gelenkigen Auflager: $M = 0$ ─────────────
+    4: [
+      tf(
+        'An einem gelenkigen Auflager (Festlager oder Loslager) eines Balkens gilt als Randbedingung $M = 0$.',
+        true,
+        `**Ansatz:** Gelenk = Verbindung, die kein Moment übertragen kann. Daher kann an einem gelenkigen Auflager auch kein Biegemoment $M$ bestehen.
+
+**Rechnung:** Bei einem Festlager (gelenkig) werden nur **Kräfte** übertragen ($A_x, A_y$), kein Moment. Also $M(0) = 0$ als Randbedingung beim Aufstellen der $M(x)$-Funktion.
+
+**Probe:** Probe mit Einfeldträger: Bei $x = 0$ (Festlager A) und $x = L$ (Loslager B) ist $M = 0$. Maximum liegt **dazwischen**.
+
+**Typischer Fehler:** Mit Einspannung verwechseln — dort ist $M_A \\neq 0$ (Einspannmoment). Gelenkige Lager und Einspannungen liefern unterschiedliche Randbedingungen.`,
+        [
+          'Gelenk überträgt kein Moment.',
+          'Festlager und Loslager sind beide gelenkig.',
+          'Randbedingung: $M = 0$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Bei einem Einfeldträger auf Festlager A (links) und Loslager B (rechts) gilt für das Biegemoment ...',
+        ['$M(0) = 0$ und $M(L) = 0$ — an beiden gelenkigen Auflagern.', '$M(0) = M_A \\neq 0$ (Einspannmoment).', '$M(0) = R_A$ (gleich der Lagerreaktion).', 'Randbedingung gilt nur am Festlager, nicht am Loslager.'],
+        0,
+        `**Ansatz:** Fest- und Loslager sind beide **gelenkig** — sie übertragen Kräfte, aber keine Momente.
+
+**Rechnung:** $M(0) = 0$ wegen Festlager (gelenkig). $M(L) = 0$ wegen Loslager (gelenkig). Beides Randbedingungen.
+
+**Probe:** Numerisch: Einfeldträger mit Einzellast: $M(x) = R_A\\cdot x - F\\cdot\\langle x-a\\rangle^1$ — bei $x = 0$ und $x = L$ wird $M = 0$ direkt verifiziert.
+
+**Typischer Fehler:** $M$ und Lagerreaktion verwechseln. $R_A$ ist die **Kraft** am Lager (Newton), $M$ ist das Moment (N·m) — verschiedene Größen.`,
+        [
+          'Beide Lagertypen sind gelenkig.',
+          '$M = 0$ als Randbedingung.',
+          '$R_A$ ist eine Kraft, nicht $M$.',
+        ],
+        {
+          1: 'Einspannmoment $M_A$ tritt nur bei einer **Einspannung** auf, nicht bei einem gelenkigen Lager.',
+          2: 'Verwechslung: $R_A$ ist eine Kraft (Lagerreaktion in N), $M$ ist ein Moment (N·m). Unterschiedliche Größen.',
+          3: 'Falsch — beide gelenkigen Lager (Fest- und Loslager) erzwingen $M = 0$. Sonst wäre Lager-Symbolik inkonsistent.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Welcher Lagertyp führt **nicht** automatisch zu $M = 0$ am Lager?',
+        ['Festlager (gelenkig)', 'Loslager (Rolle)', 'Einspannung (in Mauer)', 'Internes Gelenk (im Träger)'],
+        2,
+        `**Ansatz:** Nur Verbindungen ohne Momentübertragung führen zu $M = 0$ — also gelenkige Lager und interne Gelenke.
+
+**Rechnung:** Einspannung überträgt **alle drei** Reaktionsgrößen ($A_x, A_y, M_A$). Das Einspannmoment $M_A$ ist im Allgemeinen $\\neq 0$ — Randbedingung dort lautet anders (z. B. Verformungsbedingung statt Kraftbedingung).
+
+**Probe:** Kragträger mit Endlast $F$: $M_A = -F\\cdot L \\neq 0$ am Einspannpunkt, $M = 0$ am freien Ende. Genau umgekehrt zu einem beidseitig gelenkigen Träger.
+
+**Typischer Fehler:** Einspannung und Festlager gleichsetzen — beide hemmen Verschiebungen, aber nur die Einspannung hemmt zusätzlich Rotation.`,
+        [
+          'Gelenk = kein Moment.',
+          'Einspannung hemmt auch Rotation.',
+          '$M_A = $ Einspannmoment $\\neq 0$.',
+        ],
+        {
+          0: 'Festlager (gelenkig) erlaubt Drehung um den Lagerpunkt — kann kein Moment aufnehmen, also $M = 0$.',
+          1: 'Loslager ist ebenfalls gelenkig (zusätzlich verschieblich) — kein Momentübertrag, $M = 0$.',
+          3: 'Internes Gelenk (Pin im Träger) ist eine Stelle, an der zwei Trägerteile gelenkig verbunden sind — kein Momentübertrag, $M = 0$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Studierende schreibt für einen Einfeldträger (Festlager A links, Loslager B rechts): "$M(0) = R_A$." Was ist falsch?',
+        [
+          'An gelenkigen Auflagern gilt $M = 0$, nicht $M = R_A$. $R_A$ ist die Lagerreaktion (eine Kraft, Einheit N), nicht das Biegemoment (Einheit N·m).',
+          '$M(0) = -R_A$ wäre korrekt — Vorzeichen vergessen.',
+          'Bei einem Festlager gilt tatsächlich $M(x) = R_A$ unabhängig von $x$.',
+          'Kein Fehler — Lagerreaktion und Moment haben dieselbe Einheit.',
+        ],
+        0,
+        `**Ansatz:** Schnittgröße $M(x)$ am Lager folgt aus dem Schnitt bei $x = 0$. Das gelenkige Lager erzwingt $M(0) = 0$.
+
+**Rechnung:** Schnitt bei $x = 0^+$: Linkes Stück ist null lang — kein Hebelarm für $R_A$. Also $M(0) = 0$. Wer $M(0) = R_A$ schreibt, verwechselt Schnittmoment und Lagerreaktion.
+
+**Probe:** Einheitencheck: $[M] = \\text{N\\cdot m}$, $[R_A] = \\text{N}$. Sie unterscheiden sich um den Faktor Hebelarm — können niemals gleich sein, außer beide null.
+
+**Typischer Fehler:** Bei der Auswertung von $M(x) = R_A\\cdot x$ den Wert bei $x = 0$ nicht null setzen, sondern den Vorfaktor $R_A$ allein nehmen.`,
+        [
+          'Gelenkiges Lager: $M = 0$.',
+          '$R_A$ ist eine Kraft, $M$ ein Moment.',
+          'Einheiten unterschiedlich.',
+        ],
+        {
+          1: 'Nicht das Vorzeichen ist das Problem — $M$ ist null, nicht $-R_A$. Vorzeichen-Fehler ist hier kein Faktor.',
+          2: '$M(x) = R_A\\cdot x$ ist linear, nicht konstant. $M(0) = 0$ und $M(a) = R_A\\cdot a$.',
+          3: 'Falsch — $\\text{N}$ und $\\text{N\\cdot m}$ sind unterschiedliche Einheiten.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Bei einem Kragträger (links eingespannt, rechts frei) mit einer Endlast $F$: An welchen Stellen gilt $M = 0$?',
+        ['Nur am freien Ende (rechtes Balkenende).', 'Nur am Einspannpunkt $A$.', 'Überall.', 'Nur unter der Last (mittig auf dem Balken).'],
+        0,
+        `**Ansatz:** Schnittprinzip am freien Ende: rechts vom Schnitt steht nur die Last $F$ am Punkt selbst (kein Hebelarm dahinter) ⇒ $M = 0$.
+
+**Rechnung:** $M(L) = 0$ (am freien Ende). $M(A)$ am Einspannpunkt: alle Lasten links von A bzw. rechts von A erzeugen ein Moment um A — bei Endlast $F$ am Hebelarm $L$ wird $M_A = F\\cdot L \\neq 0$.
+
+**Probe:** Konkret: $F = 100\\,\\text{N}, L = 2\\,\\text{m}$ ⇒ $M_A = 200\\,\\text{Nm}$ (am Einspannpunkt), $M(L) = 0$ (am freien Ende). Linearer Verlauf dazwischen.
+
+**Typischer Fehler:** Kragträger mit Einfeldträger verwechseln — beim Einfeldträger sind beide Auflager gelenkig ($M = 0$ an beiden). Beim Kragträger ist nur ein Ende gelenkig (das freie), das andere fest eingespannt.`,
+        [
+          'Freies Ende: keine Schnittgrößen rechts → $M = 0$.',
+          'Einspannpunkt: $M_A = F\\cdot L \\neq 0$.',
+          'Kragträger ≠ Einfeldträger.',
+        ],
+        {
+          1: 'Falsch — am Einspannpunkt ist $M_A = F\\cdot L$ (nicht null). Das ist gerade das Einspannmoment.',
+          2: '$M$ verläuft linear vom Einspannpunkt zum freien Ende — nicht überall null.',
+          3: 'Beim Kragträger mit Endlast greift die Last am freien Ende, nicht "mittig". $M$ wird in der Mitte zwar nicht null, aber hat keinen besonderen Wert.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-1-4 — Reibung  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-1-4': {

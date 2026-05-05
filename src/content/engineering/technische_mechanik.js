@@ -913,8 +913,15 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               correctValue: 450,
               tolerance: 0.5,
               unit: 'N',
-              explanation: 'R_A = F·(L−a)/L = 600·3/4 = 450 N. Kontrolle: R_A + R_B = 600 N ✓.',
+              explanation: `**Ansatz:** Auflagerreaktion über Momentenbilanz um B: $\\sum M_B = 0$ eliminiert $R_B$ und liefert $R_A$ direkt.
+
+**Rechnung:** $R_A\\cdot L = F\\cdot(L-a) \\Rightarrow R_A = F\\cdot(L-a)/L = 600\\cdot 3/4 = 450\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0$: $R_A + R_B = F = 600\\,\\text{N}$ ⇒ $R_B = 150\\,\\text{N}$. Gegenrechnung: $R_B = F\\cdot a/L = 600\\cdot 1/4 = 150\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Hebelarme von der falschen Seite messen — Last greift bei $x = 1$, Abstand zu $B$ ist $L - a = 3$ (nicht $a = 1$).`,
               hints: ['ΣM um B: R_A·L = F·(L−a)', 'R_A = F·(L−a)/L', 'R_A = 600·3/4 = 450 N'],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['schnittgr-3'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
@@ -928,8 +935,15 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               correctValue: 450,
               tolerance: 1,
               unit: 'Nm',
-              explanation: 'M_max = R_A·a = 450·1 = 450 Nm. Liegt genau unter der Last.',
+              explanation: `**Ansatz:** Bei Einzellast auf Einfeldträger liegt $M_\\text{max}$ exakt unter der Lastangriffsstelle. Formel: $M_\\text{max} = R_A\\cdot a$.
+
+**Rechnung:** $M_\\text{max} = 450\\cdot 1 = 450\\,\\text{Nm}$.
+
+**Probe:** Alternativ über $R_B$ und Reststrecke: $M_\\text{max} = R_B\\cdot(L-a) = 150\\cdot 3 = 450\\,\\text{Nm}$ ✓. Oder Standardformel $F\\cdot a(L-a)/L = 600\\cdot 1\\cdot 3/4 = 450\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Hebelarm $L$ statt $a$ verwenden ⇒ $1800\\,\\text{Nm}$ (zu groß). $M_\\text{max}$ ist nur über die Strecke vom Auflager bis zur Last aufgebaut.`,
               hints: ['M_max liegt unter der Einzellast.', 'M_max = R_A · a', 'M_max = 450 · 1 = 450 Nm'],
+              pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['m-max'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
@@ -942,21 +956,60 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               question: 'Wo liegt das maximale Biegemoment bei Einzellast auf Einfeldträger?',
               options: ['Unter der Last', 'Am Festlager', 'Am Loslager', 'In der Balkenmitte'],
               correctIndex: 0,
-              explanation: 'Die M(x)-Linie ist dreieckförmig mit Maximum direkt unter der Einzellast.',
+              explanation: `**Ansatz:** Extrema von $M(x)$ liegen dort, wo $dM/dx = Q(x) = 0$ — also wo die Querkraft Vorzeichen wechselt.
+
+**Rechnung:** Bei Einzellast springt $Q$ am Lastangriff von $+R_A$ auf $-R_B$ (Vorzeichenwechsel). Genau hier ist $M$ maximal: $M_\\text{max} = R_A\\cdot a = F\\cdot a(L-a)/L$.
+
+**Probe:** Plausibel über die Extremwerte: An den Auflagern gilt $M = 0$ (gelenkige Randbedingung), in der Balkenmitte ist $M$ nicht zwingend maximal — nur bei mittiger Last fällt das zusammen. Allgemein: Maximum unter der Last.
+
+**Typischer Fehler:** "In der Balkenmitte" ist nur für $a = L/2$ richtig. Bei asymmetrischer Last greift $M_\\text{max}$ direkt unter dem Lastangriff, nicht in der geometrischen Mitte.`,
               hints: ['Die M-Linie ist dreieckförmig bei Einzellast.', 'Das Maximum liegt genau unter der Lastangriffsstelle.', 'Wo die Querkraft ihr Vorzeichen wechselt, ist M maximal.'],
               wrongAnswerExplanations: {
                 1: 'An den gelenkigen Lagern (Fest- oder Loslager) ist $M = 0$, da keine Momente übertragen werden. Dort ist $M$ minimal, nicht maximal.',
                 2: 'Am Loslager ist $M = 0$ (Randbedingung des gelenkigen Lagers). Verwechslung mit der Querkraft $Q$, die dort den Wert der Lagerreaktion hat.',
                 3: 'Nur bei mittiger Last stimmt das — allgemein liegt $M_{max}$ unter der Last, da dort die Querkraft $Q(x)$ ihr Vorzeichen wechselt ($\\mathrm{d}M/\\mathrm{d}x = Q = 0$).',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['m-max'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
                 alt: 'Einfeldträger mit Biegemomentenverlauf.',
               },
             },
-            { type: 'true-false', statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.', correct: true, explanation: 'Q springt um −F von R_A auf −R_B. Daraus ergibt sich die typische „Treppenstufe" im Querkraftverlauf.', hints: ['Querkraft Q(x) springt an der Lastangriffsstelle.', 'Der Sprung hat den Betrag der Einzellast F.', '|ΔQ| = |F| — Vorzeichen: von +R_A auf −R_B.'] },
-            { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['Biegespannung: σ_b = M/W mit W = Widerstandsmoment.', 'M_max liefert die größte Biegespannung.', 'Die gefährliche Stelle ist dort, wo M am größten ist.'], wrongAnswerExplanations: { 1: 'Die Normalkraft $N$ und das Biegemoment $M$ sind unabhängige Schnittgrößen. $N_{max}$ liefert maximale Zug-/Druckspannung $\\sigma = N/A$, nicht Biegespannung.', 2: 'Die Querkraft $Q$ erzeugt Schubspannungen $\\tau = Q \\cdot S/(I \\cdot b)$, aber keine Biegespannungen. Biegung ist an $M$ gekoppelt, nicht an $Q$.', 3: 'Kein Zufall: Die Beziehung $\\sigma_b = M/W$ macht $M$ direkt proportional zur Biegespannung — daher liegt die gefährliche Stelle zwangsläufig bei $M_{max}$.' } },
+            {
+              type: 'true-false',
+              statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.',
+              correct: true,
+              explanation: `**Ansatz:** Sprung von $Q$ an einer Einzellast = vorzeichenbehaftete Größe der Last.
+
+**Rechnung:** Bei Einzellast $F$ nach unten: $Q$ links der Last $= R_A$, $Q$ rechts $= R_A - F = -R_B$. Differenz: $\\Delta Q = -F$. Betrag: $|\\Delta Q| = |F|$.
+
+**Probe:** Numerisch ($L = 4, F = 600, a = 1$): $R_A = 450, R_B = 150$. Sprung: $-450 - 150 = -600 = -F$ ✓.
+
+**Typischer Fehler:** Sprung mit Betrag $\\frac{F}{2}$ ansetzen — gilt nur bei Aufteilung auf zwei Punkte. Eine Einzellast erzeugt **vollen** Sprung um $F$.`,
+              hints: ['Querkraft Q(x) springt an der Lastangriffsstelle.', 'Der Sprung hat den Betrag der Einzellast F.', '|ΔQ| = |F| — Vorzeichen: von +R_A auf −R_B.'],
+              pedagogy: { stage: 'recognize', subGoal: 2, uses: ['sprung-knick'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?',
+              options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'],
+              correctIndex: 0,
+              explanation: `**Ansatz:** Biegespannung $\\sigma_b = M/W$ ist linear in $M$ — die kritische Stelle ist also dort, wo $M$ maximal wird.
+
+**Rechnung:** $W$ (Widerstandsmoment) hängt nur von der Querschnittsgeometrie ab, ist über die Balkenlänge konstant. Damit ist $\\sigma_b(x) = M(x)/W$ proportional zu $M(x)$ ⇒ Spannungs-Maximum = Momenten-Maximum.
+
+**Probe:** Beispiel: $W = 5\\cdot 10^{-5}\\,\\text{m}^3$, $M_\\text{max} = 450\\,\\text{Nm}$. $\\sigma_\\text{max} = 450/(5\\cdot 10^{-5}) = 9\\cdot 10^6\\,\\text{Pa} = 9\\,\\text{MPa}$.
+
+**Typischer Fehler:** $Q_\\text{max}$ und $M_\\text{max}$ verwechseln — $Q$ erzeugt Schubspannungen, $M$ erzeugt Biegespannungen. Beide sind separate Versagensformen.`,
+              hints: ['Biegespannung: σ_b = M/W mit W = Widerstandsmoment.', 'M_max liefert die größte Biegespannung.', 'Die gefährliche Stelle ist dort, wo M am größten ist.'],
+              wrongAnswerExplanations: {
+                1: 'Die Normalkraft $N$ und das Biegemoment $M$ sind unabhängige Schnittgrößen. $N_{max}$ liefert maximale Zug-/Druckspannung $\\sigma = N/A$, nicht Biegespannung.',
+                2: 'Die Querkraft $Q$ erzeugt Schubspannungen $\\tau = Q \\cdot S/(I \\cdot b)$, aber keine Biegespannungen. Biegung ist an $M$ gekoppelt, nicht an $Q$.',
+                3: 'Kein Zufall: Die Beziehung $\\sigma_b = M/W$ macht $M$ direkt proportional zur Biegespannung — daher liegt die gefährliche Stelle zwangsläufig bei $M_{max}$.',
+              },
+              pedagogy: { stage: 'transfer', subGoal: 3, uses: ['m-max'] },
+            },
           ],
         },
         {

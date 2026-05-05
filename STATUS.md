@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2462 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1621 (66 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1106 / 1106 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 233 / 1134 (21 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2487 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1651 (66 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1121 / 1121 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 238 / 1134 (21 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **237** (Lesson-Path: 59 · Goal-Tasks: 178)
-- 4-Block: 209/237 (88 %) 🟡
-- MC-wAE: 67/67 (100 %) ✅
-- Sub-Goals: 32/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **262** (Lesson-Path: 59 · Goal-Tasks: 203)
+- 4-Block: 239/262 (91 %) 🟡
+- MC-wAE: 82/82 (100 %) ✅
+- Sub-Goals: 37/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -968,7 +968,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 33 | 13/8/5/3/4 | 33/33 | 13/13 | ✅ | — |
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 4/4 | 23 | 10/5/5/2/1 | 23/23 | 10/10 | ✅ | — |
 | `mech-1-2` Momente und Hebelarm | 4 | 4/4 | 23 | 11/7/5/0/0 | 23/23 | 11/11 | ✅ | — |
-| `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
+| `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 5/5 | 30 | 17/6/6/1/0 | 30/30 | 17/17 | ✅ | — |
 | `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
 | `mech-1-5` Schwerpunkt | 5 | 5/5 | 32 | 5/14/6/4/3 | 32/32 | 5/5 | ✅ | — |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
@@ -8201,7 +8201,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 34 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 35 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -9243,58 +9243,87 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
-#### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
+#### `mech-0-1` · SI-Basiseinheiten & Präfixe
 
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `gleichgew-2d`
-  - `mech-1-2` → `moment-formel`
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Prerequisites:** keine (Einstiegs-Lesson).
 - **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `schnittgr-3` — Drei Schnittgrößen $N(x),Q(x),M(x)$ (SG 0)
-  2. `schnitt-diff` — Differentialzusammenhang: $Q(x)=dM/dx$, $q(x)=-dQ/dx$ ⇐ `schnittgr-3` (SG 1)
-  3. `sprung-knick` — Sprung in $Q$ bei Einzellast, Knick in $M$ bei Einzellast ⇐ `schnittgr-3` (SG 2)
-  4. `m-max` — $M_{\max}$ an Stelle mit $Q=0$ (gefährliche Stelle) ⇐ `schnitt-diff` (SG 3)
-  5. `rb-gelenk` — Gelenkiges Auflager: $M=0$ als Randbedingung ⇐ `schnittgr-3` (SG 4)
+  1. `si-basis-7` — 7 SI-Basiseinheiten: m, kg, s, A, K, mol, cd (SG 0)
+  2. `praefixe-1000` — Präfixe in 1000er-Schritten: giga ($10^9$), mega ($10^6$), kilo ($10^3$), milli, mikro, nano (SG 0)
+  3. `kg-anomalie` — kg ist die einzige Basiseinheit mit eingebautem Präfix ⇐ `si-basis-7` (SG 1)
+  4. `sci-notation` — Wissenschaftliche Notation $a\cdot 10^n$ (SG 2)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `schnittgr-3` · **0/5+** — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `schnitt-diff` · **0/5+** — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
-  - 🔴 [2] _hoch_ · Konzepte: `sprung-knick` · **0/5+** — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
-  - 🔴 [3] _hoch_ · Konzepte: `m-max` · **0/5+** — $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
-  - 🔴 [4] _hoch_ · Konzepte: `rb-gelenk` · **0/5+** — An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
+  - 🔴 [0] _hoch_ · Konzepte: `si-basis-7`, `praefixe-1000` · **0/5+** — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
+  - 🔴 [1] _mittel_ · Konzepte: `kg-anomalie` · **0/5+** — Kilogramm als einzige SI-Basiseinheit mit Präfix
+  - 🔴 [2] _hoch_ · Konzepte: `sci-notation` · **0/5+** — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `m-max` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `m-max` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `m-max` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
+|  1 | 0 | recognize          | true-false       | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 | M (mega) mit G (giga) verwechselt |
+|  5 | 0 | transfer           | matching         | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kg-anomalie` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kg-anomalie`, `si-basis-7` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `si-basis-7` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sci-notation` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sci-notation` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sci-notation`, `praefixe-1000` | 1 | 0 | 🔴 |  |
 
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
+#### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-zerlegung` — $1\,\text{N}=1\,\text{kg}\cdot\text{m}/\text{s}^2$ (SG 0)
+  2. `mpa-nmm2` — $1\,\text{MPa}=1\,\text{N}/\text{mm}^2$ — Ingenieur-Konvention (SG 1)
+  3. `bar-pa` — bar↔Pa: $1\,\text{bar}=10^5\,\text{Pa}$ (SG 2)
+  4. `dim-check` — Dimensionsanalyse als Kontrollschritt — links/rechts dieselbe Einheit ⇐ `newton-zerlegung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `newton-zerlegung` · **0/5+** — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
+  - 🔴 [1] _hoch_ · Konzepte: `mpa-nmm2` · **0/5+** — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
+  - 🔴 [2] _mittel_ · Konzepte: `bar-pa` · **0/5+** — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
+  - 🔴 [3] _hoch_ · Konzepte: `dim-check` · **0/5+** — Dimensionsanalyse als Kontrollschritt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `bar-pa` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `bar-pa` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `bar-pa` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `dim-check` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dim-check` | 1 | 0 | 🔴 | Inkonsistente Einheiten übersehen |
+| 20 | 3 | transfer           | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-3` · Kinematik
