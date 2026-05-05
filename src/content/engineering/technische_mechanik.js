@@ -633,13 +633,20 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               question: 'Was gehört in ein Freikörperbild?',
               options: ['Nur bekannte Kräfte', 'Alle äußeren Kräfte und Lagerreaktionen', 'Nur Beschleunigungen', 'Nur Maße'],
               correctIndex: 1,
-              explanation: 'Ein Freikörperbild zeigt alle äußeren Kräfte und unbekannten Reaktionsgrößen.',
+              explanation: `**Ansatz:** Im FKB wird der Körper aus seiner Umgebung **freigeschnitten** und alle Stellen, an denen er mit der Umgebung in Kontakt steht, werden durch Kräfte/Momente ersetzt.
+
+**Rechnung:** Einzutragen sind: Eigengewicht (im Schwerpunkt), eingeprägte Lasten (Kräfte, Momente) und sämtliche Lagerreaktionen — auch die noch unbekannten. Erst damit ist das spätere Gleichgewicht $\\sum F = 0$, $\\sum M = 0$ überhaupt aufstellbar.
+
+**Probe:** Bei einem auf zwei Lagern liegenden Balken mit Eigengewicht stehen im FKB: $G$ (Schwerpunkt), $A_x, A_y$ (Festlager), $B_y$ (Loslager) — vier Kräfte, drei Bedingungen ⇒ statisch bestimmt lösbar.
+
+**Typischer Fehler:** Lagerreaktionen weglassen, weil sie "noch unbekannt" sind — das ist genau der Punkt: sie werden erst durch das Gleichgewicht **bestimmt**.`,
               hints: ['Kontakte werden durch Reaktionskräfte ersetzt.', 'Alle äußeren Einwirkungen auf den freigeschnittenen Körper eintragen.', 'Bekannte und unbekannte Kräfte + Lagerreaktionen gehören ins Bild.'],
               wrongAnswerExplanations: {
                 0: 'Unvollständig: Ein Freikörperbild muss auch die unbekannten Lagerreaktionen enthalten. Nur bekannte Kräfte einzutragen macht das Gleichgewicht $\\Sigma F = 0$ unlösbar.',
                 2: 'Beschleunigungen gehören in die kinetische Betrachtung (Newton: $\\Sigma F = m \\cdot a$), nicht ins Freikörperbild. Das FKB zeigt Kräfte und Momente, keine Bewegungsgrößen.',
                 3: 'Maße dienen nur der Geometrie und sind optional. Entscheidend sind Kräfte und Momente, sonst lässt sich $\\Sigma F = 0$ und $\\Sigma M = 0$ nicht auswerten.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['fkb'] },
               visualization: {
                 id: 'free-body-diagram',
                 params: {
@@ -659,8 +666,15 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               correctValue: 5,
               tolerance: 0.01,
               unit: 'N',
-              explanation: 'R = $\\sqrt{3^2 + 4^2}$ = 5 N.',
+              explanation: `**Ansatz:** Stehen die beiden Kräfte senkrecht aufeinander, bilden sie die Katheten eines rechtwinkligen Dreiecks. Die Resultierende ist die Hypotenuse.
+
+**Rechnung:** $R = \\sqrt{F_x^2 + F_y^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\,\\text{N}$.
+
+**Probe:** Klassisches 3-4-5-Pythagoras-Dreieck. Komponentenweise zurück: Aus $|R| = 5$ und Richtung $\\arctan(4/3) \\approx 53{,}13°$ folgt $R_x = 5\\cos 53{,}13° = 3$, $R_y = 5\\sin 53{,}13° = 4$ ✓.
+
+**Typischer Fehler:** Beträge addieren statt quadratisch zusammensetzen ($3 + 4 = 7$). Das ist nur korrekt, wenn beide Kräfte **dieselbe** Richtung haben — bei senkrechtem Stand falsch.`,
               hints: ['Resultierende zweier rechtwinkliger Kräfte: Pythagoras anwenden.', 'R = √(F_x² + F_y²)', '√(3² + 4²) = √25 = 5'],
+              pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['kraft-vektor'] },
               visualization: {
                 id: 'vector-diagram',
                 params: {
@@ -678,8 +692,15 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               type: 'true-false',
               statement: 'Im statischen Gleichgewicht muss die Summe aller Kräfte null sein.',
               correct: true,
-              explanation: 'Für Translation gilt ΣF = 0; zusätzlich gilt für Rotation ΣM = 0.',
+              explanation: `**Ansatz:** Statisches Gleichgewicht heißt: Körper ist **in Ruhe** und bleibt es. Newton 2: $\\sum F = m\\cdot a$ — bei $a = 0$ folgt $\\sum F = 0$.
+
+**Rechnung:** $\\sum \\vec F = \\vec 0$ ist die translatorische Bedingung. In 2D zerfällt sie in $\\sum F_x = 0$ und $\\sum F_y = 0$.
+
+**Probe:** Hängt eine Last $G$ am Seil mit Zugkraft $S$, dann verlangt Gleichgewicht $S - G = 0 \\Rightarrow S = G$. Probe: ja, das Seil trägt genau das Gewicht.
+
+**Typischer Fehler:** Glauben, $\\sum F = 0$ allein reiche aus — für Rotation muss zusätzlich $\\sum M = 0$ gelten. Beide Bedingungen sind unverzichtbar; die Aussage hier ist trotzdem korrekt, weil sie nur eine **notwendige** (nicht hinreichende) Bedingung formuliert.`,
               hints: ['Statisches Gleichgewicht: Resultierende Kraft = 0.', 'ΣF = 0 für Translation, ΣM = 0 für Rotation.', 'Beide Bedingungen müssen erfüllt sein.'],
+              pedagogy: { stage: 'recognize', subGoal: 3, uses: ['gleichgew-2d'] },
             },
           ],
         },

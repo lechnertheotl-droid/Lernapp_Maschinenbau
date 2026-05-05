@@ -1706,6 +1706,480 @@ export const technischeMechanikSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-1-1 — Kräfte und Freikörperbild  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-1': {
+
+    // ── [0] Freikörperbild — Körper isolieren, alle äußeren Kräfte ─────
+    0: [
+      tf(
+        'Innere Kontaktkräfte zwischen den Bauteilen eines abgeschlossenen Systems gehören NICHT in das Freikörperbild des Gesamtsystems.',
+        true,
+        `**Ansatz:** Im FKB werden nur **äußere** Einwirkungen auf das freigeschnittene System eingetragen. Die Frage ist immer: Was wirkt von **außen** auf den abgegrenzten Körper?
+
+**Rechnung:** Innere Kräfte treten paarweise mit Gegenkraft auf (Newton 3.: actio = reactio) und heben sich beim Aufstellen von $\\sum F$ und $\\sum M$ am Gesamtsystem gegenseitig weg. Sie liefern keinen Beitrag.
+
+**Probe:** Schneidet man hingegen ein einzelnes Bauteil aus dem System heraus, werden die vormals inneren Kräfte zu äußeren Kräften an diesem Teilsystem und müssen ins FKB des Teilsystems.
+
+**Typischer Fehler:** Innere Kontakte zwischen verbundenen Körpern in das FKB des Gesamtsystems eintragen — produziert systematische Doppelzählung und verfälschte Reaktionskräfte.`,
+        [
+          'FKB = nur äußere Einwirkungen auf das freigeschnittene System.',
+          'Innere Kräfte: actio + reactio im selben System.',
+          'Sie heben sich paarweise weg, tragen nichts zu $\\sum F = 0$ bei.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['fkb'] },
+      ),
+      mc(
+        'Ein homogener Balken ($m = 20\\,\\text{kg}$, $g = 9{,}81\\,\\text{m/s}^2$) liegt waagrecht auf einem **Festlager A** (links) und einem **Loslager B** (rechts). Welche Kräfte gehören vollständig in das FKB des Balkens?',
+        [
+          'Gewichtskraft $G = 196{,}2\\,\\text{N}$ im Schwerpunkt + $A_x, A_y$ am Festlager + $B_y$ am Loslager.',
+          'Nur $G$ sowie $A_y$ und $B_y$ — Horizontalkomponenten weglassen, weil keine horizontale Last wirkt.',
+          '$G + A_x, A_y + B_x, B_y$ — am Loslager wird zusätzlich eine Horizontalreaktion mitgeführt.',
+          'Nur die Auflagerreaktionen $A_y$ und $B_y$ — Gewichtskraft wirkt im Schwerpunkt und ist deshalb keine äußere Kraft.',
+        ],
+        0,
+        `**Ansatz:** Festlager liefert in 2D **2 Reaktionen** ($A_x, A_y$), Loslager **1 Reaktion** senkrecht zur Lauffläche ($B_y$). Eigengewicht greift im Schwerpunkt an. Alle drei Punkte sind Pflicht im FKB.
+
+**Rechnung:** $G = m\\cdot g = 20\\cdot 9{,}81 = 196{,}2\\,\\text{N}$. Insgesamt 4 unbekannte/bekannte Kraftpfeile: $G, A_x, A_y, B_y$ — bei 3 Gleichgewichtsbedingungen ist das System trotzdem statisch bestimmt, weil $A_x = 0$ aus $\\sum F_x = 0$ herausfällt.
+
+**Probe:** Anzahl Reaktionen = gehemmte Freiheitsgrade. Festlager hemmt 2 (horiz. + vert.), Loslager 1 (vert.). Summe der Reaktionen = 3 = 2D-Gleichgewichtsbedingungen — passt.
+
+**Typischer Fehler:** $A_x$ weglassen, "weil ja keine horizontale Last anliegt". Im FKB werden alle **möglichen** Reaktionen eingetragen; die Rechnung zeigt dann, dass $A_x = 0$ ist. Wer $A_x$ gar nicht erst einzeichnet, vergisst es bei horizontalen Lastfällen.`,
+        [
+          'Festlager-Anzahl Reaktionen in 2D?',
+          'Loslager-Anzahl?',
+          'Gewichtskraft im Schwerpunkt nicht vergessen.',
+        ],
+        {
+          1: 'Im FKB gehören **alle möglichen** Reaktionen eines Lagers — auch wenn die Rechnung später $A_x = 0$ liefert. Das vorzeitige Weglassen ist eine häufige Fehlerquelle.',
+          2: 'Loslager überträgt nur **eine** Reaktion (senkrecht zur Lauffläche), keine Horizontalkomponente. $B_x$ einzutragen wäre eine Überbestimmung.',
+          3: 'Eigengewicht ist eine **äußere** Kraft (Gravitation), wirkt im Schwerpunkt und gehört unbedingt ins FKB.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['fkb'] },
+      ),
+      mc(
+        'Eine 50-kg-Last hängt frei an einem vertikalen Seil ($g = 9{,}81\\,\\text{m/s}^2$). Beim Aufbau des FKB der Last vergisst ein Studierender die Seilkraft. Welche Konsequenz hat das?',
+        [
+          'Das Gleichgewicht $\\sum F_y = 0$ liefert nur noch $-G = 0 \\Rightarrow G = 0$ — die Last erscheint rechnerisch gewichtslos.',
+          'Das Momentengleichgewicht ist betroffen, $\\sum F_y$ stimmt aber weiterhin.',
+          'Das Vorzeichen der Gewichtskraft kehrt sich automatisch um, das Endergebnis bleibt korrekt.',
+          'Der Fehler bemerkt sich erst bei der Schnittkraftberechnung, nicht beim FKB.',
+        ],
+        0,
+        `**Ansatz:** Korrektes FKB: Gewichtskraft $G = m\\cdot g \\downarrow$ und Seilkraft $S \\uparrow$. Gleichgewicht: $S - G = 0 \\Rightarrow S = G = 50\\cdot 9{,}81 = 490{,}5\\,\\text{N}$.
+
+**Rechnung:** Ohne Seilkraft im FKB bleibt nur $-G$ übrig. $\\sum F_y = -G = 0 \\Rightarrow G = 0$ — physikalisch unsinnig.
+
+**Probe:** Eine fehlende Lager- oder Bindungskraft macht das Gleichgewicht **strukturell** falsch — kein nachträglicher Plausibilitätscheck rettet das.
+
+**Typischer Fehler:** Bindungs-/Seilkräfte vergessen, weil sie "nicht offensichtlich am Körper angreifen". Jede gedachte Schnitt- oder Kontaktstelle ist eine **Quelle einer Reaktionskraft**.`,
+        [
+          'Korrektes FKB: $G \\downarrow$ und $S \\uparrow$.',
+          'Was passiert mit $\\sum F_y$, wenn $S$ fehlt?',
+          '$-G = 0 \\Rightarrow G = 0$ — Widerspruch.',
+        ],
+        {
+          1: 'Der Fehler tritt bei der Translation auf, nicht erst beim Moment. $\\sum F_y$ ist unmittelbar betroffen.',
+          2: 'Es findet keine "automatische" Vorzeichenkorrektur statt. Eine fehlende Kraft hinterlässt ein strukturelles Loch.',
+          3: 'Falsch — der Fehler manifestiert sich sofort beim Aufstellen der Gleichgewichtsgleichung, nicht später.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['fkb'] },
+      ),
+      matching(
+        'Wie viele Kräfte/Momente werden im FKB jeder Situation eingetragen? (Eigengewicht jeweils mitzählen.)',
+        [
+          { left: 'Klotz in Ruhe auf horizontalem, glattem Boden', right: '2: $G$ und Normalkraft $N$' },
+          { left: 'Klotz gleitet auf rauer schiefer Ebene', right: '3: $G$, $N$, Reibkraft $F_R$' },
+          { left: 'Balken auf Festlager A + Loslager B mit Eigengewicht', right: '4: $G$, $A_x$, $A_y$, $B_y$' },
+          { left: 'Eingespannter Kragträger mit Endlast $F$', right: '5: $G$, $F$, $A_x$, $A_y$, $M_A$' },
+        ],
+        `**Ansatz:** Anzahl Kräfte = Eigengewicht + eingeprägte Lasten + Lagerreaktionen passend zum Lagertyp.
+
+**Rechnung:** (1) Klotz auf glattem Boden: $G \\downarrow$ + $N \\uparrow$ = 2. (2) Mit Reibung: zusätzliche $F_R$ parallel zur Ebene = 3. (3) Festlager (2) + Loslager (1) + $G$ = 4. (4) Einspannung (3: $A_x, A_y, M_A$) + $G$ + Endlast $F$ = 5.
+
+**Probe:** Anzahl unbekannte Reaktionen darf 3 nicht überschreiten (sonst statisch unbestimmt). Festlager+Loslager: 2+1 = 3 ✓. Einspannung allein: 3 ✓ (Last $F$ und $G$ sind bekannt, keine Unbekannten).
+
+**Typischer Fehler:** Eigengewicht vergessen oder Lagerreaktionen falsch zählen — beides macht das FKB unvollständig.`,
+        [
+          'Pro Lager Reaktionsgrößen abzählen.',
+          'Eigengewicht zählt als Einzelkraft im Schwerpunkt.',
+          'Reibkraft nur, wenn die Oberfläche rau ist.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['fkb'] },
+      ),
+      sorting(
+        'Bringe die Schritte zum systematischen Aufbau eines FKB in die richtige Reihenfolge.',
+        [
+          'Bauteil gedanklich aus dem System freischneiden',
+          'Koordinatensystem und positive Zählrichtungen festlegen',
+          'Eigengewicht $G$ im Schwerpunkt eintragen (falls nicht zu vernachlässigen)',
+          'Lagerreaktionen passend zum Lagertyp eintragen (Fest-/Loslager/Einspannung)',
+          'Externe Lasten und Kontaktkräfte ergänzen (Punktlasten, Streckenlasten, Seilkräfte)',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Konsequente Reihenfolge verhindert, dass Kräfte vergessen werden.
+
+**Rechnung:** Erst freischneiden — dann Koordinatensystem (festlegt Vorzeichenkonvention) — dann Eigengewicht (immer da) — dann Lagerreaktionen (an jeder geschnittenen Lagerstelle) — schließlich eingeprägte Lasten.
+
+**Probe:** Wer dieselbe Reihenfolge konsequent anwendet, hat keine Lücken im FKB.
+
+**Typischer Fehler:** Mit den eingeprägten Lasten anfangen und am Ende die Lagerreaktionen vergessen — gerade die unbekannten Reaktionen sind aber das Ziel der ganzen Übung.`,
+        [
+          'Erst freischneiden, dann Pfeile setzen.',
+          'Koordinatensystem ZUERST — sonst sind Vorzeichen unklar.',
+          'Lagerreaktionen kommen vor den eingeprägten Lasten.',
+        ],
+        { stage: 'apply-guided', subGoal: 0, uses: ['fkb'] },
+      ),
+    ],
+
+    // ── [1] Kraft = Vektor (Betrag + Richtung) ─────────────────────────
+    1: [
+      tf(
+        'Eine Kraft ist vollständig durch ihren Betrag beschrieben — Richtung und Angriffspunkt sind nur Zusatzinformationen.',
+        false,
+        `**Ansatz:** Kraft ist ein **Vektor** — Betrag UND Richtung gehören zur vollständigen Beschreibung. Der Angriffspunkt entscheidet zusätzlich über die **Momentenwirkung**.
+
+**Rechnung:** Zwei Kräfte mit gleichem Betrag aber entgegengesetzter Richtung haben völlig unterschiedliche Wirkung: gleiche Linie, gleicher Angriffspunkt → Aufhebung. Senkrecht zueinander → Resultierende über Pythagoras.
+
+**Probe:** $\\vec F = F\\cdot\\hat e$ mit Betrag $F$ und Einheitsvektor $\\hat e$. Beides ist Pflicht.
+
+**Typischer Fehler:** Kraft wie eine skalare Größe (Masse, Temperatur) behandeln. In der Statik führt das sofort zu falschen Gleichgewichtsbilanzen.`,
+        [
+          'Vektor = Betrag + Richtung.',
+          'Zwei Kräfte mit gleichem Betrag, anderer Richtung — gleiche Wirkung?',
+          '$\\vec F = F\\cdot\\hat e$ — beides nötig.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      mc(
+        'Eine Kraft mit Betrag $F = 100\\,\\text{N}$ wirkt unter $30°$ über der Horizontalen (gegen den Uhrzeiger). Wie groß sind die Komponenten $F_x$ und $F_y$?',
+        [
+          '$F_x = 100\\,\\text{N}, F_y = 0$ — die Kraft ist horizontal.',
+          '$F_x \\approx 86{,}6\\,\\text{N}, F_y = 50\\,\\text{N}$',
+          '$F_x = 50\\,\\text{N}, F_y \\approx 86{,}6\\,\\text{N}$',
+          '$F_x \\approx 86{,}6\\,\\text{N}, F_y \\approx -50\\,\\text{N}$',
+        ],
+        1,
+        `**Ansatz:** Standard-Zerlegung relativ zur $x$-Achse: $F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$. Winkel oberhalb der $x$-Achse (gegen Uhrzeiger) ⇒ $F_y > 0$.
+
+**Rechnung:** $F_x = 100\\cdot\\cos 30° = 100\\cdot\\frac{\\sqrt{3}}{2} \\approx 86{,}6\\,\\text{N}$. $F_y = 100\\cdot\\sin 30° = 100\\cdot 0{,}5 = 50\\,\\text{N}$.
+
+**Probe:** $\\sqrt{F_x^2 + F_y^2} = \\sqrt{86{,}6^2 + 50^2} = \\sqrt{7500 + 2500} = \\sqrt{10000} = 100\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen. Merkregel: $\\cos$ ist auf der **An**liegenden Seite (zur Bezugsachse), $\\sin$ auf der **Gegen**überliegenden.`,
+        [
+          'Komponenten relativ zur x-Achse: $\\cos$ für x, $\\sin$ für y.',
+          '$\\cos 30° \\approx 0{,}866$, $\\sin 30° = 0{,}5$.',
+          'Probe via Pythagoras: Beträge wieder zur Resultierenden zusammensetzen.',
+        ],
+        {
+          0: 'Falsch — bei $30°$ über der Horizontalen ist $F_y \\neq 0$. Die Kraft hat eine deutliche Vertikalkomponente.',
+          2: '$\\sin$ und $\\cos$ vertauscht: $F_x = F\\cos\\alpha$ (anliegend), $F_y = F\\sin\\alpha$ (gegenüberliegend), nicht andersrum.',
+          3: 'Falsches Vorzeichen: Winkel **über** der $x$-Achse ⇒ $F_y$ positiv. Negativ wäre die Kraft unterhalb (nach unten gerichtet).',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      mc(
+        'Eine Kraft $F = 200\\,\\text{N}$ wirkt unter $60°$ **unterhalb** der Horizontalen (also schräg nach unten-rechts). Studierender setzt $F_x = 200\\sin 60°$ und $F_y = 200\\cos 60°$ ein. Was ist falsch?',
+        [
+          '$\\sin$ und $\\cos$ sind vertauscht — Standard ist $F_x = F\\cos\\alpha, F_y = F\\sin\\alpha$ relativ zur $x$-Achse. Außerdem fehlt das Minuszeichen vor $F_y$, weil die Kraft **nach unten** zeigt.',
+          'Der Winkel $60°$ muss zuerst in Bogenmaß umgerechnet werden — sonst funktionieren die Winkelfunktionen nicht.',
+          'Der Fehler ist nur kosmetisch — beide Komponenten haben numerisch denselben Betrag, weil $\\sin 60° = \\cos 60°$.',
+          'Es gibt keinen Fehler: $\\sin$ und $\\cos$ sind in der Statik austauschbar.',
+        ],
+        0,
+        `**Ansatz:** Korrekte Zerlegung: $F_x = F\\cos\\alpha = 200\\cos 60° = 100\\,\\text{N}$. $F_y = -F\\sin\\alpha = -200\\sin 60° \\approx -173{,}2\\,\\text{N}$ (Minus, weil unterhalb der $x$-Achse).
+
+**Rechnung:** Mit der falschen Formel: $F_x = 200\\sin 60° \\approx 173{,}2$ (zu groß), $F_y = 200\\cos 60° = 100$ (Vorzeichen falsch und Wert vertauscht). Die Resultante hätte trotzdem Betrag 200 — aber Komponenten und Vorzeichen sind völlig falsch.
+
+**Probe:** Bei $\\alpha = 60°$ unterhalb der $x$-Achse zeigt $\\vec F$ in Richtung $(\\cos 60°, -\\sin 60°) = (0{,}5,\\ -0{,}866)$. Komponenten: $F_x = +100$, $F_y \\approx -173{,}2$.
+
+**Typischer Fehler:** Mit dem Komplement-Winkel ($30°$ zur $y$-Achse) rechnen, ohne die Konvention zu klären — das vertauscht $\\sin$ und $\\cos$. Außerdem Richtung "unterhalb" beim $F_y$-Vorzeichen verschwiegen.`,
+        [
+          '$F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$ — relativ zur $x$-Achse.',
+          'Unterhalb der $x$-Achse: $F_y < 0$.',
+          'Bei $60°$ ist $\\cos 60° = 0{,}5$, $\\sin 60° \\approx 0{,}866$ — ungleich.',
+        ],
+        {
+          1: 'Bogenmaß ist nur für analytische Ableitungen Pflicht. Taschenrechner und Winkelfunktionen verarbeiten Grad direkt — daran liegt es nicht.',
+          2: '$\\sin 60°$ und $\\cos 60°$ sind **nicht** gleich: $\\sin 60° \\approx 0{,}866$, $\\cos 60° = 0{,}5$. Verwechslung ändert die Werte massiv.',
+          3: 'Falsch — $\\sin$ und $\\cos$ sind **nicht** austauschbar. Die Konvention $F_x = F\\cos\\alpha$ ist eindeutig.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      ni(
+        'Drei Kräfte greifen am gleichen Punkt an: $\\vec F_1 = (40\\ |\\ 30)\\,\\text{N}$, $\\vec F_2 = (-20\\ |\\ 15)\\,\\text{N}$, $\\vec F_3 = (10\\ |\\ -25)\\,\\text{N}$. Wie groß ist der Betrag der Resultierenden $\\vec R$ in Newton (auf 2 Nachkommastellen)?',
+        36.06, 0.1, 'N',
+        `**Ansatz:** Komponentenweise addieren, dann Pythagoras.
+
+**Rechnung:** $R_x = 40 + (-20) + 10 = 30\\,\\text{N}$. $R_y = 30 + 15 + (-25) = 20\\,\\text{N}$. $|R| = \\sqrt{30^2 + 20^2} = \\sqrt{900 + 400} = \\sqrt{1300} \\approx 36{,}06\\,\\text{N}$.
+
+**Probe:** $\\sqrt{1300} = 10\\sqrt{13}$, $\\sqrt{13} \\approx 3{,}606$ ⇒ $|R| \\approx 36{,}06\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Beträge der Einzelkräfte einfach addieren ($\\sqrt{40^2+30^2} + \\sqrt{20^2+15^2} + \\sqrt{10^2+25^2} = 50 + 25 + 26{,}9 \\approx 101{,}9$) — ist falsch, weil Vektor- nicht Skalaraddition.`,
+        [
+          'Erst Komponenten getrennt summieren.',
+          '$R_x$ und $R_y$ einzeln berechnen.',
+          'Dann Pythagoras: $|R| = \\sqrt{R_x^2 + R_y^2}$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      ni(
+        'Eine Kraft hat in der Ebene die Komponenten $F_x = 60\\,\\text{N}$ und $F_y = 80\\,\\text{N}$. Wie groß ist ihr Betrag (in N)?',
+        100, 0.5, 'N',
+        `**Ansatz:** Pythagoras: $|F| = \\sqrt{F_x^2 + F_y^2}$.
+
+**Rechnung:** $|F| = \\sqrt{60^2 + 80^2} = \\sqrt{3600 + 6400} = \\sqrt{10000} = 100\\,\\text{N}$.
+
+**Probe:** Klassisches 3-4-5-Pythagoras-Tripel, hier um Faktor 20 skaliert: $60 = 3\\cdot 20$, $80 = 4\\cdot 20$, $100 = 5\\cdot 20$ ✓.
+
+**Typischer Fehler:** $|F| = F_x + F_y = 140\\,\\text{N}$ (lineare Addition). Das wäre nur korrekt, wenn beide Komponenten in dieselbe Richtung zeigten — bei senkrechtem Stand quadratisch.`,
+        [
+          'Pythagoras im rechtwinkligen Dreieck.',
+          '$\\sqrt{F_x^2 + F_y^2}$.',
+          '$60$ und $80$ → $\\sqrt{10000} = 100$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+    ],
+
+    // ── [2] Lagersymbole — Festlager / Loslager / Einspannung ─────────
+    2: [
+      tf(
+        'Ein Loslager (Rollenlager) überträgt in 2D **eine** Reaktionskraft, ein Festlager **zwei** Reaktionskräfte und eine Einspannung **drei** Reaktionsgrößen.',
+        true,
+        `**Ansatz:** Anzahl Reaktionen = Anzahl gehemmte Freiheitsgrade. Ein Starrkörper in 2D hat 3 FG (2× Translation, 1× Rotation).
+
+**Rechnung:** Loslager hemmt 1 FG (verhindert Eindringen senkrecht zur Lauffläche): 1 Reaktion. Festlager hemmt 2 (beide Translationen): 2 Reaktionen ($A_x, A_y$). Einspannung hemmt 3 (alles): 2 Kräfte + 1 Moment ($A_x, A_y, M_A$).
+
+**Probe:** Festlager + Loslager = 2 + 1 = 3 Reaktionen = 3 Gleichgewichtsbedingungen ⇒ statisch bestimmt.
+
+**Typischer Fehler:** Loslager mit 2 Reaktionen ansetzen — dann ist das Tragwerk statisch unbestimmt (4 Unbekannte, 3 Gleichungen). Andersrum: Einspannung mit nur 2 Reaktionen — dann fehlt das Einspannmoment.`,
+        [
+          '2D-Starrkörper: 3 Freiheitsgrade.',
+          'Reaktionen = gehemmte Freiheitsgrade.',
+          'Loslager 1, Festlager 2, Einspannung 3.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein Balken ist in 2D links durch eine **Einspannung** (Mauer) befestigt und rechts frei (Kragträger). Wie viele unbekannte Auflagerreaktionen treten an der Einspannung auf?',
+        ['1', '2', '3', '4'],
+        2,
+        `**Ansatz:** Eine 2D-Einspannung hemmt alle 3 Freiheitsgrade des Starrkörpers: zwei Translationen + eine Rotation.
+
+**Rechnung:** $A_x$ (horizontale Translation), $A_y$ (vertikale Translation), $M_A$ (Rotation um $A$). Macht 3 unbekannte Reaktionsgrößen.
+
+**Probe:** Statisch bestimmt? Kragträger hat 3 Unbekannte und 3 Gleichgewichtsgleichungen ⇒ ja, immer eindeutig lösbar.
+
+**Typischer Fehler:** Das Einspannmoment $M_A$ vergessen — typisch bei Studierenden, die "Lager" nur mit Kraftsymbolen verbinden. Eine Einspannung blockiert auch die Rotation.`,
+        [
+          'Einspannung verhindert auch Rotation.',
+          'Wie viele Freiheitsgrade hat ein 2D-Starrkörper?',
+          '$A_x + A_y + M_A$ = 3 Reaktionen.',
+        ],
+        {
+          0: 'Zu wenig — eine Einspannung ist deutlich starrer als ein Loslager (1 Reaktion).',
+          1: 'Zwei Reaktionen entspricht einem Festlager (gelenkig). Bei einer Einspannung kommt das Einspannmoment hinzu.',
+          3: 'Zu viele — in 2D gibt es nur 3 Freiheitsgrade, mehr als 3 Reaktionen wären überbestimmt.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein 2D-Träger hat ein **Festlager A** (links) und ein **Loslager B** (rechts). Wie viele unbekannte Auflagerreaktionen sind insgesamt aufzustellen — und ist das Tragwerk statisch bestimmt?',
+        [
+          '2 Unbekannte — statisch unterbestimmt.',
+          '3 Unbekannte ($A_x, A_y, B_y$) — statisch bestimmt (3 Gleichungen, 3 Unbekannte).',
+          '4 Unbekannte — statisch unbestimmt vom Grad 1.',
+          '5 Unbekannte — statisch unbestimmt vom Grad 2.',
+        ],
+        1,
+        `**Ansatz:** Festlager: 2 Reaktionen ($A_x, A_y$). Loslager: 1 Reaktion ($B_y$). Summe = 3 Unbekannte. 2D-Gleichgewicht stellt 3 Gleichungen ($\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$) bereit.
+
+**Rechnung:** $n_\\text{unbek} = 3$, $n_\\text{Gl} = 3$ ⇒ Differenz 0 ⇒ statisch bestimmt.
+
+**Probe:** Klassisches Beispiel "Einfeldträger". Genau 3 Unbekannte sind die Voraussetzung dafür, dass die Aufgabe ohne zusätzliche Kompatibilitätsbedingungen lösbar ist.
+
+**Typischer Fehler:** Loslager mit 2 Reaktionen ansetzen ⇒ 4 Unbekannte ⇒ statisch unbestimmt. Oder Festlager mit 1 Reaktion ⇒ 2 Unbekannte ⇒ unterbestimmt (System bewegt sich).`,
+        [
+          'Festlager: 2 Reaktionen.',
+          'Loslager: 1 Reaktion.',
+          '2D-Gleichgewicht: 3 Gleichungen.',
+        ],
+        {
+          0: '2 Reaktionen wäre nur Festlager allein — dann wäre der Balken nicht in der Ebene fixiert (kann sich drehen).',
+          2: '4 Unbekannte entstünde, wenn das Loslager fälschlich als Festlager (2 Reaktionen) angesetzt wird.',
+          3: '5 Unbekannte hieße zwei Festlager + eine zusätzliche Bindung — kommt bei Einfeldträgern nicht vor.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein 2D-Balken ist beidseitig fest **eingespannt** (z. B. links und rechts in Beton vergossen). Studentin setzt insgesamt 4 Auflagerreaktionen an (2 pro Einspannung). Was ist der Fehler?',
+        [
+          'Pro 2D-Einspannung sind es **3** Reaktionen ($A_x, A_y, M_A$). Insgesamt also $6$ Unbekannte. Mit nur 3 Gleichgewichtsbedingungen ist das System **3-fach statisch unbestimmt** — mit Statik allein nicht lösbar.',
+          'Es sind genau 4 — das Einspannmoment fließt nicht in die Auflagerreaktion ein.',
+          'Es sind 5 — die zweite Einspannung benötigt nur 2 Reaktionen.',
+          'Die Anzahl ist egal, solange $\\sum F = 0$ aufgestellt wird.',
+        ],
+        0,
+        `**Ansatz:** Eine Einspannung hemmt 3 Freiheitsgrade ⇒ 3 Reaktionen pro Lager. Zwei Einspannungen ⇒ $2\\cdot 3 = 6$ Reaktionen.
+
+**Rechnung:** $n_\\text{unbek} = 6$, $n_\\text{Gl} = 3$ ⇒ Differenz $+3$ ⇒ 3-fach statisch unbestimmt. Lösbar nur mit zusätzlichen Verformungsbedingungen (Festigkeitslehre).
+
+**Probe:** Beidseitig eingespannte Balken sind klassische Aufgaben der Festigkeitslehre — in der reinen Statik (nur Gleichgewicht) tatsächlich nicht lösbar.
+
+**Typischer Fehler:** Das Einspannmoment $M_A$ als "weiches" Reaktionselement übersehen und nur die Kraft-Komponenten zählen.`,
+        [
+          'Pro Einspannung: 3 Reaktionen, nicht 2.',
+          'Beide Einspannungen zusammen: $2\\cdot 3 = 6$.',
+          '6 Unbekannte vs. 3 Gleichungen ⇒ statisch unbestimmt.',
+        ],
+        {
+          1: 'Falsch — das Einspannmoment ist eine vollwertige Reaktionsgröße. Pro 2D-Einspannung gibt es 3, nicht 2.',
+          2: 'Beide Einspannungen sind gleichwertig: jeweils 3 Reaktionen ⇒ insgesamt 6.',
+          3: 'Die Anzahl entscheidet, ob das System statisch bestimmt, unter- oder überbestimmt ist — unverzichtbar für die Lösbarkeit.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      matching(
+        'Ordne jedem Lagertyp die Anzahl bzw. Art der unbekannten Reaktionsgrößen in 2D zu.',
+        [
+          { left: 'Loslager (Rolle, verschieblich)', right: '1 Reaktion senkrecht zur Lauffläche' },
+          { left: 'Festlager (gelenkig, Pendelstütze)', right: '2 Reaktionen ($A_x, A_y$)' },
+          { left: 'Einspannung (eingemauert)', right: '3 Reaktionen ($A_x, A_y, M_A$)' },
+          { left: 'Pendelstab (gelenkig beidseitig, biegestarr)', right: '1 Reaktion entlang der Stabachse' },
+        ],
+        `**Ansatz:** Für jeden Lagertyp die gehemmten Freiheitsgrade auflisten — jeder gehemmte FG = eine Reaktionsgröße.
+
+**Rechnung:** Loslager: senkrecht zur Lauffläche (1). Festlager: beide Translationen (2). Einspannung: alles (3). Pendelstab: nur Längskraft (1, aber **entlang der Achse** — nicht senkrecht!).
+
+**Probe:** Pendelstab und Loslager liefern beide 1 Reaktion — aber mit unterschiedlicher Richtung. Diese Unterscheidung ist klausurkritisch.
+
+**Typischer Fehler:** Pendelstab mit Loslager verwechseln und seine Reaktion senkrecht zur Stabachse ansetzen — dann steht das Gleichgewicht falsch.`,
+        [
+          'Reaktionen = gehemmte Freiheitsgrade.',
+          'Pendelstab überträgt nur Kräfte entlang der Stabachse.',
+          'Loslager-Reaktion: senkrecht zur Lauffläche.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+    ],
+
+    // ── [3] 2D-Gleichgewicht $\\sum F_x = \\sum F_y = \\sum M = 0$ ──────
+    3: [
+      mc(
+        'Ein masseloser Balken ($L = 4\\,\\text{m}$) liegt auf Festlager A (links) und Loslager B (rechts). In der **Mitte** greift eine vertikale Last $F = 1000\\,\\text{N}$ nach unten an. Bestimme $A_y$ und $B_y$.',
+        [
+          '$A_y = 500\\,\\text{N}, B_y = 500\\,\\text{N}$',
+          '$A_y = 1000\\,\\text{N}, B_y = 0$',
+          '$A_y = 250\\,\\text{N}, B_y = 750\\,\\text{N}$',
+          '$A_y = 1000\\,\\text{N}, B_y = 1000\\,\\text{N}$',
+        ],
+        0,
+        `**Ansatz:** Drei Gleichgewichtsbedingungen aufstellen. Bei symmetrischer Mittellast erwartet man Symmetrie der Reaktionen — Probe via $\\sum M = 0$.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot \\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = \\frac{F}{2} = 500\\,\\text{N}$. $\\sum F_y = 0$: $A_y + B_y - F = 0 \\Rightarrow A_y = 1000 - 500 = 500\\,\\text{N}$.
+
+**Probe:** $\\sum M_B = 0$: $A_y\\cdot L - F\\cdot \\frac{L}{2} = 0 \\Rightarrow A_y = F/2 = 500\\,\\text{N}$ ✓. Symmetrie bestätigt.
+
+**Typischer Fehler:** Annehmen, dass das ganze Gewicht auf einem Lager landet, oder die Hebelarme falsch ansetzen (z. B. Gesamtlänge $L$ statt halber Länge $L/2$ für die Mittellast).`,
+        [
+          'Symmetrische Mittellast → symmetrische Reaktionen.',
+          '$\\sum M_A = 0$ um Festlager A → $B_y$ direkt.',
+          'Dann $\\sum F_y = 0$ liefert $A_y$.',
+        ],
+        {
+          1: 'Das ganze Gewicht auf ein Lager wäre nur korrekt, wenn die Last direkt **über** dem Lager A angreifen würde.',
+          2: 'Falscher Hebelarm: Mittellast greift bei $L/2$ an, nicht bei $L/4$ oder $3L/4$.',
+          3: 'Doppelzählung — Summe der Reaktionen muss gleich Last sein ($A_y + B_y = F = 1000$).',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      ni(
+        'Ein einseitig (links) eingespannter Kragträger der Länge $L = 2\\,\\text{m}$ trägt am freien Ende eine vertikale Last $F = 500\\,\\text{N}$ nach unten. Wie groß ist das **Einspannmoment** $M_A$ (in N·m)?',
+        1000, 1, 'N·m',
+        `**Ansatz:** Momentengleichgewicht um den Einspannpunkt $A$. Die Last $F$ erzeugt am Hebelarm $L$ ein Drehmoment, das durch $M_A$ kompensiert werden muss.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot L + M_A = 0 \\Rightarrow M_A = F\\cdot L = 500\\cdot 2 = 1000\\,\\text{N\\cdot m}$.
+
+**Probe:** Einheitencheck: $\\text{N}\\cdot\\text{m}$ ✓. Plausibilität: Größeres $F$ oder größeres $L$ erhöht $M_A$ linear — passt.
+
+**Typischer Fehler:** Hebelarm nur halb ansetzen ($L/2$ statt $L$) — das gilt nur, wenn die Last in der Mitte angreift, nicht am Ende. Oder Vorzeichen verwechseln und $M_A$ negativ ansetzen.`,
+        [
+          'Momentensumme um den Einspannpunkt.',
+          '$M_A = F\\cdot L$ (Punktlast am Endpunkt).',
+          '$500\\cdot 2 = 1000$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      mc(
+        'Ein 2D-Balken ist **links** auf einem Festlager $A$ gelagert und **rechts** in eine Wand eingespannt ($B$). Studentin setzt $2 + 3 = 5$ unbekannte Reaktionen an. Wie viele Gleichgewichtsbedingungen gibt es in 2D — und was bedeutet das?',
+        [
+          '3 Bedingungen ($\\sum F_x, \\sum F_y, \\sum M$). Mit 5 Unbekannten ist das System **2-fach statisch unbestimmt** und ohne Verformungsbetrachtung nicht lösbar.',
+          '5 Bedingungen — das System ist statisch bestimmt.',
+          '6 Bedingungen, weil pro Lager eine Bedingung.',
+          '2 Bedingungen — Momentengleichgewicht gilt nur in 3D.',
+        ],
+        0,
+        `**Ansatz:** In 2D gibt es 3 Freiheitsgrade ⇒ 3 unabhängige Gleichgewichtsbedingungen. Vergleich mit Anzahl Unbekannter entscheidet über statische Bestimmtheit.
+
+**Rechnung:** $n_\\text{Gl} = 3$, $n_\\text{unbek} = 5$ ⇒ Differenz $5 - 3 = 2$ ⇒ 2-fach statisch unbestimmt. Klassische Festigkeitslehre-Aufgabe.
+
+**Probe:** Gegenprobe Festlager + Loslager: $2 + 1 = 3 = n_\\text{Gl}$ ⇒ statisch bestimmt. Festlager + Einspannung übersteigt das.
+
+**Typischer Fehler:** Glauben, "mehr Lager = stabiler = besser". Aus Statik-Sicht ist überbestimmt **nicht** lösbar (mit reinen Gleichgewichtsbedingungen).`,
+        [
+          '2D: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$.',
+          '3 Gleichungen vs. 5 Unbekannte.',
+          'Differenz = Grad der statischen Unbestimmtheit.',
+        ],
+        {
+          1: 'Anzahl der Gleichgewichtsbedingungen ist eine Eigenschaft des **Raums** (2D ⇒ 3, 3D ⇒ 6), nicht der Anzahl der Lager.',
+          2: 'Pro Lager gibt es **Reaktionen**, keine zusätzlichen Gleichgewichtsbedingungen. Bedingungen kommen aus Newton 1.',
+          3: 'Momentengleichgewicht gilt auch in 2D — sogar einfacher, weil nur eine skalare Gleichung statt drei Komponenten.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      ni(
+        'Ein masseloser Balken ($L = 6\\,\\text{m}$, Festlager A links bei $x = 0$, Loslager B rechts bei $x = L$) trägt eine Punktlast $F_1 = 800\\,\\text{N}$ bei $x_1 = 2\\,\\text{m}$ und $F_2 = 1200\\,\\text{N}$ bei $x_2 = 5\\,\\text{m}$ (beide vertikal nach unten). Berechne die Vertikalreaktion $B_y$ am Loslager (auf 2 Nachkommastellen, in N).',
+        1266.67, 1, 'N',
+        `**Ansatz:** Momentengleichgewicht um $A$ (eliminiert die unbekannten $A_x, A_y$): $\\sum M_A = 0$.
+
+**Rechnung:** $-F_1\\cdot x_1 - F_2\\cdot x_2 + B_y\\cdot L = 0$. $B_y = \\dfrac{F_1\\cdot x_1 + F_2\\cdot x_2}{L} = \\dfrac{800\\cdot 2 + 1200\\cdot 5}{6} = \\dfrac{1600 + 6000}{6} = \\dfrac{7600}{6} \\approx 1266{,}67\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0 \\Rightarrow A_y = F_1 + F_2 - B_y = 800 + 1200 - 1266{,}67 = 733{,}33\\,\\text{N}$. $\\sum M_B = 0$ als Cross-Check: $A_y\\cdot L - F_1\\cdot(L - x_1) - F_2\\cdot(L - x_2) = 733{,}33\\cdot 6 - 800\\cdot 4 - 1200\\cdot 1 = 4400 - 3200 - 1200 = 0$ ✓.
+
+**Typischer Fehler:** Hebelarme von rechts statt von links messen und dabei nicht spiegelverkehrt umrechnen — gibt einen Faktor-Fehler. Oder das Vorzeichen der Lasten vergessen ($F_1, F_2$ negativ in $\\sum F_y$).`,
+        [
+          'Momentensumme um $A$ — eliminiert unbekannte $A_x, A_y$.',
+          '$B_y\\cdot L = \\sum F_i\\cdot x_i$ (Lasten nach unten, Hebelarme von $A$).',
+          '$(800\\cdot 2 + 1200\\cdot 5)/6 = 7600/6$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      tf(
+        'Im 2D-Gleichgewicht reichen die zwei Bedingungen $\\sum F_x = 0$ und $\\sum F_y = 0$ aus, um Auflagerreaktionen eindeutig zu bestimmen.',
+        false,
+        `**Ansatz:** Ein 2D-Starrkörper hat **drei** Freiheitsgrade — zwei Translationen und eine Rotation. Entsprechend braucht es **drei** Gleichgewichtsbedingungen.
+
+**Rechnung:** Ohne $\\sum M = 0$ kann der Drehzustand nicht erfasst werden. Beispiel Balken mit symmetrischer Mittellast: aus $\\sum F_y = 0$ folgt nur $A_y + B_y = F$ — die Aufteilung ist erst über $\\sum M_A = 0$ ermittelbar.
+
+**Probe:** Mathematisch: zwei Gleichungen mit drei Unbekannten ($A_x, A_y, B_y$ z. B.) sind unterbestimmt — eine Lösung gibt es erst mit der dritten Gleichung.
+
+**Typischer Fehler:** Das Momenten-Gleichgewicht weglassen, weil "ich keine Drehung sehe". Auch ein **statischer** Balken erfüllt $\\sum M = 0$ — diese Bedingung ist Voraussetzung für Statik, nicht ein Sonderfall.`,
+        [
+          '2D-Starrkörper: 3 Freiheitsgrade.',
+          '3 unabhängige Gleichgewichtsbedingungen nötig.',
+          '$\\sum M = 0$ ist nicht optional.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-1-4 — Reibung  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-1-4': {
