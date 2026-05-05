@@ -4005,6 +4005,7 @@ export const technischeMechanikSubGoalTasks = {
           'Zähler: jedes $m_i \\cdot x_i$ aufsummieren.',
           'Ergebnis liegt immer zwischen den äußeren Positionen, näher an der größten Masse.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-diskret'] },
       ),
       mc(
         'Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
@@ -4027,6 +4028,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$5\\,\\text{m}$ wäre der Schwerpunkt, wenn $m_2$ viermal so schwer wie $m_1$ wäre — Verhältnis umgekehrt.',
           3: '$1{,}4\\,\\text{m}$ stammt aus falscher Zähler-Division: vermutlich $(4 \\cdot 1 + 1 \\cdot 6)/(1 + 6) \\approx 1{,}43$, wobei der Nenner die **Positionen** statt der **Massen** addiert.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sp-diskret'] },
       ),
       ni(
         'Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
@@ -4043,6 +4045,7 @@ export const technischeMechanikSubGoalTasks = {
           '$m$ kürzt sich im Zähler und Nenner.',
           'Übrig: arithmetisches Mittel der $x_i$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-diskret'] },
       ),
       tf(
         'Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
@@ -4059,6 +4062,7 @@ export const technischeMechanikSubGoalTasks = {
           'Komponentenweise lesen: $x_S$ nutzt nur $x_i$.',
           'Drei unabhängige Gleichungen für 3D.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['sp-diskret'] },
       ),
       matching(
         'Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
@@ -4080,6 +4084,7 @@ export const technischeMechanikSubGoalTasks = {
           'Hebelverhältnis umgekehrt zum Massenverhältnis.',
           'Gemeinsame Skalierung aller Massen ändert $x_S$ nicht.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['sp-diskret'] },
       ),
       ni(
         'Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
@@ -4096,6 +4101,35 @@ export const technischeMechanikSubGoalTasks = {
           'Symmetrie ⇒ Schwerpunkt liegt auf der Achse.',
           'Auch rechnerisch durchführen: $\\sum m_i x_i / \\sum m_i$.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['sp-diskret'] },
+      ),
+      mc(
+        'Studierende rechnet bei zwei Massen ($m_1 = 2\\,\\text{kg}$ bei $x = 0$, $m_2 = 8\\,\\text{kg}$ bei $x = 10\\,\\text{m}$) das arithmetische Mittel: $x_S = (0+10)/2 = 5\\,\\text{m}$. Wo steckt der Fehler?',
+        [
+          'Bei ungleichen Massen muss massengewichtet werden: $x_S = (2\\cdot 0 + 8\\cdot 10)/(2+8) = 80/10 = 8\\,\\text{m}$ — Schwerpunkt liegt nahe der schwereren Masse, nicht in der Mitte.',
+          'Stimmt — bei zwei Massen ist das arithmetische Mittel der Schwerpunkt.',
+          'Es fehlt nur ein Vorzeichen — korrekt wäre $x_S = -5\\,\\text{m}$.',
+          'Korrekt wäre $x_S = (m_1 + m_2)/2 = 5\\,\\text{m}$ — die Massensumme statt der Positionssumme.',
+        ],
+        0,
+        `**Ansatz:** Schwerpunkt-Formel: $x_S = \\sum m_i x_i / \\sum m_i$. Massen-**gewichtet**, nicht arithmetisch.
+
+**Rechnung:** $x_S = (2\\cdot 0 + 8\\cdot 10)/(2+8) = (0 + 80)/10 = 8\\,\\text{m}$. Schwerpunkt liegt **nahe** der schwereren Masse $m_2 = 8\\,\\text{kg}$.
+
+**Probe:** Hebelgesetz: Abstand zu $m_1$ ist $8$, zu $m_2$ ist $2$. Verhältnis $8:2 = 4:1$ — entspricht dem **umgekehrten** Massenverhältnis $8:2 = 4:1$ ✓.
+
+**Typischer Fehler:** Arithmetisches Mittel verwenden, wenn die Massen unterschiedlich sind. Funktioniert **nur** bei gleichen Massen.`,
+        [
+          'Massengewichtet, nicht arithmetisch.',
+          '$x_S$ liegt näher an der größeren Masse.',
+          '$80/10 = 8$.',
+        ],
+        {
+          1: 'Arithmetisches Mittel gilt nur bei gleichen Massen. Hier $m_2 = 4 m_1$ — also keinesfalls in der Mitte.',
+          2: 'Vorzeichen ist hier nicht das Problem — beide Positionen sind positiv. Der Fehler steckt in der Methode.',
+          3: '$(m_1 + m_2)/2$ ergibt eine Masse (kg), keine Position. Einheitenfehler — Schwerpunkt hat Einheit Meter.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sp-diskret'] },
       ),
     ],
 
@@ -4116,6 +4150,7 @@ export const technischeMechanikSubGoalTasks = {
           'Teilschwerpunkte kennst du aus der Aufgabe.',
           'Flächengewichtetes Mittel: $y_S = \\sum A_i y_{S,i} / \\sum A_i$.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       mc(
         'Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
@@ -4143,6 +4178,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Das zweite Teil hat denselben Flächenanteil, dominiert nicht.',
           3: 'Der linke Rand hängt vom konkreten Aufbau ab — hat nichts mit der Schwerpunktformel zu tun.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       ni(
         'Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
@@ -4159,6 +4195,7 @@ export const technischeMechanikSubGoalTasks = {
           'Wenn $A_1 = A_2$, wird die Formel zum arithmetischen Mittel.',
           'Sonst: gewogenes Mittel.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       tf(
         'Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
@@ -4175,6 +4212,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was kürzt sich in Zähler und Nenner?',
           'Vorsicht bei inhomogenen Körpern.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
@@ -4198,6 +4236,7 @@ export const technischeMechanikSubGoalTasks = {
           'Koordinatensystem vor der Zerlegung.',
           'Formel am Ende.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       ni(
         'Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
@@ -4214,6 +4253,35 @@ export const technischeMechanikSubGoalTasks = {
           'Obergurt und Untergurt: gleiche Fläche, gleicher Abstand zur Mitte.',
           'Symmetrie ⇒ $y_S$ auf der Mittelebene.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
+      ),
+      mc(
+        'Bei einem Profil aus zwei Rechtecken ($A_1 = 2000\\,\\text{mm}^2$ mit $x_{S1} = 20$, $A_2 = 500\\,\\text{mm}^2$ mit $x_{S2} = 80$) rechnet ein Studierender $x_S = (x_{S1} + x_{S2})/2 = 50\\,\\text{mm}$. Wo steckt der Fehler?',
+        [
+          'Bei ungleichen Flächen muss flächengewichtet werden: $x_S = (2000\\cdot 20 + 500\\cdot 80)/(2000+500) = 80\\,000/2500 = 32\\,\\text{mm}$.',
+          'Stimmt — die Mittelwertbildung ist eine etablierte Vereinfachung.',
+          'Fehler in den Daten — die Flächen müssten gleich sein, sonst gilt die Formel nicht.',
+          'Es muss $x_S = (A_1\\cdot x_{S2} + A_2\\cdot x_{S1})/(A_1 + A_2) = 32{,}8\\,\\text{mm}$ sein (Flächen und Schwerpunkte gekreuzt).',
+        ],
+        0,
+        `**Ansatz:** $x_S = \\sum A_i x_{S,i}/\\sum A_i$ — **flächen**gewichtet. Nur bei gleichen Flächen wird daraus arithmetisches Mittel.
+
+**Rechnung:** $x_S = (2000\\cdot 20 + 500\\cdot 80)/(2000+500) = (40\\,000 + 40\\,000)/2500 = 80\\,000/2500 = 32\\,\\text{mm}$.
+
+**Probe:** Plausibilität: $32 < 50$ — der Schwerpunkt liegt **näher** am größeren Teil ($A_1 = 2000$ bei $x = 20$). Größeres Teil "zieht" den Gesamtschwerpunkt zu sich.
+
+**Typischer Fehler:** Bei augenscheinlich symmetrischer Lage (Mitte zwischen $20$ und $80$) das arithmetische Mittel ansetzen, ohne Flächen anzusehen.`,
+        [
+          'Flächen sind ungleich — also gewichten.',
+          '$x_S = \\sum A_i x_{S,i}/\\sum A_i$.',
+          '$80\\,000/2500 = 32$.',
+        ],
+        {
+          1: 'Mittelwertbildung gilt nur bei gleichen Flächen. Hier $A_1 = 4 A_2$ — keine Symmetrie.',
+          2: 'Die Formel funktioniert für **beliebige** Flächen — auch bei ungleichen. Sie heißt explizit "flächen**gewichtet**".',
+          3: 'Kreuzung von Flächen und Schwerpunkten ergibt physikalisch keinen Sinn. Jede Fläche gewichtet ihren **eigenen** Teilschwerpunkt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['sp-flaechen'] },
       ),
     ],
 
@@ -4234,6 +4302,7 @@ export const technischeMechanikSubGoalTasks = {
           'Formel: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.',
           'Qualitativ: Schwerpunkt wandert weg vom Loch.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-loch'] },
       ),
       mc(
         'Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
@@ -4261,6 +4330,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Kleine Löcher haben kleinen Effekt, aber nicht null. Jede entfernte Fläche verschiebt den Schwerpunkt.',
           3: 'Das Loch liegt vertikal oberhalb der Mitte — die Verschiebung ist vertikal, nicht horizontal.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['sp-loch'] },
       ),
       ni(
         'Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
@@ -4277,6 +4347,7 @@ export const technischeMechanikSubGoalTasks = {
           'Formel: $(A_V x_V - A_L x_L)/(A_V - A_L)$.',
           'Plausibilitätscheck: Schwerpunkt weg vom Loch.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-loch'] },
       ),
       matching(
         'Ordne jedem Szenario die richtige Formel zu.',
@@ -4298,6 +4369,7 @@ export const technischeMechanikSubGoalTasks = {
           'Vorzeichen im Zähler und Nenner gleich.',
           'Formel bleibt linear.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['sp-loch'] },
       ),
       tf(
         'Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
@@ -4314,6 +4386,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was passiert, wenn Zähler und Nenner denselben Faktor haben?',
           'Anschaulich: was hat das entfernte Material zum Schwerpunkt beigetragen?',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['sp-loch'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
@@ -4337,6 +4410,52 @@ export const technischeMechanikSubGoalTasks = {
           'Loch separat wie ein eigenes Teilkörper behandeln.',
           'Vorzeichen konsistent in Zähler und Nenner.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['sp-loch'] },
+      ),
+      mc(
+        'Studentin rechnet den Schwerpunkt einer Platte mit Loch und **addiert** das Loch wie eine zusätzliche Fläche (statt zu subtrahieren). Welche Konsequenz hat das?',
+        [
+          'Das Loch wird wie zusätzliches Material behandelt — die Restfläche wird zu groß angesetzt und der Schwerpunkt wandert in die **falsche** Richtung (zum Loch hin statt davon weg).',
+          'Der Fehler hebt sich automatisch auf, wenn am Ende durch die Restfläche geteilt wird.',
+          'Stimmt — Vorzeichen sind in der Schwerpunktformel irrelevant.',
+          'Bei kleinen Löchern ist der Unterschied vernachlässigbar.',
+        ],
+        0,
+        `**Ansatz:** Loch = negative Fläche. Im Zähler wirkt es als Subtraktion ($-A_L x_L$), im Nenner ebenso ($-A_L$).
+
+**Rechnung:** Konkret: $A_V = 1000$, $x_V = 50$, $A_L = 200$, $x_L = 80$. Korrekt: $x_S = (1000\\cdot 50 - 200\\cdot 80)/(1000-200) = 34\\,000/800 = 42{,}5$ (weg vom Loch). Falsch addiert: $(1000\\cdot 50 + 200\\cdot 80)/(1000+200) = 66\\,000/1200 = 55$ (zum Loch).
+
+**Probe:** Anschaulich: ein Loch entfernt Masse — die verbleibende Masse "verlagert" den Schwerpunkt weg. Bei falscher Addition wird das Loch wie zusätzliches Material gerechnet, das den Schwerpunkt fälschlich anzieht.
+
+**Typischer Fehler:** Beim Aufstellen der Formel das Vorzeichen für das Loch vergessen — beide Vorzeichen (Zähler und Nenner) müssen negativ sein.`,
+        [
+          'Loch = negative Fläche, beidseitig minus.',
+          'Schwerpunkt verlagert sich **weg** vom Loch.',
+          'Falsche Addition kehrt die Richtung um.',
+        ],
+        {
+          1: 'Aufheben würde nur passieren, wenn beide Vorzeichen falsch wären — hier ist nur ein Term betroffen.',
+          2: 'Vorzeichen sind essentiell. Plus/Minus entscheidet, ob Material hinzugefügt oder entfernt wird.',
+          3: 'Auch kleine Löcher führen zu Verschiebungen — vernachlässigbar wäre nur, wenn $A_L \\to 0$. Hier wird die **Richtung** falsch, was unabhängig von der Größe gilt.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['sp-loch'] },
+      ),
+      ni(
+        'Ein Quadrat ($60\\,\\text{mm}\\times 60\\,\\text{mm}$, Ursprung links unten) hat ein quadratisches Loch ($20\\,\\text{mm}\\times 20\\,\\text{mm}$) mit Mittelpunkt bei $(45, 45)\\,\\text{mm}$. Berechne $y_S$ der gelochten Platte (auf 2 Nachkommastellen).',
+        28.13, 0.05, 'mm',
+        `**Ansatz:** $y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$.
+
+**Rechnung:** $A_V = 60\\cdot 60 = 3600\\,\\text{mm}^2$, $y_V = 30\\,\\text{mm}$. $A_L = 20\\cdot 20 = 400\\,\\text{mm}^2$, $y_L = 45\\,\\text{mm}$. $y_S = (3600\\cdot 30 - 400\\cdot 45)/(3600 - 400) = (108\\,000 - 18\\,000)/3200 = 90\\,000/3200 = 28{,}125 \\approx 28{,}13\\,\\text{mm}$.
+
+**Probe:** Loch oberhalb der Plattenmitte ($y_L = 45 > y_V = 30$) → Schwerpunkt wandert nach **unten** ($y_S = 28{,}13 < 30$) ✓. Verschiebung: $1{,}88\\,\\text{mm}$ — vernünftig für ein Loch mit $400/3600 \\approx 11\\,\\%$ der Fläche.
+
+**Typischer Fehler:** Im Nenner $A_V + A_L$ einsetzen (Loch addiert statt subtrahiert) — gibt $y_S = (108\\,000 - 18\\,000)/4000 = 22{,}5$, falsch.`,
+        [
+          'Loch als negative Teilfläche.',
+          '$y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$.',
+          'Loch oberhalb Mitte → $y_S$ sinkt.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['sp-loch'] },
       ),
     ],
 
@@ -4357,6 +4476,7 @@ export const technischeMechanikSubGoalTasks = {
           'Zwei Achsen → beide Koordinaten fixiert.',
           'Vorsicht bei inhomogenen Körpern.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       mc(
         'Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
@@ -4384,6 +4504,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Ecken sind Rand- und nicht Schwerpunkte — die Masse verteilt sich ja auf die ganze Fläche.',
           3: 'Bei konvexen Flächen (Dreieck, Rechteck, Kreis) liegt der Schwerpunkt **immer innerhalb**. Nur bei Ringen oder L-Formen kann er außerhalb liegen.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       ni(
         'Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
@@ -4400,6 +4521,7 @@ export const technischeMechanikSubGoalTasks = {
           'Jede Achse enthält den Schwerpunkt.',
           'Zentralsymmetrie ⇒ Schwerpunkt im Zentrum.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       matching(
         'Ordne jedem Körper die Lage seines Schwerpunkts zu.',
@@ -4421,6 +4543,7 @@ export const technischeMechanikSubGoalTasks = {
           'Schwerpunkt auf jeder Achse.',
           'Schnittpunkt aller Achsen.',
         ],
+        { stage: 'transfer', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       sorting(
         'Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
@@ -4444,6 +4567,7 @@ export const technischeMechanikSubGoalTasks = {
           'Achsen einzeichnen **vor** der Rechnung.',
           'Nur die nicht durch Symmetrie fixierten Koordinaten rechnen.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       ni(
         'Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
@@ -4460,6 +4584,91 @@ export const technischeMechanikSubGoalTasks = {
           'Wo liegt sie relativ zum linken Rand?',
           'Symmetrieachse = $x_S$-Linie.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Welche Aussage trifft auf den Schwerpunkt eines homogenen U-Profils zu (Symmetrieachse vertikal durch die Mitte des Stegs)?',
+        [
+          '$x_S$ liegt auf der Symmetrieachse — das spart die $x$-Rechnung. $y_S$ muss separat über die Flächengewichtung berechnet werden.',
+          'Beide Koordinaten müssen über die Flächenformel bestimmt werden — Symmetrie hilft hier nicht.',
+          'Der Schwerpunkt liegt im geometrischen Mittelpunkt der Bounding-Box des Profils.',
+          'Symmetrie wirkt nur bei geschlossenen Profilen, nicht bei U-Formen.',
+        ],
+        0,
+        `**Ansatz:** Eine vertikale Symmetrieachse fixiert nur die $x$-Koordinate des Schwerpunkts — die $y$-Koordinate hängt von der Flächenverteilung in vertikaler Richtung ab.
+
+**Rechnung:** $x_S = $ Mitte des Stegs (Symmetrie). $y_S$ erfordert flächengewichtete Summation über Boden, beide Schenkel — typischerweise nicht in der Mitte, weil Boden + Schenkel nicht symmetrisch um die horizontale Mittelebene verteilt sind.
+
+**Probe:** Für ein U-Profil mit Bodenbreite $b$, Schenkelhöhe $h$, Wanddicke $t$: $x_S = b/2$ direkt aus Symmetrie. $y_S$ liegt aufgrund des Bodens **näher am Boden** als die geometrische Mitte $h/2$.
+
+**Typischer Fehler:** Annahme, "Symmetrie heißt Schwerpunkt = Mittelpunkt". Eine **einzige** Symmetrieachse fixiert nur **eine** Koordinate.`,
+        [
+          'Vertikale Symmetrieachse → fixiert $x_S$.',
+          '$y_S$ separat rechnen.',
+          'Eine Achse, eine fixierte Koordinate.',
+        ],
+        {
+          1: 'Symmetrie hilft sehr wohl — sie spart die $x$-Rechnung. Nur $y_S$ braucht die volle Formel.',
+          2: 'Bounding-Box-Mittelpunkt entspricht nur dann dem Schwerpunkt, wenn das Profil **rechteckig vollgefüllt** wäre. Beim U-Profil mit Hohlraum stimmt das nicht.',
+          3: 'Symmetrie ist eine geometrische Eigenschaft — sie funktioniert auch bei offenen Profilen (U, T, L mit symmetrischer Form).',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Studierender behauptet: "Ein L-Profil hat eine Symmetrieachse durch die Diagonale, also liegt der Schwerpunkt darauf." Wo steckt der Fehler?',
+        [
+          'Ein L-Profil hat im **Allgemeinen keine** Symmetrieachse. Selbst bei gleichen Schenkellängen und gleicher Wanddicke ist die Diagonale nur dann eine Symmetrieachse, wenn das Profil exakt spiegelbildlich gleich ist — dann liegt der Schwerpunkt auf dieser Achse, allerdings nicht in der Mitte der Diagonale.',
+          'Stimmt — jedes L-Profil hat diagonale Symmetrie.',
+          'Der Fehler ist die Annahme, dass Schwerpunkt auf der Achse liegt — er liegt immer im Eckpunkt.',
+          'Die Diagonalsymmetrie gilt nur bei isotropem Material.',
+        ],
+        0,
+        `**Ansatz:** Symmetrie eines L-Profils prüfen: Spiegelung an der Diagonale ergibt nur dann dasselbe Profil, wenn die beiden Schenkel **identisch** sind (gleiche Länge, gleiche Dicke).
+
+**Rechnung:** Standard-L-Profil im Maschinenbau: gleichseitig (z. B. $50\\times 50\\times 5\\,\\text{mm}$) hat tatsächlich diagonale Symmetrie ⇒ Schwerpunkt auf der Diagonale. Aber: ungleichseitige L-Profile ($50\\times 100\\times 5$) haben **keine** Diagonalsymmetrie und brauchen die volle Flächenformel.
+
+**Probe:** Selbst beim symmetrischen L-Profil liegt der Schwerpunkt **nicht** in der Mitte der Diagonale — er liegt auf der Diagonale, aber näher am Innenwinkel (mehr Material im Eckbereich).
+
+**Typischer Fehler:** Diagonalsymmetrie auf alle L-Profile übertragen. Klausurkritisch: bei ungleichseitigen Profilen Flächenformel zwingend.`,
+        [
+          'Diagonalsymmetrie nur bei gleichseitigem L-Profil.',
+          'Bei ungleichen Schenkeln keine Symmetrie.',
+          'Schwerpunkt liegt nicht auf der Diagonale, wenn $b \\neq h$.',
+        ],
+        {
+          1: 'Falsch — nur **gleichseitige** L-Profile haben Diagonalsymmetrie. Ungleichseitige nicht.',
+          2: 'Schwerpunkt eines L-Profils liegt **innerhalb** des Profils, nicht im Eckpunkt. Eckpunkt ist Außengrenze, nicht Massenmittelpunkt.',
+          3: 'Symmetrie ist eine **geometrische** Eigenschaft, unabhängig vom Material. Isotropes Material hilft nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Eine Maschinenkomponente besteht aus einer homogenen Kreisscheibe mit zwei symmetrisch angeordneten Bohrungen (gleicher Radius, gleicher Abstand vom Zentrum, auf gegenüberliegenden Seiten). Wo liegt der Schwerpunkt?',
+        [
+          'Im Zentrum der Kreisscheibe — die symmetrische Bohrungsanordnung erhält die ursprüngliche Punktsymmetrie.',
+          'Auf der Verbindungslinie der zwei Bohrungen, aber nicht im Zentrum.',
+          'Außerhalb der Scheibe, weil zwei Löcher den Schwerpunkt verschieben.',
+          'Im Mittelpunkt einer der Bohrungen.',
+        ],
+        0,
+        `**Ansatz:** Symmetrie analysieren — die Bohrungen sind punktsymmetrisch zum Zentrum angeordnet. Punktsymmetrie ist die strengste Form.
+
+**Rechnung:** Mathematisch: $x_S = (A_V \\cdot 0 - A_L \\cdot a - A_L \\cdot (-a))/(A_V - 2A_L) = 0$ ($a$ = Abstand der Bohrungen). Beide Bohrungen liefern entgegengesetzte Beiträge, die sich aufheben.
+
+**Probe:** Punktsymmetrie zwingt den Schwerpunkt in das Symmetriezentrum. Egal wie viele Löcher — solange sie punktsymmetrisch zum Zentrum verteilt sind, bleibt $S$ im Zentrum.
+
+**Typischer Fehler:** Aufwendig ausrechnen, ohne die Symmetrie zu erkennen. Zwei symmetrische Löcher heben sich gegenseitig auf — Rechnung überflüssig.`,
+        [
+          'Punktsymmetrie der Bohrungen erkennen.',
+          'Beiträge heben sich auf.',
+          'Schwerpunkt im Symmetriezentrum.',
+        ],
+        {
+          1: 'Falsch — die zwei symmetrischen Bohrungen heben sich gegenseitig auf. Verschiebung erfolgt nur bei **un**symmetrischer Anordnung.',
+          2: 'Schwerpunkt liegt **immer** innerhalb des konvexen Hülle-Bereichs. Eine Kreisscheibe ist konvex → Schwerpunkt innen.',
+          3: 'Schwerpunkt einer einzelnen Bohrung ist deren Mitte, nicht Schwerpunkt der ganzen Komponente. Beide Bohrungen tragen gleichermaßen.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
     ],
 
@@ -4485,6 +4694,7 @@ export const technischeMechanikSubGoalTasks = {
           'Dreieck: näher an der Basis als an der Spitze.',
           'Halbkreis: knapp unter halbem Radius.',
         ],
+        { stage: 'transfer', subGoal: 4, uses: ['sp-standard'] },
       ),
       ni(
         'Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
@@ -4501,6 +4711,7 @@ export const technischeMechanikSubGoalTasks = {
           'Einsetzen: $r = 30$.',
           'Ergebnis: $\\approx 0{,}424\\,r$.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['sp-standard'] },
       ),
       mc(
         'Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
@@ -4523,6 +4734,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$h/2 = 45\\,\\text{mm}$ wäre der Rechteck-Schwerpunkt, nicht Dreieck.',
           3: 'Der Schwerpunkt liegt **nicht an der Basis**, sondern ein Drittel innerhalb des Dreiecks von der Basis aus.',
         },
+        { stage: 'apply-guided', subGoal: 4, uses: ['sp-standard'] },
       ),
       tf(
         'Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
@@ -4539,6 +4751,7 @@ export const technischeMechanikSubGoalTasks = {
           '$3\\pi \\approx 9{,}42$, also $4/9{,}42 \\approx 0{,}42 < 0{,}5$.',
           'Der Halbkreis ist am Durchmesser breiter.',
         ],
+        { stage: 'recognize', subGoal: 4, uses: ['sp-standard'] },
       ),
       ni(
         'Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
@@ -4555,6 +4768,35 @@ export const technischeMechanikSubGoalTasks = {
           'Dreieck-Schwerpunkt: $h/3$ über der Basis.',
           'Dreiecksfläche: $\\tfrac{1}{2} b h$ — Faktor 1/2 nicht vergessen.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['sp-standard'] },
+      ),
+      mc(
+        'Studierende behauptet: "Bei einem Dreieck liegt der Schwerpunkt bei $h/2$ — wie beim Rechteck." Wo steckt der Fehler?',
+        [
+          'Beim Dreieck ist der Schwerpunkt bei $h/3$ über der Basis (näher an der breiteren Seite). $h/2$ wäre nur korrekt, wenn Dreieck oben und unten gleich breit wäre — also ein Rechteck.',
+          'Stimmt — alle ebenen Flächen haben Schwerpunkt in der Höhenmitte.',
+          'Korrekt, aber nur für gleichseitige Dreiecke.',
+          'Es fehlt der Faktor $\\sqrt{3}/2$: bei Dreieck ist $h_S = h\\sqrt{3}/2 \\cdot 1/2$.',
+        ],
+        0,
+        `**Ansatz:** Schwerpunkt-Lage hängt von der Massen-Verteilung über die Höhe ab. Beim Rechteck ist die Breite konstant ⇒ Schwerpunkt mittig ($h/2$). Beim Dreieck wächst die Breite linear von $0$ (Spitze) auf $b$ (Basis) ⇒ mehr Material unten ⇒ Schwerpunkt unter der Mitte ($h/3$).
+
+**Rechnung:** Standardformel: $y_S = h/3$ über der Basis (oder $2h/3$ von der Spitze). Allgemein für Flächen: Schwerpunkt aus Integral $\\int y \\cdot b(y)\\,dy / \\int b(y)\\,dy$. Für Rechteck $b(y) = $ const ⇒ $h/2$. Für Dreieck $b(y) = b(1 - y/h)$ ⇒ $h/3$.
+
+**Probe:** Anschaulich: ein Dreieck "kippt" leichter in Richtung Basis, weil dort mehr Material ist. Auch im Hebelversuch: an der Spitze hängend kippt es schon bei kleinem Auslenken.
+
+**Typischer Fehler:** Universelle "$h/2$"-Regel anwenden, weil sie beim Rechteck stimmt. Schwerpunkt-Lage ist **flächenabhängig** und kann je nach Form ganz unterschiedlich liegen.`,
+        [
+          'Vergleich Rechteck vs. Dreieck.',
+          'Konstante Breite vs. linear wachsende Breite.',
+          'Mehr Material an der Basis → tieferer Schwerpunkt.',
+        ],
+        {
+          1: 'Falsch — Schwerpunkt-Höhe hängt von der Form ab. Rechteck $h/2$, Dreieck $h/3$, Halbkreis $4r/(3\\pi) \\approx 0{,}424\\,r$ — alle unterschiedlich.',
+          2: 'Auch bei gleichseitigen Dreiecken gilt $h/3$, nicht $h/2$. Form bestimmt die Lage.',
+          3: 'Der Faktor $\\sqrt 3/2$ tritt bei der Höhenformel des **gleichseitigen Dreiecks** auf ($h = a\\sqrt 3/2$), aber nicht im Schwerpunkt-Verhältnis.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['sp-standard'] },
       ),
     ],
 
