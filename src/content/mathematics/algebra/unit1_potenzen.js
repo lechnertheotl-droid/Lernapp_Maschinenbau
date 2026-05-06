@@ -292,7 +292,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Welche Zahl muss $e$ hoch stehen, um $e^{3}$ zu ergeben?',
       'Regel: $\\ln(e^{x}) = x$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 6, uses: ['log-umkehr'] },
 },
   'ex-alg-1-3-c': {
     id: 'ex-alg-1-3-c', lessonId: 'alg-1-3', type: 'multiple-choice',
@@ -316,7 +316,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: 'Subtraktion gehört zur Division: $\\ln(a/b) = \\ln a - \\ln b$. Bei Multiplikation wird addiert.',
       3: 'Der Logarithmus ist nicht linear: $\\ln(a+b) \\neq \\ln a + \\ln b$ (Gegenbeispiel: $\\ln(1+1) = \\ln 2 \\approx 0{,}69$, aber $\\ln 1 + \\ln 1 = 0$). Das hier geht um Multiplikation im Argument — da gilt die Produktregel $\\ln(a\\cdot b) = \\ln a + \\ln b$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['log-produkt'] },
 },
   'ex-alg-1-3-d': {
     id: 'ex-alg-1-3-d', lessonId: 'alg-1-3', type: 'multiple-choice',
@@ -340,7 +340,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$\\ln(5a) = \\ln 5 + \\ln a$ — das wäre die Produktregel, wenn im Argument $5\\cdot a$ stünde. Hier steht aber $a^{5}$ (Potenz), also gilt $\\ln(a^{5}) = 5\\ln a$.',
       3: 'Hier wurden Basis und Exponent vertauscht: das Ergebnis müsste $5\\cdot\\ln(a)$ sein, nicht $a\\cdot\\ln(5)$. Die Regel: der Exponent $n$ wandert als Vorfaktor vor den Logarithmus, die Basis bleibt im Argument.',
     },
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['log-potenz'] },
 },
   'ex-alg-1-3-mastery': {
     id: 'ex-alg-1-3-mastery', lessonId: 'alg-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -364,7 +364,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$5/e$ entsteht, wenn man $e^{x}$ fälschlich wie $e\\cdot x$ liest und durch $e$ teilt. $e^{x}$ ist aber eine Potenz, keine Multiplikation. Nötig ist der Logarithmus: $x = \\ln(5)$.',
       3: '$e^{5}$ wäre die Lösung von $\\ln x = 5$, nicht von $e^{x} = 5$. Hier steht $x$ im Exponenten — also logarithmieren beider Seiten: $x = \\ln(5)$.',
     },
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-def'] },
 },
 }
 

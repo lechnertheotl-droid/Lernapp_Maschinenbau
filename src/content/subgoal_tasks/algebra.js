@@ -4683,6 +4683,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 4, uses: ['log-basiswechsel'] },
       ),
+      // Bonus SG 4 — Prüfungs-NI · transfer · uses=[log-basiswechsel]
+      // Zinseszins-Verdoppelung — klassische Klausuraufgabe zur Anwendung des Basiswechsels.
+      ni(
+        '[PRÜFUNG] Wie viele Jahre dauert es, bis ein Kapital bei jährlich $5\\,\\%$ Zinsen verdoppelt wird? Modell: $K(t) = K_0 \\cdot 1{,}05^{t}$. Antwort auf 3 Dezimalen.',
+        14.207, 0.05, 'Jahre',
+        `**Ansatz:** Verdopplung heißt $K(t)/K_0 = 2$, also $1{,}05^{t} = 2$. Nach $t$ logarithmieren — Basiswechsel macht es taschenrechnertauglich.
+
+**Rechnung:** $t = \\log_{1{,}05}(2) = \\dfrac{\\ln(2)}{\\ln(1{,}05)} \\approx \\dfrac{0{,}6931}{0{,}04879} \\approx 14{,}207$ Jahre.
+
+**Probe:** $1{,}05^{14{,}207} = e^{14{,}207 \\cdot \\ln(1{,}05)} = e^{14{,}207 \\cdot 0{,}04879} = e^{0{,}6931} \\approx 2$. ✓ Faustformel „72er-Regel": $72/5 = 14{,}4$ Jahre — nahe dran, aber nicht exakt.
+
+**Typischer Fehler:** Direkt $2/0{,}05 = 40$ rechnen — unterschlägt den Zinseszins-Effekt (jedes Jahr neuer Aufschlag auf den schon gewachsenen Betrag). Oder Basiswechsel umgekehrt: $\\ln(1{,}05)/\\ln(2) \\approx 0{,}0704$ — der Kehrwert.`,
+        [
+          'Verdopplung als Gleichung: $1{,}05^{t} = 2$.',
+          'Basiswechsel: $t = \\log_{1{,}05}(2) = \\ln(2)/\\ln(1{,}05)$.',
+          'Sanity-Check: 72er-Regel sagt etwa $14$ Jahre.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
     ],
     // [5] Summen-Falle: ln(a+b) ≠ ln(a) + ln(b)
     5: [
@@ -4851,24 +4870,24 @@ export const algebraSubGoalTasks = {
       ),
       mc(
         'Vereinfache $\\ln(e^7)$.',
-        ['$7$', '$e$', '$e^7$', 'keine Vereinfachung möglich'],
+        ['$7$', '$e$', '$e^7$', '$\\ln(7)$'],
         0,
-        `**Ansatz:** $\\ln(e^x) = x$.
+        `**Ansatz:** Umkehr-Identität: $\\ln(e^x) = x$ für jedes reelle $x$.
 
-**Rechnung:** $\\ln(e^7) = 7$.
+**Rechnung:** $\\ln(e^7) = 7$ direkt — $\\ln$ und $e$ heben sich vollständig auf.
 
-**Probe:** $e^7 \\approx 1097$; $\\ln(1097) \\approx 7$. ✓
+**Probe:** $e^7 \\approx 1097$; $\\ln(1097) \\approx 7$. ✓ Alternativ über die Potenzregel: $\\ln(e^7) = 7 \\cdot \\ln(e) = 7 \\cdot 1 = 7$.
 
-**Typischer Fehler:** Funktionen heben nicht aufeinander auf.`,
+**Typischer Fehler:** Die Umkehr-Identität nicht erkennen und Argument $e^7$ als Endwert stehen lassen, oder Basis und Exponent vermischen ($\\ln(7)$ statt $7$).`,
         [
           'Umkehr-Identität anwenden.',
           '$\\ln(e^x) = x$.',
-          'Einfach $7$.',
+          'Hier $x = 7$.',
         ],
         {
-          1: '$e$ wäre $\\ln(e^1)$.',
-          2: '$e^7$ ist das Argument — $\\ln$ "nimmt den Exponenten heraus".',
-          3: 'Doch — Umkehrung macht es sehr einfach.',
+          1: '$e$ wäre $\\ln(e^1)$ — hier ist der Exponent aber $7$, nicht $1$.',
+          2: '$e^7$ ist das Argument vom $\\ln$, nicht das Ergebnis. $\\ln$ „nimmt den Exponenten heraus" und liefert $7$.',
+          3: 'Hier wurde aus $\\ln(e^7)$ nur die $7$ als Argument vom $\\ln$ extrahiert. Tatsächlich verwandelt die Potenzregel $\\ln(e^7) = 7 \\cdot \\ln(e) = 7 \\cdot 1 = 7$ — also $7$ als Zahl, nicht $\\ln(7) \\approx 1{,}946$.',
         },
         { stage: 'apply-guided', subGoal: 6, uses: ['log-umkehr'] },
       ),
@@ -4952,6 +4971,31 @@ export const algebraSubGoalTasks = {
           '$x = 3\\ln 2 \\approx 2{,}079$.',
         ],
         { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-potenz'] },
+      ),
+      // Bonus SG 6 — sorting · transfer · uses=[log-umkehr, log-def]
+      // Schritt-Reihenfolge beim Lösen einer Exponentialgleichung mit linearem Exponent.
+      sorting(
+        'Bringe die Schritte zum Lösen der Gleichung $e^{2x+1} = 5$ nach $x$ in die richtige Reihenfolge.',
+        [
+          'Beide Seiten logarithmieren: $\\ln(e^{2x+1}) = \\ln(5)$.',
+          'Umkehr-Identität auf der linken Seite anwenden: $2x + 1 = \\ln(5)$.',
+          'Konstante subtrahieren: $2x = \\ln(5) - 1$.',
+          'Durch den Koeffizienten teilen: $x = \\dfrac{\\ln(5) - 1}{2}$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** $x$ steht im Exponenten — also logarithmieren, dann mit Umkehr-Identität auflösen, danach algebraisch nach $x$ umstellen.
+
+**Rechnung:** $x = (\\ln 5 - 1)/2 \\approx (1{,}609 - 1)/2 \\approx 0{,}305$.
+
+**Probe:** $e^{2 \\cdot 0{,}305 + 1} = e^{1{,}609} \\approx 5$. ✓
+
+**Typischer Fehler:** Mit $-1$ und $/2$ anfangen, bevor logarithmiert wurde — bringt nichts, weil $x$ noch im Exponenten gefangen ist. Erst muss $\\ln$ den Exponenten freilegen.`,
+        [
+          'Erst muss $x$ aus dem Exponenten — wie?',
+          '$\\ln$ auf beide Seiten, dann Umkehr-Identität auf $\\ln(e^{...})$.',
+          'Dann ganz normal nach $x$ umstellen.',
+        ],
+        { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-def'] },
       ),
     ],
   },
