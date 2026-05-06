@@ -1,4 +1,4 @@
-import { sortTopicsByPathOrder } from './topicGraph'
+import { sortTopicsByPathOrder, getStudienbeginPhase } from './topicGraph'
 import type { TopicProgress } from '@/context/appReducer'
 import type { PracticeAttemptSummary } from '@/types/practice'
 
@@ -9,6 +9,7 @@ export type LessonStep = {
   topicTitle: string
   lessonId: string
   lessonTitle: string
+  phase: 1 | 2 | 3
 }
 
 export type PracticeStep = {
@@ -17,6 +18,7 @@ export type PracticeStep = {
   topicId: string
   topicTitle: string
   practiceCount: number
+  phase: 1 | 2 | 3
 }
 
 export type PathStep = LessonStep | PracticeStep
@@ -32,43 +34,86 @@ export interface PathProgress {
 interface PathLesson { id: string; title: string }
 interface PathTopic { id: string; title: string }
 
+export interface PathUnit {
+  unitIndex: number
+  lessons: PathLesson[]
+}
+
 interface BuildInputs {
   topics: PathTopic[]
-  lessonsByTopic: (topicId: string) => PathLesson[]
+  unitsByTopic: (topicId: string) => PathUnit[]
   practiceCountByTopic: (topicId: string) => number
 }
 
+function phaseOf(topicId: string): 1 | 2 | 3 {
+  return getStudienbeginPhase(topicId) ?? 3
+}
+
 /**
- * Linearer Lernpfad: Topics in topicGraph.order-Reihenfolge,
- * pro Topic alle Lektionen, danach (wenn vorhanden) ein Practice-Step.
+ * Linearer Lernpfad: Topics werden nach Phase gruppiert (1 → 2 → 3).
+ * Innerhalb einer Phase werden Lektionen nach **Unit-Position** gemixt:
+ * erst alle Unit-0-Lessons aller Topics (in topicGraph-Order), dann alle
+ * Unit-1-Lessons, usw. Das durchläuft den Stoff in Aufbau-Tiefe parallel
+ * über die Topics — der Lernende baut Grundlagen breit auf, bevor er in
+ * die Vertiefungen jedes Topics geht.
+ *
+ * Practice-Steps kommen am Ende der Phase pro Topic (Topic-Order),
+ * also als Klausur-Block nachdem alle Lektionen der Phase abgearbeitet
+ * sind. So wird das in der Phase Gelernte direkt geprüft.
  */
-export function buildLearningPath({ topics, lessonsByTopic, practiceCountByTopic }: BuildInputs): PathStep[] {
+export function buildLearningPath({ topics, unitsByTopic, practiceCountByTopic }: BuildInputs): PathStep[] {
   const sorted = sortTopicsByPathOrder(topics)
+
+  // Gruppiere nach Phase, behalte Topic-Order innerhalb der Phase.
+  const byPhase = new Map<1 | 2 | 3, PathTopic[]>([[1, []], [2, []], [3, []]])
+  for (const t of sorted) byPhase.get(phaseOf(t.id))!.push(t)
+
   const steps: PathStep[] = []
   let i = 0
-  for (const topic of sorted) {
-    const lessons = lessonsByTopic(topic.id)
-    for (const lesson of lessons) {
-      steps.push({
-        kind: 'lesson',
-        index: i++,
-        topicId: topic.id,
-        topicTitle: topic.title,
-        lessonId: lesson.id,
-        lessonTitle: lesson.title,
-      })
+
+  for (const phase of [1, 2, 3] as const) {
+    const phaseTopics = byPhase.get(phase) ?? []
+    if (phaseTopics.length === 0) continue
+
+    // Units pro Topic vorberechnen, max-Unit-Position für Round-Robin.
+    const unitsPerTopic = phaseTopics.map((t) => unitsByTopic(t.id))
+    const maxUnits = unitsPerTopic.reduce((m, u) => Math.max(m, u.length), 0)
+
+    for (let unitPos = 0; unitPos < maxUnits; unitPos++) {
+      for (let ti = 0; ti < phaseTopics.length; ti++) {
+        const topic = phaseTopics[ti]
+        const unit  = unitsPerTopic[ti][unitPos]
+        if (!unit) continue
+        for (const lesson of unit.lessons) {
+          steps.push({
+            kind: 'lesson',
+            index: i++,
+            topicId: topic.id,
+            topicTitle: topic.title,
+            lessonId: lesson.id,
+            lessonTitle: lesson.title,
+            phase,
+          })
+        }
+      }
     }
-    const practiceCount = practiceCountByTopic(topic.id)
-    if (practiceCount > 0) {
-      steps.push({
-        kind: 'practice',
-        index: i++,
-        topicId: topic.id,
-        topicTitle: topic.title,
-        practiceCount,
-      })
+
+    // Practice-Block am Ende der Phase, in Topic-Order.
+    for (const topic of phaseTopics) {
+      const practiceCount = practiceCountByTopic(topic.id)
+      if (practiceCount > 0) {
+        steps.push({
+          kind: 'practice',
+          index: i++,
+          topicId: topic.id,
+          topicTitle: topic.title,
+          practiceCount,
+          phase,
+        })
+      }
     }
   }
+
   return steps
 }
 
@@ -80,7 +125,8 @@ interface ProgressInputs {
 
 /**
  * Berechnet pro Step, ob er erledigt ist, und liefert den Index des
- * nächsten offenen Steps. Lesson-Step done = lessonId in completedLessons.
+ * nächsten offenen Steps. Lesson-Step done = lessonId in completedLessons
+ * (unabhängig davon, in welcher Reihenfolge der User die Lessons gemacht hat).
  * Practice-Step done = mind. eine Aufgabe des Topics mit lastCorrect===true.
  */
 export function computePathProgress(

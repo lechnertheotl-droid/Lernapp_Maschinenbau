@@ -4,6 +4,7 @@ import {
   computePathProgress,
   nextPathStep,
   type PathStep,
+  type PathUnit,
 } from './learningPath'
 
 // Mini-Topics in nicht-sortierter Reihenfolge, mit echten topicGraph-IDs:
@@ -18,12 +19,28 @@ const TOPICS = [
   { id: 'trigonometry',         title: 'Trigonometrie' },
 ]
 
-const LESSONS: Record<string, { id: string; title: string }[]> = {
-  algebra:                [{ id: 'alg-1', title: 'L1' }, { id: 'alg-2', title: 'L2' }],
-  trigonometry:           [{ id: 'trig-1', title: 'T1' }],
-  'technische-mechanik':  [{ id: 'mech-1', title: 'M1' }],
-  'lineare-algebra':      [{ id: 'lin-1', title: 'LA1' }],
-  'mehrdim-analysis':     [{ id: 'md-1', title: 'MD1' }],
+// Units pro Topic. Algebra hat eine Vorkurs-Unit-0 + Unit-1 + Klausur-Unit-2.
+// Trig hat nur Unit-0 (Grundlagen) + Klausur-Unit-1 — keine Vorkurs-Unit-0
+// im Sinne von Algebra. Mech, LinAlg, MdAna haben jeweils eine Unit.
+const UNITS: Record<string, PathUnit[]> = {
+  algebra: [
+    { unitIndex: 0, lessons: [{ id: 'alg-0-1', title: 'Brüche' }] },
+    { unitIndex: 1, lessons: [{ id: 'alg-1-1', title: 'Potenzen' }, { id: 'alg-1-2', title: 'Wurzeln' }] },
+    { unitIndex: 2, lessons: [{ id: 'alg-2-1', title: 'Klausur Algebra' }] },
+  ],
+  trigonometry: [
+    { unitIndex: 0, lessons: [{ id: 'trig-1-1', title: 'Winkel' }] },
+    { unitIndex: 1, lessons: [{ id: 'trig-2-1', title: 'Klausur Trig' }] },
+  ],
+  'technische-mechanik': [
+    { unitIndex: 0, lessons: [{ id: 'mech-1-1', title: 'Statik' }] },
+  ],
+  'lineare-algebra': [
+    { unitIndex: 0, lessons: [{ id: 'lin-1-1', title: 'Matrix' }] },
+  ],
+  'mehrdim-analysis': [
+    { unitIndex: 0, lessons: [{ id: 'md-1-1', title: 'Partiell' }] },
+  ],
 }
 
 const PRACTICE_COUNTS: Record<string, number> = {
@@ -45,44 +62,81 @@ const PRACTICE_IDS: Record<string, string[]> = {
 function buildSteps(): PathStep[] {
   return buildLearningPath({
     topics: TOPICS,
-    lessonsByTopic: (id) => LESSONS[id] ?? [],
+    unitsByTopic: (id) => UNITS[id] ?? [],
     practiceCountByTopic: (id) => PRACTICE_COUNTS[id] ?? 0,
   })
 }
 
 describe('buildLearningPath', () => {
-  it('sorts topics by phase first, then by order within phase', () => {
-    const steps  = buildSteps()
-    const ids = [...new Set(steps.map((s) => s.topicId))]
-    expect(ids).toEqual([
-      'algebra',              // Phase 1, order 0
-      'trigonometry',         // Phase 1, order 1
-      'technische-mechanik',  // Phase 1, order 20
-      'lineare-algebra',      // Phase 2, order 5
-      'mehrdim-analysis',     // Phase 3, order 9
+  it('round-robins lessons by unit-position within a phase', () => {
+    const steps = buildSteps()
+    // Phase 1 first. Topics in order: algebra (0), trigonometry (1), tech-mech (20).
+    // Unit-Pos 0: alg-0-1 (algebra has unit 0), trig-1-1 (trig has unit 0), mech-1-1 (mech has unit 0)
+    // Unit-Pos 1: alg-1-1, alg-1-2, trig-2-1 (mech has no unit 1)
+    // Unit-Pos 2: alg-2-1 (only algebra has unit 2)
+    // Then Phase-1 practice in topic-order: practice algebra, practice trig (mech has none)
+    // Phase 2: lin-1-1, then practice lin
+    // Phase 3: md-1-1 (no practice)
+    const labels = steps.map((s) => s.kind === 'lesson' ? s.lessonId : `practice:${s.topicId}`)
+    expect(labels).toEqual([
+      // Phase 1, unit-pos 0 (round-robin across topics)
+      'alg-0-1',
+      'trig-1-1',
+      'mech-1-1',
+      // Phase 1, unit-pos 1
+      'alg-1-1',
+      'alg-1-2',
+      'trig-2-1',
+      // Phase 1, unit-pos 2
+      'alg-2-1',
+      // Phase 1 practice block
+      'practice:algebra',
+      'practice:trigonometry',
+      // Phase 2
+      'lin-1-1',
+      'practice:lineare-algebra',
+      // Phase 3
+      'md-1-1',
     ])
   })
 
-  it('emits all lessons of a topic before its practice step', () => {
-    const steps = buildSteps().filter((s) => s.topicId === 'algebra')
-    expect(steps.map((s) => s.kind)).toEqual(['lesson', 'lesson', 'practice'])
+  it('attaches phase to every step', () => {
+    const steps = buildSteps()
+    const phasesByLesson = Object.fromEntries(steps.map((s) => [
+      s.kind === 'lesson' ? s.lessonId : `practice:${s.topicId}`,
+      s.phase,
+    ]))
+    expect(phasesByLesson['alg-0-1']).toBe(1)
+    expect(phasesByLesson['trig-1-1']).toBe(1)
+    expect(phasesByLesson['lin-1-1']).toBe(2)
+    expect(phasesByLesson['md-1-1']).toBe(3)
+    expect(phasesByLesson['practice:algebra']).toBe(1)
+    expect(phasesByLesson['practice:lineare-algebra']).toBe(2)
   })
 
   it('omits practice step when topic has no practice exercises', () => {
-    const steps = buildSteps().filter((s) => s.topicId === 'technische-mechanik')
-    expect(steps.map((s) => s.kind)).toEqual(['lesson'])
+    const steps = buildSteps()
+    const mechPracticeSteps = steps.filter((s) => s.kind === 'practice' && s.topicId === 'technische-mechanik')
+    expect(mechPracticeSteps).toEqual([])
+  })
+
+  it('skips topics that have no unit at the current unit-position', () => {
+    // tech-mech has only unit 0 — it must NOT appear at unit-pos 1 or 2.
+    const steps = buildSteps()
+    const mechSteps = steps.filter((s) => s.kind === 'lesson' && s.topicId === 'technische-mechanik')
+    expect(mechSteps.map((s) => s.lessonId)).toEqual(['mech-1-1'])
   })
 })
 
 describe('computePathProgress', () => {
   it('marks lesson done when lessonId is in completedLessons (regardless of order user did them)', () => {
     const steps = buildSteps()
-    // User has completed alg-2 (out of order), trig-1, and md-1 — but not alg-1.
+    // User has completed alg-1-2 (out of order — skipped alg-1-1), trig-1-1, and md-1-1.
     const progress = computePathProgress(steps, {
       topicProgress: {
-        algebra:           { started: true, completedLessons: ['alg-2'], currentLessonId: null, currentStepIndex: 0, progress: 50 },
-        trigonometry:      { started: true, completedLessons: ['trig-1'], currentLessonId: null, currentStepIndex: 0, progress: 100 },
-        'mehrdim-analysis':{ started: true, completedLessons: ['md-1'],  currentLessonId: null, currentStepIndex: 0, progress: 100 },
+        algebra:           { started: true, completedLessons: ['alg-1-2'], currentLessonId: null, currentStepIndex: 0, progress: 33 },
+        trigonometry:      { started: true, completedLessons: ['trig-1-1'], currentLessonId: null, currentStepIndex: 0, progress: 50 },
+        'mehrdim-analysis':{ started: true, completedLessons: ['md-1-1'],  currentLessonId: null, currentStepIndex: 0, progress: 100 },
       },
       practiceAttempts: {},
       practiceExerciseIdsByTopic: (id) => PRACTICE_IDS[id] ?? [],
@@ -92,15 +146,13 @@ describe('computePathProgress', () => {
       return [label, progress.doneFlags[i]]
     }))
     expect(flagsByLabel).toMatchObject({
-      'alg-1': false,
-      'alg-2': true,        // completed out of order — still ✓
-      'trig-1': true,
-      'md-1': true,
-      'mech-1': false,
-      'lin-1': false,
-      'practice:algebra': false,        // no attempts
-      'practice:trigonometry': false,
-      'practice:lineare-algebra': false,
+      'alg-0-1': false,
+      'alg-1-1': false,
+      'alg-1-2': true,        // completed out of order — still ✓
+      'trig-1-1': true,
+      'md-1-1': true,
+      'mech-1-1': false,
+      'lin-1-1': false,
     })
   })
 
@@ -110,7 +162,6 @@ describe('computePathProgress', () => {
       topicProgress: {},
       practiceAttempts: {
         'pr-alg-2': { attempts: 1, lastAttemptAt: '2026-05-06', lastCorrect: true, bestPoints: 5 },
-        // pr-alg-1 not attempted — but one solved is enough
       },
       practiceExerciseIdsByTopic: (id) => PRACTICE_IDS[id] ?? [],
     })
@@ -133,10 +184,10 @@ describe('computePathProgress', () => {
 
   it('currentIndex points to the first not-done step in path order', () => {
     const steps = buildSteps()
-    // User skipped algebra entirely but did some trig — current should be alg-1 (fill the gap).
+    // User skipped algebra entirely but did trig-1-1 — current should be alg-0-1 (the first gap).
     const progress = computePathProgress(steps, {
       topicProgress: {
-        trigonometry: { started: true, completedLessons: ['trig-1'], currentLessonId: null, currentStepIndex: 0, progress: 100 },
+        trigonometry: { started: true, completedLessons: ['trig-1-1'], currentLessonId: null, currentStepIndex: 0, progress: 50 },
       },
       practiceAttempts: {},
       practiceExerciseIdsByTopic: (id) => PRACTICE_IDS[id] ?? [],
@@ -144,23 +195,33 @@ describe('computePathProgress', () => {
     const current = nextPathStep(progress)
     expect(current?.kind).toBe('lesson')
     if (current?.kind === 'lesson') {
-      expect(current.lessonId).toBe('alg-1')
+      expect(current.lessonId).toBe('alg-0-1')
     }
   })
 
   it('currentIndex is -1 and nextPathStep is null when everything is done', () => {
     const steps = buildSteps()
+    const allLessonIds = Object.values(UNITS).flatMap((units) => units.flatMap((u) => u.lessons.map((l) => l.id)))
+    const topicProgress = Object.fromEntries(Object.entries(UNITS).map(([tid, us]) => [tid, {
+      started: true,
+      completedLessons: us.flatMap((u) => u.lessons.map((l) => l.id)),
+      currentLessonId: null,
+      currentStepIndex: 0,
+      progress: 100,
+    }]))
+    const practiceAttempts = Object.fromEntries(Object.values(PRACTICE_IDS).flat().map((id) => [id, {
+      attempts: 1, lastAttemptAt: '2026-05-06', lastCorrect: true, bestPoints: 1,
+    }]))
     const progress = computePathProgress(steps, {
-      topicProgress: Object.fromEntries(Object.entries(LESSONS).map(([tid, ls]) => [tid, {
-        started: true, completedLessons: ls.map((l) => l.id), currentLessonId: null, currentStepIndex: 0, progress: 100,
-      }])),
-      practiceAttempts: Object.fromEntries(Object.values(PRACTICE_IDS).flat().map((id) => [id, {
-        attempts: 1, lastAttemptAt: '2026-05-06', lastCorrect: true, bestPoints: 1,
-      }])),
+      topicProgress,
+      practiceAttempts,
       practiceExerciseIdsByTopic: (id) => PRACTICE_IDS[id] ?? [],
     })
     expect(progress.currentIndex).toBe(-1)
     expect(nextPathStep(progress)).toBeNull()
     expect(progress.doneCount).toBe(progress.totalCount)
+    // Sanity: every lesson is in the path
+    const lessonStepIds = steps.filter((s) => s.kind === 'lesson').map((s) => (s as { lessonId: string }).lessonId)
+    expect(lessonStepIds.sort()).toEqual(allLessonIds.sort())
   })
 })

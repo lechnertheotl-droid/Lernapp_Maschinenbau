@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useAppState } from '@/context/AppContext'
-import { getAllTopics, getAllLessons } from '@/content/index'
+import { getAllTopics, getTopic } from '@/content/index'
 import { getPracticeExercisesForTopic } from '@/content/practice/index'
 import { TopicGrid } from '@/components/topics/TopicGrid'
 import { TopicSearchAndFilter } from '@/components/topics/TopicSearchAndFilter'
@@ -20,8 +20,8 @@ export function Dashboard() {
 
   const pathSteps = useMemo(() => buildLearningPath({
     topics,
-    lessonsByTopic:        (id) => getAllLessons(id),
-    practiceCountByTopic:  (id) => getPracticeExercisesForTopic(id).length,
+    unitsByTopic: (id) => (getTopic(id)?.units ?? []).map((u, i) => ({ unitIndex: i, lessons: u.lessons ?? [] })),
+    practiceCountByTopic: (id) => getPracticeExercisesForTopic(id).length,
   }), [topics])
 
   const pathProgress = useMemo(() => computePathProgress(pathSteps, {
