@@ -5812,9 +5812,9 @@ $$0{,}75 \\cdot P = 60 \\quad | : 0{,}75 \\\\ P = \\dfrac{60}{0{,}75} = 80 \\tex
           'Diskriminante $(p/2)^2 - q$.',
         ],
         {
-          1: 'Division durch $2$ vergessen.',
-          2: 'Diskriminante verkürzt falsch.',
-          3: 'Keine gültige Formel.',
+          1: 'Du hast die Halbierung sowohl bei $-p/2$ als auch bei $(p/2)^2$ vergessen — Ergebnis $-p \\pm \\sqrt{p^2 - q}$. Die pq-Formel halbiert den Koeffizienten $p$ vor dem Quadrieren: $(p/2)^2$, nicht $p^2$.',
+          2: 'Du hast den Term unter der Wurzel zu $\\sqrt{q}$ verkürzt — der lineare Anteil $(p/2)^2$ und das negative $q$ fehlen. Die Diskriminante einer Normalform ist $(p/2)^2 - q$, nicht $q$ allein.',
+          3: 'Du hast pq-Formel mit einer linearen Lösungsstrategie verwechselt: $q \\pm p$ ergibt sich nirgends aus quadratischer Ergänzung. Korrekte Herleitung: $(x + p/2)^2 = (p/2)^2 - q$, daraus $x = -p/2 \\pm \\sqrt{(p/2)^2 - q}$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['pq-formel'] },
       ),
@@ -5874,9 +5874,9 @@ $$0{,}75 \\cdot P = 60 \\quad | : 0{,}75 \\\\ P = \\dfrac{60}{0{,}75} = 80 \\tex
           '$q = -5$ → $-q = +5$.',
         ],
         {
-          1: '$\\sqrt{-1}$ wäre komplex — hier existieren aber reelle Lösungen.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Zahlentest zeigt: zwei reelle Lösungen.',
+          1: '$2i$ wäre eine komplexe Lösung — die Aufgabe lebt aber im Reellen, und die Probe zeigt: $5^2 - 20 - 5 = 0$ und $(-1)^2 + 4 - 5 = 0$ sind beide reelle Lösungen. Der Schritt ins Komplexe wäre nötig, wenn $D$ wirklich negativ wäre — hier ist er $+9$.',
+          2: 'Der Ausdruck $2 \\pm \\sqrt{-1}$ ist nicht korrekt — der Fehler steckt in der Diskriminante. Korrekte Auswertung: $(p/2)^2 - q = 4 - (-5) = 4 + 5 = 9$, nicht $4 - 5 = -1$. Vorzeichen von $q = -5$ wurde nicht negiert.',
+          3: 'Probe widerlegt: $5^2 - 4 \\cdot 5 - 5 = 25 - 20 - 5 = 0$ ✓ und $(-1)^2 - 4 \\cdot (-1) - 5 = 1 + 4 - 5 = 0$ ✓. Die Gleichung hat zwei reelle Lösungen, der Schüler-Fehler liegt im Vorzeichen von $q$.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['abc-formel'] },
       ),
@@ -5946,6 +5946,74 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
       ),
+      mc(
+        'Welche Werte für $-\\dfrac{p}{2}$ und $\\left(\\dfrac{p}{2}\\right)^2 - q$ liefert die pq-Formel bei $x^2 + 6x - 16 = 0$?',
+        [
+          '$-\\dfrac{p}{2} = -3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+          '$-\\dfrac{p}{2} = +3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+          '$-\\dfrac{p}{2} = -3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = -7$',
+          '$-\\dfrac{p}{2} = -6$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+        ],
+        0,
+        `**Ansatz:** Aus der Normalform $x^2 + px + q = 0$ ablesen: $p = 6$, $q = -16$. Dann beide Teile der pq-Formel separat berechnen.
+
+**Rechnung:** $-\\dfrac{p}{2} = -\\dfrac{6}{2} = -3$. $\\left(\\dfrac{p}{2}\\right)^2 - q = 3^2 - (-16) = 9 + 16 = 25$. Also $x_{1,2} = -3 \\pm 5 = 2$ oder $-8$.
+
+**Probe:** $2^2 + 6 \\cdot 2 - 16 = 4 + 12 - 16 = 0$ ✓; $(-8)^2 + 6 \\cdot (-8) - 16 = 64 - 48 - 16 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $p$ vergessen ($+3$ statt $-3$) oder Vorzeichen von $q$ falsch in Diskriminante einsetzen ($9 - 16 = -7$ statt $9 + 16 = 25$).`,
+        [
+          'Identifiziere $p$ und $q$ aus der Normalform.',
+          '$-p/2$: einfach das Minus vor den halbierten Koeffizienten.',
+          'Diskriminante: $(p/2)^2 - q$ — beachte das Minuszeichen vor $q$.',
+        ],
+        {
+          1: 'Du hast das Minuszeichen vor $p/2$ vergessen — bei $p = +6$ ist $-p/2 = -3$, nicht $+3$. Sonst hättest du $-3 \\pm 5$ als $+3 \\pm 5$ und die falschen Lösungen $8$ und $-2$.',
+          2: 'Du hast das Vorzeichen von $q = -16$ in der Diskriminante nicht negiert: $(p/2)^2 - q = 9 - (-16) = 9 + 16 = 25$, nicht $9 - 16 = -7$. Bei negativem $q$ ergibt $-q$ einen positiven Beitrag.',
+          3: 'Du hast die Halbierung von $p$ vergessen — $-p$ statt $-p/2$. Bei $p = 6$ ist $-p/2 = -3$, nicht $-6$. Die pq-Formel halbiert den linearen Koeffizienten, bevor sie ihn negiert und vor $\\sqrt{\\,}$ stellt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pq-formel'] },
+      ),
+      ni(
+        'Löse $x^2 - 7x + 10 = 0$ und gib die KLEINERE Lösung an.',
+        2, 0, '',
+        `**Ansatz:** Normalform mit $p = -7$, $q = 10$. pq-Formel anwenden.
+
+**Rechnung:**
+$$x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^2 - q} = \\dfrac{7}{2} \\pm \\sqrt{\\dfrac{49}{4} - 10} = 3{,}5 \\pm \\sqrt{2{,}25} = 3{,}5 \\pm 1{,}5$$
+
+Also $x_1 = 5$, $x_2 = 2$. Die kleinere Lösung ist $x = 2$.
+
+**Probe:** $2^2 - 7 \\cdot 2 + 10 = 4 - 14 + 10 = 0$ ✓. Vieta-Check: $2 + 5 = 7 = -p$ ✓ und $2 \\cdot 5 = 10 = q$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $p$ verlieren — $-p/2 = +3{,}5$ (nicht $-3{,}5$). Wer fälschlich $-3{,}5 \\pm 1{,}5$ rechnet, erhält $-2$ und $-5$.`,
+        [
+          'Lies $p = -7$ und $q = 10$ aus der Normalform ab.',
+          '$-p/2 = +3{,}5$. Diskriminante $\\left(\\dfrac{p}{2}\\right)^2 - q = 12{,}25 - 10 = 2{,}25$.',
+          '$\\sqrt{2{,}25} = 1{,}5$. Lösungen $3{,}5 \\pm 1{,}5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['abc-formel'] },
+      ),
+      ni(
+        'Löse die Bruchgleichung $\\dfrac{x^2 + 4}{x} = 5$ (für $x \\neq 0$) und gib die GRÖSSERE Lösung an.',
+        4, 0, '',
+        `**Ansatz:** Beide Seiten mit $x$ multiplizieren ($x \\neq 0$), auf Normalform bringen, pq-Formel anwenden.
+
+**Rechnung:**
+$$\\dfrac{x^2 + 4}{x} = 5 \\quad | \\cdot x \\\\ x^2 + 4 = 5x \\quad | -5x \\\\ x^2 - 5x + 4 = 0$$
+
+Mit $p = -5$, $q = 4$: $x_{1,2} = 2{,}5 \\pm \\sqrt{6{,}25 - 4} = 2{,}5 \\pm 1{,}5$. Also $x_1 = 4$, $x_2 = 1$. Die größere Lösung ist $x = 4$.
+
+**Probe:** $\\dfrac{4^2 + 4}{4} = \\dfrac{20}{4} = 5$ ✓. Beide Lösungen sind $\\neq 0$, also zulässig.
+
+**Typischer Fehler:** Mit $x$ multiplizieren, ohne $x \\neq 0$ als Definitionsbedingung zu notieren — bei dieser Aufgabe ist die Bedingung erfüllt, aber bei anderen Bruchgleichungen kann eine Schein-Lösung $x = 0$ entstehen.`,
+        [
+          'Multipliziere beide Seiten mit dem Nenner $x$ — aber notiere $x \\neq 0$.',
+          'Nach dem Räumen: $x^2 + 4 = 5x$, also $x^2 - 5x + 4 = 0$.',
+          'pq-Formel mit $p = -5$, $q = 4$. Achte auf die größere Lösung.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
+      ),
     ],
     // [1] Diskriminante
     1: [
@@ -5988,9 +6056,9 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
           'Was bedeutet $D = 0$?',
         ],
         {
-          1: 'Bei $D = 0$ ist nur eine (doppelte) Lösung.',
-          2: 'Gleichung hat doch eine Lösung.',
-          3: 'Quadratische Gleichungen haben max. 2 Lösungen.',
+          1: 'Du hast den Fall $D = 0$ mit $D > 0$ verwechselt: $D = 36 - 36 = 0$ ist exakt der Grenzfall, in dem $\\pm\\sqrt{D} = \\pm 0$ keinen Unterschied mehr macht — die Lösung tritt nur einmal (doppelt) auf, nicht zweimal verschieden.',
+          2: 'Du hast vermutlich beim Wurzelziehen $\\sqrt{0}$ als „nicht definiert" eingeschätzt. Aber $\\sqrt{0} = 0$ ist sehr wohl definiert — nur eben Null. Daraus folgt $x = 3 \\pm 0 = 3$ — eine doppelte reelle Lösung.',
+          3: 'Du hast wohl an $0 = 0$ gedacht, das jedem $x$ als Lösung erlaubt — das ist aber etwas ganz anderes. $x^2 - 6x + 9 = 0$ ist eine echte quadratische Gleichung mit Diskriminante $0$, also genau einer (doppelten) Lösung $x = 3$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['diskriminante'] },
       ),
@@ -6033,9 +6101,9 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
           '$D = 0$ nur bei exakt $0$.',
         ],
         {
-          1: 'Die Rechnung ist korrekt, aber der Schluss falsch.',
-          2: 'Zahlentest: Parabel hat $y_{min} = 1 > 0$.',
-          3: '$\\sqrt{-4}$ ist in $\\mathbb{R}$ nicht definiert.',
+          1: 'Die Rechnung $D = 16 - 20 = -4$ ist korrekt — der Fehler liegt in der Interpretation: $D = -4 \\neq 0$. Schüler hat den Fall „doppelte Lösung bei $D = 0$" mit „keine reelle Lösung bei $D < 0$" verwechselt. Die Aufgabe verlangt, das Vorzeichen von $D$ zu unterscheiden, nicht nur $D = 0$ zu prüfen.',
+          2: 'Hier wird kein positives $D$ benötigt. Die Diskriminante $D = -4$ ist tatsächlich negativ — und genau das bedeutet: keine reelle Lösung. Die Parabel $x^2 + 4x + 5$ hat Scheitel bei $(-2, 1)$, liegt also komplett über der $x$-Achse — bestätigt $D < 0$.',
+          3: 'Das ist zwar korrekt, beantwortet aber nicht die Frage: Der Schüler-Fehler war nicht das Wurzelziehen, sondern die FALSCHE Aussage „$D = 0$, eine Lösung". Tatsächlich ist $D = -4 < 0$, also keine reelle Lösung — und genau das nennt der Fehler nicht.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['diskriminante'] },
       ),
@@ -6105,6 +6173,81 @@ $$D = b^2 - 4ac = 16 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad k = 4$$
           3: '$2x^2 + 8 = 0 \\Rightarrow x^2 = -4$ — kein reelles $x$ erfüllt das, da $x^2 \\geq 0$.',
         },
         { stage: 'transfer', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      ni(
+        'Berechne die Diskriminante von $x^2 - 8x + 16 = 0$.',
+        0, 0, '',
+        `**Ansatz:** $D = b^2 - 4ac$ mit $a = 1$, $b = -8$, $c = 16$.
+
+**Rechnung:** $D = (-8)^2 - 4 \\cdot 1 \\cdot 16 = 64 - 64 = 0$.
+
+**Probe:** $D = 0$ → genau eine doppelte Lösung. Tatsächlich: $x^2 - 8x + 16 = (x - 4)^2 = 0 \\Rightarrow x = 4$ (doppelt).
+
+**Typischer Fehler:** $b = -8$ als $b = 8$ einsetzen — beim Quadrieren spielt das Vorzeichen keine Rolle ($(-8)^2 = 64 = 8^2$), aber bei abc-Formel taucht $-b$ separat auf, da darf das Vorzeichen nicht verloren gehen.`,
+        [
+          '$D = b^2 - 4ac$.',
+          '$a = 1$, $b = -8$, $c = 16$ aus der Normalform.',
+          '$(-8)^2 - 4 \\cdot 16 = 64 - 64 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      mc(
+        'Wie viele reelle Lösungen hat $x^2 + 5x - 6 = 0$?',
+        ['Zwei verschiedene reelle Lösungen', 'Genau eine (Doppelwurzel)', 'Keine reelle Lösung', 'Drei Lösungen'],
+        0,
+        `**Ansatz:** Diskriminante $D = b^2 - 4ac$ ausrechnen und Vorzeichen interpretieren.
+
+**Rechnung:** $a = 1$, $b = 5$, $c = -6$. $D = 25 - 4 \\cdot 1 \\cdot (-6) = 25 + 24 = 49 > 0$. Also zwei verschiedene reelle Lösungen.
+
+**Probe:** Tatsächliche Lösungen über pq-Formel: $x = -2{,}5 \\pm 3{,}5$, also $x_1 = 1$ und $x_2 = -6$. Einsetzen: $1 + 5 - 6 = 0$ ✓ und $36 - 30 - 6 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $c = -6$ in $-4ac$ vergessen — wer $25 - 24 = 1$ rechnet, erhält ebenfalls „zwei Lösungen" (zufällig richtig), aber falsche Diskriminanten-Werte.`,
+        [
+          'Lies $a$, $b$, $c$ aus der Normalform ab.',
+          'Achtung Vorzeichen: $c = -6$, also $-4 \\cdot 1 \\cdot (-6) = +24$.',
+          '$D = 49$ — was bedeutet $D > 0$?',
+        ],
+        {
+          1: 'Eine Doppelwurzel würde $D = 0$ erfordern — hier ist $D = 25 + 24 = 49 \\neq 0$.',
+          2: 'Keine reelle Lösung würde $D < 0$ erfordern. Hier ist $D = 49$ deutlich positiv — die Parabel schneidet die $x$-Achse zweimal.',
+          3: 'Eine quadratische Gleichung kann höchstens ZWEI Lösungen haben (Fundamentalsatz der Algebra für Grad-2-Polynome). Drei oder mehr Lösungen treten erst ab Grad 3 auf.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      tf(
+        'Wenn die Diskriminante $D > 0$ und gleichzeitig keine perfekte Quadratzahl ist, dann sind die Lösungen reell, aber irrational.',
+        true,
+        `**Ansatz:** Lösungen einer quadratischen Gleichung sind $x = \\dfrac{-b \\pm \\sqrt{D}}{2a}$. Sie sind genau dann rational, wenn $\\sqrt{D}$ rational ist — das gilt nur, wenn $D$ ein Quadrat einer rationalen Zahl ist.
+
+**Rechnung:** Beispiel $x^2 - 2 = 0$: $D = 0 + 8 = 8$. $\\sqrt{8} = 2\\sqrt{2}$ irrational. Lösungen: $\\pm \\sqrt{2}$ — reell, irrational.
+
+**Probe:** Im Gegensatz $x^2 - 5x + 6 = 0$: $D = 25 - 24 = 1$ (perfekte Quadratzahl). $\\sqrt{1} = 1$. Lösungen $2$ und $3$ — rational.
+
+**Typischer Fehler:** „Reell" mit „rational" verwechseln. Reell heißt nur „nicht komplex"; rational fordert zusätzlich, dass die Wurzel eine ganze oder Bruchzahl ist.`,
+        [
+          'Lösung enthält $\\sqrt{D}$.',
+          'Wann ist $\\sqrt{D}$ rational? — Nur bei $D =$ perfekter Quadratzahl.',
+          'Sonst $\\sqrt{D}$ irrational, also Lösung reell aber nicht rational.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      ni(
+        'Für welchen Wert $k$ hat die Gleichung $x^2 - 6x + k = 0$ genau eine doppelte reelle Lösung?',
+        9, 0, '',
+        `**Ansatz:** Genau eine doppelte Lösung $\\Leftrightarrow D = 0$. Diskriminante mit $a = 1$, $b = -6$, $c = k$ aufstellen und $= 0$ setzen.
+
+**Rechnung:**
+$$D = (-6)^2 - 4 \\cdot 1 \\cdot k = 36 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad 4k = 36 \\quad \\Rightarrow \\quad k = 9$$
+
+**Probe:** Setze $k = 9$ ein: $x^2 - 6x + 9 = (x - 3)^2 = 0 \\Rightarrow x = 3$ (doppelt). $D = 36 - 36 = 0$ ✓.
+
+**Typischer Fehler:** Den Faktor $4$ in $4ac$ vergessen — $36 - k = 0 \\Rightarrow k = 36$ wäre falsch. Gilt nur, wenn $4a = 1$, hier ist $4 \\cdot 1 = 4$, also bleibt $4k$.`,
+        [
+          'Doppelte Lösung tritt bei $D = 0$ auf.',
+          '$D = b^2 - 4ac$ mit $b = -6$, $a = 1$, $c = k$.',
+          '$36 - 4k = 0$ nach $k$ auflösen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
       ),
     ],
     // [2] Vieta
@@ -6188,9 +6331,9 @@ $$D = b^2 - 4ac = 16 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad k = 4$$
           'Negative Lösungen möglich.',
         ],
         {
-          1: 'Produkt stimmt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Vieta funktioniert immer.',
+          1: 'Das Produkt $1 \\cdot 2 = 2$ ist korrekt — der Fehler liegt nicht im Produkt, sondern im Vorzeichen der Summe. Vieta für $x^2 + px + q$: Summe $= -p$, also bei $p = 3$ ist Summe $= -3$, nicht $+3$.',
+          2: 'Probe widerlegt $x_1 = 1, x_2 = 2$: $1^2 + 3 \\cdot 1 + 2 = 6 \\neq 0$. Die korrekten Lösungen sind $x_1 = -1, x_2 = -2$: $1 - 3 + 2 = 0$ ✓ und $4 - 6 + 2 = 0$ ✓. Schüler-Fehler: Vorzeichen bei $-p$ vergessen.',
+          3: 'Vieta gilt sehr wohl auch für negative Koeffizienten — die Aussage „Vieta funktioniert nicht bei…" ist ein Mythos. Die Formeln $x_1 + x_2 = -p$ und $x_1 \\cdot x_2 = q$ funktionieren universell für jede Normalform.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['vieta'] },
       ),
@@ -6264,6 +6407,89 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['vieta'] },
       ),
+      tf(
+        'Die Vieta-Formeln $x_1 + x_2 = -p$ und $x_1 \\cdot x_2 = q$ gelten nur in der Normalform $x^2 + px + q = 0$ — bei $ax^2 + bx + c = 0$ mit $a \\neq 1$ muss vorher durch $a$ dividiert werden.',
+        true,
+        `**Ansatz:** Vieta-Form ist mit $a = 1$ hergeleitet. Bei $a \\neq 1$ wird die Beziehung zu $x_1 + x_2 = -b/a$ und $x_1 \\cdot x_2 = c/a$.
+
+**Rechnung:** Bei $2x^2 - 10x + 12 = 0$: durch $2$ teilen ergibt $x^2 - 5x + 6 = 0$. Vieta liefert Summe $5$, Produkt $6$, also Lösungen $2$ und $3$. Direkte Anwendung „Summe = $10$, Produkt = $12$" wäre falsch.
+
+**Probe:** $2^2 - 10 \\cdot 2/2 + 6 = 0$ — bzw. $2 \\cdot 4 - 20 + 12 = 0$ ✓ in Originalform.
+
+**Typischer Fehler:** Vieta direkt mit $b$ und $c$ aus der allgemeinen Form anwenden, ohne durch $a$ zu teilen.`,
+        [
+          'Wo gilt Vieta in der einfachen Form? — Normalform.',
+          'Bei Leitkoeffizient $a \\neq 1$: erst Normalform herstellen.',
+          'Alternative: $-b/a$ und $c/a$ verwenden.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['vieta'] },
+      ),
+      ni(
+        'Eine quadratische Gleichung in Normalform $x^2 + px + q = 0$ hat die Lösungen $x_1 = 4$ und $x_2 = -3$. Wie groß ist $p$?',
+        -1, 0, '',
+        `**Ansatz:** Vieta: $x_1 + x_2 = -p$. Aus der Summe der gegebenen Lösungen folgt $-p$, daraus $p$.
+
+**Rechnung:** $x_1 + x_2 = 4 + (-3) = 1$. Also $-p = 1 \\Rightarrow p = -1$.
+
+**Probe:** Vollständige Gleichung $x^2 - x - 12 = 0$ (mit $q = x_1 \\cdot x_2 = -12$). Einsetzen $x = 4$: $16 - 4 - 12 = 0$ ✓; $x = -3$: $9 + 3 - 12 = 0$ ✓.
+
+**Typischer Fehler:** Summe direkt als $p$ angeben — Vieta gibt aber $-p$ als Summe. Das Vorzeichen muss umgedreht werden.`,
+        [
+          'Vieta-Beziehung: $x_1 + x_2 = -p$.',
+          'Berechne erst die Summe $4 + (-3) = 1$.',
+          'Dann Vorzeichen umdrehen: $p = -1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['vieta'] },
+      ),
+      mc(
+        'Welche Lösungen hat $x^2 - 9x + 20 = 0$ nach Vieta?',
+        ['$x_1 = 4$ und $x_2 = 5$', '$x_1 = 2$ und $x_2 = 10$', '$x_1 = -4$ und $x_2 = -5$', '$x_1 = 1$ und $x_2 = 20$'],
+        0,
+        `**Ansatz:** Vieta: Zwei Zahlen mit Summe $-p = 9$ und Produkt $q = 20$ suchen.
+
+**Rechnung:** Faktorisiere $20 = 4 \\cdot 5$. Summe $4 + 5 = 9$ ✓ und Produkt $4 \\cdot 5 = 20$ ✓. Also $x_1 = 4$, $x_2 = 5$.
+
+**Probe:** $4^2 - 9 \\cdot 4 + 20 = 16 - 36 + 20 = 0$ ✓ und $5^2 - 9 \\cdot 5 + 20 = 25 - 45 + 20 = 0$ ✓.
+
+**Typischer Fehler:** Nur das Produkt prüfen und ein anderes Zahlenpaar mit Produkt $20$ wählen, ohne die Summe zu beachten — z. B. $(2, 10)$ oder $(1, 20)$ haben falsche Summen.`,
+        [
+          'Vieta: Summe = $-p = 9$, Produkt = $q = 20$.',
+          'Welche Faktorenpaare hat $20$? — $(1, 20)$, $(2, 10)$, $(4, 5)$.',
+          'Welches Paar erfüllt BEIDE Bedingungen?',
+        ],
+        {
+          1: 'Produkt stimmt ($2 \\cdot 10 = 20$), aber Summe $2 + 10 = 12 \\neq 9$. Vieta verlangt beide Bedingungen gleichzeitig.',
+          2: 'Produkt stimmt ($(-4)(-5) = 20$), aber Summe $-4 + (-5) = -9 \\neq +9$. Vorzeichen aller Lösungen vertauscht.',
+          3: 'Produkt stimmt ($1 \\cdot 20 = 20$), aber Summe $1 + 20 = 21 \\neq 9$. Faktorenpaar mit kleinerer Summe wählen — hier $(4, 5)$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['vieta'] },
+      ),
+      matching(
+        'Ordne jedem Lösungspaar die passende Normalform $x^2 + px + q = 0$ zu (Vieta).',
+        [
+          { left: '$x_1 = 2, \\; x_2 = 7$',     right: '$x^2 - 9x + 14 = 0$' },
+          { left: '$x_1 = -3, \\; x_2 = 4$',    right: '$x^2 - x - 12 = 0$' },
+          { left: '$x_1 = -1, \\; x_2 = -6$',   right: '$x^2 + 7x + 6 = 0$' },
+          { left: '$x_1 = 8, \\; x_2 = -3$',    right: '$x^2 - 5x - 24 = 0$' },
+        ],
+        `**Ansatz:** Aus den Lösungen mit Vieta die Koeffizienten bestimmen: $-p = x_1 + x_2$ und $q = x_1 \\cdot x_2$.
+
+**Rechnung:**
+- $(2, 7)$: Summe $9 \\Rightarrow p = -9$, Produkt $14 \\Rightarrow q = 14$. Polynom $x^2 - 9x + 14$.
+- $(-3, 4)$: Summe $1 \\Rightarrow p = -1$, Produkt $-12 \\Rightarrow q = -12$. Polynom $x^2 - x - 12$.
+- $(-1, -6)$: Summe $-7 \\Rightarrow p = 7$, Produkt $6 \\Rightarrow q = 6$. Polynom $x^2 + 7x + 6$.
+- $(8, -3)$: Summe $5 \\Rightarrow p = -5$, Produkt $-24 \\Rightarrow q = -24$. Polynom $x^2 - 5x - 24$.
+
+**Probe:** Jede Lösung in das jeweilige Polynom einsetzen — Ergebnis $0$ bestätigt die Zuordnung.
+
+**Typischer Fehler:** Vorzeichen bei $-p$ vergessen — also Summe direkt als $p$ einsetzen, was zu vertauschten Lösungen führt.`,
+        [
+          'Berechne pro Paar Summe und Produkt.',
+          'Summe → $-p$ (Vorzeichen drehen!), Produkt → $q$.',
+          'Setze in $x^2 + px + q$ ein und vergleiche mit den Optionen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['vieta'] },
+      ),
     ],
     // [3] Faktorisierte Form
     3: [
@@ -6301,9 +6527,9 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
           '$x + 5 = 0 \\Rightarrow x = -5$.',
         ],
         {
-          1: 'Vorzeichen der Nullstellen verwechselt.',
-          2: 'Keine Nullstelle.',
-          3: 'Produkt ist nicht die Summe — das ist keine Regel.',
+          1: 'Du hast die Vorzeichen umgedreht: $x = -2$ würde aus $(x+2)$ kommen, nicht aus $(x-2)$. Aus $(x-2) = 0$ folgt $x = +2$, aus $(x+5) = 0$ folgt $x = -5$. Vorzeichenregel: Aus $(x - a)$ wird $x = +a$.',
+          2: 'Du hast vermutlich beide Faktoren addiert oder summiert, dabei kommt $-3$ heraus. Aber Faktorisierung funktioniert per Produkt-gleich-Null: jeder Faktor wird einzeln auf Null gesetzt. Lösungen: $x = 2$ aus dem ersten und $x = -5$ aus dem zweiten Faktor.',
+          3: 'Du hast die Faktoren multipliziert: $2 \\cdot (-5) = -10$. Das gibt aber den konstanten Term im ausmultiplizierten Polynom, nicht die Nullstellen. Nullstellen findest du, indem jeder Faktor einzeln Null gesetzt wird: $x = 2$ und $x = -5$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
       ),
@@ -6346,9 +6572,9 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
           'Konstanter Term der ausmultiplizierten Form.',
         ],
         {
-          1: 'Summe wäre $-3 + (-5) = -8$, das stimmt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Mittelterm $-8x$ ist korrekt.',
+          1: 'Du hast den Mittelterm beanstandet, aber der ist korrekt: $-3 + (-5) = -8$, also Mittelterm $-8x$. Der echte Fehler ist im konstanten Glied: $(-3)(-5) = +15$, nicht $-15$.',
+          2: 'Probe mit $x = 0$: $(0-3)(0-5) = (-3)(-5) = 15$, aber $0^2 - 8 \\cdot 0 - 15 = -15$. $15 \\neq -15$ — also stimmt die Schülerlösung nicht. Korrekt: $x^2 - 8x + 15$.',
+          3: 'Der Mittelterm $-8x$ ist tatsächlich korrekt — er stammt aus $-5x - 3x = -8x$. Der Fehler steckt nicht im Mittel-, sondern im Endterm: Minus mal Minus ergibt Plus, also $+15$.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['faktor-form'] },
       ),
@@ -6422,6 +6648,93 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
           3: 'Konstanter Term falsch: $1 \\cdot (-6) = -6$, nicht $+6$. Plus mal Minus = Minus.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
+      ),
+      mc(
+        'Faktorisiere $x^2 - 9$ vollständig.',
+        ['$(x - 3)(x + 3)$', '$(x - 9)(x + 1)$', '$(x - 3)^2$', '$(x + 3)^2$'],
+        0,
+        `**Ansatz:** Differenz zweier Quadrate — 3. binomische Formel: $a^2 - b^2 = (a - b)(a + b)$.
+
+**Rechnung:** Mit $a = x$ und $b = 3$ (denn $9 = 3^2$): $x^2 - 9 = x^2 - 3^2 = (x - 3)(x + 3)$.
+
+**Probe:** Ausmultiplizieren: $(x - 3)(x + 3) = x^2 + 3x - 3x - 9 = x^2 - 9$ ✓. Nullstellen: $x = 3$ und $x = -3$.
+
+**Typischer Fehler:** Den fehlenden $x$-Term übersehen und das Polynom als $(x - a)^2$ schreiben — das wäre $x^2 - 2ax + a^2$ mit Mittelterm. Hier fehlt aber der Mittelterm — typisches Anzeichen für Differenz zweier Quadrate.`,
+        [
+          'Erkenne die Form $a^2 - b^2$ — fehlender Mittelterm.',
+          '3. binomische Formel: $a^2 - b^2 = (a - b)(a + b)$.',
+          'Mit $a = x$, $b = 3$ einsetzen.',
+        ],
+        {
+          1: 'Du hast Faktorenpaare von $-9$ gesucht: $-9 = -9 \\cdot 1$. Probe: $(x-9)(x+1) = x^2 - 8x - 9 \\neq x^2 - 9$. Bei der Differenz zweier Quadrate gibt es keinen Mittelterm.',
+          2: '$(x - 3)^2 = x^2 - 6x + 9$ — das ist ein Quadrat mit Mittelterm $-6x$ und konstantem $+9$. Hier ist aber $-9$ konstant und Mittelterm fehlt — also keine Quadratform.',
+          3: '$(x + 3)^2 = x^2 + 6x + 9$ — auch hier Mittelterm $+6x$ und Konstante $+9$. Passt nicht zu $x^2 - 9$ (kein Mittelterm, $-9$ statt $+9$).',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
+      ),
+      ni(
+        'Eine quadratische Gleichung in Normalform $x^2 + px + q = 0$ hat die Nullstellen $x_1 = 5$ und $x_2 = -2$. Wie groß ist das absolute Glied $q$?',
+        -10, 0, '',
+        `**Ansatz:** Faktorisierte Form $(x - x_1)(x - x_2) = (x - 5)(x + 2)$ ausmultiplizieren — oder direkt Vieta: $q = x_1 \\cdot x_2$.
+
+**Rechnung:** $(x - 5)(x + 2) = x^2 + 2x - 5x - 10 = x^2 - 3x - 10$. Das absolute Glied ist $-10$. Per Vieta: $q = 5 \\cdot (-2) = -10$ ✓.
+
+**Probe:** $5^2 - 3 \\cdot 5 - 10 = 25 - 15 - 10 = 0$ ✓; $(-2)^2 - 3 \\cdot (-2) - 10 = 4 + 6 - 10 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — $5 \\cdot (-2) = -10$, nicht $+10$. Das Produkt zweier Zahlen verschiedenen Vorzeichens ist negativ.`,
+        [
+          'Faktorisierte Form: $(x - x_1)(x - x_2)$.',
+          'Konstanter Term beim Ausmultiplizieren: $(-x_1) \\cdot (-x_2) = x_1 \\cdot x_2$.',
+          'Vorzeichenregel: $5 \\cdot (-2) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktor-form', 'abc-formel'] },
+      ),
+      tf(
+        'Wenn $a(x - x_1)(x - x_2) = 0$ mit $a \\neq 0$ gilt, dann ist $x = x_1$ oder $x = x_2$ — andere Lösungen gibt es nicht.',
+        true,
+        `**Ansatz:** Produkt-gleich-Null-Prinzip. Ein Produkt reeller Zahlen ist genau dann Null, wenn mindestens ein Faktor Null ist.
+
+**Rechnung:** $a \\neq 0$ schließt aus, dass $a$ den Faktor übernimmt. Dann muss $(x - x_1) = 0$ oder $(x - x_2) = 0$ — also $x = x_1$ oder $x = x_2$.
+
+**Probe:** $a = 2$, $x_1 = 1$, $x_2 = 3$: $2(x-1)(x-3) = 0 \\Leftrightarrow (x-1)(x-3) = 0 \\Leftrightarrow x = 1$ oder $x = 3$. Andere Werte: z. B. $x = 2$: $2 \\cdot 1 \\cdot (-1) = -2 \\neq 0$.
+
+**Typischer Fehler:** Glauben, der Leitkoeffizient $a$ würde zusätzliche Lösungen erzeugen — er beeinflusst nur den Skalierungsfaktor, nicht die Anzahl oder Lage der Nullstellen.`,
+        [
+          'Produkt-Null-Regel: Ein Produkt $= 0$ ⇔ mindestens ein Faktor $= 0$.',
+          '$a \\neq 0$ → $a$ kann nicht Null werden.',
+          'Also bleibt: $(x - x_1) = 0$ oder $(x - x_2) = 0$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['faktor-form', 'vieta'] },
+      ),
+      mc(
+        'Ein Schüler faktorisiert $x^2 - 5x - 14 = (x - 7)(x - 2)$. Stimmt das?',
+        [
+          'Nein — $(x-7)(x-2) = x^2 - 9x + 14 \\neq x^2 - 5x - 14$. Korrekt: $(x - 7)(x + 2)$, denn Vieta liefert Lösungen $7$ und $-2$.',
+          'Nein — korrekt ist $(x + 7)(x - 2)$, also Vorzeichen beider Faktoren tauschen.',
+          'Ja — die Faktorisierung ist korrekt.',
+          'Nein — korrekt ist $(x - 7)^2$.',
+        ],
+        0,
+        `**Ansatz:** Mit Vieta die korrekten Lösungen bestimmen, dann mit der Schüler-Faktorisierung vergleichen.
+
+**Rechnung:** Vieta für $x^2 - 5x - 14$: Summe $= -p = 5$, Produkt $= q = -14$. Welche zwei Zahlen? $7 + (-2) = 5$ ✓ und $7 \\cdot (-2) = -14$ ✓. Also $x_1 = 7$, $x_2 = -2$. Faktorisierung: $(x - 7)(x - (-2)) = (x - 7)(x + 2)$.
+
+Schüler-Probe: $(x - 7)(x - 2) = x^2 - 9x + 14$ — Mittelterm und konstanter Term beide falsch.
+
+**Probe:** $(x - 7)(x + 2) = x^2 + 2x - 7x - 14 = x^2 - 5x - 14$ ✓.
+
+**Typischer Fehler:** Vorzeichen des zweiten Faktors falsch übernehmen — bei Lösung $x_2 = -2$ wird der Faktor $(x - (-2)) = (x + 2)$, NICHT $(x - 2)$.`,
+        [
+          'Bestimme Vieta-Lösungen: Summe $5$, Produkt $-14$.',
+          'Welches Zahlenpaar erfüllt BEIDE Bedingungen?',
+          'Faktor zur Lösung $x_i$: $(x - x_i)$ — Vorzeichen genau beachten.',
+        ],
+        {
+          1: '$(x + 7)(x - 2)$ ergibt Summe der Lösungen $-7 + 2 = -5$, also Mittelterm $+5x$ in der Normalform — passt nicht zu $-5x$ in der Aufgabe.',
+          2: 'Probe widerlegt: $(x-7)(x-2) = x^2 - 9x + 14$. Sowohl Mittelterm ($-9$ statt $-5$) als auch konstanter Term ($+14$ statt $-14$) stimmen nicht.',
+          3: '$(x-7)^2 = x^2 - 14x + 49$ — passt weder zu $-5x$ noch zu $-14$. Außerdem hätte Doppelwurzel $D = 0$ verlangt; hier ist $D = 25 + 56 = 81 > 0$, also zwei verschiedene Lösungen.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['faktor-form'] },
       ),
     ],
   },

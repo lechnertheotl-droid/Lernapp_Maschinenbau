@@ -852,7 +852,19 @@ $$x_{1,2} = \\dfrac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$
 **Satz von Vieta** (für $x^{2} + px + q = 0$):
 $$x_{1} + x_{2} = -p, \\qquad x_{1} \\cdot x_{2} = q$$
 
-Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
+Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!
+
+**Faktorisierte Form** (mit Lösungen $x_1, x_2$):
+$$ax^{2} + bx + c = a \\cdot (x - x_{1})(x - x_{2})$$
+
+Nullstellen direkt ablesbar — Produkt $= 0$ genau dann, wenn ein Faktor $= 0$. Bei doppelter Lösung wird daraus $a(x - x_1)^2$.
+
+| Form | Anwendung | Beispiel |
+|---|---|---|
+| Normalform $x^2 + px + q$ | pq-Formel, Vieta | $x^2 - 5x + 6$ |
+| Allgemein $ax^2 + bx + c$ | abc-Formel | $2x^2 - 8x + 6$ |
+| Faktorisiert $a(x-x_1)(x-x_2)$ | Nullstellen sofort sichtbar | $(x-2)(x-3)$ |
+| Scheitelpunktform $a(x-d)^2 + e$ | Scheitel $(d, e)$ | $(x - 2{,}5)^2 - 0{,}25$ |`,
       },
       {
         id: 'alg-2-2-s3', type: 'visualization', title: 'Parabel und Nullstellen',
