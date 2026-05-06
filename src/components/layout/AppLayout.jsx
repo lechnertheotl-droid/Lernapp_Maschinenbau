@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { MobileNav } from './MobileNav'
+import { useGamificationSync } from '@/hooks/useGamificationSync'
+import { LevelUpModal } from '@/components/gamification/LevelUpModal'
 
 /**
  * Scrollt bei Routenwechsel automatisch nach oben. React Router v6 tut das
@@ -24,6 +26,8 @@ export function AppLayout() {
   // innerhalb einer Lektion via querystring/hash) nicht bei jedem Sub-State neu fadet.
   const fadeKey = '/' + (pathname.split('/')[1] ?? '')
   const inLesson = LESSON_PATH_RE.test(pathname)
+
+  const { pendingLevelUp, acknowledgeLevelUp } = useGamificationSync()
 
   // iOS Safari behält nach `orientationchange` (Landscape→Portrait) gelegentlich
   // einen Layout-Zoom > 1.0. Toggle-Trick: kurzzeitig `maximum-scale=1` setzen
@@ -55,6 +59,12 @@ export function AppLayout() {
         <Outlet />
       </main>
       {!inLesson && <MobileNav />}
+      <LevelUpModal
+        isOpen={!!pendingLevelUp}
+        onClose={acknowledgeLevelUp}
+        level={pendingLevelUp?.to ?? 1}
+        rank={pendingLevelUp?.rank ?? ''}
+      />
     </div>
   )
 }

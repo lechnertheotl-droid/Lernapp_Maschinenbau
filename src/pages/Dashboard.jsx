@@ -5,6 +5,7 @@ import { getPracticeExercisesForTopic } from '@/content/practice/index'
 import { TopicGrid } from '@/components/topics/TopicGrid'
 import { TopicSearchAndFilter } from '@/components/topics/TopicSearchAndFilter'
 import { PathCard } from '@/components/path/PathCard'
+import { DailyQuestsCard } from '@/components/gamification/DailyQuestsCard'
 import { buildLearningPath, computePathProgress } from '@/utils/learningPath'
 import { topicLevelOf } from '@/utils/topicLevels'
 
@@ -56,6 +57,9 @@ export function Dashboard() {
         streak={state.streak}
         totalCompletedLessons={totalCompleted}
       />
+
+      {/* ── Tages-/Wochen-Quests ─────────────────────────────────── */}
+      <DailyQuestsCard />
 
       {/* ── Themen: Suche + Filter + Grid ────────────────────────── */}
       <div>

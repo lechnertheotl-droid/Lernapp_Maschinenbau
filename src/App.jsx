@@ -19,6 +19,7 @@ const TopicEntryQuiz = lazyNamed(() => import('@/pages/TopicEntryQuiz'), 'TopicE
 const Formelsammlung = lazyNamed(() => import('@/pages/Formelsammlung'), 'Formelsammlung')
 const Achievements   = lazyNamed(() => import('@/pages/Achievements'),   'Achievements')
 const More           = lazyNamed(() => import('@/pages/More'),           'More')
+const Profil         = lazyNamed(() => import('@/pages/Profil'),         'Profil')
 const Settings       = lazyNamed(() => import('@/pages/Settings'),       'Settings')
 const LessonSummary  = lazyNamed(() => import('@/pages/LessonSummary'),  'LessonSummary')
 const Lehrplan       = lazyNamed(() => import('@/pages/Lehrplan'),       'Lehrplan')
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="formelsammlung" element={<Formelsammlung />} />
           <Route path="erfolge" element={<Achievements />} />
           <Route path="mehr" element={<More />} />
+          <Route path="profil" element={<Profil />} />
           <Route path="topics/:topicId" element={<TopicDetail />} />
           <Route path="topics/:topicId/einstiegstest" element={<TopicEntryQuiz />} />
           <Route path="topics/:topicId/:lessonId" element={<LessonView />} />

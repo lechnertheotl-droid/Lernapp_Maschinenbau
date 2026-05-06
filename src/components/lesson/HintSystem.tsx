@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { getNextHint } from '@/utils/hints'
 import { MathText } from '@/components/ui/MathText'
+import { useAppDispatch } from '@/context/AppContext'
+import { ACTIONS } from '@/context/appReducer'
 
 interface Props {
   hints?: string[]
   disabled?: boolean
+  // Wenn lessonId gesetzt ist: jeder Tipp-Open zählt für das 2. Stern-Kriterium.
+  lessonId?: string
 }
 
-export function HintSystem({ hints = [], disabled }: Props) {
+export function HintSystem({ hints = [], disabled, lessonId }: Props) {
   const [currentIndex, setCurrentIndex] = useState(-1)
+  const dispatch = useAppDispatch()
 
   if (!hints.length) return null
 
@@ -29,6 +34,9 @@ export function HintSystem({ hints = [], disabled }: Props) {
           onClick={() => {
             const { index } = getNextHint(currentIndex, hints)
             setCurrentIndex(index)
+            if (lessonId) {
+              dispatch({ type: ACTIONS.TRACK_HINT_USED, lessonId })
+            }
           }}
           className="self-start font-mono text-xs font-black text-primary-700 hover:text-primary-900 underline underline-offset-4 transition-colors tap-highlight-none"
         >

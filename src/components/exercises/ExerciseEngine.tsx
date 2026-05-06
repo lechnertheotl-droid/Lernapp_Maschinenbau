@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense, type ComponentType } from 'react'
-import { useAppDispatch } from '@/context/AppContext'
+import { useAppDispatch, useAppState } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getExercise } from '@/content/index'
 import { getEncouragementMessage } from '@/utils/feedbackGenerator'
@@ -14,6 +14,12 @@ import { FillInBlank,    validate as validateFIB } from './FillInBlank'
 import { MultiStepExercise, validate as validateMS } from './MultiStepExercise'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { FeedbackContent, FeedbackActions } from '@/components/lesson/FeedbackDisplay'
+import { ComboBadge } from '@/components/gamification/ComboBadge'
+import { XpFloater } from '@/components/gamification/XpFloater'
+import { Confetti } from '@/components/ui/Confetti'
+import { playCorrect, playWrong, playComboMilestone } from '@/gamification/sound'
+import { hapticCorrect, hapticWrong, hapticCombo } from '@/gamification/haptics'
+import { xpForCorrectAnswer, isComboMilestone } from '@/gamification/xpFormula'
 
 // FormulaSheet erst beim ersten Öffnen laden (groß durch die Formeldatenbank).
 const FormulaSheet = lazy(() => import('@/components/ui/FormulaSheet').then((m) => ({ default: m.FormulaSheet })))
@@ -56,16 +62,21 @@ interface Props {
 
 export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Props) {
   const dispatch = useAppDispatch()
+  const state = useAppState()
   const showToast = useToast() as (opts: { message: string; tone: string }) => void
   const exercise = getExercise(topicId, exerciseId) as ExerciseLike | null
 
   const [submitted, setSubmitted]   = useState(false)
   const [isCorrect, setIsCorrect]   = useState<boolean | null>(null)
   const [lastAnswer, setLastAnswer] = useState<unknown>(null)
-  const [streak, setStreak]         = useState(0)
   const [showFormulas, setShowFormulas] = useState(false)
   const [resetKey, setResetKey] = useState(0)
+  const [floaterKey, setFloaterKey] = useState(0)
+  const [floaterAmount, setFloaterAmount] = useState(0)
+  const [showMiniConfetti, setShowMiniConfetti] = useState(false)
   const feedbackPanelRef = useRef<HTMLDivElement>(null)
+
+  const combo = state.gamification.comboStreak
 
   useEffect(() => {
     if (submitted) {
@@ -74,6 +85,13 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
       })
     }
   }, [submitted])
+
+  // Mini-Confetti bei Combo-Milestone für 1.4s zeigen — selbst-aufräumend.
+  useEffect(() => {
+    if (!showMiniConfetti) return
+    const t = setTimeout(() => setShowMiniConfetti(false), 1400)
+    return () => clearTimeout(t)
+  }, [showMiniConfetti])
 
   if (!exercise) {
     return <div className="text-ink-soft text-sm font-mono">Aufgabe nicht gefunden: {exerciseId}</div>
@@ -97,7 +115,8 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
 
   const handleSubmit = (answer: unknown) => {
     const { isCorrect: correct } = validate(answer, exercise)
-    const newStreak = correct ? streak + 1 : 0
+    const newCombo = correct ? combo + 1 : 0
+    const xpAwarded = correct ? xpForCorrectAnswer(newCombo) : 0
 
     dispatch({
       type: ACTIONS.RECORD_ATTEMPT,
@@ -107,18 +126,35 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
       isCorrect: correct,
     })
 
-    // Kein Toast mehr bei normalem richtig/falsch — das fixe Feedback-Panel
-    // zeigt beides bereits deutlich. Toast nur noch als Streak-Belohnung.
+    // Sound + Haptik. Der Settings-Flag wird im AppLayout via setSoundEnabled/setHapticsEnabled
+    // mit dem State synchronisiert — diese Funktionen sind no-ops, wenn off.
     if (correct) {
-      const streakMsg = getEncouragementMessage(newStreak)
+      playCorrect()
+      hapticCorrect()
+      // XP-Floater (re-mount via key, damit Animation neu läuft)
+      setFloaterAmount(xpAwarded)
+      setFloaterKey((k) => k + 1)
+      // Combo-Milestone-Reward
+      if (isComboMilestone(newCombo)) {
+        playComboMilestone()
+        hapticCombo()
+        setShowMiniConfetti(true)
+      }
+    } else {
+      playWrong()
+      hapticWrong()
+    }
+
+    // Encouragement-Toast nur noch ab combo ≥ 5 — sonst zu viel Lärm.
+    if (correct && newCombo >= 5) {
+      const streakMsg = getEncouragementMessage(newCombo)
       if (streakMsg) {
-        showToast({ message: streakMsg, tone: newStreak >= 5 ? 'celebratory' : 'encouraging' })
+        showToast({ message: streakMsg, tone: 'celebratory' })
       }
     }
 
     setIsCorrect(correct)
     setLastAnswer(answer)
-    setStreak(newStreak)
     setSubmitted(true)
   }
 
@@ -131,10 +167,24 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4">
-        <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
-          // Aufgabe
-        </p>
+      <div
+        className={[
+          'relative bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4',
+          submitted && isCorrect === false ? 'motion-safe:animate-shake' : '',
+        ].filter(Boolean).join(' ')}
+      >
+        <div className="flex items-center justify-between gap-2">
+          <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
+            // Aufgabe
+          </p>
+          <ComboBadge combo={combo} pulse />
+        </div>
+
+        {/* XP-Floater — re-mount via key, animiert per CSS, dann unmount nach Anim */}
+        {floaterAmount > 0 && (
+          <XpFloater key={floaterKey} amount={floaterAmount} />
+        )}
+
         <Component
           key={resetKey}
           exercise={exercise}
@@ -142,7 +192,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
           disabled={submitted}
         />
 
-        <HintSystem hints={exercise.hints ?? []} disabled={submitted} />
+        <HintSystem hints={exercise.hints ?? []} disabled={submitted} lessonId={lessonId} />
 
         {!submitted && (
           <div className="flex justify-end">
@@ -173,6 +223,8 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
           />
         </div>
       )}
+
+      {showMiniConfetti && <Confetti variant="mini" />}
 
       <Suspense fallback={null}>
         {showFormulas && <FormulaSheet isOpen onClose={() => setShowFormulas(false)} topicId={topicId} />}

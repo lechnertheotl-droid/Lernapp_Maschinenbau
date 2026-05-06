@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reduced-Motion-Override gesteuert über Settings-Toggle.
+   data-reduced-motion="force" → alle Animationen praktisch deaktiviert.
+   data-reduced-motion="off"   → System-Präferenz wird ignoriert (User will Animationen).
+   nicht gesetzt              → Tailwind motion-safe:/motion-reduce: greifen wie üblich. */
+html[data-reduced-motion='force'] *,
+html[data-reduced-motion='force'] *::before,
+html[data-reduced-motion='force'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
