@@ -3006,21 +3006,21 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
       ),
       ni(
-        'Berechne $\\dfrac{2^{10}}{2^7}$.',
-        8, 0, '',
-        `**Ansatz:** Gleiche Basis, also Exponenten subtrahieren.
+        'Berechne $\\dfrac{7^9}{7^6}$.',
+        343, 0, '',
+        `**Ansatz:** Gleiche Basis bei Division: Exponenten subtrahieren, dann Restpotenz ausrechnen.
 
-**Rechnung:** $2^{10}/2^7 = 2^{10-7} = 2^3 = 8$.
+**Rechnung:** $7^9/7^6 = 7^{9-6} = 7^3 = 7 \\cdot 7 \\cdot 7 = 343$.
 
-**Probe:** $1024/128 = 8$. ✓
+**Probe:** $7^9 = 40\\,353\\,607$, $7^6 = 117\\,649$. $40\\,353\\,607 / 117\\,649 = 343$. ✓
 
-**Typischer Fehler:** $1024 - 128 = 896$ — Subtraktion der Werte statt der Exponenten.`,
+**Typischer Fehler:** Exponenten dividieren statt subtrahieren ($9/6 = 1{,}5$, also $7^{1{,}5}$ als Antwort) oder die Werte $7^9$ und $7^6$ direkt subtrahieren — die Subtraktion gilt für die Exponenten, nicht für die Werte.`,
         [
-          'Gleiche Basis $2$ — Exponenten subtrahieren.',
-          '$2^{10-7} = ?$',
-          '$2^3 = 8$.',
+          'Division gleicher Basis $\\Rightarrow$ Exponenten subtrahieren.',
+          '$7^{9-6} = 7^?$',
+          '$7^3 = 343$.',
         ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult'] },
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-div'] },
       ),
       mc(
         'Ein Schüler schreibt $x^2 \\cdot x^3 = x^6$. Wo liegt der Fehler?',
@@ -3084,6 +3084,56 @@ export const algebraSubGoalTasks = {
           'Dann durch Nenner: Exponenten subtrahieren.',
           '$3^5 = 243$.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+      // Bonus SG 0 — sorting · transfer · uses=[pot-mult, pot-div]
+      // Schritt-Reihenfolge bei kombiniertem Bruch — typische Prüfungssituation.
+      sorting(
+        'Bringe die Schritte zur Vereinfachung von $\\dfrac{x^5 \\cdot x^2}{x^3}$ in die richtige Reihenfolge.',
+        [
+          'Erkennen: alle drei Potenzen haben gleiche Basis $x$, Potenzgesetze sind anwendbar.',
+          'Zähler zusammenfassen — Multiplikation gleicher Basen: $x^5 \\cdot x^2 = x^{5+2} = x^7$.',
+          'Bruch reduzieren — Division gleicher Basen: $x^7 / x^3 = x^{7-3} = x^4$.',
+          'Endergebnis hinschreiben: $x^4$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Bei kombinierten Termen mit Multiplikation **und** Division immer erst gleichartige Operationen pro Ebene zusammenfassen, dann Ebenen miteinander verrechnen.
+
+**Rechnung:** Zähler: $x^5 \\cdot x^2 = x^7$ (Addition der Exponenten). Bruch: $x^7/x^3 = x^4$ (Subtraktion der Exponenten). Ergebnis: $x^4$.
+
+**Probe:** Setze $x = 2$: Zähler $= 32 \\cdot 4 = 128$, Nenner $= 8$, Bruch $= 16 = 2^4$. ✓
+
+**Typischer Fehler:** Direkt die Exponenten als $5+2-3 = 4$ rechnen funktioniert hier zufällig — wer aber die Reihenfolge nicht versteht, baut bei $\\frac{x^5}{x^2 \\cdot x^3}$ einen Vorzeichenfehler ein. Erst Operationen *pro Ebene*, dann zwischen Ebenen.`,
+        [
+          'Welche Operation ist im Zähler? Welche zwischen Zähler und Nenner?',
+          'Erst Zähler vereinfachen ($\\cdot$), dann durch Nenner teilen ($/$).',
+          '$5+2 = 7$, dann $7-3 = 4$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+      // Bonus SG 0 — Prüfungs-MC · transfer · uses=[pot-mult, pot-div]
+      // Doppelter Bruch mit gemischten Operationen — klassische Klausuraufgabe.
+      mc(
+        '[PRÜFUNG] Vereinfache $\\dfrac{a^7 \\cdot a^3}{a^4 \\cdot a^2}$.',
+        ['$a^4$', '$a^{16}$', '$a^{8}$', '$a^{6}$'],
+        0,
+        `**Ansatz:** Zähler und Nenner getrennt mit der Mult-Regel zusammenfassen, dann mit der Div-Regel verrechnen.
+
+**Rechnung:** Zähler: $a^7 \\cdot a^3 = a^{7+3} = a^{10}$. Nenner: $a^4 \\cdot a^2 = a^{4+2} = a^6$. Bruch: $a^{10}/a^6 = a^{10-6} = a^4$.
+
+**Probe:** Mit $a=2$: Zähler $128 \\cdot 8 = 1024$, Nenner $16 \\cdot 4 = 64$, Bruch $1024/64 = 16 = 2^4$. ✓
+
+**Typischer Fehler:** Mult- und Div-Regel vermischen, etwa alle vier Exponenten addieren ($7+3+4+2=16$) oder die Klammer um den Nenner ignorieren.`,
+        [
+          'Zähler und Nenner zuerst getrennt zusammenfassen.',
+          '$7+3=10$ im Zähler, $4+2=6$ im Nenner.',
+          'Bruch: $a^{10-6}$.',
+        ],
+        {
+          1: 'Hier wurden alle vier Exponenten addiert ($7+3+4+2=16$). Das wäre richtig, wenn alle vier Faktoren im **Zähler** stünden — aber hier stehen zwei im Nenner und müssen subtrahiert werden.',
+          2: 'Hier wurde die Klammer um den Nenner missachtet: $\\frac{a^7 \\cdot a^3}{a^4} \\cdot a^2 = a^{10-4+2} = a^8$. Tatsächlich gilt aber $\\frac{Z}{N_1 \\cdot N_2}$, also beide Nenner-Faktoren wirken im Nenner.',
+          3: 'Hier wurde nur einer der beiden Nenner-Faktoren berücksichtigt: $a^{10}/a^4 = a^6$. Der zweite Nenner-Faktor $a^2$ ist vergessen worden — er gehört auch in den Nenner und gibt zusätzliches Subtrahieren.',
+        },
         { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
       ),
     ],
@@ -3343,6 +3393,34 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 2, uses: ['pot-negativ', 'pot-mult'] },
       ),
+      // Bonus SG 2 — matching · recognize · uses=[pot-null, pot-negativ]
+      // Zuordnung Term ↔ Wert mit Basis 4 — übt Vorzeichen-Handling visuell.
+      matching(
+        'Ordne jedem Ausdruck mit Basis $4$ den korrekten Zahlenwert zu.',
+        [
+          { left: '$4^0$',     right: '$1$' },
+          { left: '$4^1$',     right: '$4$' },
+          { left: '$4^{-1}$',  right: '$\\dfrac{1}{4}$' },
+          { left: '$4^{-2}$',  right: '$\\dfrac{1}{16}$' },
+        ],
+        `**Ansatz:** Drei Regeln gleichzeitig parat haben — $x^0 = 1$, $x^1 = x$, $x^{-n} = 1/x^n$.
+
+**Rechnung:**
+· $4^0 = 1$ (Konvention für $x \\neq 0$).
+· $4^1 = 4$ (Definitionsbasis).
+· $4^{-1} = 1/4^1 = 1/4$ (negativer Exponent ⇒ Kehrwert).
+· $4^{-2} = 1/4^2 = 1/16$ (negativer Exponent ⇒ Kehrwert von $4^2 = 16$).
+
+**Probe:** $4^{-2} \\cdot 4^2 = 4^0 = 1$. Also muss $4^{-2} = 1/16$ gelten. ✓
+
+**Typischer Fehler:** $4^{-2}$ als $-16$ lesen — Vorzeichen wirkt aber NICHT auf den Wert, sondern macht den Kehrwert.`,
+        [
+          'Negativer Exponent $\\Rightarrow$ Kehrwert.',
+          'Hochzahl $0$: immer $1$ (für $x \\neq 0$).',
+          'Erst Betrag rechnen ($4^2 = 16$), dann Kehrwert ($1/16$).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pot-null', 'pot-negativ'] },
+      ),
     ],
     // [3] Produkt/Quotient in Klammer
     3: [
@@ -3466,6 +3544,25 @@ export const algebraSubGoalTasks = {
           'Exponent $6$.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['pot-quotient', 'pot-produkt'] },
+      ),
+      // Bonus SG 3 — Prüfungs-NI · transfer · uses=[pot-produkt, pot-potenz]
+      // Vorzeichen-Falle (klassischer Klausur-Fehler): Minus aus Klammer ungerade hoch.
+      ni(
+        '[PRÜFUNG] Vereinfache $(-2x^2)^3$ und gib den **Vorfaktor** (also den reinen Zahlen-Anteil ohne $x$) an.',
+        -8, 0, '',
+        `**Ansatz:** Produkt-in-Klammer-Regel: jeder Faktor in der Klammer (auch das Vorzeichen!) wird mit dem Exponenten potenziert. Bei ungeradem Exponenten überlebt das Minus.
+
+**Rechnung:** $(-2x^2)^3 = (-2)^3 \\cdot (x^2)^3 = -8 \\cdot x^{2 \\cdot 3} = -8 x^6$. Vorfaktor $= -8$.
+
+**Probe:** $x = 1$: $(-2 \\cdot 1)^3 = (-2)^3 = -8$, und $-8 \\cdot 1^6 = -8$. ✓
+
+**Typischer Fehler:** Das Minus „retten" und $+8 x^6$ schreiben — funktioniert nur bei **geradem** Exponenten. Bei $(-2)^3 = -8$ überlebt das Vorzeichen, weil $3$ ungerade ist. Auch falsch: $(x^2)^3 = x^5$ statt $x^6$.`,
+        [
+          'Klammer mit Produkt hoch $n$ — jeden Faktor einzeln, **inklusive Vorzeichen**.',
+          '$(-2)^3$: $-2 \\cdot -2 \\cdot -2 = ?$ — ungerade Anzahl Minuszeichen.',
+          '$(-2)^3 = -8$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pot-produkt', 'pot-potenz'] },
       ),
     ],
   },

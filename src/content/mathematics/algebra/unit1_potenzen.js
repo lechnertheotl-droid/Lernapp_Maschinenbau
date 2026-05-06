@@ -24,7 +24,7 @@ export const exercises_alg_u1 = {
       2: 'Der Faktor $2$ kommt aus dem Nichts. Bei $x^{3} \\cdot x^{4}$ wird kein Vorfaktor erzeugt — es entsteht nur ein höherer Exponent. Korrekt: $x^{7}$ ohne Vorfaktor.',
       3: 'Das wäre $x^{3+4-6}$ oder ähnliches — passt zu keiner Potenzregel. Die Regel lautet: gleiche Basis, Multiplikation → Exponenten addieren, also $x^{3+4}=x^{7}$.',
     },
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult'] },
 },
   'ex-alg-1-1-b': {
     id: 'ex-alg-1-1-b', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -48,7 +48,7 @@ export const exercises_alg_u1 = {
       2: '$x^{34}$ entsteht durch Aneinanderhängen der Ziffern — kein Rechenschritt. Korrekt ist $3 \\cdot 4 = 12$, also $x^{12}$.',
       3: 'Hier wurde der äußere Exponent als Vorfaktor gesehen. Aber $(x^{3})^{4}$ bedeutet $x^{3}\\cdot x^{3}\\cdot x^{3}\\cdot x^{3} = x^{12}$, kein $4\\cdot x^{3}$.',
     },
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['pot-potenz'] },
 },
   'ex-alg-1-1-c': {
     id: 'ex-alg-1-1-c', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -74,7 +74,7 @@ export const exercises_alg_u1 = {
       2: '$x^{1/3}$ ist die dritte Wurzel — das entspricht einem *positiven Bruch* als Exponent, nicht einem negativen ganzzahligen. Regel: $x^{-3} = 1/x^{3}$.',
       3: 'Das sieht aus wie Faktor-Zerlegung ($3 \\cdot x$), hat aber nichts mit Exponenten zu tun. Ein negativer Exponent erzeugt einen Kehrwert: $x^{-3} = 1/x^{3}$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['pot-negativ'] },
 },
   'ex-alg-1-1-d': {
     id: 'ex-alg-1-1-d', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -98,7 +98,7 @@ export const exercises_alg_u1 = {
       1: 'Hier wurde $2$ mit $3$ *multipliziert* statt *potenziert* — klassischer Fehler. $2^{3}$ ist $8$, nicht $6$. Regel: $(2)^{3} = 2\\cdot 2\\cdot 2 = 8$.',
       3: 'Der Exponent von $x$ ist falsch: $(x^{2})^{3} = x^{2\\cdot 3} = x^{6}$, nicht $x^{5}$. Bei Potenz einer Potenz werden die Exponenten multipliziert, nicht addiert.',
     },
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['pot-produkt', 'pot-potenz'] },
 },
   'ex-alg-1-1-e': {
     id: 'ex-alg-1-1-e', lessonId: 'alg-1-1', type: 'number-input',
@@ -116,7 +116,7 @@ export const exercises_alg_u1 = {
       'Regel: $x^{a}/x^{b} = x^{a-b}$.',
       'Rechne $10-7$ und dann $2$ hoch dieses Ergebnis.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pot-div'] },
 },
   'ex-alg-1-1-mastery': {
     id: 'ex-alg-1-1-mastery', lessonId: 'alg-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -143,7 +143,7 @@ export const exercises_alg_u1 = {
       2: 'Hier wurden die Exponenten addiert ($4+2=6$, $2+5=7$) statt subtrahiert. Die Regel für Divisionen gleicher Basen lautet $x^{a}/x^{b} = x^{a-b}$, also $x^{4-2}=x^{2}$ und $y^{2-5}=y^{-3}$.',
       3: 'Hier wurde die Subtraktion falsch herum gemacht: $y^{5-2} = y^{3}$ landete im Zähler. Korrekt ist $y^{2-5} = y^{-3}$, was $1/y^{3}$ in den Nenner schiebt. Auch $x$ steht korrekt im Zähler, nicht im Nenner.',
     },
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['pot-div', 'pot-negativ'] },
 },
 
   // ───────────── Lektion 2: Wurzeln & gebrochene Exponenten ─────────────
@@ -463,6 +463,32 @@ const lessons_alg_u1 = [
 1. Klammer ansehen: Steht eine Potenz *außen*? Dann Regel "Potenz der Potenz" oder "Produkt in Klammer".
 2. Stehen zwei Potenzen *nebeneinander*? Dann addieren bei Multiplikation, subtrahieren bei Division.
 3. Negative Exponenten zuletzt in Kehrwerte umschreiben — sauberere Endform.`,
+      },
+      {
+        id: 'alg-1-1-s2b', type: 'explanation-intuitive', title: 'Anschauung: So wachsen verschiedene Potenzen',
+        content: `Bevor du in die Regeln einsteigst — sieh dir an, wie sich Potenzen *gleichen Arguments, aber verschiedener Exponenten* verhalten:
+
+- $y = x$: lineares Wachstum (bei $x=2$ gleich $2$).
+- $y = x^{2}$: Parabel, *quadratisches* Wachstum (bei $x=2$ gleich $4$).
+- $y = x^{3}$: Kubisch, noch steiler (bei $x=2$ gleich $8$).
+- $y = x^{-1} = 1/x$: Hyperbel — fällt ab, Kehrwert!
+
+Ein **negativer Exponent** dreht das Verhalten um: aus Wachstum wird Abfall (Hyperbel statt Parabel). Der **nullte Exponent** $x^{0} = 1$ ist die waagrechte Gerade $y=1$ — passt genau zwischen die wachsenden ($n>0$) und die fallenden ($n<0$) Potenzen.`,
+      },
+      {
+        id: 'alg-1-1-s2c', type: 'visualization', title: 'Interaktiv: Potenzen $x^{n}$ vergleichen',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x, color: '#94a3b8', label: 'x' },
+            { fn: (x) => x * x, color: '#3b82f6', label: 'x²' },
+            { fn: (x) => x * x * x, color: '#8b5cf6', label: 'x³' },
+            { fn: (x) => 1 / x, color: '#ef4444', label: '1/x' },
+          ],
+          xRange: [-3, 3],
+          yRange: [-4, 8],
+          showGrid: true,
+        },
       },
       { id: 'alg-1-1-s3', type: 'exercise', title: 'Aufgabe 1 — Multiplikation', exerciseRef: 'ex-alg-1-1-a' },
       { id: 'alg-1-1-s4', type: 'exercise', title: 'Aufgabe 2 — Potenz einer Potenz', exerciseRef: 'ex-alg-1-1-b' },
