@@ -980,6 +980,62 @@ Nullstellen direkt ablesbar — Produkt $= 0$ genau dann, wenn ein Faktor $= 0$.
 **Horner-Schema:** Eine schnelle, kompakte Methode für Polynomwert-Berechnung und Division — besonders bei Klausuren zeitsparend!`,
       },
       {
+        id: 'alg-2-3-s1formal', type: 'explanation-formal',
+        title: 'Polynomdivision · Horner-Schema · Linearfaktor-Zerlegung',
+        priority: 'wichtig',
+        content: `**Rationaler Wurzelsatz** (für ganzzahlige Koeffizienten):
+
+Wenn $P(x) = a_n x^n + \\ldots + a_0$ eine rationale Nullstelle $p/q$ (vollständig gekürzt) hat, dann teilt $p$ das absolute Glied $a_0$ und $q$ den Leitkoeffizienten $a_n$. Bei Leitkoeffizient $1$: ganzzahlige Nullstellen sind genau Teiler von $a_0$.
+
+| Polynom | Absolutglied | Kandidaten |
+|---|---|---|
+| $x^3 - 6x^2 + 11x - 6$ | $-6$ | $\\pm 1, \\pm 2, \\pm 3, \\pm 6$ |
+| $x^4 + x^3 - 7x^2 - x + 6$ | $6$ | $\\pm 1, \\pm 2, \\pm 3, \\pm 6$ |
+
+**Restsatz** (Polynomdivision):
+
+$$P(x) : (x - a) \\quad \\text{liefert Rest } P(a)$$
+
+Insbesondere: $P(a) = 0 \\Leftrightarrow (x - a) \\text{ teilt } P(x)$ ohne Rest (Linearfaktorsatz).
+
+**Polynomdivision** — Schema wie schriftliche Division:
+
+1. Höchster Term: $\\dfrac{a_n x^n}{x} = a_n x^{n-1}$ als ersten Quotienten-Term.
+2. Multiplikation mit Divisor, Subtraktion vom Dividenden.
+3. Mit dem Rest weitermachen, bis Grad $<$ Grad des Divisors.
+
+Bei lückenhaften Polynomen fehlende Potenzen mit $0$ ergänzen!
+
+**Horner-Schema** — kompakte Tabelle für $P(x_0)$ und Polynomdivision in einem:
+
+| Koeffizienten | $a_n$ | $a_{n-1}$ | $\\ldots$ | $a_0$ |
+|---|---|---|---|---|
+| Vorgabe |  | Vorgänger $\\cdot x_0$ | $\\ldots$ | $\\ldots$ |
+| Summe | $a_n$ | $b_{n-1}$ | $\\ldots$ | $P(x_0)$ |
+
+Letzte Zahl in der Summenzeile $= P(x_0)$. Die ersten $n$ Zahlen sind die Koeffizienten des Quotienten $P(x) / (x - x_0)$.
+
+**Linearfaktor-Zerlegung** (bei reell zerfallendem Polynom):
+
+$$P(x) = a_n \\cdot (x - x_1)^{m_1} (x - x_2)^{m_2} \\cdots (x - x_k)^{m_k}$$
+
+mit $\\sum m_i = n$ (Vielfachheiten zur Grad-Summe). Doppelte Nullstelle $\\Leftrightarrow$ Vielfachheit $2$.
+
+**Vieta für Kubik** $x^3 + a x^2 + b x + c = 0$ mit Nullstellen $x_1, x_2, x_3$:
+
+$$x_1 + x_2 + x_3 = -a, \\quad x_1 x_2 + x_1 x_3 + x_2 x_3 = b, \\quad x_1 x_2 x_3 = -c$$
+
+**Strategie bei ungelösten Kubik-Gleichungen:**
+
+| Lösungsweg | Wann anwenden |
+|---|---|
+| Rationaler Wurzelsatz + Polynomdivision | Erste Wahl bei ganzzahligen Koeffizienten |
+| Horner-Schema | Wenn schon eine Nullstelle bekannt — schnellere Division |
+| Substitution $x = y - a/3$ | Eliminiert $x^2$-Term, vorbereitend für Cardano |
+| Cardano-Formel | Reduzierte Form $y^3 + p y + q = 0$, allgemeine Lösung |
+| Numerisch (Newton) | Wenn keine rationale NS und Cardano zu komplex |`,
+      },
+      {
         id: 'alg-2-3-s1b', type: 'visualization',
         title: 'Drei Nullstellen geometrisch: $P(x) = x^{3} - 6x^{2} + 11x - 6$',
         visualizationId: 'function-graph',

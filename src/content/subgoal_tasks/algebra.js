@@ -6779,9 +6779,9 @@ Schüler-Probe: $(x - 7)(x - 2) = x^2 - 9x + 14$ — Mittelterm und konstanter T
           'Auch negative Vorzeichen.',
         ],
         {
-          1: 'Negative Kandidaten nicht ausschließen.',
-          2: 'Nur $\\pm 1$ deckt nicht alle Möglichkeiten.',
-          3: '$\\pm 4$ ist kein Teiler von $6$.',
+          1: 'Du hast die negativen Kandidaten ausgeschlossen — der rationale Wurzelsatz fordert aber alle Vorzeichen-Varianten der Teiler. Beispiel: $P(-1) = -1 - 4 - 1 + 6 = 0$ ist eine Nullstelle, die du verpasst hättest.',
+          2: 'Mit nur $\\pm 1$ als Kandidaten verpasst du andere Nullstellen wie $x = 2$ oder $x = -1$. Der rationale Wurzelsatz fordert ALLE Teiler des Absolutglieds, nicht nur die kleinsten.',
+          3: 'Du hast $4$ als Teiler von $6$ angenommen — $4$ teilt $6$ aber NICHT (denn $6/4 = 1{,}5$ ist nicht ganzzahlig). Korrekt sind nur ganzzahlige Teiler: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
       ),
@@ -6874,6 +6874,55 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           'Sobald $P(\\text{Wert}) = 0$ herauskommt, hast du die Nullstelle.',
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      ),
+      ni(
+        'Finde die kleinste positive ganzzahlige Nullstelle von $P(x) = x^3 + 2x^2 - 5x - 6$. Gib sie an.',
+        2, 0, '',
+        `**Ansatz:** Teiler des Absolutglieds $-6$: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$. Positive aufsteigend testen.
+
+**Rechnung:**
+- $P(1) = 1 + 2 - 5 - 6 = -8 \\neq 0$
+- $P(2) = 8 + 8 - 10 - 6 = 0$ ✓
+
+Die kleinste positive ganzzahlige Nullstelle ist $x = 2$.
+
+**Probe:** Polynomdivision $(x-2)$ liefert $x^2 + 4x + 3 = (x+1)(x+3)$. Damit $P(x) = (x-2)(x+1)(x+3)$ — alle drei Nullstellen $2, -1, -3$. Einsetzen: $(x-2) = 0$ bei $x=2$ ✓; $P(2) = 8 + 8 - 10 - 6 = 0$ ✓.
+
+**Typischer Fehler:** Bei $P(1) \\neq 0$ aufgeben — der Wurzelsatz fordert, ALLE Teiler systematisch durchzugehen, nicht nur den ersten. Bei $x = 2$ kommt die erste positive Nullstelle.`,
+        [
+          'Welche Teiler hat das Absolutglied $-6$? — $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
+          'Beginne mit $x = 1$ und arbeite dich aufsteigend hoch.',
+          'Bei $P(2) = 8 + 8 - 10 - 6 = 0$ hast du die kleinste positive Nullstelle.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      ),
+      mc(
+        'Welche ganzzahligen Kandidaten sollte man bei $P(x) = x^4 + x^3 - 7x^2 - x + 6$ als Nullstellen testen?',
+        [
+          '$\\pm 1, \\pm 2, \\pm 3, \\pm 6$',
+          '$\\pm 1$ bis $\\pm 7$',
+          'Nur Teiler des Leitkoeffizienten ($\\pm 1$)',
+          'Alle Teiler des höchsten und niedrigsten Koeffizienten',
+        ],
+        0,
+        `**Ansatz:** Rationaler Wurzelsatz: ganzzahlige Nullstellen teilen das Absolutglied — hier $6$.
+
+**Rechnung:** Teiler von $6$: $1, 2, 3, 6$. Mit Vorzeichen: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$. Probetest: $P(1) = 1 + 1 - 7 - 1 + 6 = 0$ ✓ — Nullstelle gefunden.
+
+**Probe:** $P(1) = 0$ ✓, weitere NS: $P(-1) = 1 - 1 - 7 + 1 + 6 = 0$ ✓, $P(2) = 16 + 8 - 28 - 2 + 6 = 0$ ✓, $P(-3) = 81 - 27 - 63 + 3 + 6 = 0$ ✓.
+
+**Typischer Fehler:** Den Mittelterm-Koeffizienten ($-7$) als Schlüssel betrachten — der rationale Wurzelsatz schaut NUR auf das absolute Glied (und ggf. den Leitkoeffizienten bei rationalen NS).`,
+        [
+          'Welcher Koeffizient ist relevant? — Nur das absolute Glied.',
+          'Hier: Absolutglied $6$.',
+          'Teiler von $6$ mit beiden Vorzeichen.',
+        ],
+        {
+          1: 'Du hast die Zahl $7$ aus dem $-7x^2$-Koeffizienten genommen — der ist aber irrelevant. Der rationale Wurzelsatz schaut nur auf das absolute Glied $6$, also Teiler $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
+          2: 'Bei Leitkoeffizient $1$ und ganzzahligen Nullstellen sind ALLE rationalen NS auch ganzzahlig — du brauchst nicht nur $\\pm 1$, sondern alle Teiler des Absolutglieds. Mit nur $\\pm 1$ würdest du $x = 2$ und $x = -3$ verpassen.',
+          3: 'Diese Regel gilt für RATIONALE Nullstellen $p/q$ — hier suchst du aber GANZZAHLIGE Nullstellen, da der Leitkoeffizient $1$ ist. Reduziert sich auf Teiler des Absolutglieds.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
       ),
     ],
     // [1] Polynomdivision
@@ -6974,9 +7023,9 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           '(Divisor)(Quotient) = Dividend.',
         ],
         {
-          1: 'Das ist keine Probe.',
-          2: 'Negative Vorzeichen sind in Polynomen völlig normal.',
-          3: 'Divisor ist $(x+1)$, nicht $x$.',
+          1: 'Du würdest den Dividend $= 2$ setzen — das prüft aber nichts. Die Polynomdivision ist eine Identität für ALLE $x$, nicht eine Gleichung mit der Lösung $2$. Korrekte Probe: Quotient $\\cdot$ Divisor $=$ Dividend ausmultiplizieren.',
+          2: 'Polynomdivisionen mit positiven Koeffizienten sind genauso gültig wie mit negativen — der Wertebereich der Koeffizienten ist irrelevant. Die richtige Probe ist eine algebraische Rückmultiplikation, keine Vorzeichenprüfung.',
+          3: 'Divisor ist tatsächlich $(x+1)$, nicht $x$ allein. Aber die Probe lautet nicht „durch $x$ teilen", sondern „mit dem Divisor $(x+1)$ multiplizieren": $(x+1)(x+2) = x^2 + 3x + 2$ ✓.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['polydiv'] },
       ),
@@ -7002,6 +7051,43 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           'Wiederholen bis Rest.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['polydiv'] },
+      ),
+      tf(
+        'Bei der Polynomdivision müssen Dividend und Divisor nach absteigenden Potenzen sortiert sein, fehlende Potenzen werden als $0 \\cdot x^k$ ergänzt.',
+        true,
+        `**Ansatz:** Polynomdivision wie schriftliche Division — die Stellen müssen passen.
+
+**Rechnung:** Beispiel $x^3 - 8 = x^3 + 0 \\cdot x^2 + 0 \\cdot x - 8$. Ohne die $0$-Spalten verschieben sich die Schritte und der Quotient wird falsch.
+
+**Probe:** $(x^3 + 0x^2 + 0x - 8) : (x - 2) = x^2 + 2x + 4$ Rest $0$ — exakt die 3. binom. Formel.
+
+**Typischer Fehler:** Lückenhafte Polynome direkt dividieren ohne $0$-Ergänzung — Quotient stimmt dann nicht.`,
+        [
+          'Was passiert bei lückenhaften Polynomen?',
+          'Fehlende Potenzen einfügen — als $0$.',
+          'Sonst verschieben sich die Stellen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['polydiv'] },
+      ),
+      ni(
+        'Führe $(2x^3 + 3x^2 - 1) : (x + 1)$ aus und gib den Koeffizienten des $x$-Terms im Quotienten an.',
+        1, 0, '',
+        `**Ansatz:** Polynomdivision mit ergänztem $0 \\cdot x$-Term im Dividenden.
+
+**Rechnung:** Schreibe als $2x^3 + 3x^2 + 0 \\cdot x - 1$. Polynomdivision durch $(x+1)$:
+$$\\begin{aligned} 2x^3 / x &= 2x^2 \\\\ 2x^2 (x+1) &= 2x^3 + 2x^2 \\\\ \\text{Rest:} \\quad x^2 + 0x - 1 \\\\ x^2 / x &= x \\\\ x(x+1) &= x^2 + x \\\\ \\text{Rest:} \\quad -x - 1 \\\\ -x/x &= -1 \\\\ -1 \\cdot (x+1) &= -x - 1 \\quad \\Rightarrow \\quad \\text{Rest } 0 \\end{aligned}$$
+
+Quotient: $2x^2 + x - 1$. Koeffizient des $x$-Terms: $1$.
+
+**Probe:** $(x+1)(2x^2 + x - 1) = 2x^3 + x^2 - x + 2x^2 + x - 1 = 2x^3 + 3x^2 - 1$ ✓.
+
+**Typischer Fehler:** Den fehlenden $x$-Term im Dividenden überspringen — dann passt die Stelle der Restbildung nicht und der Quotient kommt mit falscher Stelle heraus.`,
+        [
+          'Dividend lückenhaft? — $0 \\cdot x$ ergänzen.',
+          'Schritt-für-Schritt: höchster Grad zuerst, multiplizieren, subtrahieren.',
+          'Quotient lautet $2x^2 + x - 1$ — Koeffizient des $x$-Terms ist gefragt.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['polydiv'] },
       ),
       ni(
         'Führe $(x^3 - 8) : (x - 2)$ aus und gib den Koeffizienten des $x$-Terms im Quotienten an.',
@@ -7060,9 +7146,9 @@ Quotient: $x^2 + 2x + 4$. Koeffizient des $x$-Terms: $2$.
           'Also $P(x_0) = 0$.',
         ],
         {
-          1: 'Doch — genau das ist die Eigenschaft.',
-          2: 'Gilt für alle Grade.',
-          3: 'Gilt für alle Exponenten.',
+          1: 'Doch — genau das ist die Aussage des Linearfaktorsatzes: Aus Rest $= 0$ folgt $P(3) = 0$, also ist $x = 3$ Nullstelle. Das gilt unabhängig von Grad oder Form des Polynoms.',
+          2: 'Die Aussage gilt für JEDEN Grad ab $1$ — auch quadratisch oder linear. Ein einfaches Beispiel: $(x-3)$ teilt $x-3$ ohne Rest, und tatsächlich ist $x = 3$ die Nullstelle.',
+          3: 'Die Aussage gilt unabhängig von Exponenten — auch ungerade Polynomgrade ($P(x) = x^3 - 27 = (x-3)(x^2 + 3x + 9)$) zeigen den Zusammenhang: Rest $0 \\Leftrightarrow$ Nullstelle.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['polydiv-rest'] },
       ),
@@ -7129,6 +7215,40 @@ Quotient: $x^2 + 2x + 4$. Koeffizient des $x$-Terms: $2$.
         { stage: 'transfer', subGoal: 2, uses: ['polydiv-rest', 'rat-wurzel'] },
       ),
       ni(
+        'Welcher Rest entsteht bei der Polynomdivision $(x^3 - 4x + 5) : (x - 1)$? (Restsatz nutzen)',
+        2, 0, '',
+        `**Ansatz:** Restsatz: Rest von $P(x) : (x - a)$ ist $P(a)$ — keine vollständige Division nötig.
+
+**Rechnung:** Mit $a = 1$: $P(1) = 1 - 4 + 5 = 2$. Also Rest $= 2$.
+
+**Probe:** Polynomdivision liefert Quotient $x^2 + x - 3$ mit Rest $2$: $(x-1)(x^2 + x - 3) + 2 = x^3 + x^2 - 3x - x^2 - x + 3 + 2 = x^3 - 4x + 5$ ✓.
+
+**Typischer Fehler:** $a$ aus $(x - a)$ falsch ablesen — bei $(x - 1)$ ist $a = +1$, nicht $-1$. Außerdem: Volle Polynomdivision durchführen, obwohl der Restsatz die Rechnung mit einem Einsetzen erledigt.`,
+        [
+          'Restsatz: Rest $= P(a)$ bei Division durch $(x - a)$.',
+          'Hier: $a = 1$ (Vorzeichen aus $(x - 1)$).',
+          'Setze $x = 1$ ein und rechne aus.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['polydiv-rest'] },
+      ),
+      tf(
+        'Wenn alle Teiler des Absolutglieds als Kandidaten Rest $\\neq 0$ liefern, hat das Polynom keine ganzzahligen Nullstellen.',
+        true,
+        `**Ansatz:** Rationaler Wurzelsatz + Restsatz kombinieren: Ganzzahlige Nullstellen müssen Teiler des Absolutglieds sein. Wenn alle versagen, gibt es keine.
+
+**Rechnung:** Beispiel $P(x) = x^3 + x + 1$ (Absolutglied $1$, Teiler $\\pm 1$): $P(1) = 3 \\neq 0$, $P(-1) = -1 \\neq 0$. Also keine ganzzahlige Nullstelle.
+
+**Probe:** Reelle Lösung von $P(x) = 0$ ist $x \\approx -0{,}6824$ — irrational, nicht ganzzahlig.
+
+**Typischer Fehler:** Unter „keine ganzzahlige Nullstelle" verstehen, das Polynom hätte gar keine Nullstellen — dem ist nicht so; nur die rationalen/ganzzahligen Kandidaten versagen, irrational können trotzdem existieren.`,
+        [
+          'Welche Werte sind ganzzahlige Kandidaten? — Teiler des Absolutglieds.',
+          'Wenn ALLE Rest $\\neq 0$ ergeben, ist keiner Nullstelle.',
+          'Aber irrationale/komplexe Lösungen können existieren.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['polydiv-rest', 'rat-wurzel'] },
+      ),
+      ni(
         'Welcher Rest entsteht bei der Polynomdivision $(x^3 + x - 5) : (x - 2)$? (Restsatz nutzen)',
         5, 0, '',
         `**Ansatz:** Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$ — kein vollständiges Dividieren nötig.
@@ -7185,9 +7305,9 @@ Also Rest $= 5$.
           'Endwert = $P(x_0)$.',
         ],
         {
-          1: 'Addition allein ist nicht Horner.',
-          2: 'Polynomdivision auch — aber die Schritte sind nicht direkte Multiplikation.',
-          3: 'Nur Multiplikation verfehlt das Schema.',
+          1: 'Wenn du nur die Koeffizienten addierst ($2 + (-5) + 3 + (-1) = -1$), ergibt das $P(1)$, nicht $P(2)$. Horner verlangt für jeden Schritt: Vorgänger $\\cdot x_0$ plus nächster Koeffizient — also Multiplikation und Addition abwechselnd.',
+          2: 'Die explizite Polynomdivision ist zwar verwandt, aber Horner ist die KOMPAKTE Form. Die Schritte sind nicht „Polynomdivision durchführen", sondern direkt das schematische Multiplizieren-und-Addieren in einer Zeile.',
+          3: 'Wenn du nur die Koeffizienten mit $x_0$ multiplizierst ($2 \\cdot 2, -5 \\cdot 2, \\ldots$), ohne den Vorgänger einzubeziehen, fehlt die Addition aus dem Horner-Schritt. Horner bündelt beides: $\\text{Vorgänger} \\cdot x_0 + \\text{nächster Koeffizient}$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['horner'] },
       ),
@@ -7230,9 +7350,9 @@ Also Rest $= 5$.
           '$0 \\cdot x^2$.',
         ],
         {
-          1: 'Überspringen verschiebt die Rechnung.',
-          2: '$1$ wäre falsch.',
-          3: 'Horner IST die kompaktere Alternative.',
+          1: 'Wenn du den Koeffizienten überspringst, schiebt sich die ganze Tabelle um eine Stelle. Dann passt der Schritt $\\cdot x_0 + $ nächster Koeffizient zur falschen Potenz, und das Ergebnis ist $P$ an einer ganz anderen Stelle als gewollt.',
+          2: 'Wenn du den fehlenden $x^2$-Term durch $1$ ersetzt, verschiebst du das Polynom: aus $x^3 - 2x + 5$ wird $x^3 + x^2 - 2x + 5$ — eine andere Funktion. Korrekt ist der $0$-Koeffizient: $0 \\cdot x^2$ trägt nichts bei und passt formell in die Horner-Reihe.',
+          3: 'Horner IST die kompakte Alternative zur Polynomdivision — du sollst sie benutzen, nicht weglassen. Die Lücke beim fehlenden $x^2$-Term wird durch einen $0$-Eintrag in der Koeffizientenliste geschlossen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['horner'] },
       ),
@@ -7259,6 +7379,54 @@ Also Rest $= 5$.
           'Endwert = $P(x_0)$.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['horner'] },
+      ),
+      ni(
+        'Berechne $P(-1)$ für $P(x) = x^3 - 4x + 5$ mit dem Horner-Schema.',
+        8, 0, '',
+        `**Ansatz:** Koeffizientenliste $[1, 0, -4, 5]$ (fehlender $x^2$-Term ist $0$). Horner-Regel mit $x_0 = -1$.
+
+**Rechnung:**
+
+| Koeffizient | $1$ | $0$ | $-4$ | $5$ |
+|---|---|---|---|---|
+| Vorgabe |  | $-1$ | $1$ | $3$ |
+| Summe | $1$ | $-1$ | $-3$ | $\\mathbf{8}$ |
+
+Schritte: Start $1$; $1 \\cdot (-1) + 0 = -1$; $-1 \\cdot (-1) + (-4) = 1 - 4 = -3$; $-3 \\cdot (-1) + 5 = 3 + 5 = 8$.
+
+**Probe:** Direkt einsetzen: $P(-1) = -1 - 0 + 4 + 5 = 8$ ✓ (mit $(-1)^3 = -1$, $-4 \\cdot (-1) = +4$).
+
+**Typischer Fehler:** Den fehlenden $x^2$-Term ohne $0$-Spalte überspringen — dann verschiebt sich das Schema. Oder Vorzeichen bei $-3 \\cdot (-1)$ verlieren — Minus mal Minus ist Plus.`,
+        [
+          'Koeffizienten vollständig, fehlende mit $0$ ergänzen: $[1, 0, -4, 5]$.',
+          'Horner-Regel: jeder Eintrag = Vorgänger $\\cdot (-1) + $ nächster Koeffizient.',
+          'Bei Vorzeichen aufpassen: Minus mal Minus = Plus.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
+      ),
+      ni(
+        'Berechne $P(2)$ für $P(x) = x^4 - 3x^3 + 2x^2 - x + 7$ mit dem Horner-Schema.',
+        5, 0, '',
+        `**Ansatz:** Koeffizientenliste $[1, -3, 2, -1, 7]$, $x_0 = 2$. Horner-Regel: jeder Eintrag = Vorgänger $\\cdot 2$ plus nächster Koeffizient.
+
+**Rechnung:**
+
+| Koeffizient | $1$ | $-3$ | $2$ | $-1$ | $7$ |
+|---|---|---|---|---|---|
+| Vorgabe |  | $2$ | $-2$ | $0$ | $-2$ |
+| Summe | $1$ | $-1$ | $0$ | $-1$ | $\\mathbf{5}$ |
+
+Schritte: Start $1$; $1 \\cdot 2 + (-3) = -1$; $-1 \\cdot 2 + 2 = 0$; $0 \\cdot 2 + (-1) = -1$; $-1 \\cdot 2 + 7 = 5$.
+
+**Probe:** Direkt einsetzen: $P(2) = 16 - 24 + 8 - 2 + 7 = 5$. ✓
+
+**Typischer Fehler:** Vorzeichen bei $-3$ und $-1$ verlieren — etwa $1 \\cdot 2 + 3 = 5$ statt $-1$ rechnen. Genauso bei $-1 \\cdot 2 - 1$: das Ergebnis ist $-3$, dann $\\cdot 2 + 7 = 1$, was nicht zu $P(2)$ passt.`,
+        [
+          'Koeffizienten: $[1, -3, 2, -1, 7]$.',
+          'Schritt für Schritt: Vorgänger $\\cdot 2$ plus nächster Koeffizient.',
+          'Vorzeichen achten: $-3$ und $-1$ erhalten.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
       ),
       ni(
         'Berechne $P(-2)$ für $P(x) = 2x^4 + x^3 - 3x^2 + 5$ mit dem Horner-Schema.',
@@ -7326,9 +7494,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Dann ggf. weiter faktorisieren.',
         ],
         {
-          1: 'Diese Zerlegung ist nicht $= P$.',
-          2: 'Faktor dreimal ist ungewöhnlich.',
-          3: 'Das ist nicht die Divisions-Form.',
+          1: 'Probe: $(x-2)(x^2 - 4x + 6) = x^3 - 4x^2 + 6x - 2x^2 + 8x - 12 = x^3 - 6x^2 + 14x - 12$ — das ist NICHT $x^3 - 4x^2 + x + 6$. Die Division wurde falsch durchgeführt; korrekter Quotient ist $x^2 - 2x - 3$.',
+          2: 'Du hast $(x-2)$ doppelt geschrieben — das hieße $x = 2$ wäre eine doppelte Nullstelle. Das ist hier aber nicht der Fall: $P(x) = x^3 - 4x^2 + x + 6 = (x-2)(x-3)(x+1)$ hat drei verschiedene einfache Nullstellen.',
+          3: 'Das Format $x^2 \\cdot (x - 2)$ macht keinen Sinn als Faktorisierung — es würde Nullstellen $x = 0$ (doppelt) und $x = 2$ liefern, aber $P(0) = 6 \\neq 0$, also ist $x = 0$ keine Nullstelle.',
         },
         { stage: 'apply-guided', subGoal: 4, uses: ['linearfaktor', 'polydiv'] },
       ),
@@ -7371,9 +7539,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Ausmultiplizieren zur Kontrolle.',
         ],
         {
-          1: 'Vorzeichen wären $\\pm 4$, aber Zahl ist falsch.',
-          2: 'Ausmultiplizieren widerlegt.',
-          3: 'Das wäre $(x-4)^2 = x^2 - 8x + 16$.',
+          1: 'Du hast die Vorzeichen kritisiert, aber die ZAHL ist falsch. Die Nullstellen von $x^2 - 4 = 0$ sind $x = \\pm \\sqrt{4} = \\pm 2$, nicht $\\pm 4$. Aus der 3. binom. Formel $a^2 - b^2 = (a-b)(a+b)$ mit $b = \\sqrt{4} = 2$.',
+          2: 'Der Ausdruck ist NICHT korrekt: Ausmultiplizieren von $(x-4)(x+4)$ ergibt $x^2 - 16$ (3. binomische Formel mit $b=4$), nicht $x^2 - 4$. Die richtige Wurzel von $4$ ist $2$, also $(x-2)(x+2) = x^2 - 4$.',
+          3: 'Eine Doppelfaktorisierung $(x-4)(x-4) = (x-4)^2 = x^2 - 8x + 16$ hätte einen Mittelterm und einen anderen konstanten Wert — passt nicht zu $x^2 - 4$. Hier brauchst du Differenz zweier Quadrate, nicht ein vollständiges Quadrat.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['linearfaktor'] },
       ),
@@ -7393,6 +7561,46 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Summe der drei Lösungen.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['linearfaktor', 'rat-wurzel'] },
+      ),
+      ni(
+        'Bestimme das Produkt aller Nullstellen von $P(x) = x^3 - 7x + 6$.',
+        -6, 0, '',
+        `**Ansatz:** Vieta für Polynome dritten Grades $x^3 + a x^2 + b x + c$: Produkt der Nullstellen $= -c$.
+
+**Rechnung:** Hier $c = 6$, also Produkt $= -6$. Direkt-Test: Nullstellen sind $1, 2, -3$ (denn $P(1) = 1 - 7 + 6 = 0$ ✓, $P(2) = 8 - 14 + 6 = 0$ ✓, $P(-3) = -27 + 21 + 6 = 0$ ✓). Produkt: $1 \\cdot 2 \\cdot (-3) = -6$ ✓.
+
+**Probe:** Faktorisierung $P(x) = (x-1)(x-2)(x+3)$. Konstanter Term beim Ausmultiplizieren: $(-1)(-2)(3) = 6$ — das ist das absolute Glied $+c$. Per Vieta-Formel ist das Produkt der Nullstellen $-c = -6$ (Vorzeichenwechsel, weil ein ungerader Grad).
+
+**Typischer Fehler:** Bei Vieta für Grad $3$ das Vorzeichen vergessen — Produkt der Nullstellen ist $-c$, nicht $+c$. (Bei Grad $2$ wäre es $+q$, bei Grad $3$ kehrt sich das Vorzeichen um.)`,
+        [
+          'Welcher Koeffizient bestimmt das Produkt? — Das absolute Glied.',
+          'Vieta für Kubik: Produkt $= -c$.',
+          'Hier $c = 6$, also Produkt $= -6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['linearfaktor'] },
+      ),
+      mc(
+        'Welche Linearfaktor-Zerlegung gehört zu einem Polynom mit den Nullstellen $-1$, $2$ und $3$ und Leitkoeffizient $1$?',
+        ['$(x+1)(x-2)(x-3)$', '$(x-1)(x+2)(x+3)$', '$(x+1)(x+2)(x+3)$', '$(x+1)(x-2)(x+3)$'],
+        0,
+        `**Ansatz:** Zu jeder Nullstelle $x_i$ gehört der Faktor $(x - x_i)$. Vorzeichen genau übernehmen.
+
+**Rechnung:** $x_1 = -1 \\Rightarrow (x - (-1)) = (x + 1)$; $x_2 = 2 \\Rightarrow (x - 2)$; $x_3 = 3 \\Rightarrow (x - 3)$. Insgesamt: $(x+1)(x-2)(x-3)$.
+
+**Probe:** Ausmultiplizieren: $(x+1)(x-2) = x^2 - x - 2$; mal $(x-3)$: $x^3 - 3x^2 - x^2 + 3x - 2x + 6 = x^3 - 4x^2 + x + 6$. Einsetzen $x = -1$: $-1 - 4 - 1 + 6 = 0$ ✓; $x = 2$: $8 - 16 + 2 + 6 = 0$ ✓; $x = 3$: $27 - 36 + 3 + 6 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen beim Schritt „Nullstelle → Faktor" verwechseln. Aus $x_i = -1$ wird $(x - (-1)) = (x + 1)$ — also genau das umgekehrte Vorzeichen. Wer das Faktor-Vorzeichen direkt übernimmt, bekommt $(x - 1)$ und damit eine andere Nullstelle.`,
+        [
+          'Faktor zu Nullstelle $x_i$: $(x - x_i)$.',
+          'Vorzeichen drehen: $x = -1 \\to (x + 1)$.',
+          'Vorzeichen prüfen: Faktor $(x + 1)$ wird Null bei $x = -1$.',
+        ],
+        {
+          1: 'Du hast die Vorzeichen aller drei Nullstellen umgedreht: $(x-1)(x+2)(x+3)$ hat Nullstellen $1, -2, -3$ — nicht $-1, 2, 3$.',
+          2: '$(x+1)(x+2)(x+3)$ hat Nullstellen $-1, -2, -3$ — auch falsch. Der erste Faktor $(x+1)$ stimmt, aber bei $x = 2$ und $x = 3$ brauchst du $(x-2)$ und $(x-3)$.',
+          3: '$(x+1)(x-2)(x+3)$ hat Nullstellen $-1, 2, -3$. Der dritte Faktor ist verkehrt: bei $x = 3$ wird $(x+3) = 6 \\neq 0$. Korrekt: $(x-3)$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['linearfaktor', 'polydiv'] },
       ),
       ni(
         'Bei der Linearfaktor-Zerlegung von $P(x) = x^3 - 5x^2 + 8x - 4$ tritt die Nullstelle $x = 2$ doppelt auf. Welche Vielfachheit hat die Nullstelle $x = 1$?',
@@ -7448,9 +7656,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Das ist der einzige Weg.',
         ],
         {
-          1: 'pq-Formel ist für Grad $2$.',
-          2: 'Polynomdivision braucht bekannte Nullstelle.',
-          3: 'Faktorisieren braucht ebenso.',
+          1: 'Die pq-Formel ist konstruiert für quadratische Gleichungen $x^2 + px + q = 0$. Bei einer Kubik wie $x^3 - x - 1$ versagt sie — der höchste Term $x^3$ passt nicht ins pq-Schema.',
+          2: 'Polynomdivision setzt voraus, dass du bereits eine Nullstelle GEFUNDEN hast (Faktor $(x - x_0)$). Hier hast du keine rationale Nullstelle, also nichts zum Dividieren — du brauchst zuerst Cardano oder Numerik.',
+          3: 'Faktorisieren über $(x - x_1)(x - x_2)\\cdots$ erfordert bekannte Nullstellen. Da hier alle rationalen Kandidaten ($\\pm 1$) versagen, gibt es keine Faktoren zum Schreiben — Cardano oder numerische Methoden sind die einzigen Wege.',
         },
         { stage: 'apply-guided', subGoal: 5, uses: ['cardano-info'] },
       ),
@@ -7476,9 +7684,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest: $4$ ist Lösung.',
         ],
         {
-          1: 'Doch — $x = 4$ ist Lösung.',
-          2: 'Auch reelle Lösungen sind möglich.',
-          3: 'Formel ist korrekt.',
+          1: 'Doch — $4^3 - 15 \\cdot 4 - 4 = 64 - 60 - 4 = 0$, also ist $x = 4$ eine Lösung. Das überraschende: Die komplexen Wurzeln $\\sqrt[3]{2 \\pm 11i}$ heben sich gegenseitig auf, weil die Imaginärteile entgegengesetzte Vorzeichen haben.',
+          2: 'Cardano liefert NICHT immer komplexe Lösungen — der Casus irreducibilis ist genau der Fall, in dem die Formel komplexe Wurzeln nutzt, das Endergebnis aber reell wird. Bei $x^3 - 15x - 4 = 0$: Lösung $x = 4$, reell.',
+          3: 'Die Formel ist tatsächlich korrekt — das ist gerade der Witz. Die scheinbare Komplexität bei $\\sqrt[3]{2 \\pm 11i}$ ist NUR ein algorithmischer Zwischenschritt; durch die symmetrische Addition der konjugiert-komplexen Kubikwurzeln kürzen sich die Imaginärteile zu $0$.',
         },
         { stage: 'apply-independent', subGoal: 5, uses: ['cardano-info'] },
       ),
@@ -7504,11 +7712,56 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Rationale Nullstellen zuerst.',
         ],
         {
-          1: 'Quadrieren erzeugt Grad $6$ — schlimmer.',
-          2: 'pq gilt nicht für Kubik.',
-          3: '$x = 2$ ist Lösung.',
+          1: 'Quadrieren würde aus $x^3 - 6x + 4 = 0$ ein Polynom Grad $6$ machen — viel schwieriger zu lösen, mit zusätzlichen Scheinlösungen. Quadrieren ist hier kontraproduktiv; richtig ist die Suche nach rationalen Nullstellen.',
+          2: 'Die pq-Formel ist auf $x^2 + px + q = 0$ spezialisiert — die Herleitung über quadratische Ergänzung greift bei kubischen Polynomen nicht. Mit anderen Koeffizienten wäre das Problem nicht gelöst, denn der Grad bleibt $3$.',
+          3: 'Doch — $P(2) = 8 - 12 + 4 = 0$, also ist $x = 2$ tatsächlich eine Lösung. Aber das Problem mit dem Schüler ist nicht „keine Lösung", sondern die falsche FORMEL: pq passt nicht zu Grad $3$, der Lösungsweg geht über rationale Nullstellen + Polynomdivision.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['cardano-info'] },
+      ),
+      tf(
+        'Eine allgemeine kubische Gleichung $x^3 + a x^2 + b x + c = 0$ lässt sich durch die Substitution $x = y - a/3$ auf die reduzierte Form $y^3 + p y + q = 0$ ohne quadratischen Term bringen — die Cardano-Formel ist auf genau diese reduzierte Form anwendbar.',
+        true,
+        `**Ansatz:** Die Substitution $x = y - a/3$ eliminiert den $x^2$-Term im Polynom. Cardano arbeitet auf der reduzierten Form (ohne quadratischen Term).
+
+**Rechnung:** Beispiel $x^3 + 6x^2 + 9x + 4 = 0$ mit Substitution $x = y - 2$: $(y-2)^3 + 6(y-2)^2 + 9(y-2) + 4$. Nach dem Ausmultiplizieren entsteht eine reduzierte Form $y^3 + p y + q$ ohne $y^2$-Term.
+
+**Probe:** Mit $a = 6$ ist $a/3 = 2$, daher $x = y - 2$. Eingesetzt verschwindet der quadratische Term — das ist die historische Vorbereitung für Cardano.
+
+**Typischer Fehler:** Cardano direkt auf die volle kubische Gleichung anwenden, ohne den $x^2$-Term zu eliminieren — die Formel funktioniert dann nicht (sie ist auf $x^3 + p x + q$ kalibriert).`,
+        [
+          'Cardano braucht reduzierte Form.',
+          'Substitution $x = y - a/3$ entfernt den $x^2$-Term.',
+          'Erst dann ist die Formel anwendbar.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['cardano-info'] },
+      ),
+      mc(
+        'Bei $x^3 - 2x - 5 = 0$ liefert das Newton-Verfahren $x \\approx 2{,}0946$ als reelle Lösung. Was bestätigt diese Approximation?',
+        [
+          'Die Gleichung hat keine rationalen Nullstellen — Cardano oder Numerik sind nötig. Probe: $x = 2$ gibt $8 - 4 - 5 = -1 \\neq 0$, $x = 3$ gibt $27 - 6 - 5 = 16$, also liegt die Lösung dazwischen.',
+          'Die pq-Formel funktioniert nur näherungsweise.',
+          'Die Gleichung hat keine reelle Lösung.',
+          'Newton braucht ganzzahligen Startwert.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichenwechsel zwischen $P(2) = -1$ und $P(3) = 16$ garantiert nach Zwischenwertsatz mindestens eine Nullstelle in $(2, 3)$. Da rationale Kandidaten $\\pm 1, \\pm 5$ versagen ($P(1) = -6$, $P(-1) = -2$, $P(5) = 110$, $P(-5) = -120$), muss die Lösung irrational sein.
+
+**Rechnung:** Newton-Iteration mit Startwert $x_0 = 2$ konvergiert zu $x \\approx 2{,}0946$. Probe: $2{,}0946^3 - 2 \\cdot 2{,}0946 - 5 \\approx 9{,}189 - 4{,}189 - 5 \\approx 0$.
+
+**Probe:** $P(2{,}0946) \\approx 0$ bestätigt die Lösung — eine reelle, aber irrationale Nullstelle.
+
+**Typischer Fehler:** Die Diskussion auf rationale Nullstellen reduzieren — bei einer Kubik wie dieser existiert immer mindestens eine reelle Lösung (ungerader Grad), auch wenn sie irrational ist. Nur Cardano oder Numerik liefern sie.`,
+        [
+          'Welche rationalen Kandidaten sind sinnvoll? — Teiler von $5$.',
+          'Wenn alle versagen: Lösung muss irrational sein.',
+          'Numerische Verfahren oder Cardano kommen zum Einsatz.',
+        ],
+        {
+          1: 'Die pq-Formel ist auf quadratische Gleichungen kalibriert — sie liefert nicht „näherungsweise", sondern gar nicht. Newton oder Cardano sind die Werkzeuge für Kubik ohne rationale NS.',
+          2: 'Bei ungeradem Grad hat ein reelles Polynom IMMER mindestens eine reelle Nullstelle ($\\lim_{x \\to \\pm\\infty}$ wechselt das Vorzeichen). Die Approximation $x \\approx 2{,}0946$ ist gerade diese reelle Lösung.',
+          3: 'Newton funktioniert mit beliebigen Startwerten in der Nähe der Nullstelle — auch nicht-ganzzahligen. Hier konvergiert es ab $x_0 = 2$ zur irrationalen Lösung.',
+        },
+        { stage: 'apply-independent', subGoal: 5, uses: ['cardano-info'] },
       ),
       matching(
         'Ordne jeder Gleichung die passende Lösungsmethode zu.',
