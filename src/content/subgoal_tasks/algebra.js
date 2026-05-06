@@ -4925,6 +4925,74 @@ $$-x + 8 = 3 \\quad | -8 \\\\ -x = -5 \\quad | \\cdot (-1) \\\\ x = 5$$
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['iso-variable'] },
       ),
+      matching(
+        'Ordne jeder störenden Stelle in einer Gleichung die passende Äquivalenzumformung zu, die sie auf beiden Seiten beseitigt.',
+        [
+          { left: 'Konstante $+12$ auf der linken Seite entfernen', right: 'beide Seiten $-12$' },
+          { left: 'Faktor $\\cdot 5$ vor $x$ entfernen',             right: 'beide Seiten $:5$' },
+          { left: 'Nenner-Bruch $\\dfrac{x}{3}$ auflösen',           right: 'beide Seiten $\\cdot 3$' },
+          { left: 'Term $-7x$ auf die rechte Seite bringen',          right: 'beide Seiten $+7x$' },
+        ],
+        `**Ansatz:** Jede störende Operation wird durch ihre **Umkehroperation** auf BEIDEN Seiten der Gleichung neutralisiert.
+
+**Rechnung:** Addition wird durch Subtraktion (und umgekehrt) aufgehoben; Multiplikation durch Division (und umgekehrt). Beispiel: bei $5x = 30$ ist $\\cdot 5$ die störende Operation, also $:5$ auf beiden Seiten $\\Rightarrow x = 6$.
+
+**Probe:** Nach jeder Umformung enthält die Gleichung exakt einen Schritt weniger zwischen $x$ und seiner Lösung — das ist das Ziel.
+
+**Typischer Fehler:** Operation nur auf einer Seite anwenden — die Waage kippt, die Lösungsmenge ändert sich.`,
+        [
+          'Welche Rechenart hebt $+$, $\\cdot$, $\\dfrac{\\,}{\\,}$ jeweils auf?',
+          'Umkehroperation IMMER auf beiden Seiten anwenden.',
+          'Bei einem Term mit $x$ auf der „falschen" Seite: Subtrahieren bzw. Addieren bringt ihn rüber.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['iso-variable'] },
+      ),
+      ni(
+        'Löse $7 - 2x = -3$ und gib $x$ an.',
+        5, 0, '',
+        `**Ansatz:** Erst die Konstante $+7$ auf die rechte Seite, dann durch den Koeffizienten $-2$ teilen.
+
+**Rechnung:**
+$$7 - 2x = -3 \\quad | -7 \\\\ -2x = -10 \\quad | :(-2) \\\\ x = 5$$
+
+**Probe:** $7 - 2 \\cdot 5 = 7 - 10 = -3$. ✓
+
+**Typischer Fehler:** Beim Teilen durch $-2$ das Vorzeichen vergessen: $-10 / 2 = -5$ statt $-10 / (-2) = +5$.`,
+        [
+          'Welche Konstante steht im Weg? — Erst entfernen.',
+          'Nach $-7$ erhältst du $-2x = -10$.',
+          'Teile beide Seiten durch $-2$ — Vorzeichen achten!',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['iso-variable'] },
+      ),
+      mc(
+        'Ein Schüler löst $\\dfrac{x}{4} = 8$ und schreibt $x = 8 - 4 = 4$. Wo liegt der Fehler?',
+        [
+          'Der Bruch $\\dfrac{x}{4}$ bedeutet $x$ geteilt durch $4$. Umkehroperation ist die Multiplikation: $x = 8 \\cdot 4 = 32$, nicht $8 - 4$.',
+          'Er hätte $x = 8 + 4 = 12$ rechnen müssen.',
+          'Er hätte $x = 8 / 4 = 2$ rechnen müssen.',
+          'Die Gleichung ist nicht eindeutig lösbar.',
+        ],
+        0,
+        `**Ansatz:** $\\dfrac{x}{4}$ ist eine **Division** durch $4$. Die Umkehrung ist nicht Subtraktion, sondern Multiplikation mit $4$.
+
+**Rechnung:** $\\dfrac{x}{4} = 8 \\quad | \\cdot 4 \\Rightarrow x = 32$.
+
+**Probe:** $\\dfrac{32}{4} = 8$. ✓ Schüler-Wert $x = 4$: $\\dfrac{4}{4} = 1 \\neq 8$.
+
+**Typischer Fehler:** Den Nenner als Subtrahenden lesen — sieht „neben dem $x$" aus, ist aber multiplikativ verknüpft.`,
+        [
+          'Was bedeutet $\\dfrac{x}{4}$? — Division.',
+          'Welche Operation hebt Division auf?',
+          'Multipliziere beide Seiten mit $4$.',
+        ],
+        {
+          1: '$x = 12$ entsteht durch falsche Addition $8 + 4$ — auch das ist nicht die Umkehrung von Division.',
+          2: '$x = 2$ entsteht, wenn man $8 / 4$ rechnet — also den Nenner $4$ noch einmal durch dividiert. Die Umkehrung von $:4$ ist aber $\\cdot 4$, nicht ein zweites $:4$.',
+          3: 'Die Gleichung ist eindeutig lösbar: $x = 32$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['iso-variable'] },
+      ),
     ],
     // [1] Standardvorgehen
     1: [
@@ -5081,6 +5149,88 @@ $$-3(2x - 4) = 6 \\\\ -6x + 12 = 6 \\quad | -12 \\\\ -6x = -6 \\quad | :(-6) \\\
           3: 'Zahlentest widerlegt: $-3(2 \\cdot 1 - 4) = 6$, aber $-6 \\cdot 1 - 12 = -18 \\neq 6$.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      tf(
+        'Bei einer linearen Gleichung $ax = b$ mit $a > 0$ und $b < 0$ ist die Lösung $x$ negativ.',
+        true,
+        `**Ansatz:** Lösungsformel $x = b/a$ — Vorzeichen folgt aus der Division „positiv geteilt durch positiv".
+
+**Rechnung:** $a > 0, b < 0 \\Rightarrow x = b/a$ hat das Vorzeichen von $b$ (negativ). Beispiel: $4x = -12 \\Rightarrow x = -3$.
+
+**Probe:** $4 \\cdot (-3) = -12$. ✓ Vorzeichen passt.
+
+**Typischer Fehler:** Beim mentalen Rechnen das Minus „verschwinden" lassen und $x = 3$ angeben.`,
+        [
+          '$ax = b$ liefert $x = b/a$.',
+          'Vorzeichenregel: $-/+$ ergibt $-$.',
+          'Beispiel zur Kontrolle: $5x = -10 \\Rightarrow x = -2$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['koeff-dividieren'] },
+      ),
+      mc(
+        'Was ist der erste sinnvolle Schritt zum Lösen von $-5x + 14 = -1$?',
+        [
+          'Beide Seiten $-14$, dann $:(-5)$',
+          'Beide Seiten $:(-5)$, dann $-14$',
+          'Beide Seiten mit $-1$ multiplizieren',
+          'Klammer auflösen',
+        ],
+        0,
+        `**Ansatz:** Standardvorgehen — erst Konstante (additiver Anteil), dann Koeffizient (multiplikativer Anteil) entfernen.
+
+**Rechnung:**
+$$-5x + 14 = -1 \\quad | -14 \\\\ -5x = -15 \\quad | :(-5) \\\\ x = 3$$
+
+**Probe:** $-5 \\cdot 3 + 14 = -15 + 14 = -1$. ✓
+
+**Typischer Fehler:** Zuerst durch $-5$ teilen — dann muss man Brüche mit $14$ und $-1$ handhaben, viel umständlicher.`,
+        [
+          'Welche Konstante steht direkt neben dem $x$-Term?',
+          'Erst additive Konstante, dann multiplikativer Koeffizient.',
+          'Vorzeichen beim Teilen durch $-5$ beachten.',
+        ],
+        {
+          1: 'Wenn du zuerst durch $-5$ teilst, bekommst du $x - 14/5 = 1/5$ — Brüche, die nichts beitragen. Konstante zuerst entfernen ist sauberer.',
+          2: 'Mit $-1$ multiplizieren wäre erlaubt ($5x - 14 = 1$), aber kein „erster Schritt" — Standard ist: Konstante zuerst entfernen.',
+          3: 'Es gibt keine Klammer in der Gleichung — nur Term mit $x$, Konstante und rechte Seite.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      ni(
+        'Löse $\\dfrac{2x + 1}{5} = 3$ und gib $x$ an.',
+        7, 0, '',
+        `**Ansatz:** Beide Seiten mit dem Nenner $5$ multiplizieren, dann linear nach $x$ auflösen.
+
+**Rechnung:**
+$$\\dfrac{2x + 1}{5} = 3 \\quad | \\cdot 5 \\\\ 2x + 1 = 15 \\quad | -1 \\\\ 2x = 14 \\quad | :2 \\\\ x = 7$$
+
+**Probe:** $\\dfrac{2 \\cdot 7 + 1}{5} = \\dfrac{15}{5} = 3$. ✓
+
+**Typischer Fehler:** Nur $2x$ mit $5$ multiplizieren und die $+1$ stehen lassen — der gesamte Zähler $(2x+1)$ wird vom Nenner $5$ geteilt, also wird die ganze rechte Seite $\\cdot 5$ genommen.`,
+        [
+          'Wie machst du den Nenner $5$ weg?',
+          'Multipliziere BEIDE Seiten mit $5$ — die rechte Seite wird zu $15$.',
+          'Dann linear: $2x + 1 = 15 \\Rightarrow 2x = 14 \\Rightarrow x = 7$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      ni(
+        'Löse $3(x - 4) = 2(x + 1)$ und gib $x$ an.',
+        14, 0, '',
+        `**Ansatz:** Beide Klammern ausmultiplizieren, dann $x$-Terme links, Konstanten rechts sammeln.
+
+**Rechnung:**
+$$3(x - 4) = 2(x + 1) \\\\ 3x - 12 = 2x + 2 \\quad | -2x \\\\ x - 12 = 2 \\quad | +12 \\\\ x = 14$$
+
+**Probe:** Linke Seite $3(14 - 4) = 3 \\cdot 10 = 30$. Rechte Seite $2(14 + 1) = 2 \\cdot 15 = 30$. ✓
+
+**Typischer Fehler:** Klammer nur auf den ersten Summanden anwenden — z. B. $3(x-4) = 3x - 4$ statt $3x - 12$. Distributivgesetz: jeder Summand mit dem Faktor multiplizieren.`,
+        [
+          'Klammern zuerst ausmultiplizieren — Distributivgesetz.',
+          'Linke Seite: $3 \\cdot x - 3 \\cdot 4$. Rechte Seite analog.',
+          'Dann $x$-Terme auf eine Seite, Konstanten auf die andere.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
       ),
       ni(
         'Löse $\\dfrac{x - 1}{2} + \\dfrac{x + 3}{4} = 4$ und gib $x$ an.',
@@ -5248,6 +5398,82 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
       ),
+      matching(
+        'Ordne jeder sprachlichen Beschreibung den passenden algebraischen Ausdruck zu (Variable $x$).',
+        [
+          { left: 'Eine Zahl um $5$ erhöhen',                            right: '$x + 5$' },
+          { left: 'Das Doppelte einer Zahl um $3$ vermindern',            right: '$2x - 3$' },
+          { left: 'Die Hälfte einer Zahl, dann $7$ addieren',             right: '$\\dfrac{x}{2} + 7$' },
+          { left: 'Eine Zahl zuerst um $4$ verringern, dann verdoppeln',  right: '$2(x - 4)$' },
+        ],
+        `**Ansatz:** Sprachliche Reihenfolge bestimmt die Klammerung — was zuerst gesagt wird, passiert zuerst.
+
+**Rechnung:** „Doppelte minus 3" $= 2x - 3$ (Multiplikation zuerst). „Erst minus 4, dann verdoppeln" $= 2(x-4)$ (Klammer wegen Reihenfolge).
+
+**Probe:** Setze $x = 10$ ein: $x + 5 = 15$; $2x - 3 = 17$; $x/2 + 7 = 12$; $2(x-4) = 12$ — alle vier verschiedene Werte, keine Übersetzung doppeldeutig.
+
+**Typischer Fehler:** „Das Doppelte einer Zahl um 3 vermindern" als $2(x - 3)$ lesen — sprachlich kommt die $-3$ aber nach dem Verdoppeln, also $2x - 3$.`,
+        [
+          '„zuerst" vs. „dann" gibt die Reihenfolge an.',
+          'Multiplikation ohne Klammer wirkt nur auf die nachfolgende Zahl/Variable, nicht auf die ganze Summe.',
+          'Eine Klammer brauchst du nur, wenn die Operation auf einen Ausdruck angewendet wird, der vorher schon eine Operation enthält.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Eine Saftfabrik mischt $5$ L Saftkonzentrat mit $60\\,\\%$ Fruchtanteil mit reinem Wasser, um Saft mit $30\\,\\%$ Fruchtanteil zu erhalten. Wie viele Liter Wasser müssen zugegeben werden?',
+        5, 0, '',
+        `**Ansatz:** Fruchtmenge bleibt erhalten (Wasser enthält $0\\,\\%$ Frucht). Variable $x$ = Liter Wasser.
+
+**Rechnung:** Fruchtmenge im Konzentrat: $0{,}6 \\cdot 5 = 3$ L. Gesamtmenge nach Mischung: $5 + x$ L. Bedingung „danach $30\\,\\%$":
+$$0{,}3 \\cdot (5 + x) = 3 \\\\ 1{,}5 + 0{,}3 x = 3 \\quad | -1{,}5 \\\\ 0{,}3 x = 1{,}5 \\quad | : 0{,}3 \\\\ x = 5$$
+
+**Probe:** Mischung: $5 + 5 = 10$ L Saft mit $3$ L Frucht $\\Rightarrow 3/10 = 30\\,\\%$. ✓
+
+**Typischer Fehler:** $30\\,\\%$ nur auf das hinzugefügte Wasser anwenden ($0{,}3 x = 3$) — die Konzentration bezieht sich aber auf die GESAMTE Mischung, nicht nur auf das neue Wasser.`,
+        [
+          'Was bleibt beim Verdünnen mit Wasser konstant? — Die Fruchtmenge.',
+          'Fruchtmenge: $0{,}6 \\cdot 5 = 3$ L. Sie soll danach $30\\,\\%$ von $(5 + x)$ sein.',
+          'Gleichung: $0{,}3 \\cdot (5 + x) = 3$. Auflösen.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Zwei Autos starten gleichzeitig an entgegengesetzten Enden einer $200$ km langen Strecke und fahren aufeinander zu. Auto A fährt mit $80$ km/h, Auto B mit $120$ km/h. Nach wie vielen Stunden treffen sie sich?',
+        1, 0, '',
+        `**Ansatz:** Beim Aufeinander-zu-Fahren addieren sich die Geschwindigkeiten zur Annäherungsgeschwindigkeit. Variable $t$ = Zeit bis zum Treffen.
+
+**Rechnung:** Beide zusammen legen pro Stunde $80 + 120 = 200$ km zurück:
+$$(80 + 120) \\cdot t = 200 \\\\ 200 \\, t = 200 \\quad | : 200 \\\\ t = 1 \\text{ h}$$
+
+**Probe:** In $1$ h fährt A: $80$ km, B: $120$ km. Summe $200$ km — gerade die volle Strecke. ✓
+
+**Typischer Fehler:** Geschwindigkeiten subtrahieren ($120 - 80 = 40$, $t = 5$ h) — das wäre die Aufholzeit, wenn beide in dieselbe Richtung fahren würden, nicht aufeinander zu.`,
+        [
+          'Welche Strecke legen beide ZUSAMMEN bis zum Treffen zurück? — Die ganze Strecke $200$ km.',
+          'Welche Geschwindigkeit nimmst du, wenn sich zwei Bewegungen aufeinander zu addieren?',
+          'Setze an: $(v_A + v_B) \\cdot t = s$. Auflösen nach $t$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Ein Pullover kostet nach einem Rabatt von $25\\,\\%$ noch $60$ €. Wie hoch war der ursprüngliche Preis (in €)?',
+        80, 0, '',
+        `**Ansatz:** Variable $P$ = Originalpreis. Nach $25\\,\\%$ Rabatt bleiben $75\\,\\%$ vom Originalpreis übrig.
+
+**Rechnung:**
+$$0{,}75 \\cdot P = 60 \\quad | : 0{,}75 \\\\ P = \\dfrac{60}{0{,}75} = 80 \\text{ €}$$
+
+**Probe:** $25\\,\\%$ von $80$ € sind $20$ €. $80 - 20 = 60$ €. ✓
+
+**Typischer Fehler:** $25\\,\\%$ einfach auf $60$ aufschlagen ($60 \\cdot 1{,}25 = 75$ €). Das wäre richtig, wenn $60$ € der Preis VOR Rabatt wäre — er ist aber NACH dem Rabatt. Der Rabatt bezieht sich auf den (unbekannten) Originalpreis, nicht auf den reduzierten.`,
+        [
+          'Was bleibt nach $25\\,\\%$ Rabatt übrig? — $75\\,\\%$ des Originalpreises.',
+          'Setze die Gleichung an: $0{,}75 \\cdot P = 60$.',
+          'Nach $P$ auflösen — durch $0{,}75$ teilen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
       mc(
         'Ein Schwimmbecken wird durch zwei Zuflüsse gefüllt. Allein braucht der erste Zufluss $6$ Stunden, der zweite $4$ Stunden. Welche Gleichung beschreibt die Zeit $t$ (in Stunden) bis zur vollen Füllung, wenn beide gleichzeitig laufen?',
         [
@@ -5297,30 +5523,30 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         { stage: 'recognize', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
       mc(
-        'Wie führt man die Probe bei $3x - 5 = 10, x = 5$ durch?',
+        'Wie führt man die Probe bei $3x - 5 = 10$ mit der vermuteten Lösung $x = 5$ durch?',
         [
           '$3 \\cdot 5 - 5 = 10$ prüfen: $10 = 10$ ✓',
           '$3 + 5 - 5 = 10$ prüfen',
           '$3/5 - 5 = 10$ prüfen',
-          'Nicht nötig.',
+          '$3 \\cdot 5 - 5 = 5$ prüfen — die rechte Seite muss mit $x$ ersetzt werden.',
         ],
         0,
-        `**Ansatz:** $x = 5$ einsetzen, Koeffizient $\\cdot$ beibehalten.
+        `**Ansatz:** $x = 5$ in die LINKE Seite der Original-Gleichung einsetzen — die rechte Seite bleibt $10$.
 
-**Rechnung:** $3 \\cdot 5 - 5 = 15 - 5 = 10$. ✓
+**Rechnung:** Links: $3 \\cdot 5 - 5 = 15 - 5 = 10$. Rechts: $10$. Beide Seiten stimmen überein. ✓
 
-**Probe:** Linkseite = Rechteseite.
+**Probe:** Linke Seite = Rechte Seite — Lösung bestätigt.
 
-**Typischer Fehler:** Operationen verwechseln beim Einsetzen.`,
+**Typischer Fehler:** Multiplikation $3 \\cdot x$ als Addition $3 + x$ lesen, oder die rechte Seite ebenfalls durch $x$ ersetzen wollen.`,
         [
           '$x = 5$ in die linke Seite einsetzen.',
-          'Rechnen.',
-          'Mit rechter Seite vergleichen.',
+          'Wert ausrechnen — $3 \\cdot 5 - 5$.',
+          'Mit der rechten Seite ($10$) vergleichen.',
         ],
         {
-          1: 'Addition statt Multiplikation wäre falsch.',
-          2: 'Division statt Multiplikation wäre falsch.',
-          3: 'Probe ist wichtig — Fehler möglich.',
+          1: 'Du hast $3x$ als Summe $3 + x$ gelesen — falsch. $3x$ heißt $3 \\cdot x$, also $3 \\cdot 5 = 15$.',
+          2: 'Du hast $3x$ als Quotient $3 / x$ gelesen — falsch. $3x$ heißt Produkt: $3 \\cdot 5 = 15$.',
+          3: 'Bei der Probe wird $x$ NUR auf der linken Seite ersetzt; die rechte Seite ist die zu prüfende Zahl. Setze $x = 5$ links ein und vergleiche mit $10$ rechts.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
@@ -5447,6 +5673,96 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
           3: 'Probe für $x = 7$: $2(7+3) = 20 \\neq 14$. Auch falsch.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      ni(
+        'Prüfe durch Einsetzen, ob $x = 9$ die Gleichung $\\dfrac{3x - 1}{2} = x + 4$ löst. Gib $x$ an, wenn die Probe bestätigt.',
+        9, 0, '',
+        `**Ansatz:** $x = 9$ in beide Seiten der Original-Gleichung einsetzen und vergleichen.
+
+**Rechnung:** Linke Seite: $\\dfrac{3 \\cdot 9 - 1}{2} = \\dfrac{26}{2} = 13$. Rechte Seite: $9 + 4 = 13$. Beide $13$ — Lösung bestätigt.
+
+**Probe:** $13 = 13$. ✓ Antwort: $x = 9$.
+
+**Typischer Fehler:** Beim Einsetzen den Bruchstrich übersehen und $3 \\cdot 9 - 1 / 2 = 27 - 0{,}5 = 26{,}5$ rechnen — der ganze Zähler $3x - 1$ wird durch $2$ geteilt.`,
+        [
+          '$x = 9$ überall einsetzen, wo $x$ steht.',
+          'Bei Brüchen: erst Zähler ausrechnen, dann durch Nenner teilen.',
+          'Wenn beide Seiten denselben Wert ergeben, ist $9$ die Lösung — sonst nicht.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
+      ),
+      mc(
+        'Welche Probe-Rechnung bestätigt $x = 4$ als Lösung von $-3x + 4 = -8$?',
+        [
+          '$-3 \\cdot 4 + 4 = -12 + 4 = -8$ ✓',
+          '$-3 \\cdot 4 - 4 = -12 - 4 = -16$',
+          '$3 \\cdot 4 + 4 = 12 + 4 = 16$',
+          '$-3 \\cdot (-4) + 4 = 12 + 4 = 16$',
+        ],
+        0,
+        `**Ansatz:** Original-Gleichung links exakt nachzeichnen, $x$ durch den Wert $4$ ersetzen, ausrechnen.
+
+**Rechnung:** $-3 \\cdot 4 + 4 = -12 + 4 = -8$. Rechte Seite ist $-8$ — passt. ✓
+
+**Probe:** $-8 = -8$. Lösung bestätigt.
+
+**Typischer Fehler:** Beim Einsetzen das Vorzeichen des Koeffizienten verlieren oder den Wert $x$ mit umgekehrtem Vorzeichen einsetzen.`,
+        [
+          'Original-Gleichung exakt abschreiben, $x$ durch $4$ ersetzen.',
+          'Vorzeichen genau übernehmen: $-3$ bleibt $-3$.',
+          'Punkt-vor-Strich: erst $-3 \\cdot 4$, dann $+4$ addieren.',
+        ],
+        {
+          1: 'Du hast die Konstante $+4$ in $-4$ geändert — das wäre eine andere Gleichung. Original ist $-3x + 4$, nicht $-3x - 4$.',
+          2: 'Du hast den Koeffizienten $-3$ ohne Vorzeichen abgeschrieben — dann passt die Rechnung nicht zur Original-Gleichung.',
+          3: 'Du hast statt $x = 4$ den Wert $x = -4$ eingesetzt. Die Probe muss mit dem behaupteten $x$-Wert gemacht werden, also $+4$.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      tf(
+        'Wenn beim Einsetzen einer vermuteten Lösung in die Original-Gleichung beide Seiten verschiedene Zahlen ergeben, kann die vermutete Zahl keine Lösung sein.',
+        true,
+        `**Ansatz:** Eine Lösung erfüllt definitionsgemäß die Gleichung — das heißt, beide Seiten ergeben beim Einsetzen denselben Wert.
+
+**Rechnung:** Wenn z. B. links $7$ und rechts $5$ herauskommt, ist $7 \\neq 5$ unabhängig vom $x$-Wert — die Gleichung ist mit dieser Zahl nicht erfüllt, also ist sie keine Lösung.
+
+**Probe:** Diese Aussage ist die Begründung dafür, warum die Probe so wertvoll ist — sie kann jede falsche Lösung sicher entlarven.
+
+**Typischer Fehler:** Glauben, „nahe dran" reiche aus. Bei Gleichungen gilt: gleich oder ungleich, dazwischen gibt es nichts.`,
+        [
+          'Was ist eine Lösung per Definition?',
+          'Wenn linke und rechte Seite verschieden sind, ist die Gleichung NICHT erfüllt.',
+          'Logische Folgerung: Die Zahl ist keine Lösung.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      mc(
+        'Ein Schüler löst $5x + 3 = 2x - 9$ und behauptet $x = 4$. Wende die Probe an und entscheide.',
+        [
+          'Probe: links $5 \\cdot 4 + 3 = 23$, rechts $2 \\cdot 4 - 9 = -1$. $23 \\neq -1$ — also falsch. Korrekt: $3x = -12 \\Rightarrow x = -4$.',
+          'Probe: stimmt mit $23 = 23$ — $x = 4$ ist korrekt.',
+          'Die Gleichung hat keine Lösung — Schüler hat das übersehen.',
+          'Korrekt ist $x = -1$ — der Schüler hat sich nur verrechnet.',
+        ],
+        0,
+        `**Ansatz:** Probe entlarvt den Vorzeichenfehler beim Verschieben der $x$-Terme.
+
+**Rechnung:** Linke Seite mit $x = 4$: $5 \\cdot 4 + 3 = 23$. Rechte Seite: $2 \\cdot 4 - 9 = -1$. $23 \\neq -1$ — also keine Lösung. Korrektur: $5x - 2x = -9 - 3 \\Rightarrow 3x = -12 \\Rightarrow x = -4$. Probe für $-4$: links $5 \\cdot (-4) + 3 = -17$, rechts $2 \\cdot (-4) - 9 = -17$. $-17 = -17$. ✓
+
+**Probe:** Die korrekte Lösung erfüllt beide Seiten mit $-17$.
+
+**Typischer Fehler:** Beim Sammeln der Konstanten Vorzeichen verlieren — aus $-9 - 3 = -12$ wird fälschlich $-9 + 3 = -6$ oder gar $+12$, was zu $x = +4$ statt $x = -4$ führt.`,
+        [
+          'Setze $x = 4$ links und rechts ein — was kommt heraus?',
+          'Wenn die Werte nicht übereinstimmen, ist $x = 4$ falsch.',
+          'Korrekt rechnen: $x$-Terme links sammeln, Konstanten rechts.',
+        ],
+        {
+          1: 'Probe mit $x = 4$: links $23$, rechts $-1$. Diese Zahlen sind verschieden — die Lösung ist NICHT bestätigt.',
+          2: 'Eine lineare Gleichung mit unterschiedlichen Koeffizienten ($5$ links, $2$ rechts) hat genau eine Lösung — nämlich $x = -4$.',
+          3: '$x = -1$: links $5 \\cdot (-1) + 3 = -2$, rechts $2 \\cdot (-1) - 9 = -11$. $-2 \\neq -11$ — auch falsch. Die richtige Lösung ist $x = -4$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
       ),
     ],
   },

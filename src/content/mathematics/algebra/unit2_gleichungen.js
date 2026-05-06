@@ -723,6 +723,36 @@ In der nächsten Visualisierung siehst du: Schnittpunkt bei $x = 4$, $y = 17$ �
           marks: [{ x: 4, y: 17, label: 'Schnittpunkt (4, 17)' }],
         },
       },
+      {
+        id: 'alg-2-1-s1d', type: 'explanation-formal',
+        title: 'Lineare Gleichung — Standardform und Lösung',
+        priority: 'wichtig',
+        content: `**Standardform der linearen Gleichung** (mit $a \\neq 0$):
+$$a \\cdot x + b = c$$
+
+**Lösung durch Isolieren von $x$:**
+$$x = \\dfrac{c - b}{a}$$
+
+**Erlaubte Äquivalenzumformungen** (Lösungsmenge bleibt erhalten):
+
+| Operation | Bedingung | Beispiel |
+|---|---|---|
+| Beide Seiten $+\\,k$ oder $-\\,k$ | $k \\in \\mathbb{R}$ | $x - 3 = 7 \\;\\Rightarrow\\; x = 10$ |
+| Beide Seiten $\\cdot\\,k$ oder $:\\,k$ | $k \\neq 0$ | $\\dfrac{x}{4} = 5 \\;\\Rightarrow\\; x = 20$ |
+| Term mit $x$ auf andere Seite | (Spezialfall von $\\pm$) | $5x - 3 = 2x + 9 \\;\\Rightarrow\\; 3x = 12$ |
+| Klammer ausmultiplizieren | Distributivgesetz | $3(x-4) = 3x - 12$ |
+
+**Standardvorgehen** (3 Schritte):
+
+1. Klammern auflösen, gleichartige Terme zusammenfassen.
+2. Alle $x$-Terme auf eine Seite, alle Konstanten auf die andere.
+3. Durch den Koeffizienten von $x$ dividieren ($\\neq 0$).
+
+**Probe** (immer in der ORIGINAL-Gleichung):
+$$\\text{Lösung } x_0 \\text{ einsetzen} \\;\\Rightarrow\\; \\text{linke Seite} \\stackrel{?}{=} \\text{rechte Seite}$$
+
+Stimmen beide Seiten überein, ist $x_0$ Lösung. Stimmen sie nicht überein, war ein Umformungsfehler im Spiel.`,
+      },
       { id: 'alg-2-1-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-1-a' },
       { id: 'alg-2-1-s3', type: 'exercise', title: 'Aufgabe 2 (Rechnung)', exerciseRef: 'ex-alg-2-1-b' },
       { id: 'alg-2-1-s4', type: 'exercise', title: 'Aufgabe 3 (Textaufgabe)', exerciseRef: 'ex-alg-2-1-c' },

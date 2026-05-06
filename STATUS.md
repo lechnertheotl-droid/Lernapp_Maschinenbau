@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2626 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1797 (68 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1189 / 1189 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2641 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1812 (69 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1193 / 1193 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 256 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **645** (Lesson-Path: 112 · Goal-Tasks: 533)
-- 4-Block: 615/645 (95 %) 🟡
-- MC-wAE: 275/275 (100 %) ✅
+- Aufgaben: **660** (Lesson-Path: 112 · Goal-Tasks: 548)
+- 4-Block: 630/660 (95 %) 🟡
+- MC-wAE: 279/279 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -180,7 +180,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 24 | 9/9/4/1/1 | 24/24 | 9/9 | ✅ | — |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 47 | 18/19/8/2/0 | 47/47 | 18/18 | ✅ | — |
-| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
+| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 50 | 18/18/7/4/3 | 50/50 | 18/18 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
