@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2616 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1787 (68 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1186 / 1186 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2626 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1797 (68 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1189 / 1189 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 256 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **635** (Lesson-Path: 112 · Goal-Tasks: 523)
-- 4-Block: 605/635 (95 %) 🟡
-- MC-wAE: 272/272 (100 %) ✅
+- Aufgaben: **645** (Lesson-Path: 112 · Goal-Tasks: 533)
+- 4-Block: 615/645 (95 %) 🟡
+- MC-wAE: 275/275 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -175,8 +175,8 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 36 | 10/15/5/4/2 | 36/36 | 10/10 | ✅ | — |
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 36 | 12/11/5/4/4 | 36/36 | 12/12 | ✅ | — |
-| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
-| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
+| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 42 | 13/18/6/3/2 | 42/42 | 13/13 | ✅ | — |
+| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 41 | 13/16/5/3/4 | 41/41 | 13/13 | ✅ | — |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 24 | 9/9/4/1/1 | 24/24 | 9/9 | ✅ | — |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 47 | 18/19/8/2/0 | 47/47 | 18/18 | ✅ | — |
@@ -11956,64 +11956,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-4` · Termumformung & Gleichungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
-  - `alg-0-2` → `bruch-erweitern`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
-  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
-  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
-  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
-  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
-  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
-  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
-  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
-  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **6/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
-  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **6/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
-  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **6/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
-  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **6/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
-  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **6/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 2 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
-|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
-|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 2 | ✅ | Ausmultiplizieren |
-|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
-| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
-| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
-| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
-| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
-| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 2 | ✅ | Formel nach Variable umstellen |
-| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
-| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 2 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
-| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
@@ -12178,59 +12120,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
-#### `alg-0-3` · Prozent & Dreisatz
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
-  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
-  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
-  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
-  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
-  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
-  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **7/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
-  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **6/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
-  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **6/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
-  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **6/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
-  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **6/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 3 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
-|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
-|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 2 | ✅ | Rabatt-Rechnung |
-|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
-| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
-| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
-| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 2 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
-| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 1 | ✅ | Pumpen-Typ-Dreisatz |
-| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
-| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
-| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 2 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
-| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `mech-1-5` · Schwerpunkt
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
@@ -12280,6 +12169,64 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-5': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
+#### `alg-0-4` · Termumformung & Gleichungen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
+  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
+  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
+  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
+  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
+  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
+  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
+  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
+  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **7/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
+  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **7/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
+  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **7/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
+  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **7/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
+  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **7/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
+|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
+|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 2 | ✅ | Ausmultiplizieren |
+|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
+| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
+| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
+| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
+| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
+| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 2 | ✅ | Formel nach Variable umstellen |
+| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
+| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 3 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
+| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen
 
@@ -12584,3 +12531,56 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-3-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `alg-0-3` · Prozent & Dreisatz
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
+  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
+  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
+  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
+  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
+  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
+  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **8/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
+  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **7/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
+  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **7/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
+  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **7/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
+  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **7/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 4 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
+|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
+|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 3 | ✅ | Rabatt-Rechnung |
+|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
+| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
+| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
+| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
+| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 2 | ✅ | Pumpen-Typ-Dreisatz |
+| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
+| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
+| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 2 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
+| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …

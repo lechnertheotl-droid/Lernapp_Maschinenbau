@@ -1535,6 +1535,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
       ),
+      // Bonus SG 0: apply-independent · number-input · uses=[prozent-grund]
+      // Anteilsrechnung im Fertigungs-Kontext (Ausschuss-Quote) — nach p umgestellt.
+      ni(
+        'Eine Maschine produziert $720$ Teile pro Schicht, davon sind $18$ Ausschuss. Wie hoch ist die Ausschuss-Quote in Prozent?',
+        2.5, 0.05, '%',
+        `**Ansatz:** Anteil bestimmen — Formel nach $p$ umgestellt: $p = W \\cdot 100 / G$.
+
+**Rechnung:** $p = \\dfrac{18 \\cdot 100}{720} = \\dfrac{1800}{720} = 2{,}5$. Ausschuss-Quote: $2{,}5\\,\\%$.
+
+**Probe:** $2{,}5\\%$ von $720$: $720 \\cdot 0{,}025 = 18$ Teile. ✓
+
+**Typischer Fehler:** $18/720 = 0{,}025$ als Antwort hinschreiben (Dezimalzahl statt Prozent). Das $\\cdot 100$ vergessen.`,
+        [
+          'Welche Größe ist gesucht — $W$, $G$ oder $p$?',
+          'Formel nach $p$ umstellen: $p = W \\cdot 100/G$.',
+          'Probe: ergibt deine Quote, multipliziert mit $720$, wirklich $18$?',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
+      ),
       // transfer · matching · uses=[prozent-grund]
       matching(
         'Ordne jeder Situation die korrekte Formel zu.',
@@ -1665,6 +1684,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
+      // Bonus SG 1: apply-independent · number-input · uses=[wachstumsfaktor, prozent-grund]
+      // Netto aus Brutto rechnen — typische MwSt-Rückrechnung.
+      ni(
+        'Eine Maschine kostet brutto $1\\,190\\,€$ inkl. $19\\,\\%$ Mehrwertsteuer. Wie hoch ist der Nettopreis (in €)?',
+        1000, 0, '',
+        `**Ansatz:** Brutto $=$ Netto $\\cdot (1 + p/100)$. Nach Netto umstellen: $\\text{Netto} = \\text{Brutto}/(1 + p/100)$.
+
+**Rechnung:** $\\text{Netto} = 1190 / 1{,}19 = 1000$.
+
+**Probe:** $1000 \\cdot 1{,}19 = 1190\\,€$. ✓ Differenz $190\\,€$ ist genau $19\\%$ von $1000$.
+
+**Typischer Fehler:** $19\\%$ vom Brutto abziehen: $1190 \\cdot 0{,}19 = 226{,}10$, dann $1190 - 226{,}10 = 963{,}90$ — falsch, weil die MwSt sich auf das Netto bezieht, nicht das Brutto.`,
+        [
+          'Brutto enthält bereits die MwSt — welcher Faktor wurde aufs Netto angewandt?',
+          'Wachstumsfaktor: $1 + 0{,}19 = 1{,}19$.',
+          'Umstellen: Brutto durch Faktor teilen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor', 'prozent-grund'] },
+      ),
       ni(
         'Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
         600, 0, '',
@@ -1783,6 +1821,31 @@ export const algebraSubGoalTasks = {
           '$0{,}96 \\cdot 0{,}96 \\cdot 0{,}96 = ?$',
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
+      ),
+      // Bonus SG 2: apply-guided · multiple-choice · uses=[prozent-kette, wachstumsfaktor]
+      // Extreme Asymmetrie: +50%/-50% — illustriert die Multiplikativität besonders deutlich.
+      mc(
+        'Ein Aktienkurs steigt um $50\\%$ und fällt anschließend um $50\\%$. Welcher Anteil bleibt vom Originalkurs übrig?',
+        ['$75\\%$', '$100\\%$', '$50\\%$', '$25\\%$'],
+        0,
+        `**Ansatz:** Faktoren nacheinander multiplizieren — Prozente NIE addieren.
+
+**Rechnung:** $1{,}50 \\cdot 0{,}50 = 0{,}75$. Es bleiben $75\\%$ des Originalkurses, also ein Verlust von $25$ Prozentpunkten.
+
+**Probe:** Start $100$. $+50\\% \\to 150$. $-50\\%$ von $150$: $150 \\cdot 0{,}5 = 75$. Kontrolle: $75/100 = 0{,}75 = 75\\%$. ✓
+
+**Typischer Fehler:** „$+50$ und $-50$ heben sich auf $\\to 100\\%$" — die naive Addition ignoriert, dass der zweite Faktor auf einen größeren Bezugswert wirkt. Je extremer die Prozentsätze, desto deutlicher der Effekt.`,
+        [
+          'Bezugswert ändert sich nach der ersten Änderung!',
+          'Zwei Wachstumsfaktoren: $1 + 0{,}5$ und $1 - 0{,}5$.',
+          'Multiplizieren, nicht addieren.',
+        ],
+        {
+          1: '$100\\%$ wäre korrekt, wenn Prozente sich additiv verhalten würden — tun sie nicht. Faktoren multiplizieren: $1{,}5 \\cdot 0{,}5 = 0{,}75$.',
+          2: '$50\\%$ entspräche nur dem zweiten Schritt ($-50\\%$), die vorherige Erhöhung fehlt. $50/100 \\neq 50/150$.',
+          3: '$25\\%$ wäre $1{,}5 \\cdot 0{,}5^2$ oder Ähnliches — keine sinnvolle Konstellation der zwei Schritte.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
@@ -1919,29 +1982,54 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 3, uses: ['direkt-prop'] },
       ),
-      matching(
-        'Ordne jeder Situation den Proportionalitätstyp zu.',
+      // Bonus SG 3: transfer · sorting · uses=[indirekt-prop]
+      // Standard-Workflow eines indirekten Dreisatzes — Reihenfolge der Schritte.
+      sorting(
+        'Bringe die Schritte zur Lösung der Aufgabe „$5$ Bagger graben in $12$ Tagen einen Graben — wie lange brauchen $8$ Bagger?" in die richtige Reihenfolge.',
         [
-          { left: 'Preis pro kg Ware',                        right: 'direkt' },
-          { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'indirekt' },
-          { left: 'Strecke ↔ Zeit (konstante Geschw.)',       right: 'direkt' },
-          { left: 'Druck ↔ Volumen (Boyle-Mariotte)',         right: 'indirekt' },
+          'Typ erkennen: mehr Bagger $\\to$ weniger Zeit, also indirekt proportional',
+          'Erhaltungsgröße aufstellen: $n_1 \\cdot t_1 = n_2 \\cdot t_2$',
+          'Bekannte Werte einsetzen: $5 \\cdot 12 = 8 \\cdot t_2$, also $60 = 8 \\cdot t_2$',
+          'Nach $t_2$ auflösen: $t_2 = 60/8 = 7{,}5\\,\\text{Tage}$',
         ],
-        `**Ansatz:** "Mehr → mehr" = direkt, "mehr → weniger" = indirekt.
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte in fester Reihenfolge: Typ erkennen $\\to$ Erhaltungsgröße $\\to$ Einsetzen $\\to$ Auflösen.
+
+**Rechnung:** Endwert: $7{,}5\\,\\text{Tage}$. Plausibilität: weniger als $12$ Tage, weil mehr Bagger.
+
+**Probe:** $8 \\cdot 7{,}5 = 60 = 5 \\cdot 12$ — Bagger-Tage konstant. ✓
+
+**Typischer Fehler:** Schritt 1 überspringen und schematisch mit Verhältnissen rechnen ($5/12 = 8/t$), das ergäbe $t = 19{,}2$ — direkt-proportional gerechnet. Mehr Bagger müssen aber kürzer arbeiten, nicht länger.`,
+        [
+          'Erst Typ klären — direkt oder indirekt?',
+          'Bei indirekt ist das Produkt der Konstante.',
+          'Erst nach dem Einsetzen Werte auflösen.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['indirekt-prop'] },
+      ),
+      matching(
+        'Ordne jeder Situation die korrekte Erhaltungsgröße (was bleibt konstant?) zu.',
+        [
+          { left: 'Preis pro kg Ware',                        right: 'Verhältnis $\\text{€}/\\text{kg}$ konstant (direkt)' },
+          { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'Produkt $n \\cdot t$ konstant (indirekt)' },
+          { left: 'Strecke ↔ Zeit (konstante Geschw.)',       right: 'Verhältnis $s/t = v$ konstant (direkt)' },
+          { left: 'Druck ↔ Volumen (Boyle-Mariotte)',         right: 'Produkt $p \\cdot V$ konstant (indirekt)' },
+        ],
+        `**Ansatz:** Jeder Proportionalitätstyp hat eine charakteristische Erhaltungsgröße — bei direkter ein konstantes VERHÄLTNIS, bei indirekter ein konstantes PRODUKT.
 
 **Rechnung:**
-· Preis/kg: mehr kg → mehr €. Direkt.
-· Gärtner-Zeit: mehr Gärtner → weniger Zeit. Indirekt.
-· Strecke-Zeit: längere Fahrt → mehr Zeit. Direkt.
-· Druck-Volumen: mehr Druck → weniger V. Indirekt.
+- Preis/kg: $\\text{€}/\\text{kg}$ konstant $\\Rightarrow$ direkt.
+- Gärtner $\\cdot$ Zeit: Personenstunden konstant $\\Rightarrow$ indirekt.
+- Strecke/Zeit: Geschwindigkeit konstant $\\Rightarrow$ direkt.
+- Druck $\\cdot$ Volumen: Boyle, $pV$ konstant $\\Rightarrow$ indirekt.
 
-**Probe:** Jede Situation mit Zahlen nachrechnen.
+**Probe:** Bei direkter Proportionalität lässt sich die Konstante als „Stückwert" lesen (Preis pro Stück, Geschwindigkeit). Bei indirekter Proportionalität als „Gesamtarbeit/Gesamtmenge" (Personenstunden, Gas-Energie).
 
-**Typischer Fehler:** Sachlage nicht durchdenken und pauschal "linear" oder "hyperbolisch" entscheiden.`,
+**Typischer Fehler:** Bei „mehr Pumpen, weniger Zeit" sofort an direkte Proportionalität denken — der Test ist immer: ist Verhältnis ODER Produkt invariant?`,
         [
-          'Wenn $x$ wächst, wächst $y$ → direkt.',
-          'Wenn $x$ wächst, sinkt $y$ → indirekt.',
-          'Zahlentest: Verdopple $x$ und schau was mit $y$ passiert.',
+          'Direkt: Verhältnis $x/y$ konstant. Indirekt: Produkt $x \\cdot y$ konstant.',
+          'Pro Situation: Was kannst du als Stückwert lesen, was als Gesamtmenge?',
+          'Zahlentest: Verdopple $x$, was passiert mit $y$? (verdoppelt $\\to$ direkt; halbiert $\\to$ indirekt)',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
@@ -2056,6 +2144,36 @@ export const algebraSubGoalTasks = {
           'Antwort bleibt in Prozenteinheiten — Aktien-Anteil.',
         ],
         { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
+      ),
+      // Bonus SG 4: apply-guided · multiple-choice · uses=[prozentpunkt, wachstumsfaktor]
+      // Ökonomie-Beispiel mit beiden Sichtweisen — testet Disambiguation.
+      mc(
+        'Die Inflationsrate steigt von $2\\,\\%$ auf $3{,}5\\,\\%$. Welche Aussage ist mathematisch eindeutig korrekt?',
+        [
+          'Anstieg um $1{,}5$ Prozentpunkte (absolut) bzw. um $75\\%$ (relativ).',
+          'Anstieg um $1{,}5\\%$.',
+          'Anstieg um $1{,}5$ Prozentpunkte und gleichzeitig um $1{,}5\\%$ — beides synonym.',
+          'Anstieg um $75$ Prozentpunkte.',
+        ],
+        0,
+        `**Ansatz:** Zwei verschiedene Größen sauber trennen — absolute Differenz vs. relative Änderung.
+
+**Rechnung:** Absolut: $3{,}5 - 2 = 1{,}5$ Prozentpunkte. Relativ: $\\dfrac{3{,}5 - 2}{2} = \\dfrac{1{,}5}{2} = 0{,}75 = 75\\%$.
+
+**Probe:** Wachstumsfaktor zur Kontrolle: $3{,}5/2 = 1{,}75 \\Rightarrow$ relativer Anstieg $+75\\%$. Differenz $1{,}5$ ist die Prozentpunkt-Angabe.
+
+**Typischer Fehler:** Das mehrdeutige „Anstieg um $1{,}5\\%$" — meinen Medien meist Prozentpunkte, mathematisch heißt $\\%$ aber relative Änderung. Ohne Kontext mehrdeutig.`,
+        [
+          'Was ist der Unterschied zwischen Prozent und Prozentpunkt?',
+          'Absolut: Differenz der Sätze. Relativ: Differenz $/$ Ausgangswert.',
+          'Verhältnis $3{,}5 / 2 = ?$',
+        ],
+        {
+          1: 'Diese Formulierung ist umgangssprachlich, aber mehrdeutig. „$1{,}5\\%$" könnte sowohl $+1{,}5$ Prozentpunkte als auch $+1{,}5\\%$ relativ ($\\to 2{,}03\\%$) heißen.',
+          2: 'Prozentpunkte und Prozent sind NICHT synonym — das eine ist absolut, das andere relativ. Hier $1{,}5$ Prozentpunkte $\\neq 1{,}5\\%$ relativ.',
+          3: '$75$ Prozentpunkte wären eine Differenz von $75$ Prozenteinheiten ($2\\% \\to 77\\%$). Hier sind es nur $1{,}5$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
       ),
       ni(
         'Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
@@ -2186,6 +2304,31 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['koeff-addieren'] },
       ),
+      // Bonus SG 0: transfer · sorting · uses=[gleichartige-terme, koeff-addieren]
+      // Kompletter Ablauf zum Sortieren mehrerer Sammelgruppen — Strukturlernen.
+      sorting(
+        'Bringe die Schritte zum Vereinfachen von $4x + 3y - 2x + y - x$ in die richtige Reihenfolge.',
+        [
+          'Sammelgruppen identifizieren: $x$-Terme und $y$-Terme getrennt',
+          '$x$-Terme zusammenfassen: $4x - 2x - x = (4 - 2 - 1) x = x$',
+          '$y$-Terme zusammenfassen: $3y + y = 4y$',
+          'Endausdruck: $x + 4y$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte: Sammelgruppen erkennen $\\to$ jede Gruppe einzeln zusammenfassen $\\to$ Endausdruck.
+
+**Rechnung:** $4x + 3y - 2x + y - x = (4 - 2 - 1)x + (3 + 1)y = x + 4y$.
+
+**Probe:** Zahlentest $x = 1, y = 1$: Original $4 + 3 - 2 + 1 - 1 = 5$. Endausdruck $1 + 4 = 5$. ✓
+
+**Typischer Fehler:** Alle Koeffizienten in einen Topf werfen: $4 + 3 - 2 + 1 - 1 = 5$ und schreiben „$5xy$" oder „$5(x+y)$" — ungleiche Variablen lassen sich nicht zusammenwerfen.`,
+        [
+          'Ungleiche Variablen $\\to$ getrennte Sammelgruppen.',
+          'Pro Gruppe: nur Koeffizienten verrechnen.',
+          'Variablen-Teil bleibt unverändert.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme', 'koeff-addieren'] },
+      ),
       matching(
         'Ordne jedem Term den gleichartigen Partner zu.',
         [
@@ -2314,6 +2457,34 @@ export const algebraSubGoalTasks = {
           'Linearer Koeffizient = $-10 + 3$.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
+      ),
+      // Bonus SG 1: transfer · matching · uses=[distributiv, ausklammern]
+      // Bidirektional: ausgeklammerte Form ↔ ausmultiplizierte Form.
+      matching(
+        'Ordne jeder ausgeklammerten Form ihre ausmultiplizierte Form zu.',
+        [
+          { left: '$3x(x + 2)$',          right: '$3x^2 + 6x$' },
+          { left: '$2(a - b)$',           right: '$2a - 2b$' },
+          { left: '$x(x^2 + 1)$',         right: '$x^3 + x$' },
+          { left: '$5(2y - 3)$',          right: '$10y - 15$' },
+        ],
+        `**Ansatz:** Distributivgesetz $a(b + c) = ab + ac$ in Aktion. Faktor wirkt auf JEDEN Summanden.
+
+**Rechnung:**
+- $3x(x + 2) = 3x \\cdot x + 3x \\cdot 2 = 3x^2 + 6x$
+- $2(a - b) = 2a - 2b$
+- $x(x^2 + 1) = x \\cdot x^2 + x \\cdot 1 = x^3 + x$
+- $5(2y - 3) = 10y - 15$
+
+**Probe:** Jede Zeile lässt sich rückwärts wieder ausklammern $\\Rightarrow$ Originalform.
+
+**Typischer Fehler:** Faktor nur auf den ersten Summanden — $3x(x+2) = 3x^2 + 2$ wäre falsch. Auch bei Variablen-Faktoren gilt das Distributivgesetz vollständig.`,
+        [
+          'Faktor auf JEDEN Summanden in der Klammer.',
+          'Bei Variablen: Exponenten gleicher Basen addieren ($x \\cdot x^2 = x^3$).',
+          'Vorzeichen mitnehmen: $-b$ wird $-ab$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['distributiv', 'ausklammern'] },
       ),
       ni(
         'Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
@@ -2444,6 +2615,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['binom-1'] },
       ),
+      // Bonus SG 2: apply-independent · number-input · uses=[binom-2]
+      // Faktorisieren mit 2. binomischer Formel — testet Erkennen + Ausnahmefall (a > 1).
+      ni(
+        'Faktorisiere $9x^2 - 24x + 16$ als $(ax - b)^2$ mit positiven $a, b$ und gib $a + b$ an.',
+        7, 0, '',
+        `**Ansatz:** Muster der 2. binomischen Formel rückwärts. Für $(ax - b)^2 = a^2 x^2 - 2abx + b^2$ müssen $a^2 = 9$ und $b^2 = 16$ gelten, plus Mittelterm-Probe.
+
+**Rechnung:** $a^2 = 9 \\Rightarrow a = 3$. $b^2 = 16 \\Rightarrow b = 4$. Probe Mittelterm: $-2ab = -2 \\cdot 3 \\cdot 4 = -24$. ✓ Faktorisierung: $(3x - 4)^2$. Gefragt: $a + b = 3 + 4 = 7$.
+
+**Probe:** Ausmultiplizieren: $(3x - 4)^2 = 9x^2 - 24x + 16$. ✓
+
+**Typischer Fehler:** $a = 1$ annehmen, also $a^2 = 1 \\neq 9$. Oder $b = -4$ (Vorzeichen falsch zugeordnet). Wichtig: die 2. binomische Formel hat Form $(ax - b)^2$ mit BEIDEN positiven Vorzeichen in der Wurzel — das Minus steht in der Klammer.`,
+        [
+          'Welche binomische Formel passt — $(a-b)^2$ oder $(a+b)^2$?',
+          '$a^2 = 9$ und $b^2 = 16$ — was sind $a$, $b$?',
+          'Mittelterm-Probe: $-2ab$ muss zu $-24x$ passen.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['binom-2'] },
+      ),
       ni(
         'Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
         9991, 0, '',
@@ -2562,6 +2752,31 @@ export const algebraSubGoalTasks = {
           'Einheiten-Check: $\\text{g}/(\\text{g/cm}^3) = \\text{cm}^3$.',
         ],
         { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
+      ),
+      // Bonus SG 3: apply-guided · multiple-choice · uses=[formel-umstellen]
+      // Quadratische Variable in Formel — Wurzel als Umkehrung.
+      mc(
+        'Stelle die Energieformel $E = \\dfrac{1}{2} m v^2$ nach $v$ um (für $v > 0$).',
+        ['$v = \\sqrt{\\dfrac{2E}{m}}$', '$v = \\dfrac{2E}{m}$', '$v = \\dfrac{E}{2m}$', '$v = \\sqrt{\\dfrac{E}{2m}}$'],
+        0,
+        `**Ansatz:** Schrittweise: erst $v^2$ isolieren, dann Wurzel ziehen.
+
+**Rechnung:** $E = \\tfrac{1}{2} m v^2 \\;|\\; \\cdot 2 \\Rightarrow 2E = m v^2 \\;|\\; / m \\Rightarrow v^2 = \\tfrac{2E}{m} \\;|\\; \\sqrt{} \\Rightarrow v = \\sqrt{\\tfrac{2E}{m}}$.
+
+**Probe:** Einheiten-Check: $E$ in J $= \\text{kg} \\cdot \\text{m}^2/\\text{s}^2$, $m$ in kg $\\Rightarrow$ $v = \\sqrt{\\text{m}^2/\\text{s}^2} = \\text{m/s}$. ✓ Konkret bei $E = 50\\,\\text{J}$, $m = 4\\,\\text{kg}$: $v = \\sqrt{25} = 5\\,\\text{m/s}$, und $\\tfrac{1}{2} \\cdot 4 \\cdot 25 = 50$. ✓
+
+**Typischer Fehler:** Wurzel vergessen (Option 2 oder 3) — $v^2$ und $v$ verwechseln.`,
+        [
+          'Beide Seiten mit $2$ multiplizieren, dann durch $m$ teilen.',
+          'Übrig bleibt $v^2 = 2E/m$.',
+          'Wurzel ziehen — die ist die Umkehr-Operation des Quadrats.',
+        ],
+        {
+          1: 'Das ist $v^2 = 2E/m$ ohne Wurzel — das wäre eine Geschwindigkeit zum Quadrat, keine Geschwindigkeit. Einheiten-Check zeigt es: $\\text{J/kg} = \\text{m}^2/\\text{s}^2 \\neq \\text{m/s}$.',
+          2: '$E/(2m)$ ist um Faktor $4$ falsch (zwei mal vergessen, Wurzel zu ziehen) und hat ohnehin nicht die Einheit einer Geschwindigkeit.',
+          3: '$\\sqrt{E/(2m)}$ ist auch um Faktor $\\sqrt{4}=2$ daneben. Korrekt: erst $\\cdot 2$, dann $:m$, dann $\\sqrt{}$ — nicht $:2$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['formel-umstellen'] },
       ),
       sorting(
         'Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
@@ -2694,6 +2909,25 @@ export const algebraSubGoalTasks = {
           'Definitionsbereich: rechte Seite $x - 1 \\geq 0 \\Rightarrow x \\geq 1$.',
           'Quadrieren $\\to$ quadratische Gleichung $\\to$ zwei Kandidaten.',
           'PROBE in der Originalgleichung — Scheinlösung verwerfen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
+      ),
+      // Bonus SG 4: apply-independent · number-input · uses=[quadrieren-probe]
+      // Wurzelgleichung mit zwei Kandidaten, einer Scheinlösung — strikte Probe nötig.
+      ni(
+        'Löse $\\sqrt{3x - 2} = x - 2$ und gib die einzige reelle Lösung an.',
+        6, 0, '',
+        `**Ansatz:** Definitionsbereich (RHS $x - 2 \\geq 0 \\Rightarrow x \\geq 2$), quadrieren, Kandidaten, Probe.
+
+**Rechnung:** Quadrieren: $3x - 2 = (x-2)^2 = x^2 - 4x + 4 \\Rightarrow x^2 - 7x + 6 = 0 \\Rightarrow (x-1)(x-6) = 0$. Kandidaten: $x = 1$ und $x = 6$.
+
+**Probe:** $x = 1$: liegt außerhalb $x \\geq 2$, sofort verworfen. Außerdem $\\sqrt{1} = 1$, aber $1 - 2 = -1 \\neq 1$. $x = 6$: $\\sqrt{16} = 4$ und $6 - 2 = 4$. ✓ Einzige Lösung: $x = 6$.
+
+**Typischer Fehler:** Beide Kandidaten als Lösungen angeben, ohne Probe oder Definitionsbereich zu prüfen — $x = 1$ ist Scheinlösung, weil das Quadrat einer negativen Zahl positiv wird und die Originalgleichung „verfälscht".`,
+        [
+          'Definitionsbereich: $x - 2 \\geq 0 \\Rightarrow x \\geq 2$.',
+          'Quadrieren beider Seiten $\\to$ quadratische Gleichung.',
+          'Probe: jeder Kandidat in Originalgleichung.',
         ],
         { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
       ),

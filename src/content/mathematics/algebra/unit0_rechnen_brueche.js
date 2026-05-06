@@ -311,7 +311,7 @@ export const exercises_alg_u0 = {
       'Dann vom ursprünglichen Preis abziehen.',
       'Oder direkt: Preis $\\times (1 - 0{,}15) = $ Preis $\\times 0{,}85$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['prozent-def'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['wachstumsfaktor'] },
 },
   'ex-alg-0-3-c': {
     id: 'ex-alg-0-3-c', lessonId: 'alg-0-3', type: 'number-input',
@@ -329,7 +329,7 @@ export const exercises_alg_u0 = {
       'Schneller → indirekt proportional → Produkt bleibt konstant.',
       'Pumpen · Zeit $=$ konstant. Wie viel sind es hier?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['prozent-def'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['indirekt-prop'] },
 },
   'ex-alg-0-3-d': {
     id: 'ex-alg-0-3-d', lessonId: 'alg-0-3', type: 'true-false',
@@ -347,7 +347,7 @@ export const exercises_alg_u0 = {
       'Der zweite Prozentsatz bezieht sich auf den **neuen** Wert, nicht den ursprünglichen.',
       'Algebraisch: $x \\cdot 1{,}2 \\cdot 0{,}8 = 0{,}96\\,x$ — also $4\\%$ unter Start.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prozent-def'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
 },
   'ex-alg-0-3-e': {
     id: 'ex-alg-0-3-e', lessonId: 'alg-0-3', type: 'matching',
@@ -370,7 +370,7 @@ export const exercises_alg_u0 = {
       'Nach $G$ umstellen: $G = W \\cdot 100/p$. Nach $p$: $p = W \\cdot 100/G$.',
       'Wachstumsfaktor $= 1 + p/100$ (Zunahme) bzw. $1 - p/100$ (Abnahme).',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prozent-def'] },
+      pedagogy: { stage: 'transfer', subGoal: 1, uses: ['prozent-grund', 'wachstumsfaktor'] },
 },
   'ex-alg-0-3-mastery': {
     id: 'ex-alg-0-3-mastery', lessonId: 'alg-0-3', type: 'number-input', isMasteryCheck: true,
@@ -433,7 +433,7 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       'Danach durch den Koeffizienten teilen — hier durch $2$.',
       'Am Ende Probe machen: Einsetzen und prüfen.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['gleichartige-terme'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['aequivalenz'] },
 },
   'ex-alg-0-4-c': {
     id: 'ex-alg-0-4-c', lessonId: 'alg-0-4', type: 'multiple-choice',
@@ -457,7 +457,7 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       2: 'Das ist der Kehrwert. Vermutlich hast du rechts $F/m$, aber Zähler und Nenner vertauscht.',
       3: 'Subtraktion passt zu $F = m + a$, nicht zu $F = m \\cdot a$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['gleichartige-terme'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
 },
   'ex-alg-0-4-d': {
     id: 'ex-alg-0-4-d', lessonId: 'alg-0-4', type: 'true-false',
@@ -475,7 +475,7 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       'Multipliziert man mit $0$, wird jede Gleichung zu $0 = 0$ — Information geht verloren.',
       'Daher: Multiplikation/Division nur mit Termen $\\neq 0$ erhält die Lösungsmenge.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['aequivalenz', 'nicht-durch-null'] },
 },
   'ex-alg-0-4-e': {
     id: 'ex-alg-0-4-e', lessonId: 'alg-0-4', type: 'sorting',
@@ -499,7 +499,7 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       'Danach die Zahl weg, die **multipliziert** wird.',
       'Zum Schluss Probe.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme'] },
+      pedagogy: { stage: 'transfer', subGoal: 3, uses: ['aequivalenz'] },
 },
   'ex-alg-0-4-mastery': {
     id: 'ex-alg-0-4-mastery', lessonId: 'alg-0-4', type: 'number-input', isMasteryCheck: true,
@@ -518,7 +518,7 @@ $$\\dfrac{x+4}{3} = 5 \\;\\big|\\; \\cdot 3 \\\\ x + 4 = 15 \\;\\big|\\; -4 \\\\
       'Danach die $+4$ auf die andere Seite bringen.',
       'Probe nicht vergessen.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme'] },
+      pedagogy: { stage: 'transfer', subGoal: 3, uses: ['aequivalenz', 'formel-umstellen'] },
 },
 }
 
@@ -810,19 +810,32 @@ Die innerste Klammer (rund) muss vollständig zu einer Zahl ausgewertet werden, 
         id: 'alg-0-3-s1', type: 'explanation-formal', title: 'Prozent = pro Hundert',
         content: `**Definition:** $p\\%$ bedeutet $\\dfrac{p}{100}$. Also $25\\% = 0{,}25 = \\tfrac{1}{4}$.
 
-**Die drei Größen:**
+**Die drei Größen und Grundformeln:**
 
-| Symbol | Name | Beispiel |
+| Symbol | Name | Formel |
 |---|---|---|
-| $G$ | Grundwert (das Ganze) | $80\\,\\text{€}$ Gesamtpreis |
-| $p$ | Prozentsatz | $25\\%$ Rabatt |
-| $W$ | Prozentwert (der Anteil) | $20\\,\\text{€}$ Rabatt |
+| $G$ | Grundwert (das Ganze) | $G = \\dfrac{W \\cdot 100}{p}$ |
+| $p$ | Prozentsatz | $p = \\dfrac{W \\cdot 100}{G}$ |
+| $W$ | Prozentwert (der Anteil) | $W = G \\cdot \\dfrac{p}{100}$ |
 
-**Grundformel:** $W = G \\cdot \\dfrac{p}{100}$.
+**Wachstumsfaktor & Ketten von Änderungen:**
 
-**Nach $G$ oder $p$ umstellen:** $G = \\dfrac{W \\cdot 100}{p}$, \\; $p = \\dfrac{W \\cdot 100}{G}$.
+| Situation | Faktor | Beispiel |
+|---|---|---|
+| Erhöhung um $+p\\%$ | $\\times (1 + p/100)$ | $+12\\%$ MwSt: $250 \\cdot 1{,}12 = 280$ |
+| Reduktion um $-p\\%$ | $\\times (1 - p/100)$ | $-15\\%$ Rabatt: $60 \\cdot 0{,}85 = 51$ |
+| **Zwei Änderungen in Folge** (Prozentkette) | Faktoren multiplizieren: $f_{ges} = f_1 \\cdot f_2$ | $+10\\%$ dann $-10\\%$: $1{,}1 \\cdot 0{,}9 = 0{,}99$ ($-1\\%$, **nicht** $\\pm 0$) |
+| $n$-fache Anwendung gleicher Änderung | $f^n$ | $5\\%$ Wachstum 2 Jahre: $1{,}05^2 = 1{,}1025$ |
+| Rückrechnen vom Endwert | $G_{alt} = G_{neu} / f$ | Nach $-25\\%$ kostet es $450$: $G_{alt} = 450/0{,}75 = 600$ |
 
-**Wachstumsfaktor:** Für $+p\\%$ rechnet man $\\times (1 + p/100)$, für $-p\\%$ entsprechend $\\times (1 - p/100)$. Beispiel: $15\\%$ Rabatt auf $60\\,\\text{€}$: $60 \\cdot 0{,}85 = 51\\,\\text{€}$.`,
+**Prozent vs. Prozentpunkt** (häufige Verwechslung in Statistik & Medien):
+
+| Begriff | Bedeutung | Formel |
+|---|---|---|
+| **Prozentpunkt** ($\\Delta p$) | Absolute Differenz zweier Prozentsätze | $\\Delta p = p_{neu} - p_{alt}$ |
+| **Relative Änderung** | Veränderung *relativ* zum Ausgangsprozent | $\\dfrac{p_{neu} - p_{alt}}{p_{alt}} \\cdot 100\\%$ |
+
+Beispiel: Steuersatz $15\\% \\to 16{,}5\\%$ ist $+1{,}5$ Prozentpunkte ($\\Delta p$) bzw. $+10\\%$ relativ ($\\tfrac{1{,}5}{15}$).`,
       },
       {
         id: 'alg-0-3-s2', type: 'explanation-formal', title: 'Dreisatz — direkt vs. indirekt',
@@ -918,39 +931,56 @@ Die innerste Klammer (rund) muss vollständig zu einer Zahl ausgewertet werden, 
     nextLessonId: null,
     steps: [
       {
-        id: 'alg-0-4-s1', type: 'explanation-formal', title: 'Terme vereinfachen',
-        content: `**Gleichartige Terme** haben dieselbe Variable mit demselben Exponenten. Nur ihre **Koeffizienten** werden addiert/subtrahiert.
+        id: 'alg-0-4-s1', type: 'explanation-formal', title: 'Terme vereinfachen & Distributivgesetz',
+        content: `**Termumformung — Grundregeln:**
 
-$2x + 3x - x = (2 + 3 - 1)\\,x = 4x$
+| Regel | Formel | Beispiel |
+|---|---|---|
+| **Gleichartige Terme** (gleiche Variable, gleicher Exponent) addierbar | $a \\cdot x^n + b \\cdot x^n = (a+b) \\cdot x^n$ | $2x + 3x - x = 4x$ |
+| **Nur Koeffizienten** werden verrechnet — Variable bleibt unverändert | $5x^2 - 3x^2 + 8x^2 = 10x^2$ | (Exponent bleibt $2$) |
+| **Nicht verwechseln** Addition vs. Multiplikation | $x + x + x = 3x$, aber $x \\cdot x \\cdot x = x^3$ | |
+| **Distributivgesetz** (ausmultiplizieren) | $a(b + c) = a \\cdot b + a \\cdot c$ | $3(x+4) = 3x + 12$ |
+| **Zwei Klammern** (FOIL — jeder mit jedem) | $(a+b)(c+d) = ac + ad + bc + bd$ | $(2x+3)(x-5) = 2x^2 - 7x - 15$ |
+| **Ausklammern** (Distributivgesetz rückwärts) | $a \\cdot b + a \\cdot c = a(b + c)$ | $6x^2 - 9x = 3x(2x - 3)$ |
 
-**Nicht verwechseln mit Potenzen:** $x \\cdot x \\cdot x = x^3$ (Multiplikation), aber $x + x + x = 3x$ (Addition).
+**Binomische Formeln** — Pflicht-Auswendigwissen:
 
-**Distributivgesetz:** $a(b + c) = a \\cdot b + a \\cdot c$. Wird beim Ausklammern und Ausmultiplizieren gebraucht.`,
+| Nr. | Formel | Beispiel |
+|---|---|---|
+| **1.** | $(a + b)^2 = a^2 + 2ab + b^2$ | $(x+5)^2 = x^2 + 10x + 25$ |
+| **2.** | $(a - b)^2 = a^2 - 2ab + b^2$ | $(2x-3)^2 = 4x^2 - 12x + 9$ |
+| **3.** | $(a + b)(a - b) = a^2 - b^2$ | $103 \\cdot 97 = 100^2 - 3^2 = 9991$ |
+
+**Häufigster Fehler:** Mittelterm $\\pm 2ab$ vergessen — $(x+5)^2 \\neq x^2 + 25$.`,
       },
       {
-        id: 'alg-0-4-s2', type: 'explanation-formal', title: 'Gleichungen lösen — Äquivalenzumformung',
-        content: `**Prinzip:** Jede Operation, die du auf die **linke** Seite anwendest, musst du auch auf die **rechte** Seite anwenden. Dann bleibt die Gleichung gleichwertig.
+        id: 'alg-0-4-s2', type: 'explanation-formal', title: 'Gleichungen — Äquivalenzumformung & Probe',
+        content: `**Prinzip der Äquivalenzumformung:** Jede Operation, die du auf die linke Seite anwendest, musst du auch auf die rechte Seite anwenden — dann bleibt die Lösungsmenge gleich.
 
-**Erlaubte Operationen:**
-- Addition/Subtraktion derselben Zahl auf beiden Seiten.
-- Multiplikation/Division mit derselben Zahl $\\neq 0$.
-- Beide Seiten auf eine Potenz heben (mit Vorsicht bei Wurzeln/negativen Seiten).
+| Operation | Regel | Beispiel |
+|---|---|---|
+| **Addition/Subtraktion** | $A = B \\Rightarrow A \\pm c = B \\pm c$ (für jedes $c$) | $2x + 6 = 14 \\;|\\;-6 \\Rightarrow 2x = 8$ |
+| **Multiplikation/Division** | $A = B \\Rightarrow c \\cdot A = c \\cdot B$ (nur für $c \\neq 0$) | $2x = 8 \\;|\\;:2 \\Rightarrow x = 4$ |
+| **Division durch Null verboten** | Division durch einen Term, der $0$ werden kann, **verliert Lösungen** | $x(x-2) = 3(x-2) \\;|\\;:(x-2)$ verliert $x=2$ |
+| **Quadrieren** (keine Äquivalenzumformung!) | Kann Scheinlösungen erzeugen — Probe in Originalgleichung Pflicht | $\\sqrt{x} = -3 \\;|\\;()^2 \\Rightarrow x = 9$, aber $\\sqrt{9} = 3 \\neq -3$ → keine Lösung |
 
-**Standard-Muster:** Zuerst alle $x$-Terme auf eine Seite, alle Konstanten auf die andere. Dann durch den Koeffizienten von $x$ teilen.
+**Formel nach Variable umstellen** (Ingenieur-Alltag):
 
-**Probe ist Pflicht:** Das gefundene $x$ in die Ausgangsgleichung einsetzen.`,
-      },
-      {
-        id: 'alg-0-4-s3', type: 'explanation-intuitive', title: 'Formel nach Variable umstellen',
-        content: `**Ingenieur-Alltag:** Formeln wie $F = m \\cdot a$ werden oft nach anderen Größen umgestellt. Vorgehen:
+| Schritt | Beispiel ($F = m \\cdot a$ nach $a$) |
+|---|---|
+| 1. Gesuchte Variable identifizieren | $a$ |
+| 2. Andere Terme mit Umkehr-Operationen wegschaffen | $F = m a \\;|\\;:m$ |
+| 3. Ergebnis nach gesuchter Größe schreiben | $a = F/m$ |
+| 4. Einheiten-Check | $\\text{N}/\\text{kg} = \\text{m/s}^2$ ✓ |
 
-1. **Markiere die gesuchte Variable** (hier z. B. $a$).
-2. **Alle anderen Terme** mit Äquivalenzumformungen auf die andere Seite.
-3. Operationen werden **umgekehrt**: aus Multiplikation wird Division, aus Addition wird Subtraktion.
+**Wurzelgleichungen — Standardablauf:**
 
-**Beispiel:** $F = m \\cdot a \\;\\big|\\;:m \\Rightarrow a = \\dfrac{F}{m}$.
+1. Definitionsbereich klären (Radikand $\\geq 0$ und ggf. RHS $\\geq 0$).
+2. Wurzel isolieren, dann beide Seiten quadrieren.
+3. Resultierende (meist quadratische) Gleichung lösen.
+4. **Probe** in Originalgleichung — Scheinlösungen verwerfen.
 
-**Einheiten-Check:** Stimmt die Einheit des Ergebnisses? $a = \\text{N}/\\text{kg} = \\text{m/s}^2$ ✓.`,
+**Standardregel:** Probe ist Pflicht, nicht Kür. Auch bei „normalen" Gleichungen sicherer.`,
       },
       { id: 'alg-0-4-s4', type: 'exercise', title: 'Aufgabe 1 — Terme zusammenfassen', exerciseRef: 'ex-alg-0-4-a' },
       { id: 'alg-0-4-s5', type: 'exercise', title: 'Aufgabe 2 — Gleichung lösen', exerciseRef: 'ex-alg-0-4-b' },
