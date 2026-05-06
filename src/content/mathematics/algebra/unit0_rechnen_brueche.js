@@ -46,7 +46,7 @@ export const exercises_alg_u0 = {
       'Danach mit dem $2$ vor der Klammer multiplizieren.',
       'Alternativ: $2 \\cdot 3 + 2 \\cdot 4$ — beide Wege geben dasselbe.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['prio-basic'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['prio-klammer'] },
 },
   'ex-alg-0-1-c': {
     id: 'ex-alg-0-1-c', lessonId: 'alg-0-1', type: 'multiple-choice',
@@ -70,7 +70,7 @@ export const exercises_alg_u0 = {
       2: 'Das Minus wurde nur auf die $3$ angewandt: $-3-5=-8$. Es wirkt aber auf beide Summanden in der Klammer.',
       3: 'Das wäre $-3 \\cdot (-5/\\ldots)$ oder ähnlich — nicht $-(3-5)$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
 },
   'ex-alg-0-1-d': {
     id: 'ex-alg-0-1-d', lessonId: 'alg-0-1', type: 'true-false',
@@ -115,7 +115,7 @@ export const exercises_alg_u0 = {
       'Bei Klammern: innen zuerst, dann Punkt vor Strich.',
       'Vorzeichen sorgfältig: $-(2-5) = -(-3) = +3$, nicht $-2-5 = -7$.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
+      pedagogy: { stage: 'transfer', subGoal: 3, uses: ['prio-basic', 'prio-klammer', 'minus-vorklammer'] },
 },
   'ex-alg-0-1-mastery': {
     id: 'ex-alg-0-1-mastery', lessonId: 'alg-0-1', type: 'number-input', isMasteryCheck: true,
@@ -133,7 +133,7 @@ export const exercises_alg_u0 = {
       'Dann multiplizieren — Vorzeichen beachten (Minus mal Minus = Plus).',
       'Zum Schluss $+4$.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['minus-mal-minus', 'minus-vorklammer'] },
 },
 
   // ───────────── Lektion 0-2: Brüche ─────────────
@@ -588,18 +588,30 @@ const lessons_alg_u0 = [
         id: 'alg-0-1-s1', type: 'explanation-formal', title: 'Rechenreihenfolge & Klammern',
         content: `**Warum Reihenfolge wichtig ist:** $3 + 4 \\cdot 2$ kann je nach Reihenfolge $11$ oder $14$ ergeben. Damit Mathe eindeutig bleibt, gibt es feste Regeln.
 
-**Die Vorrangregel („Punkt vor Strich"):**
-1. **Klammern zuerst** — was in der Klammer steht, wird zuerst ausgerechnet.
-2. **Potenzen** ($x^n$) vor Punktrechnung.
-3. **Punktrechnung** ($\\cdot$, $:$) vor Strichrechnung.
-4. **Strichrechnung** ($+$, $-$) zuletzt, von links nach rechts.
+**Die Vorrangregel — vier Stufen, von oben nach unten abarbeiten:**
 
-**Beispiel:** $3 + 4 \\cdot 2 = 3 + 8 = 11$ (nicht $14$).
+| Stufe | Regel | Formel | Beispiel |
+|---|---|---|---|
+| 1 | **Klammern zuerst** (Klammern überschreiben jede Präzedenz) | $a \\cdot (b+c) \\to a \\cdot \\text{Wert}$ | $2 \\cdot (3+4) = 2 \\cdot 7 = 14$ |
+| 2 | **Potenzen** vor Punktrechnung | $a \\cdot b^n \\to a \\cdot b^n$ (Potenz zuerst) | $3 \\cdot 2^2 = 3 \\cdot 4 = 12$ |
+| 3 | **Punktrechnung** ($\\cdot$, $/$) vor Strichrechnung | $a + b \\cdot c \\to a + (b\\cdot c)$ | $3 + 4 \\cdot 2 = 3 + 8 = 11$ |
+| 4 | **Strichrechnung** ($+$, $-$) zuletzt, links→rechts | $a - b + c \\to (a-b) + c$ | $5 - 2 + 4 = 3 + 4 = 7$ |
 
-**Klammern und Minus:** Ein Minuszeichen vor einer Klammer dreht **alle** Vorzeichen in der Klammer um.
-$-(3 - 5) = -3 + 5 = 2$.
+**Vorzeichenregeln bei Klammern:**
 
-**Minus mal Minus = Plus:** $(-2) \\cdot (-3) = +6$. Zwei Vorzeichenwechsel heben sich auf.`,
+| Regel | Formel | Beispiel |
+|---|---|---|
+| **Minus vor Klammer** kippt **alle** Vorzeichen in der Klammer | $-(a + b) = -a - b$ · $-(a - b) = -a + b$ | $-(3 - 5) = -3 + 5 = 2$ |
+| **Minus mal Minus = Plus** (zwei Vorzeichenwechsel heben sich auf) | $(-a) \\cdot (-b) = +a \\cdot b$ | $(-2) \\cdot (-3) = +6$ |
+| **Mehrere negative Faktoren:** Parität entscheidet | gerade Anzahl Minus → $+$ · ungerade → $-$ | $(-2)(-3)(-5) = -30$ |
+
+**Geschachtelte Klammern — von innen nach außen auflösen:**
+
+$$\\{\\,a + [\\,b \\cdot (c + d)\\,]\\,\\} \\;\\xrightarrow{\\text{innen}}\\; \\{\\,a + [\\,b \\cdot \\text{Zahl}\\,]\\,\\} \\;\\xrightarrow{\\text{mitte}}\\; \\{\\,a + \\text{Zahl}\\,\\} \\;\\xrightarrow{\\text{außen}}\\; \\text{Zahl}$$
+
+Die innerste Klammer (rund) muss vollständig zu einer Zahl ausgewertet werden, **bevor** die nächste Stufe (eckig, dann geschweift) bearbeitet werden kann. Reihenfolge: $(\\;) \\to [\\;] \\to \\{\\;\\}$.
+
+**Beispiel:** $\\{10 - [2 \\cdot (3 + 1)]\\} = \\{10 - [2 \\cdot 4]\\} = \\{10 - 8\\} = 2$.`,
       },
       {
         id: 'alg-0-1-s2', type: 'explanation-intuitive', title: 'Typische Fallen',
