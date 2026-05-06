@@ -1535,6 +1535,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
       ),
+      // Bonus SG 0: apply-independent · number-input · uses=[prozent-grund]
+      // Anteilsrechnung im Fertigungs-Kontext (Ausschuss-Quote) — nach p umgestellt.
+      ni(
+        'Eine Maschine produziert $720$ Teile pro Schicht, davon sind $18$ Ausschuss. Wie hoch ist die Ausschuss-Quote in Prozent?',
+        2.5, 0.05, '%',
+        `**Ansatz:** Anteil bestimmen — Formel nach $p$ umgestellt: $p = W \\cdot 100 / G$.
+
+**Rechnung:** $p = \\dfrac{18 \\cdot 100}{720} = \\dfrac{1800}{720} = 2{,}5$. Ausschuss-Quote: $2{,}5\\,\\%$.
+
+**Probe:** $2{,}5\\%$ von $720$: $720 \\cdot 0{,}025 = 18$ Teile. ✓
+
+**Typischer Fehler:** $18/720 = 0{,}025$ als Antwort hinschreiben (Dezimalzahl statt Prozent). Das $\\cdot 100$ vergessen.`,
+        [
+          'Welche Größe ist gesucht — $W$, $G$ oder $p$?',
+          'Formel nach $p$ umstellen: $p = W \\cdot 100/G$.',
+          'Probe: ergibt deine Quote, multipliziert mit $720$, wirklich $18$?',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
+      ),
       // transfer · matching · uses=[prozent-grund]
       matching(
         'Ordne jeder Situation die korrekte Formel zu.',
@@ -1665,6 +1684,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
+      // Bonus SG 1: apply-independent · number-input · uses=[wachstumsfaktor, prozent-grund]
+      // Netto aus Brutto rechnen — typische MwSt-Rückrechnung.
+      ni(
+        'Eine Maschine kostet brutto $1\\,190\\,€$ inkl. $19\\,\\%$ Mehrwertsteuer. Wie hoch ist der Nettopreis (in €)?',
+        1000, 0, '',
+        `**Ansatz:** Brutto $=$ Netto $\\cdot (1 + p/100)$. Nach Netto umstellen: $\\text{Netto} = \\text{Brutto}/(1 + p/100)$.
+
+**Rechnung:** $\\text{Netto} = 1190 / 1{,}19 = 1000$.
+
+**Probe:** $1000 \\cdot 1{,}19 = 1190\\,€$. ✓ Differenz $190\\,€$ ist genau $19\\%$ von $1000$.
+
+**Typischer Fehler:** $19\\%$ vom Brutto abziehen: $1190 \\cdot 0{,}19 = 226{,}10$, dann $1190 - 226{,}10 = 963{,}90$ — falsch, weil die MwSt sich auf das Netto bezieht, nicht das Brutto.`,
+        [
+          'Brutto enthält bereits die MwSt — welcher Faktor wurde aufs Netto angewandt?',
+          'Wachstumsfaktor: $1 + 0{,}19 = 1{,}19$.',
+          'Umstellen: Brutto durch Faktor teilen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor', 'prozent-grund'] },
+      ),
       ni(
         'Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
         600, 0, '',
@@ -1783,6 +1821,31 @@ export const algebraSubGoalTasks = {
           '$0{,}96 \\cdot 0{,}96 \\cdot 0{,}96 = ?$',
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
+      ),
+      // Bonus SG 2: apply-guided · multiple-choice · uses=[prozent-kette, wachstumsfaktor]
+      // Extreme Asymmetrie: +50%/-50% — illustriert die Multiplikativität besonders deutlich.
+      mc(
+        'Ein Aktienkurs steigt um $50\\%$ und fällt anschließend um $50\\%$. Welcher Anteil bleibt vom Originalkurs übrig?',
+        ['$75\\%$', '$100\\%$', '$50\\%$', '$25\\%$'],
+        0,
+        `**Ansatz:** Faktoren nacheinander multiplizieren — Prozente NIE addieren.
+
+**Rechnung:** $1{,}50 \\cdot 0{,}50 = 0{,}75$. Es bleiben $75\\%$ des Originalkurses, also ein Verlust von $25$ Prozentpunkten.
+
+**Probe:** Start $100$. $+50\\% \\to 150$. $-50\\%$ von $150$: $150 \\cdot 0{,}5 = 75$. Kontrolle: $75/100 = 0{,}75 = 75\\%$. ✓
+
+**Typischer Fehler:** „$+50$ und $-50$ heben sich auf $\\to 100\\%$" — die naive Addition ignoriert, dass der zweite Faktor auf einen größeren Bezugswert wirkt. Je extremer die Prozentsätze, desto deutlicher der Effekt.`,
+        [
+          'Bezugswert ändert sich nach der ersten Änderung!',
+          'Zwei Wachstumsfaktoren: $1 + 0{,}5$ und $1 - 0{,}5$.',
+          'Multiplizieren, nicht addieren.',
+        ],
+        {
+          1: '$100\\%$ wäre korrekt, wenn Prozente sich additiv verhalten würden — tun sie nicht. Faktoren multiplizieren: $1{,}5 \\cdot 0{,}5 = 0{,}75$.',
+          2: '$50\\%$ entspräche nur dem zweiten Schritt ($-50\\%$), die vorherige Erhöhung fehlt. $50/100 \\neq 50/150$.',
+          3: '$25\\%$ wäre $1{,}5 \\cdot 0{,}5^2$ oder Ähnliches — keine sinnvolle Konstellation der zwei Schritte.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
@@ -1919,29 +1982,54 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 3, uses: ['direkt-prop'] },
       ),
-      matching(
-        'Ordne jeder Situation den Proportionalitätstyp zu.',
+      // Bonus SG 3: transfer · sorting · uses=[indirekt-prop]
+      // Standard-Workflow eines indirekten Dreisatzes — Reihenfolge der Schritte.
+      sorting(
+        'Bringe die Schritte zur Lösung der Aufgabe „$5$ Bagger graben in $12$ Tagen einen Graben — wie lange brauchen $8$ Bagger?" in die richtige Reihenfolge.',
         [
-          { left: 'Preis pro kg Ware',                        right: 'direkt' },
-          { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'indirekt' },
-          { left: 'Strecke ↔ Zeit (konstante Geschw.)',       right: 'direkt' },
-          { left: 'Druck ↔ Volumen (Boyle-Mariotte)',         right: 'indirekt' },
+          'Typ erkennen: mehr Bagger $\\to$ weniger Zeit, also indirekt proportional',
+          'Erhaltungsgröße aufstellen: $n_1 \\cdot t_1 = n_2 \\cdot t_2$',
+          'Bekannte Werte einsetzen: $5 \\cdot 12 = 8 \\cdot t_2$, also $60 = 8 \\cdot t_2$',
+          'Nach $t_2$ auflösen: $t_2 = 60/8 = 7{,}5\\,\\text{Tage}$',
         ],
-        `**Ansatz:** "Mehr → mehr" = direkt, "mehr → weniger" = indirekt.
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte in fester Reihenfolge: Typ erkennen $\\to$ Erhaltungsgröße $\\to$ Einsetzen $\\to$ Auflösen.
+
+**Rechnung:** Endwert: $7{,}5\\,\\text{Tage}$. Plausibilität: weniger als $12$ Tage, weil mehr Bagger.
+
+**Probe:** $8 \\cdot 7{,}5 = 60 = 5 \\cdot 12$ — Bagger-Tage konstant. ✓
+
+**Typischer Fehler:** Schritt 1 überspringen und schematisch mit Verhältnissen rechnen ($5/12 = 8/t$), das ergäbe $t = 19{,}2$ — direkt-proportional gerechnet. Mehr Bagger müssen aber kürzer arbeiten, nicht länger.`,
+        [
+          'Erst Typ klären — direkt oder indirekt?',
+          'Bei indirekt ist das Produkt der Konstante.',
+          'Erst nach dem Einsetzen Werte auflösen.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['indirekt-prop'] },
+      ),
+      matching(
+        'Ordne jeder Situation die korrekte Erhaltungsgröße (was bleibt konstant?) zu.',
+        [
+          { left: 'Preis pro kg Ware',                        right: 'Verhältnis $\\text{€}/\\text{kg}$ konstant (direkt)' },
+          { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'Produkt $n \\cdot t$ konstant (indirekt)' },
+          { left: 'Strecke ↔ Zeit (konstante Geschw.)',       right: 'Verhältnis $s/t = v$ konstant (direkt)' },
+          { left: 'Druck ↔ Volumen (Boyle-Mariotte)',         right: 'Produkt $p \\cdot V$ konstant (indirekt)' },
+        ],
+        `**Ansatz:** Jeder Proportionalitätstyp hat eine charakteristische Erhaltungsgröße — bei direkter ein konstantes VERHÄLTNIS, bei indirekter ein konstantes PRODUKT.
 
 **Rechnung:**
-· Preis/kg: mehr kg → mehr €. Direkt.
-· Gärtner-Zeit: mehr Gärtner → weniger Zeit. Indirekt.
-· Strecke-Zeit: längere Fahrt → mehr Zeit. Direkt.
-· Druck-Volumen: mehr Druck → weniger V. Indirekt.
+- Preis/kg: $\\text{€}/\\text{kg}$ konstant $\\Rightarrow$ direkt.
+- Gärtner $\\cdot$ Zeit: Personenstunden konstant $\\Rightarrow$ indirekt.
+- Strecke/Zeit: Geschwindigkeit konstant $\\Rightarrow$ direkt.
+- Druck $\\cdot$ Volumen: Boyle, $pV$ konstant $\\Rightarrow$ indirekt.
 
-**Probe:** Jede Situation mit Zahlen nachrechnen.
+**Probe:** Bei direkter Proportionalität lässt sich die Konstante als „Stückwert" lesen (Preis pro Stück, Geschwindigkeit). Bei indirekter Proportionalität als „Gesamtarbeit/Gesamtmenge" (Personenstunden, Gas-Energie).
 
-**Typischer Fehler:** Sachlage nicht durchdenken und pauschal "linear" oder "hyperbolisch" entscheiden.`,
+**Typischer Fehler:** Bei „mehr Pumpen, weniger Zeit" sofort an direkte Proportionalität denken — der Test ist immer: ist Verhältnis ODER Produkt invariant?`,
         [
-          'Wenn $x$ wächst, wächst $y$ → direkt.',
-          'Wenn $x$ wächst, sinkt $y$ → indirekt.',
-          'Zahlentest: Verdopple $x$ und schau was mit $y$ passiert.',
+          'Direkt: Verhältnis $x/y$ konstant. Indirekt: Produkt $x \\cdot y$ konstant.',
+          'Pro Situation: Was kannst du als Stückwert lesen, was als Gesamtmenge?',
+          'Zahlentest: Verdopple $x$, was passiert mit $y$? (verdoppelt $\\to$ direkt; halbiert $\\to$ indirekt)',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
@@ -2056,6 +2144,36 @@ export const algebraSubGoalTasks = {
           'Antwort bleibt in Prozenteinheiten — Aktien-Anteil.',
         ],
         { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
+      ),
+      // Bonus SG 4: apply-guided · multiple-choice · uses=[prozentpunkt, wachstumsfaktor]
+      // Ökonomie-Beispiel mit beiden Sichtweisen — testet Disambiguation.
+      mc(
+        'Die Inflationsrate steigt von $2\\,\\%$ auf $3{,}5\\,\\%$. Welche Aussage ist mathematisch eindeutig korrekt?',
+        [
+          'Anstieg um $1{,}5$ Prozentpunkte (absolut) bzw. um $75\\%$ (relativ).',
+          'Anstieg um $1{,}5\\%$.',
+          'Anstieg um $1{,}5$ Prozentpunkte und gleichzeitig um $1{,}5\\%$ — beides synonym.',
+          'Anstieg um $75$ Prozentpunkte.',
+        ],
+        0,
+        `**Ansatz:** Zwei verschiedene Größen sauber trennen — absolute Differenz vs. relative Änderung.
+
+**Rechnung:** Absolut: $3{,}5 - 2 = 1{,}5$ Prozentpunkte. Relativ: $\\dfrac{3{,}5 - 2}{2} = \\dfrac{1{,}5}{2} = 0{,}75 = 75\\%$.
+
+**Probe:** Wachstumsfaktor zur Kontrolle: $3{,}5/2 = 1{,}75 \\Rightarrow$ relativer Anstieg $+75\\%$. Differenz $1{,}5$ ist die Prozentpunkt-Angabe.
+
+**Typischer Fehler:** Das mehrdeutige „Anstieg um $1{,}5\\%$" — meinen Medien meist Prozentpunkte, mathematisch heißt $\\%$ aber relative Änderung. Ohne Kontext mehrdeutig.`,
+        [
+          'Was ist der Unterschied zwischen Prozent und Prozentpunkt?',
+          'Absolut: Differenz der Sätze. Relativ: Differenz $/$ Ausgangswert.',
+          'Verhältnis $3{,}5 / 2 = ?$',
+        ],
+        {
+          1: 'Diese Formulierung ist umgangssprachlich, aber mehrdeutig. „$1{,}5\\%$" könnte sowohl $+1{,}5$ Prozentpunkte als auch $+1{,}5\\%$ relativ ($\\to 2{,}03\\%$) heißen.',
+          2: 'Prozentpunkte und Prozent sind NICHT synonym — das eine ist absolut, das andere relativ. Hier $1{,}5$ Prozentpunkte $\\neq 1{,}5\\%$ relativ.',
+          3: '$75$ Prozentpunkte wären eine Differenz von $75$ Prozenteinheiten ($2\\% \\to 77\\%$). Hier sind es nur $1{,}5$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
       ),
       ni(
         'Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
