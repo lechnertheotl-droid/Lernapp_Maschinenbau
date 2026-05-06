@@ -7901,6 +7901,55 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         ],
         { stage: 'transfer', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
+      ni(
+        'Löse die doppelte Ungleichung $-3 < 2x - 7 \\leq 5$ und gib die obere Grenze für $x$ an.',
+        6, 0.01, '',
+        `**Ansatz:** Doppelte Ungleichung in allen drei Teilen gleich umformen — solange wir mit positivem Faktor multiplizieren/dividieren, bleiben beide Ungleichheitszeichen gleich gerichtet.
+
+**Rechnung:**
+$$-3 < 2x - 7 \\leq 5 \\quad | +7 \\\\ 4 < 2x \\leq 12 \\quad | : 2 \\quad (\\text{positiv, Zeichen bleiben}) \\\\ 2 < x \\leq 6$$
+
+Obere Grenze: $x = 6$ (eingeschlossen).
+
+**Probe:** $x = 6$: $2 \\cdot 6 - 7 = 5 \\leq 5$ ✓. $x = 2$ ist Grenzfall: $2 \\cdot 2 - 7 = -3$, nicht $> -3$ — also $2$ ausgeschlossen.
+
+**Typischer Fehler:** Nur eine der drei Stellen umformen — alle drei müssen synchron mit derselben Operation behandelt werden, sonst zerfällt die Doppel-Ungleichung.`,
+        [
+          'Doppelte Ungleichung als $-3 < 2x - 7 \\leq 5$.',
+          'Schritt 1: $+7$ in allen drei Teilen.',
+          'Schritt 2: $:2$ (positiv, Zeichen bleiben).',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      ),
+      mc(
+        'Welcher Schritt ist erforderlich, um $\\dfrac{x - 4}{-3} \\geq 2$ nach $x$ aufzulösen?',
+        [
+          'Beide Seiten mit $-3$ multiplizieren UND Ungleichheitszeichen umdrehen: $x - 4 \\leq -6$.',
+          'Beide Seiten mit $-3$ multiplizieren OHNE Zeichen umzudrehen: $x - 4 \\geq -6$.',
+          'Beide Seiten durch $-3$ teilen: $x - 4 \\leq 2 \\cdot (-3)^{-1}$.',
+          'Quadrieren, weil Bruch.',
+        ],
+        0,
+        `**Ansatz:** Bei Multiplikation einer Ungleichung mit einer NEGATIVEN Zahl flippt das Ungleichheitszeichen.
+
+**Rechnung:**
+$$\\dfrac{x-4}{-3} \\geq 2 \\quad | \\cdot (-3) \\quad (\\text{negativ! Zeichen flippt}) \\\\ x - 4 \\leq -6 \\quad | +4 \\\\ x \\leq -2$$
+
+**Probe:** $x = -2$: $\\dfrac{-2-4}{-3} = \\dfrac{-6}{-3} = 2 \\geq 2$ ✓. $x = -3$: $\\dfrac{-7}{-3} \\approx 2{,}33 \\geq 2$ ✓ — auch in Lösung.
+
+**Typischer Fehler:** Mit $-3$ multiplizieren, ohne das Zeichen zu drehen — dann landet man bei $x \\geq -2$, was die falsche Halbgerade ist.`,
+        [
+          'Was steht im Nenner? — $-3$, also negativ.',
+          'Multiplikation mit negativ → Zeichen umdrehen.',
+          'Schritt: $\\geq$ wird $\\leq$.',
+        ],
+        {
+          1: 'Du hast den Zeichen-Flip vergessen — bei Multiplikation mit $-3$ wird $\\geq$ zu $\\leq$. Probe widerlegt: $x = 0$ erfüllt dein Ergebnis $0 - 4 \\geq -6$, aber $\\frac{0-4}{-3} = \\frac{4}{3} \\approx 1{,}33$, was NICHT $\\geq 2$ ist.',
+          2: 'Du hast nicht aufgelöst, nur umgeformt — und das mit falscher Notation. Beim Teilen durch $-3$ wäre die rechte Seite $2 / (-3) = -\\frac{2}{3}$, mit Zeichen-Flip: $x - 4 \\leq -\\frac{2}{3}$. Direktere Methode: Multiplikation mit $-3$.',
+          3: 'Quadrieren ist hier völlig fehl am Platz — es würde Grad-Verdopplung erzeugen und Scheinlösungen einführen. Bei einer linearen Bruchungleichung genügt der Standardweg: mit dem Nenner multiplizieren (Vorzeichen beachten).',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      ),
     ],
     // [1] Betragsungleichung |x-a| < b
     1: [
@@ -7983,9 +8032,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest mit $x = -5$.',
         ],
         {
-          1: '$x > 4$ wäre Komplement.',
-          2: 'Schülerlösung stimmt nicht.',
-          3: '$|x|$ kann $= 0$ sein, daher gibt es Lösungen.',
+          1: 'Du hast die ENTGEGENGESETZTE Bedingung gewählt — $x > 4$ ist die Lösung von $|x| > 4$ (außerhalb), nicht von $|x| < 4$ (innerhalb). Probe: $x = 0$ erfüllt $|0| < 4$ ✓, liegt aber nicht in $x > 4$.',
+          2: 'Probe widerlegt: $x = -5$ erfüllt $x < 4$, aber $|-5| = 5 > 4$, also NICHT $|x| < 4$. Die Schülerlösung enthält Werte, die die Original-Ungleichung verletzen — sie ist unvollständig (untere Schranke fehlt).',
+          3: '$|x| = 0$ bei $x = 0$ erfüllt zwar $|x| < 4$, aber das ist keine generelle Aussage über die Lösungsmenge. Die richtige Frage: Welche $x$ erfüllen die Ungleichung? Antwort: alle mit $-4 < x < 4$, nicht „keine".',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['betrag-kleiner'] },
       ),
@@ -8010,6 +8059,47 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Intervall $[a-b, a+b]$.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['betrag-kleiner'] },
+      ),
+      ni(
+        'Eine Maschine fertigt Bolzen mit Soll-Durchmesser $d_0 = 12{,}0$ mm. Die Toleranz ist $|d - 12{,}0| \\leq 0{,}3$. Wie groß ist die größte zulässige Abweichung des Durchmessers $d$ von $12{,}0$ mm (in mm)?',
+        0.3, 0.001, 'mm',
+        `**Ansatz:** Die Bedingung $|d - 12{,}0| \\leq 0{,}3$ definiert das Toleranzintervall $[11{,}7;\\, 12{,}3]$ (geschlossen, Grenzen eingeschlossen). Größte zulässige Abweichung = Radius des Intervalls.
+
+**Rechnung:** $|d - 12{,}0| \\leq 0{,}3 \\iff -0{,}3 \\leq d - 12{,}0 \\leq 0{,}3 \\iff 11{,}7 \\leq d \\leq 12{,}3$. Maximale Abweichung: $0{,}3$ mm (gerade noch erlaubt, weil $\\leq$).
+
+**Probe:** $d = 12{,}3$ ist Grenzfall — $|0{,}3| = 0{,}3 \\leq 0{,}3$ ✓, gerade noch zulässig. $d = 12{,}4$: $|0{,}4| > 0{,}3$, ausgeschlossen.
+
+**Typischer Fehler:** Den Soll-Wert $12{,}0$ selbst als Antwort angeben — gefragt ist die Abweichung (Radius), nicht der Wert selbst.`,
+        [
+          'Was bedeutet $|d - 12{,}0| \\leq 0{,}3$? — Abstand zu $12{,}0$ höchstens $0{,}3$.',
+          'Die größte zulässige Abweichung ist genau der Radius.',
+          'Antwort: $0{,}3$ mm (Grenze eingeschlossen).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['betrag-kleiner'] },
+      ),
+      mc(
+        'Welche Lösung hat $|2x - 1| \\leq 5$?',
+        ['$-2 \\leq x \\leq 3$', '$-3 \\leq x \\leq 2$', '$x \\leq 3$', '$|x| \\leq 5$'],
+        0,
+        `**Ansatz:** Doppelungleichung $-5 \\leq 2x - 1 \\leq 5$, dann beide Seiten umformen.
+
+**Rechnung:**
+$$-5 \\leq 2x - 1 \\leq 5 \\quad | +1 \\\\ -4 \\leq 2x \\leq 6 \\quad | : 2 \\\\ -2 \\leq x \\leq 3$$
+
+**Probe:** $x = 3$: $|2 \\cdot 3 - 1| = |5| = 5 \\leq 5$ ✓; $x = -2$: $|-5| = 5 \\leq 5$ ✓; $x = 0$: $|-1| = 1 \\leq 5$ ✓.
+
+**Typischer Fehler:** Doppelungleichung nur einseitig auflösen oder Vorzeichen verlieren.`,
+        [
+          'Doppelungleichung $-5 \\leq 2x - 1 \\leq 5$.',
+          'Schritt 1: $+1$ in allen drei Teilen.',
+          'Schritt 2: $:2$ (positiv) — Zeichen bleiben.',
+        ],
+        {
+          1: 'Du hast die Vorzeichen vertauscht: $-2 \\leq x \\leq 3$ (richtig) hat untere Grenze $-2$, nicht $-3$. Bei der Berechnung $-4/2 = -2$, $6/2 = 3$ — die Reihenfolge der Ergebnisse muss erhalten bleiben.',
+          2: 'Du hast nur die obere Grenze betrachtet und die untere weggelassen. $|2x-1| \\leq 5$ liefert beidseitige Schranken: zusätzlich $x \\geq -2$.',
+          3: '$|2x - 1| \\leq 5$ ist NICHT äquivalent zu $|x| \\leq 5$ — der Term $2x - 1$ verschiebt und skaliert das Argument. Korrekte Lösung: $-2 \\leq x \\leq 3$, nicht $-5 \\leq x \\leq 5$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['betrag-kleiner'] },
       ),
     ],
     // [2] |x-a| > b
@@ -8121,6 +8211,50 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         ],
         { stage: 'transfer', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
       ),
+      ni(
+        'Löse $|3x - 6| \\geq 9$ und gib die OBERE Grenze des LINKEN Lösungsteils an (also den Endpunkt von $x \\leq ?$).',
+        -1, 0.01, '',
+        `**Ansatz:** $|y| \\geq b$ liefert zwei separate Bereiche: $y \\leq -b$ ODER $y \\geq b$. Mit $y = 3x - 6$:
+
+**Rechnung:**
+$$3x - 6 \\geq 9 \\quad \\Rightarrow \\quad x \\geq 5$$
+$$3x - 6 \\leq -9 \\quad \\Rightarrow \\quad 3x \\leq -3 \\quad \\Rightarrow \\quad x \\leq -1$$
+
+Lösung: $x \\leq -1$ ODER $x \\geq 5$. Linker Teil endet bei $x = -1$.
+
+**Probe:** $x = -1$: $|3 \\cdot (-1) - 6| = |-9| = 9 \\geq 9$ ✓ (Grenze eingeschlossen wegen $\\geq$). $x = 0$: $|-6| = 6$, nicht $\\geq 9$ — also $0$ NICHT in der Lösung, was zu „außerhalb $[-1, 5]$" passt.
+
+**Typischer Fehler:** Beim zweiten Fall vergessen, das Vorzeichen zu drehen — also $-9$ rechts statt $+9$. Oder die Lösungsbereiche nicht in Intervall-Notation umrechnen, sondern direkt aus $|y| > b$ als $y > b$ schreiben (untere Grenze fehlt dann).`,
+        [
+          'Form $|y| \\geq b$ liefert zwei Bereiche, durch ODER verbunden.',
+          'Mit $y = 3x - 6$: löse $3x - 6 \\geq 9$ UND $3x - 6 \\leq -9$ separat.',
+          'Linker Teil: $x \\leq -1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['betrag-groesser'] },
+      ),
+      sorting(
+        'Bringe die Schritte zur Lösung von $|x - 5| > 3$ in die richtige Reihenfolge.',
+        [
+          'Form erkennen: $|x - a| > b$ mit $a = 5$, $b = 3$',
+          'Zwei Fälle bilden: $x - 5 > 3$ ODER $x - 5 < -3$',
+          'Beide Teile lösen: $x > 8$ ODER $x < 2$',
+          'Lösungsmenge: $x < 2$ ODER $x > 8$ (nicht zusammengefasst, da disjunkt)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Betragsungleichung mit $>$ liefert ZWEI separate Halbgeraden, verbunden durch ODER.
+
+**Rechnung:** Lösung: $x < 2$ ODER $x > 8$. Geometrisch: alle Punkte, deren Abstand zu $5$ größer als $3$ ist — außerhalb von $[2, 8]$.
+
+**Probe:** $x = 0$: $|0 - 5| = 5 > 3$ ✓. $x = 10$: $|5| = 5 > 3$ ✓. $x = 4$: $|−1| = 1$, nicht $> 3$ — gehört nicht zur Lösung.
+
+**Typischer Fehler:** Die Schritte als ein langes UND verbinden statt als ODER — die zwei Halbgeraden sind disjunkt und können nicht zu einem Intervall verschmolzen werden.`,
+        [
+          'Erst Form erkennen.',
+          'Zwei Fälle separat aufstellen.',
+          'Mit ODER verbinden, nicht UND.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
+      ),
     ],
     // [3] Vorzeichentabelle
     3: [
@@ -8158,9 +8292,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Außerhalb $[-2, 2]$.',
         ],
         {
-          1: 'Innerhalb wäre $(x^2 - 4) < 0$.',
-          2: 'Nur oberer Ast — unterer fehlt.',
-          3: 'Doch — außerhalb $\\pm 2$.',
+          1: '„Innerhalb" wäre die Lösung von $x^2 - 4 < 0$ — die Parabel liegt zwischen $-2$ und $2$ unterhalb der $x$-Achse. Hier suchst du das umgekehrte: $> 0$, also außerhalb der Nullstellen.',
+          2: 'Du hast den unteren Ast vergessen. Probe: $x = -3$ erfüllt $x^2 - 4 = 9 - 4 = 5 > 0$ ✓, liegt aber nicht in „$x > 2$". Die Parabel ist nach unten symmetrisch — beide Äste außerhalb $\\pm 2$ erfüllen die Ungleichung.',
+          3: 'Doch, die Ungleichung hat sehr wohl Lösungen — z. B. $x = 3$: $9 - 4 = 5 > 0$ ✓. „Keine Lösung" wäre nur bei einer nach oben offenen Parabel mit Minimum $> 0$ richtig (dann läge sie ganz oben), aber $x^2 - 4$ hat Minimum $-4 < 0$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['vz-tabelle'] },
       ),
@@ -8203,11 +8337,51 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Beide beachten.',
         ],
         {
-          1: '$(-3)^2 = 9$, also $x = -3$ ist Nullstelle.',
-          2: 'Unvollständige Lösung.',
-          3: '$x = 0$: $-9 < 0$ — nicht immer positiv.',
+          1: 'Doch: $(-3)^2 = 9$, also $(-3)^2 - 9 = 0$. $x = -3$ IST eine Nullstelle. Die Parabel hat zwei symmetrische Nullstellen $\\pm 3$, und außerhalb beider ist $x^2 - 9 > 0$.',
+          2: 'Probe widerlegt die Schülerlösung als „korrekt": $x = -4$ erfüllt $16 - 9 = 7 > 0$ ✓, liegt aber NICHT in $x > 3$. Die Schülerlösung enthält nur die rechte Hälfte der Lösungsmenge.',
+          3: 'Bei $x = 0$ ist $0 - 9 = -9 < 0$, also nicht „immer positiv". Die Aussage des Schülers wäre richtig, wenn das Polynom als Summe zweier Quadrate $x^2 + 9$ formuliert wäre — bei $x^2 - 9$ existiert aber ein negativer Bereich zwischen den Nullstellen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['vz-tabelle'] },
+      ),
+      ni(
+        'Für welche $x$ ist $x^2 + 2x - 8 \\geq 0$? Gib die GRÖSSERE Intervallgrenze an.',
+        2, 0.01, '',
+        `**Ansatz:** Faktorisieren oder pq-Formel; Vorzeichentabelle für quadratische Funktion mit positivem Leitkoeffizienten.
+
+**Rechnung:** Nullstellen: $x_{1,2} = -1 \\pm \\sqrt{1 + 8} = -1 \\pm 3$. Also $x_1 = 2$, $x_2 = -4$. Faktorisierung: $(x + 4)(x - 2)$. Parabel öffnet nach oben → Werte $\\geq 0$ AUSSERHALB der Nullstellen: $x \\leq -4$ ODER $x \\geq 2$. Größere Grenze: $2$.
+
+**Probe:** $x = 2$: $4 + 4 - 8 = 0 \\geq 0$ ✓ (Gleichheit). $x = 3$: $9 + 6 - 8 = 7 \\geq 0$ ✓. $x = 0$: $0 + 0 - 8 = -8$, nicht $\\geq 0$ — passt zu „außerhalb".
+
+**Typischer Fehler:** Innerhalb statt außerhalb — bei nach oben geöffneter Parabel und $\\geq 0$ ist die Lösung außerhalb der Nullstellen.`,
+        [
+          'Faktorisieren: $(x+4)(x-2)$.',
+          'Nullstellen $-4$ und $2$.',
+          'Parabel nach oben → außerhalb $\\geq 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['vz-tabelle'] },
+      ),
+      mc(
+        'Was ist die Lösung von $x^2 + 2x + 3 < 0$?',
+        ['Keine reelle Lösung — Parabel liegt komplett über der $x$-Achse', 'Alle reellen $x$', '$x < -1$ ODER $x > 3$', '$-1 < x < 3$'],
+        0,
+        `**Ansatz:** Diskriminante prüfen — wenn $D < 0$, hat die Parabel keine reellen Nullstellen, liegt also entweder ganz oberhalb oder ganz unterhalb der $x$-Achse.
+
+**Rechnung:** $D = 4 - 12 = -8 < 0$. Keine Nullstellen. Leitkoeffizient $> 0$ → Parabel öffnet nach oben → liegt komplett über der $x$-Achse. Damit ist $x^2 + 2x + 3 > 0$ für alle $x \\in \\mathbb{R}$, und $< 0$ für KEIN $x$. Lösungsmenge: $\\emptyset$.
+
+**Probe:** Scheitel bei $x_S = -1$: $y_S = 1 - 2 + 3 = 2 > 0$. Tatsächlich liegt der tiefste Punkt bei $y = 2$, also weit über $0$ — nirgends ist $x^2 + 2x + 3 < 0$.
+
+**Typischer Fehler:** Annehmen, jede quadratische Ungleichung habe einen Lösungsbereich. Bei $D < 0$ und passender Vorzeichen-Konstellation ist die Lösungsmenge entweder $\\emptyset$ oder $\\mathbb{R}$.`,
+        [
+          'Diskriminante: $D = b^2 - 4ac$.',
+          'Bei $D < 0$ keine Nullstellen — Parabel ganz oben oder ganz unten.',
+          'Leitkoeffizient bestimmt die Öffnungsrichtung.',
+        ],
+        {
+          1: 'Alle reellen $x$ wäre die Lösung von $x^2 + 2x + 3 > 0$ (Parabel überall positiv). Hier ist die Frage genau umgekehrt: $< 0$, also wo die Parabel UNTER die $x$-Achse fällt — und das passiert nie.',
+          2: 'Es gibt keine Nullstellen, also auch keine Intervallgrenzen $-1$ und $3$ — diese Zahlen tauchen in der Aufgabe nirgends auf. Die Lösung ist leer.',
+          3: 'Auch dieses Intervall wäre nur sinnvoll, wenn die Parabel zwei Nullstellen bei $-1$ und $3$ hätte — was aber wegen $D < 0$ nicht der Fall ist.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['vz-tabelle'] },
       ),
       sorting(
         'Bringe die Schritte zur Lösung von $x^2 - 2x - 3 \\leq 0$ in die richtige Reihenfolge.',
@@ -8274,9 +8448,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zusammen: $(-1, 3]$.',
         ],
         {
-          1: 'Beide geschlossen — falsch links.',
-          2: 'Beide offen — falsch rechts.',
-          3: 'Vorzeichen vertauscht.',
+          1: '$[-1, 3]$ schließt $-1$ EIN. Hier ist aber $x > -1$ strikt — also $-1$ ausgeschlossen, runde Klammer links. Eckige Klammer wäre nur bei $x \\geq -1$ richtig.',
+          2: '$(-1, 3)$ hat rechts auch eine RUNDE Klammer — schließt $3$ also aus. Hier ist aber $x \\leq 3$, also $3$ eingeschlossen → eckige Klammer rechts $]$.',
+          3: '$[-1, 3)$ hat die Klammern genau VERTAUSCHT: links eckig (= eingeschlossen), rechts rund (= ausgeschlossen). In der Aufgabe ist es umgekehrt: $-1$ ausgeschlossen ($<$), $3$ eingeschlossen ($\\leq$).',
         },
         { stage: 'apply-guided', subGoal: 4, uses: ['intervall-notation'] },
       ),
@@ -8297,9 +8471,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$x \\geq 2$.',
         ],
         {
-          1: 'Runde Klammer bedeutet $>$.',
-          2: 'Das wäre $(-\\infty, 2]$.',
-          3: 'Runde Klammer fehlt.',
+          1: '$x > 2$ würde RUNDER Klammer entsprechen: $(2, \\infty)$. Hier ist aber eckige Klammer $[2, \\infty)$ — also $2$ EINGESCHLOSSEN, also $x \\geq 2$ (mit Gleichheit).',
+          2: '$x \\leq 2$ entspricht dem Intervall $(-\\infty, 2]$ — Achse nach LINKS unbeschränkt, Endpunkt $2$ eingeschlossen. Hier ist es umgekehrt: nach RECHTS unbeschränkt ab $2$.',
+          3: '$x < 2$ entspricht $(-\\infty, 2)$ mit beidseitig runden Klammern und nach LINKS unbeschränkt. Das ist die negative Version: $[2, \\infty)$ ist nach rechts unbeschränkt mit eckiger Klammer am Anfang.',
         },
         { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation', 'vz-tabelle'] },
       ),
@@ -8325,11 +8499,51 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Offene vs. geschlossene Klammer.',
         ],
         {
-          1: 'Umgekehrte Ungleichung — nicht das Problem.',
-          2: 'Ganz falsch.',
-          3: 'Ungleichungen haben sehr wohl Intervalle.',
+          1: '$x > 5$ wäre $(5, \\infty)$ — runde Klammer und Richtung richtig. Aber der Schüler hatte $x < 5$ als Aufgabe, nicht $x > 5$. Die Korrektur greift inhaltlich daneben: nicht die Ungleichung umdrehen, sondern Intervall korrekt schreiben: $(-\\infty, 5)$.',
+          2: '$[5, \\infty)$ ist tatsächlich falsch — aber zu sagen „ganz falsch" hilft dem Lerner nicht. Konkret: Der Schüler hat (a) die Richtung umgedreht (rechts statt links unbeschränkt) und (b) die Klammer bei $5$ falsch gewählt (eckig statt rund, da $x < 5$ den Wert $5$ ausschließt).',
+          3: 'Ungleichungen lassen sich sehr wohl als Intervalle schreiben — das ist sogar eine sehr nützliche Standard-Notation. Hier konkret: $x < 5$ entspricht $(-\\infty, 5)$, also einseitig unbeschränkt nach links mit offener Grenze $5$.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['intervall-notation'] },
+      ),
+      mc(
+        'Welche Intervall-Notation entspricht der Lösungsmenge von $x^2 < 4$?',
+        ['$(-2, 2)$', '$[-2, 2]$', '$(-\\infty, -2) \\cup (2, \\infty)$', '$(-2, 2]$'],
+        0,
+        `**Ansatz:** $x^2 < 4 \\Leftrightarrow |x| < 2 \\Leftrightarrow -2 < x < 2$ (strikt).
+
+**Rechnung:** Beide Grenzen offen, weil die Ungleichung strikt ist ($<$, nicht $\\leq$). Intervall-Notation: $(-2, 2)$.
+
+**Probe:** $x = 2$ wäre Grenzfall: $4 < 4$ ist falsch, also $2$ ausgeschlossen — passt zu offener Klammer. $x = 1$: $1 < 4$ ✓.
+
+**Typischer Fehler:** Eckige Klammern bei strikter Ungleichung — würde $\\pm 2$ einschließen, was hier wegen $<$ falsch ist.`,
+        [
+          'Strikte Ungleichung $<$ → offene Klammer.',
+          '$x^2 < 4 \\Leftrightarrow |x| < 2$.',
+          'Beidseitig offen: $(-2, 2)$.',
+        ],
+        {
+          1: 'Eckige Klammern $[-2, 2]$ würden $\\pm 2$ einschließen — bei $x = 2$ wäre aber $4 < 4$ falsch, also Grenze ausgeschlossen. Bei strikter Ungleichung sind beide Grenzen offen.',
+          2: 'Das wäre die Lösung der UMGEKEHRTEN Ungleichung $x^2 > 4$. Hier ist die Bedingung $< 4$, also INNERHALB des Intervalls $[-2, 2]$ (strikt offen).',
+          3: 'Halboffenes Intervall mit $2$ eingeschlossen passt nicht zur strikten Ungleichung $< 4$. Beide Grenzen müssen wegen $<$ offen sein: $(-2, 2)$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation', 'vz-tabelle'] },
+      ),
+      ni(
+        'Schreibe die Lösungsmenge der Ungleichung $-2 \\leq x < 5$ in Intervall-Notation und gib die Anzahl der enthaltenen GANZZAHLEN an (also wie viele ganze Zahlen liegen drin).',
+        7, 0, '',
+        `**Ansatz:** Intervall $[-2, 5)$ enthält die ganzen Zahlen von $-2$ (eingeschlossen) bis $4$ (denn $5$ ist offen, ausgeschlossen).
+
+**Rechnung:** Aufzählung: $-2, -1, 0, 1, 2, 3, 4$. Das sind $7$ ganze Zahlen.
+
+**Probe:** $5 - (-2) = 7$. Bei einer Mischung aus geschlossen-offen $[a, b)$ ist die Anzahl der ganzen Zahlen genau $b - a$ (wenn $a, b \\in \\mathbb{Z}$).
+
+**Typischer Fehler:** $5$ als enthalten zählen — in $[-2, 5)$ ist $5$ AUSGESCHLOSSEN (runde Klammer rechts). Oder $-2$ ausschließen — eckige Klammer links bedeutet eingeschlossen.`,
+        [
+          'Intervall-Notation: $[-2, 5)$ — links eckig, rechts rund.',
+          'Welche ganzen Zahlen liegen drin? Aufzählen.',
+          'Bei eckiger Klammer Endpunkt mitzählen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation'] },
       ),
       matching(
         'Ordne jeder Notation die passende Beschreibung zu.',
@@ -8440,6 +8654,61 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           3: 'Doch, die Ungleichung hat eine Lösung: $x = 1$ liefert $\\frac{2}{1} = 2 > 1$ ✓. Lösungsmenge ist das Intervall $(0, 2)$.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['bruch-ungl-pol'] },
+      ),
+      ni(
+        'Löse $\\dfrac{x - 4}{x + 1} \\leq 0$ und gib die GRÖSSERE Intervallgrenze an (also den Endpunkt von $x \\leq ?$, wo Gleichheit gilt).',
+        4, 0.01, '',
+        `**Ansatz:** Bruch $\\leq 0$ heißt Zähler und Nenner haben verschiedene Vorzeichen ODER Zähler $= 0$. Polstelle $x = -1$ ausschließen (Nenner $= 0$).
+
+**Rechnung:** Zähler-Nullstelle: $x = 4$. Nenner-Nullstelle: $x = -1$ (Polstelle, ausgeschlossen). Vorzeichen-Tabelle:
+
+| Bereich | $x - 4$ | $x + 1$ | Bruch |
+|---|---|---|---|
+| $x < -1$ | $-$ | $-$ | $+$ |
+| $-1 < x < 4$ | $-$ | $+$ | $-$ |
+| $x > 4$ | $+$ | $+$ | $+$ |
+
+Bruch $\\leq 0$: Bereich $-1 < x \\leq 4$ ($x = 4$ erlaubt, weil Zähler $= 0$ den Bruch zu $0$ macht; $x = -1$ ist Polstelle, ausgeschlossen).
+
+Lösungsmenge: $(-1, 4]$. Größere Grenze: $4$ (eingeschlossen wegen Gleichheit).
+
+**Probe:** $x = 4$: $\\dfrac{0}{5} = 0 \\leq 0$ ✓ (Gleichheit erlaubt). $x = 0$: $\\dfrac{-4}{1} = -4 \\leq 0$ ✓. $x = 5$: $\\dfrac{1}{6} > 0$, nicht $\\leq 0$.
+
+**Typischer Fehler:** Quer-multiplizieren mit $x + 1$ ohne Fallunterscheidung — bei $x + 1 < 0$ würde sich das Zeichen drehen. Sauberer Weg: Vorzeichen-Tabelle.`,
+        [
+          'Zähler-Nullstelle: $x = 4$. Nenner-Nullstelle: $x = -1$ (Polstelle).',
+          'Vorzeichen-Tabelle: drei Bereiche prüfen.',
+          'Bei $\\leq 0$ ist $x = 4$ eingeschlossen (Zähler $= 0$), $x = -1$ ausgeschlossen (Nenner $= 0$).',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['bruch-ungl-pol'] },
+      ),
+      mc(
+        'Welcher der folgenden Werte gehört NICHT zur Lösungsmenge von $\\dfrac{2}{x - 3} > 1$?',
+        ['$x = 3$', '$x = 4$', '$x = 4{,}5$', '$x = 4{,}9$'],
+        0,
+        `**Ansatz:** Polstelle ausschließen, dann Vorzeichen-Tabelle. Hier zusätzlich Lösung bestimmen, dann Werte testen.
+
+**Rechnung:** Zunächst $x = 3$ ausschließen (Polstelle, Nenner $= 0$). Für $x \\neq 3$ umformen:
+$$\\dfrac{2}{x-3} > 1 \\Leftrightarrow \\dfrac{2}{x-3} - 1 > 0 \\Leftrightarrow \\dfrac{2 - (x-3)}{x-3} > 0 \\Leftrightarrow \\dfrac{5 - x}{x - 3} > 0$$
+
+Vorzeichen: Zähler $5 - x = 0$ bei $x = 5$; Nenner $x - 3 = 0$ bei $x = 3$. Bruch $> 0$ in $3 < x < 5$ (beide negativ vor $x = 3$ heben sich auf, danach $+/+$ bei $3 < x < 5$, danach $-/+$ bei $x > 5$).
+
+Lösung: $3 < x < 5$. Polstelle $x = 3$ ausgeschlossen.
+
+**Probe:** $x = 3$: undefiniert (Division durch Null) — gehört NICHT zur Lösung. $x = 4$: $\\frac{2}{1} = 2 > 1$ ✓. $x = 4{,}5$: $\\frac{2}{1{,}5} \\approx 1{,}33 > 1$ ✓. $x = 4{,}9$: $\\frac{2}{1{,}9} \\approx 1{,}05 > 1$ ✓.
+
+**Typischer Fehler:** Polstelle nicht ausschließen — wer $x = 3$ einsetzt, erhält $\\frac{2}{0}$ (undefiniert), nicht ein Ungleichungsergebnis.`,
+        [
+          'Polstelle bestimmen: Nenner $= 0$ bei $x = 3$.',
+          'Polstelle gehört NIE zur Lösungsmenge.',
+          'Andere Werte testen.',
+        ],
+        {
+          1: '$x = 4$ ist in Lösungsmenge: $\\frac{2}{4-3} = 2 > 1$ ✓.',
+          2: '$x = 4{,}5$ ist in Lösungsmenge: $\\frac{2}{1{,}5} \\approx 1{,}33 > 1$ ✓.',
+          3: '$x = 4{,}9$ ist auch in Lösungsmenge: $\\frac{2}{1{,}9} \\approx 1{,}05 > 1$ ✓ (knapp, aber > 1).',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['bruch-ungl-pol'] },
       ),
       sorting(
         'Bringe die Schritte zur Lösung von $\\dfrac{x-1}{x+2} \\geq 0$ in die richtige Reihenfolge.',

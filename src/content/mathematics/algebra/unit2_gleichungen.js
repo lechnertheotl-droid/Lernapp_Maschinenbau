@@ -1160,7 +1160,40 @@ $$-2x > 6 \\quad \\Rightarrow \\quad x < -3$$
 - Faktorisiert: $(x-2)(x+2) > 0$
 - Nullstellen: $x = -2, \\; x = 2$
 - Vorzeichen des Produkts: $(-\\infty, -2)$: $+$, $\\;\\;(-2, 2)$: $-$, $\\;\\;(2, \\infty)$: $+$
-- Lösung: $x < -2$ oder $x > 2$`,
+- Lösung: $x < -2$ oder $x > 2$
+
+**Intervall-Notation:**
+
+| Notation | Bedeutung | Ungleichung | Beispiel |
+|---|---|---|---|
+| $(a, b)$ | offenes Intervall | $a < x < b$ | $(-1, 3)$: $x \\in \\{-0{,}5,\\, 0,\\, 2{,}9, \\ldots\\}$ |
+| $[a, b]$ | geschlossen | $a \\leq x \\leq b$ | $[0, 5]$: Endpunkte enthalten |
+| $(a, b]$ | links offen | $a < x \\leq b$ | $(0, 1]$: $x = 1$ ja, $x = 0$ nein |
+| $[a, b)$ | rechts offen | $a \\leq x < b$ | $[2, 5)$: $x = 2$ ja, $x = 5$ nein |
+| $(-\\infty, b)$ | nach links unbeschränkt | $x < b$ | $(-\\infty, 4)$ |
+| $[a, \\infty)$ | nach rechts unbeschränkt | $x \\geq a$ | $[1, \\infty)$ |
+| $\\mathbb{L} = A \\cup B$ | Vereinigung | „... ODER ..." | $(-\\infty, -2) \\cup (2, \\infty)$ |
+
+**Wichtig:** $\\infty$ und $-\\infty$ stehen IMMER mit runder Klammer — Unendlich ist keine Zahl, kann nicht „eingeschlossen" werden.
+
+**Bruchungleichungen** $\\dfrac{P(x)}{Q(x)} \\lessgtr 0$:
+
+1. **Polstellen ausschließen:** $Q(x) = 0$ ist nie Lösung (Nenner darf nicht null sein).
+2. **Vorzeichentabelle** für Zähler $P$ und Nenner $Q$ separat — Bruch-Vorzeichen folgt aus $\\text{Vz}(P) / \\text{Vz}(Q)$.
+3. **Niemals quer-multiplizieren ohne Fallunterscheidung** — bei $Q < 0$ flippt das Ungleichheitszeichen.
+
+| Konstellation | Bruch | Lösung von „$> 0$" |
+|---|---|---|
+| $P > 0$, $Q > 0$ | $+$ | ✓ |
+| $P < 0$, $Q < 0$ | $+$ | ✓ |
+| $P > 0$, $Q < 0$ | $-$ | ✗ |
+| $P < 0$, $Q > 0$ | $-$ | ✗ |
+| $P = 0$ (und $Q \\neq 0$) | $0$ | nur bei „$\\geq 0$" / „$\\leq 0$" |
+
+**Beispiel:** $\\dfrac{x - 4}{x + 1} \\leq 0$:
+- Zähler-NS: $x = 4$ → eingeschlossen (Bruch $= 0$ ist erlaubt).
+- Nenner-NS / Polstelle: $x = -1$ → ausgeschlossen.
+- Vorzeichentabelle liefert Lösung $(-1, 4]$.`,
       },
       {
         id: 'alg-2-4-s1b', type: 'explanation-intuitive', title: 'Parabel + Vorzeichentabelle = quadratische Ungleichung',
