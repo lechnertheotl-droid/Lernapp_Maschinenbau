@@ -170,6 +170,53 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic'] },
       ),
+      // Bonus SG 0: apply-independent · number-input · uses=[prio-basic, prio-potenz]
+      // Vier-Operationen-Term mit Potenz — testet die volle Hierarchie kompakt.
+      ni(
+        'Berechne $4^2 - 5 \\cdot 2 + 3$.',
+        9, 0, '',
+        `**Ansatz:** Drei Rangstufen — Potenz, Punkt, Strich. Jede Stufe komplett, bevor die nächste folgt.
+
+**Rechnung:** $4^2 = 16$ (Potenz). $5 \\cdot 2 = 10$ (Punkt). Strich links→rechts: $16 - 10 + 3 = 6 + 3 = 9$.
+
+**Probe:** Mit Klammern explizit: $(4^2) - (5 \\cdot 2) + 3 = 16 - 10 + 3 = 9$. ✓
+
+**Typischer Fehler:** Strich vor Punkt: $4^2 - 5 = 11$, dann $11 \\cdot 2 + 3 = 25$. Oder $4^2 - 5 \\cdot 2 = 11 \\cdot 2 = 22$ — Subtraktion vor Multiplikation gewertet.`,
+        [
+          'Welche Operation hat den höchsten Rang — Potenz, Punkt oder Strich?',
+          '$4^2$ und $5\\cdot 2$ separat ausrechnen, bevor du Plus/Minus anfasst.',
+          'Strichrechnung am Ende: $16 - 10 + 3$ von links nach rechts.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic', 'prio-potenz'] },
+      ),
+      // Bonus SG 0: transfer · matching · uses=[prio-basic, prio-potenz]
+      // Vier verschiedene Vorrang-Konstellationen ↔ Werte — Trainings-Sammlung.
+      matching(
+        'Ordne jedem Term seinen korrekten Wert zu.',
+        [
+          { left: '$10 - 2 \\cdot 3$',     right: '$4$' },
+          { left: '$2 + 3 \\cdot 4$',      right: '$14$' },
+          { left: '$3^2 + 1$',             right: '$10$' },
+          { left: '$20 - 6 / 2$',          right: '$17$' },
+        ],
+        `**Ansatz:** Jeden Term separat nach Vorrangregel auswerten — Potenz vor Punkt vor Strich.
+
+**Rechnung:**
+- $10 - 2 \\cdot 3 = 10 - 6 = 4$
+- $2 + 3 \\cdot 4 = 2 + 12 = 14$
+- $3^2 + 1 = 9 + 1 = 10$
+- $20 - 6 / 2 = 20 - 3 = 17$
+
+**Probe:** Alle vier Werte sind verschieden — die Zuordnung ist eindeutig.
+
+**Typischer Fehler:** Bei $3^2 + 1$ als $3 \\cdot (2+1) = 9$ lesen — Potenz $3^2$ greift nur auf die Basis $3$, nicht auf $(2+1)$.`,
+        [
+          'Pro Term: Potenz zuerst, dann Punkt, dann Strich.',
+          'Erst innerhalb jedes Terms rechnen, dann zuordnen.',
+          'Achtung: $20 - 6/2$ ist $20 - 3$, nicht $14/2$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['prio-basic', 'prio-potenz'] },
+      ),
       // Zeile 5: transfer · sorting · uses=[prio-basic, prio-potenz]
       sorting(
         'Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
@@ -302,6 +349,25 @@ export const algebraSubGoalTasks = {
           'Beide Klammern haben ein Minus davor — beide komplett kippen.',
           'Aus $-(5-3)$ wird $-5+3$. Aus $-(8-6+1)$ wird $-8+6-1$.',
           'Alternativer Weg: erst jede Klammer separat ausrechnen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
+      ),
+      // Bonus SG 1: apply-independent · number-input · uses=[minus-vorklammer]
+      // Drei Klammern hintereinander — testet konsequente Vorzeichen-Ausführung.
+      ni(
+        'Berechne $50 - (10 + 5 - 8) - (3 + 2)$.',
+        38, 0, '',
+        `**Ansatz:** Beide Minus-Klammern separat auflösen — alle Vorzeichen jeder Klammer kippen.
+
+**Rechnung:** $50 - (10 + 5 - 8) - (3 + 2) = 50 - 10 - 5 + 8 - 3 - 2 = 38$. Alternative: Klammern zuerst — $10+5-8 = 7$, $3+2 = 5$, dann $50 - 7 - 5 = 38$.
+
+**Probe:** Beide Wege liefern $38$. ✓
+
+**Typischer Fehler:** Bei der ersten Klammer das $-8$ nicht zu $+8$ kippen: $50 - 10 - 5 - 8 - 3 - 2 = 22$. Klassischer Vorzeichenfehler beim dritten Summanden.`,
+        [
+          'Beide Klammern haben ein Minus davor — beide vollständig kippen.',
+          'Aus $-(10+5-8)$ wird $-10-5+8$. Aus $-(3+2)$ wird $-3-2$.',
+          'Alternative: erst Klammern auswerten, dann subtrahieren.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
@@ -439,6 +505,34 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
+      // Bonus SG 2: transfer · matching · uses=[minus-mal-minus]
+      // Vorzeichen-Sammlung: 2/3/4 Minuszeichen — Paritätsregel im Bild.
+      matching(
+        'Ordne jedem Produkt sein korrektes Ergebnis zu.',
+        [
+          { left: '$(-3) \\cdot (-4)$',                         right: '$+12$' },
+          { left: '$(-2) \\cdot 5$',                            right: '$-10$' },
+          { left: '$(-1) \\cdot (-2) \\cdot (-3)$',             right: '$-6$' },
+          { left: '$(-1) \\cdot (-2) \\cdot (-3) \\cdot (-4)$', right: '$+24$' },
+        ],
+        `**Ansatz:** Vorzeichenregel über Parität der Minuszeichen — gerade Anzahl $\\to +$, ungerade $\\to -$. Beträge separat multiplizieren.
+
+**Rechnung:**
+- $(-3)(-4)$: 2 Minus → $+$, Betrag $12$ → $+12$.
+- $(-2) \\cdot 5$: 1 Minus → $-$, Betrag $10$ → $-10$.
+- $(-1)(-2)(-3)$: 3 Minus → $-$, Betrag $6$ → $-6$.
+- $(-1)(-2)(-3)(-4)$: 4 Minus → $+$, Betrag $24$ → $+24$.
+
+**Probe:** Schrittweise bei der dritten Zeile: $(-1)(-2) = +2$; $+2 \\cdot (-3) = -6$. ✓
+
+**Typischer Fehler:** Pauschal "Minus mal Minus = Plus" auf 3 Faktoren übertragen — bei ungerader Anzahl bleibt ein Minus übrig.`,
+        [
+          'Zähle bei jedem Produkt die Minuszeichen.',
+          'Gerade Anzahl Minus → $+$, ungerade → $-$.',
+          'Beträge separat multiplizieren, dann Vorzeichen davorsetzen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['minus-mal-minus'] },
+      ),
       // Zeile 15: transfer · number-input · uses=[minus-mal-minus, minus-vorklammer]
       ni(
         'Berechne $6 - (-(4 - 9))$.',
@@ -570,6 +664,25 @@ export const algebraSubGoalTasks = {
           'Innerste Klammer ist $(1+3)$ — diese als Erstes.',
           'Innerhalb der mittleren Klammer dann Punkt vor Strich: $2 \\cdot 4$ vor $10 - \\ldots$.',
           'Erst ganz zum Schluss die Multiplikation mit $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['klammer-schachtel', 'prio-klammer'] },
+      ),
+      // Bonus SG 3: apply-independent · number-input · uses=[klammer-schachtel, prio-klammer]
+      // Drei-Ebenen-Schachtelung mit Subtraktion — testet strikte Innen-zuerst-Disziplin.
+      ni(
+        'Berechne $40 - [2 \\cdot (10 - (1 + 4))]$.',
+        30, 0, '',
+        `**Ansatz:** Innerste Klammer zuerst, dann eine Schale nach außen — drei Stufen.
+
+**Rechnung:** Innerste $(1+4) = 5$. Mitte $(10 - 5) = 5$. Eckig $[2 \\cdot 5] = 10$. Außen $40 - 10 = 30$.
+
+**Probe:** Mit allen Klammern explizit: $40 - [2 \\cdot (10 - 5)] = 40 - [2 \\cdot 5] = 40 - 10 = 30$. ✓
+
+**Typischer Fehler:** Ein "Vorzeichensprung": $40 - 2 \\cdot 10 - 1 - 4 = 40 - 20 - 1 - 4 = 15$ — alle Klammern weggelassen und die $2$ nur auf die $10$ multipliziert. Oder $10 - 1 + 4 = 13$ statt $10 - (1+4) = 5$ — die Klammer um $1+4$ ignoriert.`,
+        [
+          'Innerste Klammer ist $(1 + 4)$ — diese als Erstes.',
+          'Dann die mittlere $(10 - \\text{Zahl})$.',
+          'Erst ganz zum Schluss die Subtraktion $40 - \\text{Zahl}$.',
         ],
         { stage: 'apply-independent', subGoal: 3, uses: ['klammer-schachtel', 'prio-klammer'] },
       ),
