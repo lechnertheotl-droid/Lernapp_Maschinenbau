@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2635 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1806 (69 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1191 / 1191 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2689 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1860 (69 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1208 / 1208 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 256 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **654** (Lesson-Path: 112 · Goal-Tasks: 542)
-- 4-Block: 624/654 (95 %) 🟡
-- MC-wAE: 277/277 (100 %) ✅
+- Aufgaben: **708** (Lesson-Path: 112 · Goal-Tasks: 596)
+- 4-Block: 678/708 (96 %) 🟡
+- MC-wAE: 294/294 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -180,10 +180,10 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 34 | 14/13/4/2/1 | 34/34 | 14/14 | ✅ | — |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 27 | 10/9/4/2/2 | 27/27 | 10/10 | ✅ | — |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 49 | 18/20/8/2/1 | 49/49 | 18/18 | ✅ | — |
-| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
-| `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
-| `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
-| `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
+| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 50 | 18/18/7/4/3 | 50/50 | 18/18 | ✅ | — |
+| `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 50 | 20/18/7/4/1 | 50/50 | 20/20 | ✅ | — |
+| `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 53 | 21/18/9/3/2 | 53/53 | 21/21 | ✅ | — |
+| `alg-2-4` Ungleichungen | 6 | 6/6 | 47 | 23/11/5/4/4 | 47/47 | 23/23 | ✅ | — |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 20/20 | 13/13 | ✅ | — |
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 36/36 | 18/18 | ✅ | — |
 | `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 34/34 | 20/20 | ✅ | — |

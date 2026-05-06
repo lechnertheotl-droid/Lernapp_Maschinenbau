@@ -723,6 +723,36 @@ In der nächsten Visualisierung siehst du: Schnittpunkt bei $x = 4$, $y = 17$ �
           marks: [{ x: 4, y: 17, label: 'Schnittpunkt (4, 17)' }],
         },
       },
+      {
+        id: 'alg-2-1-s1d', type: 'explanation-formal',
+        title: 'Lineare Gleichung — Standardform und Lösung',
+        priority: 'wichtig',
+        content: `**Standardform der linearen Gleichung** (mit $a \\neq 0$):
+$$a \\cdot x + b = c$$
+
+**Lösung durch Isolieren von $x$:**
+$$x = \\dfrac{c - b}{a}$$
+
+**Erlaubte Äquivalenzumformungen** (Lösungsmenge bleibt erhalten):
+
+| Operation | Bedingung | Beispiel |
+|---|---|---|
+| Beide Seiten $+\\,k$ oder $-\\,k$ | $k \\in \\mathbb{R}$ | $x - 3 = 7 \\;\\Rightarrow\\; x = 10$ |
+| Beide Seiten $\\cdot\\,k$ oder $:\\,k$ | $k \\neq 0$ | $\\dfrac{x}{4} = 5 \\;\\Rightarrow\\; x = 20$ |
+| Term mit $x$ auf andere Seite | (Spezialfall von $\\pm$) | $5x - 3 = 2x + 9 \\;\\Rightarrow\\; 3x = 12$ |
+| Klammer ausmultiplizieren | Distributivgesetz | $3(x-4) = 3x - 12$ |
+
+**Standardvorgehen** (3 Schritte):
+
+1. Klammern auflösen, gleichartige Terme zusammenfassen.
+2. Alle $x$-Terme auf eine Seite, alle Konstanten auf die andere.
+3. Durch den Koeffizienten von $x$ dividieren ($\\neq 0$).
+
+**Probe** (immer in der ORIGINAL-Gleichung):
+$$\\text{Lösung } x_0 \\text{ einsetzen} \\;\\Rightarrow\\; \\text{linke Seite} \\stackrel{?}{=} \\text{rechte Seite}$$
+
+Stimmen beide Seiten überein, ist $x_0$ Lösung. Stimmen sie nicht überein, war ein Umformungsfehler im Spiel.`,
+      },
       { id: 'alg-2-1-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-1-a' },
       { id: 'alg-2-1-s3', type: 'exercise', title: 'Aufgabe 2 (Rechnung)', exerciseRef: 'ex-alg-2-1-b' },
       { id: 'alg-2-1-s4', type: 'exercise', title: 'Aufgabe 3 (Textaufgabe)', exerciseRef: 'ex-alg-2-1-c' },
@@ -822,7 +852,19 @@ $$x_{1,2} = \\dfrac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$
 **Satz von Vieta** (für $x^{2} + px + q = 0$):
 $$x_{1} + x_{2} = -p, \\qquad x_{1} \\cdot x_{2} = q$$
 
-Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
+Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!
+
+**Faktorisierte Form** (mit Lösungen $x_1, x_2$):
+$$ax^{2} + bx + c = a \\cdot (x - x_{1})(x - x_{2})$$
+
+Nullstellen direkt ablesbar — Produkt $= 0$ genau dann, wenn ein Faktor $= 0$. Bei doppelter Lösung wird daraus $a(x - x_1)^2$.
+
+| Form | Anwendung | Beispiel |
+|---|---|---|
+| Normalform $x^2 + px + q$ | pq-Formel, Vieta | $x^2 - 5x + 6$ |
+| Allgemein $ax^2 + bx + c$ | abc-Formel | $2x^2 - 8x + 6$ |
+| Faktorisiert $a(x-x_1)(x-x_2)$ | Nullstellen sofort sichtbar | $(x-2)(x-3)$ |
+| Scheitelpunktform $a(x-d)^2 + e$ | Scheitel $(d, e)$ | $(x - 2{,}5)^2 - 0{,}25$ |`,
       },
       {
         id: 'alg-2-2-s3', type: 'visualization', title: 'Parabel und Nullstellen',
@@ -936,6 +978,62 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
 - pq-Formel: $x_{2} = 2$, $x_{3} = 3$
 
 **Horner-Schema:** Eine schnelle, kompakte Methode für Polynomwert-Berechnung und Division — besonders bei Klausuren zeitsparend!`,
+      },
+      {
+        id: 'alg-2-3-s1formal', type: 'explanation-formal',
+        title: 'Polynomdivision · Horner-Schema · Linearfaktor-Zerlegung',
+        priority: 'wichtig',
+        content: `**Rationaler Wurzelsatz** (für ganzzahlige Koeffizienten):
+
+Wenn $P(x) = a_n x^n + \\ldots + a_0$ eine rationale Nullstelle $p/q$ (vollständig gekürzt) hat, dann teilt $p$ das absolute Glied $a_0$ und $q$ den Leitkoeffizienten $a_n$. Bei Leitkoeffizient $1$: ganzzahlige Nullstellen sind genau Teiler von $a_0$.
+
+| Polynom | Absolutglied | Kandidaten |
+|---|---|---|
+| $x^3 - 6x^2 + 11x - 6$ | $-6$ | $\\pm 1, \\pm 2, \\pm 3, \\pm 6$ |
+| $x^4 + x^3 - 7x^2 - x + 6$ | $6$ | $\\pm 1, \\pm 2, \\pm 3, \\pm 6$ |
+
+**Restsatz** (Polynomdivision):
+
+$$P(x) : (x - a) \\quad \\text{liefert Rest } P(a)$$
+
+Insbesondere: $P(a) = 0 \\Leftrightarrow (x - a) \\text{ teilt } P(x)$ ohne Rest (Linearfaktorsatz).
+
+**Polynomdivision** — Schema wie schriftliche Division:
+
+1. Höchster Term: $\\dfrac{a_n x^n}{x} = a_n x^{n-1}$ als ersten Quotienten-Term.
+2. Multiplikation mit Divisor, Subtraktion vom Dividenden.
+3. Mit dem Rest weitermachen, bis Grad $<$ Grad des Divisors.
+
+Bei lückenhaften Polynomen fehlende Potenzen mit $0$ ergänzen!
+
+**Horner-Schema** — kompakte Tabelle für $P(x_0)$ und Polynomdivision in einem:
+
+| Koeffizienten | $a_n$ | $a_{n-1}$ | $\\ldots$ | $a_0$ |
+|---|---|---|---|---|
+| Vorgabe |  | Vorgänger $\\cdot x_0$ | $\\ldots$ | $\\ldots$ |
+| Summe | $a_n$ | $b_{n-1}$ | $\\ldots$ | $P(x_0)$ |
+
+Letzte Zahl in der Summenzeile $= P(x_0)$. Die ersten $n$ Zahlen sind die Koeffizienten des Quotienten $P(x) / (x - x_0)$.
+
+**Linearfaktor-Zerlegung** (bei reell zerfallendem Polynom):
+
+$$P(x) = a_n \\cdot (x - x_1)^{m_1} (x - x_2)^{m_2} \\cdots (x - x_k)^{m_k}$$
+
+mit $\\sum m_i = n$ (Vielfachheiten zur Grad-Summe). Doppelte Nullstelle $\\Leftrightarrow$ Vielfachheit $2$.
+
+**Vieta für Kubik** $x^3 + a x^2 + b x + c = 0$ mit Nullstellen $x_1, x_2, x_3$:
+
+$$x_1 + x_2 + x_3 = -a, \\quad x_1 x_2 + x_1 x_3 + x_2 x_3 = b, \\quad x_1 x_2 x_3 = -c$$
+
+**Strategie bei ungelösten Kubik-Gleichungen:**
+
+| Lösungsweg | Wann anwenden |
+|---|---|
+| Rationaler Wurzelsatz + Polynomdivision | Erste Wahl bei ganzzahligen Koeffizienten |
+| Horner-Schema | Wenn schon eine Nullstelle bekannt — schnellere Division |
+| Substitution $x = y - a/3$ | Eliminiert $x^2$-Term, vorbereitend für Cardano |
+| Cardano-Formel | Reduzierte Form $y^3 + p y + q = 0$, allgemeine Lösung |
+| Numerisch (Newton) | Wenn keine rationale NS und Cardano zu komplex |`,
       },
       {
         id: 'alg-2-3-s1b', type: 'visualization',
@@ -1062,7 +1160,40 @@ $$-2x > 6 \\quad \\Rightarrow \\quad x < -3$$
 - Faktorisiert: $(x-2)(x+2) > 0$
 - Nullstellen: $x = -2, \\; x = 2$
 - Vorzeichen des Produkts: $(-\\infty, -2)$: $+$, $\\;\\;(-2, 2)$: $-$, $\\;\\;(2, \\infty)$: $+$
-- Lösung: $x < -2$ oder $x > 2$`,
+- Lösung: $x < -2$ oder $x > 2$
+
+**Intervall-Notation:**
+
+| Notation | Bedeutung | Ungleichung | Beispiel |
+|---|---|---|---|
+| $(a, b)$ | offenes Intervall | $a < x < b$ | $(-1, 3)$: $x \\in \\{-0{,}5,\\, 0,\\, 2{,}9, \\ldots\\}$ |
+| $[a, b]$ | geschlossen | $a \\leq x \\leq b$ | $[0, 5]$: Endpunkte enthalten |
+| $(a, b]$ | links offen | $a < x \\leq b$ | $(0, 1]$: $x = 1$ ja, $x = 0$ nein |
+| $[a, b)$ | rechts offen | $a \\leq x < b$ | $[2, 5)$: $x = 2$ ja, $x = 5$ nein |
+| $(-\\infty, b)$ | nach links unbeschränkt | $x < b$ | $(-\\infty, 4)$ |
+| $[a, \\infty)$ | nach rechts unbeschränkt | $x \\geq a$ | $[1, \\infty)$ |
+| $\\mathbb{L} = A \\cup B$ | Vereinigung | „... ODER ..." | $(-\\infty, -2) \\cup (2, \\infty)$ |
+
+**Wichtig:** $\\infty$ und $-\\infty$ stehen IMMER mit runder Klammer — Unendlich ist keine Zahl, kann nicht „eingeschlossen" werden.
+
+**Bruchungleichungen** $\\dfrac{P(x)}{Q(x)} \\lessgtr 0$:
+
+1. **Polstellen ausschließen:** $Q(x) = 0$ ist nie Lösung (Nenner darf nicht null sein).
+2. **Vorzeichentabelle** für Zähler $P$ und Nenner $Q$ separat — Bruch-Vorzeichen folgt aus $\\text{Vz}(P) / \\text{Vz}(Q)$.
+3. **Niemals quer-multiplizieren ohne Fallunterscheidung** — bei $Q < 0$ flippt das Ungleichheitszeichen.
+
+| Konstellation | Bruch | Lösung von „$> 0$" |
+|---|---|---|
+| $P > 0$, $Q > 0$ | $+$ | ✓ |
+| $P < 0$, $Q < 0$ | $+$ | ✓ |
+| $P > 0$, $Q < 0$ | $-$ | ✗ |
+| $P < 0$, $Q > 0$ | $-$ | ✗ |
+| $P = 0$ (und $Q \\neq 0$) | $0$ | nur bei „$\\geq 0$" / „$\\leq 0$" |
+
+**Beispiel:** $\\dfrac{x - 4}{x + 1} \\leq 0$:
+- Zähler-NS: $x = 4$ → eingeschlossen (Bruch $= 0$ ist erlaubt).
+- Nenner-NS / Polstelle: $x = -1$ → ausgeschlossen.
+- Vorzeichentabelle liefert Lösung $(-1, 4]$.`,
       },
       {
         id: 'alg-2-4-s1b', type: 'explanation-intuitive', title: 'Parabel + Vorzeichentabelle = quadratische Ungleichung',

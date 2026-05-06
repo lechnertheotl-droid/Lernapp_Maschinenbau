@@ -5148,6 +5148,74 @@ $$-x + 8 = 3 \\quad | -8 \\\\ -x = -5 \\quad | \\cdot (-1) \\\\ x = 5$$
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['iso-variable'] },
       ),
+      matching(
+        'Ordne jeder störenden Stelle in einer Gleichung die passende Äquivalenzumformung zu, die sie auf beiden Seiten beseitigt.',
+        [
+          { left: 'Konstante $+12$ auf der linken Seite entfernen', right: 'beide Seiten $-12$' },
+          { left: 'Faktor $\\cdot 5$ vor $x$ entfernen',             right: 'beide Seiten $:5$' },
+          { left: 'Nenner-Bruch $\\dfrac{x}{3}$ auflösen',           right: 'beide Seiten $\\cdot 3$' },
+          { left: 'Term $-7x$ auf die rechte Seite bringen',          right: 'beide Seiten $+7x$' },
+        ],
+        `**Ansatz:** Jede störende Operation wird durch ihre **Umkehroperation** auf BEIDEN Seiten der Gleichung neutralisiert.
+
+**Rechnung:** Addition wird durch Subtraktion (und umgekehrt) aufgehoben; Multiplikation durch Division (und umgekehrt). Beispiel: bei $5x = 30$ ist $\\cdot 5$ die störende Operation, also $:5$ auf beiden Seiten $\\Rightarrow x = 6$.
+
+**Probe:** Nach jeder Umformung enthält die Gleichung exakt einen Schritt weniger zwischen $x$ und seiner Lösung — das ist das Ziel.
+
+**Typischer Fehler:** Operation nur auf einer Seite anwenden — die Waage kippt, die Lösungsmenge ändert sich.`,
+        [
+          'Welche Rechenart hebt $+$, $\\cdot$, $\\dfrac{\\,}{\\,}$ jeweils auf?',
+          'Umkehroperation IMMER auf beiden Seiten anwenden.',
+          'Bei einem Term mit $x$ auf der „falschen" Seite: Subtrahieren bzw. Addieren bringt ihn rüber.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['iso-variable'] },
+      ),
+      ni(
+        'Löse $7 - 2x = -3$ und gib $x$ an.',
+        5, 0, '',
+        `**Ansatz:** Erst die Konstante $+7$ auf die rechte Seite, dann durch den Koeffizienten $-2$ teilen.
+
+**Rechnung:**
+$$7 - 2x = -3 \\quad | -7 \\\\ -2x = -10 \\quad | :(-2) \\\\ x = 5$$
+
+**Probe:** $7 - 2 \\cdot 5 = 7 - 10 = -3$. ✓
+
+**Typischer Fehler:** Beim Teilen durch $-2$ das Vorzeichen vergessen: $-10 / 2 = -5$ statt $-10 / (-2) = +5$.`,
+        [
+          'Welche Konstante steht im Weg? — Erst entfernen.',
+          'Nach $-7$ erhältst du $-2x = -10$.',
+          'Teile beide Seiten durch $-2$ — Vorzeichen achten!',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['iso-variable'] },
+      ),
+      mc(
+        'Ein Schüler löst $\\dfrac{x}{4} = 8$ und schreibt $x = 8 - 4 = 4$. Wo liegt der Fehler?',
+        [
+          'Der Bruch $\\dfrac{x}{4}$ bedeutet $x$ geteilt durch $4$. Umkehroperation ist die Multiplikation: $x = 8 \\cdot 4 = 32$, nicht $8 - 4$.',
+          'Er hätte $x = 8 + 4 = 12$ rechnen müssen.',
+          'Er hätte $x = 8 / 4 = 2$ rechnen müssen.',
+          'Die Gleichung ist nicht eindeutig lösbar.',
+        ],
+        0,
+        `**Ansatz:** $\\dfrac{x}{4}$ ist eine **Division** durch $4$. Die Umkehrung ist nicht Subtraktion, sondern Multiplikation mit $4$.
+
+**Rechnung:** $\\dfrac{x}{4} = 8 \\quad | \\cdot 4 \\Rightarrow x = 32$.
+
+**Probe:** $\\dfrac{32}{4} = 8$. ✓ Schüler-Wert $x = 4$: $\\dfrac{4}{4} = 1 \\neq 8$.
+
+**Typischer Fehler:** Den Nenner als Subtrahenden lesen — sieht „neben dem $x$" aus, ist aber multiplikativ verknüpft.`,
+        [
+          'Was bedeutet $\\dfrac{x}{4}$? — Division.',
+          'Welche Operation hebt Division auf?',
+          'Multipliziere beide Seiten mit $4$.',
+        ],
+        {
+          1: '$x = 12$ entsteht durch falsche Addition $8 + 4$ — auch das ist nicht die Umkehrung von Division.',
+          2: '$x = 2$ entsteht, wenn man $8 / 4$ rechnet — also den Nenner $4$ noch einmal durch dividiert. Die Umkehrung von $:4$ ist aber $\\cdot 4$, nicht ein zweites $:4$.',
+          3: 'Die Gleichung ist eindeutig lösbar: $x = 32$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['iso-variable'] },
+      ),
     ],
     // [1] Standardvorgehen
     1: [
@@ -5304,6 +5372,88 @@ $$-3(2x - 4) = 6 \\\\ -6x + 12 = 6 \\quad | -12 \\\\ -6x = -6 \\quad | :(-6) \\\
           3: 'Zahlentest widerlegt: $-3(2 \\cdot 1 - 4) = 6$, aber $-6 \\cdot 1 - 12 = -18 \\neq 6$.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      tf(
+        'Bei einer linearen Gleichung $ax = b$ mit $a > 0$ und $b < 0$ ist die Lösung $x$ negativ.',
+        true,
+        `**Ansatz:** Lösungsformel $x = b/a$ — Vorzeichen folgt aus der Division „positiv geteilt durch positiv".
+
+**Rechnung:** $a > 0, b < 0 \\Rightarrow x = b/a$ hat das Vorzeichen von $b$ (negativ). Beispiel: $4x = -12 \\Rightarrow x = -3$.
+
+**Probe:** $4 \\cdot (-3) = -12$. ✓ Vorzeichen passt.
+
+**Typischer Fehler:** Beim mentalen Rechnen das Minus „verschwinden" lassen und $x = 3$ angeben.`,
+        [
+          '$ax = b$ liefert $x = b/a$.',
+          'Vorzeichenregel: $-/+$ ergibt $-$.',
+          'Beispiel zur Kontrolle: $5x = -10 \\Rightarrow x = -2$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['koeff-dividieren'] },
+      ),
+      mc(
+        'Was ist der erste sinnvolle Schritt zum Lösen von $-5x + 14 = -1$?',
+        [
+          'Beide Seiten $-14$, dann $:(-5)$',
+          'Beide Seiten $:(-5)$, dann $-14$',
+          'Beide Seiten mit $-1$ multiplizieren',
+          'Klammer auflösen',
+        ],
+        0,
+        `**Ansatz:** Standardvorgehen — erst Konstante (additiver Anteil), dann Koeffizient (multiplikativer Anteil) entfernen.
+
+**Rechnung:**
+$$-5x + 14 = -1 \\quad | -14 \\\\ -5x = -15 \\quad | :(-5) \\\\ x = 3$$
+
+**Probe:** $-5 \\cdot 3 + 14 = -15 + 14 = -1$. ✓
+
+**Typischer Fehler:** Zuerst durch $-5$ teilen — dann muss man Brüche mit $14$ und $-1$ handhaben, viel umständlicher.`,
+        [
+          'Welche Konstante steht direkt neben dem $x$-Term?',
+          'Erst additive Konstante, dann multiplikativer Koeffizient.',
+          'Vorzeichen beim Teilen durch $-5$ beachten.',
+        ],
+        {
+          1: 'Wenn du zuerst durch $-5$ teilst, bekommst du $x - 14/5 = 1/5$ — Brüche, die nichts beitragen. Konstante zuerst entfernen ist sauberer.',
+          2: 'Mit $-1$ multiplizieren wäre erlaubt ($5x - 14 = 1$), aber kein „erster Schritt" — Standard ist: Konstante zuerst entfernen.',
+          3: 'Es gibt keine Klammer in der Gleichung — nur Term mit $x$, Konstante und rechte Seite.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      ni(
+        'Löse $\\dfrac{2x + 1}{5} = 3$ und gib $x$ an.',
+        7, 0, '',
+        `**Ansatz:** Beide Seiten mit dem Nenner $5$ multiplizieren, dann linear nach $x$ auflösen.
+
+**Rechnung:**
+$$\\dfrac{2x + 1}{5} = 3 \\quad | \\cdot 5 \\\\ 2x + 1 = 15 \\quad | -1 \\\\ 2x = 14 \\quad | :2 \\\\ x = 7$$
+
+**Probe:** $\\dfrac{2 \\cdot 7 + 1}{5} = \\dfrac{15}{5} = 3$. ✓
+
+**Typischer Fehler:** Nur $2x$ mit $5$ multiplizieren und die $+1$ stehen lassen — der gesamte Zähler $(2x+1)$ wird vom Nenner $5$ geteilt, also wird die ganze rechte Seite $\\cdot 5$ genommen.`,
+        [
+          'Wie machst du den Nenner $5$ weg?',
+          'Multipliziere BEIDE Seiten mit $5$ — die rechte Seite wird zu $15$.',
+          'Dann linear: $2x + 1 = 15 \\Rightarrow 2x = 14 \\Rightarrow x = 7$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      ni(
+        'Löse $3(x - 4) = 2(x + 1)$ und gib $x$ an.',
+        14, 0, '',
+        `**Ansatz:** Beide Klammern ausmultiplizieren, dann $x$-Terme links, Konstanten rechts sammeln.
+
+**Rechnung:**
+$$3(x - 4) = 2(x + 1) \\\\ 3x - 12 = 2x + 2 \\quad | -2x \\\\ x - 12 = 2 \\quad | +12 \\\\ x = 14$$
+
+**Probe:** Linke Seite $3(14 - 4) = 3 \\cdot 10 = 30$. Rechte Seite $2(14 + 1) = 2 \\cdot 15 = 30$. ✓
+
+**Typischer Fehler:** Klammer nur auf den ersten Summanden anwenden — z. B. $3(x-4) = 3x - 4$ statt $3x - 12$. Distributivgesetz: jeder Summand mit dem Faktor multiplizieren.`,
+        [
+          'Klammern zuerst ausmultiplizieren — Distributivgesetz.',
+          'Linke Seite: $3 \\cdot x - 3 \\cdot 4$. Rechte Seite analog.',
+          'Dann $x$-Terme auf eine Seite, Konstanten auf die andere.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
       ),
       ni(
         'Löse $\\dfrac{x - 1}{2} + \\dfrac{x + 3}{4} = 4$ und gib $x$ an.',
@@ -5471,6 +5621,82 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
       ),
+      matching(
+        'Ordne jeder sprachlichen Beschreibung den passenden algebraischen Ausdruck zu (Variable $x$).',
+        [
+          { left: 'Eine Zahl um $5$ erhöhen',                            right: '$x + 5$' },
+          { left: 'Das Doppelte einer Zahl um $3$ vermindern',            right: '$2x - 3$' },
+          { left: 'Die Hälfte einer Zahl, dann $7$ addieren',             right: '$\\dfrac{x}{2} + 7$' },
+          { left: 'Eine Zahl zuerst um $4$ verringern, dann verdoppeln',  right: '$2(x - 4)$' },
+        ],
+        `**Ansatz:** Sprachliche Reihenfolge bestimmt die Klammerung — was zuerst gesagt wird, passiert zuerst.
+
+**Rechnung:** „Doppelte minus 3" $= 2x - 3$ (Multiplikation zuerst). „Erst minus 4, dann verdoppeln" $= 2(x-4)$ (Klammer wegen Reihenfolge).
+
+**Probe:** Setze $x = 10$ ein: $x + 5 = 15$; $2x - 3 = 17$; $x/2 + 7 = 12$; $2(x-4) = 12$ — alle vier verschiedene Werte, keine Übersetzung doppeldeutig.
+
+**Typischer Fehler:** „Das Doppelte einer Zahl um 3 vermindern" als $2(x - 3)$ lesen — sprachlich kommt die $-3$ aber nach dem Verdoppeln, also $2x - 3$.`,
+        [
+          '„zuerst" vs. „dann" gibt die Reihenfolge an.',
+          'Multiplikation ohne Klammer wirkt nur auf die nachfolgende Zahl/Variable, nicht auf die ganze Summe.',
+          'Eine Klammer brauchst du nur, wenn die Operation auf einen Ausdruck angewendet wird, der vorher schon eine Operation enthält.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Eine Saftfabrik mischt $5$ L Saftkonzentrat mit $60\\,\\%$ Fruchtanteil mit reinem Wasser, um Saft mit $30\\,\\%$ Fruchtanteil zu erhalten. Wie viele Liter Wasser müssen zugegeben werden?',
+        5, 0, '',
+        `**Ansatz:** Fruchtmenge bleibt erhalten (Wasser enthält $0\\,\\%$ Frucht). Variable $x$ = Liter Wasser.
+
+**Rechnung:** Fruchtmenge im Konzentrat: $0{,}6 \\cdot 5 = 3$ L. Gesamtmenge nach Mischung: $5 + x$ L. Bedingung „danach $30\\,\\%$":
+$$0{,}3 \\cdot (5 + x) = 3 \\\\ 1{,}5 + 0{,}3 x = 3 \\quad | -1{,}5 \\\\ 0{,}3 x = 1{,}5 \\quad | : 0{,}3 \\\\ x = 5$$
+
+**Probe:** Mischung: $5 + 5 = 10$ L Saft mit $3$ L Frucht $\\Rightarrow 3/10 = 30\\,\\%$. ✓
+
+**Typischer Fehler:** $30\\,\\%$ nur auf das hinzugefügte Wasser anwenden ($0{,}3 x = 3$) — die Konzentration bezieht sich aber auf die GESAMTE Mischung, nicht nur auf das neue Wasser.`,
+        [
+          'Was bleibt beim Verdünnen mit Wasser konstant? — Die Fruchtmenge.',
+          'Fruchtmenge: $0{,}6 \\cdot 5 = 3$ L. Sie soll danach $30\\,\\%$ von $(5 + x)$ sein.',
+          'Gleichung: $0{,}3 \\cdot (5 + x) = 3$. Auflösen.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Zwei Autos starten gleichzeitig an entgegengesetzten Enden einer $200$ km langen Strecke und fahren aufeinander zu. Auto A fährt mit $80$ km/h, Auto B mit $120$ km/h. Nach wie vielen Stunden treffen sie sich?',
+        1, 0, '',
+        `**Ansatz:** Beim Aufeinander-zu-Fahren addieren sich die Geschwindigkeiten zur Annäherungsgeschwindigkeit. Variable $t$ = Zeit bis zum Treffen.
+
+**Rechnung:** Beide zusammen legen pro Stunde $80 + 120 = 200$ km zurück:
+$$(80 + 120) \\cdot t = 200 \\\\ 200 \\, t = 200 \\quad | : 200 \\\\ t = 1 \\text{ h}$$
+
+**Probe:** In $1$ h fährt A: $80$ km, B: $120$ km. Summe $200$ km — gerade die volle Strecke. ✓
+
+**Typischer Fehler:** Geschwindigkeiten subtrahieren ($120 - 80 = 40$, $t = 5$ h) — das wäre die Aufholzeit, wenn beide in dieselbe Richtung fahren würden, nicht aufeinander zu.`,
+        [
+          'Welche Strecke legen beide ZUSAMMEN bis zum Treffen zurück? — Die ganze Strecke $200$ km.',
+          'Welche Geschwindigkeit nimmst du, wenn sich zwei Bewegungen aufeinander zu addieren?',
+          'Setze an: $(v_A + v_B) \\cdot t = s$. Auflösen nach $t$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      ni(
+        'Ein Pullover kostet nach einem Rabatt von $25\\,\\%$ noch $60$ €. Wie hoch war der ursprüngliche Preis (in €)?',
+        80, 0, '',
+        `**Ansatz:** Variable $P$ = Originalpreis. Nach $25\\,\\%$ Rabatt bleiben $75\\,\\%$ vom Originalpreis übrig.
+
+**Rechnung:**
+$$0{,}75 \\cdot P = 60 \\quad | : 0{,}75 \\\\ P = \\dfrac{60}{0{,}75} = 80 \\text{ €}$$
+
+**Probe:** $25\\,\\%$ von $80$ € sind $20$ €. $80 - 20 = 60$ €. ✓
+
+**Typischer Fehler:** $25\\,\\%$ einfach auf $60$ aufschlagen ($60 \\cdot 1{,}25 = 75$ €). Das wäre richtig, wenn $60$ € der Preis VOR Rabatt wäre — er ist aber NACH dem Rabatt. Der Rabatt bezieht sich auf den (unbekannten) Originalpreis, nicht auf den reduzierten.`,
+        [
+          'Was bleibt nach $25\\,\\%$ Rabatt übrig? — $75\\,\\%$ des Originalpreises.',
+          'Setze die Gleichung an: $0{,}75 \\cdot P = 60$.',
+          'Nach $P$ auflösen — durch $0{,}75$ teilen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
       mc(
         'Ein Schwimmbecken wird durch zwei Zuflüsse gefüllt. Allein braucht der erste Zufluss $6$ Stunden, der zweite $4$ Stunden. Welche Gleichung beschreibt die Zeit $t$ (in Stunden) bis zur vollen Füllung, wenn beide gleichzeitig laufen?',
         [
@@ -5520,30 +5746,30 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         { stage: 'recognize', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
       mc(
-        'Wie führt man die Probe bei $3x - 5 = 10, x = 5$ durch?',
+        'Wie führt man die Probe bei $3x - 5 = 10$ mit der vermuteten Lösung $x = 5$ durch?',
         [
           '$3 \\cdot 5 - 5 = 10$ prüfen: $10 = 10$ ✓',
           '$3 + 5 - 5 = 10$ prüfen',
           '$3/5 - 5 = 10$ prüfen',
-          'Nicht nötig.',
+          '$3 \\cdot 5 - 5 = 5$ prüfen — die rechte Seite muss mit $x$ ersetzt werden.',
         ],
         0,
-        `**Ansatz:** $x = 5$ einsetzen, Koeffizient $\\cdot$ beibehalten.
+        `**Ansatz:** $x = 5$ in die LINKE Seite der Original-Gleichung einsetzen — die rechte Seite bleibt $10$.
 
-**Rechnung:** $3 \\cdot 5 - 5 = 15 - 5 = 10$. ✓
+**Rechnung:** Links: $3 \\cdot 5 - 5 = 15 - 5 = 10$. Rechts: $10$. Beide Seiten stimmen überein. ✓
 
-**Probe:** Linkseite = Rechteseite.
+**Probe:** Linke Seite = Rechte Seite — Lösung bestätigt.
 
-**Typischer Fehler:** Operationen verwechseln beim Einsetzen.`,
+**Typischer Fehler:** Multiplikation $3 \\cdot x$ als Addition $3 + x$ lesen, oder die rechte Seite ebenfalls durch $x$ ersetzen wollen.`,
         [
           '$x = 5$ in die linke Seite einsetzen.',
-          'Rechnen.',
-          'Mit rechter Seite vergleichen.',
+          'Wert ausrechnen — $3 \\cdot 5 - 5$.',
+          'Mit der rechten Seite ($10$) vergleichen.',
         ],
         {
-          1: 'Addition statt Multiplikation wäre falsch.',
-          2: 'Division statt Multiplikation wäre falsch.',
-          3: 'Probe ist wichtig — Fehler möglich.',
+          1: 'Du hast $3x$ als Summe $3 + x$ gelesen — falsch. $3x$ heißt $3 \\cdot x$, also $3 \\cdot 5 = 15$.',
+          2: 'Du hast $3x$ als Quotient $3 / x$ gelesen — falsch. $3x$ heißt Produkt: $3 \\cdot 5 = 15$.',
+          3: 'Bei der Probe wird $x$ NUR auf der linken Seite ersetzt; die rechte Seite ist die zu prüfende Zahl. Setze $x = 5$ links ein und vergleiche mit $10$ rechts.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
@@ -5671,6 +5897,96 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
+      ni(
+        'Prüfe durch Einsetzen, ob $x = 9$ die Gleichung $\\dfrac{3x - 1}{2} = x + 4$ löst. Gib $x$ an, wenn die Probe bestätigt.',
+        9, 0, '',
+        `**Ansatz:** $x = 9$ in beide Seiten der Original-Gleichung einsetzen und vergleichen.
+
+**Rechnung:** Linke Seite: $\\dfrac{3 \\cdot 9 - 1}{2} = \\dfrac{26}{2} = 13$. Rechte Seite: $9 + 4 = 13$. Beide $13$ — Lösung bestätigt.
+
+**Probe:** $13 = 13$. ✓ Antwort: $x = 9$.
+
+**Typischer Fehler:** Beim Einsetzen den Bruchstrich übersehen und $3 \\cdot 9 - 1 / 2 = 27 - 0{,}5 = 26{,}5$ rechnen — der ganze Zähler $3x - 1$ wird durch $2$ geteilt.`,
+        [
+          '$x = 9$ überall einsetzen, wo $x$ steht.',
+          'Bei Brüchen: erst Zähler ausrechnen, dann durch Nenner teilen.',
+          'Wenn beide Seiten denselben Wert ergeben, ist $9$ die Lösung — sonst nicht.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
+      ),
+      mc(
+        'Welche Probe-Rechnung bestätigt $x = 4$ als Lösung von $-3x + 4 = -8$?',
+        [
+          '$-3 \\cdot 4 + 4 = -12 + 4 = -8$ ✓',
+          '$-3 \\cdot 4 - 4 = -12 - 4 = -16$',
+          '$3 \\cdot 4 + 4 = 12 + 4 = 16$',
+          '$-3 \\cdot (-4) + 4 = 12 + 4 = 16$',
+        ],
+        0,
+        `**Ansatz:** Original-Gleichung links exakt nachzeichnen, $x$ durch den Wert $4$ ersetzen, ausrechnen.
+
+**Rechnung:** $-3 \\cdot 4 + 4 = -12 + 4 = -8$. Rechte Seite ist $-8$ — passt. ✓
+
+**Probe:** $-8 = -8$. Lösung bestätigt.
+
+**Typischer Fehler:** Beim Einsetzen das Vorzeichen des Koeffizienten verlieren oder den Wert $x$ mit umgekehrtem Vorzeichen einsetzen.`,
+        [
+          'Original-Gleichung exakt abschreiben, $x$ durch $4$ ersetzen.',
+          'Vorzeichen genau übernehmen: $-3$ bleibt $-3$.',
+          'Punkt-vor-Strich: erst $-3 \\cdot 4$, dann $+4$ addieren.',
+        ],
+        {
+          1: 'Du hast die Konstante $+4$ in $-4$ geändert — das wäre eine andere Gleichung. Original ist $-3x + 4$, nicht $-3x - 4$.',
+          2: 'Du hast den Koeffizienten $-3$ ohne Vorzeichen abgeschrieben — dann passt die Rechnung nicht zur Original-Gleichung.',
+          3: 'Du hast statt $x = 4$ den Wert $x = -4$ eingesetzt. Die Probe muss mit dem behaupteten $x$-Wert gemacht werden, also $+4$.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      tf(
+        'Wenn beim Einsetzen einer vermuteten Lösung in die Original-Gleichung beide Seiten verschiedene Zahlen ergeben, kann die vermutete Zahl keine Lösung sein.',
+        true,
+        `**Ansatz:** Eine Lösung erfüllt definitionsgemäß die Gleichung — das heißt, beide Seiten ergeben beim Einsetzen denselben Wert.
+
+**Rechnung:** Wenn z. B. links $7$ und rechts $5$ herauskommt, ist $7 \\neq 5$ unabhängig vom $x$-Wert — die Gleichung ist mit dieser Zahl nicht erfüllt, also ist sie keine Lösung.
+
+**Probe:** Diese Aussage ist die Begründung dafür, warum die Probe so wertvoll ist — sie kann jede falsche Lösung sicher entlarven.
+
+**Typischer Fehler:** Glauben, „nahe dran" reiche aus. Bei Gleichungen gilt: gleich oder ungleich, dazwischen gibt es nichts.`,
+        [
+          'Was ist eine Lösung per Definition?',
+          'Wenn linke und rechte Seite verschieden sind, ist die Gleichung NICHT erfüllt.',
+          'Logische Folgerung: Die Zahl ist keine Lösung.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      mc(
+        'Ein Schüler löst $5x + 3 = 2x - 9$ und behauptet $x = 4$. Wende die Probe an und entscheide.',
+        [
+          'Probe: links $5 \\cdot 4 + 3 = 23$, rechts $2 \\cdot 4 - 9 = -1$. $23 \\neq -1$ — also falsch. Korrekt: $3x = -12 \\Rightarrow x = -4$.',
+          'Probe: stimmt mit $23 = 23$ — $x = 4$ ist korrekt.',
+          'Die Gleichung hat keine Lösung — Schüler hat das übersehen.',
+          'Korrekt ist $x = -1$ — der Schüler hat sich nur verrechnet.',
+        ],
+        0,
+        `**Ansatz:** Probe entlarvt den Vorzeichenfehler beim Verschieben der $x$-Terme.
+
+**Rechnung:** Linke Seite mit $x = 4$: $5 \\cdot 4 + 3 = 23$. Rechte Seite: $2 \\cdot 4 - 9 = -1$. $23 \\neq -1$ — also keine Lösung. Korrektur: $5x - 2x = -9 - 3 \\Rightarrow 3x = -12 \\Rightarrow x = -4$. Probe für $-4$: links $5 \\cdot (-4) + 3 = -17$, rechts $2 \\cdot (-4) - 9 = -17$. $-17 = -17$. ✓
+
+**Probe:** Die korrekte Lösung erfüllt beide Seiten mit $-17$.
+
+**Typischer Fehler:** Beim Sammeln der Konstanten Vorzeichen verlieren — aus $-9 - 3 = -12$ wird fälschlich $-9 + 3 = -6$ oder gar $+12$, was zu $x = +4$ statt $x = -4$ führt.`,
+        [
+          'Setze $x = 4$ links und rechts ein — was kommt heraus?',
+          'Wenn die Werte nicht übereinstimmen, ist $x = 4$ falsch.',
+          'Korrekt rechnen: $x$-Terme links sammeln, Konstanten rechts.',
+        ],
+        {
+          1: 'Probe mit $x = 4$: links $23$, rechts $-1$. Diese Zahlen sind verschieden — die Lösung ist NICHT bestätigt.',
+          2: 'Eine lineare Gleichung mit unterschiedlichen Koeffizienten ($5$ links, $2$ rechts) hat genau eine Lösung — nämlich $x = -4$.',
+          3: '$x = -1$: links $5 \\cdot (-1) + 3 = -2$, rechts $2 \\cdot (-1) - 9 = -11$. $-2 \\neq -11$ — auch falsch. Die richtige Lösung ist $x = -4$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
+      ),
     ],
   },
 
@@ -5719,9 +6035,9 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
           'Diskriminante $(p/2)^2 - q$.',
         ],
         {
-          1: 'Division durch $2$ vergessen.',
-          2: 'Diskriminante verkürzt falsch.',
-          3: 'Keine gültige Formel.',
+          1: 'Du hast die Halbierung sowohl bei $-p/2$ als auch bei $(p/2)^2$ vergessen — Ergebnis $-p \\pm \\sqrt{p^2 - q}$. Die pq-Formel halbiert den Koeffizienten $p$ vor dem Quadrieren: $(p/2)^2$, nicht $p^2$.',
+          2: 'Du hast den Term unter der Wurzel zu $\\sqrt{q}$ verkürzt — der lineare Anteil $(p/2)^2$ und das negative $q$ fehlen. Die Diskriminante einer Normalform ist $(p/2)^2 - q$, nicht $q$ allein.',
+          3: 'Du hast pq-Formel mit einer linearen Lösungsstrategie verwechselt: $q \\pm p$ ergibt sich nirgends aus quadratischer Ergänzung. Korrekte Herleitung: $(x + p/2)^2 = (p/2)^2 - q$, daraus $x = -p/2 \\pm \\sqrt{(p/2)^2 - q}$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['pq-formel'] },
       ),
@@ -5781,9 +6097,9 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
           '$q = -5$ → $-q = +5$.',
         ],
         {
-          1: '$\\sqrt{-1}$ wäre komplex — hier existieren aber reelle Lösungen.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Zahlentest zeigt: zwei reelle Lösungen.',
+          1: '$2i$ wäre eine komplexe Lösung — die Aufgabe lebt aber im Reellen, und die Probe zeigt: $5^2 - 20 - 5 = 0$ und $(-1)^2 + 4 - 5 = 0$ sind beide reelle Lösungen. Der Schritt ins Komplexe wäre nötig, wenn $D$ wirklich negativ wäre — hier ist er $+9$.',
+          2: 'Der Ausdruck $2 \\pm \\sqrt{-1}$ ist nicht korrekt — der Fehler steckt in der Diskriminante. Korrekte Auswertung: $(p/2)^2 - q = 4 - (-5) = 4 + 5 = 9$, nicht $4 - 5 = -1$. Vorzeichen von $q = -5$ wurde nicht negiert.',
+          3: 'Probe widerlegt: $5^2 - 4 \\cdot 5 - 5 = 25 - 20 - 5 = 0$ ✓ und $(-1)^2 - 4 \\cdot (-1) - 5 = 1 + 4 - 5 = 0$ ✓. Die Gleichung hat zwei reelle Lösungen, der Schüler-Fehler liegt im Vorzeichen von $q$.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['abc-formel'] },
       ),
@@ -5853,6 +6169,74 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
       ),
+      mc(
+        'Welche Werte für $-\\dfrac{p}{2}$ und $\\left(\\dfrac{p}{2}\\right)^2 - q$ liefert die pq-Formel bei $x^2 + 6x - 16 = 0$?',
+        [
+          '$-\\dfrac{p}{2} = -3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+          '$-\\dfrac{p}{2} = +3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+          '$-\\dfrac{p}{2} = -3$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = -7$',
+          '$-\\dfrac{p}{2} = -6$ und $\\left(\\dfrac{p}{2}\\right)^2 - q = 25$',
+        ],
+        0,
+        `**Ansatz:** Aus der Normalform $x^2 + px + q = 0$ ablesen: $p = 6$, $q = -16$. Dann beide Teile der pq-Formel separat berechnen.
+
+**Rechnung:** $-\\dfrac{p}{2} = -\\dfrac{6}{2} = -3$. $\\left(\\dfrac{p}{2}\\right)^2 - q = 3^2 - (-16) = 9 + 16 = 25$. Also $x_{1,2} = -3 \\pm 5 = 2$ oder $-8$.
+
+**Probe:** $2^2 + 6 \\cdot 2 - 16 = 4 + 12 - 16 = 0$ ✓; $(-8)^2 + 6 \\cdot (-8) - 16 = 64 - 48 - 16 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $p$ vergessen ($+3$ statt $-3$) oder Vorzeichen von $q$ falsch in Diskriminante einsetzen ($9 - 16 = -7$ statt $9 + 16 = 25$).`,
+        [
+          'Identifiziere $p$ und $q$ aus der Normalform.',
+          '$-p/2$: einfach das Minus vor den halbierten Koeffizienten.',
+          'Diskriminante: $(p/2)^2 - q$ — beachte das Minuszeichen vor $q$.',
+        ],
+        {
+          1: 'Du hast das Minuszeichen vor $p/2$ vergessen — bei $p = +6$ ist $-p/2 = -3$, nicht $+3$. Sonst hättest du $-3 \\pm 5$ als $+3 \\pm 5$ und die falschen Lösungen $8$ und $-2$.',
+          2: 'Du hast das Vorzeichen von $q = -16$ in der Diskriminante nicht negiert: $(p/2)^2 - q = 9 - (-16) = 9 + 16 = 25$, nicht $9 - 16 = -7$. Bei negativem $q$ ergibt $-q$ einen positiven Beitrag.',
+          3: 'Du hast die Halbierung von $p$ vergessen — $-p$ statt $-p/2$. Bei $p = 6$ ist $-p/2 = -3$, nicht $-6$. Die pq-Formel halbiert den linearen Koeffizienten, bevor sie ihn negiert und vor $\\sqrt{\\,}$ stellt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pq-formel'] },
+      ),
+      ni(
+        'Löse $x^2 - 7x + 10 = 0$ und gib die KLEINERE Lösung an.',
+        2, 0, '',
+        `**Ansatz:** Normalform mit $p = -7$, $q = 10$. pq-Formel anwenden.
+
+**Rechnung:**
+$$x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^2 - q} = \\dfrac{7}{2} \\pm \\sqrt{\\dfrac{49}{4} - 10} = 3{,}5 \\pm \\sqrt{2{,}25} = 3{,}5 \\pm 1{,}5$$
+
+Also $x_1 = 5$, $x_2 = 2$. Die kleinere Lösung ist $x = 2$.
+
+**Probe:** $2^2 - 7 \\cdot 2 + 10 = 4 - 14 + 10 = 0$ ✓. Vieta-Check: $2 + 5 = 7 = -p$ ✓ und $2 \\cdot 5 = 10 = q$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $p$ verlieren — $-p/2 = +3{,}5$ (nicht $-3{,}5$). Wer fälschlich $-3{,}5 \\pm 1{,}5$ rechnet, erhält $-2$ und $-5$.`,
+        [
+          'Lies $p = -7$ und $q = 10$ aus der Normalform ab.',
+          '$-p/2 = +3{,}5$. Diskriminante $\\left(\\dfrac{p}{2}\\right)^2 - q = 12{,}25 - 10 = 2{,}25$.',
+          '$\\sqrt{2{,}25} = 1{,}5$. Lösungen $3{,}5 \\pm 1{,}5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['abc-formel'] },
+      ),
+      ni(
+        'Löse die Bruchgleichung $\\dfrac{x^2 + 4}{x} = 5$ (für $x \\neq 0$) und gib die GRÖSSERE Lösung an.',
+        4, 0, '',
+        `**Ansatz:** Beide Seiten mit $x$ multiplizieren ($x \\neq 0$), auf Normalform bringen, pq-Formel anwenden.
+
+**Rechnung:**
+$$\\dfrac{x^2 + 4}{x} = 5 \\quad | \\cdot x \\\\ x^2 + 4 = 5x \\quad | -5x \\\\ x^2 - 5x + 4 = 0$$
+
+Mit $p = -5$, $q = 4$: $x_{1,2} = 2{,}5 \\pm \\sqrt{6{,}25 - 4} = 2{,}5 \\pm 1{,}5$. Also $x_1 = 4$, $x_2 = 1$. Die größere Lösung ist $x = 4$.
+
+**Probe:** $\\dfrac{4^2 + 4}{4} = \\dfrac{20}{4} = 5$ ✓. Beide Lösungen sind $\\neq 0$, also zulässig.
+
+**Typischer Fehler:** Mit $x$ multiplizieren, ohne $x \\neq 0$ als Definitionsbedingung zu notieren — bei dieser Aufgabe ist die Bedingung erfüllt, aber bei anderen Bruchgleichungen kann eine Schein-Lösung $x = 0$ entstehen.`,
+        [
+          'Multipliziere beide Seiten mit dem Nenner $x$ — aber notiere $x \\neq 0$.',
+          'Nach dem Räumen: $x^2 + 4 = 5x$, also $x^2 - 5x + 4 = 0$.',
+          'pq-Formel mit $p = -5$, $q = 4$. Achte auf die größere Lösung.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
+      ),
     ],
     // [1] Diskriminante
     1: [
@@ -5895,9 +6279,9 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
           'Was bedeutet $D = 0$?',
         ],
         {
-          1: 'Bei $D = 0$ ist nur eine (doppelte) Lösung.',
-          2: 'Gleichung hat doch eine Lösung.',
-          3: 'Quadratische Gleichungen haben max. 2 Lösungen.',
+          1: 'Du hast den Fall $D = 0$ mit $D > 0$ verwechselt: $D = 36 - 36 = 0$ ist exakt der Grenzfall, in dem $\\pm\\sqrt{D} = \\pm 0$ keinen Unterschied mehr macht — die Lösung tritt nur einmal (doppelt) auf, nicht zweimal verschieden.',
+          2: 'Du hast vermutlich beim Wurzelziehen $\\sqrt{0}$ als „nicht definiert" eingeschätzt. Aber $\\sqrt{0} = 0$ ist sehr wohl definiert — nur eben Null. Daraus folgt $x = 3 \\pm 0 = 3$ — eine doppelte reelle Lösung.',
+          3: 'Du hast wohl an $0 = 0$ gedacht, das jedem $x$ als Lösung erlaubt — das ist aber etwas ganz anderes. $x^2 - 6x + 9 = 0$ ist eine echte quadratische Gleichung mit Diskriminante $0$, also genau einer (doppelten) Lösung $x = 3$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['diskriminante'] },
       ),
@@ -5940,9 +6324,9 @@ Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
           '$D = 0$ nur bei exakt $0$.',
         ],
         {
-          1: 'Die Rechnung ist korrekt, aber der Schluss falsch.',
-          2: 'Zahlentest: Parabel hat $y_{min} = 1 > 0$.',
-          3: '$\\sqrt{-4}$ ist in $\\mathbb{R}$ nicht definiert.',
+          1: 'Die Rechnung $D = 16 - 20 = -4$ ist korrekt — der Fehler liegt in der Interpretation: $D = -4 \\neq 0$. Schüler hat den Fall „doppelte Lösung bei $D = 0$" mit „keine reelle Lösung bei $D < 0$" verwechselt. Die Aufgabe verlangt, das Vorzeichen von $D$ zu unterscheiden, nicht nur $D = 0$ zu prüfen.',
+          2: 'Hier wird kein positives $D$ benötigt. Die Diskriminante $D = -4$ ist tatsächlich negativ — und genau das bedeutet: keine reelle Lösung. Die Parabel $x^2 + 4x + 5$ hat Scheitel bei $(-2, 1)$, liegt also komplett über der $x$-Achse — bestätigt $D < 0$.',
+          3: 'Das ist zwar korrekt, beantwortet aber nicht die Frage: Der Schüler-Fehler war nicht das Wurzelziehen, sondern die FALSCHE Aussage „$D = 0$, eine Lösung". Tatsächlich ist $D = -4 < 0$, also keine reelle Lösung — und genau das nennt der Fehler nicht.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['diskriminante'] },
       ),
@@ -6012,6 +6396,81 @@ $$D = b^2 - 4ac = 16 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad k = 4$$
           3: '$2x^2 + 8 = 0 \\Rightarrow x^2 = -4$ — kein reelles $x$ erfüllt das, da $x^2 \\geq 0$.',
         },
         { stage: 'transfer', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      ni(
+        'Berechne die Diskriminante von $x^2 - 8x + 16 = 0$.',
+        0, 0, '',
+        `**Ansatz:** $D = b^2 - 4ac$ mit $a = 1$, $b = -8$, $c = 16$.
+
+**Rechnung:** $D = (-8)^2 - 4 \\cdot 1 \\cdot 16 = 64 - 64 = 0$.
+
+**Probe:** $D = 0$ → genau eine doppelte Lösung. Tatsächlich: $x^2 - 8x + 16 = (x - 4)^2 = 0 \\Rightarrow x = 4$ (doppelt).
+
+**Typischer Fehler:** $b = -8$ als $b = 8$ einsetzen — beim Quadrieren spielt das Vorzeichen keine Rolle ($(-8)^2 = 64 = 8^2$), aber bei abc-Formel taucht $-b$ separat auf, da darf das Vorzeichen nicht verloren gehen.`,
+        [
+          '$D = b^2 - 4ac$.',
+          '$a = 1$, $b = -8$, $c = 16$ aus der Normalform.',
+          '$(-8)^2 - 4 \\cdot 16 = 64 - 64 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      mc(
+        'Wie viele reelle Lösungen hat $x^2 + 5x - 6 = 0$?',
+        ['Zwei verschiedene reelle Lösungen', 'Genau eine (Doppelwurzel)', 'Keine reelle Lösung', 'Drei Lösungen'],
+        0,
+        `**Ansatz:** Diskriminante $D = b^2 - 4ac$ ausrechnen und Vorzeichen interpretieren.
+
+**Rechnung:** $a = 1$, $b = 5$, $c = -6$. $D = 25 - 4 \\cdot 1 \\cdot (-6) = 25 + 24 = 49 > 0$. Also zwei verschiedene reelle Lösungen.
+
+**Probe:** Tatsächliche Lösungen über pq-Formel: $x = -2{,}5 \\pm 3{,}5$, also $x_1 = 1$ und $x_2 = -6$. Einsetzen: $1 + 5 - 6 = 0$ ✓ und $36 - 30 - 6 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $c = -6$ in $-4ac$ vergessen — wer $25 - 24 = 1$ rechnet, erhält ebenfalls „zwei Lösungen" (zufällig richtig), aber falsche Diskriminanten-Werte.`,
+        [
+          'Lies $a$, $b$, $c$ aus der Normalform ab.',
+          'Achtung Vorzeichen: $c = -6$, also $-4 \\cdot 1 \\cdot (-6) = +24$.',
+          '$D = 49$ — was bedeutet $D > 0$?',
+        ],
+        {
+          1: 'Eine Doppelwurzel würde $D = 0$ erfordern — hier ist $D = 25 + 24 = 49 \\neq 0$.',
+          2: 'Keine reelle Lösung würde $D < 0$ erfordern. Hier ist $D = 49$ deutlich positiv — die Parabel schneidet die $x$-Achse zweimal.',
+          3: 'Eine quadratische Gleichung kann höchstens ZWEI Lösungen haben (Fundamentalsatz der Algebra für Grad-2-Polynome). Drei oder mehr Lösungen treten erst ab Grad 3 auf.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      tf(
+        'Wenn die Diskriminante $D > 0$ und gleichzeitig keine perfekte Quadratzahl ist, dann sind die Lösungen reell, aber irrational.',
+        true,
+        `**Ansatz:** Lösungen einer quadratischen Gleichung sind $x = \\dfrac{-b \\pm \\sqrt{D}}{2a}$. Sie sind genau dann rational, wenn $\\sqrt{D}$ rational ist — das gilt nur, wenn $D$ ein Quadrat einer rationalen Zahl ist.
+
+**Rechnung:** Beispiel $x^2 - 2 = 0$: $D = 0 + 8 = 8$. $\\sqrt{8} = 2\\sqrt{2}$ irrational. Lösungen: $\\pm \\sqrt{2}$ — reell, irrational.
+
+**Probe:** Im Gegensatz $x^2 - 5x + 6 = 0$: $D = 25 - 24 = 1$ (perfekte Quadratzahl). $\\sqrt{1} = 1$. Lösungen $2$ und $3$ — rational.
+
+**Typischer Fehler:** „Reell" mit „rational" verwechseln. Reell heißt nur „nicht komplex"; rational fordert zusätzlich, dass die Wurzel eine ganze oder Bruchzahl ist.`,
+        [
+          'Lösung enthält $\\sqrt{D}$.',
+          'Wann ist $\\sqrt{D}$ rational? — Nur bei $D =$ perfekter Quadratzahl.',
+          'Sonst $\\sqrt{D}$ irrational, also Lösung reell aber nicht rational.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      ni(
+        'Für welchen Wert $k$ hat die Gleichung $x^2 - 6x + k = 0$ genau eine doppelte reelle Lösung?',
+        9, 0, '',
+        `**Ansatz:** Genau eine doppelte Lösung $\\Leftrightarrow D = 0$. Diskriminante mit $a = 1$, $b = -6$, $c = k$ aufstellen und $= 0$ setzen.
+
+**Rechnung:**
+$$D = (-6)^2 - 4 \\cdot 1 \\cdot k = 36 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad 4k = 36 \\quad \\Rightarrow \\quad k = 9$$
+
+**Probe:** Setze $k = 9$ ein: $x^2 - 6x + 9 = (x - 3)^2 = 0 \\Rightarrow x = 3$ (doppelt). $D = 36 - 36 = 0$ ✓.
+
+**Typischer Fehler:** Den Faktor $4$ in $4ac$ vergessen — $36 - k = 0 \\Rightarrow k = 36$ wäre falsch. Gilt nur, wenn $4a = 1$, hier ist $4 \\cdot 1 = 4$, also bleibt $4k$.`,
+        [
+          'Doppelte Lösung tritt bei $D = 0$ auf.',
+          '$D = b^2 - 4ac$ mit $b = -6$, $a = 1$, $c = k$.',
+          '$36 - 4k = 0$ nach $k$ auflösen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
       ),
     ],
     // [2] Vieta
@@ -6095,9 +6554,9 @@ $$D = b^2 - 4ac = 16 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad k = 4$$
           'Negative Lösungen möglich.',
         ],
         {
-          1: 'Produkt stimmt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Vieta funktioniert immer.',
+          1: 'Das Produkt $1 \\cdot 2 = 2$ ist korrekt — der Fehler liegt nicht im Produkt, sondern im Vorzeichen der Summe. Vieta für $x^2 + px + q$: Summe $= -p$, also bei $p = 3$ ist Summe $= -3$, nicht $+3$.',
+          2: 'Probe widerlegt $x_1 = 1, x_2 = 2$: $1^2 + 3 \\cdot 1 + 2 = 6 \\neq 0$. Die korrekten Lösungen sind $x_1 = -1, x_2 = -2$: $1 - 3 + 2 = 0$ ✓ und $4 - 6 + 2 = 0$ ✓. Schüler-Fehler: Vorzeichen bei $-p$ vergessen.',
+          3: 'Vieta gilt sehr wohl auch für negative Koeffizienten — die Aussage „Vieta funktioniert nicht bei…" ist ein Mythos. Die Formeln $x_1 + x_2 = -p$ und $x_1 \\cdot x_2 = q$ funktionieren universell für jede Normalform.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['vieta'] },
       ),
@@ -6171,6 +6630,89 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['vieta'] },
       ),
+      tf(
+        'Die Vieta-Formeln $x_1 + x_2 = -p$ und $x_1 \\cdot x_2 = q$ gelten nur in der Normalform $x^2 + px + q = 0$ — bei $ax^2 + bx + c = 0$ mit $a \\neq 1$ muss vorher durch $a$ dividiert werden.',
+        true,
+        `**Ansatz:** Vieta-Form ist mit $a = 1$ hergeleitet. Bei $a \\neq 1$ wird die Beziehung zu $x_1 + x_2 = -b/a$ und $x_1 \\cdot x_2 = c/a$.
+
+**Rechnung:** Bei $2x^2 - 10x + 12 = 0$: durch $2$ teilen ergibt $x^2 - 5x + 6 = 0$. Vieta liefert Summe $5$, Produkt $6$, also Lösungen $2$ und $3$. Direkte Anwendung „Summe = $10$, Produkt = $12$" wäre falsch.
+
+**Probe:** $2^2 - 10 \\cdot 2/2 + 6 = 0$ — bzw. $2 \\cdot 4 - 20 + 12 = 0$ ✓ in Originalform.
+
+**Typischer Fehler:** Vieta direkt mit $b$ und $c$ aus der allgemeinen Form anwenden, ohne durch $a$ zu teilen.`,
+        [
+          'Wo gilt Vieta in der einfachen Form? — Normalform.',
+          'Bei Leitkoeffizient $a \\neq 1$: erst Normalform herstellen.',
+          'Alternative: $-b/a$ und $c/a$ verwenden.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['vieta'] },
+      ),
+      ni(
+        'Eine quadratische Gleichung in Normalform $x^2 + px + q = 0$ hat die Lösungen $x_1 = 4$ und $x_2 = -3$. Wie groß ist $p$?',
+        -1, 0, '',
+        `**Ansatz:** Vieta: $x_1 + x_2 = -p$. Aus der Summe der gegebenen Lösungen folgt $-p$, daraus $p$.
+
+**Rechnung:** $x_1 + x_2 = 4 + (-3) = 1$. Also $-p = 1 \\Rightarrow p = -1$.
+
+**Probe:** Vollständige Gleichung $x^2 - x - 12 = 0$ (mit $q = x_1 \\cdot x_2 = -12$). Einsetzen $x = 4$: $16 - 4 - 12 = 0$ ✓; $x = -3$: $9 + 3 - 12 = 0$ ✓.
+
+**Typischer Fehler:** Summe direkt als $p$ angeben — Vieta gibt aber $-p$ als Summe. Das Vorzeichen muss umgedreht werden.`,
+        [
+          'Vieta-Beziehung: $x_1 + x_2 = -p$.',
+          'Berechne erst die Summe $4 + (-3) = 1$.',
+          'Dann Vorzeichen umdrehen: $p = -1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['vieta'] },
+      ),
+      mc(
+        'Welche Lösungen hat $x^2 - 9x + 20 = 0$ nach Vieta?',
+        ['$x_1 = 4$ und $x_2 = 5$', '$x_1 = 2$ und $x_2 = 10$', '$x_1 = -4$ und $x_2 = -5$', '$x_1 = 1$ und $x_2 = 20$'],
+        0,
+        `**Ansatz:** Vieta: Zwei Zahlen mit Summe $-p = 9$ und Produkt $q = 20$ suchen.
+
+**Rechnung:** Faktorisiere $20 = 4 \\cdot 5$. Summe $4 + 5 = 9$ ✓ und Produkt $4 \\cdot 5 = 20$ ✓. Also $x_1 = 4$, $x_2 = 5$.
+
+**Probe:** $4^2 - 9 \\cdot 4 + 20 = 16 - 36 + 20 = 0$ ✓ und $5^2 - 9 \\cdot 5 + 20 = 25 - 45 + 20 = 0$ ✓.
+
+**Typischer Fehler:** Nur das Produkt prüfen und ein anderes Zahlenpaar mit Produkt $20$ wählen, ohne die Summe zu beachten — z. B. $(2, 10)$ oder $(1, 20)$ haben falsche Summen.`,
+        [
+          'Vieta: Summe = $-p = 9$, Produkt = $q = 20$.',
+          'Welche Faktorenpaare hat $20$? — $(1, 20)$, $(2, 10)$, $(4, 5)$.',
+          'Welches Paar erfüllt BEIDE Bedingungen?',
+        ],
+        {
+          1: 'Produkt stimmt ($2 \\cdot 10 = 20$), aber Summe $2 + 10 = 12 \\neq 9$. Vieta verlangt beide Bedingungen gleichzeitig.',
+          2: 'Produkt stimmt ($(-4)(-5) = 20$), aber Summe $-4 + (-5) = -9 \\neq +9$. Vorzeichen aller Lösungen vertauscht.',
+          3: 'Produkt stimmt ($1 \\cdot 20 = 20$), aber Summe $1 + 20 = 21 \\neq 9$. Faktorenpaar mit kleinerer Summe wählen — hier $(4, 5)$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['vieta'] },
+      ),
+      matching(
+        'Ordne jedem Lösungspaar die passende Normalform $x^2 + px + q = 0$ zu (Vieta).',
+        [
+          { left: '$x_1 = 2, \\; x_2 = 7$',     right: '$x^2 - 9x + 14 = 0$' },
+          { left: '$x_1 = -3, \\; x_2 = 4$',    right: '$x^2 - x - 12 = 0$' },
+          { left: '$x_1 = -1, \\; x_2 = -6$',   right: '$x^2 + 7x + 6 = 0$' },
+          { left: '$x_1 = 8, \\; x_2 = -3$',    right: '$x^2 - 5x - 24 = 0$' },
+        ],
+        `**Ansatz:** Aus den Lösungen mit Vieta die Koeffizienten bestimmen: $-p = x_1 + x_2$ und $q = x_1 \\cdot x_2$.
+
+**Rechnung:**
+- $(2, 7)$: Summe $9 \\Rightarrow p = -9$, Produkt $14 \\Rightarrow q = 14$. Polynom $x^2 - 9x + 14$.
+- $(-3, 4)$: Summe $1 \\Rightarrow p = -1$, Produkt $-12 \\Rightarrow q = -12$. Polynom $x^2 - x - 12$.
+- $(-1, -6)$: Summe $-7 \\Rightarrow p = 7$, Produkt $6 \\Rightarrow q = 6$. Polynom $x^2 + 7x + 6$.
+- $(8, -3)$: Summe $5 \\Rightarrow p = -5$, Produkt $-24 \\Rightarrow q = -24$. Polynom $x^2 - 5x - 24$.
+
+**Probe:** Jede Lösung in das jeweilige Polynom einsetzen — Ergebnis $0$ bestätigt die Zuordnung.
+
+**Typischer Fehler:** Vorzeichen bei $-p$ vergessen — also Summe direkt als $p$ einsetzen, was zu vertauschten Lösungen führt.`,
+        [
+          'Berechne pro Paar Summe und Produkt.',
+          'Summe → $-p$ (Vorzeichen drehen!), Produkt → $q$.',
+          'Setze in $x^2 + px + q$ ein und vergleiche mit den Optionen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['vieta'] },
+      ),
     ],
     // [3] Faktorisierte Form
     3: [
@@ -6208,9 +6750,9 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
           '$x + 5 = 0 \\Rightarrow x = -5$.',
         ],
         {
-          1: 'Vorzeichen der Nullstellen verwechselt.',
-          2: 'Keine Nullstelle.',
-          3: 'Produkt ist nicht die Summe — das ist keine Regel.',
+          1: 'Du hast die Vorzeichen umgedreht: $x = -2$ würde aus $(x+2)$ kommen, nicht aus $(x-2)$. Aus $(x-2) = 0$ folgt $x = +2$, aus $(x+5) = 0$ folgt $x = -5$. Vorzeichenregel: Aus $(x - a)$ wird $x = +a$.',
+          2: 'Du hast vermutlich beide Faktoren addiert oder summiert, dabei kommt $-3$ heraus. Aber Faktorisierung funktioniert per Produkt-gleich-Null: jeder Faktor wird einzeln auf Null gesetzt. Lösungen: $x = 2$ aus dem ersten und $x = -5$ aus dem zweiten Faktor.',
+          3: 'Du hast die Faktoren multipliziert: $2 \\cdot (-5) = -10$. Das gibt aber den konstanten Term im ausmultiplizierten Polynom, nicht die Nullstellen. Nullstellen findest du, indem jeder Faktor einzeln Null gesetzt wird: $x = 2$ und $x = -5$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
       ),
@@ -6253,9 +6795,9 @@ Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
           'Konstanter Term der ausmultiplizierten Form.',
         ],
         {
-          1: 'Summe wäre $-3 + (-5) = -8$, das stimmt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Mittelterm $-8x$ ist korrekt.',
+          1: 'Du hast den Mittelterm beanstandet, aber der ist korrekt: $-3 + (-5) = -8$, also Mittelterm $-8x$. Der echte Fehler ist im konstanten Glied: $(-3)(-5) = +15$, nicht $-15$.',
+          2: 'Probe mit $x = 0$: $(0-3)(0-5) = (-3)(-5) = 15$, aber $0^2 - 8 \\cdot 0 - 15 = -15$. $15 \\neq -15$ — also stimmt die Schülerlösung nicht. Korrekt: $x^2 - 8x + 15$.',
+          3: 'Der Mittelterm $-8x$ ist tatsächlich korrekt — er stammt aus $-5x - 3x = -8x$. Der Fehler steckt nicht im Mittel-, sondern im Endterm: Minus mal Minus ergibt Plus, also $+15$.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['faktor-form'] },
       ),
@@ -6330,6 +6872,93 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
       ),
+      mc(
+        'Faktorisiere $x^2 - 9$ vollständig.',
+        ['$(x - 3)(x + 3)$', '$(x - 9)(x + 1)$', '$(x - 3)^2$', '$(x + 3)^2$'],
+        0,
+        `**Ansatz:** Differenz zweier Quadrate — 3. binomische Formel: $a^2 - b^2 = (a - b)(a + b)$.
+
+**Rechnung:** Mit $a = x$ und $b = 3$ (denn $9 = 3^2$): $x^2 - 9 = x^2 - 3^2 = (x - 3)(x + 3)$.
+
+**Probe:** Ausmultiplizieren: $(x - 3)(x + 3) = x^2 + 3x - 3x - 9 = x^2 - 9$ ✓. Nullstellen: $x = 3$ und $x = -3$.
+
+**Typischer Fehler:** Den fehlenden $x$-Term übersehen und das Polynom als $(x - a)^2$ schreiben — das wäre $x^2 - 2ax + a^2$ mit Mittelterm. Hier fehlt aber der Mittelterm — typisches Anzeichen für Differenz zweier Quadrate.`,
+        [
+          'Erkenne die Form $a^2 - b^2$ — fehlender Mittelterm.',
+          '3. binomische Formel: $a^2 - b^2 = (a - b)(a + b)$.',
+          'Mit $a = x$, $b = 3$ einsetzen.',
+        ],
+        {
+          1: 'Du hast Faktorenpaare von $-9$ gesucht: $-9 = -9 \\cdot 1$. Probe: $(x-9)(x+1) = x^2 - 8x - 9 \\neq x^2 - 9$. Bei der Differenz zweier Quadrate gibt es keinen Mittelterm.',
+          2: '$(x - 3)^2 = x^2 - 6x + 9$ — das ist ein Quadrat mit Mittelterm $-6x$ und konstantem $+9$. Hier ist aber $-9$ konstant und Mittelterm fehlt — also keine Quadratform.',
+          3: '$(x + 3)^2 = x^2 + 6x + 9$ — auch hier Mittelterm $+6x$ und Konstante $+9$. Passt nicht zu $x^2 - 9$ (kein Mittelterm, $-9$ statt $+9$).',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
+      ),
+      ni(
+        'Eine quadratische Gleichung in Normalform $x^2 + px + q = 0$ hat die Nullstellen $x_1 = 5$ und $x_2 = -2$. Wie groß ist das absolute Glied $q$?',
+        -10, 0, '',
+        `**Ansatz:** Faktorisierte Form $(x - x_1)(x - x_2) = (x - 5)(x + 2)$ ausmultiplizieren — oder direkt Vieta: $q = x_1 \\cdot x_2$.
+
+**Rechnung:** $(x - 5)(x + 2) = x^2 + 2x - 5x - 10 = x^2 - 3x - 10$. Das absolute Glied ist $-10$. Per Vieta: $q = 5 \\cdot (-2) = -10$ ✓.
+
+**Probe:** $5^2 - 3 \\cdot 5 - 10 = 25 - 15 - 10 = 0$ ✓; $(-2)^2 - 3 \\cdot (-2) - 10 = 4 + 6 - 10 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — $5 \\cdot (-2) = -10$, nicht $+10$. Das Produkt zweier Zahlen verschiedenen Vorzeichens ist negativ.`,
+        [
+          'Faktorisierte Form: $(x - x_1)(x - x_2)$.',
+          'Konstanter Term beim Ausmultiplizieren: $(-x_1) \\cdot (-x_2) = x_1 \\cdot x_2$.',
+          'Vorzeichenregel: $5 \\cdot (-2) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktor-form', 'abc-formel'] },
+      ),
+      tf(
+        'Wenn $a(x - x_1)(x - x_2) = 0$ mit $a \\neq 0$ gilt, dann ist $x = x_1$ oder $x = x_2$ — andere Lösungen gibt es nicht.',
+        true,
+        `**Ansatz:** Produkt-gleich-Null-Prinzip. Ein Produkt reeller Zahlen ist genau dann Null, wenn mindestens ein Faktor Null ist.
+
+**Rechnung:** $a \\neq 0$ schließt aus, dass $a$ den Faktor übernimmt. Dann muss $(x - x_1) = 0$ oder $(x - x_2) = 0$ — also $x = x_1$ oder $x = x_2$.
+
+**Probe:** $a = 2$, $x_1 = 1$, $x_2 = 3$: $2(x-1)(x-3) = 0 \\Leftrightarrow (x-1)(x-3) = 0 \\Leftrightarrow x = 1$ oder $x = 3$. Andere Werte: z. B. $x = 2$: $2 \\cdot 1 \\cdot (-1) = -2 \\neq 0$.
+
+**Typischer Fehler:** Glauben, der Leitkoeffizient $a$ würde zusätzliche Lösungen erzeugen — er beeinflusst nur den Skalierungsfaktor, nicht die Anzahl oder Lage der Nullstellen.`,
+        [
+          'Produkt-Null-Regel: Ein Produkt $= 0$ ⇔ mindestens ein Faktor $= 0$.',
+          '$a \\neq 0$ → $a$ kann nicht Null werden.',
+          'Also bleibt: $(x - x_1) = 0$ oder $(x - x_2) = 0$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['faktor-form', 'vieta'] },
+      ),
+      mc(
+        'Ein Schüler faktorisiert $x^2 - 5x - 14 = (x - 7)(x - 2)$. Stimmt das?',
+        [
+          'Nein — $(x-7)(x-2) = x^2 - 9x + 14 \\neq x^2 - 5x - 14$. Korrekt: $(x - 7)(x + 2)$, denn Vieta liefert Lösungen $7$ und $-2$.',
+          'Nein — korrekt ist $(x + 7)(x - 2)$, also Vorzeichen beider Faktoren tauschen.',
+          'Ja — die Faktorisierung ist korrekt.',
+          'Nein — korrekt ist $(x - 7)^2$.',
+        ],
+        0,
+        `**Ansatz:** Mit Vieta die korrekten Lösungen bestimmen, dann mit der Schüler-Faktorisierung vergleichen.
+
+**Rechnung:** Vieta für $x^2 - 5x - 14$: Summe $= -p = 5$, Produkt $= q = -14$. Welche zwei Zahlen? $7 + (-2) = 5$ ✓ und $7 \\cdot (-2) = -14$ ✓. Also $x_1 = 7$, $x_2 = -2$. Faktorisierung: $(x - 7)(x - (-2)) = (x - 7)(x + 2)$.
+
+Schüler-Probe: $(x - 7)(x - 2) = x^2 - 9x + 14$ — Mittelterm und konstanter Term beide falsch.
+
+**Probe:** $(x - 7)(x + 2) = x^2 + 2x - 7x - 14 = x^2 - 5x - 14$ ✓.
+
+**Typischer Fehler:** Vorzeichen des zweiten Faktors falsch übernehmen — bei Lösung $x_2 = -2$ wird der Faktor $(x - (-2)) = (x + 2)$, NICHT $(x - 2)$.`,
+        [
+          'Bestimme Vieta-Lösungen: Summe $5$, Produkt $-14$.',
+          'Welches Zahlenpaar erfüllt BEIDE Bedingungen?',
+          'Faktor zur Lösung $x_i$: $(x - x_i)$ — Vorzeichen genau beachten.',
+        ],
+        {
+          1: '$(x + 7)(x - 2)$ ergibt Summe der Lösungen $-7 + 2 = -5$, also Mittelterm $+5x$ in der Normalform — passt nicht zu $-5x$ in der Aufgabe.',
+          2: 'Probe widerlegt: $(x-7)(x-2) = x^2 - 9x + 14$. Sowohl Mittelterm ($-9$ statt $-5$) als auch konstanter Term ($+14$ statt $-14$) stimmen nicht.',
+          3: '$(x-7)^2 = x^2 - 14x + 49$ — passt weder zu $-5x$ noch zu $-14$. Außerdem hätte Doppelwurzel $D = 0$ verlangt; hier ist $D = 25 + 56 = 81 > 0$, also zwei verschiedene Lösungen.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['faktor-form'] },
+      ),
     ],
   },
 
@@ -6373,9 +7002,9 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
           'Auch negative Vorzeichen.',
         ],
         {
-          1: 'Negative Kandidaten nicht ausschließen.',
-          2: 'Nur $\\pm 1$ deckt nicht alle Möglichkeiten.',
-          3: '$\\pm 4$ ist kein Teiler von $6$.',
+          1: 'Du hast die negativen Kandidaten ausgeschlossen — der rationale Wurzelsatz fordert aber alle Vorzeichen-Varianten der Teiler. Beispiel: $P(-1) = -1 - 4 - 1 + 6 = 0$ ist eine Nullstelle, die du verpasst hättest.',
+          2: 'Mit nur $\\pm 1$ als Kandidaten verpasst du andere Nullstellen wie $x = 2$ oder $x = -1$. Der rationale Wurzelsatz fordert ALLE Teiler des Absolutglieds, nicht nur die kleinsten.',
+          3: 'Du hast $4$ als Teiler von $6$ angenommen — $4$ teilt $6$ aber NICHT (denn $6/4 = 1{,}5$ ist nicht ganzzahlig). Korrekt sind nur ganzzahlige Teiler: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
       ),
@@ -6468,6 +7097,55 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           'Sobald $P(\\text{Wert}) = 0$ herauskommt, hast du die Nullstelle.',
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      ),
+      ni(
+        'Finde die kleinste positive ganzzahlige Nullstelle von $P(x) = x^3 + 2x^2 - 5x - 6$. Gib sie an.',
+        2, 0, '',
+        `**Ansatz:** Teiler des Absolutglieds $-6$: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$. Positive aufsteigend testen.
+
+**Rechnung:**
+- $P(1) = 1 + 2 - 5 - 6 = -8 \\neq 0$
+- $P(2) = 8 + 8 - 10 - 6 = 0$ ✓
+
+Die kleinste positive ganzzahlige Nullstelle ist $x = 2$.
+
+**Probe:** Polynomdivision $(x-2)$ liefert $x^2 + 4x + 3 = (x+1)(x+3)$. Damit $P(x) = (x-2)(x+1)(x+3)$ — alle drei Nullstellen $2, -1, -3$. Einsetzen: $(x-2) = 0$ bei $x=2$ ✓; $P(2) = 8 + 8 - 10 - 6 = 0$ ✓.
+
+**Typischer Fehler:** Bei $P(1) \\neq 0$ aufgeben — der Wurzelsatz fordert, ALLE Teiler systematisch durchzugehen, nicht nur den ersten. Bei $x = 2$ kommt die erste positive Nullstelle.`,
+        [
+          'Welche Teiler hat das Absolutglied $-6$? — $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
+          'Beginne mit $x = 1$ und arbeite dich aufsteigend hoch.',
+          'Bei $P(2) = 8 + 8 - 10 - 6 = 0$ hast du die kleinste positive Nullstelle.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      ),
+      mc(
+        'Welche ganzzahligen Kandidaten sollte man bei $P(x) = x^4 + x^3 - 7x^2 - x + 6$ als Nullstellen testen?',
+        [
+          '$\\pm 1, \\pm 2, \\pm 3, \\pm 6$',
+          '$\\pm 1$ bis $\\pm 7$',
+          'Nur Teiler des Leitkoeffizienten ($\\pm 1$)',
+          'Alle Teiler des höchsten und niedrigsten Koeffizienten',
+        ],
+        0,
+        `**Ansatz:** Rationaler Wurzelsatz: ganzzahlige Nullstellen teilen das Absolutglied — hier $6$.
+
+**Rechnung:** Teiler von $6$: $1, 2, 3, 6$. Mit Vorzeichen: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$. Probetest: $P(1) = 1 + 1 - 7 - 1 + 6 = 0$ ✓ — Nullstelle gefunden.
+
+**Probe:** $P(1) = 0$ ✓, weitere NS: $P(-1) = 1 - 1 - 7 + 1 + 6 = 0$ ✓, $P(2) = 16 + 8 - 28 - 2 + 6 = 0$ ✓, $P(-3) = 81 - 27 - 63 + 3 + 6 = 0$ ✓.
+
+**Typischer Fehler:** Den Mittelterm-Koeffizienten ($-7$) als Schlüssel betrachten — der rationale Wurzelsatz schaut NUR auf das absolute Glied (und ggf. den Leitkoeffizienten bei rationalen NS).`,
+        [
+          'Welcher Koeffizient ist relevant? — Nur das absolute Glied.',
+          'Hier: Absolutglied $6$.',
+          'Teiler von $6$ mit beiden Vorzeichen.',
+        ],
+        {
+          1: 'Du hast die Zahl $7$ aus dem $-7x^2$-Koeffizienten genommen — der ist aber irrelevant. Der rationale Wurzelsatz schaut nur auf das absolute Glied $6$, also Teiler $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
+          2: 'Bei Leitkoeffizient $1$ und ganzzahligen Nullstellen sind ALLE rationalen NS auch ganzzahlig — du brauchst nicht nur $\\pm 1$, sondern alle Teiler des Absolutglieds. Mit nur $\\pm 1$ würdest du $x = 2$ und $x = -3$ verpassen.',
+          3: 'Diese Regel gilt für RATIONALE Nullstellen $p/q$ — hier suchst du aber GANZZAHLIGE Nullstellen, da der Leitkoeffizient $1$ ist. Reduziert sich auf Teiler des Absolutglieds.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
       ),
     ],
     // [1] Polynomdivision
@@ -6568,9 +7246,9 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           '(Divisor)(Quotient) = Dividend.',
         ],
         {
-          1: 'Das ist keine Probe.',
-          2: 'Negative Vorzeichen sind in Polynomen völlig normal.',
-          3: 'Divisor ist $(x+1)$, nicht $x$.',
+          1: 'Du würdest den Dividend $= 2$ setzen — das prüft aber nichts. Die Polynomdivision ist eine Identität für ALLE $x$, nicht eine Gleichung mit der Lösung $2$. Korrekte Probe: Quotient $\\cdot$ Divisor $=$ Dividend ausmultiplizieren.',
+          2: 'Polynomdivisionen mit positiven Koeffizienten sind genauso gültig wie mit negativen — der Wertebereich der Koeffizienten ist irrelevant. Die richtige Probe ist eine algebraische Rückmultiplikation, keine Vorzeichenprüfung.',
+          3: 'Divisor ist tatsächlich $(x+1)$, nicht $x$ allein. Aber die Probe lautet nicht „durch $x$ teilen", sondern „mit dem Divisor $(x+1)$ multiplizieren": $(x+1)(x+2) = x^2 + 3x + 2$ ✓.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['polydiv'] },
       ),
@@ -6596,6 +7274,43 @@ Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sin
           'Wiederholen bis Rest.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['polydiv'] },
+      ),
+      tf(
+        'Bei der Polynomdivision müssen Dividend und Divisor nach absteigenden Potenzen sortiert sein, fehlende Potenzen werden als $0 \\cdot x^k$ ergänzt.',
+        true,
+        `**Ansatz:** Polynomdivision wie schriftliche Division — die Stellen müssen passen.
+
+**Rechnung:** Beispiel $x^3 - 8 = x^3 + 0 \\cdot x^2 + 0 \\cdot x - 8$. Ohne die $0$-Spalten verschieben sich die Schritte und der Quotient wird falsch.
+
+**Probe:** $(x^3 + 0x^2 + 0x - 8) : (x - 2) = x^2 + 2x + 4$ Rest $0$ — exakt die 3. binom. Formel.
+
+**Typischer Fehler:** Lückenhafte Polynome direkt dividieren ohne $0$-Ergänzung — Quotient stimmt dann nicht.`,
+        [
+          'Was passiert bei lückenhaften Polynomen?',
+          'Fehlende Potenzen einfügen — als $0$.',
+          'Sonst verschieben sich die Stellen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['polydiv'] },
+      ),
+      ni(
+        'Führe $(2x^3 + 3x^2 - 1) : (x + 1)$ aus und gib den Koeffizienten des $x$-Terms im Quotienten an.',
+        1, 0, '',
+        `**Ansatz:** Polynomdivision mit ergänztem $0 \\cdot x$-Term im Dividenden.
+
+**Rechnung:** Schreibe als $2x^3 + 3x^2 + 0 \\cdot x - 1$. Polynomdivision durch $(x+1)$:
+$$\\begin{aligned} 2x^3 / x &= 2x^2 \\\\ 2x^2 (x+1) &= 2x^3 + 2x^2 \\\\ \\text{Rest:} \\quad x^2 + 0x - 1 \\\\ x^2 / x &= x \\\\ x(x+1) &= x^2 + x \\\\ \\text{Rest:} \\quad -x - 1 \\\\ -x/x &= -1 \\\\ -1 \\cdot (x+1) &= -x - 1 \\quad \\Rightarrow \\quad \\text{Rest } 0 \\end{aligned}$$
+
+Quotient: $2x^2 + x - 1$. Koeffizient des $x$-Terms: $1$.
+
+**Probe:** $(x+1)(2x^2 + x - 1) = 2x^3 + x^2 - x + 2x^2 + x - 1 = 2x^3 + 3x^2 - 1$ ✓.
+
+**Typischer Fehler:** Den fehlenden $x$-Term im Dividenden überspringen — dann passt die Stelle der Restbildung nicht und der Quotient kommt mit falscher Stelle heraus.`,
+        [
+          'Dividend lückenhaft? — $0 \\cdot x$ ergänzen.',
+          'Schritt-für-Schritt: höchster Grad zuerst, multiplizieren, subtrahieren.',
+          'Quotient lautet $2x^2 + x - 1$ — Koeffizient des $x$-Terms ist gefragt.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['polydiv'] },
       ),
       ni(
         'Führe $(x^3 - 8) : (x - 2)$ aus und gib den Koeffizienten des $x$-Terms im Quotienten an.',
@@ -6654,9 +7369,9 @@ Quotient: $x^2 + 2x + 4$. Koeffizient des $x$-Terms: $2$.
           'Also $P(x_0) = 0$.',
         ],
         {
-          1: 'Doch — genau das ist die Eigenschaft.',
-          2: 'Gilt für alle Grade.',
-          3: 'Gilt für alle Exponenten.',
+          1: 'Doch — genau das ist die Aussage des Linearfaktorsatzes: Aus Rest $= 0$ folgt $P(3) = 0$, also ist $x = 3$ Nullstelle. Das gilt unabhängig von Grad oder Form des Polynoms.',
+          2: 'Die Aussage gilt für JEDEN Grad ab $1$ — auch quadratisch oder linear. Ein einfaches Beispiel: $(x-3)$ teilt $x-3$ ohne Rest, und tatsächlich ist $x = 3$ die Nullstelle.',
+          3: 'Die Aussage gilt unabhängig von Exponenten — auch ungerade Polynomgrade ($P(x) = x^3 - 27 = (x-3)(x^2 + 3x + 9)$) zeigen den Zusammenhang: Rest $0 \\Leftrightarrow$ Nullstelle.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['polydiv-rest'] },
       ),
@@ -6723,6 +7438,40 @@ Quotient: $x^2 + 2x + 4$. Koeffizient des $x$-Terms: $2$.
         { stage: 'transfer', subGoal: 2, uses: ['polydiv-rest', 'rat-wurzel'] },
       ),
       ni(
+        'Welcher Rest entsteht bei der Polynomdivision $(x^3 - 4x + 5) : (x - 1)$? (Restsatz nutzen)',
+        2, 0, '',
+        `**Ansatz:** Restsatz: Rest von $P(x) : (x - a)$ ist $P(a)$ — keine vollständige Division nötig.
+
+**Rechnung:** Mit $a = 1$: $P(1) = 1 - 4 + 5 = 2$. Also Rest $= 2$.
+
+**Probe:** Polynomdivision liefert Quotient $x^2 + x - 3$ mit Rest $2$: $(x-1)(x^2 + x - 3) + 2 = x^3 + x^2 - 3x - x^2 - x + 3 + 2 = x^3 - 4x + 5$ ✓.
+
+**Typischer Fehler:** $a$ aus $(x - a)$ falsch ablesen — bei $(x - 1)$ ist $a = +1$, nicht $-1$. Außerdem: Volle Polynomdivision durchführen, obwohl der Restsatz die Rechnung mit einem Einsetzen erledigt.`,
+        [
+          'Restsatz: Rest $= P(a)$ bei Division durch $(x - a)$.',
+          'Hier: $a = 1$ (Vorzeichen aus $(x - 1)$).',
+          'Setze $x = 1$ ein und rechne aus.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['polydiv-rest'] },
+      ),
+      tf(
+        'Wenn alle Teiler des Absolutglieds als Kandidaten Rest $\\neq 0$ liefern, hat das Polynom keine ganzzahligen Nullstellen.',
+        true,
+        `**Ansatz:** Rationaler Wurzelsatz + Restsatz kombinieren: Ganzzahlige Nullstellen müssen Teiler des Absolutglieds sein. Wenn alle versagen, gibt es keine.
+
+**Rechnung:** Beispiel $P(x) = x^3 + x + 1$ (Absolutglied $1$, Teiler $\\pm 1$): $P(1) = 3 \\neq 0$, $P(-1) = -1 \\neq 0$. Also keine ganzzahlige Nullstelle.
+
+**Probe:** Reelle Lösung von $P(x) = 0$ ist $x \\approx -0{,}6824$ — irrational, nicht ganzzahlig.
+
+**Typischer Fehler:** Unter „keine ganzzahlige Nullstelle" verstehen, das Polynom hätte gar keine Nullstellen — dem ist nicht so; nur die rationalen/ganzzahligen Kandidaten versagen, irrational können trotzdem existieren.`,
+        [
+          'Welche Werte sind ganzzahlige Kandidaten? — Teiler des Absolutglieds.',
+          'Wenn ALLE Rest $\\neq 0$ ergeben, ist keiner Nullstelle.',
+          'Aber irrationale/komplexe Lösungen können existieren.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['polydiv-rest', 'rat-wurzel'] },
+      ),
+      ni(
         'Welcher Rest entsteht bei der Polynomdivision $(x^3 + x - 5) : (x - 2)$? (Restsatz nutzen)',
         5, 0, '',
         `**Ansatz:** Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$ — kein vollständiges Dividieren nötig.
@@ -6779,9 +7528,9 @@ Also Rest $= 5$.
           'Endwert = $P(x_0)$.',
         ],
         {
-          1: 'Addition allein ist nicht Horner.',
-          2: 'Polynomdivision auch — aber die Schritte sind nicht direkte Multiplikation.',
-          3: 'Nur Multiplikation verfehlt das Schema.',
+          1: 'Wenn du nur die Koeffizienten addierst ($2 + (-5) + 3 + (-1) = -1$), ergibt das $P(1)$, nicht $P(2)$. Horner verlangt für jeden Schritt: Vorgänger $\\cdot x_0$ plus nächster Koeffizient — also Multiplikation und Addition abwechselnd.',
+          2: 'Die explizite Polynomdivision ist zwar verwandt, aber Horner ist die KOMPAKTE Form. Die Schritte sind nicht „Polynomdivision durchführen", sondern direkt das schematische Multiplizieren-und-Addieren in einer Zeile.',
+          3: 'Wenn du nur die Koeffizienten mit $x_0$ multiplizierst ($2 \\cdot 2, -5 \\cdot 2, \\ldots$), ohne den Vorgänger einzubeziehen, fehlt die Addition aus dem Horner-Schritt. Horner bündelt beides: $\\text{Vorgänger} \\cdot x_0 + \\text{nächster Koeffizient}$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['horner'] },
       ),
@@ -6824,9 +7573,9 @@ Also Rest $= 5$.
           '$0 \\cdot x^2$.',
         ],
         {
-          1: 'Überspringen verschiebt die Rechnung.',
-          2: '$1$ wäre falsch.',
-          3: 'Horner IST die kompaktere Alternative.',
+          1: 'Wenn du den Koeffizienten überspringst, schiebt sich die ganze Tabelle um eine Stelle. Dann passt der Schritt $\\cdot x_0 + $ nächster Koeffizient zur falschen Potenz, und das Ergebnis ist $P$ an einer ganz anderen Stelle als gewollt.',
+          2: 'Wenn du den fehlenden $x^2$-Term durch $1$ ersetzt, verschiebst du das Polynom: aus $x^3 - 2x + 5$ wird $x^3 + x^2 - 2x + 5$ — eine andere Funktion. Korrekt ist der $0$-Koeffizient: $0 \\cdot x^2$ trägt nichts bei und passt formell in die Horner-Reihe.',
+          3: 'Horner IST die kompakte Alternative zur Polynomdivision — du sollst sie benutzen, nicht weglassen. Die Lücke beim fehlenden $x^2$-Term wird durch einen $0$-Eintrag in der Koeffizientenliste geschlossen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['horner'] },
       ),
@@ -6853,6 +7602,54 @@ Also Rest $= 5$.
           'Endwert = $P(x_0)$.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['horner'] },
+      ),
+      ni(
+        'Berechne $P(-1)$ für $P(x) = x^3 - 4x + 5$ mit dem Horner-Schema.',
+        8, 0, '',
+        `**Ansatz:** Koeffizientenliste $[1, 0, -4, 5]$ (fehlender $x^2$-Term ist $0$). Horner-Regel mit $x_0 = -1$.
+
+**Rechnung:**
+
+| Koeffizient | $1$ | $0$ | $-4$ | $5$ |
+|---|---|---|---|---|
+| Vorgabe |  | $-1$ | $1$ | $3$ |
+| Summe | $1$ | $-1$ | $-3$ | $\\mathbf{8}$ |
+
+Schritte: Start $1$; $1 \\cdot (-1) + 0 = -1$; $-1 \\cdot (-1) + (-4) = 1 - 4 = -3$; $-3 \\cdot (-1) + 5 = 3 + 5 = 8$.
+
+**Probe:** Direkt einsetzen: $P(-1) = -1 - 0 + 4 + 5 = 8$ ✓ (mit $(-1)^3 = -1$, $-4 \\cdot (-1) = +4$).
+
+**Typischer Fehler:** Den fehlenden $x^2$-Term ohne $0$-Spalte überspringen — dann verschiebt sich das Schema. Oder Vorzeichen bei $-3 \\cdot (-1)$ verlieren — Minus mal Minus ist Plus.`,
+        [
+          'Koeffizienten vollständig, fehlende mit $0$ ergänzen: $[1, 0, -4, 5]$.',
+          'Horner-Regel: jeder Eintrag = Vorgänger $\\cdot (-1) + $ nächster Koeffizient.',
+          'Bei Vorzeichen aufpassen: Minus mal Minus = Plus.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
+      ),
+      ni(
+        'Berechne $P(2)$ für $P(x) = x^4 - 3x^3 + 2x^2 - x + 7$ mit dem Horner-Schema.',
+        5, 0, '',
+        `**Ansatz:** Koeffizientenliste $[1, -3, 2, -1, 7]$, $x_0 = 2$. Horner-Regel: jeder Eintrag = Vorgänger $\\cdot 2$ plus nächster Koeffizient.
+
+**Rechnung:**
+
+| Koeffizient | $1$ | $-3$ | $2$ | $-1$ | $7$ |
+|---|---|---|---|---|---|
+| Vorgabe |  | $2$ | $-2$ | $0$ | $-2$ |
+| Summe | $1$ | $-1$ | $0$ | $-1$ | $\\mathbf{5}$ |
+
+Schritte: Start $1$; $1 \\cdot 2 + (-3) = -1$; $-1 \\cdot 2 + 2 = 0$; $0 \\cdot 2 + (-1) = -1$; $-1 \\cdot 2 + 7 = 5$.
+
+**Probe:** Direkt einsetzen: $P(2) = 16 - 24 + 8 - 2 + 7 = 5$. ✓
+
+**Typischer Fehler:** Vorzeichen bei $-3$ und $-1$ verlieren — etwa $1 \\cdot 2 + 3 = 5$ statt $-1$ rechnen. Genauso bei $-1 \\cdot 2 - 1$: das Ergebnis ist $-3$, dann $\\cdot 2 + 7 = 1$, was nicht zu $P(2)$ passt.`,
+        [
+          'Koeffizienten: $[1, -3, 2, -1, 7]$.',
+          'Schritt für Schritt: Vorgänger $\\cdot 2$ plus nächster Koeffizient.',
+          'Vorzeichen achten: $-3$ und $-1$ erhalten.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
       ),
       ni(
         'Berechne $P(-2)$ für $P(x) = 2x^4 + x^3 - 3x^2 + 5$ mit dem Horner-Schema.',
@@ -6920,9 +7717,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Dann ggf. weiter faktorisieren.',
         ],
         {
-          1: 'Diese Zerlegung ist nicht $= P$.',
-          2: 'Faktor dreimal ist ungewöhnlich.',
-          3: 'Das ist nicht die Divisions-Form.',
+          1: 'Probe: $(x-2)(x^2 - 4x + 6) = x^3 - 4x^2 + 6x - 2x^2 + 8x - 12 = x^3 - 6x^2 + 14x - 12$ — das ist NICHT $x^3 - 4x^2 + x + 6$. Die Division wurde falsch durchgeführt; korrekter Quotient ist $x^2 - 2x - 3$.',
+          2: 'Du hast $(x-2)$ doppelt geschrieben — das hieße $x = 2$ wäre eine doppelte Nullstelle. Das ist hier aber nicht der Fall: $P(x) = x^3 - 4x^2 + x + 6 = (x-2)(x-3)(x+1)$ hat drei verschiedene einfache Nullstellen.',
+          3: 'Das Format $x^2 \\cdot (x - 2)$ macht keinen Sinn als Faktorisierung — es würde Nullstellen $x = 0$ (doppelt) und $x = 2$ liefern, aber $P(0) = 6 \\neq 0$, also ist $x = 0$ keine Nullstelle.',
         },
         { stage: 'apply-guided', subGoal: 4, uses: ['linearfaktor', 'polydiv'] },
       ),
@@ -6965,9 +7762,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Ausmultiplizieren zur Kontrolle.',
         ],
         {
-          1: 'Vorzeichen wären $\\pm 4$, aber Zahl ist falsch.',
-          2: 'Ausmultiplizieren widerlegt.',
-          3: 'Das wäre $(x-4)^2 = x^2 - 8x + 16$.',
+          1: 'Du hast die Vorzeichen kritisiert, aber die ZAHL ist falsch. Die Nullstellen von $x^2 - 4 = 0$ sind $x = \\pm \\sqrt{4} = \\pm 2$, nicht $\\pm 4$. Aus der 3. binom. Formel $a^2 - b^2 = (a-b)(a+b)$ mit $b = \\sqrt{4} = 2$.',
+          2: 'Der Ausdruck ist NICHT korrekt: Ausmultiplizieren von $(x-4)(x+4)$ ergibt $x^2 - 16$ (3. binomische Formel mit $b=4$), nicht $x^2 - 4$. Die richtige Wurzel von $4$ ist $2$, also $(x-2)(x+2) = x^2 - 4$.',
+          3: 'Eine Doppelfaktorisierung $(x-4)(x-4) = (x-4)^2 = x^2 - 8x + 16$ hätte einen Mittelterm und einen anderen konstanten Wert — passt nicht zu $x^2 - 4$. Hier brauchst du Differenz zweier Quadrate, nicht ein vollständiges Quadrat.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['linearfaktor'] },
       ),
@@ -6987,6 +7784,46 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Summe der drei Lösungen.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['linearfaktor', 'rat-wurzel'] },
+      ),
+      ni(
+        'Bestimme das Produkt aller Nullstellen von $P(x) = x^3 - 7x + 6$.',
+        -6, 0, '',
+        `**Ansatz:** Vieta für Polynome dritten Grades $x^3 + a x^2 + b x + c$: Produkt der Nullstellen $= -c$.
+
+**Rechnung:** Hier $c = 6$, also Produkt $= -6$. Direkt-Test: Nullstellen sind $1, 2, -3$ (denn $P(1) = 1 - 7 + 6 = 0$ ✓, $P(2) = 8 - 14 + 6 = 0$ ✓, $P(-3) = -27 + 21 + 6 = 0$ ✓). Produkt: $1 \\cdot 2 \\cdot (-3) = -6$ ✓.
+
+**Probe:** Faktorisierung $P(x) = (x-1)(x-2)(x+3)$. Konstanter Term beim Ausmultiplizieren: $(-1)(-2)(3) = 6$ — das ist das absolute Glied $+c$. Per Vieta-Formel ist das Produkt der Nullstellen $-c = -6$ (Vorzeichenwechsel, weil ein ungerader Grad).
+
+**Typischer Fehler:** Bei Vieta für Grad $3$ das Vorzeichen vergessen — Produkt der Nullstellen ist $-c$, nicht $+c$. (Bei Grad $2$ wäre es $+q$, bei Grad $3$ kehrt sich das Vorzeichen um.)`,
+        [
+          'Welcher Koeffizient bestimmt das Produkt? — Das absolute Glied.',
+          'Vieta für Kubik: Produkt $= -c$.',
+          'Hier $c = 6$, also Produkt $= -6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['linearfaktor'] },
+      ),
+      mc(
+        'Welche Linearfaktor-Zerlegung gehört zu einem Polynom mit den Nullstellen $-1$, $2$ und $3$ und Leitkoeffizient $1$?',
+        ['$(x+1)(x-2)(x-3)$', '$(x-1)(x+2)(x+3)$', '$(x+1)(x+2)(x+3)$', '$(x+1)(x-2)(x+3)$'],
+        0,
+        `**Ansatz:** Zu jeder Nullstelle $x_i$ gehört der Faktor $(x - x_i)$. Vorzeichen genau übernehmen.
+
+**Rechnung:** $x_1 = -1 \\Rightarrow (x - (-1)) = (x + 1)$; $x_2 = 2 \\Rightarrow (x - 2)$; $x_3 = 3 \\Rightarrow (x - 3)$. Insgesamt: $(x+1)(x-2)(x-3)$.
+
+**Probe:** Ausmultiplizieren: $(x+1)(x-2) = x^2 - x - 2$; mal $(x-3)$: $x^3 - 3x^2 - x^2 + 3x - 2x + 6 = x^3 - 4x^2 + x + 6$. Einsetzen $x = -1$: $-1 - 4 - 1 + 6 = 0$ ✓; $x = 2$: $8 - 16 + 2 + 6 = 0$ ✓; $x = 3$: $27 - 36 + 3 + 6 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen beim Schritt „Nullstelle → Faktor" verwechseln. Aus $x_i = -1$ wird $(x - (-1)) = (x + 1)$ — also genau das umgekehrte Vorzeichen. Wer das Faktor-Vorzeichen direkt übernimmt, bekommt $(x - 1)$ und damit eine andere Nullstelle.`,
+        [
+          'Faktor zu Nullstelle $x_i$: $(x - x_i)$.',
+          'Vorzeichen drehen: $x = -1 \\to (x + 1)$.',
+          'Vorzeichen prüfen: Faktor $(x + 1)$ wird Null bei $x = -1$.',
+        ],
+        {
+          1: 'Du hast die Vorzeichen aller drei Nullstellen umgedreht: $(x-1)(x+2)(x+3)$ hat Nullstellen $1, -2, -3$ — nicht $-1, 2, 3$.',
+          2: '$(x+1)(x+2)(x+3)$ hat Nullstellen $-1, -2, -3$ — auch falsch. Der erste Faktor $(x+1)$ stimmt, aber bei $x = 2$ und $x = 3$ brauchst du $(x-2)$ und $(x-3)$.',
+          3: '$(x+1)(x-2)(x+3)$ hat Nullstellen $-1, 2, -3$. Der dritte Faktor ist verkehrt: bei $x = 3$ wird $(x+3) = 6 \\neq 0$. Korrekt: $(x-3)$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['linearfaktor', 'polydiv'] },
       ),
       ni(
         'Bei der Linearfaktor-Zerlegung von $P(x) = x^3 - 5x^2 + 8x - 4$ tritt die Nullstelle $x = 2$ doppelt auf. Welche Vielfachheit hat die Nullstelle $x = 1$?',
@@ -7042,9 +7879,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Das ist der einzige Weg.',
         ],
         {
-          1: 'pq-Formel ist für Grad $2$.',
-          2: 'Polynomdivision braucht bekannte Nullstelle.',
-          3: 'Faktorisieren braucht ebenso.',
+          1: 'Die pq-Formel ist konstruiert für quadratische Gleichungen $x^2 + px + q = 0$. Bei einer Kubik wie $x^3 - x - 1$ versagt sie — der höchste Term $x^3$ passt nicht ins pq-Schema.',
+          2: 'Polynomdivision setzt voraus, dass du bereits eine Nullstelle GEFUNDEN hast (Faktor $(x - x_0)$). Hier hast du keine rationale Nullstelle, also nichts zum Dividieren — du brauchst zuerst Cardano oder Numerik.',
+          3: 'Faktorisieren über $(x - x_1)(x - x_2)\\cdots$ erfordert bekannte Nullstellen. Da hier alle rationalen Kandidaten ($\\pm 1$) versagen, gibt es keine Faktoren zum Schreiben — Cardano oder numerische Methoden sind die einzigen Wege.',
         },
         { stage: 'apply-guided', subGoal: 5, uses: ['cardano-info'] },
       ),
@@ -7070,9 +7907,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest: $4$ ist Lösung.',
         ],
         {
-          1: 'Doch — $x = 4$ ist Lösung.',
-          2: 'Auch reelle Lösungen sind möglich.',
-          3: 'Formel ist korrekt.',
+          1: 'Doch — $4^3 - 15 \\cdot 4 - 4 = 64 - 60 - 4 = 0$, also ist $x = 4$ eine Lösung. Das überraschende: Die komplexen Wurzeln $\\sqrt[3]{2 \\pm 11i}$ heben sich gegenseitig auf, weil die Imaginärteile entgegengesetzte Vorzeichen haben.',
+          2: 'Cardano liefert NICHT immer komplexe Lösungen — der Casus irreducibilis ist genau der Fall, in dem die Formel komplexe Wurzeln nutzt, das Endergebnis aber reell wird. Bei $x^3 - 15x - 4 = 0$: Lösung $x = 4$, reell.',
+          3: 'Die Formel ist tatsächlich korrekt — das ist gerade der Witz. Die scheinbare Komplexität bei $\\sqrt[3]{2 \\pm 11i}$ ist NUR ein algorithmischer Zwischenschritt; durch die symmetrische Addition der konjugiert-komplexen Kubikwurzeln kürzen sich die Imaginärteile zu $0$.',
         },
         { stage: 'apply-independent', subGoal: 5, uses: ['cardano-info'] },
       ),
@@ -7098,11 +7935,56 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Rationale Nullstellen zuerst.',
         ],
         {
-          1: 'Quadrieren erzeugt Grad $6$ — schlimmer.',
-          2: 'pq gilt nicht für Kubik.',
-          3: '$x = 2$ ist Lösung.',
+          1: 'Quadrieren würde aus $x^3 - 6x + 4 = 0$ ein Polynom Grad $6$ machen — viel schwieriger zu lösen, mit zusätzlichen Scheinlösungen. Quadrieren ist hier kontraproduktiv; richtig ist die Suche nach rationalen Nullstellen.',
+          2: 'Die pq-Formel ist auf $x^2 + px + q = 0$ spezialisiert — die Herleitung über quadratische Ergänzung greift bei kubischen Polynomen nicht. Mit anderen Koeffizienten wäre das Problem nicht gelöst, denn der Grad bleibt $3$.',
+          3: 'Doch — $P(2) = 8 - 12 + 4 = 0$, also ist $x = 2$ tatsächlich eine Lösung. Aber das Problem mit dem Schüler ist nicht „keine Lösung", sondern die falsche FORMEL: pq passt nicht zu Grad $3$, der Lösungsweg geht über rationale Nullstellen + Polynomdivision.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['cardano-info'] },
+      ),
+      tf(
+        'Eine allgemeine kubische Gleichung $x^3 + a x^2 + b x + c = 0$ lässt sich durch die Substitution $x = y - a/3$ auf die reduzierte Form $y^3 + p y + q = 0$ ohne quadratischen Term bringen — die Cardano-Formel ist auf genau diese reduzierte Form anwendbar.',
+        true,
+        `**Ansatz:** Die Substitution $x = y - a/3$ eliminiert den $x^2$-Term im Polynom. Cardano arbeitet auf der reduzierten Form (ohne quadratischen Term).
+
+**Rechnung:** Beispiel $x^3 + 6x^2 + 9x + 4 = 0$ mit Substitution $x = y - 2$: $(y-2)^3 + 6(y-2)^2 + 9(y-2) + 4$. Nach dem Ausmultiplizieren entsteht eine reduzierte Form $y^3 + p y + q$ ohne $y^2$-Term.
+
+**Probe:** Mit $a = 6$ ist $a/3 = 2$, daher $x = y - 2$. Eingesetzt verschwindet der quadratische Term — das ist die historische Vorbereitung für Cardano.
+
+**Typischer Fehler:** Cardano direkt auf die volle kubische Gleichung anwenden, ohne den $x^2$-Term zu eliminieren — die Formel funktioniert dann nicht (sie ist auf $x^3 + p x + q$ kalibriert).`,
+        [
+          'Cardano braucht reduzierte Form.',
+          'Substitution $x = y - a/3$ entfernt den $x^2$-Term.',
+          'Erst dann ist die Formel anwendbar.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['cardano-info'] },
+      ),
+      mc(
+        'Bei $x^3 - 2x - 5 = 0$ liefert das Newton-Verfahren $x \\approx 2{,}0946$ als reelle Lösung. Was bestätigt diese Approximation?',
+        [
+          'Die Gleichung hat keine rationalen Nullstellen — Cardano oder Numerik sind nötig. Probe: $x = 2$ gibt $8 - 4 - 5 = -1 \\neq 0$, $x = 3$ gibt $27 - 6 - 5 = 16$, also liegt die Lösung dazwischen.',
+          'Die pq-Formel funktioniert nur näherungsweise.',
+          'Die Gleichung hat keine reelle Lösung.',
+          'Newton braucht ganzzahligen Startwert.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichenwechsel zwischen $P(2) = -1$ und $P(3) = 16$ garantiert nach Zwischenwertsatz mindestens eine Nullstelle in $(2, 3)$. Da rationale Kandidaten $\\pm 1, \\pm 5$ versagen ($P(1) = -6$, $P(-1) = -2$, $P(5) = 110$, $P(-5) = -120$), muss die Lösung irrational sein.
+
+**Rechnung:** Newton-Iteration mit Startwert $x_0 = 2$ konvergiert zu $x \\approx 2{,}0946$. Probe: $2{,}0946^3 - 2 \\cdot 2{,}0946 - 5 \\approx 9{,}189 - 4{,}189 - 5 \\approx 0$.
+
+**Probe:** $P(2{,}0946) \\approx 0$ bestätigt die Lösung — eine reelle, aber irrationale Nullstelle.
+
+**Typischer Fehler:** Die Diskussion auf rationale Nullstellen reduzieren — bei einer Kubik wie dieser existiert immer mindestens eine reelle Lösung (ungerader Grad), auch wenn sie irrational ist. Nur Cardano oder Numerik liefern sie.`,
+        [
+          'Welche rationalen Kandidaten sind sinnvoll? — Teiler von $5$.',
+          'Wenn alle versagen: Lösung muss irrational sein.',
+          'Numerische Verfahren oder Cardano kommen zum Einsatz.',
+        ],
+        {
+          1: 'Die pq-Formel ist auf quadratische Gleichungen kalibriert — sie liefert nicht „näherungsweise", sondern gar nicht. Newton oder Cardano sind die Werkzeuge für Kubik ohne rationale NS.',
+          2: 'Bei ungeradem Grad hat ein reelles Polynom IMMER mindestens eine reelle Nullstelle ($\\lim_{x \\to \\pm\\infty}$ wechselt das Vorzeichen). Die Approximation $x \\approx 2{,}0946$ ist gerade diese reelle Lösung.',
+          3: 'Newton funktioniert mit beliebigen Startwerten in der Nähe der Nullstelle — auch nicht-ganzzahligen. Hier konvergiert es ab $x_0 = 2$ zur irrationalen Lösung.',
+        },
+        { stage: 'apply-independent', subGoal: 5, uses: ['cardano-info'] },
       ),
       matching(
         'Ordne jeder Gleichung die passende Lösungsmethode zu.',
@@ -7242,6 +8124,55 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         ],
         { stage: 'transfer', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
+      ni(
+        'Löse die doppelte Ungleichung $-3 < 2x - 7 \\leq 5$ und gib die obere Grenze für $x$ an.',
+        6, 0.01, '',
+        `**Ansatz:** Doppelte Ungleichung in allen drei Teilen gleich umformen — solange wir mit positivem Faktor multiplizieren/dividieren, bleiben beide Ungleichheitszeichen gleich gerichtet.
+
+**Rechnung:**
+$$-3 < 2x - 7 \\leq 5 \\quad | +7 \\\\ 4 < 2x \\leq 12 \\quad | : 2 \\quad (\\text{positiv, Zeichen bleiben}) \\\\ 2 < x \\leq 6$$
+
+Obere Grenze: $x = 6$ (eingeschlossen).
+
+**Probe:** $x = 6$: $2 \\cdot 6 - 7 = 5 \\leq 5$ ✓. $x = 2$ ist Grenzfall: $2 \\cdot 2 - 7 = -3$, nicht $> -3$ — also $2$ ausgeschlossen.
+
+**Typischer Fehler:** Nur eine der drei Stellen umformen — alle drei müssen synchron mit derselben Operation behandelt werden, sonst zerfällt die Doppel-Ungleichung.`,
+        [
+          'Doppelte Ungleichung als $-3 < 2x - 7 \\leq 5$.',
+          'Schritt 1: $+7$ in allen drei Teilen.',
+          'Schritt 2: $:2$ (positiv, Zeichen bleiben).',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      ),
+      mc(
+        'Welcher Schritt ist erforderlich, um $\\dfrac{x - 4}{-3} \\geq 2$ nach $x$ aufzulösen?',
+        [
+          'Beide Seiten mit $-3$ multiplizieren UND Ungleichheitszeichen umdrehen: $x - 4 \\leq -6$.',
+          'Beide Seiten mit $-3$ multiplizieren OHNE Zeichen umzudrehen: $x - 4 \\geq -6$.',
+          'Beide Seiten durch $-3$ teilen: $x - 4 \\leq 2 \\cdot (-3)^{-1}$.',
+          'Quadrieren, weil Bruch.',
+        ],
+        0,
+        `**Ansatz:** Bei Multiplikation einer Ungleichung mit einer NEGATIVEN Zahl flippt das Ungleichheitszeichen.
+
+**Rechnung:**
+$$\\dfrac{x-4}{-3} \\geq 2 \\quad | \\cdot (-3) \\quad (\\text{negativ! Zeichen flippt}) \\\\ x - 4 \\leq -6 \\quad | +4 \\\\ x \\leq -2$$
+
+**Probe:** $x = -2$: $\\dfrac{-2-4}{-3} = \\dfrac{-6}{-3} = 2 \\geq 2$ ✓. $x = -3$: $\\dfrac{-7}{-3} \\approx 2{,}33 \\geq 2$ ✓ — auch in Lösung.
+
+**Typischer Fehler:** Mit $-3$ multiplizieren, ohne das Zeichen zu drehen — dann landet man bei $x \\geq -2$, was die falsche Halbgerade ist.`,
+        [
+          'Was steht im Nenner? — $-3$, also negativ.',
+          'Multiplikation mit negativ → Zeichen umdrehen.',
+          'Schritt: $\\geq$ wird $\\leq$.',
+        ],
+        {
+          1: 'Du hast den Zeichen-Flip vergessen — bei Multiplikation mit $-3$ wird $\\geq$ zu $\\leq$. Probe widerlegt: $x = 0$ erfüllt dein Ergebnis $0 - 4 \\geq -6$, aber $\\frac{0-4}{-3} = \\frac{4}{3} \\approx 1{,}33$, was NICHT $\\geq 2$ ist.',
+          2: 'Du hast nicht aufgelöst, nur umgeformt — und das mit falscher Notation. Beim Teilen durch $-3$ wäre die rechte Seite $2 / (-3) = -\\frac{2}{3}$, mit Zeichen-Flip: $x - 4 \\leq -\\frac{2}{3}$. Direktere Methode: Multiplikation mit $-3$.',
+          3: 'Quadrieren ist hier völlig fehl am Platz — es würde Grad-Verdopplung erzeugen und Scheinlösungen einführen. Bei einer linearen Bruchungleichung genügt der Standardweg: mit dem Nenner multiplizieren (Vorzeichen beachten).',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      ),
     ],
     // [1] Betragsungleichung |x-a| < b
     1: [
@@ -7324,9 +8255,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest mit $x = -5$.',
         ],
         {
-          1: '$x > 4$ wäre Komplement.',
-          2: 'Schülerlösung stimmt nicht.',
-          3: '$|x|$ kann $= 0$ sein, daher gibt es Lösungen.',
+          1: 'Du hast die ENTGEGENGESETZTE Bedingung gewählt — $x > 4$ ist die Lösung von $|x| > 4$ (außerhalb), nicht von $|x| < 4$ (innerhalb). Probe: $x = 0$ erfüllt $|0| < 4$ ✓, liegt aber nicht in $x > 4$.',
+          2: 'Probe widerlegt: $x = -5$ erfüllt $x < 4$, aber $|-5| = 5 > 4$, also NICHT $|x| < 4$. Die Schülerlösung enthält Werte, die die Original-Ungleichung verletzen — sie ist unvollständig (untere Schranke fehlt).',
+          3: '$|x| = 0$ bei $x = 0$ erfüllt zwar $|x| < 4$, aber das ist keine generelle Aussage über die Lösungsmenge. Die richtige Frage: Welche $x$ erfüllen die Ungleichung? Antwort: alle mit $-4 < x < 4$, nicht „keine".',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['betrag-kleiner'] },
       ),
@@ -7351,6 +8282,47 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Intervall $[a-b, a+b]$.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['betrag-kleiner'] },
+      ),
+      ni(
+        'Eine Maschine fertigt Bolzen mit Soll-Durchmesser $d_0 = 12{,}0$ mm. Die Toleranz ist $|d - 12{,}0| \\leq 0{,}3$. Wie groß ist die größte zulässige Abweichung des Durchmessers $d$ von $12{,}0$ mm (in mm)?',
+        0.3, 0.001, 'mm',
+        `**Ansatz:** Die Bedingung $|d - 12{,}0| \\leq 0{,}3$ definiert das Toleranzintervall $[11{,}7;\\, 12{,}3]$ (geschlossen, Grenzen eingeschlossen). Größte zulässige Abweichung = Radius des Intervalls.
+
+**Rechnung:** $|d - 12{,}0| \\leq 0{,}3 \\iff -0{,}3 \\leq d - 12{,}0 \\leq 0{,}3 \\iff 11{,}7 \\leq d \\leq 12{,}3$. Maximale Abweichung: $0{,}3$ mm (gerade noch erlaubt, weil $\\leq$).
+
+**Probe:** $d = 12{,}3$ ist Grenzfall — $|0{,}3| = 0{,}3 \\leq 0{,}3$ ✓, gerade noch zulässig. $d = 12{,}4$: $|0{,}4| > 0{,}3$, ausgeschlossen.
+
+**Typischer Fehler:** Den Soll-Wert $12{,}0$ selbst als Antwort angeben — gefragt ist die Abweichung (Radius), nicht der Wert selbst.`,
+        [
+          'Was bedeutet $|d - 12{,}0| \\leq 0{,}3$? — Abstand zu $12{,}0$ höchstens $0{,}3$.',
+          'Die größte zulässige Abweichung ist genau der Radius.',
+          'Antwort: $0{,}3$ mm (Grenze eingeschlossen).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['betrag-kleiner'] },
+      ),
+      mc(
+        'Welche Lösung hat $|2x - 1| \\leq 5$?',
+        ['$-2 \\leq x \\leq 3$', '$-3 \\leq x \\leq 2$', '$x \\leq 3$', '$|x| \\leq 5$'],
+        0,
+        `**Ansatz:** Doppelungleichung $-5 \\leq 2x - 1 \\leq 5$, dann beide Seiten umformen.
+
+**Rechnung:**
+$$-5 \\leq 2x - 1 \\leq 5 \\quad | +1 \\\\ -4 \\leq 2x \\leq 6 \\quad | : 2 \\\\ -2 \\leq x \\leq 3$$
+
+**Probe:** $x = 3$: $|2 \\cdot 3 - 1| = |5| = 5 \\leq 5$ ✓; $x = -2$: $|-5| = 5 \\leq 5$ ✓; $x = 0$: $|-1| = 1 \\leq 5$ ✓.
+
+**Typischer Fehler:** Doppelungleichung nur einseitig auflösen oder Vorzeichen verlieren.`,
+        [
+          'Doppelungleichung $-5 \\leq 2x - 1 \\leq 5$.',
+          'Schritt 1: $+1$ in allen drei Teilen.',
+          'Schritt 2: $:2$ (positiv) — Zeichen bleiben.',
+        ],
+        {
+          1: 'Du hast die Vorzeichen vertauscht: $-2 \\leq x \\leq 3$ (richtig) hat untere Grenze $-2$, nicht $-3$. Bei der Berechnung $-4/2 = -2$, $6/2 = 3$ — die Reihenfolge der Ergebnisse muss erhalten bleiben.',
+          2: 'Du hast nur die obere Grenze betrachtet und die untere weggelassen. $|2x-1| \\leq 5$ liefert beidseitige Schranken: zusätzlich $x \\geq -2$.',
+          3: '$|2x - 1| \\leq 5$ ist NICHT äquivalent zu $|x| \\leq 5$ — der Term $2x - 1$ verschiebt und skaliert das Argument. Korrekte Lösung: $-2 \\leq x \\leq 3$, nicht $-5 \\leq x \\leq 5$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['betrag-kleiner'] },
       ),
     ],
     // [2] |x-a| > b
@@ -7462,6 +8434,50 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         ],
         { stage: 'transfer', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
       ),
+      ni(
+        'Löse $|3x - 6| \\geq 9$ und gib die OBERE Grenze des LINKEN Lösungsteils an (also den Endpunkt von $x \\leq ?$).',
+        -1, 0.01, '',
+        `**Ansatz:** $|y| \\geq b$ liefert zwei separate Bereiche: $y \\leq -b$ ODER $y \\geq b$. Mit $y = 3x - 6$:
+
+**Rechnung:**
+$$3x - 6 \\geq 9 \\quad \\Rightarrow \\quad x \\geq 5$$
+$$3x - 6 \\leq -9 \\quad \\Rightarrow \\quad 3x \\leq -3 \\quad \\Rightarrow \\quad x \\leq -1$$
+
+Lösung: $x \\leq -1$ ODER $x \\geq 5$. Linker Teil endet bei $x = -1$.
+
+**Probe:** $x = -1$: $|3 \\cdot (-1) - 6| = |-9| = 9 \\geq 9$ ✓ (Grenze eingeschlossen wegen $\\geq$). $x = 0$: $|-6| = 6$, nicht $\\geq 9$ — also $0$ NICHT in der Lösung, was zu „außerhalb $[-1, 5]$" passt.
+
+**Typischer Fehler:** Beim zweiten Fall vergessen, das Vorzeichen zu drehen — also $-9$ rechts statt $+9$. Oder die Lösungsbereiche nicht in Intervall-Notation umrechnen, sondern direkt aus $|y| > b$ als $y > b$ schreiben (untere Grenze fehlt dann).`,
+        [
+          'Form $|y| \\geq b$ liefert zwei Bereiche, durch ODER verbunden.',
+          'Mit $y = 3x - 6$: löse $3x - 6 \\geq 9$ UND $3x - 6 \\leq -9$ separat.',
+          'Linker Teil: $x \\leq -1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['betrag-groesser'] },
+      ),
+      sorting(
+        'Bringe die Schritte zur Lösung von $|x - 5| > 3$ in die richtige Reihenfolge.',
+        [
+          'Form erkennen: $|x - a| > b$ mit $a = 5$, $b = 3$',
+          'Zwei Fälle bilden: $x - 5 > 3$ ODER $x - 5 < -3$',
+          'Beide Teile lösen: $x > 8$ ODER $x < 2$',
+          'Lösungsmenge: $x < 2$ ODER $x > 8$ (nicht zusammengefasst, da disjunkt)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Betragsungleichung mit $>$ liefert ZWEI separate Halbgeraden, verbunden durch ODER.
+
+**Rechnung:** Lösung: $x < 2$ ODER $x > 8$. Geometrisch: alle Punkte, deren Abstand zu $5$ größer als $3$ ist — außerhalb von $[2, 8]$.
+
+**Probe:** $x = 0$: $|0 - 5| = 5 > 3$ ✓. $x = 10$: $|5| = 5 > 3$ ✓. $x = 4$: $|−1| = 1$, nicht $> 3$ — gehört nicht zur Lösung.
+
+**Typischer Fehler:** Die Schritte als ein langes UND verbinden statt als ODER — die zwei Halbgeraden sind disjunkt und können nicht zu einem Intervall verschmolzen werden.`,
+        [
+          'Erst Form erkennen.',
+          'Zwei Fälle separat aufstellen.',
+          'Mit ODER verbinden, nicht UND.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
+      ),
     ],
     // [3] Vorzeichentabelle
     3: [
@@ -7499,9 +8515,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Außerhalb $[-2, 2]$.',
         ],
         {
-          1: 'Innerhalb wäre $(x^2 - 4) < 0$.',
-          2: 'Nur oberer Ast — unterer fehlt.',
-          3: 'Doch — außerhalb $\\pm 2$.',
+          1: '„Innerhalb" wäre die Lösung von $x^2 - 4 < 0$ — die Parabel liegt zwischen $-2$ und $2$ unterhalb der $x$-Achse. Hier suchst du das umgekehrte: $> 0$, also außerhalb der Nullstellen.',
+          2: 'Du hast den unteren Ast vergessen. Probe: $x = -3$ erfüllt $x^2 - 4 = 9 - 4 = 5 > 0$ ✓, liegt aber nicht in „$x > 2$". Die Parabel ist nach unten symmetrisch — beide Äste außerhalb $\\pm 2$ erfüllen die Ungleichung.',
+          3: 'Doch, die Ungleichung hat sehr wohl Lösungen — z. B. $x = 3$: $9 - 4 = 5 > 0$ ✓. „Keine Lösung" wäre nur bei einer nach oben offenen Parabel mit Minimum $> 0$ richtig (dann läge sie ganz oben), aber $x^2 - 4$ hat Minimum $-4 < 0$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['vz-tabelle'] },
       ),
@@ -7544,11 +8560,51 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Beide beachten.',
         ],
         {
-          1: '$(-3)^2 = 9$, also $x = -3$ ist Nullstelle.',
-          2: 'Unvollständige Lösung.',
-          3: '$x = 0$: $-9 < 0$ — nicht immer positiv.',
+          1: 'Doch: $(-3)^2 = 9$, also $(-3)^2 - 9 = 0$. $x = -3$ IST eine Nullstelle. Die Parabel hat zwei symmetrische Nullstellen $\\pm 3$, und außerhalb beider ist $x^2 - 9 > 0$.',
+          2: 'Probe widerlegt die Schülerlösung als „korrekt": $x = -4$ erfüllt $16 - 9 = 7 > 0$ ✓, liegt aber NICHT in $x > 3$. Die Schülerlösung enthält nur die rechte Hälfte der Lösungsmenge.',
+          3: 'Bei $x = 0$ ist $0 - 9 = -9 < 0$, also nicht „immer positiv". Die Aussage des Schülers wäre richtig, wenn das Polynom als Summe zweier Quadrate $x^2 + 9$ formuliert wäre — bei $x^2 - 9$ existiert aber ein negativer Bereich zwischen den Nullstellen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['vz-tabelle'] },
+      ),
+      ni(
+        'Für welche $x$ ist $x^2 + 2x - 8 \\geq 0$? Gib die GRÖSSERE Intervallgrenze an.',
+        2, 0.01, '',
+        `**Ansatz:** Faktorisieren oder pq-Formel; Vorzeichentabelle für quadratische Funktion mit positivem Leitkoeffizienten.
+
+**Rechnung:** Nullstellen: $x_{1,2} = -1 \\pm \\sqrt{1 + 8} = -1 \\pm 3$. Also $x_1 = 2$, $x_2 = -4$. Faktorisierung: $(x + 4)(x - 2)$. Parabel öffnet nach oben → Werte $\\geq 0$ AUSSERHALB der Nullstellen: $x \\leq -4$ ODER $x \\geq 2$. Größere Grenze: $2$.
+
+**Probe:** $x = 2$: $4 + 4 - 8 = 0 \\geq 0$ ✓ (Gleichheit). $x = 3$: $9 + 6 - 8 = 7 \\geq 0$ ✓. $x = 0$: $0 + 0 - 8 = -8$, nicht $\\geq 0$ — passt zu „außerhalb".
+
+**Typischer Fehler:** Innerhalb statt außerhalb — bei nach oben geöffneter Parabel und $\\geq 0$ ist die Lösung außerhalb der Nullstellen.`,
+        [
+          'Faktorisieren: $(x+4)(x-2)$.',
+          'Nullstellen $-4$ und $2$.',
+          'Parabel nach oben → außerhalb $\\geq 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['vz-tabelle'] },
+      ),
+      mc(
+        'Was ist die Lösung von $x^2 + 2x + 3 < 0$?',
+        ['Keine reelle Lösung — Parabel liegt komplett über der $x$-Achse', 'Alle reellen $x$', '$x < -1$ ODER $x > 3$', '$-1 < x < 3$'],
+        0,
+        `**Ansatz:** Diskriminante prüfen — wenn $D < 0$, hat die Parabel keine reellen Nullstellen, liegt also entweder ganz oberhalb oder ganz unterhalb der $x$-Achse.
+
+**Rechnung:** $D = 4 - 12 = -8 < 0$. Keine Nullstellen. Leitkoeffizient $> 0$ → Parabel öffnet nach oben → liegt komplett über der $x$-Achse. Damit ist $x^2 + 2x + 3 > 0$ für alle $x \\in \\mathbb{R}$, und $< 0$ für KEIN $x$. Lösungsmenge: $\\emptyset$.
+
+**Probe:** Scheitel bei $x_S = -1$: $y_S = 1 - 2 + 3 = 2 > 0$. Tatsächlich liegt der tiefste Punkt bei $y = 2$, also weit über $0$ — nirgends ist $x^2 + 2x + 3 < 0$.
+
+**Typischer Fehler:** Annehmen, jede quadratische Ungleichung habe einen Lösungsbereich. Bei $D < 0$ und passender Vorzeichen-Konstellation ist die Lösungsmenge entweder $\\emptyset$ oder $\\mathbb{R}$.`,
+        [
+          'Diskriminante: $D = b^2 - 4ac$.',
+          'Bei $D < 0$ keine Nullstellen — Parabel ganz oben oder ganz unten.',
+          'Leitkoeffizient bestimmt die Öffnungsrichtung.',
+        ],
+        {
+          1: 'Alle reellen $x$ wäre die Lösung von $x^2 + 2x + 3 > 0$ (Parabel überall positiv). Hier ist die Frage genau umgekehrt: $< 0$, also wo die Parabel UNTER die $x$-Achse fällt — und das passiert nie.',
+          2: 'Es gibt keine Nullstellen, also auch keine Intervallgrenzen $-1$ und $3$ — diese Zahlen tauchen in der Aufgabe nirgends auf. Die Lösung ist leer.',
+          3: 'Auch dieses Intervall wäre nur sinnvoll, wenn die Parabel zwei Nullstellen bei $-1$ und $3$ hätte — was aber wegen $D < 0$ nicht der Fall ist.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['vz-tabelle'] },
       ),
       sorting(
         'Bringe die Schritte zur Lösung von $x^2 - 2x - 3 \\leq 0$ in die richtige Reihenfolge.',
@@ -7615,9 +8671,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zusammen: $(-1, 3]$.',
         ],
         {
-          1: 'Beide geschlossen — falsch links.',
-          2: 'Beide offen — falsch rechts.',
-          3: 'Vorzeichen vertauscht.',
+          1: '$[-1, 3]$ schließt $-1$ EIN. Hier ist aber $x > -1$ strikt — also $-1$ ausgeschlossen, runde Klammer links. Eckige Klammer wäre nur bei $x \\geq -1$ richtig.',
+          2: '$(-1, 3)$ hat rechts auch eine RUNDE Klammer — schließt $3$ also aus. Hier ist aber $x \\leq 3$, also $3$ eingeschlossen → eckige Klammer rechts $]$.',
+          3: '$[-1, 3)$ hat die Klammern genau VERTAUSCHT: links eckig (= eingeschlossen), rechts rund (= ausgeschlossen). In der Aufgabe ist es umgekehrt: $-1$ ausgeschlossen ($<$), $3$ eingeschlossen ($\\leq$).',
         },
         { stage: 'apply-guided', subGoal: 4, uses: ['intervall-notation'] },
       ),
@@ -7638,9 +8694,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$x \\geq 2$.',
         ],
         {
-          1: 'Runde Klammer bedeutet $>$.',
-          2: 'Das wäre $(-\\infty, 2]$.',
-          3: 'Runde Klammer fehlt.',
+          1: '$x > 2$ würde RUNDER Klammer entsprechen: $(2, \\infty)$. Hier ist aber eckige Klammer $[2, \\infty)$ — also $2$ EINGESCHLOSSEN, also $x \\geq 2$ (mit Gleichheit).',
+          2: '$x \\leq 2$ entspricht dem Intervall $(-\\infty, 2]$ — Achse nach LINKS unbeschränkt, Endpunkt $2$ eingeschlossen. Hier ist es umgekehrt: nach RECHTS unbeschränkt ab $2$.',
+          3: '$x < 2$ entspricht $(-\\infty, 2)$ mit beidseitig runden Klammern und nach LINKS unbeschränkt. Das ist die negative Version: $[2, \\infty)$ ist nach rechts unbeschränkt mit eckiger Klammer am Anfang.',
         },
         { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation', 'vz-tabelle'] },
       ),
@@ -7666,11 +8722,51 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Offene vs. geschlossene Klammer.',
         ],
         {
-          1: 'Umgekehrte Ungleichung — nicht das Problem.',
-          2: 'Ganz falsch.',
-          3: 'Ungleichungen haben sehr wohl Intervalle.',
+          1: '$x > 5$ wäre $(5, \\infty)$ — runde Klammer und Richtung richtig. Aber der Schüler hatte $x < 5$ als Aufgabe, nicht $x > 5$. Die Korrektur greift inhaltlich daneben: nicht die Ungleichung umdrehen, sondern Intervall korrekt schreiben: $(-\\infty, 5)$.',
+          2: '$[5, \\infty)$ ist tatsächlich falsch — aber zu sagen „ganz falsch" hilft dem Lerner nicht. Konkret: Der Schüler hat (a) die Richtung umgedreht (rechts statt links unbeschränkt) und (b) die Klammer bei $5$ falsch gewählt (eckig statt rund, da $x < 5$ den Wert $5$ ausschließt).',
+          3: 'Ungleichungen lassen sich sehr wohl als Intervalle schreiben — das ist sogar eine sehr nützliche Standard-Notation. Hier konkret: $x < 5$ entspricht $(-\\infty, 5)$, also einseitig unbeschränkt nach links mit offener Grenze $5$.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['intervall-notation'] },
+      ),
+      mc(
+        'Welche Intervall-Notation entspricht der Lösungsmenge von $x^2 < 4$?',
+        ['$(-2, 2)$', '$[-2, 2]$', '$(-\\infty, -2) \\cup (2, \\infty)$', '$(-2, 2]$'],
+        0,
+        `**Ansatz:** $x^2 < 4 \\Leftrightarrow |x| < 2 \\Leftrightarrow -2 < x < 2$ (strikt).
+
+**Rechnung:** Beide Grenzen offen, weil die Ungleichung strikt ist ($<$, nicht $\\leq$). Intervall-Notation: $(-2, 2)$.
+
+**Probe:** $x = 2$ wäre Grenzfall: $4 < 4$ ist falsch, also $2$ ausgeschlossen — passt zu offener Klammer. $x = 1$: $1 < 4$ ✓.
+
+**Typischer Fehler:** Eckige Klammern bei strikter Ungleichung — würde $\\pm 2$ einschließen, was hier wegen $<$ falsch ist.`,
+        [
+          'Strikte Ungleichung $<$ → offene Klammer.',
+          '$x^2 < 4 \\Leftrightarrow |x| < 2$.',
+          'Beidseitig offen: $(-2, 2)$.',
+        ],
+        {
+          1: 'Eckige Klammern $[-2, 2]$ würden $\\pm 2$ einschließen — bei $x = 2$ wäre aber $4 < 4$ falsch, also Grenze ausgeschlossen. Bei strikter Ungleichung sind beide Grenzen offen.',
+          2: 'Das wäre die Lösung der UMGEKEHRTEN Ungleichung $x^2 > 4$. Hier ist die Bedingung $< 4$, also INNERHALB des Intervalls $[-2, 2]$ (strikt offen).',
+          3: 'Halboffenes Intervall mit $2$ eingeschlossen passt nicht zur strikten Ungleichung $< 4$. Beide Grenzen müssen wegen $<$ offen sein: $(-2, 2)$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation', 'vz-tabelle'] },
+      ),
+      ni(
+        'Schreibe die Lösungsmenge der Ungleichung $-2 \\leq x < 5$ in Intervall-Notation und gib die Anzahl der enthaltenen GANZZAHLEN an (also wie viele ganze Zahlen liegen drin).',
+        7, 0, '',
+        `**Ansatz:** Intervall $[-2, 5)$ enthält die ganzen Zahlen von $-2$ (eingeschlossen) bis $4$ (denn $5$ ist offen, ausgeschlossen).
+
+**Rechnung:** Aufzählung: $-2, -1, 0, 1, 2, 3, 4$. Das sind $7$ ganze Zahlen.
+
+**Probe:** $5 - (-2) = 7$. Bei einer Mischung aus geschlossen-offen $[a, b)$ ist die Anzahl der ganzen Zahlen genau $b - a$ (wenn $a, b \\in \\mathbb{Z}$).
+
+**Typischer Fehler:** $5$ als enthalten zählen — in $[-2, 5)$ ist $5$ AUSGESCHLOSSEN (runde Klammer rechts). Oder $-2$ ausschließen — eckige Klammer links bedeutet eingeschlossen.`,
+        [
+          'Intervall-Notation: $[-2, 5)$ — links eckig, rechts rund.',
+          'Welche ganzen Zahlen liegen drin? Aufzählen.',
+          'Bei eckiger Klammer Endpunkt mitzählen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['intervall-notation'] },
       ),
       matching(
         'Ordne jeder Notation die passende Beschreibung zu.',
@@ -7781,6 +8877,61 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           3: 'Doch, die Ungleichung hat eine Lösung: $x = 1$ liefert $\\frac{2}{1} = 2 > 1$ ✓. Lösungsmenge ist das Intervall $(0, 2)$.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['bruch-ungl-pol'] },
+      ),
+      ni(
+        'Löse $\\dfrac{x - 4}{x + 1} \\leq 0$ und gib die GRÖSSERE Intervallgrenze an (also den Endpunkt von $x \\leq ?$, wo Gleichheit gilt).',
+        4, 0.01, '',
+        `**Ansatz:** Bruch $\\leq 0$ heißt Zähler und Nenner haben verschiedene Vorzeichen ODER Zähler $= 0$. Polstelle $x = -1$ ausschließen (Nenner $= 0$).
+
+**Rechnung:** Zähler-Nullstelle: $x = 4$. Nenner-Nullstelle: $x = -1$ (Polstelle, ausgeschlossen). Vorzeichen-Tabelle:
+
+| Bereich | $x - 4$ | $x + 1$ | Bruch |
+|---|---|---|---|
+| $x < -1$ | $-$ | $-$ | $+$ |
+| $-1 < x < 4$ | $-$ | $+$ | $-$ |
+| $x > 4$ | $+$ | $+$ | $+$ |
+
+Bruch $\\leq 0$: Bereich $-1 < x \\leq 4$ ($x = 4$ erlaubt, weil Zähler $= 0$ den Bruch zu $0$ macht; $x = -1$ ist Polstelle, ausgeschlossen).
+
+Lösungsmenge: $(-1, 4]$. Größere Grenze: $4$ (eingeschlossen wegen Gleichheit).
+
+**Probe:** $x = 4$: $\\dfrac{0}{5} = 0 \\leq 0$ ✓ (Gleichheit erlaubt). $x = 0$: $\\dfrac{-4}{1} = -4 \\leq 0$ ✓. $x = 5$: $\\dfrac{1}{6} > 0$, nicht $\\leq 0$.
+
+**Typischer Fehler:** Quer-multiplizieren mit $x + 1$ ohne Fallunterscheidung — bei $x + 1 < 0$ würde sich das Zeichen drehen. Sauberer Weg: Vorzeichen-Tabelle.`,
+        [
+          'Zähler-Nullstelle: $x = 4$. Nenner-Nullstelle: $x = -1$ (Polstelle).',
+          'Vorzeichen-Tabelle: drei Bereiche prüfen.',
+          'Bei $\\leq 0$ ist $x = 4$ eingeschlossen (Zähler $= 0$), $x = -1$ ausgeschlossen (Nenner $= 0$).',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['bruch-ungl-pol'] },
+      ),
+      mc(
+        'Welcher der folgenden Werte gehört NICHT zur Lösungsmenge von $\\dfrac{2}{x - 3} > 1$?',
+        ['$x = 3$', '$x = 4$', '$x = 4{,}5$', '$x = 4{,}9$'],
+        0,
+        `**Ansatz:** Polstelle ausschließen, dann Vorzeichen-Tabelle. Hier zusätzlich Lösung bestimmen, dann Werte testen.
+
+**Rechnung:** Zunächst $x = 3$ ausschließen (Polstelle, Nenner $= 0$). Für $x \\neq 3$ umformen:
+$$\\dfrac{2}{x-3} > 1 \\Leftrightarrow \\dfrac{2}{x-3} - 1 > 0 \\Leftrightarrow \\dfrac{2 - (x-3)}{x-3} > 0 \\Leftrightarrow \\dfrac{5 - x}{x - 3} > 0$$
+
+Vorzeichen: Zähler $5 - x = 0$ bei $x = 5$; Nenner $x - 3 = 0$ bei $x = 3$. Bruch $> 0$ in $3 < x < 5$ (beide negativ vor $x = 3$ heben sich auf, danach $+/+$ bei $3 < x < 5$, danach $-/+$ bei $x > 5$).
+
+Lösung: $3 < x < 5$. Polstelle $x = 3$ ausgeschlossen.
+
+**Probe:** $x = 3$: undefiniert (Division durch Null) — gehört NICHT zur Lösung. $x = 4$: $\\frac{2}{1} = 2 > 1$ ✓. $x = 4{,}5$: $\\frac{2}{1{,}5} \\approx 1{,}33 > 1$ ✓. $x = 4{,}9$: $\\frac{2}{1{,}9} \\approx 1{,}05 > 1$ ✓.
+
+**Typischer Fehler:** Polstelle nicht ausschließen — wer $x = 3$ einsetzt, erhält $\\frac{2}{0}$ (undefiniert), nicht ein Ungleichungsergebnis.`,
+        [
+          'Polstelle bestimmen: Nenner $= 0$ bei $x = 3$.',
+          'Polstelle gehört NIE zur Lösungsmenge.',
+          'Andere Werte testen.',
+        ],
+        {
+          1: '$x = 4$ ist in Lösungsmenge: $\\frac{2}{4-3} = 2 > 1$ ✓.',
+          2: '$x = 4{,}5$ ist in Lösungsmenge: $\\frac{2}{1{,}5} \\approx 1{,}33 > 1$ ✓.',
+          3: '$x = 4{,}9$ ist auch in Lösungsmenge: $\\frac{2}{1{,}9} \\approx 1{,}05 > 1$ ✓ (knapp, aber > 1).',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['bruch-ungl-pol'] },
       ),
       sorting(
         'Bringe die Schritte zur Lösung von $\\dfrac{x-1}{x+2} \\geq 0$ in die richtige Reihenfolge.',
