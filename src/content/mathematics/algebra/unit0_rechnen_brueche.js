@@ -159,7 +159,7 @@ export const exercises_alg_u0 = {
       2: 'Durch 6 geteilt gäbe $1$ im Zähler, aber $9/6$ ist keine ganze Zahl — der ggT ist $3$, nicht $6$.',
       3: '$6$ und $9$ haben den gemeinsamen Teiler $3$. Kürzen ist also möglich.',
     },
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['kgv-hauptnenner'] },
+      pedagogy: { stage: 'recognize', subGoal: 3, uses: ['ggt-kuerzen'] },
 },
   'ex-alg-0-2-b': {
     id: 'ex-alg-0-2-b', lessonId: 'alg-0-2', type: 'multiple-choice',
@@ -201,7 +201,7 @@ export const exercises_alg_u0 = {
       'Kürzen geht auch diagonal (z. B. 3 oben gegen 3 unten).',
       'Endergebnis dezimal umrechnen: $1/2 = 0{,}5$.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['bruch-mult'] },
 },
   'ex-alg-0-2-d': {
     id: 'ex-alg-0-2-d', lessonId: 'alg-0-2', type: 'true-false',
@@ -267,7 +267,7 @@ export const exercises_alg_u0 = {
       2: 'Gleicher Wert wie A, aber nicht gekürzt. Die gefragte einfachste Form ist $\\tfrac{2}{3}$.',
       3: '$\\tfrac{1}{2} = \\tfrac{7{,}5}{15}$ — passt zahlenmäßig nicht zu Zähler $10$ auf Nenner $15$.',
     },
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
+      pedagogy: { stage: 'transfer', subGoal: 3, uses: ['kgv-hauptnenner', 'bruch-add', 'ggt-kuerzen'] },
 },
 
   // ───────────── Lektion 0-3: Prozent & Dreisatz ─────────────
@@ -699,18 +699,22 @@ Die innerste Klammer (rund) muss vollständig zu einer Zahl ausgewertet werden, 
     steps: [
       {
         id: 'alg-0-2-s1', type: 'explanation-formal', title: 'Regeln für Brüche',
-        content: `**Kürzen & Erweitern:** Zähler und Nenner durch dieselbe Zahl teilen (kürzen) oder mit derselben Zahl multiplizieren (erweitern) ändert den **Wert nicht**.
+        content: `**Bruchregeln im Überblick:**
 
-$\\dfrac{6}{9} = \\dfrac{6/3}{9/3} = \\dfrac{2}{3}$
+| Regel | Formel | Beispiel |
+|---|---|---|
+| **Erweitern/Kürzen** ($k \\neq 0$) | $\\dfrac{a}{b} = \\dfrac{a \\cdot k}{b \\cdot k} = \\dfrac{a / k}{b / k}$ | $\\dfrac{2}{3} = \\dfrac{6}{9}$ (mit $3$ erweitert) |
+| **Vollständig kürzen via ggT** | $\\dfrac{a}{b} = \\dfrac{a / \\text{ggT}(a,b)}{b / \\text{ggT}(a,b)}$ — Stop, wenn $\\text{ggT}(z,n) = 1$ | $\\dfrac{36}{60}$: ggT $= 12 \\Rightarrow \\dfrac{3}{5}$ |
+| **Hauptnenner via kgV** | $\\text{HN}(b, d) = \\text{kgV}(b, d) = \\dfrac{b \\cdot d}{\\text{ggT}(b, d)}$ | $\\text{kgV}(4, 6) = 12$, nicht $24$ |
+| **Addition/Subtraktion** (gleicher Nenner zwingend) | $\\dfrac{a}{b} \\pm \\dfrac{c}{d} = \\dfrac{a \\cdot d \\pm c \\cdot b}{b \\cdot d}$ | $\\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{3+2}{6} = \\dfrac{5}{6}$ |
+| **Multiplikation** | $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$ | $\\dfrac{2}{3} \\cdot \\dfrac{3}{4} = \\dfrac{6}{12} = \\dfrac{1}{2}$ |
+| **Division** (Multiplikation mit Kehrwert) | $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c} = \\dfrac{a \\cdot d}{b \\cdot c}$ | $\\dfrac{1}{2} : \\dfrac{1}{4} = \\dfrac{1}{2} \\cdot \\dfrac{4}{1} = 2$ |
+| **Doppelbruch auflösen** | $\\dfrac{\\,a/b\\,}{\\,c/d\\,} = \\dfrac{a \\cdot d}{b \\cdot c}$ — kreuzweise multiplizieren | $\\dfrac{2/3}{4/5} = \\dfrac{2 \\cdot 5}{3 \\cdot 4} = \\dfrac{5}{6}$ |
+| **Ganzzahl als Bruch** | $n = \\dfrac{n}{1}$, Kehrwert $= \\dfrac{1}{n}$ | $6 : \\dfrac{3}{4} = \\dfrac{6}{1} \\cdot \\dfrac{4}{3} = 8$ |
 
-**Addition/Subtraktion — Hauptnenner:**
-$$\\dfrac{a}{b} \\pm \\dfrac{c}{d} = \\dfrac{a \\cdot d \\pm c \\cdot b}{b \\cdot d}$$
-
-Nur bei **gleichem Nenner** werden Zähler addiert.
-
-**Multiplikation:** $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$ — direkt Zähler mal Zähler, Nenner mal Nenner.
-
-**Division:** Mit dem Kehrwert multiplizieren: $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$.`,
+**Merke — die zwei häufigsten Fehler:**
+1. $\\dfrac{a}{b} + \\dfrac{c}{d} \\neq \\dfrac{a+c}{b+d}$ — Zähler und Nenner einzeln addieren ist **falsch**.
+2. $\\dfrac{a}{b} : \\dfrac{c}{d} \\neq \\dfrac{a}{b} \\cdot \\dfrac{c}{d}$ — Bei Division wird der **zweite** Bruch gestürzt.`,
       },
       {
         id: 'alg-0-2-s2', type: 'explanation-intuitive', title: 'Der häufigste Schul-Fehler',

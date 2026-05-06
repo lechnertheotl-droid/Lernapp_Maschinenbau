@@ -846,6 +846,53 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
       ),
+      // Bonus SG 0: transfer · matching · uses=[kgv-hauptnenner]
+      // Vier verschiedene Bruchpaare ↔ ihre Hauptnenner — Trainings-Set für kgV-Routine.
+      matching(
+        'Ordne jedem Bruchpaar seinen Hauptnenner (kgV der Nenner) zu.',
+        [
+          { left: '$\\dfrac{1}{4}$ und $\\dfrac{1}{6}$',  right: '$12$' },
+          { left: '$\\dfrac{1}{3}$ und $\\dfrac{1}{5}$',  right: '$15$' },
+          { left: '$\\dfrac{1}{8}$ und $\\dfrac{1}{12}$', right: '$24$' },
+          { left: '$\\dfrac{1}{2}$ und $\\dfrac{1}{9}$',  right: '$18$' },
+        ],
+        `**Ansatz:** Pro Paar Primfaktorzerlegung der Nenner, dann jede Primzahl mit höchstem Exponenten übernehmen.
+
+**Rechnung:**
+- $4 = 2^2$, $6 = 2 \\cdot 3 \\Rightarrow \\text{kgV} = 2^2 \\cdot 3 = 12$.
+- $3$ und $5$ teilerfremd $\\Rightarrow \\text{kgV} = 3 \\cdot 5 = 15$.
+- $8 = 2^3$, $12 = 2^2 \\cdot 3 \\Rightarrow \\text{kgV} = 2^3 \\cdot 3 = 24$.
+- $2$ und $9 = 3^2$ teilerfremd $\\Rightarrow \\text{kgV} = 2 \\cdot 9 = 18$.
+
+**Probe:** Jeder Hauptnenner ist durch BEIDE Einzelnenner ohne Rest teilbar.
+
+**Typischer Fehler:** Pauschal $b \\cdot d$ nehmen — funktioniert, ist aber nur dann minimal, wenn die Nenner teilerfremd sind ($\\text{ggT} = 1$).`,
+        [
+          'Pro Paar: Primfaktoren beider Nenner.',
+          'Höchster Exponent jeder Primzahl gewinnt.',
+          'Bei teilerfremden Nennern ist Hauptnenner $= b \\cdot d$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
+      ),
+      // Bonus SG 0: apply-independent · number-input · uses=[kgv-hauptnenner, bruch-add]
+      // Drei Brüche addieren/subtrahieren — Vorzeichen + kgV in Kombination.
+      ni(
+        'Berechne $\\dfrac{1}{3} + \\dfrac{2}{5} - \\dfrac{1}{15}$ und gib den Zähler über dem Hauptnenner $15$ an.',
+        10, 0, '',
+        `**Ansatz:** Hauptnenner aller drei Brüche bestimmen, alle erweitern, dann Zähler mit Vorzeichen verrechnen.
+
+**Rechnung:** $3, 5, 15$ — alle Teiler von $15$, also $\\text{kgV} = 15$. Erweitern: $\\tfrac{1}{3} = \\tfrac{5}{15}$, $\\tfrac{2}{5} = \\tfrac{6}{15}$, $\\tfrac{1}{15} = \\tfrac{1}{15}$. Zähler: $5 + 6 - 1 = 10$. Ergebnis $\\tfrac{10}{15}$.
+
+**Probe:** Dezimal: $0{,}333 + 0{,}4 - 0{,}067 = 0{,}667 = 10/15$. ✓
+
+**Typischer Fehler:** Vorzeichen verlieren: $5 + 6 - 1 = 12$ rechnen (Subtraktion vergessen) oder $5 + 6 + 1 = 12$ (Vorzeichen ignoriert). Strichrechnung links nach rechts: $5 + 6 = 11$, dann $-1 = 10$.`,
+        [
+          'Hauptnenner: alle drei Nenner gehen in $15$ auf.',
+          'Erweiterungsfaktoren: $15/3=5$, $15/5=3$, $15/15=1$.',
+          'Zähler $1\\cdot 5 + 2\\cdot 3 - 1\\cdot 1 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
+      ),
       // transfer · sorting · uses=[kgv-hauptnenner, bruch-add]
       sorting(
         'Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
@@ -978,6 +1025,31 @@ export const algebraSubGoalTasks = {
           'Schreibe $6$ als Bruch: $\\dfrac{6}{1}$.',
           'Kehrwert von $\\dfrac{3}{4}$ ist $\\dfrac{4}{3}$.',
           'Multiplizieren: $\\dfrac{6}{1} \\cdot \\dfrac{4}{3} = \\dfrac{24}{3}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['bruch-div-kehr', 'bruch-mult'] },
+      ),
+      // Bonus SG 1: apply-independent · sorting · uses=[bruch-div-kehr, bruch-mult]
+      // Schritt-für-Schritt-Ablauf einer Bruchdivision — testet die Reihenfolge der Methode.
+      sorting(
+        'Bringe die Schritte zur Berechnung von $\\dfrac{7}{8} : \\dfrac{3}{5}$ in die richtige Reihenfolge.',
+        [
+          'Divisor identifizieren: zweiter Bruch ist $\\dfrac{3}{5}$',
+          'Kehrwert des Divisors bilden: $\\dfrac{5}{3}$',
+          'Division zur Multiplikation umschreiben: $\\dfrac{7}{8} \\cdot \\dfrac{5}{3}$',
+          'Zähler $\\cdot$ Zähler, Nenner $\\cdot$ Nenner: $\\dfrac{35}{24}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte in fester Reihenfolge: Divisor erkennen → Kehrwert → Multiplikation → Ausrechnen.
+
+**Rechnung:** $\\dfrac{7}{8} : \\dfrac{3}{5} = \\dfrac{7}{8} \\cdot \\dfrac{5}{3} = \\dfrac{35}{24}$. ggT$(35, 24) = 1$ — bereits vollständig gekürzt.
+
+**Probe:** Dezimal: $(7/8)/(3/5) = 0{,}875/0{,}6 \\approx 1{,}458 = 35/24$. ✓
+
+**Typischer Fehler:** Schritt 2 überspringen — Division einfach durch Multiplikation ersetzen ohne Kehrwert. Oder den ersten Bruch stürzen statt den zweiten.`,
+        [
+          'Welcher Bruch ist der Divisor — der erste oder der zweite?',
+          'Nur der Divisor wird gestürzt.',
+          'Erst nach dem Stürzen multiplizieren — nie davor.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['bruch-div-kehr', 'bruch-mult'] },
       ),
@@ -1121,6 +1193,34 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['doppelbruch'] },
       ),
+      // Bonus SG 2: transfer · matching · uses=[doppelbruch]
+      // Vier Doppelbrüche ↔ einfache Form — verschiedene Konstellationen (Ganzzahl im Zähler/Nenner).
+      matching(
+        'Ordne jedem Doppelbruch seine einfache Form zu.',
+        [
+          { left: '$\\dfrac{\\tfrac{1}{2}}{\\tfrac{1}{4}}$', right: '$2$' },
+          { left: '$\\dfrac{\\tfrac{3}{5}}{\\tfrac{6}{5}}$', right: '$\\dfrac{1}{2}$' },
+          { left: '$\\dfrac{\\tfrac{2}{3}}{\\tfrac{1}{6}}$', right: '$4$' },
+          { left: '$\\dfrac{1}{\\tfrac{2}{3}}$',             right: '$\\dfrac{3}{2}$' },
+        ],
+        `**Ansatz:** Doppelbruch = obere Bruch geteilt durch untere Bruch = obere mal Kehrwert der unteren. Ganzzahlen über $1$ schreiben.
+
+**Rechnung:**
+- $\\tfrac{1/2}{1/4} = \\tfrac{1}{2} \\cdot \\tfrac{4}{1} = \\tfrac{4}{2} = 2$.
+- $\\tfrac{3/5}{6/5} = \\tfrac{3}{5} \\cdot \\tfrac{5}{6} = \\tfrac{15}{30} = \\tfrac{1}{2}$.
+- $\\tfrac{2/3}{1/6} = \\tfrac{2}{3} \\cdot \\tfrac{6}{1} = \\tfrac{12}{3} = 4$.
+- $\\tfrac{1}{2/3} = \\tfrac{1}{1} \\cdot \\tfrac{3}{2} = \\tfrac{3}{2}$.
+
+**Probe:** Dezimal: $0{,}5/0{,}25 = 2$, $0{,}6/1{,}2 = 0{,}5$, $0{,}667/0{,}167 = 4$, $1/0{,}667 = 1{,}5$. Alles passt. ✓
+
+**Typischer Fehler:** Doppelbruch als Multiplikation lesen — etwa $\\tfrac{1/2}{1/4}$ als $\\tfrac{1 \\cdot 1}{2 \\cdot 4} = \\tfrac{1}{8}$. Der mittlere Bruchstrich heißt Division, nicht Multiplikation.`,
+        [
+          'Doppelbruch = oberer Bruch geteilt durch unteren.',
+          'Nur den unteren stürzen, dann multiplizieren.',
+          'Ganzzahl $n$ als $\\tfrac{n}{1}$ schreiben — ihr Kehrwert ist $\\tfrac{1}{n}$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['doppelbruch'] },
+      ),
       // transfer · number-input · uses=[doppelbruch, ggt-kuerzen]
       ni(
         'Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
@@ -1249,6 +1349,34 @@ export const algebraSubGoalTasks = {
           'Sind $5$ und $11$ teilerfremd? — Endkontrolle.',
         ],
         { stage: 'apply-independent', subGoal: 3, uses: ['ggt-kuerzen'] },
+      ),
+      // Bonus SG 3: transfer · matching · uses=[ggt-kuerzen]
+      // Vier Brüche ↔ vollständig gekürzte Form — Trainings-Set für ggT-Routine.
+      matching(
+        'Ordne jedem Bruch seine vollständig gekürzte Form zu.',
+        [
+          { left: '$\\dfrac{60}{72}$',  right: '$\\dfrac{5}{6}$' },
+          { left: '$\\dfrac{45}{63}$',  right: '$\\dfrac{5}{7}$' },
+          { left: '$\\dfrac{48}{64}$',  right: '$\\dfrac{3}{4}$' },
+          { left: '$\\dfrac{70}{105}$', right: '$\\dfrac{2}{3}$' },
+        ],
+        `**Ansatz:** Pro Bruch ggT bestimmen, Zähler und Nenner durch ggT teilen.
+
+**Rechnung:**
+- $60 = 2^2 \\cdot 3 \\cdot 5$, $72 = 2^3 \\cdot 3^2$ $\\Rightarrow$ ggT $= 2^2 \\cdot 3 = 12$. $60/12 = 5$, $72/12 = 6$.
+- $45 = 3^2 \\cdot 5$, $63 = 3^2 \\cdot 7$ $\\Rightarrow$ ggT $= 9$. $45/9 = 5$, $63/9 = 7$.
+- $48 = 2^4 \\cdot 3$, $64 = 2^6$ $\\Rightarrow$ ggT $= 2^4 = 16$. $48/16 = 3$, $64/16 = 4$.
+- $70 = 2 \\cdot 5 \\cdot 7$, $105 = 3 \\cdot 5 \\cdot 7$ $\\Rightarrow$ ggT $= 5 \\cdot 7 = 35$. $70/35 = 2$, $105/35 = 3$.
+
+**Probe:** In jedem Endbruch sind Zähler und Nenner teilerfremd ($\\text{ggT} = 1$). ✓
+
+**Typischer Fehler:** Stufenweise mit kleinem Faktor kürzen und früh aufhören — z. B. $\\tfrac{48}{64}$ nur durch $4$ kürzen $\\to \\tfrac{12}{16}$ statt direkt $\\tfrac{3}{4}$. Rechnerisch korrekt, aber nicht vollständig gekürzt.`,
+        [
+          'Pro Bruch ggT von Zähler und Nenner finden.',
+          'Primfaktorzerlegung beider Zahlen, gemeinsame Primfaktoren mit Minimum-Exponenten.',
+          'Endkontrolle: ggT der Endform muss $1$ sein.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
       // transfer · sorting · uses=[ggt-kuerzen]
       sorting(
