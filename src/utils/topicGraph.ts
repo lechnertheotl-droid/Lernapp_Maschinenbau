@@ -75,6 +75,21 @@ export function sortTopicsByOrder<T extends TopicLike>(topics: T[]): T[] {
 }
 
 /**
+ * Reihenfolge für den geführten Lernpfad: zuerst nach Phase
+ * (1 = 1. Sem, 2 = 2. Sem, 3 = Vertiefung), innerhalb der Phase nach `order`.
+ * So kommt z.B. technische-mechanik (Phase 1) vor mehrdim-analysis (Phase 3),
+ * obwohl globale `order` letzteres früher hätte.
+ */
+export function sortTopicsByPathOrder<T extends TopicLike>(topics: T[]): T[] {
+  return [...topics].sort((a, b) => {
+    const pa = getStudienbeginPhase(a.id) ?? 3
+    const pb = getStudienbeginPhase(b.id) ?? 3
+    if (pa !== pb) return pa - pb
+    return getTopicMeta(a.id).order - getTopicMeta(b.id).order
+  })
+}
+
+/**
  * Returns the status of each topic given completion info.
  * - locked: not all prerequisiteTopics reached `completed`
  * - available: all prerequisites done, topic not yet started
