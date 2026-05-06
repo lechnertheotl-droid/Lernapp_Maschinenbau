@@ -1,4 +1,4 @@
-import { sortTopicsByOrder } from './topicGraph'
+import { sortTopicsByPathOrder } from './topicGraph'
 import type { TopicProgress } from '@/context/appReducer'
 import type { PracticeAttemptSummary } from '@/types/practice'
 
@@ -43,7 +43,7 @@ interface BuildInputs {
  * pro Topic alle Lektionen, danach (wenn vorhanden) ein Practice-Step.
  */
 export function buildLearningPath({ topics, lessonsByTopic, practiceCountByTopic }: BuildInputs): PathStep[] {
-  const sorted = sortTopicsByOrder(topics)
+  const sorted = sortTopicsByPathOrder(topics)
   const steps: PathStep[] = []
   let i = 0
   for (const topic of sorted) {
