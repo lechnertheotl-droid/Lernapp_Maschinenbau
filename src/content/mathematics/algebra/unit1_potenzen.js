@@ -24,7 +24,7 @@ export const exercises_alg_u1 = {
       2: 'Der Faktor $2$ kommt aus dem Nichts. Bei $x^{3} \\cdot x^{4}$ wird kein Vorfaktor erzeugt — es entsteht nur ein höherer Exponent. Korrekt: $x^{7}$ ohne Vorfaktor.',
       3: 'Das wäre $x^{3+4-6}$ oder ähnliches — passt zu keiner Potenzregel. Die Regel lautet: gleiche Basis, Multiplikation → Exponenten addieren, also $x^{3+4}=x^{7}$.',
     },
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult'] },
 },
   'ex-alg-1-1-b': {
     id: 'ex-alg-1-1-b', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -48,7 +48,7 @@ export const exercises_alg_u1 = {
       2: '$x^{34}$ entsteht durch Aneinanderhängen der Ziffern — kein Rechenschritt. Korrekt ist $3 \\cdot 4 = 12$, also $x^{12}$.',
       3: 'Hier wurde der äußere Exponent als Vorfaktor gesehen. Aber $(x^{3})^{4}$ bedeutet $x^{3}\\cdot x^{3}\\cdot x^{3}\\cdot x^{3} = x^{12}$, kein $4\\cdot x^{3}$.',
     },
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['pot-potenz'] },
 },
   'ex-alg-1-1-c': {
     id: 'ex-alg-1-1-c', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -74,7 +74,7 @@ export const exercises_alg_u1 = {
       2: '$x^{1/3}$ ist die dritte Wurzel — das entspricht einem *positiven Bruch* als Exponent, nicht einem negativen ganzzahligen. Regel: $x^{-3} = 1/x^{3}$.',
       3: 'Das sieht aus wie Faktor-Zerlegung ($3 \\cdot x$), hat aber nichts mit Exponenten zu tun. Ein negativer Exponent erzeugt einen Kehrwert: $x^{-3} = 1/x^{3}$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['pot-negativ'] },
 },
   'ex-alg-1-1-d': {
     id: 'ex-alg-1-1-d', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -98,7 +98,7 @@ export const exercises_alg_u1 = {
       1: 'Hier wurde $2$ mit $3$ *multipliziert* statt *potenziert* — klassischer Fehler. $2^{3}$ ist $8$, nicht $6$. Regel: $(2)^{3} = 2\\cdot 2\\cdot 2 = 8$.',
       3: 'Der Exponent von $x$ ist falsch: $(x^{2})^{3} = x^{2\\cdot 3} = x^{6}$, nicht $x^{5}$. Bei Potenz einer Potenz werden die Exponenten multipliziert, nicht addiert.',
     },
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['pot-produkt', 'pot-potenz'] },
 },
   'ex-alg-1-1-e': {
     id: 'ex-alg-1-1-e', lessonId: 'alg-1-1', type: 'number-input',
@@ -116,7 +116,7 @@ export const exercises_alg_u1 = {
       'Regel: $x^{a}/x^{b} = x^{a-b}$.',
       'Rechne $10-7$ und dann $2$ hoch dieses Ergebnis.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pot-div'] },
 },
   'ex-alg-1-1-mastery': {
     id: 'ex-alg-1-1-mastery', lessonId: 'alg-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -143,7 +143,7 @@ export const exercises_alg_u1 = {
       2: 'Hier wurden die Exponenten addiert ($4+2=6$, $2+5=7$) statt subtrahiert. Die Regel für Divisionen gleicher Basen lautet $x^{a}/x^{b} = x^{a-b}$, also $x^{4-2}=x^{2}$ und $y^{2-5}=y^{-3}$.',
       3: 'Hier wurde die Subtraktion falsch herum gemacht: $y^{5-2} = y^{3}$ landete im Zähler. Korrekt ist $y^{2-5} = y^{-3}$, was $1/y^{3}$ in den Nenner schiebt. Auch $x$ steht korrekt im Zähler, nicht im Nenner.',
     },
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pot-mult'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['pot-div', 'pot-negativ'] },
 },
 
   // ───────────── Lektion 2: Wurzeln & gebrochene Exponenten ─────────────
@@ -169,7 +169,7 @@ export const exercises_alg_u1 = {
       2: '$x^{2}$ wäre das Ergebnis, wenn man die Wurzel *vergessen* hätte. Aber die Wurzel halbiert den Exponenten: $\\sqrt{x^{2}} = x^{2/2} = x^{1}$ — mit Betrag, also $|x|$.',
       3: '$1/x$ ergibt sich nie aus einer Wurzel, sondern aus negativen Exponenten. Hier: $\\sqrt{x^{2}} = x^{2\\cdot 1/2} = x^{1}$ — betragsmäßig, also $|x|$.',
     },
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['wurzel-bruchpot', 'wurzel-def-bereich'] },
 },
   'ex-alg-1-2-b': {
     id: 'ex-alg-1-2-b', lessonId: 'alg-1-2', type: 'number-input',
@@ -212,7 +212,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$3\\sqrt{2}$ würde $\\sqrt{9\\cdot 2} = \\sqrt{18}$ bedeuten — nicht $\\sqrt{12}$. Zerlege $12 = 4 \\cdot 3$: $\\sqrt{12} = 2\\sqrt{3}$.',
       3: '$12 = 4 \\cdot 3$ hat den Quadratzahl-Faktor $4$; der lässt sich herausziehen: $\\sqrt{12} = 2\\sqrt{3}$. Wurzeln mit Quadratzahl-Faktoren müssen immer vereinfacht werden.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
 },
   'ex-alg-1-2-d': {
     id: 'ex-alg-1-2-d', lessonId: 'alg-1-2', type: 'true-false',
@@ -230,7 +230,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Rechne beide Seiten der Gleichung aus und vergleiche.',
       'Die Produktregel gilt — die Summenregel *nicht*.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-summe-nein'] },
 },
   'ex-alg-1-2-mastery': {
     id: 'ex-alg-1-2-mastery', lessonId: 'alg-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -292,7 +292,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Welche Zahl muss $e$ hoch stehen, um $e^{3}$ zu ergeben?',
       'Regel: $\\ln(e^{x}) = x$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 6, uses: ['log-umkehr'] },
 },
   'ex-alg-1-3-c': {
     id: 'ex-alg-1-3-c', lessonId: 'alg-1-3', type: 'multiple-choice',
@@ -316,7 +316,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: 'Subtraktion gehört zur Division: $\\ln(a/b) = \\ln a - \\ln b$. Bei Multiplikation wird addiert.',
       3: 'Der Logarithmus ist nicht linear: $\\ln(a+b) \\neq \\ln a + \\ln b$ (Gegenbeispiel: $\\ln(1+1) = \\ln 2 \\approx 0{,}69$, aber $\\ln 1 + \\ln 1 = 0$). Das hier geht um Multiplikation im Argument — da gilt die Produktregel $\\ln(a\\cdot b) = \\ln a + \\ln b$.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['log-produkt'] },
 },
   'ex-alg-1-3-d': {
     id: 'ex-alg-1-3-d', lessonId: 'alg-1-3', type: 'multiple-choice',
@@ -340,7 +340,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$\\ln(5a) = \\ln 5 + \\ln a$ — das wäre die Produktregel, wenn im Argument $5\\cdot a$ stünde. Hier steht aber $a^{5}$ (Potenz), also gilt $\\ln(a^{5}) = 5\\ln a$.',
       3: 'Hier wurden Basis und Exponent vertauscht: das Ergebnis müsste $5\\cdot\\ln(a)$ sein, nicht $a\\cdot\\ln(5)$. Die Regel: der Exponent $n$ wandert als Vorfaktor vor den Logarithmus, die Basis bleibt im Argument.',
     },
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['log-potenz'] },
 },
   'ex-alg-1-3-mastery': {
     id: 'ex-alg-1-3-mastery', lessonId: 'alg-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -364,7 +364,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$5/e$ entsteht, wenn man $e^{x}$ fälschlich wie $e\\cdot x$ liest und durch $e$ teilt. $e^{x}$ ist aber eine Potenz, keine Multiplikation. Nötig ist der Logarithmus: $x = \\ln(5)$.',
       3: '$e^{5}$ wäre die Lösung von $\\ln x = 5$, nicht von $e^{x} = 5$. Hier steht $x$ im Exponenten — also logarithmieren beider Seiten: $x = \\ln(5)$.',
     },
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['log-def'] },
+      pedagogy: { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-def'] },
 },
 }
 
@@ -464,6 +464,32 @@ const lessons_alg_u1 = [
 2. Stehen zwei Potenzen *nebeneinander*? Dann addieren bei Multiplikation, subtrahieren bei Division.
 3. Negative Exponenten zuletzt in Kehrwerte umschreiben — sauberere Endform.`,
       },
+      {
+        id: 'alg-1-1-s2b', type: 'explanation-intuitive', title: 'Anschauung: So wachsen verschiedene Potenzen',
+        content: `Bevor du in die Regeln einsteigst — sieh dir an, wie sich Potenzen *gleichen Arguments, aber verschiedener Exponenten* verhalten:
+
+- $y = x$: lineares Wachstum (bei $x=2$ gleich $2$).
+- $y = x^{2}$: Parabel, *quadratisches* Wachstum (bei $x=2$ gleich $4$).
+- $y = x^{3}$: Kubisch, noch steiler (bei $x=2$ gleich $8$).
+- $y = x^{-1} = 1/x$: Hyperbel — fällt ab, Kehrwert!
+
+Ein **negativer Exponent** dreht das Verhalten um: aus Wachstum wird Abfall (Hyperbel statt Parabel). Der **nullte Exponent** $x^{0} = 1$ ist die waagrechte Gerade $y=1$ — passt genau zwischen die wachsenden ($n>0$) und die fallenden ($n<0$) Potenzen.`,
+      },
+      {
+        id: 'alg-1-1-s2c', type: 'visualization', title: 'Interaktiv: Potenzen $x^{n}$ vergleichen',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x, color: '#94a3b8', label: 'x' },
+            { fn: (x) => x * x, color: '#3b82f6', label: 'x²' },
+            { fn: (x) => x * x * x, color: '#8b5cf6', label: 'x³' },
+            { fn: (x) => 1 / x, color: '#ef4444', label: '1/x' },
+          ],
+          xRange: [-3, 3],
+          yRange: [-4, 8],
+          showGrid: true,
+        },
+      },
       { id: 'alg-1-1-s3', type: 'exercise', title: 'Aufgabe 1 — Multiplikation', exerciseRef: 'ex-alg-1-1-a' },
       { id: 'alg-1-1-s4', type: 'exercise', title: 'Aufgabe 2 — Potenz einer Potenz', exerciseRef: 'ex-alg-1-1-b' },
       { id: 'alg-1-1-s5', type: 'exercise', title: 'Aufgabe 3 — Negativer Exponent', exerciseRef: 'ex-alg-1-1-c' },
@@ -560,6 +586,28 @@ $$\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$$
 - $\\sqrt{72} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}$.
 
 **Merke — Definitionsbereich:** Die Quadratwurzel ist nur für $x \\geq 0$ in ℝ definiert. Ungerade Wurzeln ($\\sqrt[3]{\\ldots}$) gibt's auch für negative Zahlen: $\\sqrt[3]{-8} = -2$.`,
+      },
+      {
+        id: 'alg-1-2-s2b', type: 'explanation-intuitive', title: 'Anschauung: Wurzel als Umkehrung der Potenz',
+        content: `Wenn $\\sqrt{x} = x^{1/2}$, was steckt geometrisch dahinter?
+
+Quadrieren ($y = x^2$) macht aus $2$ den Wert $4$, aus $3$ den Wert $9$. **Wurzelziehen ($y = \\sqrt{x}$) macht das genau rückgängig**: aus $4$ wird $2$, aus $9$ wird $3$. Beide Funktionen sind *Umkehrfunktionen* zueinander (für $x \\geq 0$).
+
+**Spiegelung an der Diagonalen $y = x$:** Wenn du den Graph von $y = x^2$ an der Geraden $y = x$ spiegelst, bekommst du genau den Graph von $y = \\sqrt{x}$. Diese Symmetrie ist das visuelle Gesicht der Identität $\\sqrt{x^2} = |x|$ (für $x \\geq 0$ einfach $x$).`,
+      },
+      {
+        id: 'alg-1-2-s2c', type: 'visualization', title: 'Interaktiv: $\\sqrt{x}$ als Spiegelung von $x^2$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x, color: '#94a3b8', label: 'y = x' },
+            { fn: (x) => x * x, color: '#3b82f6', label: 'x²' },
+            { fn: (x) => Math.sqrt(x), color: '#10b981', label: '√x' },
+          ],
+          xRange: [0, 4],
+          yRange: [0, 4],
+          showGrid: true,
+        },
       },
       { id: 'alg-1-2-s3', type: 'exercise', title: 'Aufgabe 1 — Quadratwurzel von $x^2$', exerciseRef: 'ex-alg-1-2-a' },
       { id: 'alg-1-2-s4', type: 'exercise', title: 'Aufgabe 2 — Dritte Wurzel', exerciseRef: 'ex-alg-1-2-b' },
