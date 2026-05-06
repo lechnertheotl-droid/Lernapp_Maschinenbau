@@ -2,12 +2,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { StreakBadge } from '@/components/ui/StreakBadge'
+import { LevelIndicator } from '@/components/gamification/LevelIndicator'
+import { useAppState } from '@/context/AppContext'
 
 function findTopic(topics, topicId) {
   return topics.find((t) => t.id === topicId) ?? null
 }
 
 export function PathCard({ topics, pathProgress, streak, totalCompletedLessons }) {
+  const appState = useAppState()
+  const xp = appState.gamification.xp
+  const freezes = appState.gamification.streakFreezes
   const navigate = useNavigate()
   const { steps, currentIndex, doneCount, totalCount } = pathProgress
   const pct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
@@ -19,30 +24,29 @@ export function PathCard({ topics, pathProgress, streak, totalCompletedLessons }
 
   return (
     <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard overflow-hidden animate-fade-in">
-      {/* Header: Pfad-Label + Streak/Counter rechts */}
+      {/* Header: Pfad-Label + Level/Streak/Counter rechts */}
       <div className="px-4 pt-3 pb-2 flex items-center justify-between gap-2 border-b border-surface-200 dark:border-surface-700">
         <p className="font-mono text-[10px] font-bold text-primary-700 dark:text-primary-300 uppercase tracking-widest">
           // Dein Lernpfad
         </p>
-        {(showStreak || showCounter) && (
-          <div className="flex items-center gap-2">
-            {showStreak && (
-              <Link to="/erfolge" aria-label="Erfolge ansehen">
-                <StreakBadge current={streak.current} longest={streak.longest} size="sm" />
-              </Link>
-            )}
-            {showCounter && (
-              <Link
-                to="/erfolge"
-                className="flex items-baseline gap-1 bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-2 py-1 retro-press"
-                aria-label={`${totalCompletedLessons} Lektionen abgeschlossen`}
-              >
-                <span className="num text-sm font-black text-ink leading-none">{totalCompletedLessons}</span>
-                <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide">Lekt.</span>
-              </Link>
-            )}
-          </div>
-        )}
+        <div className="flex items-center gap-2 flex-wrap justify-end">
+          <LevelIndicator xp={xp} size="sm" href="/profil" />
+          {showStreak && (
+            <Link to="/erfolge" aria-label="Erfolge ansehen">
+              <StreakBadge current={streak.current} longest={streak.longest} freezes={freezes} size="sm" />
+            </Link>
+          )}
+          {showCounter && (
+            <Link
+              to="/erfolge"
+              className="flex items-baseline gap-1 bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-2 py-1 retro-press"
+              aria-label={`${totalCompletedLessons} Lektionen abgeschlossen`}
+            >
+              <span className="num text-sm font-black text-ink leading-none">{totalCompletedLessons}</span>
+              <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide">Lekt.</span>
+            </Link>
+          )}
+        </div>
       </div>
 
       {/* Body: aktueller Step ODER Done-State */}

@@ -1,13 +1,14 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { MultiStepExercise } from '@/components/exercises/MultiStepExercise'
 import { MarkdownContent } from '@/components/lesson/MarkdownContent'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { Button } from '@/components/ui/Button'
 import { ToolButton } from '@/components/ui/ToolButton'
 import { hasFormulas } from '@/components/ui/formulaTopics'
-import { useAppDispatch } from '@/context/AppContext'
+import { useAppDispatch, useAppState } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import type { PracticeExercise, PracticeSubTask } from '@/types/practice'
+import { ComboBadge } from '@/components/gamification/ComboBadge'
 
 // Tool-Modals sind auch beim Üben nutzbar — identische Lazy-Strategie wie in
 // der Lektions-Ansicht, damit Calculator/FormulaSheet/VariableGlossary nicht
@@ -50,15 +51,28 @@ function pointsFor(subtasks: PracticeSubTask[], answers: string[]): number {
 
 export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChooseOther, hasNext }: Props) {
   const dispatch = useAppDispatch()
-  const [finished, setFinished] = useState<{ correct: boolean } | null>(null)
+  const state = useAppState()
+  const [finished, setFinished] = useState<{ correct: boolean; speedBonus: boolean } | null>(null)
   const [showCalculator, setShowCalculator]   = useState(false)
   const [showFormulaSheet, setShowFormulaSheet] = useState(false)
   const [showVariables, setShowVariables]     = useState(false)
   const canShowFormulas = topicId ? hasFormulas(topicId) : false
+  const startTimeRef = useRef<number>(Date.now())
+
+  // Personal Best für diesen Praxis-Set
+  const personalBest = state.gamification.practiceBests[exercise.id]
+  const combo = state.gamification.comboStreak
+
+  useEffect(() => {
+    startTimeRef.current = Date.now()
+  }, [exercise.id])
 
   const handleSubmit = (answer: { stepAnswers: string[]; allCorrect: boolean }) => {
+    const elapsedSec = Math.max(1, Math.round((Date.now() - startTimeRef.current) / 1000))
+    const medianSec = Math.max(60, exercise.estimatedMinutes * 60)
+    const speedBonus = answer.allCorrect && elapsedSec < medianSec
     const pointsScored = answer.allCorrect
-      ? exercise.points
+      ? Math.round(exercise.points * (speedBonus ? 1.5 : 1))
       : Math.min(exercise.points, pointsFor(exercise.subtasks, answer.stepAnswers))
     dispatch({
       type: ACTIONS.RECORD_PRACTICE_ATTEMPT,
@@ -66,8 +80,24 @@ export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChoose
       correct: answer.allCorrect,
       points: pointsScored,
     })
-    setFinished({ correct: answer.allCorrect })
+    const percent = exercise.points > 0
+      ? Math.min(100, Math.round((pointsScored / exercise.points) * 100))
+      : 0
+    dispatch({
+      type: ACTIONS.RECORD_PRACTICE_RESULT,
+      setId: exercise.id,
+      score: pointsScored,
+      timeSec: elapsedSec,
+      percent,
+    })
+    setFinished({ correct: answer.allCorrect, speedBonus })
     onFinished({ correct: answer.allCorrect, pointsScored })
+  }
+
+  const formatTime = (s: number) => {
+    const m = Math.floor(s / 60)
+    const r = s % 60
+    return `${m}:${String(r).padStart(2, '0')}`
   }
 
   return (
@@ -97,14 +127,20 @@ export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChoose
             <h2 className="text-lg font-black text-ink dark:text-paper leading-tight">{exercise.title}</h2>
             <p className="font-mono text-[10px] text-ink-soft dark:text-surface-300 mt-1">
               {exercise.points} Punkte · {exercise.estimatedMinutes} min · {exercise.subtasks.length} Teilschritte
+              {personalBest && (
+                <> · Bestzeit: {formatTime(personalBest.bestTimeSec)} ({personalBest.bestPercent}%)</>
+              )}
             </p>
           </div>
-          <span
-            className="h-8 min-w-[3rem] px-2 inline-flex items-center justify-center rounded-retro border-2 border-ink bg-lemon font-mono font-black text-ink text-xs"
-            aria-label={`${exercise.points} Punkte`}
-          >
-            {exercise.points}P
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span
+              className="h-8 min-w-[3rem] px-2 inline-flex items-center justify-center rounded-retro border-2 border-ink bg-lemon font-mono font-black text-ink text-xs"
+              aria-label={`${exercise.points} Punkte`}
+            >
+              {exercise.points}P
+            </span>
+            <ComboBadge combo={combo} />
+          </div>
         </div>
 
         <div className="border-t-2 border-surface-200 dark:border-surface-700 pt-3">
@@ -141,6 +177,11 @@ export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChoose
             <h3 className="text-base font-black text-ink dark:text-paper">
               {finished.correct ? `Volle Punktzahl: ${exercise.points} P` : 'Alle Teilschritte auf einen Blick'}
             </h3>
+            {finished.speedBonus && (
+              <p className="font-mono text-[11px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest mt-1">
+                ⚡ Schnell · 1.5× XP
+              </p>
+            )}
           </div>
 
           <ol className="flex flex-col gap-3 list-none">

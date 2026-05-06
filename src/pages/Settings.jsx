@@ -75,6 +75,9 @@ export function Settings() {
         </div>
       </section>
 
+      {/* Belohnungen & Effekte */}
+      <GameplaySettings />
+
       {/* Danger zone */}
       <section className="bg-white border-2 border-red-700 rounded-retro shadow-hard-red p-4 flex flex-col gap-3">
         <h2 className="font-mono text-xs font-black text-red-700 uppercase tracking-widest">Fortschritt zurücksetzen</h2>
@@ -107,5 +110,89 @@ export function Settings() {
         </div>
       </Modal>
     </div>
+  )
+}
+
+function ToggleRow({ label, hint, checked, onChange, ariaLabel }) {
+  return (
+    <div className="flex items-center justify-between gap-3 py-2 border-b border-surface-200 last:border-b-0">
+      <div className="flex-1 min-w-0">
+        <p className="text-ink text-sm font-semibold">{label}</p>
+        {hint && <p className="text-ink-soft text-xs leading-snug">{hint}</p>}
+      </div>
+      <button
+        type="button"
+        onClick={() => onChange(!checked)}
+        role="switch"
+        aria-checked={checked}
+        aria-label={ariaLabel ?? label}
+        className={`relative w-14 h-8 rounded-retro border-2 border-ink shadow-hard-sm transition-colors flex-shrink-0 ${checked ? 'bg-ink' : 'bg-paper'}`}
+      >
+        <span
+          className={`absolute top-0.5 left-0.5 w-6 h-6 rounded-retro border-2 border-ink bg-lemon transition-transform ${checked ? 'translate-x-6' : 'translate-x-0'}`}
+          aria-hidden="true"
+        />
+      </button>
+    </div>
+  )
+}
+
+function GameplaySettings() {
+  const state = useAppState()
+  const dispatch = useAppDispatch()
+  const s = state.gamification.settings
+
+  const set = (patch) => dispatch({ type: ACTIONS.UPDATE_GAMIFICATION_SETTINGS, patch })
+
+  const reducedIsForce = s.reducedMotion === true
+  const handleNotifications = async () => {
+    if (s.notificationsEnabled) {
+      set({ notificationsEnabled: false })
+      return
+    }
+    try {
+      if (typeof Notification === 'undefined') {
+        set({ notificationsEnabled: false })
+        return
+      }
+      const result = Notification.permission === 'granted'
+        ? 'granted'
+        : await Notification.requestPermission()
+      set({ notificationsEnabled: result === 'granted' })
+    } catch {
+      set({ notificationsEnabled: false })
+    }
+  }
+
+  return (
+    <section className="bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-1">
+      <h2 className="font-mono text-xs font-black text-ink uppercase tracking-widest mb-2">
+        Belohnungen & Effekte
+      </h2>
+      <ToggleRow
+        label="Sound bei Aufgaben"
+        hint="Kurze Töne bei richtig/falsch und Erfolg. Sehr leise."
+        checked={s.soundEnabled}
+        onChange={(v) => set({ soundEnabled: v })}
+      />
+      <ToggleRow
+        label="Vibration (mobile)"
+        hint="Kurzes Feedback beim Submit. Nur auf Geräten mit Vibration-Support."
+        checked={s.hapticsEnabled}
+        onChange={(v) => set({ hapticsEnabled: v })}
+      />
+      <ToggleRow
+        label="Animationen reduzieren"
+        hint="Erzwingt reduzierte Bewegung — XP-Floater und Confetti werden ausgeblendet."
+        checked={reducedIsForce}
+        onChange={(v) => set({ reducedMotion: v ? true : 'auto' })}
+      />
+      <ToggleRow
+        label="Tägliche Erinnerung"
+        hint="Lokale Browser-Benachrichtigung am Abend, wenn du noch nicht gelernt hast."
+        checked={s.notificationsEnabled}
+        onChange={handleNotifications}
+      />
+    </section>
   )
 }

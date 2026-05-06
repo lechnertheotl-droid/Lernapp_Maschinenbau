@@ -1,17 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useState, useRef, lazy, Suspense } from 'react'
 import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getLesson, getAllLessons } from '@/content/index'
 import { LessonStep } from '@/components/lesson/LessonStep'
 import { LessonToolStrip } from '@/components/lesson/LessonToolStrip'
-import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { hasFormulas } from '@/components/ui/formulaTopics'
 import { NotFound } from '@/components/NotFound'
-import { Confetti } from '@/components/ui/Confetti'
-import { LessonCompleteBadge } from '@/components/lesson/LessonCompleteBadge'
+import { LessonCompleteScreen } from '@/components/gamification/LessonCompleteScreen'
 import { useFormulaPopover } from '@/utils/formulaPopoverContext'
 import { useSwipe } from '@/hooks/useSwipe'
 
@@ -34,6 +32,10 @@ export function LessonView() {
   const [showCalculator, setShowCalculator] = useState(false)
   const [showFormulaSheet, setShowFormulaSheet] = useState(false)
   const [showVariables, setShowVariables] = useState(false)
+  // Snapshot vor dispatch — damit der Erfolgs-Screen Stern-Verbesserung,
+  // Streak-Veränderung und neue Quests-Erfüllungen anzeigen kann.
+  const [completionMeta, setCompletionMeta] = useState(null)
+  const [lessonMaxCombo, setLessonMaxCombo] = useState(0)
 
   const tp           = state.progress.topicProgress[topicId]
   const currentIndex = tp?.currentStepIndex ?? 0
@@ -41,6 +43,7 @@ export function LessonView() {
 
   useEffect(() => {
     dispatch({ type: ACTIONS.START_LESSON, topicId, lessonId })
+    setLessonMaxCombo(0)
   }, [topicId, lessonId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Topic an Formula-Popover-Context melden, damit Variablen-Disambiguierung funktioniert
@@ -48,6 +51,11 @@ export function LessonView() {
     setPopoverTopicId(topicId ?? null)
     return () => setPopoverTopicId(null)
   }, [topicId, setPopoverTopicId])
+
+  // Längste Combo innerhalb dieser Lesson tracken — comboStreak aus globalem State.
+  useEffect(() => {
+    setLessonMaxCombo((prev) => Math.max(prev, state.gamification.comboStreak))
+  }, [state.gamification.comboStreak])
 
   if (!lesson) return (
     <NotFound
@@ -69,6 +77,13 @@ export function LessonView() {
   const handleStepComplete = () => {
     if (safeIndex >= totalSteps - 1) {
       const totalLessons = getAllLessons(topicId).length
+      // Snapshot: Stars, Streak, abgeschlossene Quest-IDs vor dispatch.
+      const prevStars = state.gamification.starsByLessonId[lessonId] ?? 0
+      const prevStreak = state.streak?.current ?? 0
+      const prevCompletedQuestIds = (state.gamification.dailyQuests ?? [])
+        .filter((q) => q.completed).map((q) => q.id)
+      const prevWeeklyDone = state.gamification.weeklyQuest?.completed ?? false
+      setCompletionMeta({ prevStars, prevStreak, prevCompletedQuestIds, prevWeeklyDone })
       dispatch({ type: ACTIONS.COMPLETE_LESSON, topicId, lessonId, totalLessons })
       setShowComplete(true)
     } else {
@@ -83,6 +98,16 @@ export function LessonView() {
   }
 
   const handleGotoMenu = () => navigate(`/topics/${topicId}`)
+  const handleNextLesson = () => {
+    setShowComplete(false)
+    if (lesson.nextLessonId) navigate(`/topics/${topicId}/${lesson.nextLessonId}`)
+    else navigate(`/topics/${topicId}`)
+  }
+  const handleReplay = () => {
+    setShowComplete(false)
+    dispatch({ type: ACTIONS.SET_STEP_INDEX, topicId, stepIndex: 0 })
+    setLessonMaxCombo(0)
+  }
 
   // Nur Swipe-nach-rechts (= einen Schritt zurück). Swipe-nach-links bewusst
   // NICHT, weil der nächste Step erst nach Abschluss freigeschaltet wird —
@@ -91,6 +116,22 @@ export function LessonView() {
     onSwipeRight: () => { if (safeIndex > 0) handlePrevStep() },
     threshold: 80,
   })
+
+  // Daten für den Complete-Screen (nur relevant wenn open)
+  const currentStars = state.gamification.starsByLessonId[lessonId] ?? 0
+  const newlyCompletedQuests = completionMeta
+    ? (state.gamification.dailyQuests ?? [])
+      .filter((q) => q.completed && !completionMeta.prevCompletedQuestIds.includes(q.id))
+      .map((q) => q.label)
+    : []
+  const weeklyJustDone = completionMeta
+    && state.gamification.weeklyQuest?.completed
+    && !completionMeta.prevWeeklyDone
+    ? [state.gamification.weeklyQuest.label]
+    : []
+  const streakIncreased = completionMeta
+    ? (state.streak?.current ?? 0) > completionMeta.prevStreak
+    : false
 
   return (
     <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
@@ -194,39 +235,21 @@ export function LessonView() {
         onOpenSummary={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
       />
 
-      {/* Confetti celebration */}
-      {showComplete && <Confetti />}
-
-      {/* Completion modal */}
-      <Modal
+      {/* Lesson-Complete-Screen (Sterne, XP, Streak, Quests) */}
+      <LessonCompleteScreen
         isOpen={showComplete}
         onClose={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
-        title="Lektion abgeschlossen"
-      >
-        <div className="flex flex-col gap-4">
-          <LessonCompleteBadge />
-          <p className="text-surface-600 dark:text-surface-300 text-sm leading-relaxed text-center">
-            {state.user?.name ? <>Super, <strong>{state.user.name}</strong>! </> : null}
-            Du hast <strong>{lesson.title}</strong> abgeschlossen. Die Lektion wird zur Wiederholung eingeplant.
-          </p>
-          <div className="flex flex-col gap-2.5">
-            {lesson.nextLessonId && (
-              <Button
-                fullWidth size="lg"
-                onClick={() => { setShowComplete(false); navigate(`/topics/${topicId}/${lesson.nextLessonId}`) }}
-              >
-                Nächste Lektion →
-              </Button>
-            )}
-            <Button
-              variant="secondary" fullWidth size="lg"
-              onClick={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
-            >
-              Zur Themenübersicht
-            </Button>
-          </div>
-        </div>
-      </Modal>
+        onNextLesson={lesson.nextLessonId ? handleNextLesson : null}
+        onReplay={currentStars < 3 ? handleReplay : null}
+        lessonTitle={lesson.title}
+        userName={state.user?.name ?? null}
+        stars={currentStars}
+        previousStars={completionMeta?.prevStars ?? 0}
+        longestComboInLesson={lessonMaxCombo}
+        streakCurrent={state.streak?.current ?? 0}
+        streakIncreased={streakIncreased}
+        questCompletedLabels={[...newlyCompletedQuests, ...weeklyJustDone]}
+      />
 
       {/* Tool-Modals werden erst beim ersten Öffnen geladen — Fallback ist
           leer, weil die Modals selbst ihre Sichtbarkeit über `isOpen` steuern. */}

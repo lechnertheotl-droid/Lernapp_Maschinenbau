@@ -2,9 +2,21 @@ import { evaluateAttempt, type MasteryEntry } from '@/utils/masteryCheck'
 import { buildReviewQueue, updateEaseFactor, type ReviewItem } from '@/utils/reviewScheduler'
 import { updateStreak, type StreakState } from '@/utils/streakLogic'
 import { INITIAL_PRACTICE_STATE, type PracticeState } from '@/types/practice'
+import {
+  generateDailyQuests, generateWeeklyQuest, getIsoWeek,
+  progressQuest, progressWeeklyQuest,
+  type DailyQuest, type WeeklyQuest,
+} from '@/gamification/quests'
+import { xpForCorrectAnswer, xpForLessonStars } from '@/gamification/xpFormula'
+import { evaluateStreakFreezeOnLogin, MAX_STREAK_FREEZES } from '@/gamification/streakFreeze'
 
 const POINTS_CORRECT_ANSWER = 10
 const POINTS_COMPLETE_LESSON = 25
+
+function todayISO(): string {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
 
 // ── Action Types als Union (statt loser Strings) ──────────────────────────────
 export const ACTIONS = {
@@ -24,6 +36,18 @@ export const ACTIONS = {
   TOGGLE_BOOKMARK:      'TOGGLE_BOOKMARK',
   TRACK_ACTIVITY:       'TRACK_ACTIVITY',
   RECORD_PRACTICE_ATTEMPT: 'RECORD_PRACTICE_ATTEMPT',
+  // ── Gamification ───────────────────────────────────────────
+  TRACK_HINT_USED:         'TRACK_HINT_USED',
+  GENERATE_DAILY_QUESTS:   'GENERATE_DAILY_QUESTS',
+  CLAIM_QUEST_REWARD:      'CLAIM_QUEST_REWARD',
+  CLAIM_WEEKLY_QUEST:      'CLAIM_WEEKLY_QUEST',
+  UNLOCK_ACHIEVEMENT:      'UNLOCK_ACHIEVEMENT',
+  CONSUME_STREAK_FREEZE:   'CONSUME_STREAK_FREEZE',
+  ADD_STREAK_FREEZE:       'ADD_STREAK_FREEZE',
+  RECORD_PRACTICE_RESULT:  'RECORD_PRACTICE_RESULT',
+  AWARD_MILESTONE_XP:      'AWARD_MILESTONE_XP',
+  UPDATE_GAMIFICATION_SETTINGS: 'UPDATE_GAMIFICATION_SETTINGS',
+  RECORD_MINUTES_ACTIVE:   'RECORD_MINUTES_ACTIVE',
 } as const
 
 // ── State Shape ──────────────────────────────────────────────────────────────
@@ -56,6 +80,61 @@ export interface ErrorPattern {
   frequency: number
 }
 
+export interface AchievementRecord {
+  earned: boolean
+  earnedAt: string | null
+  progress: number
+}
+
+export interface SessionStats {
+  date: string
+  minutesActive: number
+  lessonsCompleted: number
+  exercisesCorrect: number
+  exercisesTotal: number
+}
+
+export interface LessonAttemptRecord {
+  hintsUsed: number
+  firstTryCorrect: number
+  firstTryTotal: number
+}
+
+export interface PracticeBest {
+  bestScore: number
+  bestTimeSec: number
+  bestPercent: number
+}
+
+export interface GamificationSettings {
+  soundEnabled: boolean
+  hapticsEnabled: boolean
+  reducedMotion: boolean | 'auto'
+  notificationsEnabled: boolean
+}
+
+export interface GamificationState {
+  xp: number
+  comboStreak: number
+  longestCombo: number
+  streakFreezes: number
+  lastStreakFreezeUsed: string | null
+  dailyQuests: DailyQuest[]
+  weeklyQuest: WeeklyQuest | null
+  achievements: Record<string, AchievementRecord>
+  sessionStats: SessionStats
+  starsByLessonId: Record<string, 1 | 2 | 3>
+  lessonAttempts: Record<string, LessonAttemptRecord>
+  practiceBests: Record<string, PracticeBest>
+  settings: GamificationSettings
+  earlyBirdAchieved: boolean
+  weekendDays: string[]  // letzte ISO-Daten an Sa/So aktiv
+  brokenStreakLength: number  // letzte gebrochene Streak-Länge — für Recovery-UI
+  brokenStreakAcked: boolean  // hat User die Recovery-Card gesehen?
+  comebackStreakAchieved: boolean
+  practicePassed: boolean
+}
+
 export interface AppState {
   user: User
   progress: { topicProgress: Record<string, TopicProgress> }
@@ -70,6 +149,34 @@ export interface AppState {
   streak: StreakState
   points: number
   practice: PracticeState
+  gamification: GamificationState
+}
+
+export const INITIAL_GAMIFICATION_STATE: GamificationState = {
+  xp: 0,
+  comboStreak: 0,
+  longestCombo: 0,
+  streakFreezes: 0,
+  lastStreakFreezeUsed: null,
+  dailyQuests: [],
+  weeklyQuest: null,
+  achievements: {},
+  sessionStats: { date: '', minutesActive: 0, lessonsCompleted: 0, exercisesCorrect: 0, exercisesTotal: 0 },
+  starsByLessonId: {},
+  lessonAttempts: {},
+  practiceBests: {},
+  settings: {
+    soundEnabled: true,
+    hapticsEnabled: true,
+    reducedMotion: 'auto',
+    notificationsEnabled: false,
+  },
+  earlyBirdAchieved: false,
+  weekendDays: [],
+  brokenStreakLength: 0,
+  brokenStreakAcked: true,
+  comebackStreakAchieved: false,
+  practicePassed: false,
 }
 
 export const INITIAL_STATE: AppState = {
@@ -83,6 +190,7 @@ export const INITIAL_STATE: AppState = {
   streak: { current: 0, longest: 0, lastActiveDate: null },
   points: 0,
   practice: INITIAL_PRACTICE_STATE,
+  gamification: INITIAL_GAMIFICATION_STATE,
 }
 
 // ── Discriminated-Union der Actions ──────────────────────────────────────────
@@ -103,6 +211,39 @@ export type Action =
   | { type: typeof ACTIONS.TOGGLE_BOOKMARK; bookmarkId: string }
   | { type: typeof ACTIONS.TRACK_ACTIVITY; today?: string }
   | { type: typeof ACTIONS.RECORD_PRACTICE_ATTEMPT; exerciseId: string; correct: boolean; points: number }
+  | { type: typeof ACTIONS.TRACK_HINT_USED; lessonId: string }
+  | { type: typeof ACTIONS.GENERATE_DAILY_QUESTS; today?: string }
+  | { type: typeof ACTIONS.CLAIM_QUEST_REWARD; questId: string }
+  | { type: typeof ACTIONS.CLAIM_WEEKLY_QUEST }
+  | { type: typeof ACTIONS.UNLOCK_ACHIEVEMENT; achievementId: string; progress?: number }
+  | { type: typeof ACTIONS.CONSUME_STREAK_FREEZE; today?: string }
+  | { type: typeof ACTIONS.ADD_STREAK_FREEZE; amount?: number }
+  | { type: typeof ACTIONS.RECORD_PRACTICE_RESULT; setId: string; score: number; timeSec: number; percent: number }
+  | { type: typeof ACTIONS.AWARD_MILESTONE_XP; xp: number; reason: string }
+  | { type: typeof ACTIONS.UPDATE_GAMIFICATION_SETTINGS; patch: Partial<GamificationSettings> }
+  | { type: typeof ACTIONS.RECORD_MINUTES_ACTIVE; minutes: number; today?: string }
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function ensureSessionForToday(session: SessionStats, today: string): SessionStats {
+  if (session.date === today) return session
+  return { date: today, minutesActive: 0, lessonsCompleted: 0, exercisesCorrect: 0, exercisesTotal: 0 }
+}
+
+function isWeekendISO(iso: string): boolean {
+  const d = new Date(`${iso}T00:00:00Z`)
+  const dow = d.getUTCDay()  // 0 = Sun, 6 = Sat
+  return dow === 0 || dow === 6
+}
+
+// Verfolgt, ob in einem laufenden Wochenende sowohl Sa als auch So aktiv waren.
+function trackWeekendActivity(weekendDays: string[], today: string): string[] {
+  if (!isWeekendISO(today)) return weekendDays
+  if (weekendDays.includes(today)) return weekendDays
+  // Nur die letzten beiden Tage halten — reicht, um Sa+So zu erkennen
+  const next = [...weekendDays, today]
+  return next.length > 6 ? next.slice(-6) : next
+}
 
 // ── Reducer ──────────────────────────────────────────────────────────────────
 export function appReducer(state: AppState, action: Action): AppState {
@@ -130,6 +271,7 @@ export function appReducer(state: AppState, action: Action): AppState {
         progress: 0,
       }
       const isNewLesson = existing.currentLessonId !== lessonId
+      // Combo wird beim Lesson-Start zurückgesetzt — eine neue Lesson, eine neue Combo-Chance.
       return {
         ...state,
         progress: {
@@ -155,6 +297,7 @@ export function appReducer(state: AppState, action: Action): AppState {
             reviewCount: 0,
           },
         },
+        gamification: { ...state.gamification, comboStreak: 0 },
       }
     }
 
@@ -221,6 +364,37 @@ export function appReducer(state: AppState, action: Action): AppState {
         },
       }
 
+      // ── Stars-Berechnung ─────────────────────────────────────
+      const lessonAttempts = state.gamification.lessonAttempts[lessonId]
+        ?? { hintsUsed: 0, firstTryCorrect: 0, firstTryTotal: 0 }
+      const noHint = lessonAttempts.hintsUsed === 0
+      const allFirstTry = lessonAttempts.firstTryTotal > 0
+        && lessonAttempts.firstTryCorrect === lessonAttempts.firstTryTotal
+      let stars: 1 | 2 | 3 = 1
+      if (noHint) stars = 2
+      if (noHint && allFirstTry) stars = 3
+      const prevStars = state.gamification.starsByLessonId[lessonId] ?? 0
+      const newStars = (Math.max(prevStars, stars) as 1 | 2 | 3)
+
+      // XP nach Stern-Differential: nur Bonus-XP, wenn Sterne sich verbessern
+      const xpForNew = xpForLessonStars(newStars)
+      const xpForOld = prevStars > 0 ? xpForLessonStars(prevStars as 1 | 2 | 3) : 0
+      const lessonXpAwarded = xpForNew - xpForOld
+
+      // ── Quests progressieren ──────────────────────────────────
+      const today = todayISO()
+      const sessionStats = ensureSessionForToday(state.gamification.sessionStats, today)
+      const updatedSession = wasAlreadyCompleted
+        ? sessionStats
+        : { ...sessionStats, lessonsCompleted: sessionStats.lessonsCompleted + 1 }
+
+      let dailyQuests = state.gamification.dailyQuests
+      let weeklyQuest = state.gamification.weeklyQuest
+      if (!wasAlreadyCompleted) {
+        dailyQuests = dailyQuests.map((q) => progressQuest(q, { kind: 'lesson-completed' }))
+        if (weeklyQuest) weeklyQuest = progressWeeklyQuest(weeklyQuest, { kind: 'lesson-completed' })
+      }
+
       return {
         ...state,
         progress: {
@@ -234,12 +408,22 @@ export function appReducer(state: AppState, action: Action): AppState {
         review: { queue: buildReviewQueue(updatedMastery) },
         points: state.points + (wasAlreadyCompleted ? 0 : POINTS_COMPLETE_LESSON),
         streak: updateStreak(state.streak),
+        gamification: {
+          ...state.gamification,
+          xp: state.gamification.xp + lessonXpAwarded,
+          comboStreak: 0,
+          starsByLessonId: { ...state.gamification.starsByLessonId, [lessonId]: newStars },
+          sessionStats: updatedSession,
+          dailyQuests,
+          weeklyQuest,
+        },
       }
     }
 
     case ACTIONS.RECORD_ATTEMPT: {
       const { exerciseId, lessonId, answer, isCorrect } = action
       const prevExercise = state.exercises[exerciseId] ?? { attempts: [] }
+      const isFirstTry = prevExercise.attempts.length === 0
       const newAttempt: ExerciseAttempt = {
         answer,
         correct: isCorrect,
@@ -249,6 +433,50 @@ export function appReducer(state: AppState, action: Action): AppState {
         ...state.mastery,
         [lessonId]: evaluateAttempt(state.mastery[lessonId], isCorrect),
       }
+
+      // Combo
+      const oldCombo = state.gamification.comboStreak
+      const newCombo = isCorrect ? oldCombo + 1 : 0
+      const longestCombo = Math.max(state.gamification.longestCombo, newCombo)
+      const xpAwarded = isCorrect ? xpForCorrectAnswer(newCombo) : 0
+
+      // Session
+      const today = todayISO()
+      const sessionBase = ensureSessionForToday(state.gamification.sessionStats, today)
+      const updatedSession: SessionStats = {
+        ...sessionBase,
+        exercisesTotal: sessionBase.exercisesTotal + 1,
+        exercisesCorrect: sessionBase.exercisesCorrect + (isCorrect ? 1 : 0),
+      }
+
+      // First-try-Tracking pro Lesson (für Stars + Achievements)
+      const prevAttempts = state.gamification.lessonAttempts[lessonId]
+        ?? { hintsUsed: 0, firstTryCorrect: 0, firstTryTotal: 0 }
+      const lessonAttempts = isFirstTry
+        ? {
+          ...state.gamification.lessonAttempts,
+          [lessonId]: {
+            ...prevAttempts,
+            firstTryTotal: prevAttempts.firstTryTotal + 1,
+            firstTryCorrect: prevAttempts.firstTryCorrect + (isCorrect ? 1 : 0),
+          },
+        }
+        : state.gamification.lessonAttempts
+
+      // Quest-Progress
+      let dailyQuests = state.gamification.dailyQuests
+      if (isCorrect) {
+        dailyQuests = dailyQuests.map((q) => progressQuest(q, { kind: 'correct-answer' }))
+        dailyQuests = dailyQuests.map((q) => progressQuest(q, { kind: 'combo-update', combo: newCombo }))
+      }
+
+      // Early-Bird-Tracking (vor 7 Uhr)
+      const hour = new Date().getHours()
+      const earlyBird = state.gamification.earlyBirdAchieved || hour < 7
+
+      // Wochenend-Tracking
+      const weekendDays = trackWeekendActivity(state.gamification.weekendDays, today)
+
       return {
         ...state,
         exercises: {
@@ -258,6 +486,17 @@ export function appReducer(state: AppState, action: Action): AppState {
         mastery: updatedMastery,
         points: state.points + (isCorrect ? POINTS_CORRECT_ANSWER : 0),
         streak: updateStreak(state.streak),
+        gamification: {
+          ...state.gamification,
+          xp: state.gamification.xp + xpAwarded,
+          comboStreak: newCombo,
+          longestCombo,
+          sessionStats: updatedSession,
+          lessonAttempts,
+          dailyQuests,
+          earlyBirdAchieved: earlyBird,
+          weekendDays,
+        },
       }
     }
 
@@ -329,13 +568,48 @@ export function appReducer(state: AppState, action: Action): AppState {
       return { ...state, bookmarks: next }
     }
 
-    case ACTIONS.TRACK_ACTIVITY:
-      return { ...state, streak: updateStreak(state.streak, action.today) }
+    case ACTIONS.TRACK_ACTIVITY: {
+      const today = action.today ?? todayISO()
+      const updatedStreak = updateStreak(state.streak, today)
+      // Wenn neuer Streak ≥ 7 nach Bruch → Comeback markieren
+      const comeback = state.gamification.comebackStreakAchieved
+        || (state.gamification.brokenStreakLength > 0 && updatedStreak.current >= 7)
+      return {
+        ...state,
+        streak: updatedStreak,
+        gamification: {
+          ...state.gamification,
+          comebackStreakAchieved: comeback,
+          weekendDays: trackWeekendActivity(state.gamification.weekendDays, today),
+        },
+      }
+    }
 
     case ACTIONS.RECORD_PRACTICE_ATTEMPT: {
       const { exerciseId, correct, points } = action
       const prev = state.practice.attempts[exerciseId]
       const bestPoints = Math.max(prev?.bestPoints ?? 0, points)
+
+      // Combo + XP wie bei normalem RECORD_ATTEMPT
+      const oldCombo = state.gamification.comboStreak
+      const newCombo = correct ? oldCombo + 1 : 0
+      const longestCombo = Math.max(state.gamification.longestCombo, newCombo)
+      const xpAwarded = correct ? xpForCorrectAnswer(newCombo) : 0
+
+      const today = todayISO()
+      const sessionBase = ensureSessionForToday(state.gamification.sessionStats, today)
+      const updatedSession: SessionStats = {
+        ...sessionBase,
+        exercisesTotal: sessionBase.exercisesTotal + 1,
+        exercisesCorrect: sessionBase.exercisesCorrect + (correct ? 1 : 0),
+      }
+
+      let dailyQuests = state.gamification.dailyQuests
+      if (correct) {
+        dailyQuests = dailyQuests.map((q) => progressQuest(q, { kind: 'correct-answer' }))
+        dailyQuests = dailyQuests.map((q) => progressQuest(q, { kind: 'combo-update', combo: newCombo }))
+      }
+
       return {
         ...state,
         practice: {
@@ -353,11 +627,221 @@ export function appReducer(state: AppState, action: Action): AppState {
         },
         points: state.points + (correct ? POINTS_CORRECT_ANSWER : 0),
         streak: updateStreak(state.streak),
+        gamification: {
+          ...state.gamification,
+          xp: state.gamification.xp + xpAwarded,
+          comboStreak: newCombo,
+          longestCombo,
+          sessionStats: updatedSession,
+          dailyQuests,
+        },
       }
     }
 
     case ACTIONS.RESET_PROGRESS:
-      return { ...INITIAL_STATE, user: state.user }
+      return {
+        ...INITIAL_STATE,
+        user: state.user,
+        // Settings beibehalten — User soll nicht plötzlich Sound an/aus haben.
+        gamification: {
+          ...INITIAL_GAMIFICATION_STATE,
+          settings: state.gamification.settings,
+        },
+      }
+
+    // ── Gamification ──────────────────────────────────────────────────────
+    case ACTIONS.TRACK_HINT_USED: {
+      const prev = state.gamification.lessonAttempts[action.lessonId]
+        ?? { hintsUsed: 0, firstTryCorrect: 0, firstTryTotal: 0 }
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          lessonAttempts: {
+            ...state.gamification.lessonAttempts,
+            [action.lessonId]: { ...prev, hintsUsed: prev.hintsUsed + 1 },
+          },
+        },
+      }
+    }
+
+    case ACTIONS.GENERATE_DAILY_QUESTS: {
+      const today = action.today ?? todayISO()
+      // Tageswechsel? — neue Quests, ggf. neue Wochen-Quest
+      const existingDate = state.gamification.dailyQuests[0]?.date
+      const dailyQuests = existingDate === today
+        ? state.gamification.dailyQuests
+        : generateDailyQuests(today)
+
+      const wantedWeek = getIsoWeek(today)
+      const weeklyQuest = state.gamification.weeklyQuest && state.gamification.weeklyQuest.weekIso === wantedWeek
+        ? state.gamification.weeklyQuest
+        : generateWeeklyQuest(wantedWeek)
+
+      const sessionStats = ensureSessionForToday(state.gamification.sessionStats, today)
+
+      return {
+        ...state,
+        gamification: { ...state.gamification, dailyQuests, weeklyQuest, sessionStats },
+      }
+    }
+
+    case ACTIONS.CLAIM_QUEST_REWARD: {
+      const quests = state.gamification.dailyQuests
+      const idx = quests.findIndex((q) => q.id === action.questId)
+      if (idx < 0) return state
+      const q = quests[idx]
+      if (!q.completed || q.claimed) return state
+      const newQuests = [...quests]
+      newQuests[idx] = { ...q, claimed: true }
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          dailyQuests: newQuests,
+          xp: state.gamification.xp + q.rewardXp,
+        },
+      }
+    }
+
+    case ACTIONS.CLAIM_WEEKLY_QUEST: {
+      const w = state.gamification.weeklyQuest
+      if (!w || !w.completed || w.claimed) return state
+      const newFreezes = Math.min(MAX_STREAK_FREEZES, state.gamification.streakFreezes + w.rewardFreezes)
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          weeklyQuest: { ...w, claimed: true },
+          xp: state.gamification.xp + w.rewardXp,
+          streakFreezes: newFreezes,
+        },
+      }
+    }
+
+    case ACTIONS.UNLOCK_ACHIEVEMENT: {
+      const { achievementId, progress } = action
+      const prev = state.gamification.achievements[achievementId]
+      if (prev?.earned) {
+        // Update progress only
+        return progress != null
+          ? {
+            ...state,
+            gamification: {
+              ...state.gamification,
+              achievements: {
+                ...state.gamification.achievements,
+                [achievementId]: { ...prev, progress },
+              },
+            },
+          }
+          : state
+      }
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          achievements: {
+            ...state.gamification.achievements,
+            [achievementId]: {
+              earned: true,
+              earnedAt: new Date().toISOString(),
+              progress: progress ?? 0,
+            },
+          },
+        },
+      }
+    }
+
+    case ACTIONS.CONSUME_STREAK_FREEZE: {
+      const today = action.today ?? todayISO()
+      const r = evaluateStreakFreezeOnLogin({
+        streak: state.streak,
+        freezesAvailable: state.gamification.streakFreezes,
+        today,
+      })
+      // Wenn der Streak gebrochen wurde (kein Freeze möglich): broken-Length merken,
+      // sodass die Recovery-Card im UI gezeigt werden kann.
+      const broken = !r.freezeConsumed && r.brokenStreakLength > 0
+      return {
+        ...state,
+        streak: r.streak,
+        gamification: {
+          ...state.gamification,
+          streakFreezes: r.freezesAvailable,
+          lastStreakFreezeUsed: r.freezeConsumed ? today : state.gamification.lastStreakFreezeUsed,
+          brokenStreakLength: broken ? r.brokenStreakLength : state.gamification.brokenStreakLength,
+          brokenStreakAcked: broken ? false : state.gamification.brokenStreakAcked,
+        },
+      }
+    }
+
+    case ACTIONS.ADD_STREAK_FREEZE: {
+      const amount = action.amount ?? 1
+      const newFreezes = Math.min(MAX_STREAK_FREEZES, state.gamification.streakFreezes + amount)
+      return {
+        ...state,
+        gamification: { ...state.gamification, streakFreezes: newFreezes },
+      }
+    }
+
+    case ACTIONS.RECORD_PRACTICE_RESULT: {
+      const { setId, score, timeSec, percent } = action
+      const prev = state.gamification.practiceBests[setId]
+      const isImprovement = !prev
+        || percent > prev.bestPercent
+        || (percent === prev.bestPercent && timeSec < prev.bestTimeSec)
+      const newBest: PracticeBest = isImprovement
+        ? { bestScore: score, bestTimeSec: timeSec, bestPercent: percent }
+        : prev
+      const today = todayISO()
+      const sessionBase = ensureSessionForToday(state.gamification.sessionStats, today)
+      const dailyQuests = state.gamification.dailyQuests
+        .map((q) => progressQuest(q, { kind: 'practice-set-completed' }))
+      const passed = state.gamification.practicePassed || percent >= 80
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          practiceBests: { ...state.gamification.practiceBests, [setId]: newBest },
+          dailyQuests,
+          sessionStats: sessionBase,
+          practicePassed: passed,
+        },
+      }
+    }
+
+    case ACTIONS.AWARD_MILESTONE_XP: {
+      return {
+        ...state,
+        gamification: { ...state.gamification, xp: state.gamification.xp + action.xp },
+      }
+    }
+
+    case ACTIONS.UPDATE_GAMIFICATION_SETTINGS: {
+      return {
+        ...state,
+        gamification: {
+          ...state.gamification,
+          settings: { ...state.gamification.settings, ...action.patch },
+        },
+      }
+    }
+
+    case ACTIONS.RECORD_MINUTES_ACTIVE: {
+      const today = action.today ?? todayISO()
+      const sessionBase = ensureSessionForToday(state.gamification.sessionStats, today)
+      const updated: SessionStats = {
+        ...sessionBase,
+        minutesActive: sessionBase.minutesActive + action.minutes,
+      }
+      const dailyQuests = state.gamification.dailyQuests
+        .map((q) => progressQuest(q, { kind: 'minutes-elapsed', minutes: action.minutes }))
+      return {
+        ...state,
+        gamification: { ...state.gamification, sessionStats: updated, dailyQuests },
+      }
+    }
 
     default:
       // Exhaustiveness check — TS warnt, falls neue Action vergessen wird

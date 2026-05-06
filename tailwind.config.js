@@ -73,6 +73,10 @@ export default {
         'stamp-in':    'stampIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
         'check-draw':  'checkDraw 0.5s ease-out 0.4s forwards',
         'sparkle-in':  'sparkleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        // Gamification — bewusst dezent: kurz, geringer Bewegungsumfang.
+        'xp-float':    'xpFloat 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'combo-pulse': 'comboPulse 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'count-up':    'fadeIn 0.4s ease-out',
       },
       keyframes: {
         fadeIn: {
@@ -125,6 +129,18 @@ export default {
           '0%':   { opacity: '0', transform: 'scale(0.4)' },
           '70%':  { opacity: '1', transform: 'scale(1.15)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        // XP-Floater — kleine Mono-Zahl, steigt 28px auf, fadet aus
+        xpFloat: {
+          '0%':   { opacity: '0', transform: 'translateY(0px) scale(0.92)' },
+          '15%':  { opacity: '1', transform: 'translateY(-4px) scale(1)' },
+          '70%':  { opacity: '1', transform: 'translateY(-22px) scale(1)' },
+          '100%': { opacity: '0', transform: 'translateY(-32px) scale(0.96)' },
+        },
+        comboPulse: {
+          '0%':   { transform: 'scale(0.85)' },
+          '50%':  { transform: 'scale(1.12)' },
+          '100%': { transform: 'scale(1)' },
         },
       },
     },
