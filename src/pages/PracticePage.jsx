@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getTopic } from '@/content/index'
 import {
@@ -28,10 +28,28 @@ function statusIcon(summary) {
 export function PracticePage() {
   const state    = useAppState()
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const [topicId,   setTopicId]   = useState(null)
+  // Initial-Topic aus ?topic=… (z. B. via Pfad-Karte): wird nur einmal gelesen,
+  // damit interne State-Wechsel das URL-Param nicht „rückwärts" überschreiben.
+  const initialTopicId = useMemo(() => {
+    const t = searchParams.get('topic')
+    return t && getPracticeTopicIds().includes(t) ? t : null
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const [topicId,   setTopicId]   = useState(initialTopicId)
   const [exerciseId, setExerciseId] = useState(null)
   const [difficulty, setDifficulty] = useState('alle')
+
+  // Wenn User die Topic-Auswahl verlässt, ?topic= aus der URL entfernen.
+  useEffect(() => {
+    if (topicId === null && searchParams.has('topic')) {
+      const next = new URLSearchParams(searchParams)
+      next.delete('topic')
+      setSearchParams(next, { replace: true })
+    }
+  }, [topicId, searchParams, setSearchParams])
 
   const attempts = state.practice?.attempts ?? {}
 
