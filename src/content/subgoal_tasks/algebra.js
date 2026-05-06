@@ -3006,21 +3006,21 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
       ),
       ni(
-        'Berechne $\\dfrac{2^{10}}{2^7}$.',
-        8, 0, '',
-        `**Ansatz:** Gleiche Basis, also Exponenten subtrahieren.
+        'Berechne $\\dfrac{7^9}{7^6}$.',
+        343, 0, '',
+        `**Ansatz:** Gleiche Basis bei Division: Exponenten subtrahieren, dann Restpotenz ausrechnen.
 
-**Rechnung:** $2^{10}/2^7 = 2^{10-7} = 2^3 = 8$.
+**Rechnung:** $7^9/7^6 = 7^{9-6} = 7^3 = 7 \\cdot 7 \\cdot 7 = 343$.
 
-**Probe:** $1024/128 = 8$. ✓
+**Probe:** $7^9 = 40\\,353\\,607$, $7^6 = 117\\,649$. $40\\,353\\,607 / 117\\,649 = 343$. ✓
 
-**Typischer Fehler:** $1024 - 128 = 896$ — Subtraktion der Werte statt der Exponenten.`,
+**Typischer Fehler:** Exponenten dividieren statt subtrahieren ($9/6 = 1{,}5$, also $7^{1{,}5}$ als Antwort) oder die Werte $7^9$ und $7^6$ direkt subtrahieren — die Subtraktion gilt für die Exponenten, nicht für die Werte.`,
         [
-          'Gleiche Basis $2$ — Exponenten subtrahieren.',
-          '$2^{10-7} = ?$',
-          '$2^3 = 8$.',
+          'Division gleicher Basis $\\Rightarrow$ Exponenten subtrahieren.',
+          '$7^{9-6} = 7^?$',
+          '$7^3 = 343$.',
         ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult'] },
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-div'] },
       ),
       mc(
         'Ein Schüler schreibt $x^2 \\cdot x^3 = x^6$. Wo liegt der Fehler?',
@@ -3084,6 +3084,56 @@ export const algebraSubGoalTasks = {
           'Dann durch Nenner: Exponenten subtrahieren.',
           '$3^5 = 243$.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+      // Bonus SG 0 — sorting · transfer · uses=[pot-mult, pot-div]
+      // Schritt-Reihenfolge bei kombiniertem Bruch — typische Prüfungssituation.
+      sorting(
+        'Bringe die Schritte zur Vereinfachung von $\\dfrac{x^5 \\cdot x^2}{x^3}$ in die richtige Reihenfolge.',
+        [
+          'Erkennen: alle drei Potenzen haben gleiche Basis $x$, Potenzgesetze sind anwendbar.',
+          'Zähler zusammenfassen — Multiplikation gleicher Basen: $x^5 \\cdot x^2 = x^{5+2} = x^7$.',
+          'Bruch reduzieren — Division gleicher Basen: $x^7 / x^3 = x^{7-3} = x^4$.',
+          'Endergebnis hinschreiben: $x^4$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Bei kombinierten Termen mit Multiplikation **und** Division immer erst gleichartige Operationen pro Ebene zusammenfassen, dann Ebenen miteinander verrechnen.
+
+**Rechnung:** Zähler: $x^5 \\cdot x^2 = x^7$ (Addition der Exponenten). Bruch: $x^7/x^3 = x^4$ (Subtraktion der Exponenten). Ergebnis: $x^4$.
+
+**Probe:** Setze $x = 2$: Zähler $= 32 \\cdot 4 = 128$, Nenner $= 8$, Bruch $= 16 = 2^4$. ✓
+
+**Typischer Fehler:** Direkt die Exponenten als $5+2-3 = 4$ rechnen funktioniert hier zufällig — wer aber die Reihenfolge nicht versteht, baut bei $\\frac{x^5}{x^2 \\cdot x^3}$ einen Vorzeichenfehler ein. Erst Operationen *pro Ebene*, dann zwischen Ebenen.`,
+        [
+          'Welche Operation ist im Zähler? Welche zwischen Zähler und Nenner?',
+          'Erst Zähler vereinfachen ($\\cdot$), dann durch Nenner teilen ($/$).',
+          '$5+2 = 7$, dann $7-3 = 4$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+      // Bonus SG 0 — Prüfungs-MC · transfer · uses=[pot-mult, pot-div]
+      // Doppelter Bruch mit gemischten Operationen — klassische Klausuraufgabe.
+      mc(
+        '[PRÜFUNG] Vereinfache $\\dfrac{a^7 \\cdot a^3}{a^4 \\cdot a^2}$.',
+        ['$a^4$', '$a^{16}$', '$a^{8}$', '$a^{6}$'],
+        0,
+        `**Ansatz:** Zähler und Nenner getrennt mit der Mult-Regel zusammenfassen, dann mit der Div-Regel verrechnen.
+
+**Rechnung:** Zähler: $a^7 \\cdot a^3 = a^{7+3} = a^{10}$. Nenner: $a^4 \\cdot a^2 = a^{4+2} = a^6$. Bruch: $a^{10}/a^6 = a^{10-6} = a^4$.
+
+**Probe:** Mit $a=2$: Zähler $128 \\cdot 8 = 1024$, Nenner $16 \\cdot 4 = 64$, Bruch $1024/64 = 16 = 2^4$. ✓
+
+**Typischer Fehler:** Mult- und Div-Regel vermischen, etwa alle vier Exponenten addieren ($7+3+4+2=16$) oder die Klammer um den Nenner ignorieren.`,
+        [
+          'Zähler und Nenner zuerst getrennt zusammenfassen.',
+          '$7+3=10$ im Zähler, $4+2=6$ im Nenner.',
+          'Bruch: $a^{10-6}$.',
+        ],
+        {
+          1: 'Hier wurden alle vier Exponenten addiert ($7+3+4+2=16$). Das wäre richtig, wenn alle vier Faktoren im **Zähler** stünden — aber hier stehen zwei im Nenner und müssen subtrahiert werden.',
+          2: 'Hier wurde die Klammer um den Nenner missachtet: $\\frac{a^7 \\cdot a^3}{a^4} \\cdot a^2 = a^{10-4+2} = a^8$. Tatsächlich gilt aber $\\frac{Z}{N_1 \\cdot N_2}$, also beide Nenner-Faktoren wirken im Nenner.',
+          3: 'Hier wurde nur einer der beiden Nenner-Faktoren berücksichtigt: $a^{10}/a^4 = a^6$. Der zweite Nenner-Faktor $a^2$ ist vergessen worden — er gehört auch in den Nenner und gibt zusätzliches Subtrahieren.',
+        },
         { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
       ),
     ],
@@ -3343,6 +3393,34 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 2, uses: ['pot-negativ', 'pot-mult'] },
       ),
+      // Bonus SG 2 — matching · recognize · uses=[pot-null, pot-negativ]
+      // Zuordnung Term ↔ Wert mit Basis 4 — übt Vorzeichen-Handling visuell.
+      matching(
+        'Ordne jedem Ausdruck mit Basis $4$ den korrekten Zahlenwert zu.',
+        [
+          { left: '$4^0$',     right: '$1$' },
+          { left: '$4^1$',     right: '$4$' },
+          { left: '$4^{-1}$',  right: '$\\dfrac{1}{4}$' },
+          { left: '$4^{-2}$',  right: '$\\dfrac{1}{16}$' },
+        ],
+        `**Ansatz:** Drei Regeln gleichzeitig parat haben — $x^0 = 1$, $x^1 = x$, $x^{-n} = 1/x^n$.
+
+**Rechnung:**
+· $4^0 = 1$ (Konvention für $x \\neq 0$).
+· $4^1 = 4$ (Definitionsbasis).
+· $4^{-1} = 1/4^1 = 1/4$ (negativer Exponent ⇒ Kehrwert).
+· $4^{-2} = 1/4^2 = 1/16$ (negativer Exponent ⇒ Kehrwert von $4^2 = 16$).
+
+**Probe:** $4^{-2} \\cdot 4^2 = 4^0 = 1$. Also muss $4^{-2} = 1/16$ gelten. ✓
+
+**Typischer Fehler:** $4^{-2}$ als $-16$ lesen — Vorzeichen wirkt aber NICHT auf den Wert, sondern macht den Kehrwert.`,
+        [
+          'Negativer Exponent $\\Rightarrow$ Kehrwert.',
+          'Hochzahl $0$: immer $1$ (für $x \\neq 0$).',
+          'Erst Betrag rechnen ($4^2 = 16$), dann Kehrwert ($1/16$).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pot-null', 'pot-negativ'] },
+      ),
     ],
     // [3] Produkt/Quotient in Klammer
     3: [
@@ -3466,6 +3544,25 @@ export const algebraSubGoalTasks = {
           'Exponent $6$.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['pot-quotient', 'pot-produkt'] },
+      ),
+      // Bonus SG 3 — Prüfungs-NI · transfer · uses=[pot-produkt, pot-potenz]
+      // Vorzeichen-Falle (klassischer Klausur-Fehler): Minus aus Klammer ungerade hoch.
+      ni(
+        '[PRÜFUNG] Vereinfache $(-2x^2)^3$ und gib den **Vorfaktor** (also den reinen Zahlen-Anteil ohne $x$) an.',
+        -8, 0, '',
+        `**Ansatz:** Produkt-in-Klammer-Regel: jeder Faktor in der Klammer (auch das Vorzeichen!) wird mit dem Exponenten potenziert. Bei ungeradem Exponenten überlebt das Minus.
+
+**Rechnung:** $(-2x^2)^3 = (-2)^3 \\cdot (x^2)^3 = -8 \\cdot x^{2 \\cdot 3} = -8 x^6$. Vorfaktor $= -8$.
+
+**Probe:** $x = 1$: $(-2 \\cdot 1)^3 = (-2)^3 = -8$, und $-8 \\cdot 1^6 = -8$. ✓
+
+**Typischer Fehler:** Das Minus „retten" und $+8 x^6$ schreiben — funktioniert nur bei **geradem** Exponenten. Bei $(-2)^3 = -8$ überlebt das Vorzeichen, weil $3$ ungerade ist. Auch falsch: $(x^2)^3 = x^5$ statt $x^6$.`,
+        [
+          'Klammer mit Produkt hoch $n$ — jeden Faktor einzeln, **inklusive Vorzeichen**.',
+          '$(-2)^3$: $-2 \\cdot -2 \\cdot -2 = ?$ — ungerade Anzahl Minuszeichen.',
+          '$(-2)^3 = -8$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pot-produkt', 'pot-potenz'] },
       ),
     ],
   },
@@ -3602,6 +3699,31 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
       ),
+      // Bonus SG 0 — sorting · transfer · uses=[wurzel-bruchpot]
+      // Schritt-Reihenfolge bei der Umformung Wurzel → Bruchpotenz, baut Mechanik aus.
+      sorting(
+        'Bringe die Schritte zur Umformung von $\\sqrt[5]{x^3}$ in die Bruchpotenz-Form in die richtige Reihenfolge.',
+        [
+          'Wurzelgrad ablesen — die kleine Zahl vor der Wurzel: $n = 5$.',
+          'Exponent unter der Wurzel ablesen: $m = 3$.',
+          'Regel anwenden $\\sqrt[n]{x^m} = x^{m/n}$ — Zähler $m$, Nenner $n$.',
+          'Ergebnis hinschreiben: $x^{3/5}$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Die Bruchpotenz-Schreibweise hat den Wurzelgrad **immer im Nenner** und den inneren Exponenten **im Zähler**.
+
+**Rechnung:** $\\sqrt[5]{x^3} = x^{3/5}$.
+
+**Probe:** Setze $x = 32$: $\\sqrt[5]{32^3} = \\sqrt[5]{32768} = 8$. Direkt: $32^{3/5} = (32^{1/5})^3 = 2^3 = 8$. ✓
+
+**Typischer Fehler:** Zähler und Nenner verwechseln und $x^{5/3}$ schreiben — passiert oft, wenn man die Reihenfolge nicht systematisch durchläuft.`,
+        [
+          'Erst Wurzelgrad, dann inneren Exponenten ablesen.',
+          'Wurzelgrad → Nenner, innere Potenz → Zähler.',
+          '$\\sqrt[5]{x^3} = x^{3/5}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
     ],
     // [1] Rechenregeln / Summe-Falle / Vereinfachen
     1: [
@@ -3624,24 +3746,24 @@ export const algebraSubGoalTasks = {
       ),
       mc(
         'Vereinfache $\\sqrt{8} \\cdot \\sqrt{2}$.',
-        ['$4$', '$\\sqrt{10}$', '$2\\sqrt{5}$', '$\\sqrt{16}$'],
+        ['$4$', '$\\sqrt{10}$', '$2\\sqrt{5}$', '$2\\sqrt{2}$'],
         0,
         `**Ansatz:** Produkt unter der Wurzel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.
 
-**Rechnung:** $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{16} = 4$.
+**Rechnung:** $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{8 \\cdot 2} = \\sqrt{16} = 4$.
 
-**Probe:** $\\sqrt{8} \\approx 2{,}83$; $2{,}83 \\cdot 1{,}41 \\approx 4$. ✓
+**Probe:** Alternative: $\\sqrt{8} = 2\\sqrt{2}$, dann $2\\sqrt{2} \\cdot \\sqrt{2} = 2 \\cdot 2 = 4$. ✓
 
-**Typischer Fehler:** Beim Addieren landet man bei $\\sqrt{10}$, aber hier ist Multiplikation.`,
+**Typischer Fehler:** Beim Addieren landet man bei $\\sqrt{10}$ — aber hier steht Multiplikation, nicht Addition.`,
         [
           'Produkt-Regel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.',
           '$8 \\cdot 2 = 16$.',
           '$\\sqrt{16} = ?$',
         ],
         {
-          1: '$\\sqrt{10}$ wäre $\\sqrt{8 + 2}$ — aber hier steht Multiplikation.',
-          2: 'Auch falsch — wäre das Ergebnis einer anderen Rechnung.',
-          3: '$\\sqrt{16}$ stimmt, aber die einfachste Form ist $4$.',
+          1: '$\\sqrt{10} = \\sqrt{8+2}$ — hier wurde addiert statt multipliziert. Die Produkt-Regel sagt $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{8 \\cdot 2}$, nicht $\\sqrt{8+2}$.',
+          2: '$2\\sqrt{5} = \\sqrt{20}$ — auch eine falsche Zerlegung. Korrekt: $\\sqrt{8 \\cdot 2} = \\sqrt{16} = 4$, kein Faktor $5$ unter der Wurzel.',
+          3: 'Hier wurde nur die Vereinfachung $\\sqrt{8} = 2\\sqrt{2}$ stehengelassen und der zweite Faktor $\\sqrt{2}$ vergessen. Korrekt: $2\\sqrt{2} \\cdot \\sqrt{2} = 2 \\cdot 2 = 4$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['wurzel-produkt'] },
       ),
@@ -3725,6 +3847,31 @@ export const algebraSubGoalTasks = {
           'Gleichartige Wurzeln $\\to$ Koeffizienten addieren.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
+      ),
+      // Bonus SG 1 — Prüfungs-MC · transfer · uses=[wurzel-vereinfachen, wurzel-summe-nein]
+      // Klassische Klausur-Falle: Wurzeln subtrahieren mit Summen-Linearitäts-Falle.
+      mc(
+        '[PRÜFUNG] Vereinfache $\\sqrt{45} - \\sqrt{20}$ und gib das Ergebnis in einfachster Form an.',
+        ['$\\sqrt{5}$', '$5$', '$5\\sqrt{5}$', '$\\sqrt{65}$'],
+        0,
+        `**Ansatz:** Beide Wurzeln zuerst auf $k\\sqrt{5}$-Form vereinfachen, **dann** Koeffizienten subtrahieren.
+
+**Rechnung:** $\\sqrt{45} = \\sqrt{9 \\cdot 5} = 3\\sqrt{5}$. $\\sqrt{20} = \\sqrt{4 \\cdot 5} = 2\\sqrt{5}$. Differenz: $3\\sqrt{5} - 2\\sqrt{5} = (3-2)\\sqrt{5} = \\sqrt{5}$.
+
+**Probe:** Dezimal: $\\sqrt{45} \\approx 6{,}708$, $\\sqrt{20} \\approx 4{,}472$, Differenz $\\approx 2{,}236 = \\sqrt{5}$. ✓
+
+**Typischer Fehler:** Wurzel auf Differenz „ziehen" und $\\sqrt{45-20} = \\sqrt{25} = 5$ rechnen — verboten, weil $\\sqrt{a-b} \\neq \\sqrt{a} - \\sqrt{b}$.`,
+        [
+          'Wurzeln können nur addiert/subtrahiert werden, wenn der Radikand gleich ist.',
+          'Erst $\\sqrt{45}$ und $\\sqrt{20}$ auf $k\\sqrt{5}$ vereinfachen.',
+          '$3\\sqrt{5} - 2\\sqrt{5} = ?$',
+        ],
+        {
+          1: 'Hier wurde die Wurzel auf die Differenz „verteilt": $\\sqrt{45-20} = \\sqrt{25} = 5$. Verboten, weil $\\sqrt{a-b} \\neq \\sqrt{a} - \\sqrt{b}$ — gleiches Problem wie bei der Summen-Falle.',
+          2: 'Hier wurden die Koeffizienten **addiert** statt subtrahiert: $3 + 2 = 5$, also $5\\sqrt{5}$. Die Aufgabe verlangt aber Differenz, nicht Summe.',
+          3: 'Hier wurde der Radikand addiert: $\\sqrt{45+20} = \\sqrt{65}$. Doppelt falsch — erst, weil das die Summe statt Differenz wäre, und zweitens, weil die Wurzel nicht über Summen verteilt werden darf.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-summe-nein'] },
       ),
       sorting(
         'Bringe die Schritte zur Vereinfachung von $\\sqrt{200}$ in die richtige Reihenfolge.',
@@ -3870,6 +4017,38 @@ export const algebraSubGoalTasks = {
           'Quotient unter der Wurzel.',
           '$\\sqrt{6}/\\sqrt{2} = \\sqrt{6/2}$.',
           '$6/2 = 3$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
+      ),
+      // Bonus SG 2 — matching · transfer · uses=[nenner-rational, wurzel-vereinfachen]
+      // Ordne Bruch ↔ Nenner-rationale Form. Trainiert verschiedene Erweiterungs-Muster.
+      matching(
+        'Ordne jedem Bruch seine vollständig vereinfachte Form mit rationalem Nenner zu.',
+        [
+          { left: '$\\dfrac{1}{\\sqrt{2}}$',          right: '$\\dfrac{\\sqrt{2}}{2}$' },
+          { left: '$\\dfrac{2}{\\sqrt{3}}$',          right: '$\\dfrac{2\\sqrt{3}}{3}$' },
+          { left: '$\\dfrac{\\sqrt{6}}{\\sqrt{2}}$',  right: '$\\sqrt{3}$' },
+          { left: '$\\dfrac{4}{\\sqrt{8}}$',          right: '$\\sqrt{2}$' },
+        ],
+        `**Ansatz:** Drei Strategien:
+
+1. Reine Wurzel im Nenner $\\Rightarrow$ mit dieser Wurzel erweitern.
+2. Wurzel über Wurzel $\\Rightarrow$ Quotient-Regel: $\\sqrt{a}/\\sqrt{b} = \\sqrt{a/b}$.
+3. Wurzel im Nenner zuerst vereinfachen, dann erweitern.
+
+**Rechnung:**
+· $\\dfrac{1}{\\sqrt{2}} \\cdot \\dfrac{\\sqrt{2}}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$.
+· $\\dfrac{2}{\\sqrt{3}} \\cdot \\dfrac{\\sqrt{3}}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}$.
+· $\\dfrac{\\sqrt{6}}{\\sqrt{2}} = \\sqrt{6/2} = \\sqrt{3}$ (Quotient-Regel).
+· $\\dfrac{4}{\\sqrt{8}} = \\dfrac{4}{2\\sqrt{2}} = \\dfrac{2}{\\sqrt{2}} = \\dfrac{2\\sqrt{2}}{2} = \\sqrt{2}$.
+
+**Probe:** Dezimal-Vergleich: $1/\\sqrt{2} \\approx 0{,}707 \\approx \\sqrt{2}/2$ ✓. $4/\\sqrt{8} \\approx 1{,}414 \\approx \\sqrt{2}$ ✓.
+
+**Typischer Fehler:** Wurzel im Nenner stehen lassen oder vor dem Erweitern nicht vereinfachen — beides macht das Ergebnis nicht „falsch", aber nicht in einfachster Form.`,
+        [
+          'Reine Wurzel: mit der gleichen Wurzel erweitern.',
+          'Wurzel/Wurzel: zur einen Wurzel zusammenfassen.',
+          'Wurzel mit Quadratzahl-Faktor: erst vereinfachen, dann erweitern.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
       ),
@@ -4504,6 +4683,25 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 4, uses: ['log-basiswechsel'] },
       ),
+      // Bonus SG 4 — Prüfungs-NI · transfer · uses=[log-basiswechsel]
+      // Zinseszins-Verdoppelung — klassische Klausuraufgabe zur Anwendung des Basiswechsels.
+      ni(
+        '[PRÜFUNG] Wie viele Jahre dauert es, bis ein Kapital bei jährlich $5\\,\\%$ Zinsen verdoppelt wird? Modell: $K(t) = K_0 \\cdot 1{,}05^{t}$. Antwort auf 3 Dezimalen.',
+        14.207, 0.05, 'Jahre',
+        `**Ansatz:** Verdopplung heißt $K(t)/K_0 = 2$, also $1{,}05^{t} = 2$. Nach $t$ logarithmieren — Basiswechsel macht es taschenrechnertauglich.
+
+**Rechnung:** $t = \\log_{1{,}05}(2) = \\dfrac{\\ln(2)}{\\ln(1{,}05)} \\approx \\dfrac{0{,}6931}{0{,}04879} \\approx 14{,}207$ Jahre.
+
+**Probe:** $1{,}05^{14{,}207} = e^{14{,}207 \\cdot \\ln(1{,}05)} = e^{14{,}207 \\cdot 0{,}04879} = e^{0{,}6931} \\approx 2$. ✓ Faustformel „72er-Regel": $72/5 = 14{,}4$ Jahre — nahe dran, aber nicht exakt.
+
+**Typischer Fehler:** Direkt $2/0{,}05 = 40$ rechnen — unterschlägt den Zinseszins-Effekt (jedes Jahr neuer Aufschlag auf den schon gewachsenen Betrag). Oder Basiswechsel umgekehrt: $\\ln(1{,}05)/\\ln(2) \\approx 0{,}0704$ — der Kehrwert.`,
+        [
+          'Verdopplung als Gleichung: $1{,}05^{t} = 2$.',
+          'Basiswechsel: $t = \\log_{1{,}05}(2) = \\ln(2)/\\ln(1{,}05)$.',
+          'Sanity-Check: 72er-Regel sagt etwa $14$ Jahre.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
     ],
     // [5] Summen-Falle: ln(a+b) ≠ ln(a) + ln(b)
     5: [
@@ -4672,24 +4870,24 @@ export const algebraSubGoalTasks = {
       ),
       mc(
         'Vereinfache $\\ln(e^7)$.',
-        ['$7$', '$e$', '$e^7$', 'keine Vereinfachung möglich'],
+        ['$7$', '$e$', '$e^7$', '$\\ln(7)$'],
         0,
-        `**Ansatz:** $\\ln(e^x) = x$.
+        `**Ansatz:** Umkehr-Identität: $\\ln(e^x) = x$ für jedes reelle $x$.
 
-**Rechnung:** $\\ln(e^7) = 7$.
+**Rechnung:** $\\ln(e^7) = 7$ direkt — $\\ln$ und $e$ heben sich vollständig auf.
 
-**Probe:** $e^7 \\approx 1097$; $\\ln(1097) \\approx 7$. ✓
+**Probe:** $e^7 \\approx 1097$; $\\ln(1097) \\approx 7$. ✓ Alternativ über die Potenzregel: $\\ln(e^7) = 7 \\cdot \\ln(e) = 7 \\cdot 1 = 7$.
 
-**Typischer Fehler:** Funktionen heben nicht aufeinander auf.`,
+**Typischer Fehler:** Die Umkehr-Identität nicht erkennen und Argument $e^7$ als Endwert stehen lassen, oder Basis und Exponent vermischen ($\\ln(7)$ statt $7$).`,
         [
           'Umkehr-Identität anwenden.',
           '$\\ln(e^x) = x$.',
-          'Einfach $7$.',
+          'Hier $x = 7$.',
         ],
         {
-          1: '$e$ wäre $\\ln(e^1)$.',
-          2: '$e^7$ ist das Argument — $\\ln$ "nimmt den Exponenten heraus".',
-          3: 'Doch — Umkehrung macht es sehr einfach.',
+          1: '$e$ wäre $\\ln(e^1)$ — hier ist der Exponent aber $7$, nicht $1$.',
+          2: '$e^7$ ist das Argument vom $\\ln$, nicht das Ergebnis. $\\ln$ „nimmt den Exponenten heraus" und liefert $7$.',
+          3: 'Hier wurde aus $\\ln(e^7)$ nur die $7$ als Argument vom $\\ln$ extrahiert. Tatsächlich verwandelt die Potenzregel $\\ln(e^7) = 7 \\cdot \\ln(e) = 7 \\cdot 1 = 7$ — also $7$ als Zahl, nicht $\\ln(7) \\approx 1{,}946$.',
         },
         { stage: 'apply-guided', subGoal: 6, uses: ['log-umkehr'] },
       ),
@@ -4773,6 +4971,31 @@ export const algebraSubGoalTasks = {
           '$x = 3\\ln 2 \\approx 2{,}079$.',
         ],
         { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-potenz'] },
+      ),
+      // Bonus SG 6 — sorting · transfer · uses=[log-umkehr, log-def]
+      // Schritt-Reihenfolge beim Lösen einer Exponentialgleichung mit linearem Exponent.
+      sorting(
+        'Bringe die Schritte zum Lösen der Gleichung $e^{2x+1} = 5$ nach $x$ in die richtige Reihenfolge.',
+        [
+          'Beide Seiten logarithmieren: $\\ln(e^{2x+1}) = \\ln(5)$.',
+          'Umkehr-Identität auf der linken Seite anwenden: $2x + 1 = \\ln(5)$.',
+          'Konstante subtrahieren: $2x = \\ln(5) - 1$.',
+          'Durch den Koeffizienten teilen: $x = \\dfrac{\\ln(5) - 1}{2}$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** $x$ steht im Exponenten — also logarithmieren, dann mit Umkehr-Identität auflösen, danach algebraisch nach $x$ umstellen.
+
+**Rechnung:** $x = (\\ln 5 - 1)/2 \\approx (1{,}609 - 1)/2 \\approx 0{,}305$.
+
+**Probe:** $e^{2 \\cdot 0{,}305 + 1} = e^{1{,}609} \\approx 5$. ✓
+
+**Typischer Fehler:** Mit $-1$ und $/2$ anfangen, bevor logarithmiert wurde — bringt nichts, weil $x$ noch im Exponenten gefangen ist. Erst muss $\\ln$ den Exponenten freilegen.`,
+        [
+          'Erst muss $x$ aus dem Exponenten — wie?',
+          '$\\ln$ auf beide Seiten, dann Umkehr-Identität auf $\\ln(e^{...})$.',
+          'Dann ganz normal nach $x$ umstellen.',
+        ],
+        { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-def'] },
       ),
     ],
   },
