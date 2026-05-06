@@ -3699,6 +3699,31 @@ export const algebraSubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
       ),
+      // Bonus SG 0 — sorting · transfer · uses=[wurzel-bruchpot]
+      // Schritt-Reihenfolge bei der Umformung Wurzel → Bruchpotenz, baut Mechanik aus.
+      sorting(
+        'Bringe die Schritte zur Umformung von $\\sqrt[5]{x^3}$ in die Bruchpotenz-Form in die richtige Reihenfolge.',
+        [
+          'Wurzelgrad ablesen — die kleine Zahl vor der Wurzel: $n = 5$.',
+          'Exponent unter der Wurzel ablesen: $m = 3$.',
+          'Regel anwenden $\\sqrt[n]{x^m} = x^{m/n}$ — Zähler $m$, Nenner $n$.',
+          'Ergebnis hinschreiben: $x^{3/5}$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Die Bruchpotenz-Schreibweise hat den Wurzelgrad **immer im Nenner** und den inneren Exponenten **im Zähler**.
+
+**Rechnung:** $\\sqrt[5]{x^3} = x^{3/5}$.
+
+**Probe:** Setze $x = 32$: $\\sqrt[5]{32^3} = \\sqrt[5]{32768} = 8$. Direkt: $32^{3/5} = (32^{1/5})^3 = 2^3 = 8$. ✓
+
+**Typischer Fehler:** Zähler und Nenner verwechseln und $x^{5/3}$ schreiben — passiert oft, wenn man die Reihenfolge nicht systematisch durchläuft.`,
+        [
+          'Erst Wurzelgrad, dann inneren Exponenten ablesen.',
+          'Wurzelgrad → Nenner, innere Potenz → Zähler.',
+          '$\\sqrt[5]{x^3} = x^{3/5}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
     ],
     // [1] Rechenregeln / Summe-Falle / Vereinfachen
     1: [
@@ -3721,24 +3746,24 @@ export const algebraSubGoalTasks = {
       ),
       mc(
         'Vereinfache $\\sqrt{8} \\cdot \\sqrt{2}$.',
-        ['$4$', '$\\sqrt{10}$', '$2\\sqrt{5}$', '$\\sqrt{16}$'],
+        ['$4$', '$\\sqrt{10}$', '$2\\sqrt{5}$', '$2\\sqrt{2}$'],
         0,
         `**Ansatz:** Produkt unter der Wurzel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.
 
-**Rechnung:** $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{16} = 4$.
+**Rechnung:** $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{8 \\cdot 2} = \\sqrt{16} = 4$.
 
-**Probe:** $\\sqrt{8} \\approx 2{,}83$; $2{,}83 \\cdot 1{,}41 \\approx 4$. ✓
+**Probe:** Alternative: $\\sqrt{8} = 2\\sqrt{2}$, dann $2\\sqrt{2} \\cdot \\sqrt{2} = 2 \\cdot 2 = 4$. ✓
 
-**Typischer Fehler:** Beim Addieren landet man bei $\\sqrt{10}$, aber hier ist Multiplikation.`,
+**Typischer Fehler:** Beim Addieren landet man bei $\\sqrt{10}$ — aber hier steht Multiplikation, nicht Addition.`,
         [
           'Produkt-Regel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.',
           '$8 \\cdot 2 = 16$.',
           '$\\sqrt{16} = ?$',
         ],
         {
-          1: '$\\sqrt{10}$ wäre $\\sqrt{8 + 2}$ — aber hier steht Multiplikation.',
-          2: 'Auch falsch — wäre das Ergebnis einer anderen Rechnung.',
-          3: '$\\sqrt{16}$ stimmt, aber die einfachste Form ist $4$.',
+          1: '$\\sqrt{10} = \\sqrt{8+2}$ — hier wurde addiert statt multipliziert. Die Produkt-Regel sagt $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{8 \\cdot 2}$, nicht $\\sqrt{8+2}$.',
+          2: '$2\\sqrt{5} = \\sqrt{20}$ — auch eine falsche Zerlegung. Korrekt: $\\sqrt{8 \\cdot 2} = \\sqrt{16} = 4$, kein Faktor $5$ unter der Wurzel.',
+          3: 'Hier wurde nur die Vereinfachung $\\sqrt{8} = 2\\sqrt{2}$ stehengelassen und der zweite Faktor $\\sqrt{2}$ vergessen. Korrekt: $2\\sqrt{2} \\cdot \\sqrt{2} = 2 \\cdot 2 = 4$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['wurzel-produkt'] },
       ),
@@ -3822,6 +3847,31 @@ export const algebraSubGoalTasks = {
           'Gleichartige Wurzeln $\\to$ Koeffizienten addieren.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
+      ),
+      // Bonus SG 1 — Prüfungs-MC · transfer · uses=[wurzel-vereinfachen, wurzel-summe-nein]
+      // Klassische Klausur-Falle: Wurzeln subtrahieren mit Summen-Linearitäts-Falle.
+      mc(
+        '[PRÜFUNG] Vereinfache $\\sqrt{45} - \\sqrt{20}$ und gib das Ergebnis in einfachster Form an.',
+        ['$\\sqrt{5}$', '$5$', '$5\\sqrt{5}$', '$\\sqrt{65}$'],
+        0,
+        `**Ansatz:** Beide Wurzeln zuerst auf $k\\sqrt{5}$-Form vereinfachen, **dann** Koeffizienten subtrahieren.
+
+**Rechnung:** $\\sqrt{45} = \\sqrt{9 \\cdot 5} = 3\\sqrt{5}$. $\\sqrt{20} = \\sqrt{4 \\cdot 5} = 2\\sqrt{5}$. Differenz: $3\\sqrt{5} - 2\\sqrt{5} = (3-2)\\sqrt{5} = \\sqrt{5}$.
+
+**Probe:** Dezimal: $\\sqrt{45} \\approx 6{,}708$, $\\sqrt{20} \\approx 4{,}472$, Differenz $\\approx 2{,}236 = \\sqrt{5}$. ✓
+
+**Typischer Fehler:** Wurzel auf Differenz „ziehen" und $\\sqrt{45-20} = \\sqrt{25} = 5$ rechnen — verboten, weil $\\sqrt{a-b} \\neq \\sqrt{a} - \\sqrt{b}$.`,
+        [
+          'Wurzeln können nur addiert/subtrahiert werden, wenn der Radikand gleich ist.',
+          'Erst $\\sqrt{45}$ und $\\sqrt{20}$ auf $k\\sqrt{5}$ vereinfachen.',
+          '$3\\sqrt{5} - 2\\sqrt{5} = ?$',
+        ],
+        {
+          1: 'Hier wurde die Wurzel auf die Differenz „verteilt": $\\sqrt{45-20} = \\sqrt{25} = 5$. Verboten, weil $\\sqrt{a-b} \\neq \\sqrt{a} - \\sqrt{b}$ — gleiches Problem wie bei der Summen-Falle.',
+          2: 'Hier wurden die Koeffizienten **addiert** statt subtrahiert: $3 + 2 = 5$, also $5\\sqrt{5}$. Die Aufgabe verlangt aber Differenz, nicht Summe.',
+          3: 'Hier wurde der Radikand addiert: $\\sqrt{45+20} = \\sqrt{65}$. Doppelt falsch — erst, weil das die Summe statt Differenz wäre, und zweitens, weil die Wurzel nicht über Summen verteilt werden darf.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-summe-nein'] },
       ),
       sorting(
         'Bringe die Schritte zur Vereinfachung von $\\sqrt{200}$ in die richtige Reihenfolge.',
@@ -3967,6 +4017,38 @@ export const algebraSubGoalTasks = {
           'Quotient unter der Wurzel.',
           '$\\sqrt{6}/\\sqrt{2} = \\sqrt{6/2}$.',
           '$6/2 = 3$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
+      ),
+      // Bonus SG 2 — matching · transfer · uses=[nenner-rational, wurzel-vereinfachen]
+      // Ordne Bruch ↔ Nenner-rationale Form. Trainiert verschiedene Erweiterungs-Muster.
+      matching(
+        'Ordne jedem Bruch seine vollständig vereinfachte Form mit rationalem Nenner zu.',
+        [
+          { left: '$\\dfrac{1}{\\sqrt{2}}$',          right: '$\\dfrac{\\sqrt{2}}{2}$' },
+          { left: '$\\dfrac{2}{\\sqrt{3}}$',          right: '$\\dfrac{2\\sqrt{3}}{3}$' },
+          { left: '$\\dfrac{\\sqrt{6}}{\\sqrt{2}}$',  right: '$\\sqrt{3}$' },
+          { left: '$\\dfrac{4}{\\sqrt{8}}$',          right: '$\\sqrt{2}$' },
+        ],
+        `**Ansatz:** Drei Strategien:
+
+1. Reine Wurzel im Nenner $\\Rightarrow$ mit dieser Wurzel erweitern.
+2. Wurzel über Wurzel $\\Rightarrow$ Quotient-Regel: $\\sqrt{a}/\\sqrt{b} = \\sqrt{a/b}$.
+3. Wurzel im Nenner zuerst vereinfachen, dann erweitern.
+
+**Rechnung:**
+· $\\dfrac{1}{\\sqrt{2}} \\cdot \\dfrac{\\sqrt{2}}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$.
+· $\\dfrac{2}{\\sqrt{3}} \\cdot \\dfrac{\\sqrt{3}}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}$.
+· $\\dfrac{\\sqrt{6}}{\\sqrt{2}} = \\sqrt{6/2} = \\sqrt{3}$ (Quotient-Regel).
+· $\\dfrac{4}{\\sqrt{8}} = \\dfrac{4}{2\\sqrt{2}} = \\dfrac{2}{\\sqrt{2}} = \\dfrac{2\\sqrt{2}}{2} = \\sqrt{2}$.
+
+**Probe:** Dezimal-Vergleich: $1/\\sqrt{2} \\approx 0{,}707 \\approx \\sqrt{2}/2$ ✓. $4/\\sqrt{8} \\approx 1{,}414 \\approx \\sqrt{2}$ ✓.
+
+**Typischer Fehler:** Wurzel im Nenner stehen lassen oder vor dem Erweitern nicht vereinfachen — beides macht das Ergebnis nicht „falsch", aber nicht in einfachster Form.`,
+        [
+          'Reine Wurzel: mit der gleichen Wurzel erweitern.',
+          'Wurzel/Wurzel: zur einen Wurzel zusammenfassen.',
+          'Wurzel mit Quadratzahl-Faktor: erst vereinfachen, dann erweitern.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
       ),

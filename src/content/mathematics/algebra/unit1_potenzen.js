@@ -169,7 +169,7 @@ export const exercises_alg_u1 = {
       2: '$x^{2}$ wäre das Ergebnis, wenn man die Wurzel *vergessen* hätte. Aber die Wurzel halbiert den Exponenten: $\\sqrt{x^{2}} = x^{2/2} = x^{1}$ — mit Betrag, also $|x|$.',
       3: '$1/x$ ergibt sich nie aus einer Wurzel, sondern aus negativen Exponenten. Hier: $\\sqrt{x^{2}} = x^{2\\cdot 1/2} = x^{1}$ — betragsmäßig, also $|x|$.',
     },
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['wurzel-bruchpot', 'wurzel-def-bereich'] },
 },
   'ex-alg-1-2-b': {
     id: 'ex-alg-1-2-b', lessonId: 'alg-1-2', type: 'number-input',
@@ -212,7 +212,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       2: '$3\\sqrt{2}$ würde $\\sqrt{9\\cdot 2} = \\sqrt{18}$ bedeuten — nicht $\\sqrt{12}$. Zerlege $12 = 4 \\cdot 3$: $\\sqrt{12} = 2\\sqrt{3}$.',
       3: '$12 = 4 \\cdot 3$ hat den Quadratzahl-Faktor $4$; der lässt sich herausziehen: $\\sqrt{12} = 2\\sqrt{3}$. Wurzeln mit Quadratzahl-Faktoren müssen immer vereinfacht werden.',
     },
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
 },
   'ex-alg-1-2-d': {
     id: 'ex-alg-1-2-d', lessonId: 'alg-1-2', type: 'true-false',
@@ -230,7 +230,7 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Rechne beide Seiten der Gleichung aus und vergleiche.',
       'Die Produktregel gilt — die Summenregel *nicht*.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-summe-nein'] },
 },
   'ex-alg-1-2-mastery': {
     id: 'ex-alg-1-2-mastery', lessonId: 'alg-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -586,6 +586,28 @@ $$\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$$
 - $\\sqrt{72} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}$.
 
 **Merke — Definitionsbereich:** Die Quadratwurzel ist nur für $x \\geq 0$ in ℝ definiert. Ungerade Wurzeln ($\\sqrt[3]{\\ldots}$) gibt's auch für negative Zahlen: $\\sqrt[3]{-8} = -2$.`,
+      },
+      {
+        id: 'alg-1-2-s2b', type: 'explanation-intuitive', title: 'Anschauung: Wurzel als Umkehrung der Potenz',
+        content: `Wenn $\\sqrt{x} = x^{1/2}$, was steckt geometrisch dahinter?
+
+Quadrieren ($y = x^2$) macht aus $2$ den Wert $4$, aus $3$ den Wert $9$. **Wurzelziehen ($y = \\sqrt{x}$) macht das genau rückgängig**: aus $4$ wird $2$, aus $9$ wird $3$. Beide Funktionen sind *Umkehrfunktionen* zueinander (für $x \\geq 0$).
+
+**Spiegelung an der Diagonalen $y = x$:** Wenn du den Graph von $y = x^2$ an der Geraden $y = x$ spiegelst, bekommst du genau den Graph von $y = \\sqrt{x}$. Diese Symmetrie ist das visuelle Gesicht der Identität $\\sqrt{x^2} = |x|$ (für $x \\geq 0$ einfach $x$).`,
+      },
+      {
+        id: 'alg-1-2-s2c', type: 'visualization', title: 'Interaktiv: $\\sqrt{x}$ als Spiegelung von $x^2$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x, color: '#94a3b8', label: 'y = x' },
+            { fn: (x) => x * x, color: '#3b82f6', label: 'x²' },
+            { fn: (x) => Math.sqrt(x), color: '#10b981', label: '√x' },
+          ],
+          xRange: [0, 4],
+          yRange: [0, 4],
+          showGrid: true,
+        },
       },
       { id: 'alg-1-2-s3', type: 'exercise', title: 'Aufgabe 1 — Quadratwurzel von $x^2$', exerciseRef: 'ex-alg-1-2-a' },
       { id: 'alg-1-2-s4', type: 'exercise', title: 'Aufgabe 2 — Dritte Wurzel', exerciseRef: 'ex-alg-1-2-b' },
