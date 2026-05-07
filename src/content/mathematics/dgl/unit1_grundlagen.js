@@ -11,7 +11,13 @@ export const exercises_dgl_u1 = {
       'Eine Gleichung, die nur Integrale enthält',
     ],
     correctIndex: 1,
-    explanation: 'Eine DGL enthält eine gesuchte Funktion y(x) und mindestens eine ihrer Ableitungen y\', y\'\', ... Das Ziel: die Funktion y(x) finden!',
+    explanation: `**Ansatz:** Das Wort *Differential* zeigt auf die Ableitung — eine DGL muss also Ableitungen einer unbekannten Funktion enthalten.
+
+**Rechnung:** Beispiel $y' = 2y$: hier kommt die unbekannte Funktion $y(x)$ und ihre Ableitung $y'$ vor. Gesucht: alle $y(x)$, die diese Gleichung erfüllen.
+
+**Probe:** $y(x) = e^{2x}$ einsetzen: $y' = 2e^{2x} = 2y$ ✓ — die Funktion löst die DGL.
+
+**Typischer Fehler:** Man hält jede Gleichung mit $y$ für eine DGL. Erst wenn auch eine *Ableitung* von $y$ vorkommt, ist es eine Differentialgleichung.`,
     hints: [
       'Was bedeutet das Wort "Differential" mathematisch?',
       'Es bezieht sich auf die Ableitung (Differentialquotient).',
@@ -28,7 +34,13 @@ export const exercises_dgl_u1 = {
     question: 'Welche Ordnung hat die DGL $y\'\' + 3y\' - 2y = 0$?',
     options: ['Ordnung 0', 'Ordnung 1', 'Ordnung 2', 'Ordnung 3'],
     correctIndex: 2,
-    explanation: 'Die Ordnung einer DGL ist die höchste vorkommende Ableitung. Hier ist $y\'\'$ (zweite Ableitung) die höchste, also Ordnung 2.',
+    explanation: `**Ansatz:** Die *Ordnung* einer DGL ist definiert als die höchste vorkommende Ableitung — unabhängig davon, mit welchem Koeffizienten sie multipliziert ist.
+
+**Rechnung:** In $y'' + 3y' - 2y = 0$ stehen $y''$ (zweite Ableitung), $y'$ (erste Ableitung) und $y$ (nullte Ableitung). Die höchste ist $y''$ → Ordnung 2.
+
+**Probe:** Wären die Ableitungen einer Lösung explizit, müsstest du auch die zweite Ableitung berechnen — z. B. $y = e^{\\lambda x}$ liefert $y'' = \\lambda^2 e^{\\lambda x}$, also wirklich Ordnung 2.
+
+**Typischer Fehler:** Sich am Vorfaktor ($3y'$) orientieren statt an der Anzahl der Striche, oder die niedrigste statt die höchste Ableitung als Ordnung wählen.`,
     hints: [
       'Welche ist die höchste vorkommende Ableitung in der DGL?',
       'Zähle die Striche: $y\'$ ist 1. Ordnung, $y\'\'$ ist 2. Ordnung.',
@@ -44,7 +56,13 @@ export const exercises_dgl_u1 = {
     id: 'ex-dgl-1-1-c', lessonId: 'dgl-1-1', type: 'true-false',
     statement: 'Die DGL $y\' = y^2 + x$ ist linear.',
     correct: false,
-    explanation: 'Die DGL ist nichtlinear, weil $y^2$ vorkommt. Bei einer linearen DGL darf y und seine Ableitungen nur in der 1. Potenz auftreten (also $y$, $y\'$, $y\'\'$, ... aber nicht $y^2$, $\\sin(y)$, $e^y$, ...).',
+    explanation: `**Ansatz:** Linearität-Test: $y$ und alle Ableitungen dürfen nur in 1. Potenz vorkommen — keine Produkte $y\\cdot y'$, keine Funktionen wie $\\sin(y)$, $e^y$, $y^2$.
+
+**Rechnung:** In $y' = y^2 + x$ steht $y^2$ → 2. Potenz → Linearitätsbedingung verletzt → DGL ist *nichtlinear*. Die Aussage ist also **falsch**.
+
+**Probe:** Standard-Form prüfen: lineare DGL 1. Ordnung wäre $y' + p(x)\\,y = q(x)$. Mit $y^2$ kann man die Gleichung nicht in diese Form bringen — daher nichtlinear.
+
+**Typischer Fehler:** "Linear" mit "rechte Seite ist linear in $x$" verwechseln. Linear bezieht sich auf $y$ und seine Ableitungen, NICHT auf die unabhängige Variable $x$ — $x$ und beliebige Funktionen $f(x)$ sind in linearen DGL erlaubt.`,
     hints: [
       'Was bedeutet "linear" im DGL-Kontext?',
       '$y$ und alle Ableitungen dürfen nur in der 1. Potenz vorkommen.',
@@ -61,18 +79,13 @@ export const exercises_dgl_u1 = {
       '$y(x) = 3e^{x}$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zwei Bedingungen prüfen: (1) DGL erfüllt, (2) Anfangsbedingung erfüllt.
+    explanation: `**Ansatz:** Allgemeine Lösung von $y'=ky$ ist $y=C\\,e^{kx}$. Anfangsbedingung $y(0)=3$ liefert die Konstante $C$.
 
-**Prüfung $y = 3e^{2x}$:**
-- Ableitung: $y' = 3 \\cdot 2 e^{2x} = 6e^{2x} = 2 \\cdot (3e^{2x}) = 2y$ ✓ (DGL erfüllt)
-- Anfangsbedingung: $y(0) = 3 \\cdot e^{0} = 3 \\cdot 1 = 3$ ✓
+**Rechnung:** Mit $k=2$ ist die Lösungsfamilie $y=C\\,e^{2x}$. Einsetzen: $y(0)=C\\cdot e^{0}=C$, also $C=3$. Damit ist $y(x)=3e^{2x}$.
 
-**Warum die anderen falsch sind:**
-- B: $y(0) = 1 + 3 = 4 \\neq 3$ und $y'(x) = 2e^{2x} \\neq 2y$.
-- C: $y' = 6e^{3x} \\neq 2 \\cdot 2e^{3x}$ — DGL nicht erfüllt (Faktor im Exponent falsch).
-- D: $y' = 3e^x \\neq 2 \\cdot 3e^x$ — falscher Exponent.
+**Probe:** Ableiten: $y'=3\\cdot 2 e^{2x}=6e^{2x}$. Vergleich mit $2y=2\\cdot 3e^{2x}=6e^{2x}$ → DGL erfüllt ✓. Anfangswert: $y(0)=3e^{0}=3$ ✓.
 
-**Merke:** Die allgemeine Lösung von $y' = ky$ ist $y = C e^{kx}$; die Anfangsbedingung fixiert $C$.`,
+**Typischer Fehler:** Die Anfangsbedingung additiv ($e^{2x}+3$) statt als Vorfaktor einbauen, oder Vorfaktor $C$ und Exponentkoeffizient $k$ vertauschen ($2e^{3x}$ statt $3e^{2x}$).`,
     hints: [
       'Zwei Bedingungen müssen stimmen: DGL **und** $y(0) = 3$.',
       'Die allgemeine Lösung von $y\' = ky$ ist $y = C e^{kx}$. Hier $k = 2$.',
@@ -95,7 +108,13 @@ export const exercises_dgl_u1 = {
       '$dy \\cdot dx = g(x) \\cdot h(y)$',
     ],
     correctIndex: 0,
-    explanation: 'Man trennt die Variablen: alles mit y auf eine Seite, alles mit x auf die andere. Dann integriert man beide Seiten: $\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx$.',
+    explanation: `**Ansatz:** Ziel der Trennung der Variablen: alle $y$-Terme (inkl. $dy$) auf die eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere — sodass beide Seiten unabhängig integriert werden können.
+
+**Rechnung:** Aus $\\frac{dy}{dx} = g(x)\\cdot h(y)$ folgt durch Multiplikation mit $dx$ und Division durch $h(y)$: $\\frac{dy}{h(y)} = g(x)\\,dx$. Anschließend $\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx$.
+
+**Probe:** Beispiel $y\' = xy$: hier ist $g(x)=x$, $h(y)=y$. Trennung: $\\frac{dy}{y} = x\\,dx$ — passt zur Standardform.
+
+**Typischer Fehler:** Aus dem Produkt eine Summe machen ($g(x)+h(y)$) oder $dx$ und $dy$ vertauschen. Ziel ist sauber: $y$-Anteile links, $x$-Anteile rechts, beide Differentiale auf der jeweils richtigen Seite.`,
     hints: [
       'Was ist die Idee bei "Trennung der Variablen"?',
       'Alle $y$-Terme (inkl. $dy$) auf eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere.',
@@ -117,7 +136,13 @@ export const exercises_dgl_u1 = {
       '$y = Ce^{-x^2/2}$',
     ],
     correctIndex: 1,
-    explanation: 'Trennung: $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Auflösen: $y = Ce^{x^2/2}$ mit $C = \\pm e^{C_1}$.',
+    explanation: `**Ansatz:** Rechte Seite $xy$ ist Produkt aus reiner $x$-Funktion ($x$) und reiner $y$-Funktion ($y$) → Trennung der Variablen anwendbar.
+
+**Rechnung:** $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Exponieren: $|y| = e^{C_1}\\,e^{x^2/2}$ → $y = C\\,e^{x^2/2}$ mit $C = \\pm e^{C_1} \\in \\mathbb{R}$.
+
+**Probe:** Ableiten von $y = C\\,e^{x^2/2}$: $y\' = C\\cdot x\\cdot e^{x^2/2} = x\\cdot y$ ✓. Allgemeine Lösungsschar mit $C \\in \\mathbb{R}$.
+
+**Typischer Fehler:** $\\int x\\,dx$ als $x$ statt $x^2/2$ integrieren ($\\to e^x$), oder das Vorzeichen im Exponenten umkehren ($\\to e^{-x^2/2}$ wäre Lösung von $y\'=-xy$).`,
     hints: [
       'Trenne die Variablen: $y$-Terme links, $x$-Terme rechts.',
       'Schritt 1: $\\frac{dy}{y} = x\\,dx$.',
@@ -151,7 +176,13 @@ export const exercises_dgl_u1 = {
     correctValue: 22.17,
     tolerance: 0.1,
     unit: '',
-    explanation: 'Trennung: $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y = Ce^{2x}$. Anfangsbedingung: $y(0) = C = 3$. Also $y(1) = 3e^2 \\approx 22.17$.',
+    explanation: `**Ansatz:** Trennung der Variablen, dann allgemeine Lösung über die Anfangsbedingung fixieren und an der Stelle $x=1$ auswerten.
+
+**Rechnung:** $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y(x) = C\\,e^{2x}$. AB: $y(0) = C\\,e^{0} = C = 3$. Also $y(x) = 3\\,e^{2x}$ und $y(1) = 3\\,e^{2} \\approx 22{,}17$.
+
+**Probe:** $y\'(x) = 6\\,e^{2x} = 2\\cdot 3\\,e^{2x} = 2y$ ✓; $y(0) = 3$ ✓.
+
+**Typischer Fehler:** Die AB additiv einbauen ($e^{2x}+3$ → $y(0)=4$, falsch) oder den Exponentkoeffizienten mit dem Anfangswert verwechseln ($3e^{3x}$ → $y(0)=3$ ✓ aber DGL verletzt).`,
     hints: [
       'Trennung der Variablen liefert die allgemeine Lösung.',
       'Form: $y = Ce^{2x}$. Setze $x=0$ ein, um $C$ zu bestimmen.',
@@ -168,7 +199,13 @@ export const exercises_dgl_u1 = {
       '$y = 5 - 3x$',
     ],
     correctIndex: 1,
-    explanation: 'Trennung: $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y = Ce^{-3x}$. AWP: $y(0) = C = 5$. Also $y = 5e^{-3x}$.',
+    explanation: `**Ansatz:** Trennung der Variablen, dann $C$ aus der Anfangsbedingung bestimmen.
+
+**Rechnung:** $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y(x) = C\\,e^{-3x}$. AB: $y(0) = C\\,e^{0} = C = 5$. Damit $y(x) = 5\\,e^{-3x}$.
+
+**Probe:** $y\'(x) = -15\\,e^{-3x} = -3\\cdot 5\\,e^{-3x} = -3y$ ✓ (DGL erfüllt). $y(0) = 5\\,e^{0} = 5$ ✓ (AB erfüllt). Verhalten: exponentieller Zerfall, $y \\to 0$ für $x \\to \\infty$.
+
+**Typischer Fehler:** Vorzeichen im Exponenten vergessen ($e^{+3x}$) oder Vorfaktor und Exponentkoeffizient vertauschen ($-3e^{5x}$). Merkregel: Koeffizient $k$ aus $y\'=ky$ steht im Exponenten, Vorfaktor $C$ aus der Anfangsbedingung.`,
     hints: [
       'Trennung der Variablen: $\\frac{dy}{y} = -3 \\, dx$.',
       'Integrieren ergibt $\\ln|y| = -3x + C_1$, also $y = Ce^{-3x}$.',
@@ -486,10 +523,27 @@ Eine DGL ist **linear**, wenn $y$ und seine Ableitungen nur in der **1. Potenz**
 - $y' = y^2$ → **nichtlinear** ✗ (wegen $y^2$)
 - $y'' \\cdot y = 1$ → **nichtlinear** ✗ (Produkt $y'' \\cdot y$)
 
+**Homogen vs. inhomogen** (lineare DGL):
+Standardform $y^{(n)} + p_{n-1}(x)\\,y^{(n-1)} + \\ldots + p_0(x)\\,y = q(x)$:
+- $q(x) \\equiv 0$ → **homogen** (z. B. $y' + 3y = 0$).
+- $q(x) \\not\\equiv 0$ → **inhomogen** (z. B. $y' + 3y = \\sin x$, $q(x)=\\sin x$).
+
+Für homogene lineare DGL gilt das *Superpositionsprinzip*: Linearkombinationen von Lösungen sind wieder Lösungen.
+
 **Anfangswertproblem (AWP):**
 DGL + Anfangsbedingung(en), z.B.:
 $$y' = 2y, \\quad y(0) = 3$$
-Die DGL allein hat unendlich viele Lösungen ($y = Ce^{2x}$ für jedes $C$). Die Anfangsbedingung wählt genau eine aus ($C = 3$).`,
+Die DGL allein hat unendlich viele Lösungen ($y = Ce^{2x}$ für jedes $C$). Die Anfangsbedingung wählt genau eine aus ($C = 3$).
+
+**Gewöhnlich (ODE) vs. partiell (PDE):**
+- **ODE** (*ordinary*): gesuchte Funktion hängt von **einer** unabh. Variablen ab, z. B. $y(x)$. Ableitungen mit $\\frac{d}{dx}$. Beispiel: $y'' + \\omega^2 y = 0$.
+- **PDE** (*partial*): gesuchte Funktion hängt von **mehreren** unabh. Variablen ab, z. B. $u(x, t)$. Ableitungen mit $\\frac{\\partial}{\\partial x}$, $\\frac{\\partial}{\\partial t}$. Beispiel: Wärmeleitung $\\frac{\\partial u}{\\partial t} = \\alpha\\,\\frac{\\partial^2 u}{\\partial x^2}$.
+
+| Kriterium | ODE | PDE |
+|---|---|---|
+| Unabh. Variablen | 1 ($x$, $t$, …) | $\\geq 2$ ($x$ und $t$ etc.) |
+| Ableitungs­operator | $\\frac{d}{dx}$ | $\\frac{\\partial}{\\partial x}$, $\\frac{\\partial}{\\partial t}$ |
+| Beispiel | $y' + 2y = 0$ | $u_t = \\alpha\\,u_{xx}$ |`,
       },
       { id: 'dgl-1-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-1-1-a' },
       { id: 'dgl-1-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-1-1-b' },
@@ -579,23 +633,25 @@ $$\\frac{dy}{dx} = g(x) \\cdot h(y)$$
 3. Auflösen: $y = Ce^{x^2/2}$ (mit $C = \\pm e^{C_1}$)`,
       },
       {
-        id: 'dgl-1-2-s2', type: 'explanation-formal', title: 'Weiteres Beispiel',
-        content: `**Beispiel mit AWP:** $y' = 2ty$, $y(0) = 5$
+        id: 'dgl-1-2-s2', type: 'explanation-formal', title: 'Trennung der Variablen — Regeln und Beispiel',
+        content: `**Anwendbarkeitsbedingung:** Die rechte Seite muss als Produkt einer reinen $x$-Funktion und einer reinen $y$-Funktion schreibbar sein:
+$$\\frac{dy}{dx} = f(x)\\cdot g(y)$$
 
-**Schritt 1 — Trennen:**
-$$\\frac{dy}{y} = 2t\\,dt$$
+**Vier-Schritte-Rezept:**
 
-**Schritt 2 — Integrieren:**
-$$\\int \\frac{dy}{y} = \\int 2t\\,dt$$
-$$\\ln|y| = t^2 + C_1$$
+| Schritt | Formel | Beispiel: $y' = 2ty$, $y(0)=5$ |
+|---|---|---|
+| 1. Trennen | $\\dfrac{dy}{g(y)} = f(x)\\,dx$ | $\\dfrac{dy}{y} = 2t\\,dt$ |
+| 2. Integrieren | $\\int \\dfrac{dy}{g(y)} = \\int f(x)\\,dx + C$ | $\\ln\\lvert y\\rvert = t^2 + C_1$ |
+| 3. Auflösen nach $y$ | $y(x) = \\ldots$ | $y = C\\,e^{t^2}$ |
+| 4. Anfangsbedingung | $y(x_0) = y_0 \\Rightarrow C$ | $y(0) = C = 5 \\Rightarrow y(t) = 5\\,e^{t^2}$ |
 
-**Schritt 3 — Auflösen:**
-$$y = Ce^{t^2}$$
+**Wichtige Stamm­funktion mit Beträgen:**
+$$\\int \\frac{dy}{y} = \\ln\\lvert y\\rvert + C$$
+Beträge nötig, weil $\\ln$ ohne Beträge nur für $y > 0$ definiert wäre. Beim Auflösen wird daraus
+$$y = \\pm e^{C_1}\\,e^{f(x)\\text{-Anteil}} = C\\,e^{f(x)\\text{-Anteil}}, \\quad C \\in \\mathbb{R}\\setminus\\{0\\}.$$
 
-**Schritt 4 — Anfangsbedingung:**
-$$y(0) = Ce^0 = C = 5$$
-
-**Ergebnis:** $y(t) = 5e^{t^2}$`,
+**Konstantenpolitik:** Beim unbestimmten Integrieren beider Seiten entstehen formal $C_1$ (links) und $C_2$ (rechts). In der Praxis fasst man sie zu **einer** Konstante auf der rechten Seite zusammen: $C := C_2 - C_1$.`,
       },
       { id: 'dgl-1-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-1-2-a' },
       { id: 'dgl-1-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-1-2-b' },
