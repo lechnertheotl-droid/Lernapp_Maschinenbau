@@ -30,7 +30,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB — Content-Bundle wächst mit jedem Lesson-Ausbau
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MiB — Topic-Chunks via manualChunks gesplittet (siehe build.rollupOptions)
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -43,5 +43,26 @@ export default defineConfig({
   ],
   resolve: {
     alias: { '@': path.resolve(__dirname, './src') }
-  }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          const norm = id.replace(/\\/g, '/')
+
+          // Pro Topic-Slug ein Chunk: mathematics/<slug>/* und subgoal_tasks/<slug>.js
+          // landen zusammen in `content-<slug>`. So fällt jedes Topic separat aus dem
+          // Main-Bundle und bleibt klein genug fürs PWA-Workbox-Cache-Limit.
+          let m = norm.match(/\/src\/content\/(?:mathematics|engineering|programming)\/([^/]+)\//)
+          if (m) return `content-${m[1]}`
+
+          m = norm.match(/\/src\/content\/subgoal_tasks\/([^/.]+)\.js/)
+          if (m) return `content-${m[1]}`
+
+          if (norm.includes('/src/content/practice/')) return 'content-practice'
+          if (norm.includes('/src/content/engineering/maschinenbau')) return 'content-maschinenbau'
+        },
+      },
+    },
+  },
 })
