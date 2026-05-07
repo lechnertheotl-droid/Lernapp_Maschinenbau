@@ -108,7 +108,13 @@ export const exercises_dgl_u1 = {
       '$dy \\cdot dx = g(x) \\cdot h(y)$',
     ],
     correctIndex: 0,
-    explanation: 'Man trennt die Variablen: alles mit y auf eine Seite, alles mit x auf die andere. Dann integriert man beide Seiten: $\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx$.',
+    explanation: `**Ansatz:** Ziel der Trennung der Variablen: alle $y$-Terme (inkl. $dy$) auf die eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere — sodass beide Seiten unabhängig integriert werden können.
+
+**Rechnung:** Aus $\\frac{dy}{dx} = g(x)\\cdot h(y)$ folgt durch Multiplikation mit $dx$ und Division durch $h(y)$: $\\frac{dy}{h(y)} = g(x)\\,dx$. Anschließend $\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx$.
+
+**Probe:** Beispiel $y\' = xy$: hier ist $g(x)=x$, $h(y)=y$. Trennung: $\\frac{dy}{y} = x\\,dx$ — passt zur Standardform.
+
+**Typischer Fehler:** Aus dem Produkt eine Summe machen ($g(x)+h(y)$) oder $dx$ und $dy$ vertauschen. Ziel ist sauber: $y$-Anteile links, $x$-Anteile rechts, beide Differentiale auf der jeweils richtigen Seite.`,
     hints: [
       'Was ist die Idee bei "Trennung der Variablen"?',
       'Alle $y$-Terme (inkl. $dy$) auf eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere.',
@@ -130,7 +136,13 @@ export const exercises_dgl_u1 = {
       '$y = Ce^{-x^2/2}$',
     ],
     correctIndex: 1,
-    explanation: 'Trennung: $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Auflösen: $y = Ce^{x^2/2}$ mit $C = \\pm e^{C_1}$.',
+    explanation: `**Ansatz:** Rechte Seite $xy$ ist Produkt aus reiner $x$-Funktion ($x$) und reiner $y$-Funktion ($y$) → Trennung der Variablen anwendbar.
+
+**Rechnung:** $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Exponieren: $|y| = e^{C_1}\\,e^{x^2/2}$ → $y = C\\,e^{x^2/2}$ mit $C = \\pm e^{C_1} \\in \\mathbb{R}$.
+
+**Probe:** Ableiten von $y = C\\,e^{x^2/2}$: $y\' = C\\cdot x\\cdot e^{x^2/2} = x\\cdot y$ ✓. Allgemeine Lösungsschar mit $C \\in \\mathbb{R}$.
+
+**Typischer Fehler:** $\\int x\\,dx$ als $x$ statt $x^2/2$ integrieren ($\\to e^x$), oder das Vorzeichen im Exponenten umkehren ($\\to e^{-x^2/2}$ wäre Lösung von $y\'=-xy$).`,
     hints: [
       'Trenne die Variablen: $y$-Terme links, $x$-Terme rechts.',
       'Schritt 1: $\\frac{dy}{y} = x\\,dx$.',
@@ -164,7 +176,13 @@ export const exercises_dgl_u1 = {
     correctValue: 22.17,
     tolerance: 0.1,
     unit: '',
-    explanation: 'Trennung: $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y = Ce^{2x}$. Anfangsbedingung: $y(0) = C = 3$. Also $y(1) = 3e^2 \\approx 22.17$.',
+    explanation: `**Ansatz:** Trennung der Variablen, dann allgemeine Lösung über die Anfangsbedingung fixieren und an der Stelle $x=1$ auswerten.
+
+**Rechnung:** $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y(x) = C\\,e^{2x}$. AB: $y(0) = C\\,e^{0} = C = 3$. Also $y(x) = 3\\,e^{2x}$ und $y(1) = 3\\,e^{2} \\approx 22{,}17$.
+
+**Probe:** $y\'(x) = 6\\,e^{2x} = 2\\cdot 3\\,e^{2x} = 2y$ ✓; $y(0) = 3$ ✓.
+
+**Typischer Fehler:** Die AB additiv einbauen ($e^{2x}+3$ → $y(0)=4$, falsch) oder den Exponentkoeffizienten mit dem Anfangswert verwechseln ($3e^{3x}$ → $y(0)=3$ ✓ aber DGL verletzt).`,
     hints: [
       'Trennung der Variablen liefert die allgemeine Lösung.',
       'Form: $y = Ce^{2x}$. Setze $x=0$ ein, um $C$ zu bestimmen.',
@@ -181,7 +199,13 @@ export const exercises_dgl_u1 = {
       '$y = 5 - 3x$',
     ],
     correctIndex: 1,
-    explanation: 'Trennung: $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y = Ce^{-3x}$. AWP: $y(0) = C = 5$. Also $y = 5e^{-3x}$.',
+    explanation: `**Ansatz:** Trennung der Variablen, dann $C$ aus der Anfangsbedingung bestimmen.
+
+**Rechnung:** $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y(x) = C\\,e^{-3x}$. AB: $y(0) = C\\,e^{0} = C = 5$. Damit $y(x) = 5\\,e^{-3x}$.
+
+**Probe:** $y\'(x) = -15\\,e^{-3x} = -3\\cdot 5\\,e^{-3x} = -3y$ ✓ (DGL erfüllt). $y(0) = 5\\,e^{0} = 5$ ✓ (AB erfüllt). Verhalten: exponentieller Zerfall, $y \\to 0$ für $x \\to \\infty$.
+
+**Typischer Fehler:** Vorzeichen im Exponenten vergessen ($e^{+3x}$) oder Vorfaktor und Exponentkoeffizient vertauschen ($-3e^{5x}$). Merkregel: Koeffizient $k$ aus $y\'=ky$ steht im Exponenten, Vorfaktor $C$ aus der Anfangsbedingung.`,
     hints: [
       'Trennung der Variablen: $\\frac{dy}{y} = -3 \\, dx$.',
       'Integrieren ergibt $\\ln|y| = -3x + C_1$, also $y = Ce^{-3x}$.',
@@ -609,23 +633,25 @@ $$\\frac{dy}{dx} = g(x) \\cdot h(y)$$
 3. Auflösen: $y = Ce^{x^2/2}$ (mit $C = \\pm e^{C_1}$)`,
       },
       {
-        id: 'dgl-1-2-s2', type: 'explanation-formal', title: 'Weiteres Beispiel',
-        content: `**Beispiel mit AWP:** $y' = 2ty$, $y(0) = 5$
+        id: 'dgl-1-2-s2', type: 'explanation-formal', title: 'Trennung der Variablen — Regeln und Beispiel',
+        content: `**Anwendbarkeitsbedingung:** Die rechte Seite muss als Produkt einer reinen $x$-Funktion und einer reinen $y$-Funktion schreibbar sein:
+$$\\frac{dy}{dx} = f(x)\\cdot g(y)$$
 
-**Schritt 1 — Trennen:**
-$$\\frac{dy}{y} = 2t\\,dt$$
+**Vier-Schritte-Rezept:**
 
-**Schritt 2 — Integrieren:**
-$$\\int \\frac{dy}{y} = \\int 2t\\,dt$$
-$$\\ln|y| = t^2 + C_1$$
+| Schritt | Formel | Beispiel: $y' = 2ty$, $y(0)=5$ |
+|---|---|---|
+| 1. Trennen | $\\dfrac{dy}{g(y)} = f(x)\\,dx$ | $\\dfrac{dy}{y} = 2t\\,dt$ |
+| 2. Integrieren | $\\int \\dfrac{dy}{g(y)} = \\int f(x)\\,dx + C$ | $\\ln\\lvert y\\rvert = t^2 + C_1$ |
+| 3. Auflösen nach $y$ | $y(x) = \\ldots$ | $y = C\\,e^{t^2}$ |
+| 4. Anfangsbedingung | $y(x_0) = y_0 \\Rightarrow C$ | $y(0) = C = 5 \\Rightarrow y(t) = 5\\,e^{t^2}$ |
 
-**Schritt 3 — Auflösen:**
-$$y = Ce^{t^2}$$
+**Wichtige Stamm­funktion mit Beträgen:**
+$$\\int \\frac{dy}{y} = \\ln\\lvert y\\rvert + C$$
+Beträge nötig, weil $\\ln$ ohne Beträge nur für $y > 0$ definiert wäre. Beim Auflösen wird daraus
+$$y = \\pm e^{C_1}\\,e^{f(x)\\text{-Anteil}} = C\\,e^{f(x)\\text{-Anteil}}, \\quad C \\in \\mathbb{R}\\setminus\\{0\\}.$$
 
-**Schritt 4 — Anfangsbedingung:**
-$$y(0) = Ce^0 = C = 5$$
-
-**Ergebnis:** $y(t) = 5e^{t^2}$`,
+**Konstantenpolitik:** Beim unbestimmten Integrieren beider Seiten entstehen formal $C_1$ (links) und $C_2$ (rechts). In der Praxis fasst man sie zu **einer** Konstante auf der rechten Seite zusammen: $C := C_2 - C_1$.`,
       },
       { id: 'dgl-1-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-1-2-a' },
       { id: 'dgl-1-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-1-2-b' },
