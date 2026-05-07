@@ -15,9 +15,11 @@ export const exercises_vek_u1 = {
 
 **Typischer Fehler:** $x$ und $y$ vertauschen ($\\,(2,3)\\,$) — Koordinaten folgen immer der Reihenfolge $(x, y)$.`,
     hints: [
-      'Reihenfolge in der Klammer: $(x, y)$.',
-      'Rechts bedeutet positives $x$, oben bedeutet positives $y$.',
+      'Im 2D-Koordinatensystem schreibt man Punkte als Tupel $(x, y)$ — die Reihenfolge ist fest.',
+      'Bewegung „nach rechts" entspricht positivem $x$, „nach oben" positivem $y$.',
+      'Setz die Werte ein: $x=3$ (rechts), $y=2$ (oben) → $(3,2)$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['koord-2d'] },
     wrongAnswerExplanations: {
       1: 'Du hast $x$ und $y$ vertauscht. Die Schreibweise ist immer $(x, y)$ — erst horizontal, dann vertikal.',
       2: 'Das wäre 3 nach **links**. „Rechts" entspricht positivem $x$.',
@@ -37,7 +39,10 @@ export const exercises_vek_u1 = {
 **Typischer Fehler:** Punkt und Vektor gleichsetzen. Beides sieht auf dem Papier ähnlich aus, aber der Unterschied ist wichtig: Vektoren sind verschiebbar, Punkte nicht.`,
     hints: [
       'Denk an den Unterschied: „Wo liegt etwas?" (Punkt) vs. „Wie weit/wohin bewegt sich etwas?" (Vektor).',
+      'Notation $(3,2)$ ist nur ein Zahlenpaar — die **Bedeutung** verleiht erst der Kontext (Ortsangabe oder Verschiebung).',
+      'Test: Verschieb den Pfeil — bleibt er derselbe Vektor? Verschieb den Punkt — wird er ein anderer Punkt? Genau dieser Unterschied.',
     ],
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['punkt-vs-vektor'] },
   },
   'ex-vek-1-0-c': {
     id: 'ex-vek-1-0-c', lessonId: 'vek-1-0', type: 'multiple-choice',
@@ -54,7 +59,9 @@ export const exercises_vek_u1 = {
     hints: [
       'Frag dich: „Kann ich nach Norden oder nach oben dazusagen — und ergibt das Sinn?"',
       'Wenn ja → Vektor. Wenn nein → Skalar.',
+      'Klassiker im Maschinenbau: Kraft, Geschwindigkeit, Verschiebung, Beschleunigung = Vektoren. Masse, Temperatur, Energie, Zeit = Skalare.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['skalar-vs-vektor'] },
     wrongAnswerExplanations: {
       1: 'Masse ist nur eine Zahl (kg). Es gibt keine „Masse nach Norden" — also Skalar.',
       2: 'Temperatur ist nur eine Zahl (°C). Es gibt keine „Temperatur nach rechts" — also Skalar.',
@@ -79,7 +86,10 @@ export const exercises_vek_u1 = {
 **Typischer Fehler:** Die Reihenfolge der Quadranten im Uhrzeigersinn zählen (Q1→Q4→Q3→Q2) — Konvention ist aber **entgegen** dem Uhrzeigersinn.`,
     hints: [
       'Quadranten werden entgegen dem Uhrzeigersinn durchgezählt, beginnend rechts-oben.',
+      'Vorzeichen-Schema: Q1 $(+,+)$ · Q2 $(-,+)$ · Q3 $(-,-)$ · Q4 $(+,-)$.',
+      'Lies pro Punkt das Vorzeichenpaar ab und ordne es dem passenden Quadranten zu.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quadranten'] },
   },
   'ex-vek-1-0-mastery': {
     id: 'ex-vek-1-0-mastery', lessonId: 'vek-1-0', type: 'multiple-choice', isMasteryCheck: true,
@@ -96,7 +106,9 @@ export const exercises_vek_u1 = {
     hints: [
       'Vektor von $A$ nach $B$: $\\vec{v} = B - A$.',
       'Komponentenweise: $(4-1,\\;6-2)$.',
+      'Probe: $A + \\vec{v}$ muss wieder $B$ ergeben — wenn nicht, hast du falsch herum subtrahiert.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['ab-formel'] },
     wrongAnswerExplanations: {
       1: 'Du hast die Koordinaten addiert statt subtrahiert. Richtig ist Zielpunkt minus Startpunkt.',
       2: 'Das sind die Koordinaten des Zielpunkts $B$, nicht der Vektor von $A$ nach $B$.',
@@ -114,22 +126,21 @@ export const exercises_vek_u1 = {
       'Vektoren sind dimensionslos, Skalare haben eine Einheit',
     ],
     correctIndex: 1,
-    explanation: `**Ansatz:** Unterscheide nach den Eigenschaften, die beide Größen definieren.
+    explanation: `**Ansatz:** Unterscheide nach den Eigenschaften, die beide Größen definieren — Betrag allein vs. Betrag + Richtung.
 
-**Rechnung / Beispiel:**
-- Skalar: Temperatur $T = 20\\,°\\text{C}$ — nur ein Zahlenwert.
-- Vektor: Geschwindigkeit $\\vec{v} = (50, 0)\\,\\text{km/h}$ — Zahl *und* Richtung (nach Osten).
+**Rechnung:** Skalar = nur Zahl mit Einheit (z. B. Temperatur $T = 20\\,°\\text{C}$). Vektor = Zahl **und** Richtung (z. B. Geschwindigkeit $\\vec{v} = (50, 0)\\,\\text{km/h}$ nach Osten).
 
-**Probe:** Kann man "20 °C nach Norden" sagen? Nein — Temperatur hat keine Richtung. Kann man "50 km/h" ohne Richtung sagen? Ja, aber dann weißt du nicht wohin.
+**Probe:** Kann man „$20\\,°\\text{C}$ nach Norden" sagen? Nein — Temperatur hat keine Richtung. Kann man „$50\\,\\text{km/h}$" ohne Richtung sagen? Ja, aber dann weiß man nicht, wohin sich das Auto bewegt — der Vektor trägt diese Zusatzinformation.
 
-**Typischer Fehler:** Vektoren sind nicht "größer" als Skalare — das ist kein mathematisches Kriterium.`,
+**Typischer Fehler:** Glauben, Vektoren wären „größer" oder „komplexer" als Skalare — das ist kein mathematisches Unterscheidungskriterium. Entscheidend ist allein, ob eine räumliche Richtung sinnvoll ist.`,
     hints: [
       'Welche Eigenschaft hat eine Kraft, die eine Temperatur nicht hat?',
-      'Ein Vektor braucht zwei Informationen: "wie viel" und "wohin".',
+      'Ein Vektor braucht zwei Informationen: „wie viel" und „wohin".',
       'Beispiele: Kraft, Geschwindigkeit, Verschiebung sind Vektoren. Masse, Temperatur, Zeit sind Skalare.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['tech-groessen'] },
     wrongAnswerExplanations: {
-      0: '"Größer" ist kein mathematisches Unterscheidungskriterium — ein Skalar wie $T = 1000\\,°\\text{C}$ kann durchaus betragsmäßig größer sein als ein Vektor wie $\\vec{v} = (3, 4)$. Der echte Unterschied ist die Richtung: Vektoren haben Betrag UND Richtung, Skalare nur Betrag.',
+      0: '„Größer" ist kein mathematisches Unterscheidungskriterium — ein Skalar wie $T = 1000\\,°\\text{C}$ kann durchaus betragsmäßig größer sein als ein Vektor wie $\\vec{v} = (3, 4)$. Der echte Unterschied ist die Richtung: Vektoren haben Betrag UND Richtung, Skalare nur Betrag.',
       2: 'Vektoren können sehr wohl addiert werden — komponentenweise: $\\vec{a} + \\vec{b} = (a_x + b_x,\\, a_y + b_y)$. Die eigentliche Unterscheidung zu Skalaren liegt darin, dass Vektoren zusätzlich eine Richtung tragen.',
       3: 'Das ist umgekehrt falsch: Sowohl Skalare als auch Vektoren können Einheiten haben (Kraft in N, Masse in kg). Das Unterscheidungsmerkmal ist die Richtung, nicht die Dimensionalität.',
     },
@@ -153,6 +164,7 @@ export const exercises_vek_u1 = {
       'Formel: $|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}}$.',
       'Rechne $3^{2} + 4^{2} = 25$, dann Wurzel ziehen.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['betrag'] },
     wrongAnswerExplanations: {
       0: 'Du hast die Komponenten einfach addiert: $3 + 4 = 7$. Das ist nicht die Vektorlänge — der Vektor bildet mit seinen Komponenten ein rechtwinkliges Dreieck, also gilt Pythagoras: $|\\vec{a}| = \\sqrt{3^{2} + 4^{2}} = \\sqrt{25} = 5$.',
       2: 'Du hast $3 + 4 = 7$ gerechnet und dann die Wurzel gezogen. Richtig wird aber erst *quadriert* und *summiert*, dann die Wurzel gezogen: $\\sqrt{3^{2} + 4^{2}} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.',
@@ -176,7 +188,7 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** $\\vec{a} + \\vec{b} = (2 + 1,\\; 3 + (-1)) = (3, 2)$.
 
-**Probe (geometrisch):** Zeichne $\\vec{a}$, hänge $\\vec{b}$ an dessen Spitze an. Die Spitze von $\\vec{b}$ liegt bei $(3, 2)$. ✓
+**Probe:** Geometrisch — zeichne $\\vec{a}$, hänge $\\vec{b}$ an dessen Spitze an. Die Spitze von $\\vec{b}$ liegt bei $(2+1,\\;3-1)=(3, 2)$. ✓
 
 **Typischer Fehler:** Antwort $(1, 4)$ verwechselt Subtraktion mit Addition ($2-1$ statt $2+1$, $3-(-1)$ statt $3+(-1)$). Antwort $(3, 4)$ ignoriert das Minuszeichen bei $b_y$.`,
     hints: [
@@ -184,6 +196,7 @@ export const exercises_vek_u1 = {
       'Formel: $(a_x + b_x,\\; a_y + b_y)$.',
       'Achte auf das Vorzeichen: $3 + (-1) = 2$, nicht $4$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['add-komp'] },
     wrongAnswerExplanations: {
       1: 'Du hast statt addiert subtrahiert: $2-1 = 1$ und $3-(-1) = 4$. Vektoraddition ist aber komponentenweise *addieren*: $\\vec{a} + \\vec{b} = (a_x + b_x,\\; a_y + b_y) = (2+1,\\; 3+(-1)) = (3, 2)$.',
       2: 'Das sieht aus wie das komponentenweise Produkt ($2 \\cdot 1,\\; 3 \\cdot (-1)$) — aber Vektoren werden komponentenweise *addiert*, nicht multipliziert: $(2+1,\\; 3+(-1)) = (3, 2)$.',
@@ -208,27 +221,19 @@ export const exercises_vek_u1 = {
     question: '[PRÜFUNG] Gegeben $\\vec{a} = (3, 4)$. Berechne $|2\\vec{a}|$ (Betrag des doppelten Vektors).',
     options: ['$10$', '$5$', '$7$', '$14$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zwei Schritte kombinieren — Skalarmultiplikation **und** Betragsberechnung.
+    explanation: `**Ansatz:** Zwei Schritte kombinieren — Skalarmultiplikation **und** Betragsberechnung. Zwei Wege führen zum Ziel; sie müssen dasselbe ergeben.
 
-**Weg A (erst skalieren, dann Betrag):**
-- $2\\vec{a} = (6, 8)$
-- $|2\\vec{a}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$
+**Rechnung:** Weg A (erst skalieren, dann Betrag): $2\\vec{a} = (6, 8)$, dann $|2\\vec{a}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$. Weg B (Homogenitäts-Regel $|k \\vec{a}| = |k| \\cdot |\\vec{a}|$): $|\\vec{a}| = \\sqrt{9 + 16} = 5$, dann $|2\\vec{a}| = 2 \\cdot 5 = 10$.
 
-**Weg B (Homogenitäts-Regel):** $|k \\vec{a}| = |k| \\cdot |\\vec{a}|$.
-- $|\\vec{a}| = \\sqrt{9 + 16} = 5$
-- $|2\\vec{a}| = 2 \\cdot 5 = 10$ ✓
+**Probe:** Beide Wege liefern $10$ — das bestätigt $|k\\vec{a}|=|k|\\cdot|\\vec{a}|$. Außerdem 3-4-5-Tripel verdoppelt → 6-8-10 ist auch ein pythagoreisches Tripel. ✓
 
-**Synthese:** Beide Wege müssen dasselbe Ergebnis liefern — das bestätigt die Regel $|k \\vec{a}| = |k| |\\vec{a}|$.
-
-**Typische Fehler:**
-- $5$: $|\\vec{a}|$ berechnet, aber $2\\cdot$ vergessen.
-- $7 = |2| + |\\vec{a}|$: Skalar mit Betrag **addiert** statt multipliziert.
-- $14 = 2 \\cdot (3+4)$: Komponenten addiert statt $\\sqrt{}$-Betrag gebildet.`,
+**Typischer Fehler:** $|\\vec{a}|=5$ statt $|2\\vec a|=10$ → den Faktor $2$ vergessen. Oder $|2|+|\\vec a|=2+5=7$ — Skalar und Betrag **addiert** statt multipliziert. Oder $2\\cdot(3+4)=14$ — Komponenten direkt addiert ohne Wurzel.`,
     hints: [
       'Zwei Operationen: erst skalieren ($2\\vec{a}$), dann Betrag, oder umgekehrt.',
       'Betrag: $|\\vec{a}| = \\sqrt{a_x^2 + a_y^2}$. Homogenität: $|k\\vec{a}| = |k| |\\vec{a}|$.',
       '$|\\vec{a}| = \\sqrt{9+16} = 5 \\Rightarrow |2\\vec{a}| = 10$. 3-4-5-Tripel!',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['add-komp', 'skalar-mul', 'betrag'] },
     wrongAnswerExplanations: {
       1: 'Das ist $|\\vec{a}| = 5$ selbst — du hast den Faktor $2$ vergessen. Nach der Homogenitätsregel gilt $|k\\vec{a}| = |k| \\cdot |\\vec{a}|$, also $|2\\vec{a}| = 2 \\cdot 5 = 10$.',
       2: 'Das sieht nach $|2| + |\\vec{a}| = 2 + 5 = 7$ aus — Skalar und Betrag wurden addiert statt multipliziert. Richtig: $|k\\vec{a}| = |k| \\cdot |\\vec{a}| = 2 \\cdot 5 = 10$.',
@@ -266,6 +271,7 @@ export const exercises_vek_u1 = {
       'Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y$ (in 2D).',
       'Achte auf das Vorzeichen bei $b_y = -2$: $3 \\cdot (-2) = -6$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['sp-komp'] },
     wrongAnswerExplanations: {
       0: 'Das ist das *komponentenweise Produkt* $(a_x b_x,\\; a_y b_y) = (2, -6)$ — aber das Skalarprodukt summiert danach zu einer Zahl. Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y = 2 + (-6) = -4$.',
       2: 'Du hast das Minuszeichen bei $b_y = -2$ ignoriert und $2 \\cdot 1 + 3 \\cdot 2 = 8$ gerechnet. Richtig ist $3 \\cdot (-2) = -6$, also $\\vec{a} \\cdot \\vec{b} = 2 - 6 = -4$.',
@@ -301,6 +307,7 @@ export const exercises_vek_u1 = {
       2: 'Gleiche Richtung bedeutet $\\varphi = 0°$ und $\\cos(0°) = 1$, also $\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}| > 0$ — maximales Skalarprodukt, nicht null. Null tritt nur bei $\\cos\\varphi = 0$, also $\\varphi = 90°$ auf.',
       3: 'Bei Parallelität ist $\\varphi = 0°$ oder $180°$, also $\\cos\\varphi = \\pm 1$ und $\\vec{a} \\cdot \\vec{b} = \\pm|\\vec{a}||\\vec{b}| \\neq 0$. Null-Skalarprodukt entspricht exakt dem Gegenteil — Orthogonalität ($\\varphi = 90°$).',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['sp-orthogonal', 'sp-winkel'] },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -340,6 +347,7 @@ export const exercises_vek_u1 = {
       1: '$30°$ hat $\\cos(30°) = \\sqrt{3}/2 \\approx 0{,}87$, aber hier kommt $\\cos\\varphi = 1/\\sqrt{2} \\approx 0{,}71$ heraus. Das passt zu $45°$, nicht $30°$.',
       3: '$90°$ würde $\\vec{a} \\cdot \\vec{b} = 0$ voraussetzen (Orthogonalität). Hier ist $\\vec{a} \\cdot \\vec{b} = 1 \\neq 0$, also kein rechter Winkel. Aus $\\cos\\varphi = 1/\\sqrt{2}$ folgt $\\varphi = 45°$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['sp-winkel-formel', 'sp-komp'] },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -374,6 +382,7 @@ export const exercises_vek_u1 = {
       '$(3, 4) \\cdot (1, 0) = ?$',
       'Nur die x-Komponente bleibt stehen.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['sp-projektion', 'sp-komp'] },
   },
   'ex-vek-1-2-mastery': {
     id: 'ex-vek-1-2-mastery', lessonId: 'vek-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -386,17 +395,15 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** $W = 10 \\cdot 3 + 0 \\cdot 4 = 30\\,\\text{J}$.
 
-**Probe (geometrisch):** $|\\vec{F}| = 10$, $|\\vec{s}| = \\sqrt{9+16} = 5$. $\\cos(\\varphi) = \\tfrac{30}{10 \\cdot 5} = 0{,}6$ → $\\varphi \\approx 53°$. Arbeit $= 10 \\cdot 5 \\cdot 0{,}6 = 30\\,\\text{J}$. ✓
+**Probe:** Geometrische Probe via Winkelform — $|\\vec{F}| = 10$, $|\\vec{s}| = \\sqrt{9+16} = 5$. $\\cos(\\varphi) = \\tfrac{30}{10 \\cdot 5} = 0{,}6$ → $\\varphi \\approx 53{,}1°$. Arbeit $= 10 \\cdot 5 \\cdot 0{,}6 = 30\\,\\text{J}$. ✓ Beide Wege liefern dasselbe Ergebnis.
 
-**Typischer Fehler:**
-- $70\\,\\text{J} = |\\vec{F}| + |\\vec{s}| \\cdot \\ldots$ — Formel falsch.
-- $50\\,\\text{J} = |\\vec{F}| \\cdot |\\vec{s}|$ — ignoriert den Winkel zwischen $\\vec{F}$ und $\\vec{s}$.
-- Nur die horizontale Kraftkomponente (hier $F_x = 10$) trägt bei.`,
+**Typischer Fehler:** $|\\vec F|\\cdot|\\vec s|=50$ rechnen — das ignoriert den Winkel zwischen $\\vec F$ und $\\vec s$ und entspricht $\\cos\\varphi=1$ (Parallelität). Korrekt ist $W=\\vec F\\cdot\\vec s=30\\,\\text{J}$, weil nur die horizontale Kraftkomponente $F_x=10$ in Wegrichtung zur Arbeit beiträgt.`,
     hints: [
       'Welche Operation verbindet Kraft und Weg zur Arbeit? Skalarprodukt.',
       'Formel: $W = F_x s_x + F_y s_y$.',
       '$F_y = 0$, also fällt der zweite Summand weg: $W = 10 \\cdot 3 + 0 = 30\\,\\text{J}$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['sp-arbeit', 'sp-komp'] },
     wrongAnswerExplanations: {
       0: 'Das sieht nach $|\\vec{F}| + |\\vec{s}| \\cdot \\ldots = 10 + 60 = 70$ aus — eine willkürliche Kombination, die keiner Skalarprodukt-Formel entspricht. Richtig: $W = F_x s_x + F_y s_y = 10\\cdot 3 + 0\\cdot 4 = 30\\,\\text{J}$.',
       1: 'Du hast $|\\vec{F}| \\cdot |\\vec{s}| = 10 \\cdot 5 = 50$ gerechnet — das ist das Skalarprodukt-Maximum bei Parallelität ($\\cos\\varphi = 1$). Der Winkel zwischen $\\vec{F}$ und $\\vec{s}$ ist aber nicht $0$. Richtig: $W = F_x s_x + F_y s_y = 30\\,\\text{J}$.',
@@ -694,6 +701,39 @@ $$\\vec{AB} = B - A = (B_x - A_x,\\; B_y - A_y)$$
 
 **Anwendung in Maschinenbau:** Kräfte, Geschwindigkeiten, Verschiebungen sind Vektoren. Temperaturen, Massen, Zeiten sind Skalare (reine Zahlen).`,
       },
+      {
+        id: 'vek-1-0-s2b', type: 'visualization', title: 'Punkt und Vektor im Koordinatensystem',
+        visualizationId: 'vector-diagram',
+        params: {
+          vectors: [{ x: 3, y: 2, color: '#3b82f6', label: '$\\vec{a}=(3,2)$' }],
+          showGrid: true,
+          showComponents: true,
+        },
+      },
+      {
+        id: 'vek-1-0-s2c', type: 'explanation-formal', title: 'Formelübersicht — Koordinaten, Punkt, Vektor',
+        content: `**Schreibweisen und Grundformeln dieser Lektion:**
+
+| Begriff | Schreibweise | Bedeutung |
+|---------|--------------|-----------|
+| Koordinaten in 2D | $(x,\\,y)$ | $x$ horizontal, $y$ vertikal — Reihenfolge ist fest |
+| Quadranten (Konvention) | Q1 $(+,+)$ · Q2 $(-,+)$ · Q3 $(-,-)$ · Q4 $(+,-)$ | gegen den Uhrzeigersinn ab rechts oben |
+| Punkt | $P=(x,\\,y)$ | beschreibt einen **Ort** im Raum |
+| Vektor | $\\vec{v}=(v_x,\\,v_y)$ | beschreibt eine **Verschiebung** (Betrag + Richtung) |
+| Verbindungsvektor | $\\vec{AB}=B-A$ | Endpunkt **minus** Startpunkt — komponentenweise |
+| Endpunkt aus Start + Vektor | $B = A + \\vec{AB}$ | umgekehrte Anwendung der $\\vec{AB}$-Formel |
+| Freier Vektor | $\\vec{a}=\\vec{b}\\iff a_i=b_i \\;\\forall i$ | Komponenten gleich → derselbe Vektor, egal wo gezeichnet |
+
+**Merke:**
+- **Skalar** = nur Zahl (z. B. Masse, Temperatur, Volumen).
+- **Vektor** = Zahl **und** Richtung (z. B. Kraft, Geschwindigkeit, Verschiebung).
+- Notation $(x,y)$ allein sagt noch nicht, ob es ein Punkt oder Vektor ist — der **Kontext** entscheidet.
+
+**Beispiel:** $A=(1,2)$, $B=(4,6)$:
+$$\\vec{AB} = B - A = (4-1,\\;6-2) = (3,\\,4)$$
+
+Probe: $A + \\vec{AB} = (1+3,\\;2+4) = (4,\\,6) = B$. ✓`,
+      },
       { id: 'vek-1-0-s3', type: 'exercise', title: 'Aufgabe 1 — Koordinaten lesen', exerciseRef: 'ex-vek-1-0-a' },
       { id: 'vek-1-0-s4', type: 'exercise', title: 'Aufgabe 2 — Punkt vs. Vektor', exerciseRef: 'ex-vek-1-0-b' },
       { id: 'vek-1-0-s5', type: 'exercise', title: 'Aufgabe 3 — Vektor vs. Skalar', exerciseRef: 'ex-vek-1-0-c' },
@@ -893,13 +933,28 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
 | Winkel berechnen | $\\cos(\\varphi) = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}$ |
 | Orthogonalität testen | $\\vec{a} \\perp \\vec{b} \\;\\Leftrightarrow\\; \\vec{a} \\cdot \\vec{b} = 0$ |
 | Arbeit (Physik) | $W = \\vec{F} \\cdot \\vec{s}$ |
+| Skalare Projektion | $\\vec{a}_{\\parallel}^{\\text{(Skalar)}} = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}$ |
+| Vektorielle Projektion | $\\vec{a}_b = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$ |
 
 **Vorzeichen-Interpretation:**
 - $\\vec{a} \\cdot \\vec{b} > 0$: spitzer Winkel ($\\varphi < 90°$)
 - $\\vec{a} \\cdot \\vec{b} = 0$: rechter Winkel ($\\varphi = 90°$)
 - $\\vec{a} \\cdot \\vec{b} < 0$: stumpfer Winkel ($\\varphi > 90°$)
 
-**Rechenregeln:** kommutativ ($\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}$), distributiv ($\\vec{a} \\cdot (\\vec{b}+\\vec{c}) = \\vec{a} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$), assoziativ mit Skalaren ($k(\\vec{a} \\cdot \\vec{b}) = (k\\vec{a}) \\cdot \\vec{b}$).`,
+**Rechenregeln:** kommutativ ($\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}$), distributiv ($\\vec{a} \\cdot (\\vec{b}+\\vec{c}) = \\vec{a} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$), assoziativ mit Skalaren ($k(\\vec{a} \\cdot \\vec{b}) = (k\\vec{a}) \\cdot \\vec{b}$).
+
+**Hinweis Projektion:** $\\vec{a}_b$ ist der Anteil von $\\vec{a}$, der parallel zu $\\vec{b}$ liegt — der Rest $\\vec{a}_\\perp = \\vec{a} - \\vec{a}_b$ steht senkrecht zu $\\vec{b}$.`,
+      },
+      {
+        id: 'vek-1-2-s1b', type: 'visualization', title: 'Vektoren mit eingeschlossenem Winkel',
+        visualizationId: 'vector-diagram',
+        params: {
+          vectors: [
+            { x: 3, y: 0, color: '#0ea5e9', label: '$\\vec{a}=(3,0)$' },
+            { x: 2, y: 2, color: '#dc2626', label: '$\\vec{b}=(2,2)$' },
+          ],
+          showGrid: true,
+        },
       },
       { id: 'vek-1-2-s2', type: 'exercise', title: 'Aufgabe 1 — Skalarprodukt berechnen', exerciseRef: 'ex-vek-1-2-a' },
       { id: 'vek-1-2-s3', type: 'exercise', title: 'Aufgabe 2 — Bedeutung $\\vec{a}\\cdot\\vec{b}=0$', exerciseRef: 'ex-vek-1-2-b' },
