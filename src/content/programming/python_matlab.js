@@ -153,7 +153,7 @@ const pythonMatlabTopic = buildTopic({
               { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['naming-conv'],         qty: 1 },
             ],
           },
-          content: String.raw`In Python brauchst du **keinen Typ** bei der Deklaration — der Interpreter erkennt ihn automatisch.
+          content: String.raw`In Python brauchst du **keinen Typ** bei der Deklaration — der Interpreter erkennt ihn automatisch (dynamische Typisierung). Eine Neuzuweisung kann den Typ ändern.
 
 **Grundtypen:**
 | Typ | Beispiel | Beschreibung |
@@ -163,25 +163,55 @@ const pythonMatlabTopic = buildTopic({
 | \`str\` | \`s = "Hallo"\` | Zeichenkette |
 | \`bool\` | \`b = True\` | Wahrheitswert |
 
-**Typumwandlung:**
+**Typprüfung mit \`type(x)\`:**
 
 \`\`\`python
-x = int("42")      # str → int
-y = float(7)       # int → float
-s = str(3.14)      # float → str
+type(42)     # <class 'int'>
+type(3.14)   # <class 'float'>
+type("hi")   # <class 'str'>
+type(True)   # <class 'bool'>
 \`\`\`
 
-**Namenskonventionen:** Variablennamen in Python sind \`snake_case\` (Kleinbuchstaben + Unterstriche): \`mein_wert\`, \`kraft_in_newton\`.
+\`type(x)\` liefert die KONKRETE Klasse des aktuellen Wertes — nicht die Basisklasse. Beispiel: \`type(False)\` ergibt \`<class 'bool'>\`, obwohl \`bool\` intern Subtyp von \`int\` ist und \`False == 0\` gilt.
 
-**Matlab-Vergleich:** In Matlab gibt es keine explizite Typdeklaration ähnlich wie in Python. Alles ist standardmäßig \`double\`. Strings: \`s = "Hallo"\` oder \`s = 'Hallo'\`.`,
+**Typumwandlung (Konvertierung):**
+
+| Funktion | Beispiel | Ergebnis | Hinweis |
+|---|---|---|---|
+| \`int(s)\` | \`int("42")\` | \`42\` | Strings müssen ganze Zahlen sein |
+| \`int(s)\` | \`int("3.14")\` | **\`ValueError\`** | Punkt im String → erst \`float()\` |
+| \`int(x)\` | \`int(3.7)\` | \`3\` | float → int schneidet zur Null hin ab |
+| \`float(s)\` | \`float("2.5")\` | \`2.5\` | Punkt im String erlaubt |
+| \`str(x)\` | \`str(3.14)\` | \`"3.14"\` | beliebiger Wert → String |
+
+**Wichtiger Sonderfall:** \`int("3.14")\` wirft \`ValueError: invalid literal for int() with base 10: '3.14'\`. Korrekte Reihenfolge: erst \`float("3.14")\`, dann \`int(...)\` → \`int(float("3.14")) == 3\`.
+
+**Namenskonventionen (PEP 8):**
+- Variablen: \`snake_case\` → \`mein_wert\`, \`kraft_in_newton\`
+- Konstanten: \`SCREAMING_SNAKE_CASE\` → \`MAX_KRAFT\`
+- Privat/intern: führender Unterstrich → \`_temp\`
+- Ungültig: Bindestriche (\`mein-wert\` → SyntaxError, weil als Subtraktion geparst), Beginn mit Ziffer (\`1_kraft\` → SyntaxError).
+
+**Matlab-Vergleich:** In Matlab gibt es keine explizite Typdeklaration. Alles ist standardmäßig \`double\` (\`class(5)\` → \`'double'\`). Konvention: camelCase (\`numIter\`, \`meinWert\`) — Unterstriche sind erlaubt, aber unüblich. Strings: \`s = "Hallo"\` oder \`s = 'Hallo'\`.`,
           exercises: [
             {
               type: 'multiple-choice',
               question: 'Welchen Typ hat `x` nach `x = 3.0` in Python?',
               options: ['int', 'float', 'str', 'double'],
               correctIndex: 1,
-              explanation: '`3.0` hat einen Dezimalpunkt, daher ist der Typ `float`.',
-              hints: ['Achte auf den Dezimalpunkt.'],
+              explanation: `**Ansatz:** Python erkennt den Typ aus dem LITERAL — Zahl mit Dezimalpunkt → \`float\`, ohne Punkt → \`int\`.
+
+**Rechnung:** \`3.0\` enthält einen Punkt → Python wertet das Literal als \`float\` aus → \`type(x)\` liefert \`<class 'float'>\`.
+
+**Probe:** \`>>> x = 3.0; type(x)\` → \`<class 'float'>\`. Im Vergleich: \`>>> y = 3; type(y)\` → \`<class 'int'>\`. ✓
+
+**Typischer Fehler:** Den Matlab-Namen \`double\` für Gleitkommazahlen auf Python übertragen. Python nennt diesen Typ \`float\` (intern ebenfalls 64-bit IEEE 754).`,
+              hints: [
+                'Achte auf den Dezimalpunkt im Literal.',
+                'Welcher Typ entsteht bei `3` vs. `3.0`?',
+                'Punkt im Literal → float, ohne Punkt → int.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['dyn-typing'] },
               wrongAnswerExplanations: {
                 "0": '`int` wäre korrekt bei `x = 3` ohne Dezimalpunkt. Sobald ein Punkt steht (auch `3.0`), erzeugt Python automatisch einen `float`. Regel: Zahlliteral ohne Punkt → `int`, mit Punkt → `float`.',
                 "2": '`str` gilt nur, wenn der Wert in Anführungszeichen steht, z.B. `x = "3.0"`. Ohne Quotes ist es eine Zahl. Der Dezimalpunkt macht es zum `float`, nicht zum Text.',
@@ -193,8 +223,19 @@ s = str(3.14)      # float → str
               question: 'Was ergibt `type(True)` in Python?',
               options: ['<class \'int\'>', '<class \'bool\'>', '<class \'str\'>', '<class \'logical\'>'],
               correctIndex: 1,
-              explanation: '`True` und `False` sind vom Typ `bool`.',
-              hints: ['True und False sind die beiden Wahrheitswerte in Python.'],
+              explanation: `**Ansatz:** \`type(x)\` liefert die KONKRETE Klasse des Wertes, nicht die Basisklasse. \`True\` ist ein Python-Schlüsselwort vom Typ \`bool\`.
+
+**Rechnung:** \`type(True)\` → \`<class 'bool'>\`. Zwar ist \`bool\` intern Subtyp von \`int\` (deshalb gilt \`True == 1\` und \`False == 0\`), aber \`type()\` gibt immer den spezifischsten Typ zurück.
+
+**Probe:** \`>>> isinstance(True, int)\` → \`True\` (Subtyp-Beziehung). \`>>> type(True) == int\` → \`False\` (verschiedene Klassen). ✓
+
+**Typischer Fehler:** Vom Matlab-Namen \`logical\` auf Python schließen oder \`bool\` und \`int\` als gleichen Typ behandeln, weil \`True == 1\`.`,
+              hints: [
+                'Was ist `True` für ein Python-Schlüsselwort?',
+                'Liefert `type()` die Basisklasse oder die konkrete Klasse?',
+                'Konkrete Klasse → bool, nicht int.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['type-funkt'] },
               wrongAnswerExplanations: {
                 "0": 'Zwar ist `bool` intern eine Unterklasse von `int` (`True == 1`, `False == 0`), aber `type(True)` gibt die konkrete Klasse zurück, nicht die Basisklasse. `type()` liefert immer den genauesten Typ — hier `bool`.',
                 "2": '`str` käme nur bei Anführungszeichen heraus, also `type("True")`. Ohne Quotes ist `True` das Python-Schlüsselwort für den Wahrheitswert, nicht ein Text.',
@@ -205,8 +246,19 @@ s = str(3.14)      # float → str
               type: 'true-false',
               statement: 'In Python muss man den Datentyp einer Variable bei der Deklaration angeben.',
               correct: false,
-              explanation: 'Python ist dynamisch typisiert — der Typ wird automatisch erkannt.',
-              hints: ['Python ist eine dynamisch typisierte Sprache.'],
+              explanation: `**Ansatz:** Python ist dynamisch typisiert — der Interpreter leitet den Typ automatisch aus dem zugewiesenen Wert ab.
+
+**Rechnung:** \`x = 5\` reicht aus. Python sieht das int-Literal und setzt \`type(x) = int\`. Eine Schreibweise wie \`int x = 5\` (Java/C) wirft sogar einen \`SyntaxError\`.
+
+**Probe:** \`>>> x = 5; type(x)\` → \`<class 'int'>\`. Direkt danach \`>>> x = "fünf"; type(x)\` → \`<class 'str'>\`. Der Typ wechselt mit dem Wert. ✓
+
+**Typischer Fehler:** Java/C/C++-Syntax übernehmen und \`int x = 5\` schreiben — das ist in Python kein gültiges Statement.`,
+              hints: [
+                'Welcher Mechanismus erkennt in Python den Typ?',
+                'Funktioniert `int x = 5` in Python?',
+                'Dynamisch typisiert: Wert → Typ, automatisch.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['dyn-typing'] },
             },
           ],
         },
