@@ -15,9 +15,11 @@ export const exercises_vek_u1 = {
 
 **Typischer Fehler:** $x$ und $y$ vertauschen ($\\,(2,3)\\,$) — Koordinaten folgen immer der Reihenfolge $(x, y)$.`,
     hints: [
-      'Reihenfolge in der Klammer: $(x, y)$.',
-      'Rechts bedeutet positives $x$, oben bedeutet positives $y$.',
+      'Im 2D-Koordinatensystem schreibt man Punkte als Tupel $(x, y)$ — die Reihenfolge ist fest.',
+      'Bewegung „nach rechts" entspricht positivem $x$, „nach oben" positivem $y$.',
+      'Setz die Werte ein: $x=3$ (rechts), $y=2$ (oben) → $(3,2)$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['koord-2d'] },
     wrongAnswerExplanations: {
       1: 'Du hast $x$ und $y$ vertauscht. Die Schreibweise ist immer $(x, y)$ — erst horizontal, dann vertikal.',
       2: 'Das wäre 3 nach **links**. „Rechts" entspricht positivem $x$.',
@@ -37,7 +39,10 @@ export const exercises_vek_u1 = {
 **Typischer Fehler:** Punkt und Vektor gleichsetzen. Beides sieht auf dem Papier ähnlich aus, aber der Unterschied ist wichtig: Vektoren sind verschiebbar, Punkte nicht.`,
     hints: [
       'Denk an den Unterschied: „Wo liegt etwas?" (Punkt) vs. „Wie weit/wohin bewegt sich etwas?" (Vektor).',
+      'Notation $(3,2)$ ist nur ein Zahlenpaar — die **Bedeutung** verleiht erst der Kontext (Ortsangabe oder Verschiebung).',
+      'Test: Verschieb den Pfeil — bleibt er derselbe Vektor? Verschieb den Punkt — wird er ein anderer Punkt? Genau dieser Unterschied.',
     ],
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['punkt-vs-vektor'] },
   },
   'ex-vek-1-0-c': {
     id: 'ex-vek-1-0-c', lessonId: 'vek-1-0', type: 'multiple-choice',
@@ -54,7 +59,9 @@ export const exercises_vek_u1 = {
     hints: [
       'Frag dich: „Kann ich nach Norden oder nach oben dazusagen — und ergibt das Sinn?"',
       'Wenn ja → Vektor. Wenn nein → Skalar.',
+      'Klassiker im Maschinenbau: Kraft, Geschwindigkeit, Verschiebung, Beschleunigung = Vektoren. Masse, Temperatur, Energie, Zeit = Skalare.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['skalar-vs-vektor'] },
     wrongAnswerExplanations: {
       1: 'Masse ist nur eine Zahl (kg). Es gibt keine „Masse nach Norden" — also Skalar.',
       2: 'Temperatur ist nur eine Zahl (°C). Es gibt keine „Temperatur nach rechts" — also Skalar.',
@@ -79,7 +86,10 @@ export const exercises_vek_u1 = {
 **Typischer Fehler:** Die Reihenfolge der Quadranten im Uhrzeigersinn zählen (Q1→Q4→Q3→Q2) — Konvention ist aber **entgegen** dem Uhrzeigersinn.`,
     hints: [
       'Quadranten werden entgegen dem Uhrzeigersinn durchgezählt, beginnend rechts-oben.',
+      'Vorzeichen-Schema: Q1 $(+,+)$ · Q2 $(-,+)$ · Q3 $(-,-)$ · Q4 $(+,-)$.',
+      'Lies pro Punkt das Vorzeichenpaar ab und ordne es dem passenden Quadranten zu.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quadranten'] },
   },
   'ex-vek-1-0-mastery': {
     id: 'ex-vek-1-0-mastery', lessonId: 'vek-1-0', type: 'multiple-choice', isMasteryCheck: true,
@@ -96,7 +106,9 @@ export const exercises_vek_u1 = {
     hints: [
       'Vektor von $A$ nach $B$: $\\vec{v} = B - A$.',
       'Komponentenweise: $(4-1,\\;6-2)$.',
+      'Probe: $A + \\vec{v}$ muss wieder $B$ ergeben — wenn nicht, hast du falsch herum subtrahiert.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['ab-formel'] },
     wrongAnswerExplanations: {
       1: 'Du hast die Koordinaten addiert statt subtrahiert. Richtig ist Zielpunkt minus Startpunkt.',
       2: 'Das sind die Koordinaten des Zielpunkts $B$, nicht der Vektor von $A$ nach $B$.',
@@ -693,6 +705,39 @@ $$\\vec{AB} = B - A = (B_x - A_x,\\; B_y - A_y)$$
 **Beispiel:** $A=(1,2)$, $B=(4,6)$ → $\\vec{AB} = (4-1,\\,6-2) = (3,4)$.
 
 **Anwendung in Maschinenbau:** Kräfte, Geschwindigkeiten, Verschiebungen sind Vektoren. Temperaturen, Massen, Zeiten sind Skalare (reine Zahlen).`,
+      },
+      {
+        id: 'vek-1-0-s2b', type: 'visualization', title: 'Punkt und Vektor im Koordinatensystem',
+        visualizationId: 'vector-diagram',
+        params: {
+          vectors: [{ x: 3, y: 2, color: '#3b82f6', label: '$\\vec{a}=(3,2)$' }],
+          showGrid: true,
+          showComponents: true,
+        },
+      },
+      {
+        id: 'vek-1-0-s2c', type: 'explanation-formal', title: 'Formelübersicht — Koordinaten, Punkt, Vektor',
+        content: `**Schreibweisen und Grundformeln dieser Lektion:**
+
+| Begriff | Schreibweise | Bedeutung |
+|---------|--------------|-----------|
+| Koordinaten in 2D | $(x,\\,y)$ | $x$ horizontal, $y$ vertikal — Reihenfolge ist fest |
+| Quadranten (Konvention) | Q1 $(+,+)$ · Q2 $(-,+)$ · Q3 $(-,-)$ · Q4 $(+,-)$ | gegen den Uhrzeigersinn ab rechts oben |
+| Punkt | $P=(x,\\,y)$ | beschreibt einen **Ort** im Raum |
+| Vektor | $\\vec{v}=(v_x,\\,v_y)$ | beschreibt eine **Verschiebung** (Betrag + Richtung) |
+| Verbindungsvektor | $\\vec{AB}=B-A$ | Endpunkt **minus** Startpunkt — komponentenweise |
+| Endpunkt aus Start + Vektor | $B = A + \\vec{AB}$ | umgekehrte Anwendung der $\\vec{AB}$-Formel |
+| Freier Vektor | $\\vec{a}=\\vec{b}\\iff a_i=b_i \\;\\forall i$ | Komponenten gleich → derselbe Vektor, egal wo gezeichnet |
+
+**Merke:**
+- **Skalar** = nur Zahl (z. B. Masse, Temperatur, Volumen).
+- **Vektor** = Zahl **und** Richtung (z. B. Kraft, Geschwindigkeit, Verschiebung).
+- Notation $(x,y)$ allein sagt noch nicht, ob es ein Punkt oder Vektor ist — der **Kontext** entscheidet.
+
+**Beispiel:** $A=(1,2)$, $B=(4,6)$:
+$$\\vec{AB} = B - A = (4-1,\\;6-2) = (3,\\,4)$$
+
+Probe: $A + \\vec{AB} = (1+3,\\;2+4) = (4,\\,6) = B$. ✓`,
       },
       { id: 'vek-1-0-s3', type: 'exercise', title: 'Aufgabe 1 — Koordinaten lesen', exerciseRef: 'ex-vek-1-0-a' },
       { id: 'vek-1-0-s4', type: 'exercise', title: 'Aufgabe 2 — Punkt vs. Vektor', exerciseRef: 'ex-vek-1-0-b' },

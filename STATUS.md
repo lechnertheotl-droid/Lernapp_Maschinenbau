@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-06 · `npm run status`_
+_auto-generiert · 2026-05-07 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2689 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1860 (69 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1208 / 1208 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 256 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2707 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1878 (69 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1215 / 1215 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 259 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **54** (Lesson-Path: 54 · Goal-Tasks: 0)
-- 4-Block: 18/54 (33 %) 🔴
-- MC-wAE: 40/40 (100 %) ✅
-- Sub-Goals: 0/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **72** (Lesson-Path: 54 · Goal-Tasks: 18)
+- 4-Block: 36/72 (50 %) 🔴
+- MC-wAE: 47/47 (100 %) ✅
+- Sub-Goals: 3/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -312,7 +312,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 0/3 | 5 | 3/0/1/1/0 | 5/5 | 3/3 | ✅ | +3 Goal |
+| `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 3/3 | 23 | 10/4/6/2/1 | 23/23 | 10/10 | ✅ | — |
 | `vek-1-1` Vektoren — Grundbegriffe | 4 | 0/4 | 4 | 4/0/0/0/0 | 1/4 | 4/4 | ✅ | +4 Goal, +3 4B |
 | `vek-1-2` Skalarprodukt | 4 | 0/4 | 5 | 4/1/0/0/0 | 4/5 | 4/4 | ✅ | +4 Goal, +1 4B |
 | `vek-1-3` Kreuzprodukt | 4 | 0/4 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +4 Goal, +3 4B |
@@ -8088,7 +8088,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 33 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 32 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8310,48 +8310,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-1-0` · Koordinaten, Punkte & Pfeile (Einstieg)
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `koord-2d` — Koordinatensystem $(x,y)$ — $x$ horizontal, $y$ vertikal, Ursprung $(0,0)$ (SG 0)
-  2. `quadranten` — 4 Quadranten gegen den Uhrzeigersinn (Q1: $x>0,y>0$ … Q4: $x>0,y<0$) ⇐ `koord-2d` (SG 0)
-  3. `punkt` — Punkt $P=(x,y)$ — beschreibt einen Ort ⇐ `koord-2d` (SG 0)
-  4. `vektor` — Vektor $\vec v=(v_x,v_y)$ — Verschiebung mit Betrag und Richtung ⇐ `koord-2d` (SG 0)
-  5. `punkt-vs-vektor` — Gleiche Schreibweise $(x,y)$, verschiedene Bedeutung (Ort vs. Verschiebung) ⇐ `punkt`, `vektor` (SG 0)
-  6. `skalar-vs-vektor` — Skalar (nur Betrag) vs. Vektor (Betrag + Richtung) — Erkennung an „Richtung sinnvoll?" ⇐ `vektor` (SG 0)
-  7. `ab-formel` — Verbindungsvektor $\vec{AB}=B-A$ — komponentenweise ⇐ `punkt`, `vektor` (SG 1)
-  8. `vektor-frei` — Freier Vektor: gleiche Länge & Richtung → gleicher Vektor, egal Startpunkt ⇐ `vektor` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `koord-2d`, `quadranten`, `punkt`, `vektor`, `punkt-vs-vektor`, `skalar-vs-vektor` · **0/5+** — Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
-  - 🔴 [1] _hoch_ · Konzepte: `ab-formel` · **0/5+** — Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
-  - 🔴 [2] _mittel_ · Konzepte: `vektor-frei` · **0/5+** — Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `punkt-vs-vektor` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `skalar-vs-vektor` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `koord-2d` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `punkt-vs-vektor`, `skalar-vs-vektor` | 1 | 0 | 🔴 | Masse/Gewicht-Verwechslung |
-|  5 | 0 | transfer           | matching         | `quadranten` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `ab-formel` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `ab-formel` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `ab-formel` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `ab-formel` | 1 | 0 | 🔴 | Distraktor: A−B statt B−A |
-| 10 | 1 | transfer           | number-input     | `ab-formel` | 1 | 0 | 🔴 | Anwendung in 3D oder mit negativen Koordinaten |
-| 11 | 2 | recognize          | true-false       | `vektor-frei` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `vektor-frei`, `ab-formel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `vektor-frei` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `vektor-frei`, `punkt-vs-vektor` | 1 | 0 | 🔴 | Distraktor: Punkt verschoben statt Vektor frei |
-| 15 | 2 | transfer           | sorting          | `vektor-frei`, `ab-formel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-0': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `vek-1-2` · Skalarprodukt
 
