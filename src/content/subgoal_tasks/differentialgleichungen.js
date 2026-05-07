@@ -17,6 +17,668 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const differentialgleichungenSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-1-1 — Was ist eine Differentialgleichung?  (5 subGoals)
+  // Je ≥ 5 Aufgaben = mind. 25 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-1-1': {
+
+    // ── [0] Ordnung = höchste vorkommende Ableitung ──────────────────────
+    0: [
+      tf(
+        'Die DGL $y\'\' + 4y = 0$ hat Ordnung $2$.',
+        true,
+        `**Ansatz:** Ordnung = höchste in der DGL vorkommende Ableitung.
+
+**Rechnung:** Die Striche zählen: $y\'\'$ steht für die zweite Ableitung. Niedrigere Ableitungen ($y\'$, $y$) erscheinen ggf. zusätzlich, ändern aber die Ordnung nicht.
+
+**Probe:** Eine Lösung wie $y(x)=\\sin(2x)$ hat $y\'\'=-4\\sin(2x)$ — also wirklich zweite Ableitung nötig, um die DGL auszuwerten.
+
+**Typischer Fehler:** Den Vorfaktor $4$ als Ordnung lesen. Vorfaktoren sind Koeffizienten, nicht Ableitungsstufen.`,
+        [
+          'Wie viele Striche hat die höchste Ableitung?',
+          '$y\'\'$ heißt zweite Ableitung.',
+          'Vorfaktoren wie $4$ haben mit der Ordnung nichts zu tun.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['dgl-ordnung'] },
+      ),
+      mc(
+        'Welche Ordnung hat die DGL $y\'\'\' - 2y\' + y = \\sin x$?',
+        ['Ordnung 1', 'Ordnung 2', 'Ordnung 3', 'Ordnung 4'],
+        2,
+        `**Ansatz:** Höchste Ableitung suchen — die Anzahl der Striche entscheidet.
+
+**Rechnung:** $y\'\'\'$ hat drei Striche → dritte Ableitung. $y\'$ und $y$ sind niedriger. Höchste = $y\'\'\'$ → Ordnung **3**.
+
+**Probe:** Die Stör­funktion $\\sin x$ rechts ändert nichts an der Ordnung — die Ordnung wird nur von den Ableitungen der Unbekannten $y$ bestimmt.
+
+**Typischer Fehler:** Nur die Anzahl der unterschiedlichen Ableitungs­arten zählen ($y\'\'\', y\', y$ → 3 verschiedene), das ergibt zufällig dasselbe — aber bei $y^{(4)} - y = 0$ wären es nur 2 unterschiedliche, die Ordnung aber 4.`,
+        [
+          'Striche zählen: $y\'$ ist 1, $y\'\'$ ist 2, $y\'\'\'$ ist 3.',
+          'Die rechte Seite (Störfunktion) zählt nicht für die Ordnung.',
+          'Welche Ableitung von $y$ hat die meisten Striche?',
+        ],
+        {
+          0: 'Du hast nur den Term $-2y\'$ angeschaut. Es gibt aber auch $y\'\'\'$ mit drei Strichen — und die höchste Ableitung zählt, nicht die niedrigste.',
+          1: 'Es gibt $y\'\'\'$ in der Gleichung (drei Striche). Du hast vermutlich nur bis zur zweiten Ableitung gezählt oder $y\'\'\'$ als $y\'\'$ verlesen.',
+          3: 'Eine vierte Ableitung ($y^{(4)}$) kommt in der DGL nicht vor. Die höchste sichtbare Ableitung ist $y\'\'\'$ (drei Striche), also Ordnung 3.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['dgl-ordnung'] },
+      ),
+      mc(
+        'Welche Ordnung hat die DGL $(y\'\')^2 + y\' = x$?',
+        ['Ordnung 1', 'Ordnung 2', 'Ordnung 4', 'Keine Ordnung definiert, weil nichtlinear'],
+        1,
+        `**Ansatz:** Ordnung wird *nur* durch die höchste Ableitungsstufe bestimmt — Potenzen oder Produkte verändern Linearität, aber nicht die Ordnung.
+
+**Rechnung:** Höchste Ableitung in $(y\'\')^2$ ist $y\'\'$ (zwei Striche). Daneben kommt $y\'$ vor, das ist niedriger. → Ordnung $2$.
+
+**Probe:** Test mit $y=x^3$: $y\'=3x^2$, $y\'\'=6x$. $(y\'\')^2 + y\' = 36x^2 + 3x^2 = 39x^2$ — alle Ableitungen erscheinen, die zweite ist die höchste.
+
+**Typischer Fehler:** Den Exponenten $2$ in $(y\'\')^2$ als „Ordnung 4" interpretieren. Das wäre der *Grad* oder die *Linearität* — die Ordnung schaut nur auf die Anzahl der Striche an der höchsten Ableitung.`,
+        [
+          'Die Ordnung schaut auf die *Striche*, nicht auf den Exponenten der Ableitung.',
+          '$(y\'\')^2$ enthält $y\'\'$ — also zweite Ableitung.',
+          'Nichtlinear ≠ ohne Ordnung. Auch nichtlineare DGL haben eine wohldefinierte Ordnung.',
+        ],
+        {
+          0: 'Du hast nur $y\'$ als höchste Ableitung gewertet — aber $(y\'\')^2$ enthält $y\'\'$, das ist Ordnung 2.',
+          2: 'Der Exponent $2$ in $(y\'\')^2$ macht die DGL *nichtlinear*, ändert aber nicht die Ordnung. Striche zählen: $y\'\'$ → 2.',
+          3: 'Die Ordnung ist auch bei nichtlinearen DGL eindeutig definiert — sie ist die höchste Ableitung. Nur die Lösungstheorie wird komplizierter.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['dgl-ordnung'] },
+      ),
+      mc(
+        'Ein Lerner sagt: „Bei $5\\,y\'\' + 2y = 0$ ist die Ordnung gleich $5$, weil $5$ vor $y\'\'$ steht." Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — der Vorfaktor entscheidet über die Ordnung.',
+          'Vorfaktoren sind Koeffizienten und ändern die Ordnung nicht. Die Ordnung folgt aus den *Strichen* der höchsten Ableitung; hier ist $y\'\'$ → Ordnung 2.',
+          'Falsch — die Ordnung ist die *Summe* aller Koeffizienten ($5 + 2 = 7$).',
+          'Falsch — die Ordnung ist immer doppelt so groß wie die höchste Ableitung; hier also 4.',
+        ],
+        1,
+        `**Ansatz:** Ordnung ist eine rein strukturelle Eigenschaft: die Anzahl der Striche an der höchsten Ableitung. Koeffizienten (vor den Ableitungen) gehen nicht ein.
+
+**Rechnung:** $5y\'\'$ enthält die Ableitung $y\'\'$ — zweite Ableitung. Der Vorfaktor $5$ ist nur ein Skalar. Höchste Ableitung in $5y\'\' + 2y$ ist $y\'\'$ → Ordnung **2**.
+
+**Probe:** Die DGL $5y\'\' + 2y = 0$ ist äquivalent zu $y\'\' + \\tfrac{2}{5}y = 0$ (durch 5 dividieren). Die Lösungen ändern sich nicht durch Skalierung der DGL; die Ordnung bleibt 2.
+
+**Typischer Fehler:** Vorfaktoren mit Ableitungs­ordnungen vermischen. Ordnung ist *unabhängig* davon, ob die Koeffizienten $1$, $5$, oder $\\sin x$ sind.`,
+        [
+          'Was passiert, wenn man die ganze DGL durch $5$ teilt? Ändert sich die Ordnung?',
+          'Die Ordnung ist die Anzahl der Striche an der höchsten Ableitung.',
+          'Koeffizienten vor den Ableitungen sind irrelevant für die Ordnung.',
+        ],
+        {
+          0: 'Vorfaktoren sind nur Skalierungen — sie verändern weder Linearität noch Ordnung. Wenn man die DGL durch $5$ dividiert, steht keine $5$ mehr da, die Ordnung bleibt aber gleich.',
+          2: 'Die Ordnung ist nicht die Summe von Koeffizienten — das wäre eine fast zufällige Größe. Definition: höchste *Ableitung*, gemessen an Strichen.',
+          3: 'Es gibt keine „Verdopplungsregel" für die Ordnung. Sie ist genau die höchste vorkommende Ableitungsstufe — bei $y\'\'$ also $2$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['dgl-ordnung'] },
+      ),
+      matching(
+        'Ordne jeder DGL ihre Ordnung zu.',
+        [
+          { left: '$y\' + 3y = x^2$', right: 'Ordnung 1' },
+          { left: '$y\'\' - 2y\' + y = 0$', right: 'Ordnung 2' },
+          { left: '$y\'\'\' = e^x$', right: 'Ordnung 3' },
+          { left: '$y^{(4)} + y = \\sin x$', right: 'Ordnung 4' },
+        ],
+        `**Ansatz:** Striche an der höchsten Ableitung zählen — niedrigere Ableitungen und Störfunktionen ignorieren.
+
+**Rechnung:** (1) $y\'$ → 1 Strich → Ordnung 1. (2) $y\'\'$ → 2 Striche → Ordnung 2. (3) $y\'\'\'$ → 3 Striche → Ordnung 3. (4) $y^{(4)}$ → vierte Ableitung → Ordnung 4.
+
+**Probe:** Bei jeder DGL kann die *niedrigere* Ordnung auch vorkommen ($y$ in (2), $y$ in (4)) — entscheidend ist die *höchste*.
+
+**Typischer Fehler:** Bei (4) wegen $y^{(4)}$-Notation die Vier nicht erkennen oder die Störfunktion $\\sin x$ in die Ordnung einrechnen. Klammer-Notation $(4)$ heißt: vierte Ableitung.`,
+        [
+          'Wie viele Striche hat die höchste Ableitung?',
+          '$y^{(4)}$ ist die Klammer-Schreibweise für die vierte Ableitung.',
+          'Die Ordnung hängt nicht von der rechten Seite der DGL ab.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['dgl-ordnung'] },
+      ),
+    ],
+
+    // ── [1] Linear ⇔ y und Ableitungen nur in 1. Potenz ──────────────────
+    1: [
+      tf(
+        'Die DGL $y\' + 2x\\,y = e^x$ ist linear.',
+        true,
+        `**Ansatz:** Linear-Test: $y$ und alle Ableitungen kommen nur in 1. Potenz vor — keine Produkte $y\\cdot y\'$, keine Funktionen wie $\\sin(y)$, $y^2$, $e^y$. Die Koeffizienten und die rechte Seite dürfen beliebige Funktionen von $x$ sein.
+
+**Rechnung:** In $y\' + 2x\\,y = e^x$: $y\'$ in 1. Potenz ✓, $y$ in 1. Potenz ✓, kein Produkt $y\\cdot y\'$ ✓. Koeffizient $2x$ und rechte Seite $e^x$ sind Funktionen von $x$ — erlaubt.
+
+**Probe:** Standardform $y\' + p(x)\\,y = q(x)$ mit $p(x) = 2x$ und $q(x) = e^x$ — exakt die Form einer linearen DGL 1. Ordnung.
+
+**Typischer Fehler:** „$2x$ steht vor $y$ — also nichtlinear" denken. *Koeffizienten* dürfen $x$-abhängig sein; nichtlinear wird die DGL erst, wenn $y$ selbst nichtlinear (Potenz, Funktion) auftritt.`,
+        [
+          'In welcher Potenz kommen $y$ und $y\'$ vor?',
+          'Erlaubt sind beliebige Funktionen von $x$ als Koeffizient — das ändert die Linearität nicht.',
+          'Nur Produkte $y\\cdot y\'$, Potenzen $y^2$ oder Funktionen $\\sin(y)$ machen nichtlinear.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['dgl-linear'] },
+      ),
+      mc(
+        'Welche der folgenden DGL ist *linear*?',
+        [
+          '$y\' + x\\,y = e^x$',
+          '$y\' = y^2 + x$',
+          '$y\\cdot y\' = 1$',
+          '$\\sin(y) + y\' = 0$',
+        ],
+        0,
+        `**Ansatz:** Pro Option prüfen, ob $y$ und Ableitungen nur in 1. Potenz und ohne Produkte/Funktionen vorkommen.
+
+**Rechnung:**
+- $y\' + x\\,y = e^x$: $y$ und $y\'$ jeweils 1. Potenz, Koeffizienten $x$ und $e^x$ sind reine $x$-Funktionen → **linear** ✓.
+- $y\' = y^2 + x$: $y^2$ ist 2. Potenz → nichtlinear.
+- $y\\cdot y\' = 1$: Produkt $y\\cdot y\'$ → nichtlinear.
+- $\\sin(y) + y\' = 0$: $\\sin(y)$ ist eine nichtlineare Funktion von $y$ → nichtlinear.
+
+**Probe:** Die lineare Option lässt sich in Standardform $y\' + p(x)\\,y = q(x)$ bringen mit $p(x)=x$, $q(x)=e^x$ ✓.
+
+**Typischer Fehler:** Koeffizienten, die von $x$ abhängen ($x$, $e^x$, $\\sin x$) als „kompliziert" missdeuten und für nichtlinear halten. Nichtlinearität entsteht *nur* durch nichtlineare Vorkommen von $y$ oder seinen Ableitungen.`,
+        [
+          'Pro Option fragen: kommen $y, y\'$ in höherer Potenz vor?',
+          'Produkte $y\\cdot y\'$ oder Funktionen $\\sin(y)$, $e^y$ machen die DGL nichtlinear.',
+          'Beliebige $x$-Funktionen als Koeffizient sind erlaubt.',
+        ],
+        {
+          1: '$y^2$ ist eine 2. Potenz von $y$ — Linearität verlangt, dass $y$ nur in 1. Potenz auftritt. Daher nichtlinear.',
+          2: 'Hier multiplizieren sich $y$ und $y\'$ — solche Produkte machen die DGL nichtlinear (man könnte z. B. nicht nach $y\'$ allein auflösen, ohne durch $y$ zu dividieren).',
+          3: '$\\sin(y)$ ist eine nichtlineare Funktion *von $y$* — bei einer linearen DGL dürften nur Vielfache von $y$, nicht Funktionen davon auftreten.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['dgl-linear'] },
+      ),
+      mc(
+        'Ist die DGL $y\' + \\sin(y) = 0$ linear oder nichtlinear — und warum?',
+        [
+          'Linear, weil $y$ und $y\'$ jeweils nur einmal vorkommen.',
+          'Nichtlinear, weil $\\sin(y)$ keine 1. Potenz von $y$ ist (nichtlineare Funktion *von* $y$).',
+          'Linear, weil keine Produkte $y\\cdot y\'$ vorkommen.',
+          'Nichtlinear, weil die rechte Seite $0$ ist.',
+        ],
+        1,
+        `**Ansatz:** Linear-Test: $y$ und alle Ableitungen *nur* in 1. Potenz — also höchstens als $a(x)\\cdot y$ oder $a(x)\\cdot y^{(k)}$.
+
+**Rechnung:** $\\sin(y)$ ist keine 1. Potenz von $y$. Die Reihenentwicklung $\\sin(y) = y - \\tfrac{y^3}{6} + \\ldots$ enthält $y^3$ und höher — eindeutig nichtlinear.
+
+**Probe:** Versuche, in Standardform $y\' + p(x)\\,y = q(x)$ zu bringen: das gelingt nicht, weil $\\sin(y)$ nicht als $p(x)\\cdot y$ darstellbar ist. → DGL ist nicht linear.
+
+**Typischer Fehler:** „Einmal-Vorkommen" mit „1. Potenz" verwechseln. Auch wenn $y$ nur an einer Stelle steht, kann der Term ($\\sin(y)$, $e^y$, $y^2$) nichtlinear sein.`,
+        [
+          'In welcher Potenz steht $y$ in $\\sin(y)$?',
+          '$\\sin(y) = y - y^3/6 + \\ldots$ — schon das $y^3$ verletzt Linearität.',
+          'Linear bedeutet: Ausdruck der Form $p(x)\\cdot y + q(x)\\cdot y\' + \\ldots = r(x)$.',
+        ],
+        {
+          0: '„Nur einmal vorkommen" reicht nicht — entscheidend ist, in welcher *Potenz/Funktion*. $\\sin(y)$ ist nichtlinear, auch wenn $y$ darin nur einmal vorkommt.',
+          2: 'Stimmt: kein Produkt $y\\cdot y\'$. Aber $\\sin(y)$ allein verletzt schon die Linearität — Funktionen *von $y$* (außer dem reinen $a(x)\\cdot y$) sind verboten.',
+          3: 'Die rechte Seite $0$ macht die DGL höchstens *homogen*, nicht nichtlinear. Linearität betrifft die Struktur in $y$ — nicht die rechte Seite.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['dgl-linear'] },
+      ),
+      mc(
+        'Ein Lerner sagt: „$y\'\' + 3y\' - 2y = x^3 + 5\\sin x$ ist nichtlinear, weil $x^3$ und $\\sin x$ vorkommen." Was ist der entscheidende Fehler?',
+        [
+          'Stimmt — $x^3$ macht die DGL nichtlinear.',
+          'Linearität bezieht sich auf $y$ und seine Ableitungen, nicht auf die unabhängige Variable $x$ oder die rechte Seite. $x^3$ und $\\sin x$ sind erlaubt.',
+          'Linearität wird nur durch Produkte $y\\cdot y\'$ verletzt — Potenzen sind kein Problem.',
+          'Nichtlinear ist es, aber aus einem anderen Grund: die Ordnung 2 macht jede DGL nichtlinear.',
+        ],
+        1,
+        `**Ansatz:** Erinnere die Linear-Definition: $y$ und alle Ableitungen müssen in 1. Potenz und ohne nichtlineare Funktionen auftreten. Die *unabhängige Variable* $x$ und die *rechte Seite* (Stör­funktion) sind beliebig.
+
+**Rechnung:** In $y\'\' + 3y\' - 2y = x^3 + 5\\sin x$: $y\'\', y\', y$ jeweils 1. Potenz, keine Produkte → **linear**. Die rechte Seite $x^3 + 5\\sin x$ ist eine reine $x$-Funktion → erlaubt; sie macht die DGL nur *inhomogen*, nicht nichtlinear.
+
+**Probe:** Standardform $y\'\' + p_1(x)\\,y\' + p_0(x)\\,y = q(x)$ mit $p_1(x) = 3$, $p_0(x) = -2$, $q(x) = x^3 + 5\\sin x$ — passt exakt zur linearen DGL 2. Ordnung.
+
+**Typischer Fehler:** Linear/nichtlinear mit „enthält Funktionen" verwechseln. Funktionen *von $x$* sind erlaubt, Funktionen *von $y$* nicht.`,
+        [
+          'Wo „lebt" die Linearitätsbedingung — bei $y$ oder bei $x$?',
+          'Beliebige $x$-Funktionen sind als Koeffizient und als Stör­funktion erlaubt.',
+          'Linear ≠ konstante Koeffizienten. Auch $y\' + \\sin(x)\\,y = e^x$ ist linear.',
+        ],
+        {
+          0: 'Genau das ist der Irrtum: $x^3$ ist eine Funktion von $x$, nicht von $y$. Damit ändert sie nichts an der Linearität in $y$.',
+          2: 'Auch Potenzen $y^2$ machen die DGL nichtlinear — nicht nur Produkte $y\\cdot y\'$. Aber Potenzen *von $x$* sind als rechte Seite erlaubt.',
+          3: 'Es gibt keinen Zusammenhang zwischen Ordnung und Linearität. Lineare DGL können beliebig hohe Ordnung haben.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['dgl-linear'] },
+      ),
+      matching(
+        'Ordne jeder DGL die korrekte Linearitäts-Klassifikation zu.',
+        [
+          { left: '$y\' + 3y = 0$', right: 'linear, homogen' },
+          { left: '$y\'\' = y^2 + x$', right: 'nichtlinear (Potenz $y^2$)' },
+          { left: '$y\'\\cdot y = 1$', right: 'nichtlinear (Produkt $y\'\\cdot y$)' },
+          { left: '$e^x\\,y\' + 2y = \\tan x$', right: 'linear, inhomogen' },
+        ],
+        `**Ansatz:** Pro DGL prüfen: (1) sind $y$ und Ableitungen nur in 1. Potenz? (2) Falls ja → linear; sonst nichtlinear mit Begründung. (3) Rechte Seite $=0$ → homogen, sonst inhomogen.
+
+**Rechnung:**
+- $y\' + 3y = 0$: $y, y\'$ in 1. Potenz; rechte Seite $0$ → linear, homogen.
+- $y\'\' = y^2 + x$: $y^2$ ist 2. Potenz → nichtlinear.
+- $y\'\\cdot y = 1$: Produkt von Ableitung und Funktion → nichtlinear.
+- $e^x\\,y\' + 2y = \\tan x$: $e^x$ ist Koeffizient (in $x$ → erlaubt), $\\tan x$ ist Stör­funktion → linear, inhomogen.
+
+**Probe:** Bei den linearen DGL kann man die Standardform $y^{(n)} + p_{n-1}(x)\\,y^{(n-1)} + \\ldots + p_0(x)\\,y = q(x)$ herstellen. Bei den nichtlinearen DGL klappt das nicht.
+
+**Typischer Fehler:** $e^x$ als Koeffizient vor $y\'$ als nichtlinear werten. Funktionen *von $x$* als Koeffizient sind erlaubt — Linearität bezieht sich auf $y$.`,
+        [
+          'Erst Linearität, dann Homogenität prüfen.',
+          '$y^2$, $y\\cdot y\'$, $\\sin(y)$ → nichtlinear.',
+          'Rechte Seite $\\neq 0$ und linear → inhomogen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['dgl-linear'] },
+      ),
+    ],
+
+    // ── [2] Homogen ⇔ rechte Seite = 0; sonst inhomogen ─────────────────
+    2: [
+      tf(
+        'Die DGL $y\' + 3y = 0$ ist homogen.',
+        true,
+        `**Ansatz:** Eine lineare DGL ist *homogen*, wenn sie sich in Standardform $y^{(n)} + \\ldots + p_0(x)\\,y = q(x)$ mit $q(x) = 0$ schreiben lässt.
+
+**Rechnung:** In $y\' + 3y = 0$ ist die rechte Seite explizit $0$ — Standardform ist erfüllt mit $q(x)=0$ → **homogen**.
+
+**Probe:** Eigenschaft homogener linearer DGL: jede Lösung lässt sich beliebig skalieren ($\\lambda\\cdot y$ ist auch Lösung). Hier z. B. $y(x)=Ce^{-3x}$ — passt für jedes $C$.
+
+**Typischer Fehler:** „Homogen" mit der homogenen Funktion (vom Grad-Argument) aus der Bruchrechnung oder Mehrdim-Analysis verwechseln. Bei DGL heißt homogen einfach: rechte Seite $=0$.`,
+        [
+          'Was steht rechts vom Gleichheitszeichen?',
+          'Homogen ⇔ $q(x) = 0$ in Standardform.',
+          '$y\' + 3y = 0$ → $q(x) = 0$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['dgl-homogen'] },
+      ),
+      mc(
+        'Welche der folgenden DGL ist *homogen*?',
+        [
+          '$y\'\' + 2y = 5$',
+          '$y\'\' + 2y\' + y = 0$',
+          '$y\'\' = x$',
+          '$y\' = 3$',
+        ],
+        1,
+        `**Ansatz:** Pro DGL in Standardform bringen ($\\ldots = q(x)$) und prüfen, ob $q(x) = 0$.
+
+**Rechnung:**
+- $y\'\' + 2y = 5$: $q(x) = 5 \\neq 0$ → inhomogen.
+- $y\'\' + 2y\' + y = 0$: $q(x) = 0$ → **homogen** ✓.
+- $y\'\' = x$: $q(x) = x \\neq 0$ → inhomogen.
+- $y\' = 3$: $q(x) = 3 \\neq 0$ → inhomogen.
+
+**Probe:** Bei der homogenen Option ist $y \\equiv 0$ trivial Lösung — das ist ein Erkennungsmerkmal. Bei den anderen scheitert $y \\equiv 0$ (z. B. $0 \\neq 5$).
+
+**Typischer Fehler:** Konstante Stör­funktionen ($5$, $3$) als „nichts Wichtiges" abtun und als homogen markieren — sie sind aber Stör­funktion ungleich Null, also inhomogen.`,
+        [
+          'Erst alle $y$-Terme nach links bringen; was bleibt rechts?',
+          'Homogen ⇔ rechte Seite $= 0$, auch keine Konstante!',
+          'Test: ist $y \\equiv 0$ eine Lösung?',
+        ],
+        {
+          0: 'Rechte Seite ist $5 \\neq 0$ → inhomogen. Auch konstante Stör­funktionen zählen als „ungleich Null".',
+          2: 'Rechte Seite ist $x \\neq 0$ → inhomogen. Stör­funktion $q(x) = x$.',
+          3: 'Rechte Seite ist $3 \\neq 0$ → inhomogen, auch wenn nur eine Konstante ohne $y$ links steht.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['dgl-homogen'] },
+      ),
+      mc(
+        'Klassifiziere $y\'\' - 2y\' + y = \\cos x$.',
+        [
+          'Homogen, weil $\\cos x$ periodisch ist und im Mittel $0$ ergibt.',
+          'Inhomogen, weil rechte Seite $\\cos x \\neq 0$ ist.',
+          'Homogen, weil alle Terme links auf $y$ wirken.',
+          'Weder homogen noch inhomogen — die Klassifikation gilt nur für DGL 1. Ordnung.',
+        ],
+        1,
+        `**Ansatz:** Standardform: $y\'\' - 2y\' + y = q(x)$. Identifiziere $q(x)$ und prüfe, ob $q(x) \\equiv 0$.
+
+**Rechnung:** $q(x) = \\cos x$. Da $\\cos x$ nicht überall $0$ ist (z. B. $\\cos 0 = 1 \\neq 0$), ist $q(x) \\not\\equiv 0$ → DGL ist **inhomogen**.
+
+**Probe:** Setze $y \\equiv 0$ ein: linke Seite $= 0$, rechte Seite $= \\cos x$. Gleichheit nur, wenn $\\cos x = 0$ — gilt nicht überall. Also ist $y \\equiv 0$ keine Lösung → kein homogenes System.
+
+**Typischer Fehler:** „Mittelwert $0$" als Homogenität deuten. Homogen heißt $q(x) = 0$ als Funktion (für *alle* $x$), nicht „im Schnitt $0$".`,
+        [
+          'Wie lautet $q(x)$?',
+          '$\\cos x$ ist nirgends identisch null — z. B. $\\cos(0) = 1$.',
+          'Homogen ⇔ $q(x) = 0$ für *alle* $x$, nicht nur im Mittel.',
+        ],
+        {
+          0: 'Periodizität oder Mittelwert ändern nichts. Homogen heißt: $q(x)$ ist die Nullfunktion. $\\cos x$ ist es nicht.',
+          2: 'Stimmt nicht — die rechte Seite $\\cos x$ wirkt als Stör­funktion. Wenn da etwas $\\neq 0$ steht, ist die DGL inhomogen.',
+          3: 'Die Begriffe homogen/inhomogen gelten für *alle* Ordnungen. Z. B. ist $y\'\' + y = 0$ homogen, $y\'\' + y = \\cos x$ inhomogen.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['dgl-homogen'] },
+      ),
+      mc(
+        'Ein Lerner sagt: „$y\' = -y$ ist *inhomogen*, weil rechts $-y$ steht und nicht die Zahl $0$." Was ist der Fehler?',
+        [
+          'Stimmt: rechts steht $-y$, nicht $0$ → inhomogen.',
+          'Erst in Standardform $y\' + p(x)\\,y = q(x)$ bringen: $y\' + y = 0$ → $q(x) = 0$ → **homogen**.',
+          'Es ist keine DGL, weil rechts kein $x$ vorkommt.',
+          'Es ist nichtlinear, weil $-y$ rechts und $y\'$ links nicht gleichgewichtig sind.',
+        ],
+        1,
+        `**Ansatz:** Homogenität wird *nach* dem Sortieren in Standardform geprüft: alle $y$- und Ableitungs­terme nach links, $q(x)$ steht alleine rechts.
+
+**Rechnung:** $y\' = -y$ → $y\' + y = 0$. Standardform $y\' + p(x)\\,y = q(x)$ mit $p(x) = 1$ und $q(x) = 0$ → **homogen**.
+
+**Probe:** Allgemeine Lösung $y(x) = Ce^{-x}$ — jedes Vielfache einer Lösung ist wieder Lösung (Skalierungs­eigenschaft homogener DGL).
+
+**Typischer Fehler:** Die DGL „so wie sie dasteht" lesen, ohne in Standardform zu bringen. Auch $y\' = -y$ und $y\' + y = 0$ und $\\frac{y\'}{y} = -1$ sind dieselbe DGL — alle homogen.`,
+        [
+          'Was ist die Standardform einer linearen DGL 1. Ordnung?',
+          'Bringe alle $y$-Terme auf eine Seite.',
+          'Frage: was bleibt dann allein rechts vom $=$?',
+        ],
+        {
+          0: 'Erst sortieren: $y\' = -y \\Leftrightarrow y\' + y = 0$. Dann ist die rechte Seite explizit $0$ → homogen.',
+          2: 'Eine DGL muss nicht $x$ explizit enthalten — autonome DGL sind völlig normal. $y\' = -y$ ist eine lineare, homogene DGL 1. Ordnung.',
+          3: '$y\'$ und $-y$ sind in 1. Potenz und ohne Produkte vorhanden → linear. Außerdem hat das nichts mit „Gleichgewicht der Seiten" zu tun.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['dgl-homogen'] },
+      ),
+      matching(
+        'Ordne jeder DGL die richtige Klassifikation (Linearität + Homogenität) zu.',
+        [
+          { left: '$\\ddot x + 4x = 0$', right: 'linear, homogen' },
+          { left: '$\\ddot x + 4x = \\sin t$', right: 'linear, inhomogen' },
+          { left: '$\\ddot x + x^3 = 0$', right: 'nichtlinear, homogen' },
+          { left: '$\\ddot x + x\\cdot \\dot x = e^t$', right: 'nichtlinear, inhomogen' },
+        ],
+        `**Ansatz:** Erst Linearität (kommen $x, \\dot x, \\ddot x$ nur in 1. Potenz und ohne Produkte vor?), dann Homogenität (rechte Seite $= 0$?).
+
+**Rechnung:**
+- $\\ddot x + 4x = 0$: linear (1. Potenz), homogen (rechts $0$).
+- $\\ddot x + 4x = \\sin t$: linear, aber inhomogen (rechts $\\sin t \\neq 0$).
+- $\\ddot x + x^3 = 0$: nichtlinear ($x^3$ ist 3. Potenz), aber rechte Seite $= 0$ → homogen.
+- $\\ddot x + x \\dot x = e^t$: nichtlinear (Produkt $x \\dot x$), und inhomogen (rechts $e^t \\neq 0$).
+
+**Probe:** Bei den linearen DGL kann man Standardform $\\ddot x + p_1\\,\\dot x + p_0\\,x = q(t)$ herstellen. Bei den nichtlinearen DGL nicht — sie haben Potenzen oder Produkte der Unbekannten.
+
+**Typischer Fehler:** Annehmen „nichtlinear ⇒ inhomogen". Beide Eigenschaften sind unabhängig — eine DGL kann nichtlinear *und* homogen sein (3. Beispiel).`,
+        [
+          'Zwei separate Fragen: linear/nichtlinear und homogen/inhomogen.',
+          'Beide Eigenschaften sind unabhängig voneinander.',
+          'Linear bezieht sich auf $x, \\dot x, \\ddot x$; homogen auf die rechte Seite.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['dgl-homogen', 'dgl-linear'] },
+      ),
+    ],
+
+    // ── [3] Anfangswertproblem (AWP) ────────────────────────────────────
+    3: [
+      tf(
+        'Ohne Anfangsbedingung hat die DGL $y\' = ky$ im Allgemeinen unendlich viele Lösungen, mit Anfangsbedingung dagegen typischerweise genau eine.',
+        true,
+        `**Ansatz:** Die allgemeine Lösung einer DGL 1. Ordnung enthält genau eine Integrations­konstante $C$ — erst eine Anfangsbedingung legt sie fest.
+
+**Rechnung:** $y\' = ky$ hat die Lösungsfamilie $y(x) = C\\,e^{kx}$ — für jedes $C \\in \\mathbb{R}$ eine eigene Lösung. Eine Anfangsbedingung $y(x_0) = y_0$ liefert $C = y_0\\,e^{-k x_0}$ → eindeutige Lösung.
+
+**Probe:** Zeichne mehrere $C$-Werte: man sieht eine Kurvenschar (Lösungs­schar). Jede Anfangsbedingung wählt genau eine Kurve aus.
+
+**Typischer Fehler:** Glauben, jede DGL habe ohne Bedingung „die" Lösung. Es gibt unendlich viele — die Anfangsbedingung wählt eine konkrete aus.`,
+        [
+          'Wie sieht die allgemeine Lösung von $y\' = ky$ aus?',
+          'Wie viele freie Konstanten enthält sie?',
+          'Wie viele Bedingungen braucht man zur eindeutigen Festlegung einer DGL Ordnung $n$?',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['awp'] },
+      ),
+      mc(
+        'Welche Funktion löst das AWP $y\' = y$, $y(0) = 5$?',
+        [
+          '$y(x) = 5\\,e^x$',
+          '$y(x) = e^x + 5$',
+          '$y(x) = 5\\,e^{5x}$',
+          '$y(x) = 5x + 1$',
+        ],
+        0,
+        `**Ansatz:** AWP-Lösung in zwei Schritten: (1) allgemeine Lösung der DGL bestimmen, (2) $C$ aus Anfangsbedingung fixieren.
+
+**Rechnung:** Allgemeine Lösung von $y\' = y$ ist $y(x) = C\\,e^x$. Anfangsbedingung $y(0) = 5$: $C\\,e^{0} = C = 5$. Damit $y(x) = 5\\,e^x$.
+
+**Probe:** Ableiten: $y\'(x) = 5\\,e^x = y(x)$ ✓. Anfangswert: $y(0) = 5\\,e^{0} = 5$ ✓.
+
+**Typischer Fehler:** Anfangsbedingung *additiv* einbauen ($e^x + 5$ statt $5\\,e^x$). Bei $y\'=ky$ gehört die Konstante als *Vorfaktor* vor die e-Funktion, nicht als Summand.`,
+        [
+          'Allgemeine Lösung: $y = C\\,e^x$.',
+          'Setze $x = 0$ ein, um $C$ zu finden.',
+          'Vorfaktor $C$ — nicht Summand.',
+        ],
+        {
+          1: 'Hier wurde $C$ additiv angesetzt: $y(0) = e^{0} + 5 = 6 \\neq 5$ — und die DGL stimmt auch nicht ($y\' = e^x \\neq e^x + 5 = y$).',
+          2: 'Der Exponent $5$ wurde aus der Anfangsbedingung übernommen — falsch. Der Exponent kommt aus dem Koeffizienten in $y\' = ky$ (hier $k = 1$). Probe: $y\' = 25\\,e^{5x} \\neq 5\\,e^{5x} = y$.',
+          3: 'Die DGL $y\'=y$ verlangt $y\'$ proportional zu $y$ — bei $y = 5x + 1$ ist $y\' = 5 = $ const, aber $y$ wächst linear. Die Lösung muss exponentiell sein.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['awp'] },
+      ),
+      mc(
+        'Welche Funktion löst das AWP $y\' = 2x$, $y(1) = 4$?',
+        [
+          '$y(x) = x^2 + 3$',
+          '$y(x) = x^2 + 4$',
+          '$y(x) = 2x + 2$',
+          '$y(x) = x^2 - 3$',
+        ],
+        0,
+        `**Ansatz:** Hier ist $y\'$ direkt eine Funktion von $x$ — also einmal integrieren und Anfangsbedingung einsetzen.
+
+**Rechnung:** $y(x) = \\int 2x\\,dx = x^2 + C$. Anfangsbedingung $y(1) = 4$: $1^2 + C = 4 \\Rightarrow C = 3$. Damit $y(x) = x^2 + 3$.
+
+**Probe:** Ableiten: $y\'(x) = 2x$ ✓. Anfangswert: $y(1) = 1 + 3 = 4$ ✓.
+
+**Typischer Fehler:** $C$ einfach gleich dem Anfangswert setzen ($C = 4$, also $y = x^2 + 4$) — das ignoriert, dass an der Stelle $x_0 = 1$ schon ein Beitrag $1^2 = 1$ aus der Stamm­funktion kommt.`,
+        [
+          'Stamm­funktion von $2x$ ist $x^2$ (plus $C$).',
+          'Setze $x = 1$ in $y(x) = x^2 + C$ und löse nach $C$.',
+          'Anfangs­stelle $x_0 = 1$, nicht $0$ — daran denken!',
+        ],
+        {
+          1: 'Du hast $C = 4$ gesetzt, weil $y(1) = 4$. Aber $y(1) = 1 + C = 4$ ergibt $C = 3$, nicht $4$. Probe: $y(1) = 1 + 4 = 5 \\neq 4$.',
+          2: 'Das wäre die Lösung von $y\' = 2$ (Konstante), nicht $y\' = 2x$. Bei $y = 2x + 2$ ist $y\' = 2$, nicht $2x$.',
+          3: 'Vorzeichen­fehler: $y(1) = 1 - 3 = -2 \\neq 4$. Du hast vermutlich $C$ subtrahiert statt addiert.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['awp'] },
+      ),
+      mc(
+        'Ein Lerner schreibt: „Lösung des AWP $y\' = 2y$, $y(0) = 5$ ist $y(x) = e^{2x}$." Welcher Fehler liegt vor?',
+        [
+          'DGL ist nicht erfüllt — $e^{2x}$ ist keine Lösung von $y\' = 2y$.',
+          'Anfangs­bedingung wurde ignoriert: $e^{2x}$ liefert $y(0) = 1 \\neq 5$. Korrekt: $y(x) = 5\\,e^{2x}$.',
+          'Vorzeichen falsch — die richtige Lösung ist $-5\\,e^{2x}$.',
+          'Die Lösung ist nicht eindeutig, ohne Zusatz­bedingung gibt es mehrere.',
+        ],
+        1,
+        `**Ansatz:** Zwei Bedingungen prüfen: (1) DGL, (2) Anfangs­bedingung. Beide *müssen* gleichzeitig erfüllt sein.
+
+**Rechnung:** $y(x) = e^{2x}$: $y\'(x) = 2 e^{2x} = 2y$ ✓ (DGL erfüllt), aber $y(0) = e^{0} = 1 \\neq 5$ ✗ (Anfangs­bedingung verletzt). Korrekt: $y(x) = C\\,e^{2x}$ mit $C = y(0) = 5$ → $y(x) = 5\\,e^{2x}$.
+
+**Probe:** Test der korrekten Lösung: $y\' = 10\\,e^{2x} = 2 \\cdot 5\\,e^{2x} = 2y$ ✓ und $y(0) = 5\\,e^0 = 5$ ✓.
+
+**Typischer Fehler:** Nur die DGL prüfen und die Anfangsbedingung übersehen. Beim AWP gehören *beide* zur Lösung dazu — die DGL liefert die Lösungs­schar, die Anfangsbedingung wählt ein Mitglied aus.`,
+        [
+          'DGL erfüllt, Anfangs­bedingung erfüllt? Beides prüfen.',
+          'Was liefert $y(x) = e^{2x}$ an $x = 0$?',
+          'Die Konstante $C$ skaliert die Lösung, ohne die DGL zu verletzen.',
+        ],
+        {
+          0: 'DGL ist erfüllt: $y\' = 2 e^{2x} = 2y$. Das Problem liegt in der Anfangsbedingung, nicht in der DGL selbst.',
+          2: 'Vorzeichen ist nicht das Problem — $-5e^{2x}$ erfüllt zwar die DGL, gibt aber $y(0) = -5 \\neq 5$. Korrekt ist $+5e^{2x}$.',
+          3: 'Die Lösung *ist* eindeutig — die DGL hat eine Lösungs­schar, und genau ein Mitglied erfüllt die Anfangsbedingung. Die Eindeutigkeit ist gegeben (Picard-Lindelöf).',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['awp'] },
+      ),
+      mc(
+        '[PRÜFUNG] Newton\'sches Abkühlungs­gesetz: ein Kaffee mit $T(0) = 90\\,°\\mathrm{C}$ kühlt nach $T\'(t) = -0{,}1\\,(T - 20)$ ab (Umgebungs­temperatur $20\\,°\\mathrm{C}$, Zeit in Minuten). Welche Funktion löst das AWP?',
+        [
+          '$T(t) = 70\\,e^{-0{,}1\\,t} + 20$',
+          '$T(t) = 90\\,e^{-0{,}1\\,t}$',
+          '$T(t) = 20\\,e^{-0{,}1\\,t} + 70$',
+          '$T(t) = 90 - 7t$',
+        ],
+        0,
+        `**Ansatz:** Substitution $u(t) = T(t) - 20$ verwandelt das AWP in $u\' = -0{,}1\\,u$, $u(0) = 70$ — und das ist eine homogene lineare DGL 1. Ordnung.
+
+**Rechnung:** $u\' = -0{,}1\\,u$ → $u(t) = C\\,e^{-0{,}1\\,t}$. AB: $u(0) = C = 70$. Damit $u(t) = 70\\,e^{-0{,}1\\,t}$ und $T(t) = u(t) + 20 = 70\\,e^{-0{,}1\\,t} + 20$.
+
+**Probe:** $T\'(t) = 70 \\cdot (-0{,}1)\\,e^{-0{,}1\\,t} = -7\\,e^{-0{,}1\\,t}$. Auf der anderen Seite: $-0{,}1\\,(T - 20) = -0{,}1 \\cdot 70\\,e^{-0{,}1\\,t} = -7\\,e^{-0{,}1\\,t}$ ✓. Anfangswert: $T(0) = 70 + 20 = 90$ ✓. Grenzwert: $\\lim_{t\\to\\infty} T(t) = 20$ — Kaffee kühlt auf Umgebungs­temperatur ab ✓.
+
+**Typischer Fehler:** Direkt $T(t) = 90\\,e^{-0{,}1\\,t}$ ansetzen — das gibt zwar $T(0)=90$, aber $\\lim T = 0\\,°\\mathrm{C}$ statt $20\\,°\\mathrm{C}$, und die DGL stimmt nicht.`,
+        [
+          'Verschiebe: $u = T - 20$ → $u\' = T\'$ und die DGL für $u$ wird homogen.',
+          'Allgemeine Lösung von $u\' = -ku$ ist $u = C e^{-kt}$.',
+          'Am Ende $u$ in $T$ zurücktransformieren: $T = u + 20$.',
+        ],
+        {
+          1: '$T(0) = 90$ stimmt, aber Probe der DGL: $T\' = -9\\,e^{-0{,}1t}$, dagegen $-0{,}1(T - 20) = -0{,}1(90 e^{-0{,}1t} - 20) = -9 e^{-0{,}1t} + 2 \\neq T\'$. Außerdem geht $T \\to 0$ statt $20$ — physikalisch falsch.',
+          2: '$T(0) = 90$ stimmt, aber $T \\to 70$ statt $20$ und Probe scheitert: $T\' = -2 e^{-0{,}1t}$, $-0{,}1(T - 20) = -0{,}1(20 e^{-0{,}1t} + 50) = -2 e^{-0{,}1t} - 5 \\neq T\'$.',
+          3: 'Lineare Abkühlung passt nicht — die Steigung müsste mit dem aktuellen $T$ skalieren, nicht konstant sein. Probe: $T\' = -7$, aber $-0{,}1(T - 20) = -0{,}1(70 - 7t) = -7 + 0{,}7\\,t$ — stimmt nur bei $t = 0$.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['awp'] },
+      ),
+    ],
+
+    // ── [4] ODE vs. PDE ─────────────────────────────────────────────────
+    4: [
+      tf(
+        'Eine Differentialgleichung, in der die gesuchte Funktion nur von einer einzigen unabhängigen Variablen abhängt, heißt gewöhnliche Differentialgleichung (ODE).',
+        true,
+        `**Ansatz:** Klassifizierung nach Anzahl der unabhängigen Variablen der gesuchten Funktion.
+
+**Rechnung:** Eine Funktion $y(x)$ oder $y(t)$ hat *eine* unabhängige Variable → DGL heißt *gewöhnlich* (engl. *ordinary differential equation*, ODE). Beispiele: $y\'+ y = 0$, $\\ddot x + \\omega^2 x = 0$.
+
+**Probe:** Eine Funktion $u(x, t)$ — z. B. Temperatur in einem Stab über Zeit und Ort — hat zwei unabhängige Variablen → die DGL wäre eine *partielle DGL* (PDE), z. B. $u_t = u_{xx}$.
+
+**Typischer Fehler:** „Gewöhnlich" mit „einfach" gleichsetzen. Auch hochkomplizierte DGL (z. B. $y^{(8)} + \\sinh(y)\\cdot y\' = e^{x^2}$) bleiben gewöhnlich, solange nur eine unabh. Variable im Spiel ist.`,
+        [
+          'Zähle die unabhängigen Variablen der gesuchten Funktion.',
+          '$y(x)$ → eine Variable; $u(x, t)$ → zwei Variablen.',
+          'ODE = ordinary differential equation — eine Variable.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['ode-vs-pde'] },
+      ),
+      mc(
+        'Welche der folgenden Gleichungen ist eine *partielle* Differentialgleichung (PDE)?',
+        [
+          '$y\'\' + y = \\sin x$',
+          '$\\dfrac{\\partial u}{\\partial t} = \\alpha\\,\\dfrac{\\partial^2 u}{\\partial x^2}$',
+          '$y\' = x\\,y$',
+          '$\\ddot s + 2\\dot s = g$',
+        ],
+        1,
+        `**Ansatz:** PDE erkennen an *partiellen* Ableitungen $\\partial/\\partial x$, $\\partial/\\partial t$ — und an einer gesuchten Funktion mit *mehreren* unabhängigen Variablen.
+
+**Rechnung:**
+- $y\'\' + y = \\sin x$: $y(x)$ — eine Variable → ODE.
+- $u_t = \\alpha\\,u_{xx}$: $u(x, t)$ — zwei Variablen → **PDE** ✓ (Wärme­leitungs­gleichung).
+- $y\' = xy$: $y(x)$ → ODE.
+- $\\ddot s + 2\\dot s = g$: $s(t)$ → ODE.
+
+**Probe:** PDE-Schreibweise: $\\partial$-Symbol oder Indizes $u_x, u_t$ statt der einfachen Strich-Notation $y\'$. Hier eindeutig: $\\partial u / \\partial t$, $\\partial^2 u / \\partial x^2$ → zwei verschiedene Ableitungs­variablen.
+
+**Typischer Fehler:** Höhere Ordnung mit PDE verwechseln. Auch $y^{(4)} + y = 0$ bleibt eine ODE — die Ableitungs­ordnung sagt nichts über die Anzahl der unabh. Variablen.`,
+        [
+          'Suchst du nach $\\partial$-Symbolen oder Indizes wie $u_x$?',
+          'Wie viele unabhängige Variablen hat die gesuchte Funktion?',
+          'PDE = partial differential equation = partielle Ableitungen.',
+        ],
+        {
+          0: '$y\'\' + y = \\sin x$ hat $y(x)$ — eine Variable. Die zweite Ableitung ist nur höhere Ordnung, nicht „partiell".',
+          2: '$y\' = xy$ — gesuchte Funktion $y(x)$, eine Variable. Auch wenn $x$ als Koeffizient auftritt, bleibt es eine ODE.',
+          3: '$s(t)$ ist eine Funktion einer Variablen ($t$ = Zeit). Das ist eine ODE 2. Ordnung — typische Bewegungs­gleichung in der Mechanik.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['ode-vs-pde'] },
+      ),
+      mc(
+        'Die Wellengleichung $u_{tt} = c^2\\,u_{xx}$ für $u(x, t)$ ist:',
+        [
+          'eine ODE — sie hat ja nur eine unabhängige Variable.',
+          'eine algebraische Gleichung, weil keine Ableitungen vorkommen.',
+          'eine PDE — die gesuchte Funktion $u(x, t)$ hängt von zwei unabh. Variablen ab, und es treten partielle Ableitungen nach $x$ und $t$ auf.',
+          'ein System gewöhnlicher DGL.',
+        ],
+        2,
+        `**Ansatz:** Anzahl der unabhängigen Variablen der gesuchten Funktion zählen — und prüfen, ob partielle Ableitungen auftreten.
+
+**Rechnung:** $u(x, t)$ hängt von $x$ (Ort) und $t$ (Zeit) ab. Die Notation $u_{tt}$ steht für $\\partial^2 u / \\partial t^2$, $u_{xx}$ für $\\partial^2 u / \\partial x^2$ — also partielle Ableitungen. → **PDE**.
+
+**Probe:** Lösungen der Wellen­gleichung sind Funktionen wie $u(x, t) = f(x - ct) + g(x + ct)$ — sie hängen explizit von beiden Variablen ab.
+
+**Typischer Fehler:** Den Index $tt$ als „zweite Ableitung in $t$" lesen, ohne die *Partialität* zu erkennen. Bei nur einer Variablen wäre die Notation $u\'\'$ oder $\\ddot u$ — der Index $u_{tt}$ deutet auf partielle Ableitungen.`,
+        [
+          'Wie viele unabhängige Variablen hat $u(x, t)$?',
+          'Indices $u_{tt}, u_{xx}$ stehen für $\\partial^2 u/\\partial t^2$ und $\\partial^2 u/\\partial x^2$.',
+          'Beide Ableitungen treten gleichzeitig auf — typisches PDE-Merkmal.',
+        ],
+        {
+          0: '$u(x, t)$ hat *zwei* unabh. Variablen ($x$ und $t$) — also keine ODE.',
+          1: 'Indizes $u_{tt}, u_{xx}$ sind eine Kurzschreib­weise für partielle Ableitungen, nicht für Indizierte Variablen. Es kommen sehr wohl Ableitungen vor.',
+          3: 'Ein System gewöhnlicher DGL bestünde aus mehreren *Funktionen* einer einzigen Variablen, z. B. $y_1\'(t)$ und $y_2\'(t)$. Hier ist es eine *einzelne* Funktion zweier Variablen — also eine PDE.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['ode-vs-pde'] },
+      ),
+      mc(
+        'Ein Lerner sagt: „Das System $y_1\'(t) = 2y_2$, $y_2\'(t) = -y_1$ ist eine PDE, weil zwei Funktionen $y_1, y_2$ vorkommen." Welcher Hinweis trifft zu?',
+        [
+          'Stimmt — sobald mehr als eine Funktion vorkommt, spricht man von PDE.',
+          'Mehrere Funktionen $\\neq$ PDE. Eine PDE hat *eine* Funktion mit *mehreren* unabhängigen Variablen. Hier hängen $y_1, y_2$ beide nur von $t$ ab → ODE-System.',
+          'Es ist gar keine DGL, weil zwei Gleichungen statt einer da stehen.',
+          'Es ist eine PDE, aber nur, wenn man sie als Vektorfunktion $\\vec y(t)$ schreibt.',
+        ],
+        1,
+        `**Ansatz:** Klassifizierung nach: *eine* Funktion mit *mehreren* unabh. Variablen → PDE; *eine oder mehrere* Funktionen mit jeweils *einer* unabh. Variablen → ODE (ggf. ODE-System).
+
+**Rechnung:** $y_1(t)$ und $y_2(t)$ sind beides Funktionen *einer* Variablen ($t$). Es kommt keine partielle Ableitung vor (nur $\\dot y_1, \\dot y_2$). → **System gewöhnlicher DGL** (ODE-System), keine PDE.
+
+**Probe:** In Matrixform $\\vec y\'(t) = A\\,\\vec y(t)$ — nach wie vor nur $t$ als unabh. Variable; alle Ableitungen sind $\\frac{d}{dt}$, nicht $\\partial/\\partial t$ und $\\partial/\\partial x$ gleichzeitig.
+
+**Typischer Fehler:** „Mehrere Variablen" mit „mehrere Funktionen" verwechseln. Anzahl der *Funktionen* macht aus der DGL ein *System*; Anzahl der *unabhängigen Variablen* entscheidet zwischen ODE und PDE.`,
+        [
+          '*Funktionen* zählen vs. *unabhängige Variablen* zählen.',
+          'PDE-Indikator: $\\partial/\\partial x$ UND $\\partial/\\partial t$ in derselben Gleichung.',
+          'Hier nur $\\dot y_1, \\dot y_2$ → ein gemeinsamer Ableitungs­operator $d/dt$.',
+        ],
+        {
+          0: 'Das ist genau der Irrtum — die Anzahl der Funktionen ist irrelevant. PDE braucht *mehrere unabh. Variablen* in *einer* Funktion.',
+          2: 'Doch — Systeme gewöhnlicher DGL sind völlig normal und werden gemeinsam gelöst (z. B. Eigenwert­methode). Mehrere Gleichungen schließen DGL nicht aus.',
+          3: 'Die Vektor­schreibweise $\\vec y(t) = (y_1, y_2)^T$ ändert nichts an der Klassifikation. $\\vec y$ hängt von einer Variablen $t$ ab → bleibt ein ODE-System.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['ode-vs-pde'] },
+      ),
+      matching(
+        'Ordne jede Gleichung der korrekten Klassifikation zu.',
+        [
+          { left: '$y\'(x) = 2y$', right: 'ODE 1. Ordnung' },
+          { left: '$\\ddot x + \\omega^2 x = 0$', right: 'ODE 2. Ordnung' },
+          { left: '$u_t = \\alpha\\,u_{xx}$', right: 'PDE 2. Ordnung' },
+          { left: '$u_t + u\\,u_x + u_{xxx} = 0$', right: 'PDE 3. Ordnung (Korteweg-de Vries)' },
+        ],
+        `**Ansatz:** Erst nach Anzahl der unabh. Variablen klassifizieren (ODE/PDE), dann nach höchster Ableitung (Ordnung).
+
+**Rechnung:**
+- $y\'(x) = 2y$: $y(x)$, höchste $y\'$ → ODE 1. Ordnung.
+- $\\ddot x + \\omega^2 x = 0$: $x(t)$, höchste $\\ddot x$ → ODE 2. Ordnung (harmonischer Oszillator).
+- $u_t = \\alpha\\,u_{xx}$: $u(x, t)$, höchste $u_{xx}$ → PDE 2. Ordnung (Wärme­leitung).
+- $u_t + u\\,u_x + u_{xxx} = 0$: $u(x, t)$, höchste $u_{xxx}$ → PDE 3. Ordnung (KdV-Gleichung).
+
+**Probe:** Test pro Eintrag: Anzahl Variablen der gesuchten Funktion zählen — und Striche/Indizes der höchsten Ableitung.
+
+**Typischer Fehler:** Bei der KdV-Gleichung wegen $u\\cdot u_x$ als „nichtlinear" abstempeln und vergessen, die Ordnung zu bestimmen. Nichtlinearität und Ordnung sind unabhängige Kategorien.`,
+        [
+          'Erst ODE/PDE (eine vs. mehrere unabh. Variablen).',
+          'Dann Ordnung (höchste Ableitung).',
+          'Indizes wie $u_{xxx}$ heißen drei partielle Ableitungen nach $x$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['ode-vs-pde'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-2-2 — DGL-Systeme  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────

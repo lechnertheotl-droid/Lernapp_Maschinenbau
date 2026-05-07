@@ -11,7 +11,13 @@ export const exercises_dgl_u1 = {
       'Eine Gleichung, die nur Integrale enthält',
     ],
     correctIndex: 1,
-    explanation: 'Eine DGL enthält eine gesuchte Funktion y(x) und mindestens eine ihrer Ableitungen y\', y\'\', ... Das Ziel: die Funktion y(x) finden!',
+    explanation: `**Ansatz:** Das Wort *Differential* zeigt auf die Ableitung — eine DGL muss also Ableitungen einer unbekannten Funktion enthalten.
+
+**Rechnung:** Beispiel $y' = 2y$: hier kommt die unbekannte Funktion $y(x)$ und ihre Ableitung $y'$ vor. Gesucht: alle $y(x)$, die diese Gleichung erfüllen.
+
+**Probe:** $y(x) = e^{2x}$ einsetzen: $y' = 2e^{2x} = 2y$ ✓ — die Funktion löst die DGL.
+
+**Typischer Fehler:** Man hält jede Gleichung mit $y$ für eine DGL. Erst wenn auch eine *Ableitung* von $y$ vorkommt, ist es eine Differentialgleichung.`,
     hints: [
       'Was bedeutet das Wort "Differential" mathematisch?',
       'Es bezieht sich auf die Ableitung (Differentialquotient).',
@@ -28,7 +34,13 @@ export const exercises_dgl_u1 = {
     question: 'Welche Ordnung hat die DGL $y\'\' + 3y\' - 2y = 0$?',
     options: ['Ordnung 0', 'Ordnung 1', 'Ordnung 2', 'Ordnung 3'],
     correctIndex: 2,
-    explanation: 'Die Ordnung einer DGL ist die höchste vorkommende Ableitung. Hier ist $y\'\'$ (zweite Ableitung) die höchste, also Ordnung 2.',
+    explanation: `**Ansatz:** Die *Ordnung* einer DGL ist definiert als die höchste vorkommende Ableitung — unabhängig davon, mit welchem Koeffizienten sie multipliziert ist.
+
+**Rechnung:** In $y'' + 3y' - 2y = 0$ stehen $y''$ (zweite Ableitung), $y'$ (erste Ableitung) und $y$ (nullte Ableitung). Die höchste ist $y''$ → Ordnung 2.
+
+**Probe:** Wären die Ableitungen einer Lösung explizit, müsstest du auch die zweite Ableitung berechnen — z. B. $y = e^{\\lambda x}$ liefert $y'' = \\lambda^2 e^{\\lambda x}$, also wirklich Ordnung 2.
+
+**Typischer Fehler:** Sich am Vorfaktor ($3y'$) orientieren statt an der Anzahl der Striche, oder die niedrigste statt die höchste Ableitung als Ordnung wählen.`,
     hints: [
       'Welche ist die höchste vorkommende Ableitung in der DGL?',
       'Zähle die Striche: $y\'$ ist 1. Ordnung, $y\'\'$ ist 2. Ordnung.',
@@ -44,7 +56,13 @@ export const exercises_dgl_u1 = {
     id: 'ex-dgl-1-1-c', lessonId: 'dgl-1-1', type: 'true-false',
     statement: 'Die DGL $y\' = y^2 + x$ ist linear.',
     correct: false,
-    explanation: 'Die DGL ist nichtlinear, weil $y^2$ vorkommt. Bei einer linearen DGL darf y und seine Ableitungen nur in der 1. Potenz auftreten (also $y$, $y\'$, $y\'\'$, ... aber nicht $y^2$, $\\sin(y)$, $e^y$, ...).',
+    explanation: `**Ansatz:** Linearität-Test: $y$ und alle Ableitungen dürfen nur in 1. Potenz vorkommen — keine Produkte $y\\cdot y'$, keine Funktionen wie $\\sin(y)$, $e^y$, $y^2$.
+
+**Rechnung:** In $y' = y^2 + x$ steht $y^2$ → 2. Potenz → Linearitätsbedingung verletzt → DGL ist *nichtlinear*. Die Aussage ist also **falsch**.
+
+**Probe:** Standard-Form prüfen: lineare DGL 1. Ordnung wäre $y' + p(x)\\,y = q(x)$. Mit $y^2$ kann man die Gleichung nicht in diese Form bringen — daher nichtlinear.
+
+**Typischer Fehler:** "Linear" mit "rechte Seite ist linear in $x$" verwechseln. Linear bezieht sich auf $y$ und seine Ableitungen, NICHT auf die unabhängige Variable $x$ — $x$ und beliebige Funktionen $f(x)$ sind in linearen DGL erlaubt.`,
     hints: [
       'Was bedeutet "linear" im DGL-Kontext?',
       '$y$ und alle Ableitungen dürfen nur in der 1. Potenz vorkommen.',
@@ -61,18 +79,13 @@ export const exercises_dgl_u1 = {
       '$y(x) = 3e^{x}$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zwei Bedingungen prüfen: (1) DGL erfüllt, (2) Anfangsbedingung erfüllt.
+    explanation: `**Ansatz:** Allgemeine Lösung von $y'=ky$ ist $y=C\\,e^{kx}$. Anfangsbedingung $y(0)=3$ liefert die Konstante $C$.
 
-**Prüfung $y = 3e^{2x}$:**
-- Ableitung: $y' = 3 \\cdot 2 e^{2x} = 6e^{2x} = 2 \\cdot (3e^{2x}) = 2y$ ✓ (DGL erfüllt)
-- Anfangsbedingung: $y(0) = 3 \\cdot e^{0} = 3 \\cdot 1 = 3$ ✓
+**Rechnung:** Mit $k=2$ ist die Lösungsfamilie $y=C\\,e^{2x}$. Einsetzen: $y(0)=C\\cdot e^{0}=C$, also $C=3$. Damit ist $y(x)=3e^{2x}$.
 
-**Warum die anderen falsch sind:**
-- B: $y(0) = 1 + 3 = 4 \\neq 3$ und $y'(x) = 2e^{2x} \\neq 2y$.
-- C: $y' = 6e^{3x} \\neq 2 \\cdot 2e^{3x}$ — DGL nicht erfüllt (Faktor im Exponent falsch).
-- D: $y' = 3e^x \\neq 2 \\cdot 3e^x$ — falscher Exponent.
+**Probe:** Ableiten: $y'=3\\cdot 2 e^{2x}=6e^{2x}$. Vergleich mit $2y=2\\cdot 3e^{2x}=6e^{2x}$ → DGL erfüllt ✓. Anfangswert: $y(0)=3e^{0}=3$ ✓.
 
-**Merke:** Die allgemeine Lösung von $y' = ky$ ist $y = C e^{kx}$; die Anfangsbedingung fixiert $C$.`,
+**Typischer Fehler:** Die Anfangsbedingung additiv ($e^{2x}+3$) statt als Vorfaktor einbauen, oder Vorfaktor $C$ und Exponentkoeffizient $k$ vertauschen ($2e^{3x}$ statt $3e^{2x}$).`,
     hints: [
       'Zwei Bedingungen müssen stimmen: DGL **und** $y(0) = 3$.',
       'Die allgemeine Lösung von $y\' = ky$ ist $y = C e^{kx}$. Hier $k = 2$.',
@@ -486,10 +499,27 @@ Eine DGL ist **linear**, wenn $y$ und seine Ableitungen nur in der **1. Potenz**
 - $y' = y^2$ → **nichtlinear** ✗ (wegen $y^2$)
 - $y'' \\cdot y = 1$ → **nichtlinear** ✗ (Produkt $y'' \\cdot y$)
 
+**Homogen vs. inhomogen** (lineare DGL):
+Standardform $y^{(n)} + p_{n-1}(x)\\,y^{(n-1)} + \\ldots + p_0(x)\\,y = q(x)$:
+- $q(x) \\equiv 0$ → **homogen** (z. B. $y' + 3y = 0$).
+- $q(x) \\not\\equiv 0$ → **inhomogen** (z. B. $y' + 3y = \\sin x$, $q(x)=\\sin x$).
+
+Für homogene lineare DGL gilt das *Superpositionsprinzip*: Linearkombinationen von Lösungen sind wieder Lösungen.
+
 **Anfangswertproblem (AWP):**
 DGL + Anfangsbedingung(en), z.B.:
 $$y' = 2y, \\quad y(0) = 3$$
-Die DGL allein hat unendlich viele Lösungen ($y = Ce^{2x}$ für jedes $C$). Die Anfangsbedingung wählt genau eine aus ($C = 3$).`,
+Die DGL allein hat unendlich viele Lösungen ($y = Ce^{2x}$ für jedes $C$). Die Anfangsbedingung wählt genau eine aus ($C = 3$).
+
+**Gewöhnlich (ODE) vs. partiell (PDE):**
+- **ODE** (*ordinary*): gesuchte Funktion hängt von **einer** unabh. Variablen ab, z. B. $y(x)$. Ableitungen mit $\\frac{d}{dx}$. Beispiel: $y'' + \\omega^2 y = 0$.
+- **PDE** (*partial*): gesuchte Funktion hängt von **mehreren** unabh. Variablen ab, z. B. $u(x, t)$. Ableitungen mit $\\frac{\\partial}{\\partial x}$, $\\frac{\\partial}{\\partial t}$. Beispiel: Wärmeleitung $\\frac{\\partial u}{\\partial t} = \\alpha\\,\\frac{\\partial^2 u}{\\partial x^2}$.
+
+| Kriterium | ODE | PDE |
+|---|---|---|
+| Unabh. Variablen | 1 ($x$, $t$, …) | $\\geq 2$ ($x$ und $t$ etc.) |
+| Ableitungs­operator | $\\frac{d}{dx}$ | $\\frac{\\partial}{\\partial x}$, $\\frac{\\partial}{\\partial t}$ |
+| Beispiel | $y' + 2y = 0$ | $u_t = \\alpha\\,u_{xx}$ |`,
       },
       { id: 'dgl-1-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-1-1-a' },
       { id: 'dgl-1-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-1-1-b' },
