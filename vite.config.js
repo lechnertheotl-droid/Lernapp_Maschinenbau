@@ -30,7 +30,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MiB — content bundle grew with new topics
+        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB — Content-Bundle wächst mit jedem Lesson-Ausbau
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
