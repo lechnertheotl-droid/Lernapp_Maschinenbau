@@ -970,4 +970,503 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-2: Skalarprodukt
+  // SG0: Komponentenform · SG1: Winkelform + Arbeit · SG2: Orthogonalität · SG3: Projektion
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-2': {
+    // ===== Sub-Goal 0 — Komponentenform $\vec a\cdot\vec b=\sum a_i b_i$ =====
+    0: [
+      tag(
+        tf(
+          'Das Skalarprodukt zweier Vektoren ist eine **Zahl** (Skalar) — kein Vektor.',
+          true,
+          `**Ansatz:** Definition merken: „Skalar"-Produkt — der Name verrät die Antwort.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=a_xb_x+a_yb_y+a_zb_z$ — Summe von Produkten reeller Zahlen ergibt eine reelle Zahl. Beispiel $\\vec{a}=(2,3),\\vec{b}=(4,-1)$: $\\vec{a}\\cdot\\vec{b}=8-3=5$ — ein Skalar.
+
+**Probe:** Auf einen Vektor angewendete Operationen liefern entweder einen Vektor (Addition, Skalarmul, Kreuzprodukt) oder einen Skalar (Betrag, Skalarprodukt). Das Skalarprodukt gehört zur zweiten Klasse.
+
+**Typischer Fehler:** Mit dem komponentenweisen Produkt verwechseln: $(a_xb_x,\\,a_yb_y)$ liefert ein Tupel — das ist aber **kein** definiertes Vektorprodukt. Das echte Skalarprodukt summiert weiter zu einer Zahl.`,
+          [
+            'Hör auf den Namen: „Skalar"-Produkt.',
+            'Was kommt heraus, wenn man Zahlen multipliziert und summiert? Eine Zahl.',
+            'Test: Hat das Ergebnis Komponenten? Wenn nein → Skalar.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['sp-skalar'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne $\\vec{a}\\cdot\\vec{b}$ für $\\vec{a}=(3,\\,-1,\\,2)$ und $\\vec{b}=(2,\\,4,\\,5)$.',
+          12, 0, '',
+          `**Ansatz:** Komponentenform: $\\vec{a}\\cdot\\vec{b}=a_xb_x+a_yb_y+a_zb_z$.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=3\\cdot 2+(-1)\\cdot 4+2\\cdot 5=6-4+10=12$.
+
+**Probe:** Vorzeichen-Check: zwei positive Beiträge ($6$, $10$), einer negativ ($-4$). Summe positiv → spitzer Winkel zwischen den Vektoren.
+
+**Typischer Fehler:** Negative Komponente ignorieren ($-1\\cdot 4 = +4$ statt $-4$) — das gibt $20$. Oder die $z$-Komponente vergessen, falls man unbewusst in 2D rechnet — das gibt $2$.`,
+          [
+            'Komponentenform: pro Achse multiplizieren, dann summieren.',
+            'In 3D drei Summanden: $a_xb_x+a_yb_y+a_zb_z$.',
+            'Vorzeichen mitnehmen — $(-1)\\cdot 4 = -4$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-komp'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler schreibt für $\\vec{a}=(2,\\,3)$ und $\\vec{b}=(4,\\,1)$: „$\\vec{a}\\cdot\\vec{b}=(2\\cdot 4,\\,3\\cdot 1)=(8,\\,3)$." Welche Antwort ist korrekt — und was ist der Fehler?',
+          [
+            '$\\vec{a}\\cdot\\vec{b}=11$ — der Schüler hat das **komponentenweise Produkt** notiert, statt die Summe zu bilden. Korrekt: $a_xb_x+a_yb_y=8+3=11$ (Skalar).',
+            '$\\vec{a}\\cdot\\vec{b}=(8,\\,3)$ — der Schüler hat richtig gerechnet, das Ergebnis ist ein Vektor.',
+            '$\\vec{a}\\cdot\\vec{b}=14$ — er hat $a_xb_y+a_yb_x=2\\cdot 1+3\\cdot 4=14$ gerechnet.',
+            '$\\vec{a}\\cdot\\vec{b}=10$ — er hat alle vier Komponenten addiert: $2+3+4+1=10$.',
+          ],
+          0,
+          `**Ansatz:** Komponentenweises Produkt $(a_xb_x,a_yb_y)$ ist **kein** Skalarprodukt — die Definition verlangt zusätzlich die **Summe**.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=2\\cdot 4+3\\cdot 1=8+3=\\mathbf{11}$. Der Schüler hat den letzten Schritt — die Summenbildung — vergessen.
+
+**Probe:** Ergebnis muss Skalar sein, kein Tupel. $11$ ist eine Zahl, $(8,3)$ ist eines nicht. Schon das Format zeigt den Fehler.
+
+**Typischer Fehler:** Die zwei Schritte „multiplizieren" und „summieren" vermischen oder einen davon weglassen. Im Kreuzprodukt entsteht ein Vektor, im Skalarprodukt entsteht eine Zahl.`,
+          [
+            'Welches Ergebnisformat verlangt das Skalarprodukt?',
+            'Zwei Schritte: $a_ib_i$ pro Achse → dann **summieren**.',
+            'Hier: $8+3$ als Schlussschritt nicht vergessen.',
+          ],
+          {
+            1: 'Ein Tupel $(8,3)$ ist genau der Fehler des Schülers — das **komponentenweise Produkt**. Das echte Skalarprodukt summiert die Produkte zu einer Zahl: $8+3=11$.',
+            2: 'Die Formel $a_xb_y+a_yb_x$ existiert nicht in der Standard-Definition. Korrekt: $a_xb_x+a_yb_y=8+3=11$ — gleiche Indizes pro Summand.',
+            3: 'Alle Komponenten zu addieren ($2+3+4+1$) ignoriert die paarweise Multiplikation komplett. Skalarprodukt verlangt **erst** $a_ib_i$, **dann** die Summe.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['sp-komp', 'sp-skalar'] },
+      ),
+
+      tag(
+        ni(
+          'Gegeben: $\\vec{a}=(2,\\,1)$, $\\vec{b}=(3,\\,2)$ und $\\vec{c}=(1,\\,-1)$. Berechne $\\vec{a}\\cdot(\\vec{b}+\\vec{c})$ — nutze das Distributivgesetz, falls hilfreich.',
+          9, 0, '',
+          `**Ansatz:** Zwei gleichwertige Wege — direkt rechnen oder via Distributivgesetz $\\vec{a}\\cdot(\\vec{b}+\\vec{c})=\\vec{a}\\cdot\\vec{b}+\\vec{a}\\cdot\\vec{c}$.
+
+**Rechnung:** Weg A (direkt): $\\vec{b}+\\vec{c}=(3+1,\\,2-1)=(4,\\,1)$. $\\vec{a}\\cdot(4,1)=2\\cdot 4+1\\cdot 1=8+1=9$. Weg B (distributiv): $\\vec{a}\\cdot\\vec{b}=2\\cdot 3+1\\cdot 2=8$, $\\vec{a}\\cdot\\vec{c}=2\\cdot 1+1\\cdot(-1)=1$. Summe $8+1=9$.
+
+**Probe:** Beide Wege liefern $9$ — das bestätigt die Distributivität des Skalarprodukts. ✓
+
+**Typischer Fehler:** Distributivgesetz mit Vektor-Multiplikation verwechseln und „$\\vec{a}\\cdot(\\vec{b}+\\vec{c})=(\\vec{a}\\cdot\\vec{b})+\\vec{c}$" rechnen — das wäre Skalar plus Vektor (nicht definiert). Skalarprodukt ist distributiv **innerhalb** der Klammer.`,
+          [
+            'Zwei Wege: erst $\\vec{b}+\\vec{c}$ ausrechnen, dann mit $\\vec{a}$ skalarprodukten — oder Distributivgesetz nutzen.',
+            'Distributiv: $\\vec{a}\\cdot(\\vec{b}+\\vec{c})=\\vec{a}\\cdot\\vec{b}+\\vec{a}\\cdot\\vec{c}$.',
+            'Beide Wege müssen dasselbe ergeben — das ist auch eine Probe.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['sp-komp', 'sp-regeln'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne das Skalarprodukt $\\vec{a}\\cdot\\vec{b}$ für $\\vec{a}=(4,\\,-3)$ und $\\vec{b}=(2,\\,5)$.',
+          -7, 0, '',
+          `**Ansatz:** $\\vec{a}\\cdot\\vec{b}=a_xb_x+a_yb_y$.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=4\\cdot 2+(-3)\\cdot 5=8-15=-7$.
+
+**Probe:** Vorzeichen-Plausibilität: SP negativ → stumpfer Winkel ($\\varphi>90°$). $\\vec{a}=(4,-3)$ zeigt nach rechts unten, $\\vec{b}=(2,5)$ nach rechts oben — die Vektoren sind „gegenläufig" in $y$, daher negativer Beitrag aus $y$-Komponenten überwiegt. ✓
+
+**Typischer Fehler:** Doppeltes Vorzeichen verlieren — $-3\\cdot 5=-15$, nicht $+15$.`,
+          [
+            'Komponentenform: $a_xb_x+a_yb_y$.',
+            'Vorzeichen: ein negativer Faktor → negativer Beitrag.',
+            '$8 + (-15) = 8-15 = -7$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-komp'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Winkelform $\vec a\cdot\vec b=|\vec a||\vec b|\cos\varphi$ + Arbeit =====
+    1: [
+      tag(
+        tf(
+          'Wenn $\\vec{a}\\cdot\\vec{b}<0$ ist (für $\\vec{a},\\vec{b}\\ne\\vec{0}$), schließen die Vektoren einen stumpfen Winkel ein — also $\\varphi>90°$.',
+          true,
+          `**Ansatz:** Vorzeichen-Interpretation aus der Winkelform $\\vec{a}\\cdot\\vec{b}=|\\vec{a}||\\vec{b}|\\cos\\varphi$.
+
+**Rechnung:** Da $|\\vec{a}|>0$ und $|\\vec{b}|>0$, hängt das Vorzeichen allein an $\\cos\\varphi$. $\\cos\\varphi<0$ tritt im Bereich $90°<\\varphi\\le 180°$ auf — also stumpfe Winkel (inkl. antiparallel).
+
+**Probe:** Beispiel $\\vec{a}=(1,0),\\vec{b}=(-1,0)$: SP $=-1$, Winkel $180°$ ✓. Beispiel $\\vec{a}=(1,0),\\vec{b}=(-1,1)$: SP $=-1$, Winkel $135°$ ✓.
+
+**Typischer Fehler:** Stumpf und spitz vertauschen: spitzer Winkel ($\\varphi<90°$) hat $\\cos\\varphi>0$, also SP positiv. Negatives SP heißt **stumpf**.`,
+          [
+            'Vorzeichen-Tabelle: SP $>0$ spitz, $=0$ rechtwinklig, $<0$ stumpf.',
+            'Folgt aus $\\cos\\varphi$: $\\cos$ wechselt das Vorzeichen bei $\\varphi=90°$.',
+            'Frage: Wo ist $\\cos\\varphi<0$? Im Bereich $\\varphi\\in(90°,180°]$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['sp-winkel', 'sp-vorzeichen'] },
+      ),
+
+      tag(
+        mc(
+          'Gegeben sind $|\\vec{a}|=4$, $|\\vec{b}|=3$ und der eingeschlossene Winkel $\\varphi=60°$. Wie groß ist $\\vec{a}\\cdot\\vec{b}$?',
+          ['$6$', '$12$', '$10{,}39$', '$0$'],
+          0,
+          `**Ansatz:** Winkelform: $\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos\\varphi$.
+
+**Rechnung:** $\\cos 60°=0{,}5$. $\\vec{a}\\cdot\\vec{b}=4\\cdot 3\\cdot 0{,}5=6$.
+
+**Probe:** Plausibel — SP $=6$, also positiv, also spitzer Winkel. $60°<90°$ ✓.
+
+**Typischer Fehler:** $\\cos$ vergessen ($4\\cdot 3=12$, das wäre Parallelität bei $\\varphi=0°$). Oder $\\cos 30°=\\sqrt{3}/2\\approx 0{,}866$ statt $\\cos 60°=0{,}5$ (Standardwinkel verwechselt).`,
+          [
+            'Welche Formel verbindet Beträge und Winkel mit dem Skalarprodukt?',
+            'Standardwinkel: $\\cos 0°=1,\\cos 30°=\\sqrt 3/2,\\cos 45°=\\sqrt 2/2,\\cos 60°=1/2,\\cos 90°=0$.',
+            'Setz Werte ein: $4\\cdot 3\\cdot 0{,}5$.',
+          ],
+          {
+            1: '$12$ ist $|\\vec{a}|\\cdot|\\vec{b}|$ ohne den $\\cos$-Faktor — das wäre nur bei $\\varphi=0°$ (Parallelität) richtig. Hier muss $\\cos 60°=0{,}5$ multipliziert werden.',
+            2: '$10{,}39\\approx 12\\cdot 0{,}866=12\\cos 30°$ — du hast $\\cos 30°$ statt $\\cos 60°$ genommen. Standardwinkel: $\\cos 60°=0{,}5$, nicht $\\cos 30°$.',
+            3: '$0$ wäre nur bei $\\varphi=90°$ (Orthogonalität). Bei $60°$ ist $\\cos\\varphi=0{,}5\\ne 0$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['sp-winkel'] },
+      ),
+
+      tag(
+        ni(
+          'Gegeben: $\\vec{a}\\cdot\\vec{b}=12$, $|\\vec{a}|=6$, $|\\vec{b}|=4$. Berechne den eingeschlossenen Winkel $\\varphi$ in Grad.',
+          60, 0.5, '°',
+          `**Ansatz:** Winkelformel umstellen: $\\cos\\varphi=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\cdot|\\vec{b}|}$.
+
+**Rechnung:** $\\cos\\varphi=\\dfrac{12}{6\\cdot 4}=\\dfrac{12}{24}=0{,}5$. $\\varphi=\\arccos(0{,}5)=60°$.
+
+**Probe:** Test mit $\\cos 60°=0{,}5$ ✓. Außerdem SP $>0$ → spitzer Winkel — passt zu $60°<90°$.
+
+**Typischer Fehler:** Im Nenner $|\\vec{a}|+|\\vec{b}|$ statt $|\\vec{a}|\\cdot|\\vec{b}|$ verwenden — gäbe $\\cos\\varphi=12/10=1{,}2$, was unmöglich ist (Wertebereich von $\\cos$ ist $[-1,1]$).`,
+          [
+            'Stell die Winkelform nach $\\cos\\varphi$ um.',
+            'Nenner ist das **Produkt** der Beträge.',
+            '$\\arccos(0{,}5)$ — Standardwinkel wiedererkennen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-winkel'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Studierender hat $\\vec{a}\\cdot\\vec{b}=-3$ ausgerechnet und schließt: „Die Vektoren stehen senkrecht aufeinander." Welche Aussage trifft den Fehler?',
+          [
+            'Senkrechtigkeit verlangt $\\vec{a}\\cdot\\vec{b}=0$ (genau null), nicht negativ. SP $=-3<0$ heißt: stumpfer Winkel ($\\varphi>90°$).',
+            'Die Aussage ist korrekt — auch negative SP-Werte zeigen Orthogonalität an.',
+            'Negatives SP bedeutet, die Vektoren sind antiparallel ($\\varphi=180°$).',
+            'Der Studierende hat den Betrag vergessen — $|\\vec{a}\\cdot\\vec{b}|=3>0$ widerspricht Orthogonalität.',
+          ],
+          0,
+          `**Ansatz:** Vorzeichen-Tabelle des Skalarprodukts genau lesen — nur **exakt null** signalisiert Orthogonalität.
+
+**Rechnung:** SP $=0\\Leftrightarrow\\varphi=90°$ (orthogonal). SP $<0\\Leftrightarrow 90°<\\varphi\\le 180°$ (stumpf). Hier: SP $=-3<0$ → stumpf, nicht senkrecht.
+
+**Probe:** Berechnen wir den Winkel, falls $|\\vec{a}|=2$ und $|\\vec{b}|=3$: $\\cos\\varphi=-3/6=-0{,}5$ → $\\varphi=120°$. Stumpf bestätigt. ✓
+
+**Typischer Fehler:** „Negatives SP" als „bedeutsam ungleich null" interpretieren und mit „rechtwinklig" verwechseln. Orthogonalität ist eine **scharfe Bedingung**: SP exakt null.`,
+          [
+            'Welche Bedingung ist gleichbedeutend mit „senkrecht"?',
+            'Vorzeichen-Tabelle: SP $>0$ spitz, $=0$ rechtwinklig, $<0$ stumpf.',
+            'Negatives SP ist nicht null — also nicht senkrecht.',
+          ],
+          {
+            1: 'Senkrechtigkeit verlangt SP **exakt null**. SP $\\ne 0$ schließt Orthogonalität aus.',
+            2: 'Antiparallel ($\\varphi=180°$) wäre der Extremfall mit SP $=-|\\vec{a}|\\cdot|\\vec{b}|$ (Minimum). Allgemein bedeutet SP $<0$ nur stumpfen Winkel — nicht zwingend antiparallel.',
+            3: 'Im Skalarprodukt nimmt man keinen Betrag des Ergebnisses — das Vorzeichen trägt die geometrische Information. SP $=-3$ ist nicht dasselbe wie SP $=+3$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['sp-vorzeichen'] },
+      ),
+
+      tag(
+        ni(
+          'Eine Kraft $|\\vec{F}|=20\\,\\text{N}$ wird unter einem Winkel von $60°$ zur Verschiebung der Länge $|\\vec{s}|=5\\,\\text{m}$ aufgebracht. Berechne die Arbeit $W=\\vec{F}\\cdot\\vec{s}$ in Joule.',
+          50, 0, 'J',
+          `**Ansatz:** Winkelform der Arbeit: $W=|\\vec{F}|\\cdot|\\vec{s}|\\cdot\\cos\\varphi$ — nur die Kraftkomponente in Wegrichtung leistet Arbeit.
+
+**Rechnung:** $W=20\\cdot 5\\cdot\\cos 60°=100\\cdot 0{,}5=50\\,\\text{J}$.
+
+**Probe:** Aufteilung $\\vec{F}=\\vec{F}_\\parallel+\\vec{F}_\\perp$. Die Parallelkomponente $|\\vec{F}_\\parallel|=20\\cos 60°=10\\,\\text{N}$ leistet entlang $5\\,\\text{m}$: $10\\cdot 5=50\\,\\text{J}$. Die Senkrechtkomponente $|\\vec{F}_\\perp|=20\\sin 60°\\approx 17{,}3\\,\\text{N}$ leistet **keine** Arbeit (steht senkrecht zur Bewegung).
+
+**Typischer Fehler:** $W=|\\vec{F}|\\cdot|\\vec{s}|=100\\,\\text{J}$ rechnen (Winkel ignoriert) — wäre nur bei $\\varphi=0°$ (Kraft entlang Weg) richtig. Oder $\\sin$ statt $\\cos$ verwenden.`,
+          [
+            'Arbeit = Kraft mal Weg mal $\\cos$ des eingeschlossenen Winkels.',
+            'Standardwinkel: $\\cos 60°=0{,}5$.',
+            '$20\\cdot 5\\cdot 0{,}5$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['sp-arbeit', 'sp-winkel'] },
+      ),
+
+      tag(
+        tf(
+          'Wenn zwei Vektoren $\\vec{a}$ und $\\vec{b}$ einen Winkel von $90°$ einschließen, ist ihr Skalarprodukt $\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|$.',
+          false,
+          `**Ansatz:** Winkelform: $\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos\\varphi$. Bei $\\varphi=90°$ gilt $\\cos 90°=0$ — das tilgt das Produkt.
+
+**Rechnung:** Bei $\\varphi=90°$: $\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|\\cdot 0=\\mathbf{0}$. Die Behauptung „$=|\\vec{a}|\\cdot|\\vec{b}|$" gilt nur bei $\\varphi=0°$ (Parallelität, $\\cos 0°=1$).
+
+**Probe:** $\\vec{a}=(1,0),\\vec{b}=(0,1)$: $|\\vec{a}|=|\\vec{b}|=1$. Behauptung wäre $1$, korrekt ist aber SP $=0$. Klar widerlegt.
+
+**Typischer Fehler:** Das Maximum ($\\cos 0°=1$, parallel) und das Minimum ($\\cos 180°=-1$, antiparallel) bzw. die Null ($\\cos 90°$, orthogonal) verwechseln. $|\\vec{a}|\\cdot|\\vec{b}|$ ist die Obergrenze, $0$ der Spezialfall Orthogonalität.`,
+          [
+            'Setz $\\varphi=90°$ in die Winkelform ein.',
+            '$\\cos 90°=0$ — der Faktor verschwindet.',
+            'SP-Maximum $|\\vec{a}|\\cdot|\\vec{b}|$ erreicht man bei $\\varphi=0°$, nicht $90°$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['sp-winkel', 'sp-vorzeichen'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Orthogonalität & Winkelformel =====
+    2: [
+      tag(
+        tf(
+          'Zwei Vektoren $\\vec{a},\\vec{b}\\ne\\vec{0}$ stehen senkrecht aufeinander **genau dann, wenn** $\\vec{a}\\cdot\\vec{b}=0$ gilt.',
+          true,
+          `**Ansatz:** Aus der Winkelform $\\vec{a}\\cdot\\vec{b}=|\\vec{a}||\\vec{b}|\\cos\\varphi$ folgt: SP $=0$ kann nur an $\\cos\\varphi=0$ liegen, da $|\\vec{a}|,|\\vec{b}|>0$.
+
+**Rechnung:** $\\cos\\varphi=0\\iff\\varphi=90°$ (im Bereich $[0°,180°]$). Also SP $=0\\iff\\vec{a}\\perp\\vec{b}$.
+
+**Probe:** Standard-Basisvektoren $(1,0)$ und $(0,1)$: SP $=0$, sichtbar senkrecht. ✓ Umkehrung: senkrechte Vektoren wie $(2,3)$ und $(-3,2)$: SP $=-6+6=0$. ✓
+
+**Typischer Fehler:** Die Implikation nur in einer Richtung sehen. Tatsächlich ist es eine **Äquivalenz** — beide Richtungen gelten.`,
+          [
+            'Wann ist $|\\vec{a}||\\vec{b}|\\cos\\varphi=0$? Nicht, wenn die Beträge null sind.',
+            '$\\cos\\varphi=0$ tritt nur bei $\\varphi=90°$ auf.',
+            'Beide Richtungen prüfen: senkrecht $\\Rightarrow$ SP $=0$ und SP $=0\\Rightarrow$ senkrecht.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['sp-orthogonal'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Winkel zwischen $\\vec{a}=(1,\\,2)$ und $\\vec{b}=(3,\\,1)$ in Grad. Runde auf eine Nachkommastelle.',
+          45, 0.5, '°',
+          `**Ansatz:** $\\cos\\varphi=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\cdot|\\vec{b}|}$ — alle drei Bestandteile berechnen.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=1\\cdot 3+2\\cdot 1=5$. $|\\vec{a}|=\\sqrt{1+4}=\\sqrt 5$. $|\\vec{b}|=\\sqrt{9+1}=\\sqrt{10}$. $\\cos\\varphi=\\dfrac{5}{\\sqrt 5\\cdot\\sqrt{10}}=\\dfrac{5}{\\sqrt{50}}=\\dfrac{5}{5\\sqrt 2}=\\dfrac{1}{\\sqrt 2}\\approx 0{,}7071$. $\\varphi=\\arccos(0{,}7071)=45°$.
+
+**Probe:** $\\cos 45°=\\sqrt 2/2=1/\\sqrt 2\\approx 0{,}7071$ ✓. Zudem SP positiv → spitzer Winkel — passt zu $45°$.
+
+**Typischer Fehler:** $\\sqrt 5\\cdot\\sqrt{10}=\\sqrt{50}\\approx 7{,}07$ falsch addieren statt multiplizieren ($\\sqrt 5+\\sqrt{10}\\approx 5{,}40$) — Beträge werden im Nenner **multipliziert**.`,
+          [
+            'Drei Schritte: SP — Betrag $|\\vec{a}|$ — Betrag $|\\vec{b}|$.',
+            '$\\cos\\varphi$ aus der Formel ablesen.',
+            'Standardwert $1/\\sqrt 2$ entspricht $45°$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-winkel-formel', 'sp-komp'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet $\\vec{a}\\cdot\\vec{b}=15$ und schließt: „Die Vektoren sind parallel." Was ist der logische Fehler?',
+          [
+            'Parallelität verlangt $\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|$ (das Maximum). SP $>0$ zeigt nur einen spitzen Winkel an, nicht zwingend Parallelität.',
+            'Der Schüler hat richtig — positives SP bedeutet immer parallele Vektoren.',
+            'Parallelität verlangt $\\vec{a}\\cdot\\vec{b}<0$.',
+            'Bei Parallelität ist immer $\\vec{a}\\cdot\\vec{b}=0$.',
+          ],
+          0,
+          `**Ansatz:** Parallelität ist eine **scharfe Bedingung** — nicht „SP irgendwie groß".
+
+**Rechnung:** $\\vec{a}\\parallel\\vec{b}\\iff\\cos\\varphi=\\pm 1\\iff\\vec{a}\\cdot\\vec{b}=\\pm|\\vec{a}|\\cdot|\\vec{b}|$. SP $=15$ ist nur dann maximal-parallel, wenn zufällig $|\\vec{a}|\\cdot|\\vec{b}|=15$ — sonst ist es ein „beliebiger spitzer Winkel".
+
+**Probe:** Beispiel $\\vec{a}=(3,0),\\vec{b}=(5,1)$: SP $=15$, aber Beträge $3\\cdot\\sqrt{26}\\approx 15{,}3>15$ → Vektoren nicht parallel (nur fast). Konkret: $\\cos\\varphi=15/(3\\sqrt{26})\\approx 0{,}981$, $\\varphi\\approx 11{,}3°$.
+
+**Typischer Fehler:** „Großes SP" mit „Parallel" gleichsetzen. Der korrekte Test ist: $|\\vec{a}\\cdot\\vec{b}|=|\\vec{a}|\\cdot|\\vec{b}|$ (Cauchy-Schwarz mit Gleichheit) — oder per Komponenten: $\\vec{a}=k\\vec{b}$ für ein $k$.`,
+          [
+            'Was ist die scharfe Bedingung für Parallelität?',
+            'SP-Wertebereich: $-|\\vec{a}||\\vec{b}|\\le\\vec{a}\\cdot\\vec{b}\\le|\\vec{a}||\\vec{b}|$.',
+            'Parallel = Maximum oder Minimum erreicht.',
+          ],
+          {
+            1: 'Positives SP heißt nur, $\\cos\\varphi>0$, also $\\varphi<90°$. Das ist „spitzer Winkel" — nicht zwingend Parallelität ($\\varphi=0°$).',
+            2: 'Negatives SP wäre antiparallel-tendierend (stumpfer Winkel) — auch das ist nicht Parallelität, sondern eher das Gegenteil.',
+            3: 'SP $=0$ ist Orthogonalität, also genau **das Gegenteil** von Parallelität. Parallel hat SP $=\\pm|\\vec{a}|\\cdot|\\vec{b}|$ (extremal).',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['sp-orthogonal'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jedem Wert des Skalarprodukts die richtige Aussage über den Winkel zwischen $\\vec{a}$ und $\\vec{b}$ zu (für $\\vec{a},\\vec{b}\\ne\\vec{0}$).',
+          [
+            { left: '$\\vec{a}\\cdot\\vec{b}>0$', right: 'spitzer Winkel ($0°\\le\\varphi<90°$)' },
+            { left: '$\\vec{a}\\cdot\\vec{b}=0$', right: 'rechter Winkel ($\\varphi=90°$, orthogonal)' },
+            { left: '$\\vec{a}\\cdot\\vec{b}<0$', right: 'stumpfer Winkel ($90°<\\varphi\\le 180°$)' },
+            { left: '$\\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|$', right: 'parallel mit gleicher Richtung ($\\varphi=0°$)' },
+          ],
+          `**Ansatz:** Vier Vorzeichen-/Wert-Bereiche des Skalarprodukts ↔ vier Winkelbereiche.
+
+**Rechnung:** SP $>0\\iff\\cos\\varphi>0\\iff\\varphi<90°$ (spitz). SP $=0\\iff\\cos\\varphi=0\\iff\\varphi=90°$ (rechtwinklig). SP $<0\\iff\\cos\\varphi<0\\iff\\varphi>90°$ (stumpf). SP-Maximum $|\\vec{a}||\\vec{b}|$ ist erreicht bei $\\cos\\varphi=1\\iff\\varphi=0°$ (parallel, gleiche Richtung).
+
+**Probe:** Antiparallel ($\\varphi=180°$) gibt SP $=-|\\vec{a}||\\vec{b}|$ — das ist ein Spezialfall des stumpfen Bereichs (das **Minimum** von SP). Hier nicht zugeordnet, aber wichtig zu wissen.
+
+**Typischer Fehler:** „SP $=|\\vec{a}||\\vec{b}|$" mit „nur betragsmäßig groß" verwechseln — es ist exakt das **Maximum**, das nur bei perfekter Parallelität erreicht wird.`,
+          [
+            'Vier Fälle: positiv, null, negativ, am Maximum.',
+            'Zuordnung läuft über $\\cos\\varphi$.',
+            '„parallel mit gleicher Richtung" verlangt SP-Maximum, nicht nur SP $>0$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['sp-vorzeichen', 'sp-orthogonal'] },
+      ),
+
+      tag(
+        ni(
+          'Bestimme den Wert von $k$, sodass die Vektoren $\\vec{a}=(2,\\,k)$ und $\\vec{b}=(3,\\,1)$ orthogonal zueinander sind.',
+          -6, 0, '',
+          `**Ansatz:** Orthogonalität $\\iff\\vec{a}\\cdot\\vec{b}=0$. Komponentenform aufstellen, Gleichung nach $k$ lösen.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=2\\cdot 3+k\\cdot 1=6+k$. Setze $=0$: $6+k=0\\Rightarrow k=-6$.
+
+**Probe:** $\\vec{a}=(2,-6),\\vec{b}=(3,1)$: $\\vec{a}\\cdot\\vec{b}=6-6=0$ ✓. Geometrisch: Steigung von $\\vec{b}$ ist $1/3$, also senkrecht dazu Steigung $-3/(\\,1\\,)=-3$. Steigung von $\\vec{a}=(2,-6)$ ist $-6/2=-3$. ✓
+
+**Typischer Fehler:** Vorzeichen verlieren — $k=+6$ liefert $\\vec{a}\\cdot\\vec{b}=12$, also nicht orthogonal. Oder Gleichung mit $\\ne 0$ verwechseln.`,
+          [
+            'Orthogonalitäts-Bedingung: SP gleich null setzen.',
+            'Komponenten ausschreiben: $2\\cdot 3+k\\cdot 1$.',
+            'Nach $k$ auflösen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-orthogonal', 'sp-komp'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Projektion =====
+    3: [
+      tag(
+        tf(
+          'Die vektorielle Projektion $\\vec{a}_b$ von $\\vec{a}$ auf $\\vec{b}$ ist immer parallel zu $\\vec{b}$.',
+          true,
+          `**Ansatz:** Formel zerlegen: $\\vec{a}_b=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$ — die Projektion ist ein **skalares Vielfaches** von $\\vec{b}$.
+
+**Rechnung:** $\\vec{a}_b=k\\vec{b}$ mit $k=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\in\\mathbb{R}$. Das ist genau die Definition von Parallelität — gleicher Richtung (oder Gegenrichtung, falls $k<0$).
+
+**Probe:** $\\vec{a}=(2,3),\\vec{b}=(1,0)$: $\\vec{a}_b=2/1\\cdot(1,0)=(2,0)$ — entlang der $x$-Achse, parallel zu $\\vec{b}=(1,0)$. ✓
+
+**Typischer Fehler:** Projektion mit dem **orthogonalen** Anteil verwechseln. Es gibt zwei Anteile: $\\vec{a}=\\vec{a}_b+\\vec{a}_\\perp$ — der erste ist parallel zu $\\vec{b}$, der zweite senkrecht.`,
+          [
+            'Form der Projektionsformel: skalarer Faktor mal $\\vec{b}$.',
+            'Skalares Vielfaches eines Vektors $=$ paralleler Vektor.',
+            'Auch bei negativem Skalar: parallel (in Gegenrichtung), nicht senkrecht.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['sp-projektion'] },
+      ),
+
+      tag(
+        mc(
+          'Berechne die vektorielle Projektion $\\vec{a}_b$ von $\\vec{a}=(4,\\,3)$ auf $\\vec{b}=(1,\\,0)$.',
+          ['$(4,\\,0)$', '$(0,\\,3)$', '$(4,\\,3)$', '$(1,\\,0)$'],
+          0,
+          `**Ansatz:** Formel $\\vec{a}_b=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$. Hier $\\vec{b}$ ist Einheitsvektor entlang $x$-Achse.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=4\\cdot 1+3\\cdot 0=4$. $|\\vec{b}|^2=1$. $\\vec{a}_b=\\dfrac{4}{1}\\cdot(1,0)=(4,\\,0)$.
+
+**Probe:** Anteil von $\\vec{a}$ entlang $\\vec{b}$ — $\\vec{b}$ liegt auf der $x$-Achse, also bleibt nur die $x$-Komponente $4$ stehen. Der orthogonale Rest ist $\\vec{a}-\\vec{a}_b=(0,3)$ — senkrecht zu $\\vec{b}$, plausibel.
+
+**Typischer Fehler:** Den orthogonalen Anteil $\\vec{a}_\\perp=(0,3)$ als Projektion abliefern — er ist genau das Gegenteil. Oder $\\vec{a}$ unverändert zurückgeben (keine Projektion durchgeführt).`,
+          [
+            'Formel: Skalarprodukt durch Quadrat-Betrag, mal $\\vec{b}$.',
+            'Bei $\\vec{b}=(1,0)$ entartet das zu: $x$-Komponente von $\\vec{a}$ als $x$-Komponente, $y=0$.',
+            'Probe: $\\vec{a}-\\vec{a}_b$ muss senkrecht auf $\\vec{b}$ stehen.',
+          ],
+          {
+            1: '$(0,3)$ ist der **orthogonale** Anteil $\\vec{a}_\\perp=\\vec{a}-\\vec{a}_b$, nicht die Projektion. Die Projektion liegt immer auf der Linie von $\\vec{b}$.',
+            2: '$\\vec{a}=(4,3)$ ist der ursprüngliche Vektor — du hast ihn nicht projiziert. Die Projektion auf $\\vec{b}=(1,0)$ schneidet alles weg, was nicht parallel zu $\\vec{b}$ ist.',
+            3: '$(1,0)$ ist $\\vec{b}$ selbst (auch $\\hat{e}_b$, da Einheitsvektor). Die Projektion ist ein **Vielfaches** von $\\vec{b}$ — hier mit Faktor $4$, nicht $1$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['sp-projektion'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet die vektorielle Projektion $\\vec{a}_b$ von $\\vec{a}=(2,\\,1)$ auf $\\vec{b}=(3,\\,4)$ als $\\vec{a}_b=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\,\\vec{b}=\\dfrac{10}{5}\\,(3,\\,4)=(6,\\,8)$. Was ist der Fehler?',
+          [
+            'Im Nenner muss $|\\vec{b}|^2$ stehen (nicht $|\\vec{b}|$). Korrekt: $\\vec{a}_b=\\dfrac{10}{25}\\,(3,\\,4)=(1{,}2;\\,1{,}6)$.',
+            'Die Rechnung ist korrekt; das Ergebnis $(6,\\,8)$ ist die Projektion.',
+            'Im Nenner muss $|\\vec{a}|$ statt $|\\vec{b}|$ stehen.',
+            'Man muss durch das Skalarprodukt teilen, nicht multiplizieren.',
+          ],
+          0,
+          `**Ansatz:** Formel exakt: $\\vec{a}_b=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$ — **Quadrat** des Betrags im Nenner, nicht der Betrag selbst.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=2\\cdot 3+1\\cdot 4=10$. $|\\vec{b}|=5$, also $|\\vec{b}|^2=25$. $\\vec{a}_b=\\dfrac{10}{25}\\,(3,4)=0{,}4\\cdot(3,4)=(1{,}2;\\,1{,}6)$.
+
+**Probe:** Längencheck: $|\\vec{a}_b|=\\sqrt{1{,}44+2{,}56}=\\sqrt 4=2$. Skalare Projektion: $|\\vec{a}|\\cos\\varphi=\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}=10/5=2$. Stimmt mit $|\\vec{a}_b|=2$ überein. ✓
+
+**Typischer Fehler:** Der Schüler vermischt zwei Formeln: die **skalare Projektion** $\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}$ (Zahl) mit der **vektoriellen** $\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$. Die Faktor-Form $\\vec{b}/|\\vec{b}|^2=\\hat{e}_b/|\\vec{b}|$ macht aus dem skalaren Anteil einen vektoriellen mit korrekter Länge.`,
+          [
+            'Schau die Formel genau an: $|\\vec{b}|$ oder $|\\vec{b}|^2$ im Nenner?',
+            'Skalare Projektion ($\\vec{a}\\cdot\\vec{b}/|\\vec{b}|$) liefert Zahl, vektorielle ($\\vec{a}\\cdot\\vec{b}/|\\vec{b}|^2\\cdot\\vec{b}$) liefert Vektor.',
+            'Längencheck: $|\\vec{a}_b|$ muss gleich der skalaren Projektion sein.',
+          ],
+          {
+            1: 'Längencheck zeigt das Problem: $|(6,8)|=10$, aber die skalare Projektion ist $\\vec{a}\\cdot\\vec{b}/|\\vec{b}|=10/5=2$. Eine Projektion kann nie länger sein als $|\\vec{a}|=\\sqrt 5\\approx 2{,}24$ — $(6,8)$ ist zu lang.',
+            2: '$|\\vec{a}|$ im Nenner gibt es weder bei skalarer noch bei vektorieller Projektion — das wäre die Projektion in **die andere Richtung** (von $\\vec{b}$ auf $\\vec{a}$), und auch die hätte $|\\vec{a}|^2$, nicht $|\\vec{a}|$.',
+            3: 'Wir teilen durch eine Zahl ($|\\vec{b}|^2$), nicht durch das Skalarprodukt — das wäre dimensions-unsinnig.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['sp-projektion'] },
+      ),
+
+      tag(
+        ni(
+          'Eine Kraft $\\vec{F}=(3,\\,4)\\,\\text{N}$ wirkt auf einen Körper, der sich um $\\vec{s}=(4,\\,0)\\,\\text{m}$ verschiebt. Berechne die Arbeit $W$ in Joule über die Skalarprodukt-/Projektions-Form.',
+          12, 0, 'J',
+          `**Ansatz:** Arbeit $=$ Skalarprodukt von Kraft und Verschiebung. Äquivalent: skalare Projektion der Kraft auf $\\vec{s}$ mal $|\\vec{s}|$.
+
+**Rechnung:** Direkt: $W=\\vec{F}\\cdot\\vec{s}=3\\cdot 4+4\\cdot 0=12\\,\\text{J}$. Via Projektion: $\\hat{e}_s=(1,0)$. Skalare Projektion von $\\vec{F}$ auf $\\hat{e}_s$: $\\vec{F}\\cdot\\hat{e}_s=3\\,\\text{N}$. $W=3\\cdot|\\vec{s}|=3\\cdot 4=12\\,\\text{J}$.
+
+**Probe:** Beide Wege liefern $12\\,\\text{J}$ — das bestätigt die Identität $W=\\vec{F}\\cdot\\vec{s}=(\\vec{F}\\cdot\\hat{e}_s)\\cdot|\\vec{s}|$. ✓ Außerdem: nur die $x$-Komponente der Kraft ($3\\,\\text{N}$) leistet Arbeit, weil der Weg nur in $x$-Richtung verläuft.
+
+**Typischer Fehler:** $|\\vec{F}|\\cdot|\\vec{s}|=\\sqrt{25}\\cdot 4=20\\,\\text{J}$ rechnen (Winkel ignoriert) — wäre nur bei $\\varphi=0°$ richtig. Oder die senkrechte Kraftkomponente $F_y=4$ mit einbeziehen.`,
+          [
+            'Arbeit = Kraft · Weg, aber als **Skalarprodukt**.',
+            'Nur die Kraftkomponente in Wegrichtung leistet Arbeit.',
+            'Hier: Weg entlang $x$, also zählt nur $F_x=3$. $W=3\\cdot 4=12$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['sp-projektion', 'sp-arbeit'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die **skalare Projektion** von $\\vec{a}=(5,\\,12)$ auf $\\vec{b}=(3,\\,4)$. (Skalare Projektion $=\\vec{a}\\cdot\\vec{b}/|\\vec{b}|$.)',
+          12.6, 0.05, '',
+          `**Ansatz:** Skalare Projektion: $\\vec{a}\\cdot\\hat{e}_b=\\vec{a}\\cdot\\vec{b}/|\\vec{b}|$ — eine Zahl, gibt die Länge des parallelen Anteils an.
+
+**Rechnung:** $\\vec{a}\\cdot\\vec{b}=5\\cdot 3+12\\cdot 4=15+48=63$. $|\\vec{b}|=\\sqrt{9+16}=5$. Skalare Projektion $=63/5=\\mathbf{12{,}6}$.
+
+**Probe:** Vektorielle Projektion zur Kontrolle: $\\vec{a}_b=\\dfrac{63}{25}\\cdot(3,4)=(7{,}56;\\,10{,}08)$. Länge: $|\\vec{a}_b|=\\sqrt{7{,}56^2+10{,}08^2}=\\sqrt{57{,}15+101{,}61}=\\sqrt{158{,}76}\\approx 12{,}6$. ✓ Stimmt mit der skalaren Projektion überein.
+
+**Typischer Fehler:** Skalare und vektorielle Projektion verwechseln und $\\vec{a}_b/|\\vec{b}|^2\\cdot\\vec{b}$ rechnen. Oder $|\\vec{b}|^2=25$ statt $|\\vec{b}|=5$ einsetzen — das gäbe $63/25=2{,}52$, deutlich zu klein.`,
+          [
+            'Skalare Projektion ist eine Zahl (Länge des parallelen Anteils).',
+            'Formel: $\\vec{a}\\cdot\\vec{b}/|\\vec{b}|$ — Skalarprodukt durch **Betrag** (nicht Quadrat).',
+            'SP ausrechnen, dann durch $|\\vec{b}|=5$ teilen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-projektion', 'sp-komp'] },
+      ),
+    ],
+  },
 }

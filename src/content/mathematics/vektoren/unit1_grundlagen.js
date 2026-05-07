@@ -271,6 +271,7 @@ export const exercises_vek_u1 = {
       'Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y$ (in 2D).',
       'Achte auf das Vorzeichen bei $b_y = -2$: $3 \\cdot (-2) = -6$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['sp-komp'] },
     wrongAnswerExplanations: {
       0: 'Das ist das *komponentenweise Produkt* $(a_x b_x,\\; a_y b_y) = (2, -6)$ — aber das Skalarprodukt summiert danach zu einer Zahl. Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y = 2 + (-6) = -4$.',
       2: 'Du hast das Minuszeichen bei $b_y = -2$ ignoriert und $2 \\cdot 1 + 3 \\cdot 2 = 8$ gerechnet. Richtig ist $3 \\cdot (-2) = -6$, also $\\vec{a} \\cdot \\vec{b} = 2 - 6 = -4$.',
@@ -306,6 +307,7 @@ export const exercises_vek_u1 = {
       2: 'Gleiche Richtung bedeutet $\\varphi = 0°$ und $\\cos(0°) = 1$, also $\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}| > 0$ — maximales Skalarprodukt, nicht null. Null tritt nur bei $\\cos\\varphi = 0$, also $\\varphi = 90°$ auf.',
       3: 'Bei Parallelität ist $\\varphi = 0°$ oder $180°$, also $\\cos\\varphi = \\pm 1$ und $\\vec{a} \\cdot \\vec{b} = \\pm|\\vec{a}||\\vec{b}| \\neq 0$. Null-Skalarprodukt entspricht exakt dem Gegenteil — Orthogonalität ($\\varphi = 90°$).',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['sp-orthogonal', 'sp-winkel'] },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -345,6 +347,7 @@ export const exercises_vek_u1 = {
       1: '$30°$ hat $\\cos(30°) = \\sqrt{3}/2 \\approx 0{,}87$, aber hier kommt $\\cos\\varphi = 1/\\sqrt{2} \\approx 0{,}71$ heraus. Das passt zu $45°$, nicht $30°$.',
       3: '$90°$ würde $\\vec{a} \\cdot \\vec{b} = 0$ voraussetzen (Orthogonalität). Hier ist $\\vec{a} \\cdot \\vec{b} = 1 \\neq 0$, also kein rechter Winkel. Aus $\\cos\\varphi = 1/\\sqrt{2}$ folgt $\\varphi = 45°$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['sp-winkel-formel', 'sp-komp'] },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -379,6 +382,7 @@ export const exercises_vek_u1 = {
       '$(3, 4) \\cdot (1, 0) = ?$',
       'Nur die x-Komponente bleibt stehen.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['sp-projektion', 'sp-komp'] },
   },
   'ex-vek-1-2-mastery': {
     id: 'ex-vek-1-2-mastery', lessonId: 'vek-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -391,17 +395,15 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** $W = 10 \\cdot 3 + 0 \\cdot 4 = 30\\,\\text{J}$.
 
-**Probe (geometrisch):** $|\\vec{F}| = 10$, $|\\vec{s}| = \\sqrt{9+16} = 5$. $\\cos(\\varphi) = \\tfrac{30}{10 \\cdot 5} = 0{,}6$ → $\\varphi \\approx 53°$. Arbeit $= 10 \\cdot 5 \\cdot 0{,}6 = 30\\,\\text{J}$. ✓
+**Probe:** Geometrische Probe via Winkelform — $|\\vec{F}| = 10$, $|\\vec{s}| = \\sqrt{9+16} = 5$. $\\cos(\\varphi) = \\tfrac{30}{10 \\cdot 5} = 0{,}6$ → $\\varphi \\approx 53{,}1°$. Arbeit $= 10 \\cdot 5 \\cdot 0{,}6 = 30\\,\\text{J}$. ✓ Beide Wege liefern dasselbe Ergebnis.
 
-**Typischer Fehler:**
-- $70\\,\\text{J} = |\\vec{F}| + |\\vec{s}| \\cdot \\ldots$ — Formel falsch.
-- $50\\,\\text{J} = |\\vec{F}| \\cdot |\\vec{s}|$ — ignoriert den Winkel zwischen $\\vec{F}$ und $\\vec{s}$.
-- Nur die horizontale Kraftkomponente (hier $F_x = 10$) trägt bei.`,
+**Typischer Fehler:** $|\\vec F|\\cdot|\\vec s|=50$ rechnen — das ignoriert den Winkel zwischen $\\vec F$ und $\\vec s$ und entspricht $\\cos\\varphi=1$ (Parallelität). Korrekt ist $W=\\vec F\\cdot\\vec s=30\\,\\text{J}$, weil nur die horizontale Kraftkomponente $F_x=10$ in Wegrichtung zur Arbeit beiträgt.`,
     hints: [
       'Welche Operation verbindet Kraft und Weg zur Arbeit? Skalarprodukt.',
       'Formel: $W = F_x s_x + F_y s_y$.',
       '$F_y = 0$, also fällt der zweite Summand weg: $W = 10 \\cdot 3 + 0 = 30\\,\\text{J}$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['sp-arbeit', 'sp-komp'] },
     wrongAnswerExplanations: {
       0: 'Das sieht nach $|\\vec{F}| + |\\vec{s}| \\cdot \\ldots = 10 + 60 = 70$ aus — eine willkürliche Kombination, die keiner Skalarprodukt-Formel entspricht. Richtig: $W = F_x s_x + F_y s_y = 10\\cdot 3 + 0\\cdot 4 = 30\\,\\text{J}$.',
       1: 'Du hast $|\\vec{F}| \\cdot |\\vec{s}| = 10 \\cdot 5 = 50$ gerechnet — das ist das Skalarprodukt-Maximum bei Parallelität ($\\cos\\varphi = 1$). Der Winkel zwischen $\\vec{F}$ und $\\vec{s}$ ist aber nicht $0$. Richtig: $W = F_x s_x + F_y s_y = 30\\,\\text{J}$.',
@@ -931,13 +933,28 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
 | Winkel berechnen | $\\cos(\\varphi) = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}$ |
 | Orthogonalität testen | $\\vec{a} \\perp \\vec{b} \\;\\Leftrightarrow\\; \\vec{a} \\cdot \\vec{b} = 0$ |
 | Arbeit (Physik) | $W = \\vec{F} \\cdot \\vec{s}$ |
+| Skalare Projektion | $\\vec{a}_{\\parallel}^{\\text{(Skalar)}} = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}$ |
+| Vektorielle Projektion | $\\vec{a}_b = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}$ |
 
 **Vorzeichen-Interpretation:**
 - $\\vec{a} \\cdot \\vec{b} > 0$: spitzer Winkel ($\\varphi < 90°$)
 - $\\vec{a} \\cdot \\vec{b} = 0$: rechter Winkel ($\\varphi = 90°$)
 - $\\vec{a} \\cdot \\vec{b} < 0$: stumpfer Winkel ($\\varphi > 90°$)
 
-**Rechenregeln:** kommutativ ($\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}$), distributiv ($\\vec{a} \\cdot (\\vec{b}+\\vec{c}) = \\vec{a} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$), assoziativ mit Skalaren ($k(\\vec{a} \\cdot \\vec{b}) = (k\\vec{a}) \\cdot \\vec{b}$).`,
+**Rechenregeln:** kommutativ ($\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}$), distributiv ($\\vec{a} \\cdot (\\vec{b}+\\vec{c}) = \\vec{a} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$), assoziativ mit Skalaren ($k(\\vec{a} \\cdot \\vec{b}) = (k\\vec{a}) \\cdot \\vec{b}$).
+
+**Hinweis Projektion:** $\\vec{a}_b$ ist der Anteil von $\\vec{a}$, der parallel zu $\\vec{b}$ liegt — der Rest $\\vec{a}_\\perp = \\vec{a} - \\vec{a}_b$ steht senkrecht zu $\\vec{b}$.`,
+      },
+      {
+        id: 'vek-1-2-s1b', type: 'visualization', title: 'Vektoren mit eingeschlossenem Winkel',
+        visualizationId: 'vector-diagram',
+        params: {
+          vectors: [
+            { x: 3, y: 0, color: '#0ea5e9', label: '$\\vec{a}=(3,0)$' },
+            { x: 2, y: 2, color: '#dc2626', label: '$\\vec{b}=(2,2)$' },
+          ],
+          showGrid: true,
+        },
       },
       { id: 'vek-1-2-s2', type: 'exercise', title: 'Aufgabe 1 — Skalarprodukt berechnen', exerciseRef: 'ex-vek-1-2-a' },
       { id: 'vek-1-2-s3', type: 'exercise', title: 'Aufgabe 2 — Bedeutung $\\vec{a}\\cdot\\vec{b}=0$', exerciseRef: 'ex-vek-1-2-b' },
