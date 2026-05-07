@@ -35,14 +35,30 @@ const unit1 = makeUnit({
         '**Hookesches Gesetz** (im elastischen Bereich):\n' +
         '$$\\sigma = E \\cdot \\varepsilon$$\n\n' +
         'mit $\\sigma$ Spannung in MPa, $\\varepsilon = \\Delta l/l_0$ dimensionslos, $E$ Elastizitätsmodul in MPa oder GPa.\n\n' +
-        '**Beispiel Stahl S235:** $R_e \\approx 235$ MPa, $R_m \\approx 360$–$510$ MPa, $A \\approx 25\\%$, $E \\approx 210\\,000$ MPa.\n\n' +
-        '**Zulässige Spannung:** $\\sigma_\\text{zul} = R_m / S$ mit Sicherheitszahl $S$ (typ. 1,5–3).',
+        '**Bruchdehnung** (bleibende Längenänderung nach dem Bruch, bezogen auf $l_0$):\n' +
+        '$$A = \\frac{l_u - l_0}{l_0} \\cdot 100\\,\\%$$\n\n' +
+        '**$R_{p0{,}2}$ — 0,2-%-Dehngrenze:** Spannung, bei der nach Entlastung $0{,}2\\,\\%$ **bleibende** Dehnung verbleiben — Ersatz für $R_e$ bei Werkstoffen ohne ausgeprägte Streckgrenze (Aluminium, austenitische Edelstähle, Cu-Legierungen). Konstruktion: Parallele zur Hookeschen Geraden bei $\\varepsilon = 0{,}002$, Schnittpunkt mit der Kurve.\n\n' +
+        '| Größe | Bedeutung | Beispiel S235 |\n' +
+        '|---|---|---|\n' +
+        '| $R_e$ | Streckgrenze (Ende elastisch) | $\\approx 235\\,\\text{MPa}$ |\n' +
+        '| $R_m$ | Zugfestigkeit (Maximum) | $\\approx 360$–$510\\,\\text{MPa}$ |\n' +
+        '| $A$ | Bruchdehnung | $\\approx 25\\,\\%$ |\n' +
+        '| $E$ | Elastizitätsmodul | $\\approx 210\\,000\\,\\text{MPa}$ |\n\n' +
+        '**Sicherheitszahl & zulässige Spannung:**\n' +
+        '$$S = \\frac{R_e}{\\sigma_\\text{zul}}\\;\\text{(zäh)} \\quad\\text{bzw.}\\quad S = \\frac{R_m}{\\sigma_\\text{zul}}\\;\\text{(spröde)}$$\n' +
+        'umgestellt: $\\sigma_\\text{zul} = R_e/S$ bzw. $R_m/S$, typische Werte $S = 1{,}5$–$3$.',
+      visualization: {
+        visualizationId: 'stress-strain',
+        title: 'Spannungs-Dehnungs-Diagramm — Stahl, Aluminium, Gusseisen',
+      },
       masteryQuestion: 'Welcher Kennwert markiert den Übergang elastisch → plastisch?',
       masteryOptions: ['$R_e$ (Streckgrenze)', '$R_m$ (Zugfestigkeit)', '$A$ (Bruchdehnung)', '$E$ (E-Modul)'],
       correctIndex: 0,
       masteryExplanation:
-        'Bis zur Streckgrenze $R_e$ federt die Probe zurück (elastisch). Ab $R_e$ bleibt nach Entlastung eine plastische Verformung. ' +
-        '$R_m$ ist die höchste Spannung (kommt später), $A$ die Bruchdehnung, $E$ die Steigung im elastischen Bereich.',
+        '**Ansatz:** Im Spannungs-Dehnungs-Diagramm sind vier Größen markiert: $R_e$, $R_m$, $A$, $E$. Gefragt ist der Punkt, ab dem die Verformung **bleibend** ist.\n\n' +
+        '**Rechnung:** Bis $R_e$ gilt das Hookesche Gesetz $\\sigma = E\\cdot\\varepsilon$ — entlastet man die Probe vor $R_e$, springt sie zurück. Oberhalb $R_e$ verbleibt nach Entlastung eine plastische Dehnung.\n\n' +
+        '**Probe:** Bei $\\sigma < R_e$ ist $\\varepsilon_\\text{plast} = 0$; bei $\\sigma = R_e$ beginnt das Fließen; bei $\\sigma > R_e$ ist $\\varepsilon_\\text{plast} > 0$. ✓\n\n' +
+        '**Typischer Fehler:** $R_m$ als Übergang zu nehmen — $R_m$ ist die **höchste** erreichte Spannung (Maximum der Kurve, nach der Verfestigungs-Phase) und liegt deutlich nach dem elastisch-plastisch-Übergang.',
       masteryHints: [
         'Übergang elastisch → plastisch = ab wann bleibt Verformung dauerhaft.',
         '$R_e$ ist die **Streckgrenze** — vor ihr federt alles zurück.',

@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2773 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 1951 (70 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1242 / 1242 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 271 / 1134 (24 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2798 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1977 (71 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1256 / 1256 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 276 / 1134 (24 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1165,10 +1165,10 @@ _Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. 
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 6
-- Aufgaben: **8** (Lesson-Path: 8 · Goal-Tasks: 0)
-- 4-Block: 5/8 (63 %) 🟡
-- MC-wAE: 7/7 (100 %) ✅
-- Sub-Goals: 0/30 Goal-Tasks verknüpft 🔴
+- Aufgaben: **33** (Lesson-Path: 8 · Goal-Tasks: 25)
+- 4-Block: 31/33 (94 %) 🟡
+- MC-wAE: 21/21 (100 %) ✅
+- Sub-Goals: 5/30 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.**
@@ -1206,7 +1206,7 @@ _Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klau
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `werk-1-1` Spannungs-Dehnungs-Diagramm | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
+| `werk-1-1` Spannungs-Dehnungs-Diagramm | 5 | 5/5 | 26 | 15/5/5/1/0 | 26/26 | 15/15 | ✅ | — |
 | `werk-1-2` Werkstoffgruppen | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
 | `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 0/4 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +4 Goal |
 | `werk-2-2` Kerbschlagbiegeversuch | 5 | 0/5 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +5 Goal |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 119 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 118 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1546,58 +1546,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `werk-1-1` · Spannungs-Dehnungs-Diagramm
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `re-rm` — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum) (SG 0)
-  2. `rp02` — $R_{p0,2}$ = 0,2-%-Dehngrenze (Aluminium ohne ausgeprägte Streckgrenze) ⇐ `re-rm` (SG 1)
-  3. `e-modul` — E-Modul = Steigung im linearen Bereich: $E=\sigma/\varepsilon$ (SG 2)
-  4. `bruchdehnung` — Bruchdehnung $A=(l_u-l_0)/l_0\cdot 100\%$ — zäh vs. spröde (SG 3)
-  5. `sicherheit` — Sicherheit $S=R_m/\sigma_{\text{zul}}$ bzw. $R_e/\sigma_{\text{zul}}$ ⇐ `re-rm` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `re-rm` · **0/5+** — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
-  - 🔴 [1] _hoch_ · Konzepte: `rp02` · **0/5+** — $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
-  - 🔴 [2] _hoch_ · Konzepte: `e-modul` · **0/5+** — E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
-  - 🔴 [3] _mittel_ · Konzepte: `bruchdehnung` · **0/5+** — Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
-  - 🔴 [4] _mittel_ · Konzepte: `sicherheit` · **0/5+** — Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `re-rm` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `re-rm` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `re-rm` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `re-rm` | 1 | 0 | 🔴 | $R_e$/$R_m$ verwechselt |
-|  5 | 0 | transfer           | matching         | `re-rm` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `rp02` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `e-modul` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `e-modul` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `e-modul` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `e-modul` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `e-modul` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `bruchdehnung` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `bruchdehnung` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `sicherheit` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `sicherheit` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `sicherheit` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `sicherheit` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `sicherheit` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-werk-1-1-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-1-2` · Werkstoffgruppen
 
