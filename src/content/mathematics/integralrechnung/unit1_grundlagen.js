@@ -29,6 +29,7 @@ export const exercises_int_u1 = {
       '2': 'Der Kehrwert $\\frac{1}{f(x)}$ ist eine rein algebraische Operation, die mit Integration nichts zu tun hat. Die Stammfunktion kommt aus dem Umkehren des Ableitens: $F\'(x) = f(x)$. Beispiel: Kehrwert von $f(x) = 2x$ ist $\\frac{1}{2x}$, aber die Stammfunktion ist $x^{2}$.',
       '3': 'Die Nullstelle ist ein $x$-Wert, an dem $f(x) = 0$ ist — eine Zahl, keine Funktion. Die Stammfunktion ist dagegen eine ganze Funktion $F(x)$ mit $F\'(x) = f(x)$. Beispiel: $f(x) = 2x$ hat die Nullstelle $x = 0$, aber die Stammfunktion $F(x) = x^{2}$.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['stammfunktion'] },
   },
   'ex-int-1-1-b': {
     id: 'ex-int-1-1-b', lessonId: 'int-1-1', type: 'multiple-choice',
@@ -57,6 +58,7 @@ export const exercises_int_u1 = {
       '2': '$C$ ist gerade nicht fest auf $0$ gesetzt, sondern steht stellvertretend für jede beliebige reelle Konstante. Würde $C = 0$ gelten, wäre $x^{2}$ die einzige Stammfunktion von $2x$ — aber auch $x^{2} + 5$ oder $x^{2} - 7$ haben die Ableitung $2x$.',
       '3': 'Ein Anfangswert $F(x_{0}) = y_{0}$ legt $C$ erst bei zusätzlicher Bedingung fest — ohne Randbedingung bleibt $C$ beliebig. Die Grundaussage ist: $(F(x) + C)\' = f(x)$ für jedes $C$, deshalb muss man $C$ mitschreiben.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['plus-c'] },
   },
   'ex-int-1-1-c': {
     id: 'ex-int-1-1-c', lessonId: 'int-1-1', type: 'matching',
@@ -83,6 +85,7 @@ export const exercises_int_u1 = {
       'Die Potenzregel der Ableitung rückwärts: aus $x^{n}$ wird $n \\cdot x^{n-1}$.',
       'Zur Kontrolle: $(x^{n+1}/(n+1))\' = x^{n}$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['stammfunktion', 'rueckwaerts'] },
   },
   'ex-int-1-1-d': {
     id: 'ex-int-1-1-d', lessonId: 'int-1-1', type: 'multiple-choice',
@@ -116,6 +119,7 @@ Beide $3x^{2}$ und $3x^{2} + 5$ sind Stammfunktionen — sie unterscheiden sich 
       '1': 'Beim Ableiten von $6x^{2}$ erhält man $12x$, nicht $6x$ — der Koeffizient wurde beim Integrieren nicht durch den neuen Exponenten geteilt. Potenzregel: $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2} + C$.',
       '2': 'Abgeleitet ergibt $x^{3}$ den Wert $3x^{2}$, nicht $6x$ — das wäre eine Stammfunktion von $3x^{2}$, nicht von $6x$. Richtig: Exponent von $6x^{1}$ auf $x^{2}$ erhöhen und durch $2$ teilen, also $3x^{2} + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['plus-c'] },
   },
   'ex-int-1-1-mastery': {
     id: 'ex-int-1-1-mastery', lessonId: 'int-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -140,6 +144,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Bei $(x^{4})\' = 4x^{4}$ hast du den Exponenten nicht um $1$ reduziert. Ableitungs-Potenzregel: $(x^{n})\' = n \\cdot x^{n-1}$, also $(x^{4})\' = 4x^{3}$ (nicht $4x^{4}$). Richtiges Ergebnis: $4x^{3} + 2$.',
       '3': 'Die Konstante $7$ hast du korrekt weggelassen, aber $(2x)\' = 2$ — nicht $2x$. Merke: $(c \\cdot x)\' = c$, der Faktor bleibt, $x$ verschwindet. Richtig: $4x^{3} + 2$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
   },
 
   // ── Lesson 2: Grundintegrale ──────────────────────────────────────────────
@@ -701,8 +706,17 @@ $$F'(x) = f(x) \\quad \\Longleftrightarrow \\quad \\int f(x)\\,dx = F(x) + C$$
 Das Symbol $\\int$ heißt **Integralzeichen** und $dx$ zeigt an, nach welcher Variable wir integrieren.`,
       },
       {
-        id: 'int-1-1-s2', type: 'explanation-formal', title: 'Die Integrationskonstante C',
-        content: `**Warum steht da immer "$+C$"?**
+        id: 'int-1-1-s2', type: 'explanation-formal', title: 'Stammfunktion, Integrationskonstante & Probe',
+        content: `**Konzept-Übersicht:**
+
+| Konzept | Formel | Beispiel |
+|---|---|---|
+| Stammfunktion $F$ von $f$ | $F'(x) = f(x)$ | $F(x) = x^{2}$ ist Stammfunktion von $f(x) = 2x$, denn $(x^{2})' = 2x$. |
+| Unbestimmtes Integral | $\\int f(x)\\,dx = F(x) + C$ | $\\int 2x\\,dx = x^{2} + C$ |
+| Rückwärts-Ableiten | Suche $F$, sodass $F'(x) = f(x)$ ergibt | Aus $f(x) = 4x^{3}$: welcher Term wird beim Ableiten zu $4x^{3}$? Antwort: $x^{4}$. |
+| Probe | $F$ ableiten und mit $f$ vergleichen | $F(x) = x^{2} + 7$ → $F'(x) = 2x = f(x)$ ✓ |
+
+**Warum steht da immer "$+C$"?**
 
 Beim Ableiten verschwindet jede Konstante:
 $$(F(x) + 5)' = F'(x) + 0 = f(x)$$

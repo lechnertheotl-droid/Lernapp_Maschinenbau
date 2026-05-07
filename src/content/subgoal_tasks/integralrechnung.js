@@ -17,6 +17,452 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const integralrechnungSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-1 — Stammfunktion: das Umkehren der Ableitung  (3 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-1': {
+
+    // ── [0] Stammfunktion durch „Rückwärts-Ableiten" erkennen ──────────────
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[stammfunktion]
+      tf(
+        'Eine Funktion $F$ heißt Stammfunktion von $f$, wenn $F\'(x) = f(x)$ für alle $x$ im Definitionsbereich gilt.',
+        true,
+        `**Ansatz:** Die Definition der Stammfunktion direkt prüfen.
+
+**Rechnung:** Genau diese Bedingung — $F'(x) = f(x)$ — definiert die Stammfunktion. Integration ist die Umkehrung der Differentiation.
+
+**Probe:** Für $f(x) = 2x$ ist $F(x) = x^{2}$ Stammfunktion, denn $(x^{2})' = 2x$. ✓
+
+**Typischer Fehler:** Richtung der Ableitung verwechseln — gefordert ist $F'(x) = f(x)$, NICHT $f'(x) = F(x)$.`,
+        [
+          'Was ist die Umkehrung der Ableitung?',
+          'Definition: $F$ ist Stammfunktion von $f$, wenn ein bestimmter Ableitungs-Zusammenhang gilt.',
+          'Schau die Ableitung von $F$ an — was muss sie laut Definition ergeben?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 2: SG 0 · apply-guided · multiple-choice · uses=[rueckwaerts]
+      mc(
+        'Welche Funktion $F$ ist eine Stammfunktion von $f(x) = 4x^{3}$ — gefunden durch Rückwärts-Ableiten?',
+        [
+          '$F(x) = x^{4}$',
+          '$F(x) = 12x^{2}$',
+          '$F(x) = 4x^{4}$',
+          '$F(x) = \\frac{x^{4}}{4}$',
+        ],
+        0,
+        `**Ansatz:** Rückwärts-Ableiten — welcher Term ergibt beim Ableiten $4x^{3}$?
+
+**Rechnung:** $(x^{4})' = 4 \\cdot x^{4-1} = 4x^{3} = f(x)$ ✓ (Potenzregel: Exponent kommt nach vorn, neuer Exponent ist um 1 kleiner).
+
+**Probe:** $\\frac{d}{dx}(x^{4}) = 4x^{3}$. ✓
+
+**Typischer Fehler:** Statt $x^{4}$ wird $4x^{4}$ angegeben — der Faktor $4$ wurde nicht durch den neuen Exponenten geteilt.`,
+        [
+          'Welche Operation kehrt das Ableiten um? Suche die Funktion, deren Ableitung $4x^{3}$ ergibt.',
+          'Potenzregel rückwärts: aus $x^{n}$ wird beim Integrieren $\\frac{x^{n+1}}{n+1}$.',
+          'Für $f(x) = 4x^{3}$: Exponent um $1$ erhöhen → $x^{4}$. Den Faktor $4$ durch den neuen Exponenten $4$ teilen — also $4 \\cdot \\frac{x^{4}}{4} = x^{4}$.',
+        ],
+        {
+          1: 'Du hast $4x^{3}$ abgeleitet statt eine Stammfunktion gesucht — falsche Richtung. $\\frac{d}{dx}(4x^{3}) = 12x^{2}$, aber die Probe verlangt das Umgekehrte: $F(x) = x^{4}$ mit $F\'(x) = 4x^{3}$.',
+          2: 'Beim Integrieren von $4x^{3}$ muss der Faktor durch den neuen Exponenten geteilt werden: $\\int 4x^{3}\\,dx = 4 \\cdot \\frac{x^{4}}{4} = x^{4}$. Probe: $(4x^{4})\' = 16x^{3} \\neq 4x^{3}$.',
+          3: 'Du hast $\\int x^{3}\\,dx = \\frac{x^{4}}{4}$ gerechnet — den Faktor $4$ aber vergessen. Korrekt: $\\int 4x^{3}\\,dx = 4 \\cdot \\frac{x^{4}}{4} = x^{4}$, nicht $\\frac{x^{4}}{4}$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['rueckwaerts'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · multiple-choice · uses=[rueckwaerts, stammfunktion]
+      mc(
+        'Welche der folgenden Funktionen ist eine Stammfunktion von $f(x) = 6x^{2} + 4$?',
+        [
+          '$F(x) = 2x^{3} + 4x$',
+          '$F(x) = 12x$',
+          '$F(x) = 6x^{3} + 4x$',
+          '$F(x) = 2x^{3} + 4$',
+        ],
+        0,
+        `**Ansatz:** Gliedweise integrieren — Potenzregel rückwärts auf jeden Summanden.
+
+**Rechnung:** $\\int 6x^{2}\\,dx = 6 \\cdot \\frac{x^{3}}{3} = 2x^{3}$. $\\int 4\\,dx = 4x$. Summe: $F(x) = 2x^{3} + 4x$.
+
+**Probe:** $F'(x) = 6x^{2} + 4 = f(x)$. ✓
+
+**Typischer Fehler:** Konstante $4$ vergessen zu integrieren — $\\int 4\\,dx = 4x$ (nicht $4$), denn $(4x)' = 4$.`,
+        [
+          'Setze die Potenzregel gliedweise an: für jedes $a x^{n}$ ist die Stammfunktion $a \\cdot \\frac{x^{n+1}}{n+1}$.',
+          'Konstante $4$ ist $4 \\cdot x^{0}$ — Stammfunktion: $4 \\cdot \\frac{x^{1}}{1} = 4x$.',
+          'Probe: leite dein Ergebnis ab und prüfe, ob $6x^{2} + 4$ herauskommt.',
+        ],
+        {
+          1: 'Du hast $f(x) = 6x^{2} + 4$ abgeleitet statt eine Stammfunktion gesucht: $f\'(x) = 12x + 0 = 12x$. Gesucht ist die Umkehrung. Korrekt: $F(x) = 2x^{3} + 4x$, denn $F\'(x) = 6x^{2} + 4$.',
+          2: 'Beim Integrieren von $6x^{2}$ muss der Faktor durch den neuen Exponenten ($3$) geteilt werden: $\\int 6x^{2}\\,dx = 2x^{3}$, nicht $6x^{3}$. Probe: $(6x^{3})\' = 18x^{2} \\neq 6x^{2}$.',
+          3: 'Der konstante Summand $4$ in $f(x)$ wurde nicht integriert — $\\int 4\\,dx = 4x$, nicht $4$. Probe: $(2x^{3} + 4)\' = 6x^{2} + 0 \\neq 6x^{2} + 4$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['rueckwaerts', 'stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[stammfunktion]
+      mc(
+        'Eine Studentin soll eine Stammfunktion von $f(x) = 3x^{2}$ angeben und schreibt $F(x) = 6x$. Was ist der Fehler?',
+        [
+          'Sie hat $f$ abgeleitet statt eine Stammfunktion gesucht — Stammfunktion und Ableitung sind invers, sie ist in die falsche Richtung gelaufen. Korrekt: $F(x) = x^{3}$, denn $(x^{3})\' = 3x^{2}$.',
+          'Nichts — $F(x) = 6x$ ist korrekt, denn $(3x^{2})\' = 6x$.',
+          'Sie hat den Faktor $3$ nicht durch den neuen Exponenten geteilt — korrekt wäre $F(x) = x^{2}$.',
+          'Sie hat zu weit integriert — korrekt wäre $F(x) = 3x^{3}$.',
+        ],
+        0,
+        `**Ansatz:** Probe — das behauptete $F$ ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $(6x)' = 6$, aber $f(x) = 3x^{2}$. Mismatch: $6 \\neq 3x^{2}$. Beobachtung: $(3x^{2})' = 6x$ — die Studentin hat genau $f(x)$ abgeleitet, statt eine Stammfunktion zu finden.
+
+**Probe:** Korrekte Stammfunktion ist $F(x) = x^{3}$ — denn $F'(x) = 3x^{2} = f(x)$. ✓
+
+**Typischer Fehler:** Stammfunktion und Ableitung verwechseln — wer in die falsche Richtung rechnet, bekommt $f'$ statt $F$.`,
+        [
+          'Mache die Probe: leite ihr $F$ ab und schaue, ob $f$ herauskommt.',
+          '$(6x)\' = ?$ — vergleiche mit $f(x) = 3x^{2}$.',
+          'Schau in die andere Richtung: $(3x^{2})\' = ?$ — vielleicht hat sie genau das berechnet.',
+        ],
+        {
+          1: 'Probe widerlegt das sofort: $(6x)\' = 6 \\neq 3x^{2}$. Wer hier "korrekt" sagt, hat die Probe nicht durchgeführt.',
+          2: '$F(x) = x^{2}$ wäre auch falsch: $(x^{2})\' = 2x \\neq 3x^{2}$. Korrekt: Exponent von $3x^{2}$ um $1$ erhöhen ($x^{3}$) und den Faktor $3$ durch den neuen Exponenten $3$ teilen — $\\frac{3x^{3}}{3} = x^{3}$.',
+          3: '$F(x) = 3x^{3}$ wäre auch falsch: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Hier wurde nicht "zu weit integriert", sondern schlicht abgeleitet — die Studentin lief in die umgekehrte Richtung.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · matching · uses=[stammfunktion, rueckwaerts]
+      matching(
+        'Ordne jeder Funktion $f(x)$ eine korrekte Stammfunktion $F(x)$ zu (Probe: $F\'(x) = f(x)$).',
+        [
+          { left: '$f(x) = 4x$',     right: '$F(x) = 2x^{2}$' },
+          { left: '$f(x) = 5x^{4}$', right: '$F(x) = x^{5}$' },
+          { left: '$f(x) = 12x^{2}$', right: '$F(x) = 4x^{3}$' },
+          { left: '$f(x) = 7$',      right: '$F(x) = 7x$' },
+        ],
+        `**Ansatz:** Leite jede rechte Seite ab und vergleiche mit der linken.
+
+**Rechnung:**
+- $(2x^{2})' = 4x$ ✓
+- $(x^{5})' = 5x^{4}$ ✓
+- $(4x^{3})' = 12x^{2}$ ✓
+- $(7x)' = 7$ ✓
+
+**Probe:** Alle vier Ableitungen reproduzieren die zugehörige linke Spalte eindeutig.
+
+**Typischer Fehler:** Faktor und Exponent vertauschen — z. B. $5x^{5}$ statt $x^{5}$ als Stammfunktion von $5x^{4}$.`,
+        [
+          'Leite jede rechte Seite ab — das Ergebnis muss die zugeordnete linke Seite ergeben.',
+          'Potenzregel: $(x^{n})\' = n \\cdot x^{n-1}$.',
+          'Konstante mal $x$: $(c \\cdot x)\' = c$. Konstante allein: $(c)\' = 0$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['stammfunktion', 'rueckwaerts'] },
+      ),
+    ],
+
+    // ── [1] Integrationskonstante $+C$ nicht vergessen ──────────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[plus-c]
+      tf(
+        'Wenn $F(x) = x^{2}$ Stammfunktion von $f(x) = 2x$ ist, dann ist auch $G(x) = x^{2} + 17$ Stammfunktion von $f(x) = 2x$.',
+        true,
+        `**Ansatz:** Probe — beide Funktionen ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $F'(x) = 2x$ ✓. $G'(x) = (x^{2} + 17)' = 2x + 0 = 2x$ ✓. Beide sind Stammfunktionen.
+
+**Probe:** Konstanten verschwinden beim Ableiten — egal welcher Wert addiert wird, die Ableitung bleibt gleich.
+
+**Typischer Fehler:** Glauben, "die" Stammfunktion sei eindeutig. Tatsächlich gibt es eine ganze Familie $F + C$ mit identischer Ableitung.`,
+        [
+          'Was passiert beim Ableiten mit einer additiven Konstanten?',
+          '$(x^{2} + 17)\' = ?$',
+          'Vergleiche das Ergebnis mit $f(x) = 2x$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 7: SG 1 · apply-guided · multiple-choice · uses=[plus-c]
+      mc(
+        '$F(x) = x^{3}$ ist eine Stammfunktion von $f(x) = 3x^{2}$. Welche der folgenden Funktionen ist EBENFALLS eine Stammfunktion von $f(x) = 3x^{2}$?',
+        [
+          '$F(x) = x^{3} - 12$',
+          '$F(x) = 3x^{3}$',
+          '$F(x) = x^{3} + 3x^{2}$',
+          '$F(x) = 3x^{2} + C$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktionen unterscheiden sich nur um eine additive Konstante: $F + C$ ist auch Stammfunktion.
+
+**Rechnung:** Mit $C = -12$ ergibt $F(x) = x^{3} - 12$. Probe: $(x^{3} - 12)' = 3x^{2} - 0 = 3x^{2} = f(x)$. ✓
+
+**Probe:** Alle Familienmitglieder $x^{3} + C$ haben dieselbe Ableitung $3x^{2}$.
+
+**Typischer Fehler:** Den Funktionsterm $f$ selbst zur Stammfunktion addieren — $f$ und $F$ stehen im Ableitungs-Verhältnis, nicht im Additionsverhältnis.`,
+        [
+          'Welche zusätzliche Operation darf man auf $F$ anwenden, ohne die Ableitung zu verändern?',
+          'Konstante addieren — Wert beliebig.',
+          'Suche die Option, die genau "$x^{3}$ + Konstante" ist.',
+        ],
+        {
+          1: 'Du hast den Faktor $3$ multipliziert statt eine Konstante addiert. Probe: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Stammfunktionen unterscheiden sich nur additiv um eine Konstante, nicht multiplikativ.',
+          2: 'Du hast $f(x)$ zu $F(x)$ addiert — das ist keine Konstante, sondern ein Funktionsterm. Probe: $(x^{3} + 3x^{2})\' = 3x^{2} + 6x \\neq 3x^{2}$. Erlaubt ist nur das Addieren einer reinen Zahl.',
+          3: 'Du hast $f$ und $F$ verwechselt: $f(x) = 3x^{2}$ ist die zu integrierende Funktion, $F(x) = x^{3}$ ist die Stammfunktion. Probe: $(3x^{2} + C)\' = 6x \\neq 3x^{2}$ — also keine Stammfunktion.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · multiple-choice · uses=[plus-c]
+      mc(
+        'Schreibe das unbestimmte Integral $\\int 8x^{3}\\,dx$ vollständig — inklusive Integrationskonstante.',
+        [
+          '$2x^{4} + C$',
+          '$2x^{4}$',
+          '$8x^{4} + C$',
+          '$24x^{2} + C$',
+        ],
+        0,
+        `**Ansatz:** Potenzregel rückwärts plus Integrationskonstante.
+
+**Rechnung:** $\\int 8x^{3}\\,dx = 8 \\cdot \\frac{x^{4}}{4} + C = 2x^{4} + C$.
+
+**Probe:** $(2x^{4} + C)' = 8x^{3} + 0 = 8x^{3} = f(x)$. ✓
+
+**Typischer Fehler:** $+C$ weglassen — bei unbestimmten Integralen ist das ein Standardpunktabzug in Prüfungen.`,
+        [
+          'Potenzregel: $\\int x^{n}\\,dx = \\frac{x^{n+1}}{n+1} + C$ für $n \\neq -1$.',
+          'Faktor $8$ darf vor das Integral gezogen werden — und dann durch den neuen Exponenten geteilt.',
+          'Vergiss das $+C$ nicht!',
+        ],
+        {
+          1: 'Der Funktionsterm $2x^{4}$ ist richtig, aber die Integrationskonstante $+C$ fehlt. Beim unbestimmten Integral ist die Stammfunktion nur bis auf eine Konstante bestimmt — $C$ MUSS mitgeschrieben werden.',
+          2: 'Der Faktor $8$ wurde nicht durch den neuen Exponenten $4$ geteilt: $\\int 8x^{3}\\,dx = 8 \\cdot \\frac{x^{4}}{4} = 2x^{4}$, nicht $8x^{4}$. Probe: $(8x^{4})\' = 32x^{3} \\neq 8x^{3}$.',
+          3: 'Du hast $8x^{3}$ abgeleitet ($24x^{2}$) statt zu integrieren — falsche Richtung. Probe: $(24x^{2} + C)\' = 48x \\neq 8x^{3}$. Korrekt: Exponent erhöhen, nicht absenken.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[plus-c]
+      mc(
+        'Tom rechnet $\\int (4x + 6)\\,dx = 2x^{2} + 6x$ und gibt das als Endergebnis ab. Was ist der Fehler?',
+        [
+          'Die Integrationskonstante $+C$ fehlt — bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt. Korrekt: $2x^{2} + 6x + C$.',
+          'Der Funktionsterm ist falsch — korrekt wäre $4x^{2} + 6$.',
+          '$\\int 6\\,dx = 0$, weil $6$ konstant ist — die $6x$ darf nicht auftauchen.',
+          'Tom hätte den Faktor $4$ nicht durch den neuen Exponenten teilen dürfen — korrekt wäre $4x^{2} + 6x$.',
+        ],
+        0,
+        `**Ansatz:** Regel des unbestimmten Integrals — Stammfunktion plus Integrationskonstante.
+
+**Rechnung:** $\\int 4x\\,dx = 2x^{2}$, $\\int 6\\,dx = 6x$, also $\\int (4x + 6)\\,dx = 2x^{2} + 6x + C$. Toms Funktionsterm ist korrekt — ihm fehlt nur das $+C$.
+
+**Probe:** $(2x^{2} + 6x + C)' = 4x + 6 + 0 = 4x + 6 = f(x)$. ✓
+
+**Typischer Fehler:** Beim unbestimmten Integral wird $+C$ erfahrungsgemäß bei jedem zweiten Studenten-Ergebnis vergessen — Standardpunktabzug.`,
+        [
+          'Was verlangt das *unbestimmte* Integral, was das bestimmte nicht braucht?',
+          'Familie aller Stammfunktionen — wie kennzeichnet man sie?',
+          'Schau auf das Endergebnis: fehlt etwas Wichtiges am Schluss?',
+        ],
+        {
+          1: 'Toms Funktionsterm ist korrekt: $\\int 4x\\,dx = 4 \\cdot \\frac{x^{2}}{2} = 2x^{2}$ (Faktor $4$ durch neuen Exponenten $2$ geteilt). $4x^{2} + 6$ wäre die Ableitung von $\\frac{4}{3}x^{3} + 6x$ — das passt nicht zur Aufgabe.',
+          2: 'Falsch — eine Konstante hat NICHT das Integral $0$. $\\int 6\\,dx = 6x + C$, denn $(6x)\' = 6$. Toms $6x$ ist genau richtig.',
+          3: 'Falsch — Toms $2x^{2}$ ist genau richtig: $\\int 4x\\,dx = 4 \\cdot \\frac{x^{2}}{2} = 2x^{2}$. Den Faktor durch den neuen Exponenten zu teilen ist die korrekte Anwendung der Potenzregel.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 10 (Zusatz, da ex-int-1-1-d schon Zeile 10 deckt): SG 1 · transfer · multiple-choice · uses=[plus-c]
+      mc(
+        'Welche Aussage über die Funktion $h(x) = x^{4} + 5x + 9$ ist korrekt?',
+        [
+          '$h$ ist eine von unendlich vielen Stammfunktionen von $f(x) = 4x^{3} + 5$ — sie unterscheiden sich nur um eine additive Konstante.',
+          '$h$ ist die einzige Stammfunktion von $f(x) = 4x^{3} + 5$, weil die $9$ den Anfangswert eindeutig festlegt.',
+          '$h$ ist gar keine Stammfunktion, weil eine Konstante wie $9$ in einer Stammfunktion nicht vorkommen darf.',
+          '$h$ ist Stammfunktion von $f(x) = h\'(x) + C$ — die Konstante $C$ ist wesentlicher Teil von $f$.',
+        ],
+        0,
+        `**Ansatz:** Probe — $h$ ableiten, $f$ identifizieren; dann reflektieren, ob $h$ eindeutig ist.
+
+**Rechnung:** $h'(x) = 4x^{3} + 5 + 0 = 4x^{3} + 5$. Also ist $h$ Stammfunktion von $f(x) = 4x^{3} + 5$. Auch $h(x) - 9 = x^{4} + 5x$ oder $h(x) + 100 = x^{4} + 5x + 109$ wären Stammfunktionen — Familie $\\{x^{4} + 5x + C : C \\in \\mathbb{R}\\}$.
+
+**Probe:** $(x^{4} + 5x + C)' = 4x^{3} + 5$ unabhängig vom Wert von $C$. Die $9$ verschwindet beim Ableiten.
+
+**Typischer Fehler:** Glauben, eine konkrete Konstante in der Stammfunktion legt sie fest. Tatsächlich verschwindet die Konstante beim Ableiten — die Familie bleibt unendlich, solange keine Anfangsbedingung dazukommt.`,
+        [
+          'Leite $h$ ab und finde so $f$.',
+          'Wie viele Funktionen haben dieselbe Ableitung wie $h$?',
+          'Was passiert, wenn du in $h$ die $9$ durch $4$ oder $-100$ ersetzt? Bleibt die Ableitung gleich?',
+        ],
+        {
+          1: 'Falsch — die $9$ ist nur ein bestimmter Wert von $C$. $x^{4} + 5x + 100$ ist genauso eine Stammfunktion. Eindeutigkeit bekommt man erst durch eine Anfangsbedingung wie $h(0) = 9$.',
+          2: 'Probe widerlegt: $h\'(x) = 4x^{3} + 5$, also IST $h$ Stammfunktion. Konstanten gehören selbstverständlich in Stammfunktionen — sie sind das $+C$ der Familie.',
+          3: 'Falsch — die Integrationskonstante steht in $F$, nicht in $f$. $f$ ist die zu integrierende Funktion und hat per Definition keinen $+C$-Anhang.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Bonus (Mengen-Regel): SG 1 · ni · uses=[plus-c]
+      ni(
+        'Eine Funktion $F$ erfüllt $F\'(x) = 6x^{2}$ und die Anfangsbedingung $F(1) = 4$. Allgemeine Stammfunktion: $F(x) = 2x^{3} + C$. Bestimme den Wert von $C$.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, dann Anfangsbedingung einsetzen, um $C$ festzulegen.
+
+**Rechnung:** $F(x) = 2x^{3} + C$. Einsetzen: $F(1) = 2 \\cdot 1^{3} + C = 2 + C$. Bedingung: $2 + C = 4 \\Rightarrow C = 2$.
+
+**Probe:** Mit $C = 2$ gilt $F(x) = 2x^{3} + 2$, $F(1) = 2 + 2 = 4$ ✓ und $F'(x) = 6x^{2}$ ✓.
+
+**Typischer Fehler:** $C = 4$ einsetzen, weil rechts der Wert $4$ steht — vergisst, dass $2x^{3}$ bei $x = 1$ schon einen Beitrag von $2$ liefert.`,
+        [
+          'Forme die Anfangsbedingung in eine Gleichung für $C$ um.',
+          'Berechne $F(1) = 2 \\cdot 1^{3} + C$ und setze gleich $4$.',
+          'Löse die entstandene Gleichung $2 + C = 4$ nach $C$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['plus-c'] },
+      ),
+    ],
+
+    // ── [2] Probe durch Ableiten der gefundenen Stammfunktion ───────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[probe-ableiten]
+      tf(
+        'Um zu prüfen, ob $F(x) = x^{4} + 2$ eine Stammfunktion von $f(x) = 4x^{3}$ ist, leitet man $F$ ab und vergleicht das Ergebnis mit $f$.',
+        true,
+        `**Ansatz:** Definition der Probe — Ableitung von $F$ muss $f$ ergeben.
+
+**Rechnung:** $F'(x) = (x^{4} + 2)' = 4x^{3} + 0 = 4x^{3} = f(x)$. ✓ Probe erfolgreich.
+
+**Probe:** Genau dies IST die Probe — Ableiten und mit $f$ vergleichen.
+
+**Typischer Fehler:** Statt $F$ ableiten, $f$ erneut integrieren wollen — das ist nur eine "Lösung", nicht die Probe.`,
+        [
+          'Was ist die Definition einer Stammfunktion? $F\'(x) = ?$',
+          'Probe = Anwendung der Definition auf das konkrete Paar $(F, f)$.',
+          'Hier: $F$ ableiten und mit $f$ vergleichen — passt die Aussage zu dieser Methode?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[probe-ableiten]
+      mc(
+        'Behauptung: $F(x) = \\tfrac{1}{2}x^{4} + x$ ist Stammfunktion von $f(x) = 2x^{3} + 1$. Welche Rechnung ist die korrekte Probe?',
+        [
+          '$F\'(x) = 2x^{3} + 1$ — stimmt mit $f$ überein, also ist $F$ Stammfunktion.',
+          '$\\int F(x)\\,dx = \\tfrac{1}{10}x^{5} + \\tfrac{1}{2}x^{2}$ — und dann mit $f$ vergleichen.',
+          '$f\'(x) = 6x^{2}$ — und dann mit $F$ vergleichen.',
+          'Setze $x = 1$: $F(1) = 1{,}5$ und $f(1) = 3$ — die Werte unterscheiden sich, also keine Probe nötig.',
+        ],
+        0,
+        `**Ansatz:** Probe einer behaupteten Stammfunktion = $F$ ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $F'(x) = (\\tfrac{1}{2}x^{4})' + (x)' = \\tfrac{1}{2} \\cdot 4x^{3} + 1 = 2x^{3} + 1 = f(x)$. ✓
+
+**Probe:** Identität gilt für alle $x$ — die Probe bestätigt: $F$ ist Stammfunktion.
+
+**Typischer Fehler:** $F$ erneut integrieren oder $f$ ableiten — beides ist die falsche Operation für die Probe.`,
+        [
+          'Definition Stammfunktion: $F\'(x) = f(x)$. Womit fängt die Probe an?',
+          '$F$ ableiten — gliedweise.',
+          'Vergleiche das Ergebnis mit $f(x) = 2x^{3} + 1$.',
+        ],
+        {
+          1: 'Du integrierst die Stammfunktion — dabei kommst du zu noch höheren Stammfunktionen, nicht zu $f$. Die Probe verlangt den umgekehrten Weg: $F$ ableiten, nicht erneut integrieren.',
+          2: 'Du leitest $f$ ab statt $F$. Die Probe verlangt die Ableitung der *behaupteten Stammfunktion* — also $F\'$, nicht $f\'$. Hier wäre $f\'(x) = 6x^{2}$, das hilft beim Beweisen nicht.',
+          3: 'Punktweises Vergleichen reicht nicht — $F$ und $f$ stehen NICHT im Werte-Verhältnis, sondern im Ableitungs-Verhältnis. Probe heißt $F\'(x) = f(x)$ für ALLE $x$, nicht nur an einem Einzelpunkt.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 13 (Zusatz, da ex-int-1-1-mastery schon Zeile 13 deckt): SG 2 · apply-independent · multiple-choice · uses=[probe-ableiten, rueckwaerts]
+      mc(
+        'Du sollst eine Stammfunktion von $f(x) = 5x^{4} + 6x$ finden und durch Probe verifizieren. Welche Funktion besteht die Probe?',
+        [
+          '$F(x) = x^{5} + 3x^{2}$',
+          '$F(x) = 5x^{5} + 6x^{2}$',
+          '$F(x) = x^{5} + 6x$',
+          '$F(x) = 20x^{3} + 6$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktion gliedweise ansetzen, dann Probe durch Ableiten.
+
+**Rechnung:** $\\int 5x^{4}\\,dx = 5 \\cdot \\frac{x^{5}}{5} = x^{5}$. $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2}$. Also $F(x) = x^{5} + 3x^{2}$.
+
+**Probe:** $F'(x) = 5x^{4} + 6x = f(x)$. ✓ Identität für alle $x$.
+
+**Typischer Fehler:** Faktor und Exponent vertauschen — $5x^{5}$ statt $x^{5}$ entsteht, wenn man den Faktor $5$ stehen lässt, statt durch den neuen Exponenten zu teilen.`,
+        [
+          'Zwei Glieder einzeln integrieren.',
+          'Potenzregel: Exponent erhöhen, dann Faktor durch neuen Exponenten teilen.',
+          'Probe: ableiten und mit $f(x) = 5x^{4} + 6x$ vergleichen.',
+        ],
+        {
+          1: 'Der Faktor $5$ wurde nicht durch den neuen Exponenten $5$ geteilt: $\\int 5x^{4}\\,dx = 5 \\cdot \\frac{x^{5}}{5} = x^{5}$, nicht $5x^{5}$. Probe: $(5x^{5})\' = 25x^{4} \\neq 5x^{4}$.',
+          2: 'Du hast $\\int 6x\\,dx = 6x$ angenommen — aber $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2}$. Probe: $(x^{5} + 6x)\' = 5x^{4} + 6 \\neq 5x^{4} + 6x$.',
+          3: 'Du hast $f(x)$ abgeleitet statt eine Stammfunktion gesucht: $f\'(x) = 20x^{3} + 6$. Falsche Richtung. Probe: $(20x^{3} + 6)\' = 60x^{2} \\neq 5x^{4} + 6x$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[probe-ableiten]
+      mc(
+        'Lina behauptet: $F(x) = x^{3} + 5$ ist Stammfunktion von $f(x) = 3x^{2} + 5$. Sie schreibt als Probe: „$F$ und $f$ enthalten beide den Term $+5$, also stimmt es." Was ist der Fehler ihrer Probe?',
+        [
+          'Probe heißt Ableiten — Linas $F$ liefert $F\'(x) = 3x^{2}$, nicht $3x^{2} + 5$. Die $5$ in $F$ verschwindet beim Ableiten und kann den $+5$-Term in $f$ nicht erzeugen. Korrekt: $F(x) = x^{3} + 5x + C$.',
+          'Lina hat richtig — der gemeinsame Term $+5$ beweist, dass $F$ Stammfunktion von $f$ ist.',
+          'Lina hätte die Konstante $5$ in $F$ als $C$ schreiben müssen — sonst ist es nur eine spezielle Stammfunktion und keine vollständige.',
+          'Linas $F$ ist falsch, weil die korrekte Stammfunktion $F(x) = \\tfrac{1}{3}x^{3} + \\tfrac{5}{2}x^{2}$ wäre.',
+        ],
+        0,
+        `**Ansatz:** Probe = Ableitung von $F$ mit $f$ vergleichen, nicht oberflächlich Terme abgleichen.
+
+**Rechnung:** $F'(x) = (x^{3})' + (5)' = 3x^{2} + 0 = 3x^{2}$. Aber $f(x) = 3x^{2} + 5$. Differenz: $5 \\neq 0$ — Linas $F$ ist KEINE Stammfunktion. Korrekte Stammfunktion: $\\int (3x^{2} + 5)\\,dx = x^{3} + 5x + C$.
+
+**Probe:** Mit der Korrektur $F(x) = x^{3} + 5x$ gilt $F'(x) = 3x^{2} + 5 = f(x)$. ✓
+
+**Typischer Fehler:** Konstanten in $F$ und $f$ "kompensieren" sich nicht — die Konstante in $F$ verschwindet beim Ableiten, der Term $+5$ in $f$ muss durch $+5x$ in $F$ erzeugt werden.`,
+        [
+          'Mache die Probe sorgfältig: leite Linas $F$ Glied für Glied ab.',
+          'Was passiert mit der $5$ in $x^{3} + 5$ beim Ableiten?',
+          'Vergleiche dein Ergebnis mit $f(x) = 3x^{2} + 5$ — fehlt etwas?',
+        ],
+        {
+          1: 'Probe widerlegt das sofort: $F\'(x) = 3x^{2} \\neq 3x^{2} + 5$. Gemeinsame Terme zwischen $F$ und $f$ sind kein Beweis — Probe ist Ableitungs-Vergleich, nicht Term-Abgleich.',
+          2: 'Auch wenn man die $5$ als spezielles $C$ liest, bleibt $F\'(x) = 3x^{2} \\neq 3x^{2} + 5$. Das eigentliche Problem: der Term $+5$ in $f$ muss zu $+5x$ in $F$ integriert werden, er kann nicht in der Konstanten von $F$ versteckt sein.',
+          3: 'Das ist die Stammfunktion von $x^{2} + 5x$, nicht von $3x^{2} + 5$. Probe widerlegt: $(\\tfrac{1}{3}x^{3} + \\tfrac{5}{2}x^{2})\' = x^{2} + 5x \\neq 3x^{2} + 5$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · sorting · uses=[probe-ableiten, rueckwaerts]
+      sorting(
+        'Bringe die Schritte zur Verifikation, dass $F(x) = \\tfrac{1}{4}x^{4} - x^{2}$ Stammfunktion von $f(x) = x^{3} - 2x$ ist, in die richtige Reihenfolge.',
+        [
+          'Behauptung notieren: $F(x) = \\tfrac{1}{4}x^{4} - x^{2}$ soll Stammfunktion von $f(x) = x^{3} - 2x$ sein.',
+          '$F$ gliedweise ableiten: $F\'(x) = \\tfrac{1}{4} \\cdot 4x^{3} - 2x = x^{3} - 2x$.',
+          'Mit $f$ vergleichen: $x^{3} - 2x = f(x)$ — Identität für alle $x$.',
+          'Schluss: $F\'(x) = f(x)$ ist erfüllt — $F$ ist Stammfunktion von $f$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Probe = kanonische Vier-Schritt-Sequenz: Behauptung formulieren, Ableitung berechnen, Vergleich, Schlussfolgerung.
+
+**Rechnung:** $F'(x) = \\tfrac{1}{4} \\cdot 4 \\cdot x^{4-1} - 2 \\cdot x^{2-1} = x^{3} - 2x$. Stimmt exakt mit $f$ überein.
+
+**Probe:** Schritt 3 zeigt: Identität gilt für alle $x$. Schritt 4 ist die formale Schlussfolgerung — daher gehört er ans Ende.
+
+**Typischer Fehler:** Vergleich vor Ableitung — man kann $F$ und $f$ erst gegenüberstellen, NACHDEM die Ableitung berechnet ist. Ohne Ableitung wäre der Vergleich sinnlos.`,
+        [
+          'Was steht am Anfang einer Probe — Behauptung oder Schluss?',
+          'Kannst du $F$ und $f$ vergleichen, BEVOR du $F$ abgeleitet hast?',
+          'Den Schluss zieht man am Ende — nicht zwischen den Rechenschritten.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {
