@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-06 · `npm run status`_
+_auto-generiert · 2026-05-07 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2689 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1860 (69 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1208 / 1208 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 256 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2749 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1924 (70 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1226 / 1226 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 267 / 1134 (24 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **54** (Lesson-Path: 54 · Goal-Tasks: 0)
-- 4-Block: 18/54 (33 %) 🔴
-- MC-wAE: 40/40 (100 %) ✅
-- Sub-Goals: 0/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **114** (Lesson-Path: 54 · Goal-Tasks: 60)
+- 4-Block: 82/114 (72 %) 🟡
+- MC-wAE: 58/58 (100 %) ✅
+- Sub-Goals: 11/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -312,9 +312,9 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 0/3 | 5 | 3/0/1/1/0 | 5/5 | 3/3 | ✅ | +3 Goal |
-| `vek-1-1` Vektoren — Grundbegriffe | 4 | 0/4 | 4 | 4/0/0/0/0 | 1/4 | 4/4 | ✅ | +4 Goal, +3 4B |
-| `vek-1-2` Skalarprodukt | 4 | 0/4 | 5 | 4/1/0/0/0 | 4/5 | 4/4 | ✅ | +4 Goal, +1 4B |
+| `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 3/3 | 23 | 10/4/6/2/1 | 23/23 | 10/10 | ✅ | — |
+| `vek-1-1` Vektoren — Grundbegriffe | 4 | 4/4 | 25 | 9/8/5/2/1 | 25/25 | 9/9 | ✅ | — |
+| `vek-1-2` Skalarprodukt | 4 | 4/4 | 26 | 10/10/5/1/0 | 26/26 | 10/10 | ✅ | — |
 | `vek-1-3` Kreuzprodukt | 4 | 0/4 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +4 Goal, +3 4B |
 | `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 0/6 | 3 | 3/0/0/0/0 | 1/3 | 3/3 | ✅ | +6 Goal, +2 4B |
 | `vek-2-1` Geradengleichung | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 121 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 120 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4819,57 +4819,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-#### `vek-1-1` · Vektoren — Grundbegriffe
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-0` → `vektor`, `skalar-vs-vektor`, `punkt-vs-vektor`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `komp-darstellung` — $\vec a=(a_x,a_y)$ in 2D bzw. $(a_x,a_y,a_z)$ in 3D — Komponentenform (SG 0)
-  2. `betrag` — Betrag $|\vec v|=\sqrt{v_x^2+v_y^2(+v_z^2)}$ via Pythagoras ⇐ `komp-darstellung` (SG 0)
-  3. `add-komp` — Addition komponentenweise: $\vec a+\vec b=(a_x+b_x,a_y+b_y)$ ⇐ `komp-darstellung` (SG 1)
-  4. `add-geo` — Geometrisch: Pfeile aneinandersetzen, Resultierende zeichnen ⇐ `add-komp` (SG 1)
-  5. `sub-komp` — Subtraktion komponentenweise: $\vec a-\vec b=\vec a+(-\vec b)$ ⇐ `add-komp` (SG 1)
-  6. `skalar-mul` — Skalarmultiplikation $k\vec a=(k a_x,k a_y)$ — verlängert/staucht/spiegelt ⇐ `komp-darstellung` (SG 1)
-  7. `einheitsvektor` — Einheitsvektor $\vec e=\vec v/|\vec v|$ hat Länge 1, gleiche Richtung ⇐ `betrag`, `skalar-mul` (SG 2)
-  8. `tech-groessen` — Kraft, Geschwindigkeit, Verschiebung = Vektoren; Masse, Zeit, Temperatur = Skalare (SG 3)
-  9. `vra-axiome` — Kommutativ, Assoziativ, Distributiv für Vektoren ⇐ `add-komp`, `skalar-mul` (SG 1)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `komp-darstellung`, `betrag` · **0/5+** — Betrag $|\vec{v}|=\sqrt{v_x^2+v_y^2+v_z^2}$
-  - 🔴 [1] _hoch_ · Konzepte: `add-komp`, `sub-komp`, `add-geo`, `skalar-mul`, `vra-axiome` · **0/5+** — Vektoraddition komponentenweise
-  - 🔴 [2] _mittel_ · Konzepte: `einheitsvektor` · **0/5+** — Einheitsvektor $\vec{e}=\vec{v}/|\vec{v}|$ bilden
-  - 🔴 [3] _niedrig_ · Konzepte: `tech-groessen` · **0/5+** — Vektor vs. Skalar in technischen Größen erkennen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `betrag` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `betrag` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `betrag` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `betrag` | 1 | 0 | 🔴 | Distraktor: Wurzel vergessen / Komponenten addiert |
-|  5 | 0 | transfer           | number-input     | `betrag` | 1 | 0 | 🔴 | 3D-Beispiel oder negative Komponenten |
-|  6 | 1 | recognize          | true-false       | `add-komp`, `vra-axiome` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `add-komp` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `add-komp`, `skalar-mul` | 1 | 0 | 🔴 | $2\vec a + 3\vec b$ |
-|  9 | 1 | error-analysis     | multiple-choice  | `add-komp`, `sub-komp` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `add-komp`, `add-geo`, `skalar-mul` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `einheitsvektor` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `einheitsvektor`, `betrag` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `einheitsvektor`, `betrag` | 1 | 0 | 🔴 | Länge prüfen = 1 |
-| 14 | 2 | error-analysis     | multiple-choice  | `einheitsvektor` | 1 | 0 | 🔴 | Distraktor: durch Komponente statt Betrag geteilt |
-| 15 | 2 | transfer           | number-input     | `einheitsvektor`, `skalar-mul` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `tech-groessen` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `tech-groessen` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | matching         | `tech-groessen` | 1 | 0 | 🔴 | Größe ↔ Typ |
-| 19 | 3 | error-analysis     | multiple-choice  | `tech-groessen` | 1 | 0 | 🔴 | Masse/Gewichtskraft-Falle |
-| 20 | 3 | transfer           | sorting          | `tech-groessen` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-1-a`, `ex-vek-1-1-c`, `ex-vek-1-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
 #### `vek-2-1` · Geradengleichung
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
@@ -8088,7 +8037,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 33 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 31 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8310,99 +8259,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-1-0` · Koordinaten, Punkte & Pfeile (Einstieg)
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `koord-2d` — Koordinatensystem $(x,y)$ — $x$ horizontal, $y$ vertikal, Ursprung $(0,0)$ (SG 0)
-  2. `quadranten` — 4 Quadranten gegen den Uhrzeigersinn (Q1: $x>0,y>0$ … Q4: $x>0,y<0$) ⇐ `koord-2d` (SG 0)
-  3. `punkt` — Punkt $P=(x,y)$ — beschreibt einen Ort ⇐ `koord-2d` (SG 0)
-  4. `vektor` — Vektor $\vec v=(v_x,v_y)$ — Verschiebung mit Betrag und Richtung ⇐ `koord-2d` (SG 0)
-  5. `punkt-vs-vektor` — Gleiche Schreibweise $(x,y)$, verschiedene Bedeutung (Ort vs. Verschiebung) ⇐ `punkt`, `vektor` (SG 0)
-  6. `skalar-vs-vektor` — Skalar (nur Betrag) vs. Vektor (Betrag + Richtung) — Erkennung an „Richtung sinnvoll?" ⇐ `vektor` (SG 0)
-  7. `ab-formel` — Verbindungsvektor $\vec{AB}=B-A$ — komponentenweise ⇐ `punkt`, `vektor` (SG 1)
-  8. `vektor-frei` — Freier Vektor: gleiche Länge & Richtung → gleicher Vektor, egal Startpunkt ⇐ `vektor` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `koord-2d`, `quadranten`, `punkt`, `vektor`, `punkt-vs-vektor`, `skalar-vs-vektor` · **0/5+** — Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
-  - 🔴 [1] _hoch_ · Konzepte: `ab-formel` · **0/5+** — Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
-  - 🔴 [2] _mittel_ · Konzepte: `vektor-frei` · **0/5+** — Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `punkt-vs-vektor` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `skalar-vs-vektor` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `koord-2d` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `punkt-vs-vektor`, `skalar-vs-vektor` | 1 | 0 | 🔴 | Masse/Gewicht-Verwechslung |
-|  5 | 0 | transfer           | matching         | `quadranten` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `ab-formel` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `ab-formel` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `ab-formel` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `ab-formel` | 1 | 0 | 🔴 | Distraktor: A−B statt B−A |
-| 10 | 1 | transfer           | number-input     | `ab-formel` | 1 | 0 | 🔴 | Anwendung in 3D oder mit negativen Koordinaten |
-| 11 | 2 | recognize          | true-false       | `vektor-frei` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `vektor-frei`, `ab-formel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `vektor-frei` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `vektor-frei`, `punkt-vs-vektor` | 1 | 0 | 🔴 | Distraktor: Punkt verschoben statt Vektor frei |
-| 15 | 2 | transfer           | sorting          | `vektor-frei`, `ab-formel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-0': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
-#### `vek-1-2` · Skalarprodukt
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-1` → `betrag`, `add-komp`, `skalar-mul`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `sp-komp` — $\vec a\cdot\vec b=a_x b_x+a_y b_y+a_z b_z$ — Komponentenform liefert Zahl (SG 0)
-  2. `sp-skalar` — Ergebnis ist ein Skalar (Zahl), kein Vektor ⇐ `sp-komp` (SG 0)
-  3. `sp-winkel` — $\vec a\cdot\vec b=|\vec a||\vec b|\cos\varphi$ — Winkelform ⇐ `sp-komp` (SG 1)
-  4. `sp-vorzeichen` — Vorzeichen: $>0$ spitz, $=0$ rechtwinklig, $<0$ stumpf ⇐ `sp-winkel` (SG 1)
-  5. `sp-orthogonal` — Orthogonalitätstest $\vec a\perp\vec b\iff\vec a\cdot\vec b=0$ ⇐ `sp-winkel` (SG 2)
-  6. `sp-winkel-formel` — Winkel: $\cos\varphi=(\vec a\cdot\vec b)/(|\vec a||\vec b|)$ ⇐ `sp-winkel` (SG 2)
-  7. `sp-projektion` — Projektion $\vec a$ auf $\vec b$: $\vec a_b=(\vec a\cdot\vec b/|\vec b|^2)\vec b$ ⇐ `sp-komp`, `sp-winkel` (SG 3)
-  8. `sp-arbeit` — Anwendung: Arbeit $W=\vec F\cdot\vec s$ ⇐ `sp-komp` (SG 1)
-  9. `sp-regeln` — Kommutativ, distributiv, mit Skalar verträglich ⇐ `sp-komp` (SG 0)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `sp-komp`, `sp-skalar`, `sp-regeln` · **0/5+** — Komponentenform $\vec{a}\cdot\vec{b}=\sum a_i b_i$
-  - 🔴 [1] _hoch_ · Konzepte: `sp-winkel`, `sp-vorzeichen`, `sp-arbeit` · **0/5+** — Winkelform $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\alpha$
-  - 🔴 [2] _hoch_ · Konzepte: `sp-orthogonal`, `sp-winkel-formel` · **0/5+** — Orthogonalitäts-Test über $\vec{a}\cdot\vec{b}=0$
-  - 🔴 [3] _mittel_ · Konzepte: `sp-projektion` · **0/5+** — Projektion eines Vektors auf einen anderen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `sp-skalar` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `sp-komp` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `sp-komp` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `sp-komp`, `sp-skalar` | 1 | 0 | 🔴 | Distraktor: komponentenweises Produkt statt Summe |
-|  5 | 0 | transfer           | number-input     | `sp-komp`, `sp-regeln` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `sp-winkel`, `sp-vorzeichen` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `sp-winkel` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `sp-winkel` | 1 | 0 | 🔴 | Winkel rückwärts aus $|\vec a|,|\vec b|,\cos$ |
-|  9 | 1 | error-analysis     | multiple-choice  | `sp-vorzeichen` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `sp-arbeit`, `sp-winkel` | 1 | 0 | 🔴 | Arbeit Kraft·Weg |
-| 11 | 2 | recognize          | true-false       | `sp-orthogonal` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `sp-orthogonal`, `sp-komp` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `sp-winkel-formel`, `sp-komp` | 1 | 0 | 🔴 | Winkel in Grad |
-| 14 | 2 | error-analysis     | multiple-choice  | `sp-orthogonal` | 1 | 0 | 🔴 | Distraktor: Skalarprodukt $\neq 0$ als parallel interpretiert |
-| 15 | 2 | transfer           | matching         | `sp-vorzeichen`, `sp-orthogonal` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `sp-projektion` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `sp-projektion` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `sp-projektion`, `sp-komp` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `sp-projektion` | 1 | 0 | 🔴 | Distraktor: durch $|\vec b|$ statt $|\vec b|^2$ |
-| 20 | 3 | transfer           | number-input     | `sp-projektion`, `sp-arbeit` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-2-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `vek-2-2` · Ebenengleichung
 
@@ -10931,7 +10787,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 29 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11009,6 +10865,56 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
+#### `vek-1-2` · Skalarprodukt
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-1` → `betrag`, `add-komp`, `skalar-mul`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sp-komp` — $\vec a\cdot\vec b=a_x b_x+a_y b_y+a_z b_z$ — Komponentenform liefert Zahl (SG 0)
+  2. `sp-skalar` — Ergebnis ist ein Skalar (Zahl), kein Vektor ⇐ `sp-komp` (SG 0)
+  3. `sp-winkel` — $\vec a\cdot\vec b=|\vec a||\vec b|\cos\varphi$ — Winkelform ⇐ `sp-komp` (SG 1)
+  4. `sp-vorzeichen` — Vorzeichen: $>0$ spitz, $=0$ rechtwinklig, $<0$ stumpf ⇐ `sp-winkel` (SG 1)
+  5. `sp-orthogonal` — Orthogonalitätstest $\vec a\perp\vec b\iff\vec a\cdot\vec b=0$ ⇐ `sp-winkel` (SG 2)
+  6. `sp-winkel-formel` — Winkel: $\cos\varphi=(\vec a\cdot\vec b)/(|\vec a||\vec b|)$ ⇐ `sp-winkel` (SG 2)
+  7. `sp-projektion` — Projektion $\vec a$ auf $\vec b$: $\vec a_b=(\vec a\cdot\vec b/|\vec b|^2)\vec b$ ⇐ `sp-komp`, `sp-winkel` (SG 3)
+  8. `sp-arbeit` — Anwendung: Arbeit $W=\vec F\cdot\vec s$ ⇐ `sp-komp` (SG 1)
+  9. `sp-regeln` — Kommutativ, distributiv, mit Skalar verträglich ⇐ `sp-komp` (SG 0)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sp-komp`, `sp-skalar`, `sp-regeln` · **5/5+** — Komponentenform $\vec{a}\cdot\vec{b}=\sum a_i b_i$
+  - ✅ [1] _hoch_ · Konzepte: `sp-winkel`, `sp-vorzeichen`, `sp-arbeit` · **6/5+** — Winkelform $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\alpha$
+  - ✅ [2] _hoch_ · Konzepte: `sp-orthogonal`, `sp-winkel-formel` · **5/5+** — Orthogonalitäts-Test über $\vec{a}\cdot\vec{b}=0$
+  - ✅ [3] _mittel_ · Konzepte: `sp-projektion` · **5/5+** — Projektion eines Vektors auf einen anderen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sp-skalar` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sp-komp` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sp-komp` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sp-komp`, `sp-skalar` | 1 | 1 | ✅ | Distraktor: komponentenweises Produkt statt Summe |
+|  5 | 0 | transfer           | number-input     | `sp-komp`, `sp-regeln` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `sp-winkel`, `sp-vorzeichen` | 1 | 2 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `sp-winkel` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `sp-winkel` | 1 | 1 | ✅ | Winkel rückwärts aus $|\vec a|,|\vec b|,\cos$ |
+|  9 | 1 | error-analysis     | multiple-choice  | `sp-vorzeichen` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `sp-arbeit`, `sp-winkel` | 1 | 1 | ✅ | Arbeit Kraft·Weg |
+| 11 | 2 | recognize          | true-false       | `sp-orthogonal` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sp-orthogonal`, `sp-komp` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sp-winkel-formel`, `sp-komp` | 1 | 1 | ✅ | Winkel in Grad |
+| 14 | 2 | error-analysis     | multiple-choice  | `sp-orthogonal` | 1 | 1 | ✅ | Distraktor: Skalarprodukt $\neq 0$ als parallel interpretiert |
+| 15 | 2 | transfer           | matching         | `sp-vorzeichen`, `sp-orthogonal` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `sp-projektion` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sp-projektion` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `sp-projektion`, `sp-komp` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sp-projektion` | 1 | 1 | ✅ | Distraktor: durch $|\vec b|$ statt $|\vec b|^2$ |
+| 20 | 3 | transfer           | number-input     | `sp-projektion`, `sp-arbeit` | 1 | 1 | ✅ |  |
+
+- **Offene Aufgaben-Lücken:** 1 (Zeilen 12) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `trig-2-2` · sin und cos als Koordinaten
 
