@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2707 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1878 (69 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1215 / 1215 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 259 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2728 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1902 (70 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1220 / 1220 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 263 / 1134 (23 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **72** (Lesson-Path: 54 · Goal-Tasks: 18)
-- 4-Block: 36/72 (50 %) 🔴
-- MC-wAE: 47/47 (100 %) ✅
-- Sub-Goals: 3/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **93** (Lesson-Path: 54 · Goal-Tasks: 39)
+- 4-Block: 60/93 (65 %) 🟡
+- MC-wAE: 52/52 (100 %) ✅
+- Sub-Goals: 7/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -313,7 +313,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 3/3 | 23 | 10/4/6/2/1 | 23/23 | 10/10 | ✅ | — |
-| `vek-1-1` Vektoren — Grundbegriffe | 4 | 0/4 | 4 | 4/0/0/0/0 | 1/4 | 4/4 | ✅ | +4 Goal, +3 4B |
+| `vek-1-1` Vektoren — Grundbegriffe | 4 | 4/4 | 25 | 9/8/5/2/1 | 25/25 | 9/9 | ✅ | — |
 | `vek-1-2` Skalarprodukt | 4 | 0/4 | 5 | 4/1/0/0/0 | 4/5 | 4/4 | ✅ | +4 Goal, +1 4B |
 | `vek-1-3` Kreuzprodukt | 4 | 0/4 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +4 Goal, +3 4B |
 | `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 0/6 | 3 | 3/0/0/0/0 | 1/3 | 3/3 | ✅ | +6 Goal, +2 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 121 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 120 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4818,57 +4818,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-1-b`, `ex-abl-5-1-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-1-1` · Vektoren — Grundbegriffe
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-0` → `vektor`, `skalar-vs-vektor`, `punkt-vs-vektor`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `komp-darstellung` — $\vec a=(a_x,a_y)$ in 2D bzw. $(a_x,a_y,a_z)$ in 3D — Komponentenform (SG 0)
-  2. `betrag` — Betrag $|\vec v|=\sqrt{v_x^2+v_y^2(+v_z^2)}$ via Pythagoras ⇐ `komp-darstellung` (SG 0)
-  3. `add-komp` — Addition komponentenweise: $\vec a+\vec b=(a_x+b_x,a_y+b_y)$ ⇐ `komp-darstellung` (SG 1)
-  4. `add-geo` — Geometrisch: Pfeile aneinandersetzen, Resultierende zeichnen ⇐ `add-komp` (SG 1)
-  5. `sub-komp` — Subtraktion komponentenweise: $\vec a-\vec b=\vec a+(-\vec b)$ ⇐ `add-komp` (SG 1)
-  6. `skalar-mul` — Skalarmultiplikation $k\vec a=(k a_x,k a_y)$ — verlängert/staucht/spiegelt ⇐ `komp-darstellung` (SG 1)
-  7. `einheitsvektor` — Einheitsvektor $\vec e=\vec v/|\vec v|$ hat Länge 1, gleiche Richtung ⇐ `betrag`, `skalar-mul` (SG 2)
-  8. `tech-groessen` — Kraft, Geschwindigkeit, Verschiebung = Vektoren; Masse, Zeit, Temperatur = Skalare (SG 3)
-  9. `vra-axiome` — Kommutativ, Assoziativ, Distributiv für Vektoren ⇐ `add-komp`, `skalar-mul` (SG 1)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `komp-darstellung`, `betrag` · **0/5+** — Betrag $|\vec{v}|=\sqrt{v_x^2+v_y^2+v_z^2}$
-  - 🔴 [1] _hoch_ · Konzepte: `add-komp`, `sub-komp`, `add-geo`, `skalar-mul`, `vra-axiome` · **0/5+** — Vektoraddition komponentenweise
-  - 🔴 [2] _mittel_ · Konzepte: `einheitsvektor` · **0/5+** — Einheitsvektor $\vec{e}=\vec{v}/|\vec{v}|$ bilden
-  - 🔴 [3] _niedrig_ · Konzepte: `tech-groessen` · **0/5+** — Vektor vs. Skalar in technischen Größen erkennen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `betrag` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `betrag` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `betrag` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `betrag` | 1 | 0 | 🔴 | Distraktor: Wurzel vergessen / Komponenten addiert |
-|  5 | 0 | transfer           | number-input     | `betrag` | 1 | 0 | 🔴 | 3D-Beispiel oder negative Komponenten |
-|  6 | 1 | recognize          | true-false       | `add-komp`, `vra-axiome` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `add-komp` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `add-komp`, `skalar-mul` | 1 | 0 | 🔴 | $2\vec a + 3\vec b$ |
-|  9 | 1 | error-analysis     | multiple-choice  | `add-komp`, `sub-komp` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `add-komp`, `add-geo`, `skalar-mul` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `einheitsvektor` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `einheitsvektor`, `betrag` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `einheitsvektor`, `betrag` | 1 | 0 | 🔴 | Länge prüfen = 1 |
-| 14 | 2 | error-analysis     | multiple-choice  | `einheitsvektor` | 1 | 0 | 🔴 | Distraktor: durch Komponente statt Betrag geteilt |
-| 15 | 2 | transfer           | number-input     | `einheitsvektor`, `skalar-mul` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `tech-groessen` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `tech-groessen` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | matching         | `tech-groessen` | 1 | 0 | 🔴 | Größe ↔ Typ |
-| 19 | 3 | error-analysis     | multiple-choice  | `tech-groessen` | 1 | 0 | 🔴 | Masse/Gewichtskraft-Falle |
-| 20 | 3 | transfer           | sorting          | `tech-groessen` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-1-a`, `ex-vek-1-1-c`, `ex-vek-1-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `vek-2-1` · Geradengleichung
 

@@ -126,22 +126,21 @@ export const exercises_vek_u1 = {
       'Vektoren sind dimensionslos, Skalare haben eine Einheit',
     ],
     correctIndex: 1,
-    explanation: `**Ansatz:** Unterscheide nach den Eigenschaften, die beide Größen definieren.
+    explanation: `**Ansatz:** Unterscheide nach den Eigenschaften, die beide Größen definieren — Betrag allein vs. Betrag + Richtung.
 
-**Rechnung / Beispiel:**
-- Skalar: Temperatur $T = 20\\,°\\text{C}$ — nur ein Zahlenwert.
-- Vektor: Geschwindigkeit $\\vec{v} = (50, 0)\\,\\text{km/h}$ — Zahl *und* Richtung (nach Osten).
+**Rechnung:** Skalar = nur Zahl mit Einheit (z. B. Temperatur $T = 20\\,°\\text{C}$). Vektor = Zahl **und** Richtung (z. B. Geschwindigkeit $\\vec{v} = (50, 0)\\,\\text{km/h}$ nach Osten).
 
-**Probe:** Kann man "20 °C nach Norden" sagen? Nein — Temperatur hat keine Richtung. Kann man "50 km/h" ohne Richtung sagen? Ja, aber dann weißt du nicht wohin.
+**Probe:** Kann man „$20\\,°\\text{C}$ nach Norden" sagen? Nein — Temperatur hat keine Richtung. Kann man „$50\\,\\text{km/h}$" ohne Richtung sagen? Ja, aber dann weiß man nicht, wohin sich das Auto bewegt — der Vektor trägt diese Zusatzinformation.
 
-**Typischer Fehler:** Vektoren sind nicht "größer" als Skalare — das ist kein mathematisches Kriterium.`,
+**Typischer Fehler:** Glauben, Vektoren wären „größer" oder „komplexer" als Skalare — das ist kein mathematisches Unterscheidungskriterium. Entscheidend ist allein, ob eine räumliche Richtung sinnvoll ist.`,
     hints: [
       'Welche Eigenschaft hat eine Kraft, die eine Temperatur nicht hat?',
-      'Ein Vektor braucht zwei Informationen: "wie viel" und "wohin".',
+      'Ein Vektor braucht zwei Informationen: „wie viel" und „wohin".',
       'Beispiele: Kraft, Geschwindigkeit, Verschiebung sind Vektoren. Masse, Temperatur, Zeit sind Skalare.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['tech-groessen'] },
     wrongAnswerExplanations: {
-      0: '"Größer" ist kein mathematisches Unterscheidungskriterium — ein Skalar wie $T = 1000\\,°\\text{C}$ kann durchaus betragsmäßig größer sein als ein Vektor wie $\\vec{v} = (3, 4)$. Der echte Unterschied ist die Richtung: Vektoren haben Betrag UND Richtung, Skalare nur Betrag.',
+      0: '„Größer" ist kein mathematisches Unterscheidungskriterium — ein Skalar wie $T = 1000\\,°\\text{C}$ kann durchaus betragsmäßig größer sein als ein Vektor wie $\\vec{v} = (3, 4)$. Der echte Unterschied ist die Richtung: Vektoren haben Betrag UND Richtung, Skalare nur Betrag.',
       2: 'Vektoren können sehr wohl addiert werden — komponentenweise: $\\vec{a} + \\vec{b} = (a_x + b_x,\\, a_y + b_y)$. Die eigentliche Unterscheidung zu Skalaren liegt darin, dass Vektoren zusätzlich eine Richtung tragen.',
       3: 'Das ist umgekehrt falsch: Sowohl Skalare als auch Vektoren können Einheiten haben (Kraft in N, Masse in kg). Das Unterscheidungsmerkmal ist die Richtung, nicht die Dimensionalität.',
     },
@@ -165,6 +164,7 @@ export const exercises_vek_u1 = {
       'Formel: $|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}}$.',
       'Rechne $3^{2} + 4^{2} = 25$, dann Wurzel ziehen.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['betrag'] },
     wrongAnswerExplanations: {
       0: 'Du hast die Komponenten einfach addiert: $3 + 4 = 7$. Das ist nicht die Vektorlänge — der Vektor bildet mit seinen Komponenten ein rechtwinkliges Dreieck, also gilt Pythagoras: $|\\vec{a}| = \\sqrt{3^{2} + 4^{2}} = \\sqrt{25} = 5$.',
       2: 'Du hast $3 + 4 = 7$ gerechnet und dann die Wurzel gezogen. Richtig wird aber erst *quadriert* und *summiert*, dann die Wurzel gezogen: $\\sqrt{3^{2} + 4^{2}} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.',
@@ -188,7 +188,7 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** $\\vec{a} + \\vec{b} = (2 + 1,\\; 3 + (-1)) = (3, 2)$.
 
-**Probe (geometrisch):** Zeichne $\\vec{a}$, hänge $\\vec{b}$ an dessen Spitze an. Die Spitze von $\\vec{b}$ liegt bei $(3, 2)$. ✓
+**Probe:** Geometrisch — zeichne $\\vec{a}$, hänge $\\vec{b}$ an dessen Spitze an. Die Spitze von $\\vec{b}$ liegt bei $(2+1,\\;3-1)=(3, 2)$. ✓
 
 **Typischer Fehler:** Antwort $(1, 4)$ verwechselt Subtraktion mit Addition ($2-1$ statt $2+1$, $3-(-1)$ statt $3+(-1)$). Antwort $(3, 4)$ ignoriert das Minuszeichen bei $b_y$.`,
     hints: [
@@ -196,6 +196,7 @@ export const exercises_vek_u1 = {
       'Formel: $(a_x + b_x,\\; a_y + b_y)$.',
       'Achte auf das Vorzeichen: $3 + (-1) = 2$, nicht $4$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['add-komp'] },
     wrongAnswerExplanations: {
       1: 'Du hast statt addiert subtrahiert: $2-1 = 1$ und $3-(-1) = 4$. Vektoraddition ist aber komponentenweise *addieren*: $\\vec{a} + \\vec{b} = (a_x + b_x,\\; a_y + b_y) = (2+1,\\; 3+(-1)) = (3, 2)$.',
       2: 'Das sieht aus wie das komponentenweise Produkt ($2 \\cdot 1,\\; 3 \\cdot (-1)$) — aber Vektoren werden komponentenweise *addiert*, nicht multipliziert: $(2+1,\\; 3+(-1)) = (3, 2)$.',
@@ -220,27 +221,19 @@ export const exercises_vek_u1 = {
     question: '[PRÜFUNG] Gegeben $\\vec{a} = (3, 4)$. Berechne $|2\\vec{a}|$ (Betrag des doppelten Vektors).',
     options: ['$10$', '$5$', '$7$', '$14$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zwei Schritte kombinieren — Skalarmultiplikation **und** Betragsberechnung.
+    explanation: `**Ansatz:** Zwei Schritte kombinieren — Skalarmultiplikation **und** Betragsberechnung. Zwei Wege führen zum Ziel; sie müssen dasselbe ergeben.
 
-**Weg A (erst skalieren, dann Betrag):**
-- $2\\vec{a} = (6, 8)$
-- $|2\\vec{a}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$
+**Rechnung:** Weg A (erst skalieren, dann Betrag): $2\\vec{a} = (6, 8)$, dann $|2\\vec{a}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$. Weg B (Homogenitäts-Regel $|k \\vec{a}| = |k| \\cdot |\\vec{a}|$): $|\\vec{a}| = \\sqrt{9 + 16} = 5$, dann $|2\\vec{a}| = 2 \\cdot 5 = 10$.
 
-**Weg B (Homogenitäts-Regel):** $|k \\vec{a}| = |k| \\cdot |\\vec{a}|$.
-- $|\\vec{a}| = \\sqrt{9 + 16} = 5$
-- $|2\\vec{a}| = 2 \\cdot 5 = 10$ ✓
+**Probe:** Beide Wege liefern $10$ — das bestätigt $|k\\vec{a}|=|k|\\cdot|\\vec{a}|$. Außerdem 3-4-5-Tripel verdoppelt → 6-8-10 ist auch ein pythagoreisches Tripel. ✓
 
-**Synthese:** Beide Wege müssen dasselbe Ergebnis liefern — das bestätigt die Regel $|k \\vec{a}| = |k| |\\vec{a}|$.
-
-**Typische Fehler:**
-- $5$: $|\\vec{a}|$ berechnet, aber $2\\cdot$ vergessen.
-- $7 = |2| + |\\vec{a}|$: Skalar mit Betrag **addiert** statt multipliziert.
-- $14 = 2 \\cdot (3+4)$: Komponenten addiert statt $\\sqrt{}$-Betrag gebildet.`,
+**Typischer Fehler:** $|\\vec{a}|=5$ statt $|2\\vec a|=10$ → den Faktor $2$ vergessen. Oder $|2|+|\\vec a|=2+5=7$ — Skalar und Betrag **addiert** statt multipliziert. Oder $2\\cdot(3+4)=14$ — Komponenten direkt addiert ohne Wurzel.`,
     hints: [
       'Zwei Operationen: erst skalieren ($2\\vec{a}$), dann Betrag, oder umgekehrt.',
       'Betrag: $|\\vec{a}| = \\sqrt{a_x^2 + a_y^2}$. Homogenität: $|k\\vec{a}| = |k| |\\vec{a}|$.',
       '$|\\vec{a}| = \\sqrt{9+16} = 5 \\Rightarrow |2\\vec{a}| = 10$. 3-4-5-Tripel!',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['add-komp', 'skalar-mul', 'betrag'] },
     wrongAnswerExplanations: {
       1: 'Das ist $|\\vec{a}| = 5$ selbst — du hast den Faktor $2$ vergessen. Nach der Homogenitätsregel gilt $|k\\vec{a}| = |k| \\cdot |\\vec{a}|$, also $|2\\vec{a}| = 2 \\cdot 5 = 10$.',
       2: 'Das sieht nach $|2| + |\\vec{a}| = 2 + 5 = 7$ aus — Skalar und Betrag wurden addiert statt multipliziert. Richtig: $|k\\vec{a}| = |k| \\cdot |\\vec{a}| = 2 \\cdot 5 = 10$.',

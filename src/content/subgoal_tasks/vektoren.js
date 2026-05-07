@@ -461,4 +461,513 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-1: Vektoren — Grundbegriffe
+  // SG0: Komponenten + Betrag · SG1: Add/Sub/Skalarmul · SG2: Einheitsvektor · SG3: Tech-Größen
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-1': {
+    // ===== Sub-Goal 0 — Komponentenform & Betrag =====
+    0: [
+      tag(
+        tf(
+          'Der Betrag eines 3D-Vektors $\\vec{v}=(v_x,v_y,v_z)$ ist $|v_x|+|v_y|+|v_z|$ — also einfach die Summe der Beträge der Komponenten.',
+          false,
+          `**Ansatz:** Betrag = Länge des Pfeils. Pythagoras gilt im Raum, nicht Komponenten-Summe.
+
+**Rechnung:** Korrekt ist $|\\vec{v}|=\\sqrt{v_x^2+v_y^2+v_z^2}$. Beispiel $\\vec{v}=(2,3,6)$: $|\\vec{v}|=\\sqrt{4+9+36}=\\sqrt{49}=7$. Falsche Formel würde $|2|+|3|+|6|=11$ liefern — ein anderer Wert.
+
+**Probe:** Für $(3,4)$ in 2D: Pythagoras $\\sqrt{9+16}=5$ vs. Komponenten-Summe $7$ — beide unterschiedlich, also kann nur die Wurzel-Formel stimmen (3-4-5-Dreieck).
+
+**Typischer Fehler:** „Manhattan-Norm" mit „euklidischer Norm" verwechseln — Manhattan summiert Beträge, Euklid macht Pythagoras. In der Schulgeometrie ist „Betrag" immer die euklidische Länge.`,
+          [
+            'Betrag eines Vektors = Länge des Pfeils — nicht Summe der Komponenten.',
+            'Im 2D liefert die Komponenten-Summe für $(3,4)$ den Wert $7$, der Pythagoras aber $5$. Welche Antwort ist die Pfeillänge?',
+            'Korrekt: $|\\vec{v}|=\\sqrt{v_x^2+v_y^2+v_z^2}$ — quadrieren, summieren, Wurzel ziehen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Betrag des Vektors $\\vec{a}=(6,\\,8)$.',
+          10, 0, '',
+          `**Ansatz:** Pythagoras: $|\\vec{a}|=\\sqrt{a_x^2+a_y^2}$.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{6^2+8^2}=\\sqrt{36+64}=\\sqrt{100}=10$.
+
+**Probe:** $6$-$8$-$10$ ist das verdoppelte $3$-$4$-$5$-Tripel — sauberes pythagoreisches Tripel. ✓
+
+**Typischer Fehler:** $6+8=14$ rechnen (Komponenten addiert ohne Wurzel) oder $\\sqrt{6+8}=\\sqrt{14}$ (zu früh gewurzelt — erst quadrieren, dann summieren, dann Wurzel).`,
+          [
+            'Längenformel via Pythagoras: $\\sqrt{a_x^2+a_y^2}$.',
+            'Reihenfolge: erst quadrieren, dann addieren, dann Wurzel ziehen.',
+            'Erkenn das pythagoreische Tripel — $6$-$8$-?',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet den Betrag von $\\vec{a}=(5,\\,12)$ als $|\\vec{a}|=5+12=17$. Welche Antwort ist korrekt — und was ist der Fehler?',
+          [
+            '$|\\vec{a}|=13$ — der Schüler hat die Wurzel und das Quadrieren übersprungen; richtig ist $\\sqrt{25+144}=\\sqrt{169}=13$.',
+            '$|\\vec{a}|=17$ — die Rechnung des Schülers ist richtig, weil man die Komponenten einfach summiert.',
+            '$|\\vec{a}|=\\sqrt{17}$ — man muss die Wurzel aus der Komponenten-Summe ziehen.',
+            '$|\\vec{a}|=169$ — man quadriert und summiert, ohne die Wurzel zu ziehen.',
+          ],
+          0,
+          `**Ansatz:** Korrekte Formel: $|\\vec{a}|=\\sqrt{a_x^2+a_y^2}$. Reihenfolge: quadrieren, summieren, Wurzel.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{5^2+12^2}=\\sqrt{25+144}=\\sqrt{169}=13$. Der Schüler hat sowohl das Quadrieren als auch die Wurzel übersprungen und einfach $5+12$ gerechnet.
+
+**Probe:** $5$-$12$-$13$ ist ein klassisches pythagoreisches Tripel ($25+144=169$). ✓
+
+**Typischer Fehler:** Linearität annehmen — $|\\vec{a}+\\vec{b}|\\ne|\\vec{a}|+|\\vec{b}|$. Pythagoras ist nichtlinear: das rechtwinklige Dreieck mit Katheten $5$ und $12$ hat Hypotenuse $13$, nicht $17$.`,
+          [
+            'Welche Operationen verlangt die Betragsformel?',
+            'Drei Schritte: quadrieren — summieren — Wurzel ziehen. In dieser Reihenfolge.',
+            'Pythagoreische Tripel: $3$-$4$-$5$, $5$-$12$-$13$, $8$-$15$-$17$ — diese Werte zu kennen, beschleunigt das Rechnen.',
+          ],
+          {
+            1: 'Genau das ist der Fehler: Komponenten direkt zu addieren ist die „Manhattan-Distanz", nicht die euklidische Länge. Mit Pythagoras kommt $13$ heraus.',
+            2: '$\\sqrt{17}\\approx 4{,}12$ — ein viel zu kleiner Wert für einen Vektor mit Komponente $12$. Erst **quadrieren**, dann summieren, dann Wurzel.',
+            3: '$169$ ist $|\\vec{a}|^2$ (Summe der Quadrate). Die letzte Operation — die Wurzel — wurde vergessen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Betrag des 3D-Vektors $\\vec{v}=(-2,\\,3,\\,-6)$.',
+          7, 0, '',
+          `**Ansatz:** Pythagoras im Raum: $|\\vec{v}|=\\sqrt{v_x^2+v_y^2+v_z^2}$. Vorzeichen verschwinden durch das Quadrieren.
+
+**Rechnung:** $|\\vec{v}|=\\sqrt{(-2)^2+3^2+(-6)^2}=\\sqrt{4+9+36}=\\sqrt{49}=7$.
+
+**Probe:** Negative Komponenten ändern den Betrag nicht — nur die Richtung. $|(-2,3,-6)|=|(2,3,6)|=7$. ✓
+
+**Typischer Fehler:** Vorzeichen mit ins Quadrat schleppen ($-2^2=-4$ statt $(-2)^2=4$) — beim Quadrieren werden alle Vorzeichen positiv. Oder die $z$-Komponente vergessen, wenn man unbewusst in 2D rechnet ($\\sqrt{4+9}=\\sqrt{13}$ statt $\\sqrt{49}$).`,
+          [
+            'Auch in 3D: quadrieren — summieren — Wurzel ziehen.',
+            'Negative Komponenten quadrieren zu positiven Werten — sie zählen voll mit.',
+            'Hier: $4+9+36=49$, also $\\sqrt{49}=7$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Betrag von $\\vec{a}=(0,\\,-7)$.',
+          7, 0, '',
+          `**Ansatz:** Bei einer Null-Komponente reduziert sich Pythagoras auf den Betrag der anderen Komponente.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{0^2+(-7)^2}=\\sqrt{0+49}=\\sqrt{49}=7$.
+
+**Probe:** Anschaulich: $(0,-7)$ ist ein Pfeil, der gerade nach unten zeigt — Länge $7$, unabhängig vom Vorzeichen. ✓
+
+**Typischer Fehler:** Vorzeichen direkt übernehmen und $-7$ als Antwort schreiben — der Betrag ist immer $\\geq 0$ (Längen sind nie negativ).`,
+          [
+            'Betrag ist die Länge — Längen sind nie negativ.',
+            'Vorzeichen verschwindet durch das Quadrat: $(-7)^2=49$.',
+            'Bei $0$-Komponenten: Pythagoras vereinfacht sich, das Ergebnis ist der Betrag der nicht-null Komponente.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['betrag'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Addition / Subtraktion / Skalarmultiplikation =====
+    1: [
+      tag(
+        tf(
+          'Für beliebige Vektoren $\\vec{a}$ und $\\vec{b}$ gilt $\\vec{a}+\\vec{b}=\\vec{b}+\\vec{a}$ — die Reihenfolge bei der Vektoraddition spielt keine Rolle.',
+          true,
+          `**Ansatz:** Vektoraddition ist komponentenweise — und Zahlen addieren ist kommutativ.
+
+**Rechnung:** $\\vec{a}+\\vec{b}=(a_x+b_x,\\;a_y+b_y)$ und $\\vec{b}+\\vec{a}=(b_x+a_x,\\;b_y+a_y)$. Da $a_x+b_x=b_x+a_x$ usw. (Kommutativgesetz für Zahlen), gilt $\\vec{a}+\\vec{b}=\\vec{b}+\\vec{a}$.
+
+**Probe:** $\\vec{a}=(2,3),\\,\\vec{b}=(1,-1)$: $\\vec{a}+\\vec{b}=(3,2)$, $\\vec{b}+\\vec{a}=(3,2)$. Identisch. ✓ Geometrisch: Parallelogramm — beide Pfeile spannen dieselbe Diagonale auf, egal in welcher Reihenfolge man sie aneinanderhängt.
+
+**Typischer Fehler:** Mit dem **Kreuzprodukt** verwechseln — dort ist $\\vec a\\times\\vec b\\ne\\vec b\\times\\vec a$ (antikommutativ). Aber für Addition gilt das Kommutativgesetz.`,
+          [
+            'Vektoraddition arbeitet komponentenweise — also auf Zahlen.',
+            'Zahlenaddition ist kommutativ: $a+b=b+a$.',
+            'Das überträgt sich auf jede einzelne Komponente.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['add-komp', 'vra-axiome'] },
+      ),
+
+      tag(
+        ni(
+          'Gegeben: $\\vec{a}=(1,\\,2)$ und $\\vec{b}=(3,\\,-1)$. Berechne die $x$-Komponente des Vektors $2\\vec{a}+3\\vec{b}$.',
+          11, 0, '',
+          `**Ansatz:** Erst Skalarmultiplikation komponentenweise, dann Addition komponentenweise.
+
+**Rechnung:** $2\\vec{a}=(2,4)$, $3\\vec{b}=(9,-3)$. Summe: $2\\vec{a}+3\\vec{b}=(2+9,\\;4-3)=(11,\\,1)$. $x$-Komponente: $\\mathbf{11}$.
+
+**Probe:** Kurzweg auf $x$-Komponente: $2\\cdot a_x+3\\cdot b_x=2\\cdot 1+3\\cdot 3=2+9=11$. ✓
+
+**Typischer Fehler:** Skalar nur auf eine Komponente anwenden ($2\\cdot 1+3=5$) — die Skalarmultiplikation muss **alle** Komponenten treffen. Oder Reihenfolge der Operationen falsch (zuerst addieren, dann skalieren) und mit Distributivgesetz kämpfen.`,
+          [
+            'Reihenfolge: erst $k\\vec{a}$ und $k\\vec{b}$ einzeln ausrechnen, dann addieren.',
+            'Pro Komponente: $2 a_x + 3 b_x$.',
+            'Hier $x$-Komponente: $2\\cdot 1 + 3\\cdot 3$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['add-komp', 'skalar-mul'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Student rechnet $\\vec{a}-\\vec{b}$ mit $\\vec{a}=(5,\\,2)$ und $\\vec{b}=(3,\\,-4)$ als $(5-3,\\;2-4)=(2,\\,-2)$. Welche Antwort ist korrekt — und was ist der Fehler?',
+          [
+            '$(2,\\,6)$ — der Student hat das Vorzeichen von $b_y=-4$ ignoriert; richtig ist $2-(-4)=2+4=6$.',
+            '$(2,\\,-2)$ — die Rechnung des Studenten ist korrekt.',
+            '$(8,\\,-2)$ — Subtraktion entspricht komponentenweiser Addition mit gleichem Vorzeichen.',
+            '$(-2,\\,2)$ — bei der Subtraktion zieht man immer den ersten vom zweiten ab.',
+          ],
+          0,
+          `**Ansatz:** $\\vec{a}-\\vec{b}=\\vec{a}+(-\\vec{b})$ — also komponentenweise $a_i-b_i$. Negative Komponenten erfordern doppeltes Vorzeichen.
+
+**Rechnung:** $\\vec{a}-\\vec{b}=(5-3,\\;2-(-4))=(2,\\;2+4)=(2,\\,6)$. Der Student hat $2-4$ statt $2-(-4)$ gerechnet — ein Vorzeichen verschluckt.
+
+**Probe:** $\\vec{b}+(\\vec{a}-\\vec{b})$ muss $\\vec{a}$ ergeben: $(3,-4)+(2,6)=(5,2)=\\vec{a}$. ✓ Mit dem fehlerhaften $(2,-2)$ wäre $(3,-4)+(2,-2)=(5,-6)\\ne(5,2)$.
+
+**Typischer Fehler:** Doppeltes Minus als einfaches Minus interpretieren — bei $a_y - b_y = 2 - (-4)$ wird $-(-4)=+4$, also $2+4=6$. Klammerung beibehalten ist Pflicht.`,
+          [
+            'Subtraktion: $\\vec{a}-\\vec{b}=(a_x-b_x,\\;a_y-b_y)$.',
+            'Wenn $b_y$ negativ ist, wird das Minus zum Plus: $a_y-(-b)=a_y+b$.',
+            'Probe per Rückrechnung: $\\vec{b}+(\\vec{a}-\\vec{b})$ muss $\\vec{a}$ sein.',
+          ],
+          {
+            1: 'Genau das ist der Fehler: $2-(-4)$ ist $2+4=6$, nicht $2-4=-2$. Das doppelte Minus muss beachtet werden.',
+            2: 'Subtraktion ist **nicht** Addition — die Vorzeichen werden umgekehrt: $\\vec{a}-\\vec{b}=\\vec{a}+(-\\vec{b})$. Dann erst addieren.',
+            3: 'Reihenfolge: $\\vec{a}-\\vec{b}$ bedeutet $a-b$ pro Komponente, nicht $b-a$. Das Ergebnis $(-2,2)$ wäre $\\vec{b}-\\vec{a}$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['add-komp', 'sub-komp'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jeder Vektor-Operation die korrekte geometrische Beschreibung zu.',
+          [
+            { left: '$2\\vec{a}$ (Skalarmultiplikation mit $k=2$)', right: 'Pfeil doppelt so lang, gleiche Richtung' },
+            { left: '$-\\vec{a}$ (Skalarmultiplikation mit $k=-1$)', right: 'Pfeil gleiche Länge, entgegengesetzte Richtung' },
+            { left: '$\\vec{a}+\\vec{b}$ (Vektoraddition)', right: 'Pfeile aneinanderhängen, Resultierende vom Start zur Spitze' },
+            { left: '$\\vec{a}-\\vec{b}$ (Vektorsubtraktion)', right: 'Addition von $\\vec{a}$ und Gegenvektor von $\\vec{b}$' },
+          ],
+          `**Ansatz:** Jede Operation hat eine algebraische und eine geometrische Form — geometrisch sind die Auswirkungen am klarsten.
+
+**Rechnung:** Skalarmul mit $k>1$ verlängert (Faktor $|k|$), $k<0$ kehrt zusätzlich die Richtung um, $k=0$ ergibt den Nullvektor. Addition: zwei Pfeile aneinanderhängen, Resultierende = Diagonale eines Parallelogramms. Subtraktion: $\\vec{a}+(-\\vec{b})$ — also den Gegenvektor von $\\vec{b}$ an $\\vec{a}$ anhängen.
+
+**Probe:** Konkret mit $\\vec{a}=(3,1)$: $2\\vec{a}=(6,2)$ doppelt so lang ✓. $-\\vec{a}=(-3,-1)$ Gegenrichtung ✓. Mit $\\vec{b}=(1,2)$: $\\vec{a}+\\vec{b}=(4,3)$ Diagonale ✓.
+
+**Typischer Fehler:** Skalarmul mit Vektoraddition verwechseln (Addition verändert Richtung **und** Länge, Skalarmul nur die Länge bzw. das Vorzeichen). Oder bei $k<0$ vergessen, dass auch die **Richtung** kippt.`,
+          [
+            'Algebraisch zuerst: Was passiert komponentenweise?',
+            'Geometrisch: Skalar streckt/spiegelt, Addition fügt Pfeile zusammen.',
+            'Subtraktion = Addition mit Gegenvektor — das löst das Vorzeichen-Problem.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['add-komp', 'add-geo', 'skalar-mul'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $y$-Komponente des Vektors $\\vec{c}=4\\vec{a}-2\\vec{b}$ mit $\\vec{a}=(2,\\,-3)$ und $\\vec{b}=(1,\\,5)$.',
+          -22, 0, '',
+          `**Ansatz:** Linearkombination: erst skalieren, dann subtrahieren — komponentenweise nur auf $y$.
+
+**Rechnung:** $(\\vec{c})_y = 4\\cdot a_y - 2\\cdot b_y = 4\\cdot(-3) - 2\\cdot 5 = -12 - 10 = -22$.
+
+**Probe:** Volle Rechnung: $4\\vec{a}=(8,-12)$, $2\\vec{b}=(2,10)$, $\\vec{c}=4\\vec{a}-2\\vec{b}=(8-2,\\;-12-10)=(6,-22)$. $y$-Komponente $-22$. ✓
+
+**Typischer Fehler:** Vorzeichen verlieren — $-12-10$ statt $-22$ als $-2$ rechnen (Plus statt Minus eingesetzt). Oder Skalar nur auf $\\vec{a}$, nicht auf $\\vec{b}$ anwenden.`,
+          [
+            'Linearkombinationen: skalieren — dann verknüpfen.',
+            'Pro Komponente: $4 a_y - 2 b_y$.',
+            'Vorzeichen mitnehmen: $a_y$ ist negativ, also $4\\cdot(-3)=-12$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['add-komp', 'sub-komp', 'skalar-mul'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Einheitsvektor =====
+    2: [
+      tag(
+        tf(
+          'Ein Einheitsvektor hat per Definition immer Länge $1$ — unabhängig vom Vektor, aus dem er gebildet wird.',
+          true,
+          `**Ansatz:** Definition des Einheitsvektors: Länge gleich $1$, Richtung wie der Ursprungs-Vektor.
+
+**Rechnung:** Einheitsvektor zu $\\vec{v}\\ne\\vec{0}$: $\\hat{e}=\\vec{v}/|\\vec{v}|$. Dann $|\\hat{e}|=|\\vec{v}|/|\\vec{v}|=1$. ✓ Egal ob $\\vec{v}$ Länge $5$, $13$ oder $0{,}3$ hat — der Einheitsvektor ist normiert auf $1$.
+
+**Probe:** Beispiel $\\vec{v}=(3,4)$, $|\\vec{v}|=5$, $\\hat{e}=(3/5,\\,4/5)=(0{,}6,\\,0{,}8)$. Länge: $\\sqrt{0{,}36+0{,}64}=\\sqrt{1}=1$. ✓
+
+**Typischer Fehler:** „Einheitsvektor heißt: alle Komponenten sind $1$" — falsch. Die Komponenten können beliebige Werte zwischen $-1$ und $1$ annehmen; nur die **Gesamtlänge** ist $1$.`,
+          [
+            'Was definiert einen Einheitsvektor? Sein Betrag.',
+            'Welcher Wert ist das?',
+            'Konstruktion über $\\hat{e}=\\vec{v}/|\\vec{v}|$ erzwingt Länge $1$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['einheitsvektor'] },
+      ),
+
+      tag(
+        mc(
+          'Wie bildet man den Einheitsvektor zum Vektor $\\vec{a}=(3,\\,4)$?',
+          [
+            '$\\hat{e}=(3/5,\\,4/5)$ — durch den Betrag $|\\vec{a}|=5$ teilen.',
+            '$\\hat{e}=(3,\\,4)$ — der Vektor selbst ist schon ein Einheitsvektor.',
+            '$\\hat{e}=(3/3,\\,4/4)=(1,\\,1)$ — jede Komponente durch sich selbst teilen.',
+            '$\\hat{e}=(3/7,\\,4/7)$ — durch die Komponenten-Summe $3+4=7$ teilen.',
+          ],
+          0,
+          `**Ansatz:** Einheitsvektor = Vektor durch seinen Betrag: $\\hat{e}=\\vec{a}/|\\vec{a}|$.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{9+16}=5$. $\\hat{e}=(3/5,\\,4/5)=(0{,}6,\\,0{,}8)$.
+
+**Probe:** $|\\hat{e}|=\\sqrt{(3/5)^2+(4/5)^2}=\\sqrt{9/25+16/25}=\\sqrt{25/25}=1$. ✓ Richtung: $(3/5,4/5)$ zeigt in dieselbe Richtung wie $(3,4)$ (positiver Skalar verändert Richtung nicht).
+
+**Typischer Fehler:** Durch eine **Komponente** teilen ($a/a_x$) statt durch den **Betrag** ($a/|\\vec{a}|$). Oder durch die Summe der Komponenten teilen — Manhattan-Norm statt euklidischer.`,
+          [
+            'Formel: $\\hat{e}=\\vec{a}/|\\vec{a}|$.',
+            'Erst $|\\vec{a}|$ ausrechnen — dann durch diese Zahl alle Komponenten teilen.',
+            'Hier $3$-$4$-$5$-Tripel: $|\\vec{a}|=5$.',
+          ],
+          {
+            1: '$(3,4)$ hat Länge $5$, nicht $1$. Es ist also kein Einheitsvektor — du musst noch durch $|\\vec a|=5$ teilen.',
+            2: 'Du hast jede Komponente durch sich selbst geteilt, das ergibt immer $(1,1)$ — egal welcher Vektor. Aber $(1,1)$ hat Länge $\\sqrt{2}\\ne 1$ und zeigt nicht mehr in dieselbe Richtung wie $\\vec{a}$.',
+            3: 'Die **Summe** der Komponenten ist die Manhattan-Norm — die Standardformel verlangt aber den **Betrag** (Pythagoras): $|\\vec{a}|=\\sqrt{9+16}=5$, nicht $7$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['einheitsvektor', 'betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $y$-Komponente des Einheitsvektors zu $\\vec{a}=(8,\\,6)$ und runde auf 3 Nachkommastellen.',
+          0.6, 0.001, '',
+          `**Ansatz:** $\\hat{e}=\\vec{a}/|\\vec{a}|$ — auf jede Komponente einzeln anwenden.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{64+36}=\\sqrt{100}=10$. $\\hat{e}=(8/10,\\,6/10)=(0{,}8,\\,0{,}6)$. $y$-Komponente: $\\mathbf{0{,}6}$.
+
+**Probe:** $|\\hat{e}|=\\sqrt{0{,}64+0{,}36}=\\sqrt{1}=1$ — Länge stimmt. ✓ Außerdem $6$-$8$-$10$ ist verdoppeltes $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** Durch $a_y=6$ statt durch $|\\vec{a}|=10$ teilen. Oder Komponenten vertauschen (vergessen, dass das eine $y$-Komponente ist) — dann liefert man die $x$-Komponente $0{,}8$ ab.`,
+          [
+            'Formel: $\\hat{e}_y = a_y / |\\vec{a}|$.',
+            'Erst $|\\vec{a}|$ via Pythagoras berechnen — hier $\\sqrt{64+36}$.',
+            'Dann $a_y$ durch diesen Wert teilen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['einheitsvektor', 'betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Eine Schülerin sucht den Einheitsvektor zu $\\vec{a}=(0,\\,4)$ und rechnet $\\hat{e}=(0/4,\\,4/4)=(0,\\,1)$. Sie hat das Ergebnis zwar richtig, aber den **falschen Weg** genommen. Welche Aussage trifft den Fehler in der Methode?',
+          [
+            'Sie hat durch die Komponente $a_y=4$ statt durch den Betrag $|\\vec{a}|$ geteilt — das funktioniert hier nur zufällig, weil $|\\vec{a}|=4=a_y$. Bei $\\vec{a}=(3,4)$ würde dieselbe Methode falsch enden.',
+            'Sie hat richtig durch den Betrag geteilt — nur die Schreibweise ist ungewöhnlich.',
+            'Sie hat die Komponenten getauscht — der korrekte Einheitsvektor wäre $(1,0)$.',
+            'Sie hätte gar keinen Einheitsvektor bilden müssen — bei einer Null-Komponente ist die Operation nicht definiert.',
+          ],
+          0,
+          `**Ansatz:** Methode prüfen — nicht nur Endergebnis. Korrekt ist immer $\\hat{e}=\\vec{a}/|\\vec{a}|$, **nicht** $\\vec{a}$ durch eine einzelne Komponente.
+
+**Rechnung:** Hier $|\\vec{a}|=\\sqrt{0+16}=4$. $\\hat{e}=(0/4,\\,4/4)=(0,1)$. Zufall: $|\\vec{a}|=a_y=4$, daher liefert „durch $a_y$ teilen" dasselbe Ergebnis wie „durch Betrag teilen".
+
+**Probe:** Gegenbeispiel $\\vec{a}=(3,4)$: $|\\vec{a}|=5$. Korrekt: $\\hat{e}=(3/5,4/5)$. Falsch (durch $a_y=4$): $(3/4,1)$ — das hat Länge $\\sqrt{9/16+1}=\\sqrt{25/16}=5/4\\ne 1$. Methode versagt also bei nicht-zufälligen Vektoren.
+
+**Typischer Fehler:** Zufallstreffer als bewährte Methode ablegen. Wer aus der Methode lernt, dass „durch eine Komponente teilen" funktioniert, scheitert beim nächsten Vektor. Stets durch den **Betrag** teilen.`,
+          [
+            'Frag: Wäre die Methode bei jedem Vektor erfolgreich — oder nur bei diesem speziellen?',
+            'Test mit $\\vec{a}=(3,4)$: liefert „durch Komponente teilen" einen Einheitsvektor?',
+            'Korrekt ist und bleibt: $\\hat{e}=\\vec{a}/|\\vec{a}|$.',
+          ],
+          {
+            1: 'Die Methode „durch eine Komponente teilen" ist **nicht** dasselbe wie „durch den Betrag teilen" — sie liefert hier nur zufällig dasselbe Ergebnis. Bei anderen Vektoren versagt sie.',
+            2: 'Der korrekte Einheitsvektor zu $(0,4)$ ist $(0,1)$ — die Schülerin hat richtig, aber aus dem falschen Grund. Komponenten zu tauschen wäre eine zusätzliche Modifikation.',
+            3: 'Einheitsvektor ist für **jeden** $\\vec{a}\\ne\\vec{0}$ definiert — auch wenn einzelne Komponenten $0$ sind. Verboten ist nur der Nullvektor.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['einheitsvektor'] },
+      ),
+
+      tag(
+        ni(
+          'Bilde einen Vektor der Länge $7$ in derselben Richtung wie $\\vec{a}=(3,\\,4)$. Wie groß ist die $x$-Komponente dieses Vektors?',
+          4.2, 0.001, '',
+          `**Ansatz:** Vektor mit Länge $L$ in Richtung $\\vec{a}$: $L\\cdot\\hat{e}_a = L\\cdot\\vec{a}/|\\vec{a}|$.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{9+16}=5$. $\\hat{e}_a=(3/5,\\,4/5)$. Skaliert mit $L=7$: $7\\hat{e}_a=(7\\cdot 3/5,\\;7\\cdot 4/5)=(21/5,\\,28/5)=(4{,}2,\\,5{,}6)$. $x$-Komponente: $\\mathbf{4{,}2}$.
+
+**Probe:** Länge prüfen: $|7\\hat{e}_a|=\\sqrt{4{,}2^2+5{,}6^2}=\\sqrt{17{,}64+31{,}36}=\\sqrt{49}=7$. ✓
+
+**Typischer Fehler:** Direkt $7\\vec{a}=(21,28)$ rechnen — das hat Länge $7\\cdot|\\vec{a}|=35$, nicht $7$. Erst muss man auf den Einheitsvektor normieren, dann mit $L$ skalieren.`,
+          [
+            'Strategie: Länge $L$ in Richtung $\\vec{a}$ = $L\\cdot\\hat{e}_a$.',
+            'Schritt 1: $|\\vec{a}|$ berechnen, Schritt 2: $\\hat{e}_a=\\vec{a}/|\\vec{a}|$, Schritt 3: $\\hat{e}_a$ mit $L$ skalieren.',
+            'Hier: $|\\vec{a}|=5$, $\\hat{e}_a=(3/5,4/5)$, dann $7\\cdot 3/5=21/5$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['einheitsvektor', 'skalar-mul'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $z$-Komponente des Einheitsvektors zu $\\vec{a}=(1,\\,2,\\,2)$ und runde auf 3 Nachkommastellen.',
+          0.667, 0.001, '',
+          `**Ansatz:** $\\hat{e}=\\vec{a}/|\\vec{a}|$ — gilt auch in 3D.
+
+**Rechnung:** $|\\vec{a}|=\\sqrt{1+4+4}=\\sqrt{9}=3$. $\\hat{e}=(1/3,\\,2/3,\\,2/3)\\approx(0{,}333,\\,0{,}667,\\,0{,}667)$. $z$-Komponente: $\\mathbf{2/3\\approx 0{,}667}$.
+
+**Probe:** Längencheck $|\\hat{e}|=\\sqrt{1/9+4/9+4/9}=\\sqrt{9/9}=1$. ✓
+
+**Typischer Fehler:** Wurzel zu früh ziehen ($\\sqrt{1}+\\sqrt{4}+\\sqrt{4}=5$ statt $\\sqrt{9}=3$) — die Wurzel kommt **nach** der Summenbildung, nicht vorher.`,
+          [
+            'Auch in 3D: $\\hat{e}=\\vec{a}/|\\vec{a}|$ unverändert.',
+            '$|\\vec{a}|$ via 3D-Pythagoras: $\\sqrt{1+4+4}$.',
+            '$z$-Komponente von $\\hat{e}$ ist $a_z/|\\vec{a}|$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['einheitsvektor', 'betrag'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Tech-Größen (Skalar vs. Vektor in Anwendungen) =====
+    3: [
+      tag(
+        tf(
+          'Die Beschleunigung $\\vec{a}$ eines Fahrzeugs ist ein Vektor — sie hat Betrag (in $\\text{m/s}^2$) und Richtung (z. B. tangential zur Fahrbahn).',
+          true,
+          `**Ansatz:** Beschleunigung ist Änderungsrate der Geschwindigkeit — und Geschwindigkeit ist ein Vektor.
+
+**Rechnung:** $\\vec{a}=\\mathrm{d}\\vec{v}/\\mathrm{d}t$. Da $\\vec{v}$ Richtung trägt, trägt auch $\\vec{a}$ Richtung. Beispiel: Bremsen = Beschleunigung **gegen** die Fahrtrichtung; Kurvenfahrt mit konstantem Tempo = Beschleunigung **senkrecht zur Geschwindigkeit** (Zentripetalbeschleunigung).
+
+**Probe:** Newton-Axiom $\\vec{F}=m\\vec{a}$ — Kraft ist Vektor, Masse ist Skalar, daher muss $\\vec{a}$ ein Vektor sein. ✓
+
+**Typischer Fehler:** Beschleunigung mit Geschwindigkeitsbetrag verwechseln und auf den Skalar $|\\vec{a}|$ ($\\text{m/s}^2$-Wert ohne Richtung) reduzieren — das ist nur der Betrag, nicht die ganze physikalische Größe.`,
+          [
+            'Beschleunigung = Änderung der Geschwindigkeit pro Zeit.',
+            'Geschwindigkeit ist Vektor — also ist auch deren Änderung ein Vektor.',
+            'Indikator: Hat „Beschleunigung nach links" einen Sinn? Ja — also Vektor.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['tech-groessen'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jeder physikalisch-technischen Größe die korrekte Klassifikation samt typischer Notation zu.',
+          [
+            { left: 'Drehmoment $\\vec{M}=\\vec{r}\\times\\vec{F}$', right: 'Vektor — Größe und Drehachsenrichtung' },
+            { left: 'Massendichte $\\rho$ in $\\text{kg/m}^3$', right: 'Skalar — Materialeigenschaft, richtungslos' },
+            { left: 'Schwerkraft $\\vec{F}_G=m\\vec{g}$', right: 'Vektor — Betrag $mg$, Richtung zum Erdmittelpunkt' },
+            { left: 'Druck $p=F/A$ in $\\text{Pa}$', right: 'Skalar — Kraft pro Fläche, Zahlenwert' },
+          ],
+          `**Ansatz:** Pro Größe fragen: „Ist eine räumliche Richtung sinnvoll?"
+
+**Rechnung:** Drehmoment ist klassischer Pseudovektor (Richtung = Drehachse via Rechte-Hand-Regel). Schwerkraft zeigt nach unten — Vektor. Massendichte (Stoffeigenschaft) und Druck (Kraft pro Fläche) sind richtungslos — Skalare.
+
+**Probe:** Newton-Gleichungen sind dimensions- und richtungs-konsistent: $\\vec{F}_G=m\\vec{g}$ links Vektor, rechts Skalar mal Vektor → Vektor ✓. $p=F/A$: Skalar = Skalar/Skalar ✓.
+
+**Typischer Fehler:** Druck mit Kraft verwechseln — Druck ist eine skalare Spannung, Kraft ein Vektor. Oder Drehmoment als Skalar behandeln (häufig: man rechnet nur mit dem Betrag $|\\vec{M}|$, vergisst aber die Richtung der Drehachse).`,
+          [
+            'Frage pro Begriff: „Hat es eine räumliche Richtung?"',
+            'Hilft der Einheit zu folgen: $\\text{kg/m}^3$, $\\text{Pa}$ → meist Skalare; $\\text{N}$, $\\text{Nm}$ → meist Vektoren.',
+            'Auch Pseudovektoren (Drehmoment, Drehimpuls) sind Vektoren — sie zeigen entlang einer Drehachse.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['tech-groessen'] },
+      ),
+
+      tag(
+        mc(
+          'Auf einer Werkstatt-Aushang steht: „Werkstück $W_1$: Gewicht $5\\,\\text{kg}$." Was ist physikalisch falsch — und wie wäre es korrekt formuliert?',
+          [
+            '$\\text{kg}$ ist Einheit der **Masse** (Skalar). Die Gewichtskraft (Vektor) hätte Einheit Newton: $|\\vec{F}_G|=m\\cdot g\\approx 5\\cdot 9{,}81\\,\\text{N}\\approx 49{,}1\\,\\text{N}$. Korrekt: „Masse $5\\,\\text{kg}$" oder „Gewichtskraft $\\approx 49{,}1\\,\\text{N}$".',
+            'Nichts ist falsch — „Gewicht" und „Masse" sind im Maschinenbau dasselbe.',
+            'Falsch ist nur die Einheit: korrekt wäre „Gewicht $5\\,\\text{N}$".',
+            'Falsch ist die Größenordnung: Werkstücke wiegen üblicherweise mehrere $100\\,\\text{kg}$.',
+          ],
+          0,
+          `**Ansatz:** Trennung Masse $m$ (Skalar in $\\text{kg}$) von Gewichtskraft $\\vec{F}_G$ (Vektor in $\\text{N}$) konsequent durchhalten.
+
+**Rechnung:** $\\vec{F}_G=m\\vec{g}$. Mit $m=5\\,\\text{kg}$ und $|\\vec{g}|\\approx 9{,}81\\,\\text{m/s}^2$ ergibt sich $|\\vec{F}_G|\\approx 49{,}1\\,\\text{N}$. Die Aussage „Gewicht $5\\,\\text{kg}$" mischt umgangssprachlich Masse und Gewicht — physikalisch ist das eine Größenverwechslung.
+
+**Probe:** Auf dem Mond ändert sich $|\\vec{g}|\\approx 1{,}62\\,\\text{m/s}^2$ — die Masse bleibt $5\\,\\text{kg}$, die Gewichtskraft sinkt auf $\\approx 8{,}1\\,\\text{N}$. Das zeigt: Masse und Gewichtskraft sind unterschiedliche Größen.
+
+**Typischer Fehler:** Umgangssprachliche Identifikation („Mein Gewicht ist $80\\,\\text{kg}$") in technische Texte übernehmen. Im Maschinenbau muss zwischen Masse (Skalar, kg) und Gewichtskraft (Vektor, N) konsequent unterschieden werden.`,
+          [
+            'Welche Einheit gehört zur Masse, welche zur (Gewichts-)Kraft?',
+            'Newton-Definition: $1\\,\\text{N}=1\\,\\text{kg}\\cdot\\text{m/s}^2$ — Kraft hat eine ganz andere Einheit als Masse.',
+            'Alltagssprache vs. Technik: „Gewicht $5\\,\\text{kg}$" ist umgangssprachlich, fachlich falsch.',
+          ],
+          {
+            1: 'Genau diese Verwechslung wollten wir aufdecken — Masse (Skalar) und Gewichtskraft (Vektor) sind verschiedene physikalische Größen mit verschiedenen Einheiten.',
+            2: '„Gewicht $5\\,\\text{N}$" wäre mit der falschen Größenordnung formuliert (entspricht $\\approx 0{,}5\\,\\text{kg}$). Das eigentliche Problem ist die Verwechslung der Größe selbst, nicht nur der Zahlenwert.',
+            3: 'Größenordnung ist nicht der Punkt — auch ein $5\\,\\text{kg}$-Werkstück existiert. Der Fehler liegt im Vermischen von Masse und Gewichtskraft.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['tech-groessen'] },
+      ),
+
+      tag(
+        sorting(
+          'Bringe die Schritte zur Berechnung der Gewichtskraft eines Bauteils mit gegebener Masse in die richtige Reihenfolge.',
+          [
+            'Masse $m$ aus der Aufgabenstellung als Skalar identifizieren (in $\\text{kg}$).',
+            'Erdbeschleunigung als Vektor $\\vec{g}\\approx(0,\\,0,\\,-9{,}81)\\,\\text{m/s}^2$ ansetzen (Richtung: zum Erdmittelpunkt).',
+            'Gewichtskraft als Skalarmultiplikation $\\vec{F}_G=m\\cdot\\vec{g}$ bilden — Skalar mal Vektor ergibt Vektor.',
+            'Betrag $|\\vec{F}_G|=m\\cdot g$ ($g\\approx 9{,}81\\,\\text{m/s}^2$) für skalare Anwendungen ablesen.',
+          ],
+          [0, 1, 2, 3],
+          `**Ansatz:** Zuerst Skalare und Vektoren in der Aufgabe sauber identifizieren, dann gemäß Newton-Formel kombinieren.
+
+**Rechnung:** Schritt 1 stellt die skalare Größe sicher (Masse). Schritt 2 fixiert die vektorielle Komponente (Erdbeschleunigung mit Richtung). Schritt 3 wendet Skalar-mal-Vektor an. Schritt 4 reduziert das Vektor-Ergebnis auf den Betrag, falls nur dieser gefragt ist.
+
+**Probe:** Beispiel $m=5\\,\\text{kg}$: $\\vec{F}_G=5\\cdot(0,0,-9{,}81)\\,\\text{N}=(0,0,-49{,}05)\\,\\text{N}$, Betrag $\\approx 49{,}1\\,\\text{N}$.
+
+**Typischer Fehler:** Direkt $|\\vec{F}_G|=m\\cdot g$ rechnen, ohne das vektorielle Modell zu klären. Im 1D-Fall reicht das, aber bei mehreren Kräften (Hangabtrieb, Seilkräfte) muss man die Richtung kennen.`,
+          [
+            'Pädagogische Logik: Größen klassifizieren → Modell ansetzen → Operation anwenden → Endwert ablesen.',
+            'Skalar und Vektor müssen vor der Operation als solche erkannt sein.',
+            'Erst der vektorielle Ansatz, dann die skalare Vereinfachung — nicht umgekehrt.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['tech-groessen'] },
+      ),
+
+      tag(
+        tf(
+          'Druck $p$ in einer hydraulischen Anlage ist ein **Skalar** — er hat zwar eine Einheit ($\\text{Pa}=\\text{N/m}^2$), aber keine räumliche Richtung.',
+          true,
+          `**Ansatz:** Druck = Kraft pro Fläche. Skalar oder Vektor entscheidet die Richtungs-Frage.
+
+**Rechnung:** $p=F_\\perp/A$ — Kraftbetrag senkrecht zur Fläche durch Fläche. Das Ergebnis ist eine Zahl mit Einheit. Frage: „Druck nach links"? Sinnlos — der Druck wirkt allseitig (Pascal'sches Gesetz). Daher Skalar.
+
+**Probe:** In einem geschlossenen Hydrauliksystem ist der Druck überall gleich groß und allseitig — wäre Druck ein Vektor mit Richtung, hätte das keinen Sinn. Stattdessen: aus dem skalaren Druck $p$ entsteht ein Vektor $\\vec{F}=p\\cdot A\\cdot\\hat{n}$ erst durch Wahl einer Fläche mit Normalvektor $\\hat{n}$.
+
+**Typischer Fehler:** Druck mit Kraft verwechseln — Kraft ist ein Vektor, Druck eine richtungslose Spannung. Oder den Spannungstensor (Tensor 2. Stufe) mit dem Druck (Skalar) gleichsetzen — der Spannungstensor hat tensorielle Struktur, Druck ist nur sein hydrostatischer Anteil.`,
+          [
+            'Pascalsches Gesetz: Druck wirkt in einem ruhenden Fluid allseitig gleich.',
+            'Frage nach Richtung: Hat „Druck nach Norden" einen Sinn? Nein.',
+            'Druck $\\rightarrow$ Kraft auf eine konkrete Fläche entsteht erst, wenn man den Flächen-Normalvektor anwendet.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['tech-groessen'] },
+      ),
+    ],
+  },
 }
