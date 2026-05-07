@@ -170,6 +170,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast abgeleitet statt integriert — $(x^{3})\' = 3x^{2}$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4} + C$.',
       '3': 'Du hast durch den alten Exponenten $3$ geteilt statt durch den neuen Exponenten $n+1 = 4$. Regel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$, also hier $\\dfrac{x^{4}}{4} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['int-pot-regel'] },
   },
   'ex-int-1-2-b': {
     id: 'ex-int-1-2-b', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -193,6 +194,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast abgeleitet ($(\\sin)\' = \\cos$, dann $(\\cos)\' = -\\sin$) — aber nicht $\\cos$ selbst hat als Stammfunktion $-\\cos$. Beim Integrieren von $\\cos$ gehst du zu der Funktion, deren Ableitung $\\cos$ ist: $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
       '3': '$\\tan(x)$ ist keine Stammfunktion von $\\cos(x)$, sondern von $\\frac{1}{\\cos^{2}(x)}$ (da $(\\tan)\' = \\sec^{2}$). Die Stammfunktion von $\\cos$ findest du über $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-c': {
     id: 'ex-int-1-2-c', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -205,7 +207,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
 
 **Probe:** $(e^{x} + C)' = e^{x}$. ✓
 
-**Merke:** Diese Besonderheit macht $e^{x}$ zur wichtigsten Funktion in Analysis und Technik (DGL, Wachstum, RC-Glied).`,
+**Typischer Fehler:** Potenzregel $\\int x^{n}\\,dx = \\frac{x^{n+1}}{n+1}$ auf $e^{x}$ anwenden — die gilt aber nur für variable Basis $x$ mit FESTEM Exponenten $n$, nicht für die Exponentialfunktion (feste Basis $e$, variabler Exponent $x$). Dann landet man fälschlich bei $\\frac{e^{x}}{x}$ oder $x \\cdot e^{x}$. Richtig: $\\int e^{x}\\,dx = e^{x} + C$.`,
     hints: [
       '$e^{x}$ ist die einzige Funktion, die ihre eigene Ableitung ist.',
       'Was ist dann ihre Stammfunktion?',
@@ -216,6 +218,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Durch $x$ dividieren entsteht hier aus falsch angewandter Potenzregel — die gilt aber nicht für $e^{x}$. Die Ableitung bzw. Stammfunktion der Exponentialfunktion ist die Funktion selbst: $\\int e^{x}\\,dx = e^{x} + C$.',
       '3': 'Du hast den Logarithmus als "Umkehroperation" eingebracht — $\\ln(e^{x}) = x$ ist zwar eine Vereinfachung, hat aber nichts mit Integration zu tun. Richtig: $(e^{x})\' = e^{x}$, also $\\int e^{x}\\,dx = e^{x} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-d': {
     id: 'ex-int-1-2-d', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -239,6 +242,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '1': 'Die Stammfunktion $\\ln(x)$ ist nur für $x > 0$ definiert, aber $\\frac{1}{x}$ existiert auch für $x < 0$. Deshalb braucht man den Betrag: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ für alle $x \\neq 0$.',
       '3': 'Du hast abgeleitet statt integriert: $\\left(\\frac{1}{x}\\right)\' = -\\frac{1}{x^{2}}$. Beim Integrieren brauchst du die Funktion, deren Ableitung $\\frac{1}{x}$ ist — das ist $\\ln|x|$, also $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['int-1-x'] },
   },
   'ex-int-1-2-e': {
     id: 'ex-int-1-2-e', lessonId: 'int-1-2', type: 'matching',
@@ -249,24 +253,27 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       { left: '$\\int e^{x}\\,dx$', right: '$e^{x} + C$' },
       { left: '$\\int x^{2}\\,dx$', right: '$\\dfrac{x^{3}}{3} + C$' },
     ],
-    explanation: `**Ansatz:** Rückwärts die Ableitungen der Standardfunktionen nutzen.
+    explanation: `**Ansatz:** Rückwärts die Ableitungen der Standardfunktionen nutzen — jede rechte Seite muss beim Ableiten den Integranden links ergeben.
 
 **Rechnung:**
-- $(-\\cos(x))' = \\sin(x) \\Rightarrow \\int \\sin(x)\\,dx = -\\cos(x) + C$.
-- $(\\sin(x))' = \\cos(x) \\Rightarrow \\int \\cos(x)\\,dx = \\sin(x) + C$.
-- $(e^{x})' = e^{x} \\Rightarrow \\int e^{x}\\,dx = e^{x} + C$.
-- Potenzregel: $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$.
+- $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (denn $(-\\cos)' = -(-\\sin) = \\sin$).
+- $\\int \\cos(x)\\,dx = \\sin(x) + C$ (denn $(\\sin)' = \\cos$).
+- $\\int e^{x}\\,dx = e^{x} + C$ (denn $(e^{x})' = e^{x}$).
+- $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$ (Potenzregel).
 
-**Typischer Fehler:** Vorzeichen bei $\\sin/\\cos$ vertauschen. Merksatz: Beim Integrieren von $\\sin$ bekommst du das Minus.`,
+**Probe:** Alle vier rechten Seiten ableiten und mit dem zugehörigen Integranden vergleichen — jede Identität reproduziert exakt die linke Spalte. ✓
+
+**Typischer Fehler:** Vorzeichen bei $\\sin / \\cos$ vertauschen. Merksatz: Beim Integrieren von $\\sin$ bekommst du das Minus, beim Integrieren von $\\cos$ nicht.`,
     hints: [
-      'Welche Funktion ergibt abgeleitet den Integranden?',
+      'Welche Funktion ergibt abgeleitet den jeweiligen Integranden?',
       'Vorzeichen bei $\\sin / \\cos$: nur $\\int \\sin(x)\\,dx$ hat ein Minus.',
-      'Potenzregel für $x^{2}$: Exponent $+1$, dann teilen.',
+      'Potenzregel für $x^{2}$: Exponent um $1$ erhöhen, dann durch den neuen Exponenten $3$ teilen.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-mastery': {
     id: 'ex-int-1-2-mastery', lessonId: 'int-1-2', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$\\int \\sin(x)\\,dx = ?$',
+    question: '[PRÜFUNG] $\\int \\sin(x)\\,dx = ?$',
     options: ['$\\cos(x) + C$', '$-\\cos(x) + C$', '$\\sin(x) + C$', '$-\\sin(x) + C$'],
     correctIndex: 1,
     explanation: `**Ansatz:** Rückwärts die Ableitung des Kosinus lesen: $(\\cos(x))' = -\\sin(x)$, also $(-\\cos(x))' = \\sin(x)$.
@@ -286,6 +293,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast $\\sin$ mit sich selbst als Stammfunktion genommen — das wäre nur richtig, wenn $(\\sin)\' = \\sin$ wäre, aber tatsächlich ist $(\\sin)\' = \\cos$. Richtig: $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
       '3': '$(-\\sin(x))\' = -\\cos(x)$, nicht $\\sin(x)$ — also ist $-\\sin$ keine Stammfunktion von $\\sin$. Man braucht die Funktion, deren Ableitung $\\sin$ ergibt: $(-\\cos)\' = -(-\\sin) = \\sin$, also $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
 
   // ── Lesson 3: Summenregel & Faktorregel ───────────────────────────────────
@@ -830,7 +838,16 @@ Merke: **Exponent um 1 erhöhen**, dann durch den **neuen Exponenten teilen**.
 - $\\int \\sqrt{x}\\,dx = \\int x^{1/2}\\,dx = \\dfrac{x^{3/2}}{3/2} + C = \\dfrac{2}{3}x^{3/2} + C$
 
 **Warum gilt die Potenzregel nicht für $n = -1$?**
-Weil $\\dfrac{x^{0}}{0}$ nicht definiert ist! Für $n = -1$ gilt stattdessen: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.`,
+Weil $\\dfrac{x^{0}}{0}$ nicht definiert ist! Für $n = -1$ gilt stattdessen: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.
+
+**Summen- und Faktorregel (gliedweise integrieren):**
+
+| Regel | Formel | Beispiel |
+|---|---|---|
+| Summenregel | $\\int (f + g)\\,dx = \\int f\\,dx + \\int g\\,dx$ | $\\int (x^{2} + \\cos x)\\,dx = \\dfrac{x^{3}}{3} + \\sin x + C$ |
+| Faktorregel | $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$ ($c$ konstant) | $\\int 5 e^{x}\\,dx = 5 e^{x} + C$ |
+
+**Achtung:** Es gibt KEINE analoge "Produktregel der Integration". $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right) \\cdot \\left(\\int g\\,dx\\right)$ — Produkte erfordern partielle Integration (siehe spätere Lesson).`,
       },
       { id: 'int-1-2-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-int-1-2-a' },
       { id: 'int-1-2-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-int-1-2-b' },

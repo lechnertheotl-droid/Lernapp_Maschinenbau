@@ -463,6 +463,515 @@ export const integralrechnungSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-2 — Grundintegrale  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-2': {
+
+    // ── [0] Potenzregel $\int x^n\,dx = x^{n+1}/(n+1) + C$ für $n\neq -1$ ──
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[int-pot-regel]
+      tf(
+        'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ gilt für jedes ganze $n \\in \\mathbb{Z}$.',
+        false,
+        `**Ansatz:** Die Formel an der Stelle prüfen, an der sie problematisch werden könnte — beim Wert $n = -1$.
+
+**Rechnung:** Für $n = -1$ wird der Nenner $n + 1 = 0$. Die Formel liefert $\\dfrac{x^{0}}{0}$ — Division durch Null, undefiniert. Daher gilt die Potenzregel nur für $n \\neq -1$.
+
+**Probe:** Sonderfall: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ (separate Regel, nicht aus der Potenzregel ableitbar).
+
+**Typischer Fehler:** Die Bedingung "$n \\neq -1$" überlesen und für alle $n$ einsetzen — gibt bei $n = -1$ einen Nullnenner.`,
+        [
+          'Probiere $n = -1$ — was wird im Nenner $n + 1$?',
+          'Welcher Wert macht die Formel $\\dfrac{x^{n+1}}{n+1}$ undefiniert?',
+          'Für $n = -1$: $\\dfrac{x^{0}}{0}$ — geht das?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[int-pot-regel]
+      ni(
+        'Berechne $\\int x^{4}\\,dx = \\dfrac{x^{5}}{a} + C$. Bestimme den Wert von $a$.',
+        5,
+        0,
+        '',
+        `**Ansatz:** Potenzregel — Exponent um $1$ erhöhen, dann durch den neuen Exponenten teilen.
+
+**Rechnung:** $\\int x^{4}\\,dx = \\dfrac{x^{4+1}}{4+1} + C = \\dfrac{x^{5}}{5} + C$. Also $a = 5$.
+
+**Probe:** $\\left(\\dfrac{x^{5}}{5}\\right)' = \\dfrac{5x^{4}}{5} = x^{4}$. ✓
+
+**Typischer Fehler:** Durch den ALTEN Exponenten $4$ teilen statt durch den neuen $5$ — gibt fälschlich $\\dfrac{x^{5}}{4}$.`,
+        [
+          'Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$.',
+          'Für $n = 4$ wird der neue Exponent $n + 1 = 5$.',
+          'Im Nenner steht der NEUE Exponent (also $5$), nicht der alte.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[int-pot-regel] ($n=-1$ falsch behandelt)
+      mc(
+        'Anna soll $\\int x^{-1}\\,dx$ berechnen und schreibt mit der Potenzregel: $\\int x^{-1}\\,dx = \\dfrac{x^{-1+1}}{-1+1} + C = \\dfrac{x^{0}}{0} + C$. Wo liegt der Fehler?',
+        [
+          'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ gilt nur für $n \\neq -1$ — bei $n = -1$ entsteht eine Division durch Null. Der Sonderfall lautet $\\int x^{-1}\\,dx = \\ln|x| + C$.',
+          'Anna hat den Exponenten falsch erhöht — $-1 + 1 = 1$ (nicht $0$), also $\\int x^{-1}\\,dx = x + C$.',
+          'Der Term $x^{0} = 0$ — daher kann man die Potenzregel nicht anwenden.',
+          'Sie hätte den Faktor $-1$ vor das Integral ziehen müssen: $\\int x^{-1}\\,dx = -\\int x\\,dx = -\\dfrac{x^{2}}{2} + C$.',
+        ],
+        0,
+        `**Ansatz:** Untersuchen, wo die Potenzregel an Grenzen stößt.
+
+**Rechnung:** $-1 + 1 = 0$ — der Nenner wird Null, die Formel ist hier nicht definiert. Daher die Bedingung "$n \\neq -1$" in der Potenzregel. Für genau $n = -1$ gibt es eine eigene Regel: $\\int x^{-1}\\,dx = \\ln|x| + C$.
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x} = x^{-1}$. ✓
+
+**Typischer Fehler:** Die Ausnahme "$n \\neq -1$" überlesen und stur die Formel anwenden — landet bei einem Nullnenner.`,
+        [
+          'Welche Voraussetzung hat die Potenzregel?',
+          'Was passiert mit dem Nenner $n + 1$, wenn $n = -1$ ist?',
+          'Für $n = -1$ existiert ein anderer Stammfunktions-Typ — welcher?',
+        ],
+        {
+          1: 'Anna hat $-1 + 1 = 0$ tatsächlich richtig gerechnet ($x^{-1+1} = x^{0} = 1$) — der Nenner $0$ ist das echte Problem. $\\int x^{-1}\\,dx = x + C$ wäre falsch: Probe $(x)\' = 1 \\neq x^{-1}$.',
+          2: '$x^{0} = 1$, nicht $0$. Das eigentliche Problem ist der Nenner: $-1 + 1 = 0$ — Division durch Null, deshalb ist die Potenzregel hier ungültig.',
+          3: 'Die Faktorregel $\\int c \\cdot f\\,dx = c \\int f\\,dx$ greift nur bei einem konstanten Vorfaktor — $x^{-1} = \\dfrac{1}{x}$ ist KEIN Faktor, sondern eine ganze Funktion. Probe der vorgeschlagenen Lösung: $\\left(-\\dfrac{x^{2}}{2}\\right)\' = -x \\neq x^{-1}$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · number-input · uses=[int-pot-regel]
+      ni(
+        'Berechne $\\int 12\\,x^{2}\\,dx$ und gib den Wert der Stammfunktion $F$ bei $x = 2$ an (für die spezielle Wahl $C = 0$).',
+        32,
+        0,
+        '',
+        `**Ansatz:** Faktor vor das Integral ziehen, dann Potenzregel auf $x^{2}$ anwenden, am Ende einsetzen.
+
+**Rechnung:** $\\int 12 x^{2}\\,dx = 12 \\cdot \\dfrac{x^{3}}{3} + C = 4x^{3} + C$. Mit $C = 0$: $F(x) = 4x^{3}$. Bei $x = 2$: $F(2) = 4 \\cdot 8 = 32$.
+
+**Probe:** $F'(x) = 12 x^{2} = f(x)$ ✓. Einsetzen: $F(2) = 4 \\cdot 2^{3} = 32$.
+
+**Typischer Fehler:** Den Faktor $12$ NICHT durch den neuen Exponenten $3$ teilen — würde zu $12 x^{3}$ führen, $F(2) = 96$.`,
+        [
+          'Konstante darf vor das Integral: $\\int 12 x^{2}\\,dx = 12 \\int x^{2}\\,dx$.',
+          '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ — also $12 \\cdot \\dfrac{x^{3}}{3} = 4 x^{3}$.',
+          'Einsetzen: $F(2) = 4 \\cdot 2^{3} = 4 \\cdot 8$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Bonus (Mengen-Regel + Typen-Variation): SG 0 · matching · uses=[int-pot-regel]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int x^{4}\\,dx$',     right: '$\\dfrac{x^{5}}{5}$' },
+          { left: '$\\int x^{1/2}\\,dx$',   right: '$\\dfrac{2}{3} x^{3/2}$' },
+          { left: '$\\int x^{-2}\\,dx$',    right: '$-\\dfrac{1}{x}$' },
+          { left: '$\\int 1\\,dx$',         right: '$x$' },
+        ],
+        `**Ansatz:** Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ (für $n \\neq -1$) auf jeden Fall einzeln anwenden.
+
+**Rechnung:**
+- $\\int x^{4}\\,dx = \\dfrac{x^{5}}{5} + C$.
+- $\\int x^{1/2}\\,dx = \\dfrac{x^{3/2}}{3/2} + C = \\dfrac{2}{3} x^{3/2} + C$.
+- $\\int x^{-2}\\,dx = \\dfrac{x^{-1}}{-1} + C = -\\dfrac{1}{x} + C$.
+- $\\int 1\\,dx = \\int x^{0}\\,dx = \\dfrac{x^{1}}{1} + C = x + C$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integranden vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei Bruch-Exponenten ($n = 1/2$) den Bruch $1/(n+1) = 1/(3/2) = 2/3$ falsch berechnen oder bei $n = -2$ das Vorzeichen vergessen.`,
+        [
+          'Wende auf jeden Integranden die Potenzregel an: Exponent +1, dann teilen.',
+          'Bruchexponent $n = 1/2$: neuer Exponent $3/2$, Faktor $1/(3/2) = 2/3$.',
+          'Negativer Exponent $n = -2$: neuer Exponent $-1$, Faktor $1/(-1) = -1$ → $-x^{-1} = -1/x$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+    ],
+
+    // ── [1] Sonderfall $\int 1/x\,dx = \ln|x| + C$ ──────────────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[int-1-x]
+      tf(
+        'Die Stammfunktion $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ gilt für alle $x \\neq 0$ — der Betrag ist nötig, weil $\\ln$ nur für positive Argumente definiert ist, $\\dfrac{1}{x}$ aber auch für $x < 0$ existiert.',
+        true,
+        `**Ansatz:** Definitionsbereiche von $\\ln$ und $\\dfrac{1}{x}$ vergleichen.
+
+**Rechnung:** $\\dfrac{1}{x}$ ist definiert für alle $x \\neq 0$ (also auch negative $x$). $\\ln(x)$ aber nur für $x > 0$. Damit die Stammfunktion auf dem ganzen Definitionsbereich von $\\dfrac{1}{x}$ gilt, schreibt man $\\ln|x|$.
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x}$ — sowohl für $x > 0$ als auch für $x < 0$. ✓
+
+**Typischer Fehler:** Den Betrag weglassen und $\\ln(x)$ schreiben — geht nur für $x > 0$ und ist auf $x < 0$ schlicht nicht definiert.`,
+        [
+          'Für welche $x$ ist $\\ln(x)$ definiert? Für welche $\\dfrac{1}{x}$?',
+          'Was passiert mit $\\ln(x)$, wenn $x = -2$?',
+          'Der Betrag macht das Argument positiv — und damit erlaubt für $\\ln$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · multiple-choice · uses=[int-1-x]
+      mc(
+        'Welche Stammfunktion hat $f(x) = \\dfrac{4}{x}$?',
+        [
+          '$F(x) = 4 \\ln|x| + C$',
+          '$F(x) = \\tfrac{1}{4} \\ln|x| + C$',
+          '$F(x) = 4 \\ln(x) + C$',
+          '$F(x) = \\dfrac{4}{\\ln|x|} + C$',
+        ],
+        0,
+        `**Ansatz:** Faktorregel — den konstanten Faktor $4$ vor das Integral ziehen, dann Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ anwenden.
+
+**Rechnung:** $\\int \\dfrac{4}{x}\\,dx = 4 \\int \\dfrac{1}{x}\\,dx = 4 \\ln|x| + C$.
+
+**Probe:** $(4 \\ln|x|)' = 4 \\cdot \\dfrac{1}{x} = \\dfrac{4}{x} = f(x)$. ✓
+
+**Typischer Fehler:** Den Betrag weglassen oder den Faktor $4$ in den Nenner schreiben — beides verändert den Definitionsbereich oder die Funktion.`,
+        [
+          'Wie behandelt man den konstanten Faktor $4$ vor $\\dfrac{1}{x}$?',
+          'Faktorregel: $\\int c \\cdot f\\,dx = c \\int f\\,dx$.',
+          'Die innere Stammfunktion ist der Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+        ],
+        {
+          1: 'Du hast den Faktor $4$ in den Kehrwert geschoben statt ihn als Multiplikator vor $\\ln|x|$ zu behalten. Faktorregel: $\\int 4 \\cdot \\dfrac{1}{x}\\,dx = 4 \\int \\dfrac{1}{x}\\,dx = 4 \\ln|x| + C$. Probe der falschen Antwort: $\\left(\\tfrac{1}{4} \\ln|x|\\right)\' = \\tfrac{1}{4x} \\neq \\dfrac{4}{x}$.',
+          2: 'Der Funktionsterm ist fast richtig, aber der Betrag fehlt — $\\ln(x)$ ist nur für $x > 0$ definiert, $\\dfrac{4}{x}$ aber auch für $x < 0$. Korrekt mit Betrag: $4 \\ln|x| + C$.',
+          3: 'Du hast $\\ln$ in den Nenner gesetzt — das ist eine ganz andere Funktion. Faktorregel verlangt einfache Multiplikation: $4 \\cdot \\ln|x|$. Probe der falschen Antwort: $\\left(\\dfrac{4}{\\ln|x|}\\right)\' = -\\dfrac{4}{x \\ln^{2}|x|} \\neq \\dfrac{4}{x}$.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[int-1-x, int-pot-regel]
+      mc(
+        'Lukas berechnet $\\int \\dfrac{1}{x}\\,dx$ mit der Potenzregel: $\\int x^{-1}\\,dx = \\dfrac{x^{-1+1}}{-1+1} + C = \\dfrac{x^{0}}{0} + C$. Was ist hier der Fehler?',
+        [
+          'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ ist für $n = -1$ nicht definiert (Division durch Null im Nenner). Der Sonderfall lautet $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+          'Lukas hat $-1 + 1 = 0$ falsch gerechnet — korrekt wäre $-1 + 1 = 1$, also $\\int x^{-1}\\,dx = x + C$.',
+          '$x^{0} = 0$, also kann man die Formel nicht anwenden.',
+          'Bei Brüchen muss man immer mit Substitution $u = \\ln(x)$ arbeiten — die Potenzregel funktioniert grundsätzlich nicht für $\\dfrac{1}{x}$.',
+        ],
+        0,
+        `**Ansatz:** Erkennen, dass $n = -1$ in der Potenzregel ausdrücklich ausgeschlossen ist.
+
+**Rechnung:** Die Bedingung "$n \\neq -1$" wurde übersehen. Für $n = -1$ wird der Nenner $n + 1 = 0$ — Division durch Null, undefiniert. Stattdessen gilt: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ (separater Sonderfall).
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x}$ ✓ — die Sonderfall-Stammfunktion ist korrekt.
+
+**Typischer Fehler:** Die Bedingung "$n \\neq -1$" der Potenzregel überlesen und auch für $n = -1$ einsetzen — der Nullnenner zeigt sofort, dass die Formel hier nicht greift.`,
+        [
+          'Welche Voraussetzung hat die Potenzregel? Steht da etwas zu $n$?',
+          '$-1 + 1 = ?$ und ist das ein gültiger Nenner?',
+          'Welche eigene Regel gibt es speziell für $\\dfrac{1}{x} = x^{-1}$?',
+        ],
+        {
+          1: '$-1 + 1 = 0$ ist arithmetisch korrekt, das hat Lukas richtig gemacht. $x^{-1+1} = x^{0} = 1$. Das echte Problem ist der Nenner: $0$. $\\int x^{-1}\\,dx = x + C$ wäre falsch — Probe: $(x)\' = 1 \\neq \\dfrac{1}{x}$.',
+          2: '$x^{0} = 1$, nicht $0$. Lukas\' Schritt $x^{0} = 1$ wäre rechnerisch okay — der Fehler liegt im Nenner: $-1 + 1 = 0$, also $\\dfrac{1}{0}$, undefiniert.',
+          3: 'Die Potenzregel funktioniert sehr wohl für andere Brüche wie $\\dfrac{1}{x^{2}} = x^{-2}$ ($\\int x^{-2}\\,dx = -\\dfrac{1}{x} + C$). Nur der Spezialfall $n = -1$ ist ausgeschlossen — und dafür gibt es die Regel $\\ln|x| + C$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['int-1-x', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · multiple-choice · uses=[int-1-x]
+      mc(
+        'Eine Funktion $F$ erfüllt $F\'(x) = \\dfrac{6}{x}$ für $x > 0$ und die Anfangsbedingung $F(1) = 0$. Welche Funktion ist $F$?',
+        [
+          '$F(x) = 6 \\ln(x)$',
+          '$F(x) = 6 \\ln(x) + 6$',
+          '$F(x) = -\\dfrac{6}{x^{2}}$',
+          '$F(x) = \\dfrac{6}{\\ln(x)}$',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, dann Anfangsbedingung einsetzen.
+
+**Rechnung:** $\\int \\dfrac{6}{x}\\,dx = 6 \\ln|x| + C$. Für $x > 0$ ist $\\ln|x| = \\ln(x)$. Also $F(x) = 6 \\ln(x) + C$. Einsetzen: $F(1) = 6 \\ln(1) + C = 6 \\cdot 0 + C = C$. Bedingung $F(1) = 0$ liefert $C = 0$. Damit $F(x) = 6 \\ln(x)$.
+
+**Probe:** $F'(x) = 6 \\cdot \\dfrac{1}{x} = \\dfrac{6}{x}$ ✓ und $F(1) = 6 \\ln 1 = 0$ ✓.
+
+**Typischer Fehler:** $C = F(1) = 0$ verwechseln mit $C = 0 + 6 = 6$ — vergisst, dass $6 \\ln 1 = 0$ und nicht $6$ ist.`,
+        [
+          'Schritt 1: allgemeine Stammfunktion mit Faktorregel und $\\int \\dfrac{1}{x}\\,dx$.',
+          'Schritt 2: Anfangsbedingung einsetzen — $\\ln 1 = 0$.',
+          'Schritt 3: $C$ aus der Bedingung bestimmen.',
+        ],
+        {
+          1: '$C = 6$ entsteht, wenn man $F(1) = 6 + C = 0$ rechnet — aber $6 \\ln(1) = 6 \\cdot 0 = 0$, nicht $6$. Mit $F(1) = 0 + C = 0$ folgt $C = 0$, also $F(x) = 6 \\ln(x)$.',
+          2: 'Du hast $\\dfrac{6}{x}$ abgeleitet ($-\\dfrac{6}{x^{2}}$) statt zu integrieren. Probe: $\\left(-\\dfrac{6}{x^{2}}\\right)\' = \\dfrac{12}{x^{3}} \\neq \\dfrac{6}{x}$. Korrekt: integrieren liefert $6 \\ln(x) + C$.',
+          3: 'Du hast den Logarithmus in den Nenner gesetzt — das ist eine andere Funktion. Probe: $\\left(\\dfrac{6}{\\ln(x)}\\right)\' = -\\dfrac{6}{x \\ln^{2}(x)} \\neq \\dfrac{6}{x}$. Korrekt: $6 \\ln(x)$ als Multiplikator.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Bonus (Mengen-Regel + Typen-Variation): SG 1 · ni · uses=[int-1-x]
+      ni(
+        'Berechne $\\int \\dfrac{2}{x}\\,dx$ und gib den Wert der Stammfunktion $F$ bei $x = e$ an (für $C = 0$).',
+        2,
+        0.001,
+        '',
+        `**Ansatz:** Faktorregel ($2$ vor das Integral) plus Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$, dann einsetzen.
+
+**Rechnung:** $\\int \\dfrac{2}{x}\\,dx = 2 \\ln|x| + C$. Mit $C = 0$: $F(x) = 2 \\ln|x|$. Bei $x = e$ (positiv): $F(e) = 2 \\ln(e) = 2 \\cdot 1 = 2$.
+
+**Probe:** $F'(x) = 2 \\cdot \\dfrac{1}{x} = \\dfrac{2}{x}$ ✓. Einsetzen: $F(e) = 2 \\ln e = 2$.
+
+**Typischer Fehler:** $\\ln(e) = e$ statt $\\ln(e) = 1$ einsetzen — Definition: $\\ln$ ist Umkehrfunktion zu $e^{x}$, also $\\ln(e^{1}) = 1$.`,
+        [
+          'Konstanter Faktor $2$ darf vor das Integral.',
+          'Sonderfall: $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+          'Wert von $\\ln(e)$? Definition: $\\ln(e^{x}) = x$, also $\\ln(e) = \\ln(e^{1}) = 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['int-1-x'] },
+      ),
+    ],
+
+    // ── [2] Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig ─────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[int-exp-trig]
+      tf(
+        'Es gilt $\\int \\sin(x)\\,dx = -\\cos(x) + C$ und $\\int \\cos(x)\\,dx = +\\sin(x) + C$ — nur das $\\sin$-Integral bekommt das Minus.',
+        true,
+        `**Ansatz:** Beide Stammfunktionen durch Probe verifizieren.
+
+**Rechnung:**
+- $(-\\cos(x))' = -(-\\sin(x)) = \\sin(x)$ ✓ → $\\int \\sin(x)\\,dx = -\\cos(x) + C$.
+- $(\\sin(x))' = \\cos(x)$ ✓ → $\\int \\cos(x)\\,dx = \\sin(x) + C$.
+
+**Probe:** Beide Identitäten reproduzieren beim Ableiten den Integranden.
+
+**Typischer Fehler:** Vorzeichen vertauschen — $\\int \\sin\\,dx = +\\cos$ ist eine der häufigsten Klausurfehler.`,
+        [
+          'Was ist $(\\cos x)\'$? Was ist $(-\\cos x)\'$?',
+          'Welcher der beiden Integranden bekommt das Minus?',
+          'Probe: leite beide rechte Seiten ab und vergleiche.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · number-input · uses=[int-exp-trig]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = \\sin(x)$ erfüllt die Anfangsbedingung $F(0) = 0$. Berechne $F(\\pi/2)$.',
+        1,
+        0.001,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion bestimmen, $C$ aus Anfangsbedingung, dann einsetzen.
+
+**Rechnung:** $\\int \\sin(x)\\,dx = -\\cos(x) + C$. Bedingung: $F(0) = -\\cos(0) + C = -1 + C = 0 \\Rightarrow C = 1$. Damit $F(x) = -\\cos(x) + 1$. Einsetzen: $F(\\pi/2) = -\\cos(\\pi/2) + 1 = -0 + 1 = 1$.
+
+**Probe:** $F'(x) = \\sin(x)$ ✓ und $F(0) = -1 + 1 = 0$ ✓.
+
+**Typischer Fehler:** $\\cos(0) = 0$ statt $\\cos(0) = 1$ einsetzen — gibt $C = 0$ und damit $F(\\pi/2) = 0$.`,
+        [
+          'Schritt 1: $\\int \\sin(x)\\,dx = ?$ — Vorzeichen beachten.',
+          'Schritt 2: Anfangsbedingung — was ist $\\cos(0)$?',
+          'Schritt 3: einsetzen, $\\cos(\\pi/2) = 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[int-exp-trig] (Vorzeichen sin/cos)
+      mc(
+        'Tim schreibt $\\int \\sin(x)\\,dx = \\cos(x) + C$. Was ist der Fehler?',
+        [
+          'Es fehlt das Minuszeichen — korrekt: $\\int \\sin(x)\\,dx = -\\cos(x) + C$. Probe: $(\\cos x)\' = -\\sin x \\neq \\sin x$, aber $(-\\cos x)\' = \\sin x$ ✓.',
+          'Der Funktionsterm ist falsch — $\\sin$ ist seine eigene Stammfunktion, also $\\int \\sin(x)\\,dx = \\sin(x) + C$.',
+          'Tim hat zu wenig integriert — korrekt wäre $-\\tfrac{1}{2} \\cos^{2}(x) + C$.',
+          'Bei trigonometrischen Funktionen muss vor dem Integrieren das Argument $x$ durch eine Variable substituiert werden.',
+        ],
+        0,
+        `**Ansatz:** Probe — $(\\cos x)' = -\\sin x$, also kann $\\cos x$ Stammfunktion von $-\\sin x$ sein, NICHT von $+\\sin x$.
+
+**Rechnung:** Es gilt $(\\cos x)' = -\\sin x$. Daraus folgt $(-\\cos x)' = -(-\\sin x) = +\\sin x$. Also $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (mit Minus).
+
+**Probe:** $(-\\cos(x) + C)' = \\sin(x) + 0 = \\sin(x)$ ✓.
+
+**Typischer Fehler:** Tim hat das Vorzeichen der Ableitung von $\\cos$ vergessen — $(\\cos)' = -\\sin$, deshalb braucht $\\int \\sin$ ein Minus.`,
+        [
+          'Mache Tims Probe: leite $\\cos x$ ab — was kommt raus?',
+          '$(\\cos x)\' = -\\sin x$. Dann ist $\\cos x$ Stammfunktion wovon?',
+          'Mit dem Minus davor ($-\\cos x$) verschwindet das negative Vorzeichen beim Ableiten.',
+        ],
+        {
+          1: 'Falsch — $\\sin$ ist nicht seine eigene Stammfunktion. Probe: $(\\sin x)\' = \\cos x \\neq \\sin x$. Eigene Stammfunktion ist nur $e^{x}$.',
+          2: '$-\\tfrac{1}{2} \\cos^{2}(x)$ ist die Stammfunktion von $\\sin x \\cos x$ (Kettenregel rückwärts), nicht von $\\sin x$. Probe: $\\left(-\\tfrac{1}{2}\\cos^{2}x\\right)\' = \\sin x \\cos x \\neq \\sin x$.',
+          3: 'Bei $\\int \\sin(x)\\,dx$ ist keine Substitution nötig — $\\sin x$ ist ein Standard-Grundintegral. Substitutionsregel braucht man nur bei verketteten Argumenten wie $\\sin(2x)$ oder $\\sin(x^{2})$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Bonus 1 (Mengen-Regel): SG 2 · ni · uses=[int-exp-trig]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = e^{x}$ erfüllt die Anfangsbedingung $F(0) = 5$. Bestimme den Wert der Integrationskonstante $C$ in $F(x) = e^{x} + C$.',
+        4,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, Anfangsbedingung einsetzen.
+
+**Rechnung:** $\\int e^{x}\\,dx = e^{x} + C$. Bedingung: $F(0) = e^{0} + C = 1 + C = 5 \\Rightarrow C = 4$.
+
+**Probe:** Mit $C = 4$ gilt $F(x) = e^{x} + 4$, $F(0) = 1 + 4 = 5$ ✓ und $F'(x) = e^{x}$ ✓.
+
+**Typischer Fehler:** $e^{0} = 0$ einsetzen statt $e^{0} = 1$ — gibt fälschlich $C = 5$.`,
+        [
+          'Allgemeine Stammfunktion: $F(x) = e^{x} + C$.',
+          'Bei $x = 0$: was ist $e^{0}$?',
+          '$1 + C = 5$ — löse nach $C$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Bonus 2 (Mengen-Regel + matching-Variation): SG 2 · matching · uses=[int-exp-trig]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int 2\\sin(x)\\,dx$',  right: '$-2\\cos(x)$' },
+          { left: '$\\int 3\\cos(x)\\,dx$',  right: '$3\\sin(x)$' },
+          { left: '$\\int 5e^{x}\\,dx$',     right: '$5e^{x}$' },
+          { left: '$\\int (-\\sin(x))\\,dx$', right: '$\\cos(x)$' },
+        ],
+        `**Ansatz:** Faktorregel + Grundintegrale gliedweise. Beim Vorzeichen vor $\\sin/\\cos$ sorgfältig sein.
+
+**Rechnung:**
+- $\\int 2\\sin x\\,dx = 2 \\cdot (-\\cos x) = -2\\cos x$.
+- $\\int 3\\cos x\\,dx = 3 \\sin x$.
+- $\\int 5 e^{x}\\,dx = 5 e^{x}$.
+- $\\int -\\sin x\\,dx = -(-\\cos x) = +\\cos x$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integranden vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei $\\int (-\\sin x)\\,dx$ das doppelte Minus vergessen — Probe: $(\\cos x)' = -\\sin x$, also $\\int -\\sin x\\,dx = +\\cos x$.`,
+        [
+          'Konstanten dürfen vor das Integral.',
+          'Welche Grundintegrale gelten für $\\sin$, $\\cos$, $e^{x}$? Vorzeichen merken.',
+          'Bei $\\int -\\sin x\\,dx$: zwei Minuszeichen heben sich auf.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+    ],
+
+    // ── [3] Summen- und Faktorregel beim Integrieren ───────────────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[int-summe]
+      tf(
+        'Die Summenregel der Integration besagt: $\\int (f(x) + g(x))\\,dx = \\int f(x)\\,dx + \\int g(x)\\,dx$ — Summen werden gliedweise integriert.',
+        true,
+        `**Ansatz:** Linearität des Integrals — Integration vertauscht mit Addition.
+
+**Rechnung:** Per Definition (Linearität): $\\int (f + g)\\,dx = \\int f\\,dx + \\int g\\,dx$. Beweis über die Linearität der Ableitung: $(F + G)' = F' + G' = f + g$, also ist $F + G$ Stammfunktion von $f + g$.
+
+**Probe:** Beispiel $\\int (x^{2} + \\cos x)\\,dx = \\dfrac{x^{3}}{3} + \\sin x + C$. Probe: $\\left(\\dfrac{x^{3}}{3} + \\sin x\\right)' = x^{2} + \\cos x$. ✓
+
+**Typischer Fehler:** Die Summenregel auf PRODUKTE übertragen — $\\int (f \\cdot g)\\,dx \\neq \\int f\\,dx \\cdot \\int g\\,dx$ (für Produkte braucht man partielle Integration).`,
+        [
+          'Wie hängt die Linearität der Ableitung mit der Integration zusammen?',
+          'Was ist $(F + G)\'$ in Termen von $F\'$ und $G\'$?',
+          'Aus $(F + G)\' = f + g$ folgt $\\int (f + g) = F + G + C = \\int f + \\int g$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['int-summe'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[int-summe, int-pot-regel]
+      mc(
+        'Welches Ergebnis liefert $\\int (3x^{2} + 4x)\\,dx$ mit Summen- und Faktorregel?',
+        [
+          '$x^{3} + 2x^{2} + C$',
+          '$3x^{3} + 4x^{2} + C$',
+          '$6x + 4 + C$',
+          '$\\dfrac{3x^{3}}{3} + \\dfrac{4x^{2}}{2}$',
+        ],
+        0,
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren. Faktorregel — Konstante vor das Integral.
+
+**Rechnung:** $\\int (3x^{2} + 4x)\\,dx = 3 \\int x^{2}\\,dx + 4 \\int x\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} + 4 \\cdot \\dfrac{x^{2}}{2} + C = x^{3} + 2x^{2} + C$.
+
+**Probe:** $(x^{3} + 2x^{2})' = 3x^{2} + 4x = f(x)$ ✓.
+
+**Typischer Fehler:** Die Faktoren $3$ und $4$ stehen lassen, statt sie durch die neuen Exponenten $3$ und $2$ zu teilen — gibt fälschlich $3x^{3} + 4x^{2}$.`,
+        [
+          'Glied für Glied: $\\int 3x^{2}\\,dx = ?$, $\\int 4x\\,dx = ?$.',
+          'Faktor durch neuen Exponenten teilen — $3 / 3 = 1$, $4 / 2 = 2$.',
+          'Vereinfache: $\\dfrac{3x^{3}}{3} = x^{3}$, $\\dfrac{4x^{2}}{2} = 2x^{2}$.',
+        ],
+        {
+          1: 'Du hast die Faktoren $3$ und $4$ stehen gelassen, ohne durch den neuen Exponenten zu teilen. Probe: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Korrekt: $3 \\cdot \\dfrac{x^{3}}{3} = x^{3}$.',
+          2: 'Du hast abgeleitet statt integriert: $(3x^{2})\' = 6x$, $(4x)\' = 4$. Beim Integrieren wird der Exponent erhöht, nicht abgesenkt.',
+          3: 'Der Funktionsterm ist mathematisch gleich richtig, aber unvereinfacht UND ohne $+C$. In Prüfungen kürzt man $\\dfrac{3x^{3}}{3} = x^{3}$ und schreibt zwingend $+C$ — sonst Punktabzug.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · number-input · uses=[int-summe, int-pot-regel]
+      ni(
+        'Berechne $\\int (4x^{3} + 6x^{2})\\,dx$. Welcher konstante Vorfaktor steht in der Stammfunktion vor $x^{3}$?',
+        2,
+        0,
+        '',
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren.
+
+**Rechnung:** $\\int 4x^{3}\\,dx = 4 \\cdot \\dfrac{x^{4}}{4} = x^{4}$. $\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3} = 2x^{3}$. Stammfunktion: $F(x) = x^{4} + 2x^{3} + C$. Vorfaktor von $x^{3}$ ist $2$.
+
+**Probe:** $F'(x) = 4x^{3} + 6x^{2} = f(x)$ ✓.
+
+**Typischer Fehler:** Den Vorfaktor von $x^{4}$ mit dem Vorfaktor von $x^{3}$ verwechseln — gefragt ist $x^{3}$, nicht $x^{4}$.`,
+        [
+          'Integriere $4x^{3}$ und $6x^{2}$ einzeln.',
+          '$\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3}$ — vereinfache.',
+          'Welcher Faktor steht jetzt direkt vor $x^{3}$?',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[int-summe]
+      mc(
+        'Maja schreibt $\\int (x^{2} \\cdot \\sin x)\\,dx = \\dfrac{x^{3}}{3} \\cdot (-\\cos x) + C$ — sie hat einfach die beiden Stammfunktionen multipliziert. Was ist der Fehler?',
+        [
+          'Für ein PRODUKT $f \\cdot g$ gibt es KEINE einfache "Produktregel der Integration" — $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right) \\cdot \\left(\\int g\\,dx\\right)$. Hier braucht es partielle Integration.',
+          'Die Reihenfolge der Faktoren ist falsch — korrekt wäre $(-\\cos x) \\cdot \\dfrac{x^{3}}{3} + C$.',
+          'Sie hat $\\sin$ falsch integriert — korrekt: $\\int \\sin x\\,dx = +\\cos x + C$ (kein Minus).',
+          'Die Summenregel verlangt, dass man die Funktionen ADDIERT statt multipliziert; richtig wäre $\\dfrac{x^{3}}{3} - \\cos x + C$.',
+        ],
+        0,
+        `**Ansatz:** Probe durch Ableiten — die Produktregel der DIFFERENTIATION zeigt sofort, dass eine analoge Regel beim Integrieren NICHT gilt.
+
+**Rechnung:** $\\left(\\dfrac{x^{3}}{3} \\cdot (-\\cos x)\\right)' = x^{2} \\cdot (-\\cos x) + \\dfrac{x^{3}}{3} \\cdot \\sin x \\neq x^{2} \\sin x$. Die Summenregel gilt nur für Summen $f + g$, nicht für Produkte $f \\cdot g$.
+
+**Probe:** Korrekt löst man $\\int x^{2} \\sin x\\,dx$ mit partieller Integration: $u = x^{2}$, $v' = \\sin x$ → ergibt $-x^{2} \\cos x + 2x \\sin x + 2 \\cos x + C$ (siehe spätere Lesson).
+
+**Typischer Fehler:** Die Linearität (Summen-/Faktorregel) auf Produkte übertragen. Merksatz: Integration eines Produkts braucht IMMER partielle Integration oder Substitution.`,
+        [
+          'Wende die Produktregel der Ableitung auf Majas Ergebnis an.',
+          'Stimmt die Probe für ein Produkt $f \\cdot g$, wenn man die Stammfunktionen multipliziert?',
+          'Welche Methode ist nötig für $\\int f \\cdot g\\,dx$?',
+        ],
+        {
+          1: 'Multiplikation ist kommutativ — Reihenfolge ist hier irrelevant. Das echte Problem: man darf die beiden Stammfunktionen überhaupt nicht multiplizieren, denn das ist nicht Stammfunktion des Produkts der Integranden.',
+          2: 'Falsch — $\\int \\sin x\\,dx = -\\cos x + C$ (mit Minus, denn $(\\cos x)\' = -\\sin x$). Maja hat das Minus korrekt geschrieben. Der Fehler liegt im Multiplizieren der Stammfunktionen.',
+          3: 'Die Summenregel gilt für SUMMEN — der Integrand ist hier aber ein PRODUKT $x^{2} \\cdot \\sin x$. $\\dfrac{x^{3}}{3} - \\cos x$ wäre die Stammfunktion von $x^{2} - \\sin x$ (Summe), nicht von $x^{2} \\sin x$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['int-summe'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · number-input · uses=[int-summe, int-pot-regel]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = 3x^{2} - 8x + 5$ erfüllt $F(0) = 7$. Berechne $F(1)$.',
+        9,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion mit Summenregel, $C$ aus $F(0) = 7$, dann $F(1)$ einsetzen.
+
+**Rechnung:** $\\int (3x^{2} - 8x + 5)\\,dx = x^{3} - 4x^{2} + 5x + C$. $F(0) = 0 - 0 + 0 + C = C = 7$. Also $F(x) = x^{3} - 4x^{2} + 5x + 7$. Einsetzen: $F(1) = 1 - 4 + 5 + 7 = 9$.
+
+**Probe:** $F'(x) = 3x^{2} - 8x + 5 = f(x)$ ✓ und $F(0) = 7$ ✓.
+
+**Typischer Fehler:** $C = 0$ annehmen, statt aus der Anfangsbedingung zu bestimmen — landet bei $F(1) = 1 - 4 + 5 = 2$.`,
+        [
+          'Schritt 1: gliedweise integrieren mit Summen- und Faktorregel.',
+          'Schritt 2: Anfangsbedingung $F(0) = 7$ nutzen — bei $x = 0$ verschwinden alle $x$-Terme.',
+          'Schritt 3: $F(1) = 1 - 4 + 5 + C$, mit $C$ aus Schritt 2.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {
