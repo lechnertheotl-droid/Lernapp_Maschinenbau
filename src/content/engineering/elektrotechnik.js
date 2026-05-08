@@ -403,19 +403,47 @@ Merkregel: **An welchem Widerstand die Spannung gefragt ist, dessen Wert steht i
           },
           content: String.raw`## Elektrische Leistung und Wirkungsgrad
 
-### Leistungsformeln
+### Leistungsformeln (drei äquivalente Schreibweisen)
+
+An einem ohmschen Widerstand sind alle drei Formen gleichwertig — welche du nimmst, hängt davon ab, welche zwei Größen gegeben sind:
 
 $$P = U \cdot I = \frac{U^2}{R} = I^2 \cdot R$$
 
-Einheit: Watt (W). Energie: $W = P \cdot t$ (Joule).
+| Gegeben | Formel | Beispiel |
+|---------|--------|----------|
+| $U$ und $I$ | $P = U\,I$ | $P = 230\,\text{V} \cdot 5\,\text{A} = 1150\,\text{W}$ |
+| $U$ und $R$ | $P = U^{2}/R$ | $P = 230^{2}/529 = 100\,\text{W}$ |
+| $I$ und $R$ | $P = I^{2}\,R$ | $P = 0{,}5^{2} \cdot 100 = 25\,\text{W}$ |
 
-### Wirkungsgrad
+Einheit: Watt (W) $= 1\,\text{V}\cdot 1\,\text{A}$.
 
-$$\eta = \frac{P_\text{ab}}{P_\text{zu}} \quad (0 < \eta \leq 1)$$
+### Energie — Leistung × Zeit
 
-### Wärmeverlust im Widerstand
+$$W = P \cdot t$$
 
-$$P_R = I^2 \cdot R$$
+Einheit: Joule (J) $= 1\,\text{W}\cdot 1\,\text{s}$ oder Wattstunden ($1\,\text{Wh} = 3600\,\text{J}$, $1\,\text{kWh} = 3{,}6\,\text{MJ}$). Stromrechnungen werden in kWh abgerechnet.
+
+### Wirkungsgrad — wie viel kommt nutzbar an?
+
+$$\eta = \frac{P_\text{ab}}{P_\text{zu}} \qquad 0 < \eta \leq 1$$
+
+Bei jedem realen Wandler (Motor, Heizung, Trafo) ist $\eta < 1$, weil ein Anteil $P_\text{V} = P_\text{zu} - P_\text{ab} = (1-\eta)\,P_\text{zu}$ als Verlust (meist Wärme) abgeht.
+
+### Stromwärmegesetz — Verlustleistung im Widerstand
+
+$$P_R = I^{2}\,R$$
+
+Im Leiter wird elektrische Energie in Wärme umgesetzt. Der Effekt skaliert **quadratisch** mit dem Strom — Verdoppelung von $I$ vervierfacht die Verlustleistung. Deshalb wird Energie in Hochspannungsleitungen mit hoher Spannung und kleinem Strom übertragen.
+
+### Haushaltsspannungen in Österreich/Deutschland
+
+| Anschluss | Spannung | Verwendung |
+|-----------|----------|------------|
+| Schuko-Steckdose (einphasig) | $U = 230\,\text{V}$ (Effektivwert) | Lampen, Kleingeräte, Computer |
+| Drehstrom-Anschluss (3-phasig, "Kraftstrom") | $U = 400\,\text{V}$ verkettet | E-Herd, Wallbox, Werkstatt-Maschinen |
+| Spitzenwert einphasig | $\hat u = 230 \cdot \sqrt{2} \approx 325\,\text{V}$ | Bemessung von Isolation und Bauteilen |
+
+**Merke:** Die $400\,\text{V}$ sind die Spannung **zwischen zwei Außenleitern** (verkettet); die Spannung jedes einzelnen Außenleiters gegen den Neutralleiter beträgt weiterhin $230\,\text{V}$. Es gilt $400 = 230\cdot\sqrt{3}$.
 `,
           exercises: [
             {
@@ -424,29 +452,43 @@ $$P_R = I^2 \cdot R$$
               correctValue: 1150,
               tolerance: 1,
               unit: 'W',
-              explanation: '$P = U \\cdot I = 230 \\cdot 5 = 1150\\,\\text{W}$',
+              explanation: `**Ansatz:** Leistung als Produkt aus Spannung und Strom: $P = U\\cdot I$.
+
+**Rechnung:** $P = 230\\,\\text{V} \\cdot 5\\,\\text{A} = 1150\\,\\text{W}$.
+
+**Probe:** Rückwärts $I = P/U = 1150/230 = 5\\,\\text{A}$ ✓.
+
+**Typischer Fehler:** $P = U/I = 46$ angesetzt — Division statt Multiplikation, bei dieser Formelvariante ergibt das den Widerstand in Ohm.`,
               hints: [
-                '$P = U \\cdot I$',
-                '$P$ in Watt',
-                '$230 \\cdot 5 = 1150$',
+                'Welche Formel verbindet Leistung mit Spannung und Strom?',
+                '$P = U \\cdot I$ — beide Werte sind in den passenden SI-Einheiten gegeben.',
+                '$230 \\cdot 5 = 1150$.',
               ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['p-ui'] },
             },
             {
               type: 'multiple-choice',
               question: 'Eine Glühlampe hat $R = 529\\,\\Omega$ an $U = 230\\,\\text{V}$. Welche Leistung hat sie?',
-              options: ['100 W', '230 W', '529 W', '43 W'],
+              options: ['$100\\,\\text{W}$', '$230\\,\\text{W}$', '$529\\,\\text{W}$', '$0{,}43\\,\\text{W}$'],
               correctIndex: 0,
-              explanation: '$P = U^2/R = 230^2/529 = 52900/529 = 100\\,\\text{W}$',
+              explanation: `**Ansatz:** Bei gegebenem $U$ und $R$ ist $P = U^{2}/R$ die direkte Formel — kein Umweg über $I$ nötig.
+
+**Rechnung:** $P = U^{2}/R = 230^{2}/529 = 52900/529 = 100\\,\\text{W}$.
+
+**Probe:** Querprobe über den Strom: $I = U/R = 230/529 \\approx 0{,}435\\,\\text{A}$, dann $P = U\\cdot I = 230 \\cdot 0{,}435 \\approx 100\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** $P$ und $U$ verwechselt ($P = 230\\,\\text{W}$) oder Strom $I = U/R \\approx 0{,}43\\,\\text{A}$ direkt als Leistung in Watt angegeben.`,
               hints: [
-                '$P = U^2 / R$',
-                '$230^2 = 52900$',
-                '$52900 / 529 = 100$',
+                'Welche der drei Leistungsformeln ($UI$, $U^2/R$, $I^2 R$) passt zu den gegebenen Größen?',
+                'Mit $U$ und $R$ → direkt $P = U^{2}/R$.',
+                '$230^{2} = 52900$, geteilt durch $529$ ergibt $100$.',
               ],
               wrongAnswerExplanations: {
-                1: '230 W wäre nur die Spannung in Volt mit Watt verwechselt. Korrekt: $P = U \\cdot I = U \\cdot (U/R) = U^2/R$, also $230^2/529 = 100$ W.',
-                2: '529 ist der Widerstand in Ohm, kein Leistungswert. Die Formel $P = U^2/R$ liefert $52900/529 = 100$ W.',
-                3: '43 W entstünde bei $P = U/R \\cdot I$ oder anderem Fehler. Richtig: $P = U^2/R$, nicht $U/R$, und $230^2/529 = 100$ W.',
+                1: '$230\\,\\text{W}$ ist der Zahlenwert von $U$ in Volt — du hast $U$ direkt als Leistung in Watt interpretiert.',
+                2: '$529\\,\\text{W}$ ist der Zahlenwert von $R$ in Ohm. $R$ ist kein Leistungswert.',
+                3: '$0{,}43\\,\\text{W}$ ist eigentlich $I = U/R = 0{,}43\\,\\text{A}$ — du hast den Strom mit Watt statt Ampere beschriftet. Multiplikation mit $U$ fehlt.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['p-ui'] },
             },
             {
               type: 'number-input',
@@ -454,12 +496,19 @@ $$P_R = I^2 \cdot R$$
               correctValue: 1600,
               tolerance: 1,
               unit: 'W',
-              explanation: '$P_\\text{ab} = \\eta \\cdot P_\\text{zu} = 0{,}8 \\cdot 2000 = 1600\\,\\text{W}$',
+              explanation: `**Ansatz:** Wirkungsgrad-Definition $\\eta = P_\\text{ab}/P_\\text{zu}$ nach $P_\\text{ab}$ umstellen.
+
+**Rechnung:** $P_\\text{ab} = \\eta \\cdot P_\\text{zu} = 0{,}8 \\cdot 2000\\,\\text{W} = 1600\\,\\text{W}$.
+
+**Probe:** Verlustleistung $P_\\text{V} = P_\\text{zu} - P_\\text{ab} = 2000 - 1600 = 400\\,\\text{W}$, das entspricht $20\\,\\%$ Verlust — passend zu $1-\\eta = 0{,}2$ ✓.
+
+**Typischer Fehler:** $P_\\text{ab} = P_\\text{zu}/\\eta = 2500\\,\\text{W}$ — Bruch umgekehrt, würde $\\eta > 1$ implizieren (physikalisch unmöglich).`,
               hints: [
-                '$\\eta = P_\\text{ab} / P_\\text{zu}$',
-                '$P_\\text{ab} = \\eta \\cdot P_\\text{zu}$',
-                '$0{,}8 \\cdot 2000 = 1600$',
+                '$\\eta = P_\\text{ab}/P_\\text{zu}$ — was ist der Bezugspunkt?',
+                'Stelle die Formel nach $P_\\text{ab}$ um.',
+                'Achte auf die Einheit: $2\\,\\text{kW} = 2000\\,\\text{W}$, dann mal $0{,}8$.',
               ],
+              pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['eta-et'] },
             },
           ],
         },

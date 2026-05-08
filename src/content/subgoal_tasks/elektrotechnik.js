@@ -1112,4 +1112,618 @@ export const elektrotechnikSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // et-1-3 — Elektrische Leistung und Wirkungsgrad  (5 subGoals)
+  // 25 Matrix-Aufgaben (5 × 5: Sub-Goal × Stage), Typen rotieren je Sub-Goal.
+  // Konzepte: p-ui · w-pt · eta-et · p-r-i2r · haushalt-u.
+  // Prerequisites (aus et-1-1): ohm.
+  // ───────────────────────────────────────────────────────────────────────
+  'et-1-3': {
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [0] Leistung $P = UI = U^2/R = I^2 R$ (concept: p-ui)
+    // ═════════════════════════════════════════════════════════════════════
+    0: [
+      // Zeile 1: recognize · true-false · uses=[p-ui]
+      tf(
+        'Die Leistung an einem ohmschen Widerstand kann sowohl als $P = U \\cdot I$, als auch als $P = U^{2}/R$ und $P = I^{2} \\cdot R$ ausgedrückt werden — alle drei Formeln sind äquivalent.',
+        true,
+        `**Ansatz:** Aus $U = R\\cdot I$ folgen die drei Schreibweisen direkt durch Einsetzen.
+
+**Rechnung:** $P = U\\cdot I$. Mit $I = U/R$: $P = U \\cdot (U/R) = U^{2}/R$. Mit $U = R\\cdot I$: $P = R\\cdot I \\cdot I = I^{2} R$. Alle drei sind algebraisch gleichwertig.
+
+**Probe:** Bei $U = 12\\,\\text{V}$, $R = 4\\,\\Omega$, $I = 3\\,\\text{A}$: $UI = 36$, $U^{2}/R = 144/4 = 36$, $I^{2}R = 9\\cdot 4 = 36$ — alle ergeben $36\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** Annahme, die Formeln gelten nur für ohmsche Bauteile — am Wechselstrom kommt zusätzlich ein Phasenfaktor hinzu, das ist hier aber außerhalb des Scope.`,
+        [
+          'Wie hängen $U$, $R$, $I$ über das Ohmsche Gesetz zusammen?',
+          'Setze $I = U/R$ in $P = U\\,I$ ein.',
+          'Setze $U = R\\,I$ in $P = U\\,I$ ein.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['p-ui'] },
+      ),
+
+      // Zeile 2: apply-guided · multiple-choice · uses=[p-ui]
+      mc(
+        'An einem Verbraucher liegt eine Spannung $U = 12\\,\\text{V}$ an, durch ihn fließt ein Strom $I = 2\\,\\text{A}$. Welche elektrische Leistung wird umgesetzt?',
+        ['$24\\,\\text{W}$', '$6\\,\\text{W}$', '$14\\,\\text{W}$', '$144\\,\\text{W}$'],
+        0,
+        `**Ansatz:** Mit $U$ und $I$ → direkt $P = U \\cdot I$.
+
+**Rechnung:** $P = 12 \\cdot 2 = 24\\,\\text{W}$.
+
+**Probe:** Querprobe: bei $24\\,\\text{W}$ und $U = 12\\,\\text{V}$ folgt $I = P/U = 24/12 = 2\\,\\text{A}$ ✓.
+
+**Typischer Fehler:** Division statt Multiplikation ($U/I = 6$, ergibt den Widerstand in Ohm) oder Addition ($U + I = 14$, hat keine physikalische Bedeutung).`,
+        [
+          'Welche zwei Größen sind gegeben?',
+          '$P = U \\cdot I$.',
+          '$12 \\cdot 2$.',
+        ],
+        {
+          1: '$U/I = 12/2 = 6\\,\\Omega$ ist der Widerstand, nicht die Leistung. Du hast dividiert statt multipliziert.',
+          2: '$U + I = 12 + 2 = 14$ — Addition unterschiedlicher Einheiten ist physikalisch nicht zulässig.',
+          3: '$U^{2} = 144$ wäre der Zähler in $P = U^{2}/R$; ohne Division durch $R$ ist es kein Leistungswert.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['p-ui'] },
+      ),
+
+      // Zeile 3: apply-independent · number-input · uses=[p-ui]
+      ni(
+        'Welche Leistung hat ein Verbraucher mit $R = 100\\,\\Omega$ an $U = 20\\,\\text{V}$? Antwort in Watt.',
+        4, 0.05, 'W',
+        `**Ansatz:** Mit $U$ und $R$ → $P = U^{2}/R$ (kein Umweg über $I$).
+
+**Rechnung:** $P = 20^{2}/100 = 400/100 = 4\\,\\text{W}$.
+
+**Probe:** Über den Strom: $I = U/R = 20/100 = 0{,}2\\,\\text{A}$, dann $P = U\\cdot I = 20 \\cdot 0{,}2 = 4\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** $U^{2}$ vergessen ($P = U/R = 0{,}2$) — das wäre der Strom in Ampere, nicht die Leistung.`,
+        [
+          'Welche Formelvariante passt, wenn $U$ und $R$ gegeben sind?',
+          '$P = U^{2}/R$ — Spannung wird quadriert.',
+          '$20^{2} = 400$, geteilt durch $100$ ergibt $4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['p-ui'] },
+      ),
+
+      // Zeile 4: error-analysis · multiple-choice · uses=[p-ui]
+      mc(
+        'Bei $U = 10\\,\\text{V}$ und $R = 5\\,\\Omega$ rechnet ein Lerner $P = U \\cdot R = 10 \\cdot 5 = 50\\,\\text{W}$. Welcher Fehler liegt vor?',
+        [
+          '$U \\cdot R$ ist keine Leistungsformel — korrekt sind $P = U^{2}/R$ oder $P = U \\cdot I$ mit $I = U/R$.',
+          'Die Werte $U$ und $R$ wurden vertauscht.',
+          'Die Einheit Watt ist falsch — es müsste Voltampere sein.',
+          'Der Strom $I$ wurde nicht berücksichtigt, ergibt aber zufällig denselben Wert.',
+        ],
+        0,
+        `**Ansatz:** Korrekt: $I = U/R = 2\\,\\text{A}$, $P = U \\cdot I = 20\\,\\text{W}$ oder direkt $P = U^{2}/R = 100/5 = 20\\,\\text{W}$.
+
+**Rechnung:** Lerner: $U\\cdot R = 50\\,\\text{W}$ — das Produkt aus Spannung und Widerstand hat die Einheit $\\text{V}\\cdot\\Omega = \\text{V}^{2}/\\text{A}$, was kein Watt ist.
+
+**Probe:** Einheiten-Check: $[U\\cdot R] = \\text{V}\\cdot\\Omega \\ne \\text{W}$. Der Lerner-Ansatz ist schon dimensionsmäßig falsch.
+
+**Typischer Fehler:** Aus den drei korrekten Formeln $UI$, $U^{2}/R$, $I^{2}R$ versehentlich $UR$ konstruiert — keine davon enthält $U \\cdot R$ ohne Quadrat oder Bruch.`,
+        [
+          'Prüfe die Einheiten: $\\text{V}\\cdot\\Omega = ?$',
+          'Welche der drei Leistungsformeln enthält $U$ und $R$ direkt?',
+          'Vergleiche $U\\cdot R$ mit $U^{2}/R$.',
+        ],
+        {
+          1: 'Auch bei vertauschten Werten ($R \\cdot U$) bleibt das Produkt $50\\,\\text{V}\\cdot\\Omega$ — die Einheit ist nicht Watt.',
+          2: 'Voltampere (VA) ist im Wechselstrom die Scheinleistung, hier aber DC — die Einheit Watt ist korrekt. Der Fehler liegt in der Formel.',
+          3: 'Zufällig kommt nichts heraus: $U\\cdot R = 50$, korrekt ist $20$ — kein Übereinstimmungs-Zufall.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['p-ui'] },
+      ),
+
+      // Zeile 5: transfer · number-input · uses=[p-ui]
+      ni(
+        'Eine LED-Lampe trägt die Aufschrift "$P = 8\\,\\text{W}$". Sie wird an $U = 230\\,\\text{V}$ Netzspannung betrieben. Welcher Strom $I$ in mA fließt durch die Lampe?',
+        34.78, 0.2, 'mA',
+        `**Ansatz:** Aus $P = U\\cdot I$ folgt $I = P/U$. Ergebnis am Schluss in mA umrechnen.
+
+**Rechnung:** $I = P/U = 8\\,\\text{W}/230\\,\\text{V} = 0{,}03478\\,\\text{A} = 34{,}78\\,\\text{mA}$.
+
+**Probe:** Rückwärts $P = U\\cdot I = 230 \\cdot 0{,}03478 \\approx 8{,}0\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** Direkt $230/8 = 28{,}75$ ausgerechnet (Werte vertauscht) — würde die Einheit $\\text{V}/\\text{W} = \\Omega/\\text{V}$ ergeben, nicht Ampere.`,
+        [
+          'Welche Größe ist gesucht? Was ist gegeben?',
+          'Stelle $P = U\\cdot I$ nach $I$ um.',
+          'Antwort von A in mA umrechnen (×1000).',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['p-ui'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [1] Energie $W = P \cdot t$ (concept: w-pt)
+    // ═════════════════════════════════════════════════════════════════════
+    1: [
+      // Zeile 6: recognize · true-false · uses=[w-pt]
+      tf(
+        'Die elektrische Energie $W$ ist das Produkt aus Leistung und Zeit: $W = P \\cdot t$.',
+        true,
+        `**Ansatz:** Definitions-Identität: Energie = Leistung integriert über Zeit; bei konstanter Leistung also einfach Produkt.
+
+**Rechnung:** $W = P\\cdot t$ mit $[W] = \\text{W}\\cdot\\text{s} = \\text{J}$ oder in der Praxis $\\text{kWh}$.
+
+**Probe:** Bei $P = 100\\,\\text{W}$ über $t = 10\\,\\text{s}$: $W = 1000\\,\\text{J} = 1\\,\\text{kJ}$ ✓.
+
+**Typischer Fehler:** $W = P/t$ — das wäre die Leistung pro Zeit-Einheit (Leistungs-Änderungsrate), keine Energie.`,
+        [
+          'Wie hängen Energie und Leistung über die Zeit zusammen?',
+          'Was ist die Einheit von Energie? ($\\text{W}\\cdot\\text{s} = \\text{J}$.)',
+          'Bei konstanter Leistung wird das Integral zur Multiplikation.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['w-pt'] },
+      ),
+
+      // Zeile 7: apply-guided · multiple-choice · uses=[w-pt]
+      mc(
+        'Eine $100\\,\\text{W}$-Glühbirne brennt $5$ Stunden lang. Welche elektrische Energie wurde verbraucht?',
+        ['$500\\,\\text{Wh}$', '$20\\,\\text{Wh}$', '$105\\,\\text{Wh}$', '$500\\,\\text{W}$'],
+        0,
+        `**Ansatz:** $W = P\\cdot t$, Zeit darf in Stunden eingesetzt werden, dann ist die Einheit Wh.
+
+**Rechnung:** $W = 100\\,\\text{W} \\cdot 5\\,\\text{h} = 500\\,\\text{Wh}$.
+
+**Probe:** Umrechnung in Joule: $500\\,\\text{Wh} = 500 \\cdot 3600\\,\\text{J} = 1{,}8 \\cdot 10^{6}\\,\\text{J}$ — passt zu $100 \\cdot 18000 = 1{,}8\\cdot 10^{6}\\,\\text{J}$ ✓.
+
+**Typischer Fehler:** Watt als Energieeinheit verwendet ($500\\,\\text{W}$) — Watt ist Leistung, nicht Energie. Korrekte Einheit: Wh oder J.`,
+        [
+          'Welche Formel liefert die Energie aus Leistung und Zeit?',
+          'Setze $P$ in W und $t$ in h ein → Ergebnis in Wh.',
+          '$100 \\cdot 5 = 500$, Einheit Wh.',
+        ],
+        {
+          1: '$P/t = 100/5 = 20$ — Division statt Multiplikation, ergibt eine Größe ohne physikalische Bedeutung.',
+          2: '$P + t = 100 + 5 = 105$ — Addition ungleicher Einheiten ist physikalisch unzulässig.',
+          3: 'Watt ist die Einheit der Leistung, nicht der Energie. Energie wird in Wh oder J angegeben.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['w-pt'] },
+      ),
+
+      // Zeile 8: apply-independent · number-input · uses=[w-pt]
+      ni(
+        'Ein Heizgerät mit $P = 2\\,\\text{kW}$ läuft $30\\,\\text{min}$. Wie viel Energie verbraucht es in kWh?',
+        1, 0.01, 'kWh',
+        `**Ansatz:** $W = P\\cdot t$. Beide Größen in passende Einheiten bringen — kW und h ergeben direkt kWh.
+
+**Rechnung:** $30\\,\\text{min} = 0{,}5\\,\\text{h}$, also $W = 2\\,\\text{kW} \\cdot 0{,}5\\,\\text{h} = 1\\,\\text{kWh}$.
+
+**Probe:** In SI: $2000\\,\\text{W} \\cdot 1800\\,\\text{s} = 3{,}6 \\cdot 10^{6}\\,\\text{J} = 1\\,\\text{kWh}$ ✓.
+
+**Typischer Fehler:** Zeit in Minuten direkt eingesetzt ($2 \\cdot 30 = 60$, mit Einheit "kW·min" — unüblich, müsste durch $60$ geteilt werden, um auf kWh zu kommen).`,
+        [
+          'Bringe die Zeit auf Stunden, bevor du multiplizierst.',
+          '$30\\,\\text{min} = 0{,}5\\,\\text{h}$.',
+          '$2 \\cdot 0{,}5 = 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['w-pt'] },
+      ),
+
+      // Zeile 9: error-analysis · multiple-choice · uses=[w-pt]
+      mc(
+        'Aufgabe: Eine $60\\,\\text{W}$-Lampe leuchtet $2$ Stunden — gesucht ist die Energie in Joule. Ein Lerner schreibt $W = 60 \\cdot 2 = 120\\,\\text{J}$. Welcher Fehler liegt vor?',
+        [
+          'Zeit in Stunden statt Sekunden eingesetzt — für Joule muss $t$ in Sekunden, also $t = 7200\\,\\text{s}$ und $W = 432\\,000\\,\\text{J}$.',
+          'Leistung mit Watt statt Kilowatt verwechselt.',
+          'Die Formel $W = P\\cdot t$ ist hier nicht anwendbar.',
+          'Bei einer Glühbirne entsteht keine elektrische Energie.',
+        ],
+        0,
+        `**Ansatz:** $W = P\\cdot t$ liefert Joule **nur**, wenn $P$ in Watt und $t$ in Sekunden eingesetzt wird.
+
+**Rechnung:** $60\\,\\text{W} \\cdot 7200\\,\\text{s} = 432\\,000\\,\\text{J} = 432\\,\\text{kJ}$. Lerner-Ergebnis $120\\,\\text{J}$ ist um den Faktor $3600$ zu klein.
+
+**Probe:** In Wh: $60 \\cdot 2 = 120\\,\\text{Wh}$ — das ist der Lerner-Wert, nur die Einheit ist falsch (Wh statt J). Faktor $3600$ ist genau die Sekunden-pro-Stunde-Umrechnung.
+
+**Typischer Fehler:** Einheit "Joule" gefordert, aber mit Stunden gerechnet — wird nur in Wh richtig.`,
+        [
+          'Welche Einheit hat $1\\,\\text{J}$ in Watt mal Sekunde?',
+          'Wandle $2\\,\\text{h}$ in Sekunden um.',
+          '$60 \\cdot 7200 = ?$.',
+        ],
+        {
+          1: 'Die Aufgabe nennt $60\\,\\text{W}$ ausdrücklich — keine Verwechslung mit kW. Der Faktor $1000$ tritt nicht auf.',
+          2: 'Die Formel $W = P\\cdot t$ ist die Standard-Formel für konstante Leistung. Sie ist hier sehr wohl anwendbar.',
+          3: 'Eine Glühbirne wandelt elektrische Energie zwar (überwiegend) in Wärme/Licht um, der Verbrauch an elektrischer Energie ist aber genau $W = P\\cdot t$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['w-pt'] },
+      ),
+
+      // Zeile 10: transfer · number-input · uses=[w-pt]
+      ni(
+        'Wie lange muss ein Wasserkocher mit $P = 2\\,\\text{kW}$ laufen, um genau $W = 0{,}5\\,\\text{kWh}$ Energie zu liefern? Antwort in Minuten.',
+        15, 0.05, 'min',
+        `**Ansatz:** $W = P\\cdot t$ nach $t$ umgestellt: $t = W/P$.
+
+**Rechnung:** $t = 0{,}5\\,\\text{kWh}/2\\,\\text{kW} = 0{,}25\\,\\text{h} = 15\\,\\text{min}$.
+
+**Probe:** $P\\cdot t = 2\\,\\text{kW} \\cdot 0{,}25\\,\\text{h} = 0{,}5\\,\\text{kWh}$ ✓.
+
+**Typischer Fehler:** $t = P/W = 4$ angesetzt — Bruch umgekehrt, würde "$\\text{kW/kWh} = 1/\\text{h}$" liefern, nicht Stunden.`,
+        [
+          'Stelle $W = P\\cdot t$ nach $t$ um.',
+          'Beide Größen in kW bzw. kWh — kürzt sich zu Stunden.',
+          'Stunden in Minuten umrechnen (×60).',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['w-pt'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [2] Wirkungsgrad $\eta = P_{ab}/P_{zu}$ (concept: eta-et)
+    // ═════════════════════════════════════════════════════════════════════
+    2: [
+      // Zeile 11: recognize · true-false · uses=[eta-et]
+      tf(
+        'Der Wirkungsgrad eines realen Energiewandlers ist immer kleiner als $1$, weil ein Teil der zugeführten Energie als Verlust (meist Wärme) abgegeben wird.',
+        true,
+        `**Ansatz:** Energieerhaltung in Verbindung mit dem zweiten Hauptsatz: nicht alle Energie kann verlustfrei in die gewünschte Form umgewandelt werden.
+
+**Rechnung:** $\\eta = P_\\text{ab}/P_\\text{zu}$ mit $P_\\text{ab} \\le P_\\text{zu}$, also $\\eta \\le 1$. Realer Wandler: $P_\\text{V} = P_\\text{zu} - P_\\text{ab} > 0$, daraus $\\eta < 1$.
+
+**Probe:** Typische Werte: Elektromotor $\\eta \\approx 0{,}9$, Glühbirne $\\eta \\approx 0{,}05$ (Rest ist Wärme), Solarzelle $\\eta \\approx 0{,}2$.
+
+**Typischer Fehler:** "$\\eta = 1$ ist möglich" angenommen — gilt nur idealisiert (z. B. Supraleiter ohne Lager-Verluste); reale Geräte haben immer $\\eta < 1$.`,
+        [
+          'Was geschieht mit der Differenz $P_\\text{zu} - P_\\text{ab}$?',
+          'Welcher physikalische Erhaltungssatz steckt dahinter?',
+          'Wirkungsgrad-Werte typischer Geräte recherchieren — sind sie kleiner oder größer als 1?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['eta-et'] },
+      ),
+
+      // Zeile 12: apply-guided · multiple-choice · uses=[eta-et]
+      mc(
+        'Ein Gerät zieht aus dem Netz die Leistung $P_\\text{zu} = 500\\,\\text{W}$ und gibt mechanisch $P_\\text{ab} = 400\\,\\text{W}$ ab. Wie groß ist der Wirkungsgrad?',
+        ['$0{,}80$', '$1{,}25$', '$0{,}20$', '$100\\,\\text{W}$'],
+        0,
+        `**Ansatz:** Direkt Definitionsformel anwenden: $\\eta = P_\\text{ab}/P_\\text{zu}$.
+
+**Rechnung:** $\\eta = 400/500 = 0{,}80$.
+
+**Probe:** Plausibilität: $\\eta < 1$, Verlustleistung $P_\\text{V} = 500 - 400 = 100\\,\\text{W}$, das sind $20\\,\\%$ — passt zu $1 - 0{,}8 = 0{,}2$ ✓.
+
+**Typischer Fehler:** Bruch umgekehrt ($P_\\text{zu}/P_\\text{ab} = 1{,}25$) — würde $\\eta > 1$ ergeben, physikalisch unmöglich.`,
+        [
+          'Welche Größe steht im Zähler — abgegeben oder zugeführt?',
+          '$\\eta = P_\\text{ab}/P_\\text{zu}$.',
+          '$400/500 = 0{,}8$.',
+        ],
+        {
+          1: '$1{,}25 = P_\\text{zu}/P_\\text{ab}$ — Bruch umgekehrt. Ein realer Wirkungsgrad kann nicht $> 1$ sein.',
+          2: '$0{,}20 = (P_\\text{zu} - P_\\text{ab})/P_\\text{zu}$ — das ist der Verlust-Anteil, nicht der Wirkungsgrad.',
+          3: '$100\\,\\text{W}$ ist die Verlustleistung $P_\\text{V}$, kein Wirkungsgrad. Wirkungsgrad ist eine dimensionslose Verhältniszahl.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['eta-et'] },
+      ),
+
+      // Zeile 13: apply-independent · number-input · uses=[eta-et]
+      ni(
+        'Ein Motor hat einen Wirkungsgrad $\\eta = 0{,}9$ und gibt mechanisch $P_\\text{ab} = 1{,}8\\,\\text{kW}$ ab. Welche elektrische Eingangsleistung $P_\\text{zu}$ in Watt benötigt er?',
+        2000, 1, 'W',
+        `**Ansatz:** $\\eta = P_\\text{ab}/P_\\text{zu}$ nach $P_\\text{zu}$ umstellen.
+
+**Rechnung:** $P_\\text{zu} = P_\\text{ab}/\\eta = 1800\\,\\text{W}/0{,}9 = 2000\\,\\text{W}$.
+
+**Probe:** Querprobe: $\\eta = 1800/2000 = 0{,}9$ ✓.
+
+**Typischer Fehler:** $P_\\text{zu} = \\eta \\cdot P_\\text{ab} = 0{,}9 \\cdot 1800 = 1620\\,\\text{W}$ — Bruch umgekehrt, Eingang wäre dann sogar kleiner als der Ausgang (Wirkungsgrad $> 1$).`,
+        [
+          'Welche Größe ist gesucht? Welche Definition kannst du nutzen?',
+          'Stelle $\\eta = P_\\text{ab}/P_\\text{zu}$ nach $P_\\text{zu}$ um.',
+          '$1800/0{,}9 = 2000$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['eta-et'] },
+      ),
+
+      // Zeile 14: error-analysis · multiple-choice · uses=[eta-et]
+      mc(
+        'Bei $P_\\text{zu} = 1000\\,\\text{W}$ und $P_\\text{ab} = 750\\,\\text{W}$ rechnet ein Lerner $\\eta = 1000/750 \\approx 1{,}33$. Welcher Fehler liegt vor?',
+        [
+          'Bruch umgekehrt — $\\eta = P_\\text{ab}/P_\\text{zu}$, also $750/1000 = 0{,}75$. Ein Wirkungsgrad $> 1$ ist physikalisch unmöglich.',
+          'Die Werte $1000$ und $750$ sind in der Aufgabe vertauscht.',
+          'Wirkungsgrad wird in Prozent statt als Dezimalzahl angegeben.',
+          'Das Gerät hat keinen Wirkungsgrad, weil es keine Energie umwandelt.',
+        ],
+        0,
+        `**Ansatz:** $\\eta$ ist immer "Nutzen geteilt durch Aufwand" — der Aufwand ($P_\\text{zu}$) steht im Nenner.
+
+**Rechnung:** Korrekt: $\\eta = 750/1000 = 0{,}75 = 75\\,\\%$. Lerner-Wert $1{,}33 = 4/3$ ist der Kehrwert.
+
+**Probe:** Plausibilitäts-Check: jeder Wirkungsgrad-Wert $> 1$ entlarvt einen Vorzeichen- oder Bruch-Fehler — bei realen Geräten gilt immer $\\eta \\le 1$.
+
+**Typischer Fehler:** "$\\eta = $ größer/kleiner durch größer/kleiner" intuitiv falsch zugeordnet.`,
+        [
+          'Welche Größe gehört in den Zähler, welche in den Nenner?',
+          'Plausibilitäts-Check: Welcher Wert von $\\eta$ ist physikalisch möglich?',
+          'Vergleiche $1000/750$ mit $750/1000$.',
+        ],
+        {
+          1: 'Die Werte stehen so in der Aufgabe — der Fehler liegt in der Reihenfolge im Bruch, nicht in den Werten selbst.',
+          2: 'Die Prozent-Schreibweise $75\\,\\%$ entspricht $0{,}75$ — der Fehler des Lerners hat damit nichts zu tun.',
+          3: 'Das Gerät wandelt durchaus Energie um — die $250\\,\\text{W}$ Differenz sind Verluste (typischerweise Wärme).',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['eta-et'] },
+      ),
+
+      // Zeile 15: transfer · number-input · uses=[eta-et]
+      ni(
+        'Eine Pumpe hat einen Wirkungsgrad $\\eta = 0{,}6$ und entnimmt aus dem Netz die Leistung $P_\\text{zu} = 500\\,\\text{W}$. Wie viel Leistung $P_\\text{V}$ wird in Wärme verloren? In Watt.',
+        200, 1, 'W',
+        `**Ansatz:** Verlustleistung = Eingangsleistung minus Nutzleistung; oder direkt $P_\\text{V} = (1-\\eta)\\cdot P_\\text{zu}$.
+
+**Rechnung:** $P_\\text{ab} = \\eta\\cdot P_\\text{zu} = 0{,}6 \\cdot 500 = 300\\,\\text{W}$. $P_\\text{V} = 500 - 300 = 200\\,\\text{W}$. Direkt: $(1 - 0{,}6) \\cdot 500 = 0{,}4 \\cdot 500 = 200\\,\\text{W}$.
+
+**Probe:** Bilanz: $P_\\text{ab} + P_\\text{V} = 300 + 200 = 500 = P_\\text{zu}$ ✓ (Energieerhaltung).
+
+**Typischer Fehler:** $P_\\text{V} = \\eta \\cdot P_\\text{zu} = 300$ — verwechselt Verlust mit Nutzleistung.`,
+        [
+          'Was bedeuten die Worte "in Wärme verloren" — ist das die Nutzleistung oder der Rest?',
+          '$P_\\text{V} = P_\\text{zu} - P_\\text{ab}$ oder $P_\\text{V} = (1-\\eta)\\cdot P_\\text{zu}$.',
+          '$0{,}4 \\cdot 500 = 200$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['eta-et'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [3] Stromwärme $P_R = I^2 R$ (concept: p-r-i2r)
+    // ═════════════════════════════════════════════════════════════════════
+    3: [
+      // Zeile 16: recognize · true-false · uses=[p-r-i2r]
+      tf(
+        'Die im Widerstand in Wärme umgesetzte Verlustleistung ist $P_R = I^{2}\\cdot R$ — sie wächst mit dem Quadrat des Stroms.',
+        true,
+        `**Ansatz:** Aus $P = U\\cdot I$ und $U = R\\cdot I$ folgt $P = (RI)\\cdot I = I^{2}R$.
+
+**Rechnung:** Bei doppeltem Strom: $P_R(2I) = (2I)^{2}\\cdot R = 4 I^{2} R = 4\\,P_R(I)$ — Vervierfachung der Verlustleistung.
+
+**Probe:** $I = 1\\,\\text{A}$, $R = 10\\,\\Omega$ → $P_R = 10\\,\\text{W}$. $I = 2\\,\\text{A}$ → $P_R = 40\\,\\text{W}$ (Faktor 4) ✓.
+
+**Typischer Fehler:** Linearer Zusammenhang $P_R = I\\cdot R$ angenommen — lässt sich aus dem Ohmschen Gesetz NICHT herleiten und ergibt eine falsche Einheit.`,
+        [
+          'Welche Größe wird quadriert?',
+          'Setze $U = R\\,I$ in $P = U\\,I$ ein.',
+          'Wie skaliert $P_R$, wenn $I$ verdoppelt wird?',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['p-r-i2r'] },
+      ),
+
+      // Zeile 17: apply-guided · multiple-choice · uses=[p-r-i2r]
+      mc(
+        'Durch einen Widerstand $R = 20\\,\\Omega$ fließt ein Strom $I = 3\\,\\text{A}$. Welche Leistung wird im Widerstand in Wärme umgesetzt?',
+        ['$180\\,\\text{W}$', '$60\\,\\text{W}$', '$23\\,\\text{W}$', '$9\\,\\text{W}$'],
+        0,
+        `**Ansatz:** Stromwärme-Formel: $P_R = I^{2}\\cdot R$.
+
+**Rechnung:** $P_R = 3^{2}\\cdot 20 = 9 \\cdot 20 = 180\\,\\text{W}$.
+
+**Probe:** Querprobe via $U = R\\,I = 60\\,\\text{V}$, dann $P = U\\,I = 60 \\cdot 3 = 180\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** Quadrieren vergessen ($I\\cdot R = 60$, ergibt eine Spannung in Volt) oder $I+R = 23$ addiert.`,
+        [
+          'Welche Formel passt für die Verlustleistung im Widerstand?',
+          '$P = I^{2}\\cdot R$ — vergiss das Quadrat nicht.',
+          '$3^{2} = 9$, dann mal $20$.',
+        ],
+        {
+          1: '$60$ ist $I \\cdot R$ — eine Spannung in Volt, nicht eine Leistung. Du hast das Quadrat vergessen.',
+          2: '$23 = I + R$ — Addition unterschiedlicher Einheiten ist nicht erlaubt.',
+          3: '$9 = I^{2}$ ohne Multiplikation mit $R$. Du hast den letzten Schritt vergessen.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['p-r-i2r'] },
+      ),
+
+      // Zeile 18: apply-independent · number-input · uses=[p-r-i2r]
+      ni(
+        'Wie groß ist die Verlustleistung an einem Leiter mit $R = 2\\,\\Omega$, durch den ein Strom $I = 10\\,\\text{A}$ fließt? Antwort in Watt.',
+        200, 0.5, 'W',
+        `**Ansatz:** Stromwärme-Gesetz: $P_R = I^{2}\\cdot R$.
+
+**Rechnung:** $P_R = 10^{2}\\cdot 2 = 100 \\cdot 2 = 200\\,\\text{W}$.
+
+**Probe:** Über Spannung: $U = R\\,I = 20\\,\\text{V}$, $P = UI = 20\\cdot 10 = 200\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** $R$ doppelt angesetzt ($I\\cdot R^{2} = 40$) oder $I^{2}/R = 50$ statt $\\cdot R$.`,
+        [
+          '$P_R = I^{2}\\cdot R$ — Strom quadriert.',
+          '$10^{2} = 100$.',
+          '$100 \\cdot 2 = 200$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['p-r-i2r'] },
+      ),
+
+      // Zeile 19: error-analysis · multiple-choice · uses=[p-r-i2r]
+      mc(
+        'Bei $R = 4\\,\\Omega$ und $I = 5\\,\\text{A}$ rechnet ein Lerner die Verlustleistung als $P = I\\cdot R = 5 \\cdot 4 = 20\\,\\text{W}$. Welcher Fehler liegt vor?',
+        [
+          'Strom nicht quadriert — korrekt $P_R = I^{2}\\cdot R = 25 \\cdot 4 = 100\\,\\text{W}$.',
+          'Die Werte $R$ und $I$ sind vertauscht.',
+          'Die Verlustleistung tritt nur bei Wechselstrom auf.',
+          'Die Einheit muss Volt sein, nicht Watt.',
+        ],
+        0,
+        `**Ansatz:** Korrekt $P_R = I^{2}\\cdot R$, der Lerner hat das Quadrat vergessen.
+
+**Rechnung:** Lerner: $5 \\cdot 4 = 20$, das ist tatsächlich $U = R\\cdot I$ in Volt — also eine Spannung mit "Watt" beschriftet, nicht die Leistung. Korrekt: $25 \\cdot 4 = 100\\,\\text{W}$.
+
+**Probe:** Über $P = U\\cdot I = 20\\,\\text{V} \\cdot 5\\,\\text{A} = 100\\,\\text{W}$ ✓ — die korrekte Leistung ist also fünfmal so groß wie der Lerner-Wert.
+
+**Typischer Fehler:** Aus drei äquivalenten Formeln (UI, U²/R, I²R) versehentlich $UR$ gebildet — das hat keine Leistungs-Bedeutung.`,
+        [
+          'Vergleiche das Lerner-Ergebnis mit $I^{2}\\cdot R$.',
+          'Welche Einheit hat $I\\cdot R$?',
+          'Wie kommt $5 \\cdot 4$ in physikalischer Sprache zustande?',
+        ],
+        {
+          1: '$5\\cdot 4$ und $4\\cdot 5$ ergeben dasselbe — Vertauschung erklärt den Fehler nicht.',
+          2: 'Das Stromwärmegesetz gilt für Gleichstrom direkt; bei Wechselstrom mit Effektivwert ebenso. Der Fehler liegt unabhängig davon im Quadrat.',
+          3: 'Watt ist die korrekte Einheit für Leistung; der Wert $20\\,\\text{V}$ entspricht eben $U = R\\,I$, nicht $P_R$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['p-r-i2r'] },
+      ),
+
+      // Zeile 20: transfer · number-input · uses=[p-r-i2r]
+      ni(
+        'Verdoppelt man den Strom durch einen Widerstand bei sonst gleichen Bedingungen, um welchen Faktor steigt die im Widerstand umgesetzte Verlustleistung? (Antwort als reine Zahl ohne Einheit.)',
+        4, 0.001, '',
+        `**Ansatz:** Quadratische Abhängigkeit $P_R \\propto I^{2}$ ausnutzen.
+
+**Rechnung:** $P_R(2I)/P_R(I) = (2I)^{2}\\cdot R / (I^{2}\\cdot R) = 4 I^{2}/I^{2} = 4$.
+
+**Probe:** Konkret: bei $I = 1\\,\\text{A}$, $R = 5\\,\\Omega$ ist $P_R = 5\\,\\text{W}$. Bei $I = 2\\,\\text{A}$ → $P_R = 20\\,\\text{W} = 4\\cdot 5\\,\\text{W}$ ✓.
+
+**Typischer Fehler:** Linear gedacht (Faktor $2$) — die Quadrat-Abhängigkeit von $I$ wird oft übersehen, ist aber praxis-relevant (Hochspannungs-Übertragung minimiert $I$, um $I^{2}R$-Verluste klein zu halten).`,
+        [
+          'Wie geht $I$ in $P_R = I^{2}\\,R$ ein?',
+          'Bilde das Verhältnis $(2I)^{2}/I^{2}$.',
+          '$2^{2} = 4$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['p-r-i2r'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [4] Haushaltsspannungen 230 V / 400 V (concept: haushalt-u)
+    // ═════════════════════════════════════════════════════════════════════
+    4: [
+      // Zeile 21: recognize · true-false · uses=[haushalt-u]
+      tf(
+        'In österreichischen und deutschen Wohnhäusern beträgt die Effektivspannung an einer Schuko-Steckdose $230\\,\\text{V}$ und die verkettete Drehstrom-Spannung $400\\,\\text{V}$.',
+        true,
+        `**Ansatz:** Standardisierte Netzspannungen im europäischen Niederspannungsnetz.
+
+**Rechnung:** Einphasig (Außenleiter gegen Neutralleiter): $U = 230\\,\\text{V}$. Verkettet (Außenleiter gegen Außenleiter): $U_\\text{LL} = 230 \\cdot \\sqrt{3} \\approx 400\\,\\text{V}$.
+
+**Probe:** $230 \\cdot 1{,}732 \\approx 398{,}4\\,\\text{V}$ — Normwert wird zu $400\\,\\text{V}$ aufgerundet.
+
+**Typischer Fehler:** USA-Werte ($120\\,\\text{V}$, $60\\,\\text{Hz}$) angenommen — gelten nicht in Europa.`,
+        [
+          'Welche Standard-Steckdose hat zu Hause die rote/eine Phase?',
+          'Effektivwert ist der "üblicherweise angegebene" Wert — nicht der Spitzenwert.',
+          'Faktor zwischen $230$ und $400$: $\\sqrt{3} \\approx 1{,}732$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['haushalt-u'] },
+      ),
+
+      // Zeile 22: apply-guided · multiple-choice · uses=[haushalt-u]
+      mc(
+        'Welche Spannung steht an einer typischen Haushaltssteckdose (Schuko) zur Verfügung?',
+        ['$230\\,\\text{V}$', '$110\\,\\text{V}$', '$400\\,\\text{V}$', '$12\\,\\text{V}$'],
+        0,
+        `**Ansatz:** Einphasige Niederspannung in Europa: $230\\,\\text{V}$ (Effektivwert).
+
+**Rechnung:** Schuko = Schutzkontakt-Steckdose, ein Außenleiter (L) plus Neutralleiter (N) plus Schutzleiter (PE). Spannung L-N: $230\\,\\text{V}$.
+
+**Probe:** Spitzenwert für Bauteilauslegung: $230\\cdot\\sqrt{2}\\approx 325\\,\\text{V}$ — passt zur typischen Bauteil-Bemessung "$300\\,\\text{V}$ DC nicht ausreichend, $400\\,\\text{V}$ reicht".
+
+**Typischer Fehler:** USA-Wert $110\\,\\text{V}$ (eigentlich $120\\,\\text{V}$, $60\\,\\text{Hz}$) auf Europa übertragen.`,
+        [
+          'Welche Norm gilt im europäischen Wohnungsnetz?',
+          'Schuko vs. Drehstrom — welcher Anschluss bringt $400\\,\\text{V}$?',
+          'Effektivwert in Europa ist $230\\,\\text{V}$.',
+        ],
+        {
+          1: '$110\\,\\text{V}$ (genauer $120\\,\\text{V}$) ist die nordamerikanische Netzspannung. In Europa gelten $230\\,\\text{V}$.',
+          2: '$400\\,\\text{V}$ ist die verkettete Drehstrom-Spannung — nicht an einer normalen Schuko-Steckdose verfügbar.',
+          3: '$12\\,\\text{V}$ ist Niederspannung (z. B. KFZ, Halogen-Trafo), nicht das normale Hausnetz.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['haushalt-u'] },
+      ),
+
+      // Zeile 23: apply-independent · multiple-choice · uses=[haushalt-u]
+      mc(
+        'An welcher Anschluss-Art liegt im Haushalt typischerweise die Drehstrom-Spannung von $400\\,\\text{V}$ verkettet an?',
+        [
+          'CEE-Drehstrom-Steckdose (rot, "Kraftstrom", z. B. CEE-16A oder CEE-32A)',
+          'Schuko-Schutzkontakt-Steckdose',
+          'USB-Buchse (z. B. an einem USB-Ladegerät)',
+          'Lichtschalter im Wohnzimmer',
+        ],
+        0,
+        `**Ansatz:** Drehstrom-Verbraucher (E-Herd, Wallbox, Kreissäge) brauchen drei Außenleiter — diese werden über CEE-Industriesteckdosen ("Kraftstrom") angeschlossen.
+
+**Rechnung:** CEE-Stecker führen drei Phasen $L_1, L_2, L_3$ — jeweils $230\\,\\text{V}$ gegen Neutralleiter, $400\\,\\text{V}$ verkettet.
+
+**Probe:** E-Herd-Anschlussklemme im Verteilerkasten: meist 5 Adern (3× L + N + PE) — typisches Drehstromnetz.
+
+**Typischer Fehler:** Schuko mit Drehstrom verwechselt — Schuko hat nur einen Außenleiter und führt $230\\,\\text{V}$.`,
+        [
+          'Welcher Anschluss hat drei Phasen?',
+          'Drehstrom-Steckdose ist meist rot/blau und größer als Schuko.',
+          'Welche Geräte brauchen 400 V (E-Herd, Wallbox)?',
+        ],
+        {
+          1: 'Schuko führt nur $230\\,\\text{V}$ (eine Phase + N) — Drehstrom $400\\,\\text{V}$ braucht drei Phasen.',
+          2: 'USB liefert über Trafo Kleinspannung ($5\\,\\text{V}$ oder $9$/$12$/$20\\,\\text{V}$ bei USB-PD) — nichts mit Drehstrom.',
+          3: 'Ein Lichtschalter schaltet einen Außenleiter — daran liegen $230\\,\\text{V}$ einphasig, kein Drehstrom.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['haushalt-u'] },
+      ),
+
+      // Zeile 24: error-analysis · multiple-choice · uses=[haushalt-u]
+      mc(
+        'Ein Lerner glaubt: "Drehstrom $400\\,\\text{V}$ bedeutet, dass jede der drei Phasen einzeln $400\\,\\text{V}$ gegen Erde führt." Welcher Fehler liegt vor?',
+        [
+          '$400\\,\\text{V}$ ist die verkettete Spannung zwischen zwei Außenleitern; jede einzelne Phase gegen Neutralleiter (≈ Erde) führt $230\\,\\text{V}$. Es gilt $400 = 230\\cdot\\sqrt{3}$.',
+          'Der Effektivwert wurde mit dem Spitzenwert verwechselt.',
+          'Drehstrom hat in Wirklichkeit nur zwei Außenleiter.',
+          'Die Spannung beträgt nur kurzzeitig $400\\,\\text{V}$.',
+        ],
+        0,
+        `**Ansatz:** Drehstrom-System hat drei um $120^{\\circ}$ phasenverschobene Außenleiter — $400\\,\\text{V}$ ist die Differenzspannung zwischen zwei Außenleitern.
+
+**Rechnung:** Phase gegen Neutralleiter (Sternspannung): $U_\\text{Stern} = 230\\,\\text{V}$. Phase gegen Phase (Dreiecksspannung, verkettet): $U_\\text{LL} = U_\\text{Stern}\\cdot\\sqrt{3} = 230 \\cdot 1{,}732 \\approx 400\\,\\text{V}$.
+
+**Probe:** Würde jede Phase einzeln $400\\,\\text{V}$ gegen Erde führen, wäre die verkettete Spannung $400\\cdot\\sqrt{3} \\approx 693\\,\\text{V}$ — das gibt es im Niederspannungsnetz nicht.
+
+**Typischer Fehler:** Stern- mit Dreiecksspannung verwechselt; meist aus Unkenntnis der $\\sqrt{3}$-Beziehung im Drehstromsystem.`,
+        [
+          'Wo wird "verkettete Spannung" gemessen?',
+          'Welche Beziehung gilt zwischen Stern- und Dreiecksspannung?',
+          'Plausibilität: würde Phase gegen Erde wirklich $400\\,\\text{V}$ sein, wäre eine Schuko-Steckdose lebensgefährlicher.',
+        ],
+        {
+          1: 'Spitzenwert verkettet wäre $400\\cdot\\sqrt{2}\\approx 566\\,\\text{V}$ — der Lerner-Fehler liegt aber im Verständnis von "verkettet", nicht in Effektiv-/Spitzenwert.',
+          2: 'Drehstrom hat per Definition drei um $120^{\\circ}$ phasenverschobene Außenleiter — zwei wären keine "Drei-Phasen-Spannung".',
+          3: 'Die $400\\,\\text{V}$ liegen kontinuierlich an (Effektivwert) — keine Spitzen-Erscheinung.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['haushalt-u'] },
+      ),
+
+      // Zeile 25: transfer · matching · uses=[haushalt-u]
+      matching(
+        'Ordne jede Anwendung der typisch zugehörigen Spannung zu (alle Werte in Europa, alle Effektivwerte falls nicht anders angegeben).',
+        [
+          { left: 'Glühlampe an Schuko-Steckdose',                         right: '$230\\,\\text{V}$' },
+          { left: 'E-Herd-Drehstromanschluss (verkettet)',                 right: '$400\\,\\text{V}$' },
+          { left: 'Spitzenwert einer Schuko-Steckdose ($\\hat u$)',        right: '$\\approx 325\\,\\text{V}$' },
+          { left: 'Halogen-Niederspannungs-Lichtsystem',                   right: '$12\\,\\text{V}$' },
+        ],
+        `**Ansatz:** Effektivwert vs. Spitzenwert, einphasig vs. verkettet, Hochspannung vs. Niederspannung.
+
+**Rechnung:**
+- Schuko-Lampe: einphasiger Effektivwert $= 230\\,\\text{V}$.
+- E-Herd-Drehstrom: verketteter Effektivwert $= 230\\cdot\\sqrt{3} \\approx 400\\,\\text{V}$.
+- Spitzenwert einphasig: $\\hat u = 230\\cdot\\sqrt{2} \\approx 325\\,\\text{V}$.
+- Halogen-Niederspannung: per Trafo herabgesetzt auf $12\\,\\text{V}$.
+
+**Probe:** Faktoren stimmen: $325/230 \\approx \\sqrt{2}$, $400/230 \\approx \\sqrt{3}$ ✓.
+
+**Typischer Fehler:** Effektiv- und Spitzenwert verwechselt — der Spitzenwert $325\\,\\text{V}$ taucht in Bauteildaten auf, nicht in Steckdosen-Beschriftungen.`,
+        [
+          'Effektivwert ist der "übliche" angegebene Wert; Spitzenwert ist um $\\sqrt{2}$ größer.',
+          'Verkettete Drehstrom-Spannung ist um $\\sqrt{3}$ größer als die Sternspannung.',
+          'Niederspannungs-Geräte (LED-Strips, Halogen) brauchen Trafo auf 12 V.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['haushalt-u'] },
+      ),
+    ],
+  },
 }
