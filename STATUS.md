@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-07 · `npm run status`_
+_auto-generiert · 2026-05-08 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2909 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2101 (72 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1313 / 1313 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 298 / 1134 (26 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2933 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2128 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1328 / 1328 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 302 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1389,10 +1389,10 @@ _Automatisierung, Robotik, Prozesstechnik leben von sauberer Regelung. Stabilit�
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 13
-- Aufgaben: **70** (Lesson-Path: 46 · Goal-Tasks: 24)
-- 4-Block: 27/70 (39 %) 🔴
-- MC-wAE: 38/38 (100 %) ✅
-- Sub-Goals: 4/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **94** (Lesson-Path: 46 · Goal-Tasks: 48)
+- 4-Block: 54/94 (57 %) 🔴
+- MC-wAE: 53/53 (100 %) ✅
+- Sub-Goals: 8/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Python und Matlab für ingenieurmäßiges Rechnen: Arrays, Schleifen, Plot, LGS, numerische Integration.**
@@ -1433,7 +1433,7 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `py-1-1` Variablen & Datentypen | 4 | 4/4 | 27 | 18/0/7/2/0 | 27/27 | 18/18 | ✅ | — |
 | `py-1-2` Operatoren & Ausdrücke | 5 | 0/5 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
-| `py-1-3` Listen & Arrays | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
+| `py-1-3` Listen & Arrays | 4 | 4/4 | 27 | 16/4/6/1/0 | 27/27 | 16/16 | ✅ | — |
 | `py-1-4` Kontrollstrukturen | 4 | 0/4 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +4 Goal, +3 4B |
 | `py-1-5` Funktionen definieren | 5 | 0/5 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +5 Goal, +3 4B |
 | `py-2-1` NumPy Grundlagen | 5 | 0/5 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +5 Goal, +3 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 115 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 114 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4086,51 +4086,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
 - **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
-#### `py-1-3` · Listen & Arrays
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `index-base` — Python 0-basiert, Matlab 1-basiert (SG 0)
-  2. `slicing` — Slicing `liste[a:b]` — rechte Grenze exklusiv ⇐ `index-base` (SG 1)
-  3. `numpy-vec` — NumPy-Arrays vektorisiert (elementweise + − * /) (SG 2)
-  4. `dtype-mix` — Liste: gemischte Typen; NumPy: ein dtype ⇐ `numpy-vec` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `index-base` · **0/5+** — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
-  - 🔴 [1] _hoch_ · Konzepte: `slicing` · **0/5+** — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
-  - 🔴 [2] _hoch_ · Konzepte: `numpy-vec` · **0/5+** — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
-  - 🔴 [3] _mittel_ · Konzepte: `dtype-mix` · **0/5+** — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `index-base` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `slicing` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `dtype-mix` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-c`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
@@ -10448,7 +10403,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 35 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 36 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10661,6 +10616,49 @@ npm run build              # abschließender End-zu-End-Check
 | 20 | 3 | transfer           | matching         | `naming-conv` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `py-1-3` · Listen & Arrays
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `index-base` — Python 0-basiert, Matlab 1-basiert (SG 0)
+  2. `slicing` — Slicing `liste[a:b]` — rechte Grenze exklusiv ⇐ `index-base` (SG 1)
+  3. `numpy-vec` — NumPy-Arrays vektorisiert (elementweise + − * /) (SG 2)
+  4. `dtype-mix` — Liste: gemischte Typen; NumPy: ein dtype ⇐ `numpy-vec` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `index-base` · **6/5+** — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
+  - ✅ [1] _hoch_ · Konzepte: `slicing` · **6/5+** — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
+  - ✅ [2] _hoch_ · Konzepte: `numpy-vec` · **6/5+** — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
+  - ✅ [3] _mittel_ · Konzepte: `dtype-mix` · **6/5+** — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `index-base` | 1 | 2 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `slicing` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `numpy-vec` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `numpy-vec` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `dtype-mix` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `dtype-mix` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
