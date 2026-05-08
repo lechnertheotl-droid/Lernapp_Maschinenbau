@@ -618,4 +618,498 @@ export const elektrotechnikSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // et-1-2 — Kirchhoffsche Gesetze  (4 subGoals)
+  // 20 Matrix-Aufgaben (4 × 5: Sub-Goal × Stage), Typen rotieren je Sub-Goal.
+  // Konzepte: kcl · kvl · umlauf-vz · spann-teiler.
+  // Prerequisites (aus et-1-1): ohm, reihe-r.
+  // ───────────────────────────────────────────────────────────────────────
+  'et-1-2': {
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [0] Knotensatz (KCL) — $\sum I_\text{Knoten} = 0$ (concept: kcl)
+    // ═════════════════════════════════════════════════════════════════════
+    0: [
+      // Zeile 1: recognize · true-false · uses=[kcl]
+      tf(
+        'An jedem Knoten in einem Netzwerk gilt: Die Summe aller zufließenden Ströme ist gleich der Summe aller abfließenden Ströme.',
+        true,
+        `**Ansatz:** Das ist die alltagsnahe Formulierung des Knotensatzes (KCL).
+
+**Rechnung:** Aus Ladungserhaltung folgt $\\sum I_\\text{ein} = \\sum I_\\text{aus}$ — gleichbedeutend mit $\\sum I = 0$, wenn man zufließende positiv und abfließende negativ zählt.
+
+**Probe:** An einem T-Knoten mit $I_1 = 4\\,\\text{A}$ zu, $I_2 = 1{,}5\\,\\text{A}$ und $I_3 = 2{,}5\\,\\text{A}$ ab gilt $4 = 1{,}5 + 2{,}5$ ✓.
+
+**Typischer Fehler:** "$\\sum I = 0$" mit "alle Ströme positiv addiert" verwechselt — die Vorzeichen kommen aus der Richtung am Knoten.`,
+        [
+          'Was passiert mit Ladung an einem Knoten — wird sie gespeichert oder erzeugt?',
+          'Welcher Erhaltungssatz steckt hinter KCL?',
+          'Zähle die hineinfließenden Ströme positiv, die herausfließenden negativ.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['kcl'] },
+      ),
+
+      // Zeile 2: apply-guided · multiple-choice · uses=[kcl]
+      mc(
+        'An einem Knoten fließen $I_1 = 2\\,\\text{A}$ und $I_2 = 3\\,\\text{A}$ zu, während $I_3$ und $I_4 = 4\\,\\text{A}$ abfließen. Wie groß ist $I_3$?',
+        ['$1\\,\\text{A}$', '$5\\,\\text{A}$', '$9\\,\\text{A}$', '$-1\\,\\text{A}$'],
+        0,
+        `**Ansatz:** KCL: $\\sum I_\\text{ein} = \\sum I_\\text{aus}$.
+
+**Rechnung:** $I_1 + I_2 = I_3 + I_4 \\Rightarrow 2 + 3 = I_3 + 4 \\Rightarrow I_3 = 1\\,\\text{A}$.
+
+**Probe:** Einsetzen: $5 = 1 + 4 = 5$ ✓ (Bilanz erfüllt).
+
+**Typischer Fehler:** Nur die zufließenden Ströme summiert ($2 + 3 = 5$) und das als Antwort gegeben — der zweite abfließende Strom $I_4$ wurde übersehen.`,
+        [
+          'Notiere alle vier Ströme mit Richtung (zu/ab).',
+          'KCL als Bilanzgleichung: zufließende = abfließende.',
+          '$2 + 3 = I_3 + 4$.',
+        ],
+        {
+          1: '$5\\,\\text{A}$ ist die Summe der zufließenden Ströme — du hast den zweiten abfließenden Strom $I_4 = 4\\,\\text{A}$ vergessen abzuziehen.',
+          2: '$9\\,\\text{A}$ ist $I_1 + I_2 + I_4$ — du hast alle drei mit dem gleichen Vorzeichen addiert, ohne KCL anzuwenden.',
+          3: '$-1\\,\\text{A}$ ergibt sich aus $I_4 - (I_1 + I_2) = 4 - 5$ — du hast die KCL-Gleichung mit umgekehrtem Vorzeichen aufgelöst.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['kcl'] },
+      ),
+
+      // Zeile 3: apply-independent · number-input · uses=[kcl]
+      ni(
+        'An einem Knoten fließen $I_1 = 5\\,\\text{A}$ und $I_2 = 2\\,\\text{A}$ zu. Es fließt nur ein einziger Strom $I_3$ ab. Wie groß ist $I_3$ in Ampere?',
+        7, 0.01, 'A',
+        `**Ansatz:** KCL: zufließende Ströme summieren sich zum einzig abfließenden Strom.
+
+**Rechnung:** $I_3 = I_1 + I_2 = 5 + 2 = 7\\,\\text{A}$.
+
+**Probe:** $I_1 + I_2 - I_3 = 5 + 2 - 7 = 0$ ✓ (KCL erfüllt).
+
+**Typischer Fehler:** $I_3 = I_1 - I_2 = 3\\,\\text{A}$ — nur ein Strom als zufließend gewertet, der zweite irrtümlich als abfließend.`,
+        [
+          'Beide Ströme fließen zu, einer ab — also Bilanz "zufließend = abfließend".',
+          '$I_1 + I_2 = I_3$.',
+          'Einfach addieren: $5 + 2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kcl'] },
+      ),
+
+      // Zeile 4: error-analysis · multiple-choice · uses=[kcl]
+      mc(
+        'An einem Knoten fließen $8\\,\\text{A}$ und $3\\,\\text{A}$ zu, $7\\,\\text{A}$ und $4\\,\\text{A}$ ab. Ein Lerner schreibt $\\sum I = 8 + 3 + 7 + 4 = 22\\,\\text{A}$ und folgert, KCL sei verletzt. Welcher Fehler liegt vor?',
+        [
+          'Vorzeichen nicht beachtet — abfließende Ströme müssen negativ gezählt werden, dann ergibt sich $8+3-7-4 = 0$.',
+          'Die Werte stimmen nicht — der Knoten hat in Wirklichkeit nur drei Anschlüsse.',
+          '$\\sum I = 0$ gilt nur für zwei Ströme an einem Knoten.',
+          'Stromrichtungen wurden falsch gemessen.',
+        ],
+        0,
+        `**Ansatz:** KCL: $\\sum I = 0$ am Knoten **mit Vorzeichen**: zufließend $+$, abfließend $-$ (oder konsistent umgekehrt).
+
+**Rechnung:** Korrekt: $8 + 3 - 7 - 4 = 0$ ✓ — KCL ist erfüllt. Lerner hat alle vier Beträge addiert und das Vorzeichen ignoriert.
+
+**Probe:** $\\sum I_\\text{ein} = 8 + 3 = 11\\,\\text{A}$, $\\sum I_\\text{aus} = 7 + 4 = 11\\,\\text{A}$ — Bilanz stimmt.
+
+**Typischer Fehler:** "$\\sum I = 0$" wörtlich als "alle Beträge zu null" interpretiert — übersieht, dass die Vorzeichen aus der Richtung kommen.`,
+        [
+          'Wie wird "Summe gleich null" für gerichtete Größen formal aufgeschrieben?',
+          'Setze konkrete Vorzeichen für zufließend/abfließend.',
+          'Vergleiche $\\sum I_\\text{ein}$ mit $\\sum I_\\text{aus}$.',
+        ],
+        {
+          1: 'Die Anzahl der Anschlüsse am Knoten passt zur Aufgabe — KCL gilt für beliebig viele Ströme.',
+          2: 'KCL gilt für jede beliebige Anzahl von Strömen am Knoten, nicht nur für zwei.',
+          3: 'Die Aufgabe nennt explizite Richtungen — eine Mess-Frage entzieht sich der KCL-Bilanz nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['kcl'] },
+      ),
+
+      // Zeile 5: transfer · number-input · uses=[kcl]
+      ni(
+        'An einem Knoten gibt es vier Ströme: $I_1 = 12\\,\\text{A}$ fließt zu, $I_2 = 2\\,\\text{A}$ und $I_3 = 4\\,\\text{A}$ fließen ab, und $I_4$ fließt ebenfalls ab. Wie groß ist $I_4$ in Ampere?',
+        6, 0.01, 'A',
+        `**Ansatz:** KCL als Bilanz: ein zufließender Strom muss alle drei abfließenden gemeinsam decken.
+
+**Rechnung:** $I_1 = I_2 + I_3 + I_4 \\Rightarrow 12 = 2 + 4 + I_4 \\Rightarrow I_4 = 6\\,\\text{A}$.
+
+**Probe:** $I_2 + I_3 + I_4 = 2 + 4 + 6 = 12 = I_1$ ✓.
+
+**Typischer Fehler:** Nur einen abfließenden Strom abgezogen ($12 - 2 = 10\\,\\text{A}$ oder $12 - 4 = 8\\,\\text{A}$) — beide vorhandenen Abflüsse müssen aber zusammen subtrahiert werden.`,
+        [
+          'Wie viele Ströme fließen ab, wie viele zu?',
+          'Bilanz: $I_1 = I_2 + I_3 + I_4$.',
+          '$12 - 2 - 4 = 6$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['kcl'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [1] Maschensatz (KVL) — $\sum U_\text{Masche} = 0$ (concept: kvl)
+    // ═════════════════════════════════════════════════════════════════════
+    1: [
+      // Zeile 6: recognize · true-false · uses=[kvl]
+      tf(
+        'In jeder geschlossenen Masche ist die Summe aller Spannungen — mit korrekten Vorzeichen — entlang des Umlaufs gleich null.',
+        true,
+        `**Ansatz:** Das ist der Maschensatz (KVL) im Wortlaut.
+
+**Rechnung:** $\\sum U_\\text{Masche} = 0$ folgt aus der Energieerhaltung: Nach einem geschlossenen Umlauf ist man wieder am Ausgangspotenzial, der Energie-Saldo pro Ladung ist null.
+
+**Probe:** Quelle $U_q = 12\\,\\text{V}$ mit zwei Widerständen $U_{R1} = 4\\,\\text{V}$ und $U_{R2} = 8\\,\\text{V}$ → $12 - 4 - 8 = 0$ ✓.
+
+**Typischer Fehler:** "Summe der Spannungen" ohne Vorzeichen verstanden — KVL braucht eine konsistente Umlaufrichtung mit Plus/Minus-Konvention.`,
+        [
+          'Welcher Erhaltungssatz steckt hinter KVL?',
+          'Eine Masche ist ein geschlossener Umlauf in einem Netzwerk.',
+          'Die Spannung ist Energie pro Ladung — nach einem geschlossenen Umlauf bist du wieder am Anfang.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['kvl'] },
+      ),
+
+      // Zeile 7: apply-guided · multiple-choice · uses=[kvl]
+      mc(
+        'Eine Masche besteht aus einer Spannungsquelle $U_q = 12\\,\\text{V}$, einem Widerstand mit Spannungsabfall $U_{R1} = 3\\,\\text{V}$ und einem zweiten Widerstand $R_2$. Welcher Spannungsabfall $U_{R2}$ liegt an $R_2$?',
+        ['$9\\,\\text{V}$', '$15\\,\\text{V}$', '$12\\,\\text{V}$', '$3\\,\\text{V}$'],
+        0,
+        `**Ansatz:** KVL: $U_q - U_{R1} - U_{R2} = 0$.
+
+**Rechnung:** $U_{R2} = U_q - U_{R1} = 12 - 3 = 9\\,\\text{V}$.
+
+**Probe:** $U_{R1} + U_{R2} = 3 + 9 = 12 = U_q$ ✓.
+
+**Typischer Fehler:** Quelle und Spannungsabfall mit gleichem Vorzeichen addiert ($U_q + U_{R1} = 15\\,\\text{V}$) — das verletzt KVL.`,
+        [
+          'Stelle KVL als Gleichung auf: $U_q$ in eine Richtung, Abfälle in die andere.',
+          'Quelle und Spannungsabfälle haben entgegengesetztes Vorzeichen.',
+          '$U_q = U_{R1} + U_{R2}$ → $U_{R2} = 12 - 3$.',
+        ],
+        {
+          1: 'Du hast Quelle und Spannungsabfall addiert — KVL erfordert aber entgegengesetzte Vorzeichen ($U_q - U_{R1} - U_{R2} = 0$).',
+          2: 'Du hast die Quellspannung selbst genommen — das wäre $U_{R2}$ nur, wenn $R_1 = 0$ wäre.',
+          3: 'Du hast den ersten Spannungsabfall wiederholt statt den zweiten zu berechnen.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['kvl'] },
+      ),
+
+      // Zeile 8: apply-independent · number-input · uses=[kvl]
+      ni(
+        'Eine Masche enthält eine Quelle $U_q = 24\\,\\text{V}$ und drei in Reihe liegende Widerstände mit den Spannungsabfällen $U_{R1} = 10\\,\\text{V}$, $U_{R2} = 8\\,\\text{V}$ und $U_{R3}$. Wie groß ist $U_{R3}$ in Volt?',
+        6, 0.01, 'V',
+        `**Ansatz:** KVL: $U_q - U_{R1} - U_{R2} - U_{R3} = 0$.
+
+**Rechnung:** $U_{R3} = U_q - U_{R1} - U_{R2} = 24 - 10 - 8 = 6\\,\\text{V}$.
+
+**Probe:** Spannungssumme: $10 + 8 + 6 = 24 = U_q$ ✓ (Maschensatz).
+
+**Typischer Fehler:** Nur einen Spannungsabfall abgezogen ($24 - 10 = 14$ oder $24 - 8 = 16$) — bei drei Widerständen müssen alle abgezogen werden.`,
+        [
+          'KVL: Summe der Spannungsabfälle = Quellspannung.',
+          '$U_q = U_{R1} + U_{R2} + U_{R3}$.',
+          '$24 - 10 - 8 = 6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['kvl'] },
+      ),
+
+      // Zeile 9: error-analysis · multiple-choice · uses=[kvl]
+      mc(
+        'In einer Masche steht eine Quelle $U_q = 20\\,\\text{V}$. Auf zwei Widerständen fallen $U_{R1} = 8\\,\\text{V}$ und $U_{R2} = 12\\,\\text{V}$ ab. Ein Lerner schreibt KVL als $U_q + U_{R1} + U_{R2} = 0$ und kommt auf $U_q = -20\\,\\text{V}$. Welcher Fehler liegt vor?',
+        [
+          'Spannungsabfälle und Quelle mit gleichem Vorzeichen aufaddiert — beim KVL-Umlauf werden Quelle und Abfälle entgegengesetzt durchquert und tragen daher unterschiedliche Vorzeichen.',
+          'Die Spannungsabfälle wurden in falscher Reihenfolge eingesetzt.',
+          'Der Maschensatz ist hier nicht anwendbar.',
+          'Die Werte $8\\,\\text{V}$ und $12\\,\\text{V}$ ergeben keine $20\\,\\text{V}$.',
+        ],
+        0,
+        `**Ansatz:** Korrektes KVL: $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_q = U_{R1} + U_{R2} = 8 + 12 = 20\\,\\text{V}$ ✓.
+
+**Rechnung:** Lerner hat alle drei Spannungen mit "+" addiert: $20 + 8 + 12 = 40 \\ne 0$, hat dann durch Vorzeichenwechsel formal $U_q = -20\\,\\text{V}$ erzwungen — physikalisch sinnlos.
+
+**Probe:** Spannungssumme im Umlauf: einmal "Energie aufgenommen" (Quelle, $-$ nach $+$), zweimal "Energie abgegeben" (Widerstände in Stromrichtung). Die Beträge balancieren mit entgegengesetzten Vorzeichen.
+
+**Typischer Fehler:** "$\\sum U = 0$" wörtlich als "alle Beträge addieren" — KVL ist eine **vorzeichenbehaftete** Bilanz entlang einer gewählten Umlaufrichtung.`,
+        [
+          'Wie kommen die Vorzeichen in $\\sum U = 0$ zustande?',
+          'Was passiert beim Umlauf an einer Quelle vs. an einem Widerstand?',
+          'Vergleiche das Lerner-Ergebnis mit der Plausibilität: $U_q = -20\\,\\text{V}$ widerspricht dem Bauteilwert $+20\\,\\text{V}$.',
+        ],
+        {
+          1: 'Reihenfolge spielt für eine Summe keine Rolle — der Fehler liegt im Vorzeichen, nicht in der Reihenfolge.',
+          2: 'Der Maschensatz gilt für jeden geschlossenen Umlauf — auch hier.',
+          3: '$8 + 12 = 20$ stimmt — die Spannungssumme passt zur Quelle, der Lerner hat nur die Vorzeichen falsch gesetzt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['kvl'] },
+      ),
+
+      // Zeile 10: transfer · number-input · uses=[kvl]
+      ni(
+        'Zwei Spannungsquellen $U_{q1} = 12\\,\\text{V}$ und $U_{q2} = 4\\,\\text{V}$ sind in Reihe addierend geschaltet (beide pumpen Strom in dieselbe Richtung). Sie speisen einen einzigen ohmschen Verbraucher mit Spannungsabfall $U_R$. Wie groß ist $U_R$ in Volt?',
+        16, 0.01, 'V',
+        `**Ansatz:** KVL im Umlauf: $U_{q1} + U_{q2} - U_R = 0$ (beide Quellen addieren sich, Spannungsabfall am Widerstand mit umgekehrtem Vorzeichen).
+
+**Rechnung:** $U_R = U_{q1} + U_{q2} = 12 + 4 = 16\\,\\text{V}$.
+
+**Probe:** Mit $U_R = 16\\,\\text{V}$: $12 + 4 - 16 = 0$ ✓ (KVL erfüllt).
+
+**Typischer Fehler:** Quellen subtrahiert statt addiert ($12 - 4 = 8\\,\\text{V}$) — gilt nur, wenn die Quellen GEGENEINANDER geschaltet sind.`,
+        [
+          '"Reihe addierend" heißt: Pluspol der einen mit Minuspol der nächsten verbunden.',
+          'Gesamtquelle = Summe der beiden Einzelquellen.',
+          'KVL: $U_R = U_{q1} + U_{q2}$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['kvl'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [2] Vorzeichenkonvention beim Umlauf (concept: umlauf-vz)
+    // ═════════════════════════════════════════════════════════════════════
+    2: [
+      // Zeile 11: recognize · true-false · uses=[umlauf-vz]
+      tf(
+        'Die Wahl der Umlaufrichtung beim Maschensatz ist physikalisch beliebig — dreht man die Richtung um, kehren sich alle Vorzeichen konsistent um, und das Endergebnis bleibt unverändert.',
+        true,
+        `**Ansatz:** Die Umlaufrichtung ist eine Rechenkonvention, kein physikalischer Parameter.
+
+**Rechnung:** Aus $\\sum U = 0$ wird bei umgekehrter Richtung $-\\sum U = 0$ — beide Gleichungen sind äquivalent.
+
+**Probe:** Masche $U_q - U_{R1} - U_{R2} = 0$ wird im Gegen-Umlauf zu $-U_q + U_{R1} + U_{R2} = 0$, also wieder $U_q = U_{R1} + U_{R2}$ ✓.
+
+**Typischer Fehler:** Annahme, der Strom oder die Spannung "ändere sich" mit der Wahl — sie ändert sich nicht; nur die Buchhaltung in der Gleichung.`,
+        [
+          'Ist die Umlaufrichtung eine physikalische Größe oder eine Konvention?',
+          'Was passiert mit allen Termen in $\\sum U = 0$ beim Richtungs-Wechsel?',
+          'Multipliziere eine Gleichung mit $-1$ — bleibt die Lösung gleich?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['umlauf-vz'] },
+      ),
+
+      // Zeile 12: apply-guided · multiple-choice · uses=[umlauf-vz]
+      mc(
+        'Beim Durchlauf einer Masche im Uhrzeigersinn überquerst du einen Widerstand in Stromrichtung (Spannungspfeil zeigt in Umlaufrichtung). Mit welchem Vorzeichen geht der Spannungsabfall $U_R$ in $\\sum U = 0$ ein?',
+        ['$-U_R$', '$+U_R$', '$0$', 'Vorzeichen ist beliebig'],
+        0,
+        `**Ansatz:** Konvention: Spannung in Umlaufrichtung ist eine Energieabgabe pro Ladung — geht in $\\sum U = 0$ als negativer Beitrag ein, weil das Potenzial fällt.
+
+**Rechnung:** Spannungsabfall in Stromrichtung = Potenzial fällt in Umlaufrichtung → Beitrag $-U_R$ in der Maschengleichung.
+
+**Probe:** Klassisches Beispiel mit Quelle und Widerstand: Umlauf von $-$ über Quelle nach $+$ ($+U_q$), durch Widerstand zurück nach $-$ ($-U_R$) → $U_q - U_R = 0$, also $U_q = U_R$ ✓.
+
+**Typischer Fehler:** Vorzeichen am Widerstand mit dem an der Quelle gleichgesetzt — Quelle hebt das Potenzial ($+$ in Umlauf von $-$ nach $+$), Widerstand senkt es ($-$ in Stromrichtung).`,
+        [
+          'Was passiert physikalisch beim Durchqueren eines Widerstands in Stromrichtung mit dem Potenzial?',
+          'Steigt oder fällt das Potenzial in Umlaufrichtung?',
+          'Konvention: fallendes Potenzial → negativer Beitrag.',
+        ],
+        {
+          1: '$+U_R$ wäre richtig, wenn du den Widerstand GEGEN die Stromrichtung durchquerst — hier ist es aber in Stromrichtung.',
+          2: '$0$ würde bedeuten, der Widerstand trägt nichts zur Maschengleichung bei — das gilt nur für $R = 0$ oder $I = 0$.',
+          3: 'Es gibt eine eindeutige Konvention: in Stromrichtung durchquert → $-U_R$. "Beliebig" ist hier nicht zulässig.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['umlauf-vz'] },
+      ),
+
+      // Zeile 13: apply-independent · multiple-choice · uses=[umlauf-vz]
+      mc(
+        'Beim Umlauf einer Masche werden in Reihenfolge angetroffen: $+U_q = +10\\,\\text{V}$ (Quelle, von $-$ nach $+$ durchquert), $-U_1 = -3\\,\\text{V}$ (Widerstand in Stromrichtung), $-U_2 = -?$ (zweiter Widerstand in Stromrichtung). Welcher Wert muss $U_2$ haben, damit KVL erfüllt ist?',
+        ['$7\\,\\text{V}$', '$13\\,\\text{V}$', '$-7\\,\\text{V}$', '$3\\,\\text{V}$'],
+        0,
+        `**Ansatz:** KVL als $\\sum U = 0$ mit den explizit gegebenen Vorzeichen einsetzen.
+
+**Rechnung:** $+10 - 3 - U_2 = 0 \\Rightarrow U_2 = 7\\,\\text{V}$.
+
+**Probe:** $10 - 3 - 7 = 0$ ✓ (Bilanz im Umlauf).
+
+**Typischer Fehler:** Vorzeichen "von außen" addiert ($10 + 3 + U_2 = 0 \\Rightarrow U_2 = -13$) — die Vorzeichen stehen aber explizit in der Aufgabe.`,
+        [
+          'Setze die drei Beträge mit ihren Vorzeichen in $\\sum U = 0$ ein.',
+          '$10 + (-3) + (-U_2) = 0$.',
+          'Stelle nach $U_2$ um.',
+        ],
+        {
+          1: '$13\\,\\text{V}$ entsteht, wenn du $-U_1$ als $+U_1$ behandelst und so $10 + 3 = U_2$ rechnest.',
+          2: '$-7\\,\\text{V}$ wäre $U_2$ als negativer Wert — die Aufgabe definiert $U_2$ aber als Beträge eines Spannungsabfalls (positiv), das Vorzeichen steht schon vor.',
+          3: '$3\\,\\text{V}$ ist der Wert von $U_1$ — du hast nur die erste Bilanz $10 - 3$ aufgelöst, ohne $U_2$ zu berechnen.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['umlauf-vz'] },
+      ),
+
+      // Zeile 14: error-analysis · multiple-choice · uses=[umlauf-vz]
+      mc(
+        'Ein Lerner stellt für eine Masche mit Quelle $U_q = 24\\,\\text{V}$ und zwei Widerständen ($U_{R1} = 8\\,\\text{V}$ in Stromrichtung, $U_{R2} = 16\\,\\text{V}$ in Stromrichtung) die Gleichung $U_q + U_{R1} + U_{R2} = 0$ auf und folgert $U_q = -24\\,\\text{V}$. Welcher Fehler liegt vor?',
+        [
+          'Beim Umlauf werden Quelle ($-$ nach $+$, also $+U_q$) und Widerstandsabfälle (in Stromrichtung, also $-U_R$) entgegengesetzt durchquert — der Lerner hat alle drei mit gleichem Vorzeichen gezählt.',
+          'Die Maschengleichung muss multipliziert statt addiert werden.',
+          'Das Ohmsche Gesetz wurde an dieser Stelle vergessen.',
+          'Die Quelle wird in Wirklichkeit von $+$ nach $-$ durchquert.',
+        ],
+        0,
+        `**Ansatz:** Korrektes KVL: $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_q = 24\\,\\text{V}$ ✓ — der Wert stimmt, der Lerner verfälscht ihn nur durch die falsche Vorzeichen-Konvention.
+
+**Rechnung:** Im Lerner-Ansatz $U_q + U_{R1} + U_{R2} = 0$ wird $U_q = -(U_{R1} + U_{R2}) = -24\\,\\text{V}$ — physikalisch unsinnig, weil das Bauteil $+24\\,\\text{V}$ liefert.
+
+**Probe:** Plausibilität: Eine Spannungsquelle mit Bezeichnung "$U_q = 24\\,\\text{V}$" hat den Betrag $24\\,\\text{V}$ — ein Vorzeichen-Vorzeichen-Wechsel im Endergebnis ist immer ein Hinweis auf falsche Konvention.
+
+**Typischer Fehler:** "$\\sum U = 0$" als reine Beträge-Summe missverstanden statt als vorzeichenbehaftete Bilanz entlang der Umlaufrichtung.`,
+        [
+          'Welche Vorzeichen gehören zu Quelle vs. Widerstand beim Umlauf?',
+          'Vergleiche $U_q + U_{R1} + U_{R2} = 0$ (Lerner) mit $U_q - U_{R1} - U_{R2} = 0$ (korrekt).',
+          'Was sagt das Endergebnis $U_q = -24\\,\\text{V}$ über die Sinnhaftigkeit der Konvention aus?',
+        ],
+        {
+          1: 'KVL ist additiv ($\\sum U = 0$), nicht multiplikativ — das Wort "Multiplikation" passt hier nicht.',
+          2: 'Das Ohmsche Gesetz ist hier nicht das Problem — die Spannungswerte sind bereits gegeben, der Fehler liegt allein in den Vorzeichen.',
+          3: 'Die Aufgabe lässt die Quellrichtung offen, die übliche Konvention ($-$ nach $+$ im Umlauf) führt zur korrekten Bilanz.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['umlauf-vz'] },
+      ),
+
+      // Zeile 15: transfer · multiple-choice · uses=[umlauf-vz]
+      mc(
+        'Welche der folgenden Maschengleichungen ist äquivalent zu $U_q - U_{R1} - U_{R2} = 0$ (Quelle in Umlaufrichtung von $-$ nach $+$, beide Widerstände in Stromrichtung durchquert)?',
+        [
+          '$U_q = U_{R1} + U_{R2}$',
+          '$U_{R1} + U_{R2} + U_q = 0$',
+          '$U_q = U_{R1} - U_{R2}$',
+          '$U_{R2} = U_q + U_{R1}$',
+        ],
+        0,
+        `**Ansatz:** Algebraisches Umstellen — alle Spannungen auf eine Seite, Vorzeichen mitnehmen.
+
+**Rechnung:** $U_q - U_{R1} - U_{R2} = 0 \\Leftrightarrow U_q = U_{R1} + U_{R2}$ ✓.
+
+**Probe:** Mit Beispielwerten $U_q = 12\\,\\text{V}$, $U_{R1} = 5\\,\\text{V}$, $U_{R2} = 7\\,\\text{V}$: $12 - 5 - 7 = 0$ und $12 = 5 + 7$ — beide Gleichungen wahr.
+
+**Typischer Fehler:** Vorzeichen beim Umstellen vergessen, sodass z. B. die Quelle auf der falschen Seite landet.`,
+        [
+          'Bringe $U_{R1}$ und $U_{R2}$ auf die andere Seite.',
+          'Vorzeichen drehen sich beim Wechsel der Seite.',
+          'Probe mit konkreten Zahlen.',
+        ],
+        {
+          1: 'Das wäre $\\sum U = 0$ ohne Vorzeichen-Beachtung — Quelle und Abfälle wurden mit gleichem Vorzeichen aufgenommen.',
+          2: 'Hier wurde $U_{R2}$ vom Quellbetrag subtrahiert statt addiert — entspricht dem Fall, dass $R_2$ gegen die Stromrichtung durchquert würde.',
+          3: 'Vorzeichen falsch: $U_{R2} = U_q - U_{R1}$ wäre korrekt; hier addiert $U_{R1}$.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['umlauf-vz'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [3] Spannungsteiler — $U_2 = U \cdot R_2/(R_1+R_2)$ (concept: spann-teiler)
+    // ═════════════════════════════════════════════════════════════════════
+    3: [
+      // Zeile 16: recognize · true-false · uses=[spann-teiler]
+      tf(
+        'Beim unbelasteten Spannungsteiler aus zwei Widerständen $R_1$ und $R_2$ in Reihe gilt für die Spannung an $R_2$: $U_2/U = R_2/(R_1 + R_2)$.',
+        true,
+        `**Ansatz:** Spannungsteiler ist ein Spezialfall des Maschensatzes bei Reihenschaltung.
+
+**Rechnung:** Mit $I = U/(R_1+R_2)$ folgt $U_2 = R_2 \\cdot I = U \\cdot R_2/(R_1+R_2)$.
+
+**Probe:** Bei $R_1 = R_2$ wird $U_2/U = R_2/(2R_2) = 1/2$ — die Spannung halbiert sich gleichmäßig ✓.
+
+**Typischer Fehler:** Formel mit $R_1$ im Zähler verwendet, wenn $U_2$ an $R_2$ gefragt ist — der gefragte Widerstand steht IMMER im Zähler.`,
+        [
+          'Welcher Strom fließt im Reihenkreis aus $R_1$ und $R_2$?',
+          'Wende $U_2 = R_2 \\cdot I$ an.',
+          'Setze $I$ in $U_2$ ein und vereinfache.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['spann-teiler'] },
+      ),
+
+      // Zeile 17: apply-guided · multiple-choice · uses=[spann-teiler]
+      mc(
+        'An einer Eingangsspannung $U = 12\\,\\text{V}$ liegt ein Spannungsteiler aus $R_1 = R_2 = 100\\,\\Omega$ in Reihe. Welche Spannung $U_2$ fällt an $R_2$ ab?',
+        ['$6\\,\\text{V}$', '$12\\,\\text{V}$', '$3\\,\\text{V}$', '$24\\,\\text{V}$'],
+        0,
+        `**Ansatz:** Spannungsteiler-Formel: $U_2 = U \\cdot R_2/(R_1 + R_2)$.
+
+**Rechnung:** $U_2 = 12 \\cdot 100/(100 + 100) = 12 \\cdot 1/2 = 6\\,\\text{V}$.
+
+**Probe:** $U_1 + U_2 = 6 + 6 = 12 = U$ ✓ (Maschensatz, beide Widerstände gleich → Spannung halbiert).
+
+**Typischer Fehler:** Gesamtspannung als Antwort gegeben ($12\\,\\text{V}$) — die Spannung am Einzelwiderstand ist kleiner als die Gesamtspannung.`,
+        [
+          'Welcher Anteil der Gesamtspannung fällt an einem Widerstand ab, wenn beide gleich sind?',
+          'Spannungsteiler-Formel: $U_2/U = R_2/(R_1+R_2)$.',
+          '$R_2/(R_1+R_2) = 100/200 = 1/2$.',
+        ],
+        {
+          1: '$12\\,\\text{V}$ ist die Gesamtspannung $U$ — die Teilspannung am Einzelwiderstand muss kleiner sein.',
+          2: '$3\\,\\text{V}$ ergibt sich aus $U/4$ — du hast vermutlich $R_1+R_2 = 4 \\cdot R_1$ angenommen oder einen Faktor doppelt geteilt.',
+          3: '$24\\,\\text{V}$ ist $2\\cdot U$ — Spannungsteiler verkleinert die Spannung, vergrößert sie nie.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['spann-teiler'] },
+      ),
+
+      // Zeile 18: apply-independent · number-input · uses=[spann-teiler]
+      ni(
+        'An einer Eingangsspannung $U = 24\\,\\text{V}$ liegt ein Spannungsteiler aus $R_1 = 200\\,\\Omega$ und $R_2 = 400\\,\\Omega$ in Reihe. Welche Spannung $U_2$ fällt an $R_2$ ab in Volt?',
+        16, 0.05, 'V',
+        `**Ansatz:** Spannungsteiler-Formel mit dem gefragten Widerstand $R_2$ im Zähler.
+
+**Rechnung:** $U_2 = U \\cdot R_2/(R_1 + R_2) = 24 \\cdot 400/(200 + 400) = 24 \\cdot 400/600 = 24 \\cdot 2/3 = 16\\,\\text{V}$.
+
+**Probe:** $U_1 = 24 \\cdot 200/600 = 8\\,\\text{V}$, $U_1 + U_2 = 8 + 16 = 24 = U$ ✓.
+
+**Typischer Fehler:** $R_1$ statt $R_2$ im Zähler ($U_2 = 24 \\cdot 200/600 = 8\\,\\text{V}$) — das wäre der Spannungsabfall an $R_1$, nicht an $R_2$.`,
+        [
+          'Welcher Widerstand muss im Zähler stehen, wenn $U_2$ gefragt ist?',
+          'Nenner = $R_1 + R_2 = 600$.',
+          '$24 \\cdot 400/600 = 16$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['spann-teiler'] },
+      ),
+
+      // Zeile 19: error-analysis · multiple-choice · uses=[spann-teiler]
+      mc(
+        'Bei einem Spannungsteiler mit $U = 20\\,\\text{V}$, $R_1 = 100\\,\\Omega$ und $R_2 = 400\\,\\Omega$ rechnet ein Lerner $U_2 = U \\cdot R_1/(R_1 + R_2) = 20 \\cdot 100/500 = 4\\,\\text{V}$ und gibt $4\\,\\text{V}$ als Spannung an $R_2$ an. Welcher Fehler liegt vor?',
+        [
+          '$R_1$ und $R_2$ im Zähler vertauscht — die Spannung an $R_2$ ist proportional zu $R_2$, nicht zu $R_1$.',
+          'Der Nenner $R_1 + R_2 = 500\\,\\Omega$ wurde falsch berechnet.',
+          'Spannungsteiler-Formel ist hier nicht anwendbar.',
+          'Ohmsches Gesetz wurde nicht angewendet.',
+        ],
+        0,
+        `**Ansatz:** Korrekt: $U_2 = 20 \\cdot 400/500 = 16\\,\\text{V}$. Lerner hat $R_1$ in den Zähler gesetzt → er hat tatsächlich $U_1$ statt $U_2$ berechnet.
+
+**Rechnung:** $U_1 = U \\cdot R_1/(R_1+R_2) = 4\\,\\text{V}$ (was der Lerner ausgerechnet hat). $U_2 = U - U_1 = 16\\,\\text{V}$.
+
+**Probe:** Plausibilität: $R_2$ ist 4-mal so groß wie $R_1$, also fällt an $R_2$ auch 4-mal so viel Spannung ab ($16 = 4 \\cdot 4$) ✓.
+
+**Typischer Fehler:** Merkregel ignoriert: "Der Widerstand, an dem die gefragte Spannung abfällt, steht im Zähler."`,
+        [
+          'Welche Spannung ist gefragt — $U_1$ oder $U_2$?',
+          'Welcher Widerstand steht entsprechend im Zähler?',
+          'Vergleiche das Lerner-Ergebnis mit $U \\cdot R_2/(R_1 + R_2)$.',
+        ],
+        {
+          1: 'Der Nenner $100 + 400 = 500$ ist korrekt — der Fehler liegt im Zähler.',
+          2: 'Spannungsteiler ist hier definitionsgemäß anwendbar (zwei Widerstände in Reihe ohne Last).',
+          3: 'Die Spannungsteiler-Formel ist eine direkte Konsequenz des Ohmschen Gesetzes — der Lerner hat sie nicht "vergessen", sondern falsch angewendet.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['spann-teiler'] },
+      ),
+
+      // Zeile 20: transfer · number-input · uses=[spann-teiler]
+      ni(
+        'Welcher Widerstand $R_2$ muss zu $R_1 = 300\\,\\Omega$ in Reihe geschaltet werden, damit bei einer Eingangsspannung $U = 10\\,\\text{V}$ am Widerstand $R_2$ genau $U_2 = 4\\,\\text{V}$ abfallen? Antwort in Ohm.',
+        200, 0.5, 'Ω',
+        `**Ansatz:** Spannungsteiler-Formel nach $R_2$ umstellen.
+
+**Rechnung:** $U_2 = U \\cdot R_2/(R_1+R_2) \\Rightarrow 4 = 10 \\cdot R_2/(300+R_2)$. Beide Seiten mit $(300+R_2)$ multiplizieren: $4 \\cdot (300+R_2) = 10\\,R_2 \\Rightarrow 1200 + 4R_2 = 10R_2 \\Rightarrow 6R_2 = 1200 \\Rightarrow R_2 = 200\\,\\Omega$.
+
+**Probe:** Einsetzen: $U_2 = 10 \\cdot 200/(300+200) = 10 \\cdot 200/500 = 4\\,\\text{V}$ ✓.
+
+**Typischer Fehler:** "$R_2$ aus Verhältnis $4/10$ direkt gleich $R_1$ multipliziert" ($R_2 = 0{,}4 \\cdot 300 = 120$) — das ignoriert, dass auch der Nenner von $R_2$ abhängt.`,
+        [
+          'Stelle die Spannungsteiler-Formel als Gleichung mit Unbekannter $R_2$ auf.',
+          'Multipliziere mit dem Nenner $(R_1+R_2)$, dann nach $R_2$ sortieren.',
+          '$4 \\cdot 300 = (10 - 4) \\cdot R_2 \\Rightarrow R_2 = 1200/6 = 200$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['spann-teiler'] },
+      ),
+    ],
+  },
 }

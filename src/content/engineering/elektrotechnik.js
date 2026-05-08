@@ -238,19 +238,40 @@ Aus dieser Formel folgen direkt zwei Merksätze:
 
 Die Summe aller Ströme an einem Knoten ist null:
 
-$$\sum I = 0$$
+$$\sum I_\text{Knoten} = 0 \qquad \text{bzw.} \qquad \sum I_\text{ein} = \sum I_\text{aus}$$
 
-Zufliesende Ströme positiv, abfliesende negativ (oder umgekehrt — konsistent bleiben):
+Begründung: Ladungserhaltung — an einem Knoten kann Ladung weder gespeichert werden noch verschwinden. Konvention: Zufließende Ströme positiv, abfließende negativ (oder konsistent umgekehrt).
 
-$$I_1 = I_2 + I_3$$
+**Beispiel:** Fließen $I_1$ und $I_2$ in einen Knoten hinein und fließt $I_3$ heraus, gilt $I_1 + I_2 = I_3$.
 
 ### 2. Kirchhoffsches Gesetz — Maschensatz (KVL)
 
 Die Summe aller Spannungen in einem geschlossenen Umlauf ist null:
 
-$$\sum U = 0$$
+$$\sum U_\text{Masche} = 0$$
 
-Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
+Begründung: Energieerhaltung — die Spannung ist der Energieunterschied pro Ladung, und nach einem geschlossenen Umlauf muss man wieder am Ausgangspotenzial sein.
+
+**Beispiel:** Eine Quelle $U_q$ und zwei Widerstände in Reihe — $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$.
+
+### Vorzeichenkonvention beim KVL-Umlauf
+
+| Schritt | Vorzeichen |
+|---------|------------|
+| Quelle in Umlaufrichtung von $-$ nach $+$ durchquert | $+U_q$ |
+| Quelle in Umlaufrichtung von $+$ nach $-$ durchquert | $-U_q$ |
+| Widerstand in Stromrichtung durchquert | $-U_R = -R\,I$ |
+| Widerstand gegen die Stromrichtung durchquert | $+U_R = +R\,I$ |
+
+Die Wahl der Umlaufrichtung ändert das Ergebnis nicht — alle Vorzeichen drehen sich konsistent um.
+
+### Spannungsteiler — Spezialfall des Maschensatzes
+
+Liegen zwei Widerstände $R_1$ und $R_2$ in Reihe an der Eingangsspannung $U$, teilt sich die Spannung im Verhältnis der Widerstände auf:
+
+$$U_2 = U \cdot \frac{R_2}{R_1 + R_2} \qquad U_1 = U \cdot \frac{R_1}{R_1 + R_2}$$
+
+Merkregel: **An welchem Widerstand die Spannung gefragt ist, dessen Wert steht im Zähler.** Die Formel gilt nur **ohne Last** an $R_2$ — bei Belastung sinkt $U_2$.
 `,
           exercises: [
             {
@@ -263,17 +284,24 @@ Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
                 'Widerstand ist Spannung durch Strom',
               ],
               correctIndex: 0,
-              explanation: 'KCL beruht auf der Ladungserhaltung: Was in einen Knoten hineinfließt, muss auch wieder herausfließen.',
+              explanation: `**Ansatz:** KCL ist eine Strom-Bilanz an einem Knoten und folgt aus der Ladungserhaltung.
+
+**Rechnung:** An einem Knoten gilt $\\sum I = 0$ — was hineinfließt, muss auch herausfließen, denn Ladung kann am Knoten weder gespeichert werden noch verschwinden.
+
+**Probe:** Bei einem T-Knoten mit $I_1 = 3\\,\\text{A}$ zu, $I_2 = 1\\,\\text{A}$ ab, $I_3 = 2\\,\\text{A}$ ab gilt $3 = 1 + 2$ ✓.
+
+**Typischer Fehler:** KCL und KVL verwechselt — KVL ist die Spannungs-Bilanz im geschlossenen Umlauf.`,
               hints: [
-                'KCL = Knotenstromsatz',
-                'Ladungserhaltung am Knoten',
-                '$\\sum I_\\text{ein} = \\sum I_\\text{aus}$',
+                'KCL = Knotenstromsatz — Aussage über Ströme.',
+                'Erhaltungssatz: Ladung wird am Knoten weder gespeichert noch erzeugt.',
+                '$\\sum I_\\text{ein} = \\sum I_\\text{aus}$ am Knoten.',
               ],
               wrongAnswerExplanations: {
-                1: 'Das ist der Maschensatz (KVL), nicht der Knotensatz. KVL: $\\sum U = 0$ im geschlossenen Umlauf; KCL: $\\sum I = 0$ am Knoten.',
+                1: 'Das ist der Maschensatz (KVL), nicht KCL. KVL: $\\sum U = 0$ im geschlossenen Umlauf; KCL: $\\sum I = 0$ am Knoten.',
                 2: 'Das ist die Leistungsformel $P = U \\cdot I$, nicht eines der Kirchhoffschen Gesetze.',
                 3: 'Das ist das Ohmsche Gesetz $R = U/I$, nicht Kirchhoff. KCL und KVL sind Bilanzgleichungen für Ströme bzw. Spannungen.',
               },
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['kcl'] },
             },
             {
               type: 'number-input',
@@ -281,12 +309,19 @@ Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
               correctValue: 2,
               tolerance: 0.01,
               unit: 'A',
-              explanation: 'KCL: $I_1 = I_2 + I_3 \\Rightarrow I_3 = 3 - 1 = 2\\,\\text{A}$',
+              explanation: `**Ansatz:** Knotensatz: zufließende Ströme = abfließende Ströme. Hier ein zufließender Strom und zwei abfließende.
+
+**Rechnung:** $I_1 = I_2 + I_3 \\Rightarrow I_3 = 3 - 1 = 2\\,\\text{A}$.
+
+**Probe:** Setze ein: $I_1 = 3 = 1 + 2 = I_2 + I_3$ ✓ (KCL erfüllt).
+
+**Typischer Fehler:** Vorzeichen vergessen — alle drei Ströme positiv addiert ($3 + 1 + I_3 = 0$ → $I_3 = -4\\,\\text{A}$), obwohl die Aufgabe Richtungen "zu/ab" explizit nennt.`,
               hints: [
-                'KCL: $\\sum I = 0$ am Knoten',
-                '$I_1 = I_2 + I_3$',
-                '$3 = 1 + I_3$',
+                'KCL: $\\sum I_\\text{ein} = \\sum I_\\text{aus}$ am Knoten.',
+                '$I_1$ ist zufließend (links), $I_2$ und $I_3$ sind abfließend (rechts).',
+                '$3 = 1 + I_3 \\Rightarrow I_3 = 2$.',
               ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['kcl'] },
             },
             {
               type: 'number-input',
@@ -294,12 +329,19 @@ Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
               correctValue: 5,
               tolerance: 0.01,
               unit: 'V',
-              explanation: 'KVL: $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_{R2} = 9 - 4 = 5\\,\\text{V}$',
+              explanation: `**Ansatz:** KVL im Umlauf: Quelle minus Spannungsabfälle gleich null.
+
+**Rechnung:** $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_{R2} = U_q - U_{R1} = 9 - 4 = 5\\,\\text{V}$.
+
+**Probe:** $U_{R1} + U_{R2} = 4 + 5 = 9\\,\\text{V} = U_q$ ✓ (Spannungsabfälle summieren sich zur Quellspannung).
+
+**Typischer Fehler:** $U_{R2} = U_q + U_{R1} = 13\\,\\text{V}$ — Vorzeichen vergessen, Quelle und Abfall mit gleichem Vorzeichen addiert.`,
               hints: [
-                'KVL: $\\sum U = 0$ im Umlauf',
-                '$U_q = U_{R1} + U_{R2}$',
-                '$9 = 4 + U_{R2}$',
+                'KVL: $\\sum U = 0$ im geschlossenen Umlauf.',
+                'Quelle und Spannungsabfälle haben entgegengesetzte Vorzeichen.',
+                '$U_q = U_{R1} + U_{R2} \\Rightarrow U_{R2} = 9 - 4$.',
               ],
+              pedagogy: { stage: 'transfer', subGoal: 1, uses: ['kvl'] },
             },
           ],
         },
