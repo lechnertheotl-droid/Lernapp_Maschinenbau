@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3171 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2389 (75 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1451 / 1451 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 351 / 1134 (31 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3201 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2421 (76 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1468 / 1468 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 356 / 1134 (31 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1389,10 +1389,10 @@ _Automatisierung, Robotik, Prozesstechnik leben von sauberer Regelung. Stabilit�
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 13
-- Aufgaben: **95** (Lesson-Path: 46 · Goal-Tasks: 49)
-- 4-Block: 55/95 (58 %) 🔴
-- MC-wAE: 57/57 (100 %) ✅
-- Sub-Goals: 9/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **125** (Lesson-Path: 46 · Goal-Tasks: 79)
+- 4-Block: 87/125 (70 %) 🟡
+- MC-wAE: 74/74 (100 %) ✅
+- Sub-Goals: 14/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Python und Matlab für ingenieurmäßiges Rechnen: Arrays, Schleifen, Plot, LGS, numerische Integration.**
@@ -1432,7 +1432,7 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `py-1-1` Variablen & Datentypen | 4 | 4/4 | 27 | 18/0/7/2/0 | 27/27 | 18/18 | ✅ | — |
-| `py-1-2` Operatoren & Ausdrücke | 5 | 0/5 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `py-1-2` Operatoren & Ausdrücke | 5 | 5/5 | 33 | 18/6/8/1/0 | 32/33 | 18/18 | ✅ | +1 4B |
 | `py-1-3` Listen & Arrays | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
 | `py-1-4` Kontrollstrukturen | 4 | 0/4 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +4 Goal, +3 4B |
 | `py-1-5` Funktionen definieren | 5 | 5/5 | 28 | 21/0/6/1/0 | 28/28 | 21/21 | ✅ | — |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 107 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 106 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -3725,59 +3725,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-
-#### `py-1-2` · Operatoren & Ausdrücke
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `py-1-1` → `dyn-typing`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `div-op` — `/` Float, `//` Integer, `%` Modulo (SG 0)
-  2. `pot-op` — Python `**`, Matlab `^` bzw. `.^` elementweise (SG 1)
-  3. `log-op` — Logik Python `and/or/not`, Matlab `&&/||/~` (SG 2)
-  4. `float-cmp` — Float-Vergleich `abs(a-b)<1e-9` statt `==` (SG 3)
-  5. `bool-int` — `bool` ist Subtyp von `int`: `0==False`, `1==True` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `div-op` · **0/5+** — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
-  - 🔴 [1] _hoch_ · Konzepte: `pot-op` · **0/5+** — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
-  - 🔴 [2] _hoch_ · Konzepte: `log-op` · **0/5+** — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
-  - 🔴 [3] _hoch_ · Konzepte: `float-cmp` · **0/5+** — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
-  - 🔴 [4] _niedrig_ · Konzepte: `bool-int` · **0/5+** — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `div-op` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `div-op` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pot-op` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pot-op` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `log-op` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `log-op` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `float-cmp` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `bool-int` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-1-3` · Listen & Arrays
 
@@ -9931,7 +9878,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 42 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 43 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11347,6 +11294,58 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `py-1-2` · Operatoren & Ausdrücke
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-1` → `dyn-typing`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `div-op` — `/` Float, `//` Integer, `%` Modulo (SG 0)
+  2. `pot-op` — Python `**`, Matlab `^` bzw. `.^` elementweise (SG 1)
+  3. `log-op` — Logik Python `and/or/not`, Matlab `&&/||/~` (SG 2)
+  4. `float-cmp` — Float-Vergleich `abs(a-b)<1e-9` statt `==` (SG 3)
+  5. `bool-int` — `bool` ist Subtyp von `int`: `0==False`, `1==True` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `div-op` · **6/5+** — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
+  - ✅ [1] _hoch_ · Konzepte: `pot-op` · **6/5+** — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
+  - ✅ [2] _hoch_ · Konzepte: `log-op` · **6/5+** — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
+  - ✅ [3] _hoch_ · Konzepte: `float-cmp` · **6/5+** — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
+  - ✅ [4] _niedrig_ · Konzepte: `bool-int` · **6/5+** — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `div-op` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `div-op` | 1 | 4 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pot-op` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-op` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-op` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-op` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `pot-op` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `log-op` | 1 | 2 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `log-op` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `float-cmp` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `bool-int` | 1 | 2 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
+- **4-Block-Erklärung fehlt bei:** `ex-py-1-2-goal-sg1-5`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `dgl-1-3` · Lineare DGL 1. Ordnung
 
