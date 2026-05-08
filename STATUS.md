@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2939 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2136 (73 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1327 / 1327 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 304 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2969 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2170 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1342 / 1342 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 310 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **261** (Lesson-Path: 61 · Goal-Tasks: 200)
-- 4-Block: 238/261 (91 %) 🟡
-- MC-wAE: 123/123 (100 %) ✅
-- Sub-Goals: 40/57 Goal-Tasks verknüpft 🟡
+- Aufgaben: **291** (Lesson-Path: 61 · Goal-Tasks: 230)
+- 4-Block: 272/291 (93 %) 🟡
+- MC-wAE: 138/138 (100 %) ✅
+- Sub-Goals: 46/57 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -577,7 +577,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-1-1` Was ist eine Differentialgleichung? | 5 | 5/5 | 29 | 19/0/6/4/0 | 29/29 | 19/19 | ✅ | — |
 | `dgl-1-2` Trennung der Variablen | 5 | 5/5 | 29 | 17/5/5/1/1 | 29/29 | 17/17 | ✅ | — |
 | `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 6/6 | 35 | 18/9/6/1/1 | 35/35 | 18/18 | ✅ | — |
-| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
+| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 6/6 | 34 | 19/7/6/2/0 | 34/34 | 19/19 | ✅ | — |
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +5 Goal, +4 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 6/6 | 33 | 14/7/7/3/2 | 33/33 | 14/14 | ✅ | — |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 4 | 3/0/0/1/0 | 0/4 | 3/3 | ✅ | +6 Goal, +4 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 115 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 114 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -5304,66 +5304,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-ordnung`, `dgl-linear`, `dgl-homogen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `char-gleichung` — Ansatz $y=e^{\lambda x}$ → char. Gleichung $a\lambda^2+b\lambda+c=0$ (SG 0)
-  2. `fall-d-pos` — D>0 (zwei reelle Wurzeln): $y=C_1 e^{\lambda_1 x}+C_2 e^{\lambda_2 x}$ ⇐ `char-gleichung` (SG 1)
-  3. `fall-d-null` — D=0 (Doppelwurzel): $y=(C_1+C_2 x)e^{\lambda x}$ ⇐ `char-gleichung` (SG 2)
-  4. `fall-d-neg` — D<0 (komplex $\alpha\pm i\beta$): $y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$ ⇐ `char-gleichung` (SG 3)
-  5. `daempfung` — Dämpfung: $\alpha<0$ abklingend, $\alpha=0$ ungedämpft, $\alpha>0$ instabil ⇐ `fall-d-neg` (SG 4)
-  6. `feder-masse` — Feder-Masse: $m\ddot x+d\dot x+kx=0$, $\omega_0=\sqrt{k/m}$ ⇐ `fall-d-neg` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `char-gleichung` · **0/5+** — Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
-  - 🔴 [1] _hoch_ · Konzepte: `fall-d-pos` · **0/5+** — D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
-  - 🔴 [2] _hoch_ · Konzepte: `fall-d-null` · **0/5+** — D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
-  - 🔴 [3] _hoch_ · Konzepte: `fall-d-neg` · **0/5+** — D < 0 (komplex $\alpha \pm i\beta$): $y = e^{\alpha x}(C_1 \cos\beta x + C_2 \sin\beta x)$ — Schwingung!
-  - 🔴 [4] _hoch_ · Konzepte: `daempfung` · **0/5+** — Dämpfung: $\alpha < 0$ abklingend, $\alpha = 0$ ungedämpft, $\alpha > 0$ instabil
-  - 🔴 [5] _hoch_ · Konzepte: `feder-masse` · **0/5+** — Feder-Masse: $m\ddot x + d\dot x + kx = 0$ — Eigenfrequenz $\omega_0 = \sqrt{k/m}$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `fall-d-pos`, `char-gleichung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 | Doppelwurzel-Faktor $x$ vergessen |
-| 15 | 2 | transfer           | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `daempfung` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `daempfung`, `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `feder-masse` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `dgl-2-1` · Variation der Konstanten
 

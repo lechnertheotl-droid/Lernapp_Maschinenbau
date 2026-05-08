@@ -375,7 +375,13 @@ export const exercises_dgl_u1 = {
       '$\\lambda^2 = -c/a$',
     ],
     correctIndex: 1,
-    explanation: 'Einsetzen von $y = e^{\\lambda x}$, $y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$ ergibt nach Kürzen von $e^{\\lambda x}$: $a\\lambda^2 + b\\lambda + c = 0$ (charakteristische Gleichung).',
+    explanation: `**Ansatz:** Exponential­ansatz $y = e^{\\lambda x}$ in die DGL einsetzen, $e^{\\lambda x}$ ausklammern und kürzen — übrig bleibt eine Polynom­gleichung in $\\lambda$.
+
+**Rechnung:** Mit $y = e^{\\lambda x}$, $y\' = \\lambda\\,e^{\\lambda x}$, $y\'\' = \\lambda^2\\,e^{\\lambda x}$: $a\\,\\lambda^2 e^{\\lambda x} + b\\,\\lambda e^{\\lambda x} + c\\,e^{\\lambda x} = 0$. Faktor $e^{\\lambda x} \\neq 0$ herausziehen → $a\\lambda^2 + b\\lambda + c = 0$.
+
+**Probe:** Spezialfall $y\'\'+4y=0$: char. Gleichung $\\lambda^2 + 4 = 0$ → $\\lambda = \\pm 2i$ → Lösungen $\\sin(2x), \\cos(2x)$ ✓.
+
+**Typischer Fehler:** Die Ableitungs­potenzen vergessen ($a+b+c=0$, falsch — jede Ableitung bringt einen Faktor $\\lambda$) oder $y\'\'$ weglassen ($a\\lambda + b = 0$, das wäre Ordnung 1).`,
     hints: [
       'Setze den Exponentialansatz $y = e^{\\lambda x}$ in die DGL ein.',
       '$y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$ — alles enthält Faktor $e^{\\lambda x}$.',
@@ -397,7 +403,13 @@ export const exercises_dgl_u1 = {
       '$y = C_1 \\cos(\\alpha x) + C_2 \\sin(\\beta x)$',
     ],
     correctIndex: 1,
-    explanation: 'Bei komplexen Wurzeln $\\alpha \\pm i\\beta$ ist die reelle Lösung: $y = e^{\\alpha x}(C_1 \\cos(\\beta x) + C_2 \\sin(\\beta x))$. Das beschreibt eine Schwingung (sin/cos) mit Dämpfung ($e^{\\alpha x}$).',
+    explanation: `**Ansatz:** Über die Eulerformel $e^{i\\beta x} = \\cos(\\beta x) + i\\sin(\\beta x)$ werden die komplexen Lösungen $e^{(\\alpha\\pm i\\beta)x}$ in reelle Linearkombinationen aus $\\cos$ und $\\sin$ umgeschrieben.
+
+**Rechnung:** Mit $\\lambda = \\alpha \\pm i\\beta$: $e^{\\lambda x} = e^{\\alpha x}\\cdot e^{\\pm i\\beta x} = e^{\\alpha x}(\\cos(\\beta x) \\pm i\\sin(\\beta x))$. Reelle Linearkombination liefert $y = e^{\\alpha x}(C_1\\cos(\\beta x) + C_2\\sin(\\beta x))$ — Schwingung mit Frequenz $\\beta$, Dämpfung $e^{\\alpha x}$.
+
+**Probe:** Beispiel $\\lambda = -1 \\pm 2i$: $y = e^{-x}(C_1\\cos 2x + C_2\\sin 2x)$. Test mit $y_1 = e^{-x}\\cos 2x$: $y_1\'\' + 2y_1\' + 5y_1$ → führt nach Ableiten und Einsetzen auf $0$ ✓.
+
+**Typischer Fehler:** $\\alpha$ und $\\beta$ verwechseln ($\\alpha$ in $\\cos/\\sin$ statt $\\beta$ — falsche Frequenz), zwei verschiedene e-Funktionen für Real- und Imaginärteil schreiben (das ist der Fall $D>0$), oder den linearen Faktor $x$ einbauen (das ist nur bei Doppelwurzel nötig).`,
     hints: [
       'Komplexe Wurzeln $\\Rightarrow$ Schwingungsverhalten.',
       '$\\alpha$ ist der Realteil — bestimmt die exponentielle Dämpfung ($e^{\\alpha x}$).',
@@ -419,7 +431,13 @@ export const exercises_dgl_u1 = {
       '$y = C_1 \\cos(4x) + C_2 \\sin(4x)$',
     ],
     correctIndex: 1,
-    explanation: 'Charakteristische Gleichung: $\\lambda^2 + 4 = 0 \\Rightarrow \\lambda = \\pm 2i$. Also $\\alpha = 0$, $\\beta = 2$. Lösung: $y = C_1 \\cos(2x) + C_2 \\sin(2x)$ (reine Schwingung ohne Dämpfung).',
+    explanation: `**Ansatz:** Char. Gleichung lösen, Wurzeln klassifizieren ($D>0$ / $D=0$ / $D<0$), passende Lösungs­form anwenden.
+
+**Rechnung:** $\\lambda^2 + 4 = 0 \\Rightarrow \\lambda^2 = -4 \\Rightarrow \\lambda = \\pm 2i$. Also $\\alpha = 0$, $\\beta = 2$ → reelle Lösung $y = e^{0\\cdot x}(C_1\\cos(2x) + C_2\\sin(2x)) = C_1\\cos(2x) + C_2\\sin(2x)$.
+
+**Probe:** $y\'\' = -4C_1\\cos(2x) - 4C_2\\sin(2x) = -4y$, also $y\'\' + 4y = 0$ ✓. Verhalten: ungedämpfte harmonische Schwingung mit Kreisfrequenz $\\beta = 2$ (Periode $T = \\pi$).
+
+**Typischer Fehler:** $\\lambda^2 = +4$ statt $-4$ lesen ($\\lambda = \\pm 2$ wären reell, ergäbe $C_1 e^{2x}+C_2 e^{-2x}$ — passt zu $y\'\' - 4y = 0$, nicht $y\'\' + 4y = 0$). Oder $\\beta$ als $4$ statt $\\sqrt{4}=2$ aus der char. Gleichung übernehmen.`,
     hints: [
       'Charakteristische Gleichung: $\\lambda^2 + 4 = 0$.',
       '$\\lambda^2 = -4 \\Rightarrow \\lambda = \\pm 2i$ (rein imaginär, $\\alpha = 0$).',
@@ -441,7 +459,13 @@ export const exercises_dgl_u1 = {
       '$y = e^{2.5x}(C_1 \\cos(x) + C_2 \\sin(x))$',
     ],
     correctIndex: 0,
-    explanation: 'Charakteristische Gleichung: $\\lambda^2 - 5\\lambda + 6 = 0 \\Rightarrow (\\lambda - 2)(\\lambda - 3) = 0 \\Rightarrow \\lambda_1 = 2, \\lambda_2 = 3$. Zwei verschiedene reelle Wurzeln → $y = C_1 e^{2x} + C_2 e^{3x}$.',
+    explanation: `**Ansatz:** Char. Gleichung aufstellen ($\\lambda^2 - 5\\lambda + 6 = 0$), Diskriminante prüfen, passende Lösungs­form anwenden.
+
+**Rechnung:** $D = 25 - 24 = 1 > 0$ → zwei verschiedene reelle Wurzeln. Faktorisieren: $(\\lambda - 2)(\\lambda - 3) = 0 \\Rightarrow \\lambda_1 = 2, \\lambda_2 = 3$. Allgemeine Lösung: $y = C_1\\,e^{2x} + C_2\\,e^{3x}$.
+
+**Probe:** $y\' = 2C_1 e^{2x} + 3C_2 e^{3x}$, $y\'\' = 4C_1 e^{2x} + 9C_2 e^{3x}$. Einsetzen: $y\'\' - 5y\' + 6y = (4-10+6)C_1 e^{2x} + (9-15+6)C_2 e^{3x} = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen­fehler bei den Wurzeln (Vieta-Probe: Summe $\\lambda_1+\\lambda_2 = +5$, Produkt $= +6$ — also beide Wurzeln positiv). Oder Doppelwurzel-Form $(C_1 + C_2 x)e^{5x}$ ansetzen (passt nur bei $D=0$).`,
     hints: [
       'Charakteristische Gleichung: $\\lambda^2 - 5\\lambda + 6 = 0$.',
       'Faktorisieren: $(\\lambda - 2)(\\lambda - 3) = 0$ (oder pq-Formel) → $\\lambda_1 = 2, \\lambda_2 = 3$.',
@@ -931,7 +955,20 @@ Dabei ist:
 
 Wenn $\\alpha < 0$: gedämpfte Schwingung (klingt ab)
 Wenn $\\alpha = 0$: ungedämpfte Schwingung (schwingt ewig)
-Wenn $\\alpha > 0$: aufklingende Schwingung (Amplitude wächst — instabil!)`,
+Wenn $\\alpha > 0$: aufklingende Schwingung (Amplitude wächst — instabil!)
+
+**Anwendung Feder-Masse-Schwinger:** Newton'sche Bewegungs­gleichung mit Feder­kraft $F_F = -k x$ und Dämpfungs­kraft $F_D = -d \\dot x$:
+$$m\\,\\ddot x + d\\,\\dot x + k\\,x = 0$$
+Char. Gleichung $m\\lambda^2 + d\\lambda + k = 0$.
+
+| Größe | Formel | Bedeutung |
+|---|---|---|
+| Eigen­kreis­frequenz | $\\omega_0 = \\sqrt{k/m}$ | ungedämpft, $d=0$ |
+| Dämpfungs­rate | $\\alpha = -d/(2m)$ | Realteil der Wurzel |
+| Gedämpfte Frequenz | $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2}$ | bei schwacher Dämpfung |
+| Periode (ungedämpft) | $T = 2\\pi/\\omega_0$ | volle Schwingung |
+
+Drei Dämpfungs­fälle: schwach ($d^2 < 4mk$, Schwingung), kritisch ($d^2 = 4mk$, Doppelwurzel), stark ($d^2 > 4mk$, kein Schwingen).`,
       },
       {
         id: 'dgl-1-4-s3', type: 'visualization', title: 'Schwingungslösungen',
