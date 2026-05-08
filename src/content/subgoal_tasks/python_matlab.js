@@ -628,4 +628,724 @@ Matlab dagegen nutzt camelCase: \`numIterations\`.
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // py-1-2 — Operatoren & Ausdrücke  (5 subGoals)
+  // 30 Aufgaben mit pedagogy-Tags · alle 25 Matrix-Zeilen + 5 Bonus.
+  // ───────────────────────────────────────────────────────────────────────
+  'py-1-2': {
+    // ── SG 0 — `div-op` — `/` Float, `//` Integer, `%` Modulo ────────────
+    0: [
+      // Row 1 · recognize · true-false · uses=[div-op]
+      tf(
+        'In Python 3 liefert `/` IMMER einen `float`, auch wenn beide Operanden int sind: `4 / 2` ergibt `2.0`, nicht `2`.',
+        true,
+        `**Ansatz:** Python 3 hat \`/\` und \`//\` strikt getrennt: \`/\` ist die "echte" Division mit float-Ergebnis, \`//\` die Ganzzahldivision (rundet ab).
+
+**Rechnung:** \`4 / 2\` wertet als $4 \\div 2 = 2{,}0$ (float), \`type(4 / 2)\` ist \`<class 'float'>\`. Will man int, schreibt man \`4 // 2\` oder \`int(4 / 2)\`.
+
+**Probe:** \`>>> 4 / 2\` → \`2.0\` (mit Punkt). \`>>> type(4 / 2)\` → \`<class 'float'>\`. ✓
+
+**Typischer Fehler:** Aus Python 2 oder C den Reflex mitbringen, dass int / int → int gilt. Python 3 hat das absichtlich geändert — sicherer, weil man bei Division selten "abrunden" will.`,
+        [
+          'Welcher Typ kommt bei int / int in Python 3 raus?',
+          'Was ist der Unterschied zwischen `/` und `//`?',
+          '`/` immer float, `//` int (bei int-Operanden).',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['div-op'] },
+      ),
+      // Row 2 · apply-guided · multiple-choice · uses=[div-op]
+      mc(
+        'Was ergibt `25 / 4` in Python 3?',
+        ['`6.25`', '`6`', '`6.0`', '`"25/4"`'],
+        0,
+        `**Ansatz:** \`/\` ist die echte Division — Ergebnis ist float, auch wenn beide Operanden int sind.
+
+**Rechnung:** $25 \\div 4 = 6{,}25$. Python liefert \`6.25\` als float.
+
+**Probe:** \`>>> 25 / 4\` → \`6.25\`. ✓ Im Vergleich: \`>>> 25 // 4\` → \`6\` (int), \`>>> 25 % 4\` → \`1\` (Rest).
+
+**Typischer Fehler:** Dezimalstellen weglassen ("$25 / 4 = 6$ Rest 1") und 6 als Antwort schreiben — das wäre Ganzzahldivision.`,
+        [
+          'Welcher Operator wird verwendet — `/` oder `//`?',
+          'Liefert `/` bei int-Operanden int oder float?',
+          '$25 \\div 4 = 6{,}25$ exakt.',
+        ],
+        {
+          '1': '`6` wäre das Ergebnis von `25 // 4` (Ganzzahldivision). Hier steht aber `/`, also volle Division mit Dezimalanteil.',
+          '2': '`6.0` würde nur entstehen, wenn $25 / 4$ exakt $6$ wäre — ist es aber nicht. $25 / 4 = 6{,}25$, der Dezimalanteil $0{,}25$ wird beibehalten.',
+          '3': 'Python wertet `/` als arithmetische Division aus, nicht als String-Konkatenation. Das wäre nur bei Strings (`"25" + "/" + "4"`) der Fall.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['div-op'] },
+      ),
+      // Row 3 · apply-independent · number-input · uses=[div-op]
+      ni(
+        'Berechne den Wert von `23 // 4` in Python.',
+        5, 0, '',
+        `**Ansatz:** \`//\` ist die Ganzzahldivision — sie gibt den abgerundeten Quotienten zurück.
+
+**Rechnung:** $23 \\div 4 = 5{,}75$. \`//\` schneidet zur Null hin ab → $5$. Identitätsprobe: $23 = 5 \\cdot 4 + 3$ (Quotient 5, Rest 3).
+
+**Probe:** \`>>> 23 // 4\` → \`5\`. \`>>> 23 % 4\` → \`3\`. \`>>> 5 * 4 + 3\` → \`23\` ✓.
+
+**Typischer Fehler:** Aufrunden statt abrunden — \`23 // 4\` ist NICHT 6. Bei positiven Werten ist \`//\` immer "Math.floor".`,
+        [
+          'Wie oft passt 4 ganz in 23?',
+          'Quotient · Divisor + Rest = Dividend.',
+          '$23 = 5 \\cdot 4 + 3$ → Quotient 5.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['div-op'] },
+      ),
+      // Row 4 · error-analysis · multiple-choice · uses=[div-op]
+      mc(
+        'Ein Lerner schreibt in Python 3 `n = 7 / 2` und erwartet `n == 3`. Tatsächlich liefert die Zeile `n = 3.5`. Was ist der Fehler?',
+        [
+          'In Python 3 ist `/` immer float-Division. Für die ganze Zahl ohne Rest muss `//` verwendet werden: `n = 7 // 2` → `3`.',
+          '`7 / 2` ist syntaktisch ungültig in Python.',
+          'Python rundet Floats automatisch zur nächsten ganzen Zahl.',
+          'Der Fehler liegt bei `n` als Variablenname.',
+        ],
+        0,
+        `**Ansatz:** \`/\` (echte Division) und \`//\` (Ganzzahldivision) sind in Python 3 verschiedene Operatoren mit unterschiedlichem Ergebnistyp.
+
+**Rechnung:** \`7 / 2\` → $3{,}5$ (float). \`7 // 2\` → $3$ (int). Wer "wie oft passt 2 ganz in 7?" rechnen will, braucht \`//\`.
+
+**Probe:** \`>>> type(7 / 2)\` → float, \`>>> type(7 // 2)\` → int. Die Ergebnisse stimmen mit der Python-3-Spezifikation überein. ✓
+
+**Typischer Fehler:** Aus Python 2 oder C/Java mitnehmen, dass int / int → int. Python 3 brach diese Konvention bewusst, um Bugs durch unbeabsichtigtes Abrunden zu vermeiden.`,
+        [
+          'Welcher Operator schneidet den Rest ab?',
+          'Was unterscheidet `/` und `//`?',
+          'Für ganze Zahl: `//` benutzen.',
+        ],
+        {
+          '1': '`7 / 2` ist gültig — es ergibt nur eben float, nicht int. Kein Syntaxfehler.',
+          '2': 'Python rundet NICHT automatisch — `/` liefert exakt $3{,}5$. Wer runden will, ruft `round()` auf.',
+          '3': '`n` ist ein gültiger Variablenname. Das Problem liegt am Operator, nicht am Namen.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['div-op'] },
+      ),
+      // Row 5 · transfer · multiple-choice · uses=[div-op]
+      mc(
+        'Eine Messung dauert 200 Minuten. Welche Python-Zeile berechnet die Anzahl voller Stunden (als ganze Zahl)?',
+        [
+          '`stunden = 200 // 60`',
+          '`stunden = 200 / 60`',
+          '`stunden = 200 % 60`',
+          '`stunden = 60 // 200`',
+        ],
+        0,
+        `**Ansatz:** "Volle Stunden" = ganzzahliger Quotient von Minuten/60. Genau dafür ist \`//\` da.
+
+**Rechnung:** \`200 // 60\` → $3$ (denn $3 \\cdot 60 = 180$, Rest $20$). Die übrigen $20$ Minuten kommen mit \`200 % 60\` heraus.
+
+**Probe:** $3 \\cdot 60 + 20 = 200$ ✓. Die typische Zeit-Aufteilung: \`stunden, minuten = divmod(200, 60)\` liefert \`(3, 20)\` in einem Aufruf.
+
+**Typischer Fehler:** \`/\` statt \`//\` nimmt — das Ergebnis $3{,}333\\ldots$ ist kein "ganze Stunden". Oder \`%\` statt \`//\` — das gibt den Rest, nicht den Quotienten.`,
+        [
+          'Was bedeutet "volle Stunden" mathematisch?',
+          'Welcher Operator schneidet ab?',
+          '$200 //\\ 60$ → wieviele 60er passen ganz?',
+        ],
+        {
+          '1': '`200 / 60` liefert $3{,}333\\ldots$ — keine ganze Zahl. Erwartet ist aber "volle Stunden".',
+          '2': '`200 % 60` liefert $20$ — das ist der REST in Minuten, nicht die Anzahl Stunden.',
+          '3': '`60 // 200` liefert $0$ — falsche Reihenfolge der Operanden. Die Anzahl Stunden braucht Minuten/60, nicht 60/Minuten.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['div-op'] },
+      ),
+      // Bonus · apply-independent · number-input · uses=[div-op]
+      ni(
+        'Was ergibt `17 % 6` in Python?',
+        5, 0, '',
+        `**Ansatz:** \`%\` liefert den Rest der Ganzzahldivision $a //\\ b$.
+
+**Rechnung:** $17 //\\ 6 = 2$ (denn $2 \\cdot 6 = 12$). Rest = $17 - 12 = 5$. Also \`17 % 6 = 5\`.
+
+**Probe:** Identität: $17 = 2 \\cdot 6 + 5$ ✓.
+
+**Typischer Fehler:** $17 //\\ 6$ als $3$ schätzen ($3 \\cdot 6 = 18 > 17$ — zu groß). Die nächstkleinere ganze Zahl ist $2$.`,
+        [
+          'Wie oft passt 6 ganz in 17?',
+          'Rest = $17 - (\\text{Quotient} \\cdot 6)$.',
+          '$2 \\cdot 6 = 12$, Rest $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['div-op'] },
+      ),
+    ],
+
+    // ── SG 1 — `pot-op` — Python `**`, Matlab `^` / `.^` ─────────────────
+    1: [
+      // Row 6 · recognize · true-false · uses=[pot-op]
+      tf(
+        'In Python schreibt man Potenzierung mit `**` (z.B. `2 ** 3 = 8`); Matlab nutzt für skalare Werte `^` und für elementweise Array-Potenz `.^`.',
+        true,
+        `**Ansatz:** Drei Operatoren über zwei Sprachen — wichtig zum Cross-Lesen von Code.
+
+**Rechnung:** Python: \`2 ** 3\` = $8$. Matlab Skalar: \`2^3\` = $8$. Matlab Array: \`A.^2\` quadriert jedes Element von $A$, während \`A^2\` die Matrix-Potenz $A \\cdot A$ wäre (nur für quadratische Matrizen).
+
+**Probe:** Matlab \`>> A = [1 2; 3 4]; A.^2\` → \`[1 4; 9 16]\` (elementweise). \`>> A^2\` → \`[7 10; 15 22]\` (Matrix-Multiplikation). Unterschiedliche Ergebnisse, gleiche Dimensions-Erwartung. ✓
+
+**Typischer Fehler:** In Python \`^\` schreiben — das ist dort der bitweise XOR-Operator, kein Potenz. \`2 ^ 3\` in Python ergibt $1$ (XOR), nicht $8$.`,
+        [
+          'Welches Symbol hat Python für Potenz?',
+          'Wie unterscheidet Matlab Skalar- und Array-Potenz?',
+          '\`**\` Python · \`^\` Matlab Skalar · \`.^\` Matlab elementweise.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pot-op'] },
+      ),
+      // Row 7 · apply-guided · multiple-choice · uses=[pot-op]
+      mc(
+        'Was ergibt `3 ** 4` in Python?',
+        ['`81`', '`12`', '`64`', '`7`'],
+        0,
+        `**Ansatz:** \`a ** b\` ist Python-Notation für $a^b$.
+
+**Rechnung:** $3^4 = 3 \\cdot 3 \\cdot 3 \\cdot 3 = 9 \\cdot 9 = 81$.
+
+**Probe:** \`>>> 3 ** 4\` → \`81\`. ✓ Auch über Logarithmen: $\\ln(81) = 4 \\ln(3) \\approx 4 \\cdot 1{,}0986 \\approx 4{,}394$, $e^{4{,}394} \\approx 81$ ✓.
+
+**Typischer Fehler:** \`**\` als Multiplikation lesen ($3 \\cdot 4 = 12$) — typisch, wenn man XOR/Bitoperatoren aus C übernimmt oder \`*\` und \`**\` verwechselt.`,
+        [
+          'Was bedeutet \`**\` in Python?',
+          'Multiplikation oder Potenz?',
+          '$3$ vier mal mit sich selbst multipliziert.',
+        ],
+        {
+          '1': '`12` wäre $3 \\cdot 4$ (Multiplikation). \`**\` ist Potenz, nicht Mal.',
+          '2': '`64` ist $4^3$, also Basis und Exponent vertauscht. \`a ** b\` heißt $a^b$, nicht $b^a$.',
+          '3': '`7` ist $3 + 4$ (Addition). Ganz andere Operation.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pot-op'] },
+      ),
+      // Row 8 · apply-independent · number-input · uses=[pot-op]
+      ni(
+        'Was ergibt `5 ** 4` in Python?',
+        625, 0, '',
+        `**Ansatz:** $5^4 = 5 \\cdot 5 \\cdot 5 \\cdot 5$.
+
+**Rechnung:** $5^2 = 25$, $25^2 = 625$. Also $5^4 = 625$.
+
+**Probe:** \`>>> 5 ** 4\` → \`625\`. ✓ Quersumme der Ziffern: $6+2+5 = 13$. Fehlerprobe: $25 \\cdot 25 = 625$ (per Hand: $25 \\cdot 25 = 25 \\cdot (20 + 5) = 500 + 125 = 625$) ✓.
+
+**Typischer Fehler:** $5 \\cdot 4 = 20$ rechnen (Multiplikation statt Potenz) oder $4^5 = 1024$ (Basis und Exponent vertauscht).`,
+        [
+          'Wieviele Faktoren $5$?',
+          'Schreibe als $5^2 \\cdot 5^2$.',
+          '$25 \\cdot 25 = 625$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pot-op'] },
+      ),
+      // Row 9 · error-analysis · multiple-choice · uses=[pot-op]
+      mc(
+        'Ein Studierender schreibt in Python `result = 2 ^ 5` und erwartet `32`, bekommt aber `7`. Was ist passiert?',
+        [
+          'In Python ist `^` der bitweise XOR-Operator, nicht Potenz: `2 ^ 5` rechnet `010 XOR 101 = 111 = 7`. Korrekt für Potenz: `2 ** 5 = 32`.',
+          'Python rundet Potenzen ab.',
+          '`^` in Python liefert immer 7.',
+          'Der Fehler liegt bei `result` als Variablenname.',
+        ],
+        0,
+        `**Ansatz:** \`^\` und \`**\` sind in Python verschiedene Operatoren — \`^\` bitweises XOR, \`**\` Potenz.
+
+**Rechnung:** Binärdarstellung: $2 = 010_2$, $5 = 101_2$. XOR bit-für-bit: $0 \\oplus 1 = 1$, $1 \\oplus 0 = 1$, $0 \\oplus 1 = 1$ → $111_2 = 7$. Mit \`**\`: $2^5 = 32$.
+
+**Probe:** \`>>> 2 ** 5\` → \`32\` ✓. \`>>> 2 ^ 5\` → \`7\` (XOR). Die beiden sind nur bei sehr speziellen Bit-Mustern gleich, in der Regel verschieden.
+
+**Typischer Fehler:** Matlab-Reflex (\`^\` für Skalar-Potenz) auf Python übertragen. In Matlab funktioniert \`2^5 = 32\`, in Python NICHT.`,
+        [
+          'Welche Bedeutung hat \`^\` in Python?',
+          'Welcher Operator macht in Python Potenzieren?',
+          'Matlab-Reflex: in Python ist \`**\` für Potenz.',
+        ],
+        {
+          '1': 'Python rundet keine Potenzen — \`2 ** 5\` ist exakt $32$. Das Ergebnis $7$ kommt vom XOR.',
+          '2': '\`^\` liefert nur dann 7, wenn die Bit-Muster genau XOR-7 ergeben — bei anderen Zahlen kommt anderes raus. Es ist ein bitweiser Operator, kein konstanter Rückgabewert.',
+          '3': '\`result\` ist ein gültiger Name. Das Problem liegt allein beim Operator.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pot-op'] },
+      ),
+      // Row 10 · transfer · multiple-choice · uses=[pot-op]
+      mc(
+        'Was ergibt `(-2) ** 3` in Python?',
+        ['`-8`', '`8`', '`6`', '`-6`'],
+        0,
+        `**Ansatz:** $(-2)^3 = (-2) \\cdot (-2) \\cdot (-2)$. Drei negative Faktoren → Vorzeichen bleibt negativ.
+
+**Rechnung:** $(-2) \\cdot (-2) = 4$, $4 \\cdot (-2) = -8$. Allgemein: bei ungeradem Exponenten bleibt das Vorzeichen, bei geradem wird es positiv: $(-2)^4 = +16$.
+
+**Probe:** \`>>> (-2) ** 3\` → \`-8\` ✓. \`>>> (-2) ** 4\` → \`16\` ✓.
+
+**Typischer Fehler 1:** Klammer weglassen: \`-2 ** 3\` wertet als \`-(2 ** 3) = -8\` — selbes Ergebnis hier, aber bei geradem Exponenten unterschiedlich: \`-2 ** 2\` liefert \`-4\` (nicht $4$), weil Potenz vor unärem Minus bindet. **Typischer Fehler 2:** Vorzeichen vergessen und $8$ schreiben.`,
+        [
+          'Wieviele negative Faktoren entstehen?',
+          'Ungerader Exponent → Vorzeichen?',
+          'Drei mal $-2$ → Vorzeichen bleibt negativ.',
+        ],
+        {
+          '1': '`8` wäre $2^3$ ohne Vorzeichen oder $(-2)^4$ mit gerader Potenz. Hier ist Exponent ungerade — Vorzeichen bleibt negativ.',
+          '2': '`6` entstünde durch $-2 - 2 - 2$ mit Subtraktion oder durch Multiplikation falsch interpretiert. Potenz heißt aber wiederholte Multiplikation.',
+          '3': '`-6` wäre $-(2+2+2)$. Auch falsch — Potenz ist Multiplikation, nicht Addition.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['pot-op'] },
+      ),
+      // Bonus · apply-independent · number-input · uses=[pot-op]
+      ni(
+        'Was ergibt `9 ** 0.5` in Python?',
+        3, 0.001, '',
+        `**Ansatz:** $a^{1/2} = \\sqrt{a}$. Mit \`**\` lassen sich Wurzeln als Potenzen schreiben.
+
+**Rechnung:** $9^{0{,}5} = \\sqrt{9} = 3$.
+
+**Probe:** \`>>> 9 ** 0.5\` → \`3.0\` (float). $3 \\cdot 3 = 9$ ✓.
+
+**Typischer Fehler:** $9 \\cdot 0{,}5 = 4{,}5$ rechnen — das wäre Multiplikation. \`**\` ist Potenz, $9^{0{,}5}$ ist Quadratwurzel.`,
+        [
+          'Was bedeutet ein Exponent $1/2$?',
+          'Schreibe um in Wurzelnotation.',
+          '$\\sqrt{9} = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pot-op'] },
+      ),
+    ],
+
+    // ── SG 2 — `log-op` — Logische Operatoren ────────────────────────────
+    2: [
+      // Row 11 · recognize · true-false · uses=[log-op]
+      tf(
+        'In Python heißen die logischen Operatoren `and`, `or`, `not` (Wörter); in Matlab nutzt man `&&`, `||`, `~` für Skalare.',
+        true,
+        `**Ansatz:** Python wählt englische Wörter als Operatoren (lesefreundlich), Matlab nutzt Symbole (näher an C/Java).
+
+**Rechnung:** Python: \`if x > 0 and x < 10:\`. Matlab: \`if x > 0 && x < 10\`. Bei Arrays in Matlab elementweise: \`&\`, \`|\`, \`~\`.
+
+**Probe:** Python akzeptiert \`&&\` NICHT — \`if x > 0 && x < 10:\` wirft \`SyntaxError\`. Matlab akzeptiert \`and\` als Funktion (\`and(a, b)\`), aber nicht als Infix-Operator. ✓
+
+**Typischer Fehler:** \`&\` und \`|\` in Python für logische Verknüpfung benutzen — das sind dort BITWEISE Operatoren auf int (z.B. \`5 & 3 = 1\`), nicht logische. Funktioniert für bool zufällig oft, kann aber falsche Ergebnisse liefern bei int-Werten.`,
+        [
+          'Wörter oder Symbole in Python?',
+          'Was schreibt Matlab für skalares "und"?',
+          'Python: and/or/not · Matlab: \`&&\`/\`||\`/\`~\`.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['log-op'] },
+      ),
+      // Row 12 · apply-guided · multiple-choice · uses=[log-op]
+      mc(
+        'Was ergibt `(5 > 3) and (2 < 1)` in Python?',
+        ['`False`', '`True`', '`None`', '`SyntaxError`'],
+        0,
+        `**Ansatz:** Bei \`A and B\` wird zuerst $A$ ausgewertet, dann $B$. Ergebnis ist nur dann \`True\`, wenn BEIDE wahr sind.
+
+**Rechnung:** $5 > 3$ → True. $2 < 1$ → False. \`True and False\` → False.
+
+**Probe:** Wahrheitstabelle: T ∧ F = F. ✓ Verifikation: \`>>> (5 > 3) and (2 < 1)\` → \`False\`.
+
+**Typischer Fehler:** Nur den ersten Vergleich ansehen ($5 > 3$ ist wahr → Gesamtergebnis True). \`and\` braucht BEIDE Seiten wahr.`,
+        [
+          'Werte beide Vergleiche einzeln aus.',
+          'Was ist die Wahrheitstabelle für AND?',
+          'True AND False → ?',
+        ],
+        {
+          '1': 'True würde bedeuten, beide Vergleiche sind wahr. Aber $2 < 1$ ist False.',
+          '2': 'None entsteht nicht aus Vergleichen oder Logik — Python liefert immer bool zurück.',
+          '3': 'Die Syntax ist gültig (Klammern + and). Kein SyntaxError.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['log-op'] },
+      ),
+      // Row 13 · apply-independent · multiple-choice · uses=[log-op]
+      mc(
+        'Was ergibt `not (False or True)` in Python?',
+        ['`False`', '`True`', '`0`', '`1`'],
+        0,
+        `**Ansatz:** Klammern zuerst: \`False or True\`. Dann \`not\` auf das Ergebnis.
+
+**Rechnung:** \`False or True\` → True (denn ein Operand wahr → or wahr). \`not True\` → False.
+
+**Probe:** Negation: \`>>> not True\` → \`False\` ✓. Verifikation: \`>>> not (False or True)\` → \`False\`.
+
+**Typischer Fehler:** \`not\` zuerst auf \`False\` anwenden: \`(not False) or True\` → \`True or True\` → True. Aber \`not\` bindet hier auf die KLAMMER, nicht nur auf \`False\`.`,
+        [
+          'Klammern zuerst auswerten.',
+          'Was ergibt $\\text{False} \\lor \\text{True}$?',
+          '$\\lnot \\text{True} = ?$',
+        ],
+        {
+          '1': '`True` würde bedeuten, das or-Ergebnis sei False — aber `False or True` ist True, und `not True` ist False.',
+          '2': '`0` ist zwar gleich `False`, aber `not (...)` liefert IMMER bool, nicht int. Python schreibt das als `False`.',
+          '3': '`1` würde der Wahrheitswert True entsprechen — wäre nur korrekt, wenn das Gesamtergebnis True wäre. Ist es nicht.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-op'] },
+      ),
+      // Row 14 · error-analysis · multiple-choice · uses=[log-op]
+      mc(
+        'Ein Studierender schreibt in Python `if x > 0 && x < 10:`. Was passiert?',
+        [
+          '`SyntaxError` — Python verwendet `and` für logisches UND, nicht `&&`. Korrekt: `if x > 0 and x < 10:`.',
+          'Funktioniert: `&&` wird als `and` interpretiert.',
+          '`x` muss ein bool sein.',
+          '`NameError` — `&&` ist nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Python's Lexer kennt \`&&\` nicht — er sieht ein einzelnes \`&\` (bitweises UND), erwartet danach einen Ausdruck und stolpert beim zweiten \`&\`.
+
+**Rechnung:** Korrekte Schreibweise:
+- Python: \`if x > 0 and x < 10:\` — oder eleganter mit verkettetem Vergleich: \`if 0 < x < 10:\`.
+- Matlab: \`if x > 0 && x < 10\`.
+
+**Probe:** Im Python-Interpreter: \`>>> if x > 0 && x < 10:\` → \`SyntaxError: invalid syntax\`. ✓
+
+**Typischer Fehler:** Matlab/C/Java-Reflex auf Python übertragen. Python war eine bewusste Designentscheidung, Wörter statt Symbole zu nutzen.`,
+        [
+          'Welche Sprache nutzt \`&&\`?',
+          'Wie schreibt Python das?',
+          'Wort \`and\`, nicht Symbol.',
+        ],
+        {
+          '1': 'Python interpretiert \`&&\` NICHT als \`and\` — es wirft SyntaxError, da der Lexer das Doppel-Symbol nicht kennt.',
+          '2': 'Der Typ von \`x\` spielt für die Syntax keine Rolle — der Fehler kommt vor dem Auswerten.',
+          '3': 'Python wirft hier SyntaxError beim Parsen, nicht NameError. NameError gäbe es nur, wenn der Parser fertig wäre und der Name nicht definiert wäre.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['log-op'] },
+      ),
+      // Row 15 · transfer · matching · uses=[log-op]
+      matching(
+        'Ordne jedem Anwendungsfall die korrekte Schreibweise zu.',
+        [
+          { left: 'Python — logisches UND zwischen zwei bool-Bedingungen', right: '`a and b`' },
+          { left: 'Matlab — UND zwischen zwei skalaren Bedingungen (Kurzschluss)', right: '`a && b`' },
+          { left: 'Matlab — elementweises UND zwischen zwei bool-Arrays', right: '`a & b`' },
+          { left: 'Python — logisches NICHT', right: '`not a`' },
+        ],
+        `**Ansatz:** Vier verschiedene Kontexte, vier verschiedene Schreibweisen — gleicher logischer Inhalt, aber Sprache und Datenform entscheiden.
+
+**Rechnung:** Matlab unterscheidet Skalar- und Array-Operatoren: \`&&\` und \`||\` sind nur für Skalare (mit Kurzschluss-Auswertung), \`&\` und \`|\` arbeiten elementweise auf Arrays. Python kennt diese Unterscheidung nicht — \`and\`/\`or\` sind immer skalar mit Kurzschluss; für elementweise auf NumPy-Arrays nutzt man \`&\`/\`|\` (oder \`np.logical_and\`).
+
+**Probe:** Matlab \`>> [1 0 1] & [0 1 1]\` → \`[0 0 1]\` (elementweise). \`>> 1 && 0\` → \`0\` (Skalar). ✓
+
+**Typischer Fehler:** \`&\` in Python für \`and\` benutzen — das ist bitweises UND. Bei int-Werten kann das stille falsche Ergebnisse liefern: \`5 & 3 = 1\`, aber als bool wäre \`bool(5) and bool(3)\` = True.`,
+        [
+          'Skalar oder Array? Sprache Python oder Matlab?',
+          'Wörter (Python) oder Symbole (Matlab)?',
+          '\`&&\` Skalar Matlab · \`&\` Array Matlab.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['log-op'] },
+      ),
+      // Bonus · recognize · true-false · uses=[log-op]
+      tf(
+        'Python erlaubt verkettete Vergleiche: `if 0 < x < 10:` ist gültiger Python-Code und entspricht `if (0 < x) and (x < 10):`.',
+        true,
+        `**Ansatz:** Python ist eine der wenigen Sprachen mit echten Vergleichsketten — die intuitive mathematische Schreibweise funktioniert.
+
+**Rechnung:** \`0 < x < 10\` wird intern als \`(0 < x) and (x < 10)\` ausgewertet, mit dem Vorteil, dass \`x\` nur EINMAL berechnet wird (wichtig bei Funktionsaufrufen).
+
+**Probe:** \`>>> x = 5; 0 < x < 10\` → \`True\`. \`>>> x = 15; 0 < x < 10\` → \`False\`. ✓
+
+**Typischer Fehler:** Glauben, Matlab könne das auch — kann es nicht. Matlab \`if 0 < x < 10\` liest sich als \`((0 < x) < 10)\` (immer True wegen $0$/$1 < 10$) — fast immer ein stiller Bug.`,
+        [
+          'Funktioniert die mathematische Notation $0 < x < 10$ in Python?',
+          'Wie wird sie intern aufgelöst?',
+          'Verkette mit \`and\` zwischen den Vergleichen.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['log-op'] },
+      ),
+    ],
+
+    // ── SG 3 — `float-cmp` — Float-Vergleich mit Toleranz ────────────────
+    3: [
+      // Row 16 · recognize · true-false · uses=[float-cmp]
+      tf(
+        'Wegen IEEE-754-Rundungsfehlern liefert `0.1 + 0.2 == 0.3` in Python `False`.',
+        true,
+        `**Ansatz:** Floats können viele Dezimalbrüche nicht exakt darstellen — $0{,}1$ und $0{,}2$ sind beide unendliche Binärbrüche, gerundet auf 53 Bit.
+
+**Rechnung:** Tatsächlich ist \`0.1 + 0.2\` in Python $0{,}30000000000000004$ (sichtbar mit \`format(0.1 + 0.2, '.17f')\`). Verglichen mit dem float $0{,}3$ (selbst gerundet, aber ANDERS gerundet) ist das nicht gleich.
+
+**Probe:** \`>>> 0.1 + 0.2\` → \`0.30000000000000004\`. \`>>> 0.1 + 0.2 == 0.3\` → \`False\`. ✓ Robuste Lösung: \`abs((0.1 + 0.2) - 0.3) < 1e-9\` → \`True\`.
+
+**Typischer Fehler:** Floats für Geld oder exakte Buchhaltung nutzen. Für solche Fälle ist \`decimal.Decimal\` oder \`fractions.Fraction\` gedacht.`,
+        [
+          'Können Floats $0{,}1$ exakt darstellen?',
+          'Was passiert bei $0{,}1 + 0{,}2$?',
+          'Vergleich mit Toleranz statt \`==\`.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['float-cmp'] },
+      ),
+      // Row 17 · apply-guided · multiple-choice · uses=[float-cmp]
+      mc(
+        'Was liefert `(0.1 + 0.2) == 0.3` in Python?',
+        ['`False`', '`True`', '`SyntaxError`', '`None`'],
+        0,
+        `**Ansatz:** Beide Seiten als float darstellbar prüfen. \`0.1\`, \`0.2\` und \`0.3\` sind alle gerundete Binärbrüche.
+
+**Rechnung:** \`0.1 + 0.2\` ergibt $0{,}30000000000000004$ (nach Rundung der Summe). \`0.3\` (alleine) ist $0{,}29999999999999998\\ldots$ (anders gerundet). Beide sind nicht gleich — daher \`False\`.
+
+**Probe:** \`>>> (0.1 + 0.2) - 0.3\` → \`5.55e-17\` (winziger Unterschied). \`>>> abs((0.1 + 0.2) - 0.3) < 1e-9\` → \`True\` (mit Toleranz).
+
+**Typischer Fehler:** Bauchmäßig "$0{,}3 = 0{,}3$, also True" — vergisst, dass Float-Arithmetik und Float-Literale beide Rundungen durchführen, oft auf unterschiedliche Werte.`,
+        [
+          'Können beide Seiten exakt sein?',
+          'Was machen IEEE-754-Rundungen?',
+          '\`==\` ist bei Floats unzuverlässig.',
+        ],
+        {
+          '1': 'True würde gelten, wenn Floats $0{,}1$, $0{,}2$ und $0{,}3$ exakt darstellbar wären — sind sie aber nicht.',
+          '2': 'Die Syntax ist gültig — Klammern und Vergleichsoperator. Kein Fehler beim Parsen.',
+          '3': 'Vergleichsoperatoren liefern in Python immer bool, nicht None.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['float-cmp'] },
+      ),
+      // Row 18 · apply-independent · multiple-choice · uses=[float-cmp]
+      mc(
+        'Welche Zeile prüft zwei float-Werte `a` und `b` ROBUST auf "ungefähr gleich" mit Toleranz $10^{-9}$?',
+        [
+          '`abs(a - b) < 1e-9`',
+          '`a == b`',
+          '`int(a) == int(b)`',
+          '`a is b`',
+        ],
+        0,
+        `**Ansatz:** Robuster Float-Vergleich nutzt eine Toleranz auf der Differenz, statt direkter Gleichheit.
+
+**Rechnung:** \`abs(a - b) < 1e-9\` liefert True, wenn der Unterschied unter $10^{-9}$ liegt — egal, ob die Floats minimal verschieden gerundet wurden. Standard-Bibliothek: \`math.isclose(a, b, abs_tol=1e-9)\`.
+
+**Probe:** \`a = 0.1 + 0.2; b = 0.3\` → \`abs(a - b) = 5.55e-17\`. Das ist kleiner als $10^{-9}$ → True. ✓
+
+**Typischer Fehler:** Schwellenwert zu klein wählen — z.B. \`< 1e-20\` ist enger als die float-Auflösung selbst und liefert oft False. Faustregel: \`1e-9\` für allgemein, \`1e-6\` bei akkumulierten Rechenfehlern.`,
+        [
+          'Wie definiert man "ungefähr gleich" mathematisch?',
+          'Toleranz auf welcher Größe?',
+          'Differenz absolut, dann Schwellwertvergleich.',
+        ],
+        {
+          '1': '\`a == b\` ist genau das, was bei Floats unzuverlässig ist (siehe \`0.1 + 0.2 == 0.3\`).',
+          '2': '\`int(a) == int(b)\` schneidet die Nachkommastellen ab und vergleicht ganzen Anteil — verliert Information und unterscheidet $1{,}9$ von $1{,}1$ nicht.',
+          '3': '\`a is b\` testet OBJEKT-Identität, nicht Wertgleichheit. Bei Floats fast immer False.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['float-cmp'] },
+      ),
+      // Row 19 · error-analysis · multiple-choice · uses=[float-cmp]
+      mc(
+        'Ein numerischer Algorithmus terminiert nicht, weil `if x == 0.0:` nie True wird — `x` ist nach vielen Iterationen $1 \\cdot 10^{-16}$. Welcher Fix ist korrekt?',
+        [
+          '`if abs(x) < 1e-9:` — Vergleich mit Toleranz statt exaktem Wert.',
+          '`if x = 0.0:` — Zuweisung statt Vergleich.',
+          '`if x:` — implizite bool-Konvertierung.',
+          '`if int(x) == 0:` — Casten zu int.',
+        ],
+        0,
+        `**Ansatz:** Numerische Algorithmen erreichen aufgrund von Rundungsfehlern nie exakt $0$. Abbruchkriterium braucht eine Toleranz.
+
+**Rechnung:** \`abs(x) < 1e-9\` testet, ob $|x|$ unter der Toleranz liegt — robust gegen Akkumulation kleiner Rundungsfehler. Alternative: \`math.isclose(x, 0.0, abs_tol=1e-9)\`.
+
+**Probe:** Bei $x = 10^{-16}$: \`abs(x) < 1e-9\` → True ✓. Bei $x = 0.5$: \`abs(x) < 1e-9\` → False ✓.
+
+**Typischer Fehler:** Zuweisung \`=\` und Vergleich \`==\` verwechseln. Oder \`if x:\` schreiben, das auch andere falsy-Werte (None, leere Liste) als $0$ behandelt.`,
+        [
+          'Wann ist ein float "praktisch null"?',
+          'Wie definiert man die Schwelle?',
+          'Toleranz mit \`abs(x) < eps\`.',
+        ],
+        {
+          '1': '\`if x = 0.0:\` ist syntaktisch ungültig — \`=\` ist Zuweisung, in \`if\` muss ein Ausdruck stehen.',
+          '2': '\`if x:\` ist \`True\` für jeden nicht-null-Wert — schließt aber auch \`None\`, leere Listen etc. ein. Hier wollen wir nur Zahlennähe zu null prüfen.',
+          '3': '\`int(1e-16)\` ist $0$, also würde der Test False liefern. Aber: bei kleinen positiven Werten wie $0{,}5$ wäre \`int(0.5) == 0\` ebenfalls True — das ist zu lax.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['float-cmp'] },
+      ),
+      // Row 20 · transfer · multiple-choice · uses=[float-cmp]
+      mc(
+        'Newton-Verfahren für $f(x) = 0$: warum bricht man bei `abs(f(x)) < 1e-10` ab und nicht bei `f(x) == 0`?',
+        [
+          'Floats erreichen wegen Rundungsfehlern fast nie exakt $0$ — eine absolute Toleranz akzeptiert "praktisch null" und vermeidet Endlosschleifen.',
+          '`==` ist langsamer als `<` bei Floats.',
+          '`f(x)` ist immer positiv.',
+          'Newton-Verfahren konvergiert nur bei `<`.',
+        ],
+        0,
+        `**Ansatz:** Numerische Verfahren produzieren immer kleine Rundungsfehler. Die Abbruchbedingung muss diese Realität abbilden.
+
+**Rechnung:** Bei jedem Schritt $x_{n+1} = x_n - f(x_n)/f'(x_n)$ gibt es Float-Rundung. Selbst wenn $x^*$ die exakte Wurzel wäre, könnte $f(x^*)$ als $\\pm 10^{-16}$ statt $0$ landen — oder $x_n$ konvergiert um die Wurzel "herum", trifft aber nie exakt.
+
+**Probe:** Beispiel: $f(x) = x^2 - 2$, exakte Wurzel $\\sqrt 2$. Floats können $\\sqrt 2$ nicht exakt darstellen, daher ist $f(\\sqrt 2)$ in Floats $\\approx 4 \\cdot 10^{-16}$ — \`f(x) == 0\` wäre nie True. \`abs(f(x)) < 1e-10\` ✓.
+
+**Typischer Fehler:** Newton ohne Abbruch-Toleranz schreiben — das Verfahren läuft entweder ewig (sehr selten exakt $0$) oder bricht zufällig ab, je nach Start- und Rundungsverhalten.`,
+        [
+          'Was passiert bei \`f(x) == 0\` in Floats?',
+          'Wie nah liegt der iterierte Wert an der Lösung?',
+          'Toleranz statt exakter Gleichheit.',
+        ],
+        {
+          '1': 'Performance ist kein Argument — beide Operatoren brauchen ähnlich viel Zeit. Das ist nicht der Grund.',
+          '2': '\`f(x)\` kann sehr wohl negativ werden — Newton testet Vorzeichen NICHT, sondern Größe.',
+          '3': 'Newton konvergiert (lokal quadratisch) unter Bedingungen — \`<\` vs. \`==\` hat damit nichts zu tun. Es geht um die Repräsentation von $0$ in Floats.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['float-cmp'] },
+      ),
+      // Bonus · recognize · true-false · uses=[float-cmp]
+      tf(
+        'Pythons `math.isclose(a, b)` ist die Standard-Funktion für robusten Float-Vergleich; Default-Toleranzen sind `rel_tol=1e-09` und `abs_tol=0.0`.',
+        true,
+        `**Ansatz:** \`math.isclose(a, b)\` ist seit Python 3.5 in der Standardlib — bessere Wahl als selbstgebauter Vergleich, weil sie sowohl absolute als auch relative Toleranz kombiniert.
+
+**Rechnung:** Default-Verhalten: zwei Floats sind "close", wenn $|a - b| \\le \\max(\\text{rel\\_tol} \\cdot \\max(|a|, |b|),\\ \\text{abs\\_tol})$. Mit \`rel_tol=1e-09\` und \`abs_tol=0.0\` wird die relative Toleranz dominant — der Vergleich skaliert mit der Größe der Werte.
+
+**Probe:** \`>>> import math; math.isclose(0.1 + 0.2, 0.3)\` → \`True\` ✓. Achtung beim Vergleich mit $0$: \`math.isclose(1e-12, 0)\` → \`False\` (relative Toleranz greift nicht bei $0$). Workaround: \`math.isclose(a, 0, abs_tol=1e-9)\`.
+
+**Typischer Fehler:** Beim Vergleich gegen exakt $0$ \`math.isclose(x, 0)\` ohne \`abs_tol\` — das schlägt fehl, weil $0$ keine relative Toleranz hat.`,
+        [
+          'Welches Modul stellt \`isclose\` bereit?',
+          'Welche zwei Toleranzen kombiniert die Funktion?',
+          'Default: rel_tol=1e-9, abs_tol=0.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['float-cmp'] },
+      ),
+    ],
+
+    // ── SG 4 — `bool-int` — bool ist Subtyp von int ─────────────────────
+    4: [
+      // Row 21 · recognize · true-false · uses=[bool-int]
+      tf(
+        'In Python sind `True == 1` und `False == 0` jeweils `True`, weil `bool` ein Subtyp von `int` ist.',
+        true,
+        `**Ansatz:** Python's Klassen-Hierarchie: \`bool\` erbt von \`int\`. Vergleiche und Arithmetik nutzen die int-Werte $1$ (für \`True\`) und $0$ (für \`False\`).
+
+**Rechnung:** \`isinstance(True, int)\` → True (Subtyp-Beziehung). Daher \`True == 1\` → True und \`False == 0\` → True. Konsequenz: \`True + 1 == 2\`, \`False * 5 == 0\`, \`sum([True, False, True]) == 2\`.
+
+**Probe:** \`>>> True == 1\` → \`True\`. \`>>> False == 0\` → \`True\`. \`>>> 1 + True\` → \`2\`. ✓
+
+**Typischer Fehler:** Glauben, \`True == 1\` sei ein Tippfehler oder undefiniert — ist tatsächlich gewollter Sprachdesign-Punkt (genauso in C/C++/Java).`,
+        [
+          'Welche Beziehung haben \`bool\` und \`int\` in Python?',
+          'Welche int-Werte stehen für \`True\` / \`False\`?',
+          '\`True\` ↔ $1$, \`False\` ↔ $0$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['bool-int'] },
+      ),
+      // Row 22 · apply-guided · multiple-choice · uses=[bool-int]
+      mc(
+        'Was ergibt `True + True` in Python?',
+        ['`2`', '`True`', '`TypeError`', '`"TrueTrue"`'],
+        0,
+        `**Ansatz:** \`bool\` ist Subtyp von \`int\` mit \`True == 1\`. Bei \`+\` werden bool-Werte zu int promoviert.
+
+**Rechnung:** \`True + True\` → $1 + 1 = 2$ (int). $\\text{type}(\\text{True} + \\text{True}) = \\text{int}$.
+
+**Probe:** \`>>> True + True\` → \`2\`. \`>>> type(True + True)\` → \`<class 'int'>\`. ✓
+
+**Typischer Fehler:** \`True + True\` als logische ODER-Operation \`True or True == True\` lesen — das wäre korrekt für \`or\`, aber \`+\` macht Arithmetik, kein Logik.`,
+        [
+          'Welche Operation ist \`+\`?',
+          'Welche int-Werte haben \`True\`?',
+          '$1 + 1 = ?$',
+        ],
+        {
+          '1': 'True würde der Logik \`True or True\` entsprechen. Hier steht aber arithmetisches \`+\`, nicht logisches \`or\`.',
+          '2': 'TypeError gäbe es bei inkompatiblen Typen — \`bool\` und \`bool\` sind beide int-Subtypen, also kompatibel.',
+          '3': '\`"TrueTrue"\` wäre das Ergebnis bei String-Konkatenation \`"True" + "True"\`. \`True\` ohne Quotes ist aber bool, kein String.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['bool-int'] },
+      ),
+      // Row 23 · apply-independent · multiple-choice · uses=[bool-int]
+      mc(
+        'Was ergibt `sum([True, False, True, True, False])` in Python?',
+        ['`3`', '`5`', '`2`', '`TypeError`'],
+        0,
+        `**Ansatz:** \`sum\` addiert alle Listenelemente. Da \`bool\` Subtyp von \`int\` ist, summieren sich \`True\` zu $1$ und \`False\` zu $0$.
+
+**Rechnung:** $1 + 0 + 1 + 1 + 0 = 3$. Drei \`True\`-Einträge → Summe $3$.
+
+**Probe:** \`>>> sum([True, False, True, True, False])\` → \`3\`. ✓ Diese Idee ist die Standard-Methode, um Bedingungen zu zählen: \`sum(x > 0 for x in werte)\` zählt positive Werte.
+
+**Typischer Fehler:** $5$ als "Anzahl Elemente" angeben (Listenlänge \`len(...)\`) — \`sum\` summiert WERTE, nicht Elemente. Bei [True, True, True] wäre \`sum\` = 3 = \`len\`, aber bei [False, False] ist \`sum\` = 0 ≠ \`len\` = 2.`,
+        [
+          'Was machen \`bool\`-Werte bei \`sum()\`?',
+          'Wieviele \`True\` sind in der Liste?',
+          'Drei mal $1$, zwei mal $0$.',
+        ],
+        {
+          '1': '$5$ ist die LÄNGE der Liste (\`len\`), nicht die SUMME. \`sum\` summiert Werte.',
+          '2': '$2$ wäre die Anzahl \`False\` — die werden aber als $0$ gezählt, nicht subtrahiert.',
+          '3': '\`sum\` akzeptiert bool-Listen problemlos, weil \`bool\` Subtyp von \`int\` ist. Kein TypeError.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['bool-int'] },
+      ),
+      // Row 24 · error-analysis · multiple-choice · uses=[bool-int]
+      mc(
+        'Ein Lerner glaubt, `if 0:` und `if False:` verhielten sich unterschiedlich. Wie ist die korrekte Einschätzung?',
+        [
+          'Beide Bedingungen werden NICHT ausgeführt — `0` und `False` sind in Python "falsy" und gleichwertig, weil `False == 0` und `bool` Subtyp von `int` ist.',
+          '`if 0:` führt den Block aus, `if False:` nicht.',
+          '`if 0:` wirft einen TypeError.',
+          'Beide führen den Block IMMER aus.',
+        ],
+        0,
+        `**Ansatz:** Python's "Truthiness"-Regel: bei \`if\` wird der Wert in bool konvertiert. \`bool(0)\` → False, \`bool(False)\` → False. Beide gleichwertig.
+
+**Rechnung:** Wahrheitstabelle der "falsy"-Werte: \`0\`, \`0.0\`, \`False\`, \`None\`, leerer String \`""\`, leere Liste \`[]\`, leeres Dict \`{}\`. Alles andere ist truthy.
+
+**Probe:** \`>>> if 0: print('drin')\` → kein Output. \`>>> if False: print('drin')\` → kein Output. ✓ \`>>> bool(0) == bool(False)\` → \`True\`.
+
+**Typischer Fehler:** Aus Java/C den Reflex mitnehmen, dass \`int\` und \`bool\` ganz verschiedene Typen seien und 0 etwas anderes als False sei. In Python gibt es eine durchdachte Konvertierung.`,
+        [
+          'Welche Werte sind in Python "falsy"?',
+          'Wie konvertiert Python \`int\` zu \`bool\`?',
+          '$0 \\equiv$ False, alles andere $\\equiv$ True.',
+        ],
+        {
+          '1': '\`if 0:\` führt den Block NICHT aus — \`0\` ist falsy. Würde nur stimmen, wenn \`0\` truthy wäre (ist es nicht).',
+          '2': 'TypeError gäbe es bei inkompatiblen Typen — \`int\` ist als bool-Konvertierung wohldefiniert.',
+          '3': '\`if False:\` führt definitiv NICHT aus. Beide Blöcke werden übersprungen, nicht ausgeführt.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['bool-int'] },
+      ),
+      // Row 25 · transfer · multiple-choice · uses=[bool-int]
+      mc(
+        'Wie viele positive Werte enthält die Liste `werte = [3, -1, 5, -2, 7]`? Welche Python-Zeile zählt das mit dem bool-int-Trick?',
+        [
+          '`sum(x > 0 for x in werte)`',
+          '`len(werte)`',
+          '`max(werte)`',
+          '`werte.count(True)`',
+        ],
+        0,
+        `**Ansatz:** Jeder Vergleich \`x > 0\` liefert \`True\` (1) oder \`False\` (0). \`sum\` über diese bool-Werte zählt die Treffer.
+
+**Rechnung:** Für \`werte = [3, -1, 5, -2, 7]\`: \`x > 0\` liefert \`[True, False, True, False, True]\`. \`sum\` = $1+0+1+0+1 = 3$.
+
+**Probe:** \`>>> sum(x > 0 for x in [3, -1, 5, -2, 7])\` → \`3\` ✓. Direkt überprüfbar: 3, 5, 7 sind positiv → 3 Werte.
+
+**Typischer Fehler:** Schleife mit Zähler schreiben — funktioniert, aber das pythonische Idiom ist \`sum(condition for x in iterable)\`. Sehr lesbar, sehr knapp.`,
+        [
+          'Was liefert \`x > 0\` als Wert?',
+          'Wie zählt man \`True\` mit arithmetischem \`sum\`?',
+          'Generator-Expression mit Vergleich, dann \`sum\`.',
+        ],
+        {
+          '1': '\`len(werte)\` ist 5 — Anzahl ALLER Elemente, nicht nur der positiven.',
+          '2': '\`max(werte)\` ist 7 — der größte Wert, nicht die Anzahl.',
+          '3': '\`werte.count(True)\` zählt, wie oft \`True\` (oder $1$, was bool-äquivalent ist) als Wert in der Liste vorkommt — wäre $0$, da keine \`True\`-Einträge in [3,-1,5,-2,7] sind.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['bool-int'] },
+      ),
+      // Bonus · recognize · true-false · uses=[bool-int]
+      tf(
+        '`type(True) == type(1)` liefert in Python `False`, weil `type()` die KONKRETE Klasse zurückgibt — `bool` ist zwar Subtyp von `int`, aber eine andere Klasse.',
+        true,
+        `**Ansatz:** \`==\` (Wertgleichheit) und \`type()\` (Klassengleichheit) prüfen verschiedene Dinge.
+
+**Rechnung:** \`type(True)\` → \`<class 'bool'>\`. \`type(1)\` → \`<class 'int'>\`. \`<class 'bool'>\` $\\neq$ \`<class 'int'>\` → False.
+
+**Probe:** \`>>> type(True) == type(1)\` → \`False\`. \`>>> isinstance(True, int)\` → \`True\` (Subtyp-Beziehung). Beide Aussagen sind konsistent: bool ist Subtyp, aber eine eigenständige Klasse. ✓
+
+**Typischer Fehler:** Aus \`True == 1\` (Wertgleichheit) auf \`type(True) == type(1)\` (Klassengleichheit) schließen. Das verwechselt zwei verschiedene Vergleichs-Ebenen.`,
+        [
+          'Was vergleicht \`==\` zwischen Klassen?',
+          'Liefert \`type()\` Basisklasse oder konkrete Klasse?',
+          'bool ist eigene Klasse, auch als int-Subtyp.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['bool-int'] },
+      ),
+    ],
+  },
 }
