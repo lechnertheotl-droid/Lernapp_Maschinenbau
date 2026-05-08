@@ -257,14 +257,24 @@ const unit2 = makeUnit({
         '- **Rockwell (HRC / HRB):** Diamantkegel (HRC) oder Kugel (HRB) — sehr schnell, direkt vom Messgerät ablesbar.',
       formulaTitle: 'Kennwerte & Korrelation',
       formulaContent:
-        '**Vickers-Härte:** HV $= 0{,}1891 \\cdot F / d^{2}$ (F in N, d als mittlere Diagonale in mm).\n\n' +
-        '**Brinell-Härte:** HB $\\approx 0{,}102 \\cdot F / A_\\text{abdruck}$.\n\n' +
-        '**Faustformel Stahl:** $R_m \\approx 3{,}5 \\cdot \\text{HB}$ (in MPa). So kann man aus einer schnellen Härteprüfung die Zugfestigkeit grob abschätzen.\n\n' +
+        '**Vickers-Härte (DIN EN ISO 6507):** Diamantpyramide $136°$, Diagonale $d$ messen.\n' +
+        '$$\\text{HV} = 0{,}1891 \\cdot \\frac{F}{d^{2}}$$\n' +
+        '($F$ in N, $d$ als mittlere Diagonale in mm).\n\n' +
+        '**Brinell-Härte (DIN EN ISO 6506):** Hartmetallkugel $D = 1$–$10\\,\\text{mm}$, Abdruck-Durchmesser $d$ messen.\n' +
+        '$$\\text{HB} \\approx 0{,}102 \\cdot \\frac{F}{A_\\text{abdruck}}$$\n\n' +
+        '**Rockwell C (DIN EN ISO 6508):** Diamantkegel $120°$, Vorlast $98\\,\\text{N}$, Hauptlast $1373\\,\\text{N}$. Gerät misst die Eindringtiefe $h$ direkt:\n' +
+        '$$\\text{HRC} = 100 - \\frac{h}{0{,}002\\,\\text{mm}}$$\n' +
+        'Anzeige direkt am Messgerät — schnellste Methode in der Serienfertigung.\n\n' +
+        '**Faustformel Stahl:** $R_m\\,[\\text{MPa}] \\approx 3{,}5 \\cdot \\text{HV}$. Aus einer schnellen Härteprüfung lässt sich die Zugfestigkeit grob abschätzen (Stahl-spezifisch; bei Aluminium liegt der Faktor bei $\\approx 3{,}0$–$3{,}3$).\n\n' +
+        '**Faustregel Probendicke / Eindringtiefe:**\n' +
+        '$$t_\\text{min} \\geq 10 \\cdot h$$\n' +
+        'Liegt die Probendicke (oder Schichtdicke) unter dem $10$-fachen der Eindringtiefe, drückt der Eindringkörper bis zum Untergrund durch — die Härte wird verfälscht. Lösung: kleinere Last oder Mikro-Vickers (HV0,1 mit $F < 2\\,\\text{N}$).\n\n' +
         '**Typische Werte:**\n' +
         '- Reineisen: ~100 HV\n' +
         '- Baustahl S235: ~120–150 HV\n' +
         '- Vergütungsstahl 42CrMo4: ~280–320 HV\n' +
         '- Gehärteter Werkzeugstahl: bis 900 HV\n' +
+        '- Hartmetall: ~1500 HV\n' +
         '- Al₂O₃-Keramik: ~2000 HV',
       masteryQuestion: 'Welches Verfahren eignet sich am besten für eine dünne Oberflächenschicht (z. B. gehärtete Randschicht)?',
       masteryOptions: ['Vickers (HV)', 'Brinell (HB) mit 10 mm Kugel', 'Rockwell B (HRB)', 'Keine der Methoden'],
@@ -277,6 +287,7 @@ const unit2 = makeUnit({
       masteryHints: [
         'Kleiner Eindruck ist nötig, um nur die dünne Schicht zu messen.',
         'Welches Verfahren hat den kleinsten Eindruck?',
+        'Faustregel: Eindringtiefe $h \\leq \\tfrac{1}{10}$ der Schichtdicke — sonst zählt der Untergrund mit.',
       ],
       masteryWrongAnswerExplanations: {
         "1": 'Brinell mit 10 mm Kugel erzeugt einen vergleichsweise großen Abdruck (Durchmesser mehrere Millimeter, Eindringtiefe zu groß). Die dünne Schicht würde durchdrückt und der weichere Grundwerkstoff verfälscht das Ergebnis. Kleine Eindrücke liefert nur Vickers (insbesondere Micro-Vickers).',

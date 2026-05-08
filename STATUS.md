@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2934 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2127 (72 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1330 / 1330 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 303 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2954 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2147 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1343 / 1343 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 307 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1165,10 +1165,10 @@ _Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. 
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 6
-- Aufgaben: **58** (Lesson-Path: 8 · Goal-Tasks: 50)
-- 4-Block: 57/58 (98 %) 🟡
-- MC-wAE: 38/38 (100 %) ✅
-- Sub-Goals: 10/30 Goal-Tasks verknüpft 🔴
+- Aufgaben: **78** (Lesson-Path: 8 · Goal-Tasks: 70)
+- 4-Block: 77/78 (99 %) 🟡
+- MC-wAE: 51/51 (100 %) ✅
+- Sub-Goals: 14/30 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.**
@@ -1208,7 +1208,7 @@ _Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klau
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `werk-1-1` Spannungs-Dehnungs-Diagramm | 5 | 5/5 | 26 | 15/5/5/1/0 | 26/26 | 15/15 | ✅ | — |
 | `werk-1-2` Werkstoffgruppen | 5 | 5/5 | 26 | 18/1/5/2/0 | 26/26 | 18/18 | ✅ | — |
-| `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 0/4 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +4 Goal |
+| `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 4/4 | 21 | 14/2/4/1/0 | 21/21 | 14/14 | ✅ | — |
 | `werk-2-2` Kerbschlagbiegeversuch | 5 | 0/5 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +5 Goal |
 | `werk-2-3` Fe-C-Diagramm & Wärmebehandlung | 6 | 0/6 | 3 | 2/1/0/0/0 | 3/3 | 2/2 | ✅ | +6 Goal |
 | `werk-pruefung-1` Prüfung: Werkstoffwahl & Kennwerte | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 114 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 113 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1546,51 +1546,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `werk-2-1` · Härteprüfung (HV, HB, HRC)
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `werk-1-1` → `re-rm`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `vickers-brinell` — Vickers (HV) Diamantpyramide universell; Brinell (HB) Kugel für weichere (SG 0)
-  2. `rockwell` — Rockwell (HRC): direkt ablesbar, schnellste Methode in der Fertigung (SG 1)
-  3. `haerte-rm` — Faustformel Stahl: $R_m\approx 3{,}5\cdot HV$ in MPa ⇐ `vickers-brinell` (SG 2)
-  4. `pruefkraft` — Prüfkraft und Probendicke abstimmen — sonst Untergrund verfälscht (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `vickers-brinell` · **0/5+** — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
-  - 🔴 [1] _hoch_ · Konzepte: `rockwell` · **0/5+** — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
-  - 🔴 [2] _mittel_ · Konzepte: `haerte-rm` · **0/5+** — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
-  - 🔴 [3] _mittel_ · Konzepte: `pruefkraft` · **0/5+** — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `rockwell` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-2-2` · Kerbschlagbiegeversuch
 
@@ -10395,7 +10350,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 36 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10436,6 +10391,50 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `werk-2-1` · Härteprüfung (HV, HB, HRC)
+
+- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `vickers-brinell` — Vickers (HV) Diamantpyramide universell; Brinell (HB) Kugel für weichere (SG 0)
+  2. `rockwell` — Rockwell (HRC): direkt ablesbar, schnellste Methode in der Fertigung (SG 1)
+  3. `haerte-rm` — Faustformel Stahl: $R_m\approx 3{,}5\cdot HV$ in MPa ⇐ `vickers-brinell` (SG 2)
+  4. `pruefkraft` — Prüfkraft und Probendicke abstimmen — sonst Untergrund verfälscht (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `vickers-brinell` · **5/5+** — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
+  - ✅ [1] _hoch_ · Konzepte: `rockwell` · **5/5+** — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
+  - ✅ [2] _mittel_ · Konzepte: `haerte-rm` · **5/5+** — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
+  - ✅ [3] _mittel_ · Konzepte: `pruefkraft` · **5/5+** — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `rockwell` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `haerte-rm` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haerte-rm` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `haerte-rm` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haerte-rm` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `haerte-rm` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pruefkraft` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `mech-0-1` · SI-Basiseinheiten & Präfixe
 

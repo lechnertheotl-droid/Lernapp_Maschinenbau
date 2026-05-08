@@ -1379,4 +1379,559 @@ export const werkstoffkundeSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // werk-2-1 — Härteprüfung (HV, HB, HRC)
+  //   SG 0: vickers-brinell · SG 1: rockwell
+  //   SG 2: haerte-rm       · SG 3: pruefkraft
+  // ─────────────────────────────────────────────────────────────────────────
+  'werk-2-1': {
+    // ───────────── SG 0: Vickers / Brinell ─────────────
+    0: [
+      tag(
+        tf(
+          'Bei der Vickers-Härteprüfung dient eine Diamantpyramide als Eindringkörper, bei der Brinell-Härteprüfung eine Hartmetallkugel.',
+          true,
+          `**Ansatz:** Beide Verfahren unterscheiden sich primär durch die Geometrie des Eindringkörpers — und damit durch ihren Anwendungsbereich.
+
+**Rechnung:** Vickers (DIN EN ISO 6507): Diamantpyramide mit Öffnungswinkel $136°$. Brinell (DIN EN ISO 6506): Hartmetallkugel mit $D = 1$, $2{,}5$, $5$ oder $10\\,\\text{mm}$.
+
+**Probe:** Vickers: gemessen wird die Diagonale $d$ des quadratischen Abdrucks; Brinell: gemessen wird der Durchmesser $d$ des kreisrunden Abdrucks. Geometrie passt zum jeweiligen Eindringkörper. ✓
+
+**Typischer Fehler:** „Eindringkörper austauschbar" — Diamant misst auch sehr harte Werkstoffe (Hartmetall, Keramik), die Hartmetallkugel würde sich dabei selbst verformen.`,
+          [
+            'Welches Material ist hart genug, um auch in Hartmetall einzudringen, ohne sich selbst zu verformen?',
+            'Pyramide vs. Kugel — was wird im Abdruck jeweils gemessen?',
+            'Norm-Hinweis: HV nutzt einen Diamanten, HB eine Kugel.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['vickers-brinell'] },
+      ),
+      tag(
+        mc(
+          'Welches Härteprüfverfahren ist für die Charakterisierung eines sehr harten Werkstoffs (z. B. Hartmetall mit $\\approx 1500\\,\\text{HV}$) am besten geeignet?',
+          [
+            'Vickers (HV) mit Diamantpyramide',
+            'Brinell (HB) mit Hartmetallkugel $D = 10\\,\\text{mm}$',
+            'Brinell (HB) mit Hartmetallkugel $D = 1\\,\\text{mm}$',
+            'Keines der Verfahren — bei diesen Härten gibt es keine Prüfung',
+          ],
+          0,
+          `**Ansatz:** Eindringkörper muss härter sein als der zu prüfende Werkstoff, sonst verformt er sich selbst und das Ergebnis ist verfälscht. Diamant ist der härteste verfügbare Werkstoff.
+
+**Rechnung:** Hartmetall: $\\approx 1500\\,\\text{HV}$. Hartmetallkugel: $\\approx 1500$–$1700\\,\\text{HV}$ — also nur knapp härter und unter Prüflast bereits am Limit. Diamant: $\\approx 10\\,000\\,\\text{HV}$ — Reserve groß genug.
+
+**Probe:** Industriestandard für Hartmetall- und Keramik-Werkzeuge: Vickers HV30. ✓
+
+**Typischer Fehler:** Brinell auch auf hartem Material einsetzen — die Kugel wird abgeplattet, der Durchmesser falsch gemessen.`,
+          [
+            'Welcher Eindringkörper ist überhaupt härter als $1500\\,\\text{HV}$?',
+            'Diamant ist quasi-universell verwendbar.',
+            'Hartmetallkugel hat nur ca. $1500\\,\\text{HV}$ — keine Reserve gegen Hartmetall.',
+          ],
+          {
+            1: 'Eine $10\\,\\text{mm}$-Hartmetallkugel würde sich beim Eindrücken in Hartmetall selbst verformen — Messung verfälscht.',
+            2: 'Auch eine kleinere Kugel besteht aus Hartmetall und ist nicht härter als das zu prüfende Hartmetall.',
+            3: 'Hartmetall wird sehr wohl regelmäßig geprüft — mit Vickers oder Rockwell HRA.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['vickers-brinell'] },
+      ),
+      tag(
+        mc(
+          'Eine sehr dünne, oberflächlich gehärtete Schicht (Dicke $\\approx 0{,}3\\,\\text{mm}$) auf einem Bauteil soll geprüft werden. Welches Verfahren liefert die zuverlässigste Härte ohne den Grundwerkstoff mitzumessen?',
+          [
+            'Vickers (HV) mit kleiner Prüfkraft (Mikro-Vickers, $F \\leq 1\\,\\text{N}$)',
+            'Brinell (HB) mit $D = 10\\,\\text{mm}$, $F = 29{,}4\\,\\text{kN}$',
+            'Brinell (HB) mit $D = 5\\,\\text{mm}$, $F = 7{,}35\\,\\text{kN}$',
+            'Rockwell C (HRC) mit Vorlast $98\\,\\text{N}$ + Hauptlast $1373\\,\\text{N}$',
+          ],
+          0,
+          `**Ansatz:** Bei dünnen Schichten muss die Eindringtiefe $h$ deutlich kleiner sein als die Schichtdicke — sonst „spürt" der Eindringkörper den Untergrund mit. Faustregel: $h \\leq \\tfrac{1}{10}$ der Schichtdicke.
+
+**Rechnung:** Mikro-Vickers (HV0,1): Prüfkraft $\\approx 0{,}98\\,\\text{N}$ erzeugt Eindrucks-Diagonalen von wenigen $\\mu\\text{m}$ — Eindringtiefe weit unter $0{,}03\\,\\text{mm}$. Brinell mit $D = 10\\,\\text{mm}$ erzeugt Eindringtiefen von mehreren Zehntelmillimeter — durchdrückt die Schicht.
+
+**Probe:** Mikro-Vickers ist nach DIN EN ISO 6507 die anerkannte Methode für Schicht-Härteprüfung. ✓
+
+**Typischer Fehler:** „Größere Last = genaueres Ergebnis" — bei dünnen Schichten ist genau das Gegenteil richtig.`,
+          [
+            'Welcher Eindringkörper hinterlässt den kleinsten Abdruck?',
+            'Faustregel: $h \\leq \\tfrac{1}{10}$ der Schichtdicke.',
+            'Mikro-Vickers ($F < 2\\,\\text{N}$) erzeugt $\\mu\\text{m}$-kleine Abdrücke.',
+          ],
+          {
+            1: 'Brinell mit $10\\,\\text{mm}$-Kugel und $\\approx 30\\,\\text{kN}$ Prüfkraft erzeugt einen sehr großen Abdruck — die $0{,}3\\,\\text{mm}$-Schicht wird komplett durchdrückt.',
+            2: 'Auch eine $5\\,\\text{mm}$-Kugel mit mehreren $\\text{kN}$ Prüfkraft hat eine Eindringtiefe von mehreren Zehntelmillimeter und ist für $0{,}3\\,\\text{mm}$-Schichten zu groß.',
+            3: 'HRC mit $\\approx 1{,}47\\,\\text{kN}$ Gesamtlast (Diamantkegel) hat eine Eindringtiefe in der Größenordnung von $0{,}1\\,\\text{mm}$ — bei dünnen Schichten ebenfalls grenzwertig.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['vickers-brinell'] },
+      ),
+      tag(
+        mc(
+          'Ein Auszubildender misst die Härte eines Hartmetall-Werkzeugs mit Brinell und einer Hartmetallkugel. Das Messergebnis schwankt stark und scheint zu niedrig. Welcher Hauptfehler liegt vor?',
+          [
+            'Eindringkörper und Werkstoff sind etwa gleich hart — die Kugel verformt sich beim Eindrücken selbst, der gemessene Durchmesser ist verfälscht.',
+            'Die Kugel war zu klein gewählt — größere Kugeln liefern bei Hartmetall genauere Werte.',
+            'Brinell darf nur bei Raumtemperatur durchgeführt werden — die Werkstatt war zu kalt.',
+            'Bei Hartmetall muss die Last verdoppelt werden, sonst dringt die Kugel gar nicht ein.',
+          ],
+          0,
+          `**Ansatz:** Eine Härteprüfung funktioniert nur, wenn der Eindringkörper deutlich härter ist als der Prüfkörper. Bei Hartmetall ist das mit einer Hartmetallkugel nicht gegeben.
+
+**Rechnung:** Hartmetall: $\\approx 1500\\,\\text{HV}$. Hartmetallkugel: $\\approx 1500\\,\\text{HV}$. Verhältnis $\\approx 1$ — die Kugel verformt sich plastisch mit, der Abdruckdurchmesser wird größer als bei einer realen Härte und HB scheint zu niedrig.
+
+**Probe:** Wechsel zu Vickers (Diamant, $\\approx 10\\,000\\,\\text{HV}$): die Messung wird stabil und liefert die korrekte Härte. ✓
+
+**Typischer Fehler:** Die Härtebeschränkung von Brinell (HB $\\leq \\approx 450$) übersehen — oberhalb dieses Bereichs wird die Methode unzuverlässig.`,
+          [
+            'Welche Härtegrenze hat Brinell typischerweise?',
+            'Was passiert mit der Kugel bei einer Härte gleich der Kugelhärte?',
+            'Hartmetallkugel ≈ Hartmetallprüfling — kein Härteunterschied.',
+          ],
+          {
+            1: 'Bei einer härteren Probe als der Kugel wäre eine größere Kugel sogar **anfälliger** — Brinell ist auf Härten $\\lesssim 450\\,\\text{HB}$ beschränkt, unabhängig vom Durchmesser.',
+            2: 'Härteprüfungen sind bei Raumtemperatur normgerecht; Temperaturschwankungen erklären keine systematisch zu niedrigen Werte.',
+            3: 'Eine höhere Last verformt die Hartmetallkugel **noch stärker** und macht das Problem schlimmer, nicht besser.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['vickers-brinell'] },
+      ),
+      tag(
+        matching(
+          'Ordne dem Stichwort den korrekten Begriff aus der Vickers/Brinell-Härteprüfung zu.',
+          [
+            { left: 'Eindringkörper Vickers (HV)',            right: 'Diamantpyramide mit Öffnungswinkel $136°$' },
+            { left: 'Eindringkörper Brinell (HB)',            right: 'Hartmetallkugel mit $D = 1$–$10\\,\\text{mm}$' },
+            { left: 'Vickers-Anwendung',                       right: 'universell, auch sehr harte Werkstoffe (Hartmetall, Keramik) und dünne Schichten (Mikro-Vickers)' },
+            { left: 'Brinell-Anwendung',                       right: 'weichere Metalle bis $\\approx 450\\,\\text{HB}$, große Proben mit inhomogenem Gussgefüge' },
+          ],
+          `**Ansatz:** Jede Methode hat einen spezifischen Eindringkörper und einen typischen Einsatzbereich, der durch Härtegrenze, Probengröße und Gefügehomogenität bestimmt wird.
+
+**Rechnung:** Diamant (Vickers): hart genug für alles. Hartmetallkugel (Brinell): nur bis $\\approx 450\\,\\text{HB}$. Klein/groß bestimmt die Anwendung: Mikro-Vickers für $\\mu\\text{m}$-Schichten, Brinell mit $10\\,\\text{mm}$ für inhomogenes Gusseisen.
+
+**Probe:** Jede rechte Seite passt zu genau einer Methode (Eindringkörper + Anwendung sind eindeutig). ✓
+
+**Typischer Fehler:** Methoden austauschbar verwenden — z. B. Mikro-Vickers für inhomogenes Gusseisen ist zu lokal, Brinell für dünne Schichten ist zu groß.`,
+          [
+            'Eindringkörper-Geometrie zuerst zuordnen (Pyramide vs. Kugel).',
+            'Größenordnung des Abdrucks → Anwendungsbereich.',
+            'Mikro = klein = dünne Schichten; Brinell groß = inhomogenes Gefüge.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['vickers-brinell'] },
+      ),
+    ],
+
+    // ───────────── SG 1: Rockwell ─────────────
+    1: [
+      tag(
+        tf(
+          'Die Rockwell-Härte (HRC) wird direkt am Messgerät als Differenz von Eindringtiefen abgelesen, ohne dass der Abdruck mikroskopisch ausgemessen werden muss.',
+          true,
+          `**Ansatz:** Rockwell unterscheidet sich grundlegend von Vickers/Brinell: nicht die Abdrucksdiagonale wird gemessen, sondern direkt die Eindringtiefe-Differenz unter Vor- und Hauptlast.
+
+**Rechnung:** HRC $= 100 - h/0{,}002\\,\\text{mm}$. Die Eindringtiefe $h$ wird vom Gerät automatisch erfasst — das Ergebnis steht innerhalb von Sekunden auf der Anzeige.
+
+**Probe:** Industrieller Standard für Serienprüfung gehärteter Stähle: Rockwell C, ein Bediener, ca. 10 Sekunden pro Messung. ✓
+
+**Typischer Fehler:** „Rockwell ist nur eine andere Vickers-Skala" — das Messprinzip ist anders (Tiefe statt Diagonale), die Skala (Zahlenwerte) ist nicht direkt umrechenbar.`,
+            [
+              'Wie unterscheidet sich Rockwell vom Messprinzip her von Vickers/Brinell?',
+              'Was wird beim Rockwell-Messgerät direkt registriert?',
+              'Die Maßeinheit „HRC-Punkt" entspricht $0{,}002\\,\\text{mm}$ Eindringtiefe.',
+            ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['rockwell'] },
+      ),
+      tag(
+        mc(
+          'Welcher Eindringkörper wird bei Rockwell C (HRC) eingesetzt?',
+          [
+            'Diamantkegel mit $120°$ Spitzenwinkel und abgerundeter Spitze',
+            'Diamantpyramide mit $136°$ Öffnungswinkel',
+            'Hartmetallkugel mit $D = 1{,}5875\\,\\text{mm}$ ($\\tfrac{1}{16}\\,$"​)',
+            'Stahlkegel mit $90°$ Spitzenwinkel',
+          ],
+          0,
+          `**Ansatz:** Jede Rockwell-Skala hat ihren eigenen Eindringkörper. HRC verwendet den Diamantkegel mit $120°$, weil er für gehärtete Stähle (hohe Härte) geeignet ist.
+
+**Rechnung:** Norm DIN EN ISO 6508-1: Skala C → Diamantkegel mit $120°$, Vorlast $98\\,\\text{N}$, Hauptlast $1373\\,\\text{N}$ (Gesamtlast $1471\\,\\text{N}$ = $150\\,\\text{kgf}$).
+
+**Probe:** Auf jedem Rockwell-Härteprüfgerät ist der HRC-Eindringkörper als „Diamond Cone" beschriftet. ✓
+
+**Typischer Fehler:** HRC und HV verwechseln — beide verwenden Diamant, aber Pyramide vs. Kegel.`,
+          [
+            'Bei welcher Skala kommt eine Kugel zum Einsatz, bei welcher ein Diamant?',
+            'HRC = „C-Skala" für harte Werkstoffe → harter Eindringkörper.',
+            'Diamantkegel ist Rockwell-spezifisch.',
+          ],
+          {
+            1: 'Die Pyramide ist der Vickers-Eindringkörper. HRC verwendet einen Kegel.',
+            2: 'Eine $1{,}5875\\,\\text{mm}$-Hartmetallkugel ist der Eindringkörper für Rockwell B (HRB), nicht HRC.',
+            3: 'Stahlkegel sind nicht hart genug, um gehärtete Stähle zuverlässig zu prüfen — bei HRC wird ausschließlich Diamant verwendet.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['rockwell'] },
+      ),
+      tag(
+        mc(
+          'In einer Serienfertigung müssen täglich $200$ gehärtete Wellen auf ihre Härte geprüft werden. Welche Methode ist am wirtschaftlichsten?',
+          [
+            'Rockwell C (HRC) — direkte Anzeige, ca. $10\\,\\text{s}$ pro Messung',
+            'Vickers (HV30) — Mikroskop-Auswertung der Diagonale, ca. $1$–$2\\,\\text{min}$ pro Messung',
+            'Brinell (HB) — optische Vermessung des Kugelabdrucks',
+            'Mikro-Vickers (HV0,1) — sehr kleine Eindrücke, mikroskopische Vermessung',
+          ],
+          0,
+          `**Ansatz:** Wirtschaftlichkeit in Serie = Zeit pro Messung × Stückzahl + Bediener-Aufwand. Rockwell ist gerade hier konkurrenzlos schnell.
+
+**Rechnung:** Rockwell: $10\\,\\text{s}\\cdot 200 \\approx 33\\,\\text{min}$. Vickers: $90\\,\\text{s}\\cdot 200 = 5\\,\\text{h}$. Faktor $\\approx 9$.
+
+**Probe:** Praxis: Wareneingang und 100-%-Prüfung gehärteter Stähle erfolgt fast ausschließlich mit HRC. ✓
+
+**Typischer Fehler:** Genauigkeit über Geschwindigkeit stellen, obwohl die Genauigkeit von HRC für gehärtete Stähle völlig ausreicht.`,
+          [
+            'Was ist in Serie das Hauptkriterium?',
+            'Welches Verfahren braucht KEIN Mikroskop?',
+            'Direkte Anzeige am Messgerät → schnellste Methode.',
+          ],
+          {
+            1: 'Vickers braucht Mikroskop-Auswertung der Diagonale — bei $200$ Stück pro Tag wird das ein Vollzeit-Job.',
+            2: 'Brinell braucht ebenfalls optische Auswertung des Abdrucks und ist nicht für gehärtete Wellen ($> 450\\,\\text{HB}$) geeignet.',
+            3: 'Mikro-Vickers ist noch aufwändiger als HV30 (kleinere Eindrücke, höhere Vergrößerung) — nicht für Serie geeignet.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['rockwell'] },
+      ),
+      tag(
+        mc(
+          'Ein Mitarbeiter notiert die Rockwell-Härte als „$60\\,\\text{HRC}$ entspricht $60\\,\\text{HV}$". Wo liegt der Fehler?',
+          [
+            'Die HRC- und HV-Skalen sind nicht gleich — $60\\,\\text{HRC}$ entsprechen ungefähr $\\approx 700\\,\\text{HV}$. HRC ist eine eigene Skala aus Eindringtiefe-Differenzen, keine HV-Zahl.',
+            'Die Aussage ist korrekt — HRC ist nur eine andere Schreibweise für HV.',
+            'HRC kann gar nicht gleich HV sein, weil es kein gehärtetes Material mit $60\\,\\text{HV}$ gibt.',
+            'HRC misst nur in Pascal und HV in Newton — die Einheiten passen nicht.',
+          ],
+          0,
+          `**Ansatz:** Rockwell-C und Vickers sind zwei unabhängige Härteskalen mit eigenem Messprinzip. Eine direkte Gleichsetzung der Zahlenwerte ist falsch.
+
+**Rechnung:** Vergleich aus DIN-Härteumwerttabelle: $60\\,\\text{HRC} \\approx 700\\,\\text{HV} \\approx 2300\\,\\text{MPa}$ Zugfestigkeit. $40\\,\\text{HRC} \\approx 390\\,\\text{HV}$. Die Skalen verlaufen nichtlinear.
+
+**Probe:** Norm-Umwerttabelle (DIN EN ISO 18265): keine $1{:}1$-Beziehung HRC ↔ HV. ✓
+
+**Typischer Fehler:** Skalenwerte direkt gleichsetzen, statt eine Umwerttabelle zu nutzen.`,
+          [
+            'Sind alle Härteskalen austauschbar?',
+            'Was bedeutet eigentlich der Zahlenwert „$60$" bei Rockwell C?',
+            'Umwerttabelle: $60\\,\\text{HRC}$ ist sehr viel mehr als $60\\,\\text{HV}$.',
+          ],
+          {
+            1: 'Genau das ist der Fehler — die Aussage ist falsch. HRC und HV sind völlig verschiedene Skalen.',
+            2: 'Die Aussage geht es nicht um die Existenz, sondern um die Skalenidentität — und die ist gerade NICHT gegeben.',
+            3: 'Beide Härteskalen sind dimensionslos (Härte ist eine relative Größe). Pascal und Newton kommen hier nicht vor.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['rockwell'] },
+      ),
+      tag(
+        mc(
+          'Welche Rockwell-Skala ist für ein **weichgeglühtes** Aluminium-Bauteil ($\\approx 50\\,\\text{HB}$) am besten geeignet?',
+          [
+            'Rockwell B (HRB) — Hartmetallkugel $\\tfrac{1}{16}\\,$" mit $980\\,\\text{N}$ Hauptlast',
+            'Rockwell C (HRC) — Diamantkegel mit $1373\\,\\text{N}$ Hauptlast',
+            'Rockwell A (HRA) — Diamantkegel mit $539\\,\\text{N}$ Hauptlast',
+            'Eine Rockwell-Skala existiert für so weiche Werkstoffe nicht — nur Brinell',
+          ],
+          0,
+          `**Ansatz:** Rockwell hat mehrere Skalen, jede mit eigenem Eindringkörper und Lastbereich. Für weiche Werkstoffe (NE-Metalle, weiche Stähle) ist HRB Standard.
+
+**Rechnung:** HRB: Kugel + niedrige Last → großer Abdruck → für weiche Werkstoffe ($\\approx 35$–$100\\,\\text{HRB}$). HRC mit Diamant würde komplett durchdrücken (Tiefe weit jenseits des Skalenbereichs). HRA ist für sehr harte und dünne Materialien (z. B. Hartmetall).
+
+**Probe:** Aluminiumlegierungen werden in Norm-Datenblättern oft mit HRB oder HV angegeben. ✓
+
+**Typischer Fehler:** Immer HRC verwenden, weil „die geläufigste Skala" — bei weichen Werkstoffen liefert HRC keinen brauchbaren Wert (Eindringtiefe zu groß, Skala unter $20\\,\\text{HRC}$ nicht definiert).`,
+          [
+            'Welche Rockwell-Skala nutzt eine Kugel statt eines Kegels?',
+            'Weiches Material → großer Abdruck → niedrige Last + Kugel.',
+            'HRB ist die Standardskala für weiche Stähle und NE-Metalle.',
+          ],
+          {
+            1: 'HRC ist für gehärtete Stähle ($\\approx 20$–$70\\,\\text{HRC}$). Bei weichem Aluminium würde der Diamant zu tief eindringen — keine sinnvolle Anzeige.',
+            2: 'HRA verwendet Diamantkegel mit niedriger Last — für sehr harte, dünne Schichten (z. B. Hartmetall-Beschichtungen) gedacht, nicht für weiches Aluminium.',
+            3: 'Es gibt sehr wohl eine geeignete Rockwell-Skala — gerade HRB existiert für genau diesen Härtebereich.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['rockwell'] },
+      ),
+    ],
+
+    // ───────────── SG 2: Härte ↔ $R_m$ (haerte-rm) ─────────────
+    2: [
+      tag(
+        tf(
+          'Für unlegierte und niedriglegierte Stähle gilt die Faustformel $R_m \\approx 3{,}5 \\cdot HV$ (mit $R_m$ in $\\text{MPa}$ und HV als Vickers-Härte) — die Härte korreliert linear mit der Zugfestigkeit.',
+          true,
+          `**Ansatz:** Plastische Verformung wird sowohl beim Eindrücken (Härte) als auch beim Zugversuch (Streckgrenze/Festigkeit) durch Versetzungsbewegung bestimmt. Das erklärt die starke Korrelation HV ↔ $R_m$.
+
+**Rechnung:** Faustformel: $R_m\\,[\\text{MPa}] \\approx 3{,}5 \\cdot HV$. Beispiele: S235 mit $\\approx 130\\,\\text{HV}$ → $R_m \\approx 455\\,\\text{MPa}$ (passt zu $360$–$510\\,\\text{MPa}$). Vergütungsstahl 42CrMo4 mit $\\approx 300\\,\\text{HV}$ → $R_m \\approx 1050\\,\\text{MPa}$.
+
+**Probe:** Tabelle DIN EN ISO 18265 bestätigt die Faustformel im Bereich von $\\approx 100$–$650\\,\\text{HV}$ mit Abweichungen unter $\\pm 10\\,\\%$. ✓
+
+**Typischer Fehler:** Faustformel auf Aluminium oder Kunststoffe übertragen — der Faktor $3{,}5$ gilt nur für Stahl. Für Aluminium ist der Korrelationsfaktor anders (typisch $\\approx 3{,}0$–$3{,}3$).`,
+          [
+            'Welche physikalische Größe verbindet Härte und Festigkeit?',
+            'Faktor $3{,}5$ — gilt der für alle Werkstoffe?',
+            'Plausibilitäts-Check S235: $130\\,\\text{HV} \\cdot 3{,}5 \\approx 460\\,\\text{MPa}$ — typisch für Baustahl.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['haerte-rm'] },
+      ),
+      tag(
+        mc(
+          'Eine Stahlprobe hat eine Härte von $200\\,\\text{HV}$. Welche Zugfestigkeit $R_m$ ist nach der Faustformel zu erwarten?',
+          [
+            '$\\approx 700\\,\\text{MPa}$',
+            '$\\approx 200\\,\\text{MPa}$',
+            '$\\approx 350\\,\\text{MPa}$',
+            '$\\approx 2000\\,\\text{MPa}$',
+          ],
+          0,
+          `**Ansatz:** Faustformel direkt anwenden: $R_m \\approx 3{,}5 \\cdot HV$.
+
+**Rechnung:** $R_m \\approx 3{,}5 \\cdot 200 = 700\\,\\text{MPa}$.
+
+**Probe:** Vergleich mit Tabellenwerten: $200\\,\\text{HV}$ entspricht etwa einem Vergütungsstahl im niedrigen Festigkeitsbereich (z. B. C45 normalgeglüht), $R_m$ liegt typisch bei $650$–$750\\,\\text{MPa}$ — passt. ✓
+
+**Typischer Fehler:** Den Faktor $3{,}5$ vergessen ($R_m = 200\\,\\text{MPa}$) oder das Doppelte nehmen ($R_m = 1400\\,\\text{MPa}$).`,
+          [
+            'Welche Faustformel verbindet HV und $R_m$ bei Stählen?',
+            'Multiplikation, kein Quotient.',
+            'Erwartung: einige hundert MPa für mittelhart.',
+          ],
+          {
+            1: '$200\\,\\text{MPa}$ wäre $R_m = HV$ — das stimmt nicht. Der Faktor $3{,}5$ fehlt.',
+            2: '$350\\,\\text{MPa}$ entspräche dem Faktor $1{,}75$ — die Faustformel verwendet $3{,}5$.',
+            3: '$2000\\,\\text{MPa}$ wäre $R_m = 10 \\cdot HV$ — viel zu hoch. Die Faustformel ist $\\approx 3{,}5 \\cdot HV$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['haerte-rm'] },
+      ),
+      tag(
+        ni(
+          'Ein Vergütungsstahl C45 hat eine Härte von $180\\,\\text{HV}$. Schätze die Zugfestigkeit $R_m$ in $\\text{MPa}$ mit der Stahl-Faustformel ab.',
+          630,
+          5,
+          'MPa',
+          `**Ansatz:** Stahl-Faustformel direkt anwenden: $R_m\\,[\\text{MPa}] \\approx 3{,}5 \\cdot HV$.
+
+**Rechnung:** $R_m \\approx 3{,}5 \\cdot 180 = 630\\,\\text{MPa}$.
+
+**Probe:** Tabellenwert C45 normalgeglüht: $R_m \\approx 600$–$700\\,\\text{MPa}$ — passt. ✓ Rückrechnung: $HV \\approx R_m/3{,}5 = 630/3{,}5 = 180$ ✓.
+
+**Typischer Fehler:** Den Faktor invertieren ($R_m = 180/3{,}5 \\approx 51\\,\\text{MPa}$) — sinnlos klein für Stahl.`,
+          [
+            'Faustformel $R_m \\approx 3{,}5 \\cdot HV$ direkt anwenden.',
+            'Multiplikation, nicht Division.',
+            'Plausibilitäts-Check: einige hundert MPa, nicht weniger als 100.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['haerte-rm'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender wendet die Faustformel $R_m \\approx 3{,}5 \\cdot HV$ auf eine Aluminium-Legierung an, die mit $90\\,\\text{HV}$ gemessen wurde, und berechnet $R_m \\approx 315\\,\\text{MPa}$. Wo liegt der Hauptfehler?',
+          [
+            'Die Faustformel mit Faktor $3{,}5$ gilt **nur für Stähle** — bei Aluminium liegt der Korrelationsfaktor niedriger ($\\approx 3{,}0$–$3{,}3$), das Ergebnis $315\\,\\text{MPa}$ ist deshalb tendenziell zu hoch.',
+            'Aluminium kann mit Vickers gar nicht geprüft werden — das Verfahren funktioniert nur bei Stahl.',
+            'Die Faustformel gibt zwar das richtige Ergebnis, aber die Einheit muss in Pascal sein.',
+            'Aluminium hat keine Zugfestigkeit, weil es immer plastisch fließt.',
+          ],
+          0,
+          `**Ansatz:** Die Faustformel-Konstante hängt vom Werkstoff ab. Sie wurde empirisch für Stähle gefittet — bei NE-Metallen weicht sie ab.
+
+**Rechnung:** Reale AlMg- oder AlMgSi-Legierungen mit $90\\,\\text{HV}$ haben $R_m \\approx 270$–$300\\,\\text{MPa}$. Mit Stahl-Faktor errechnet man $315\\,\\text{MPa}$ — schon $5$–$15\\,\\%$ zu hoch.
+
+**Probe:** DIN EN ISO 18265 listet werkstoffspezifische Tabellen — keine universelle Faustformel. ✓
+
+**Typischer Fehler:** Empirische Formeln auf Werkstoffe übertragen, für die sie nicht kalibriert sind.`,
+          [
+            'Auf welchen Werkstoff bezieht sich die Faustformel ursprünglich?',
+            'Was unterscheidet Aluminium grundsätzlich von Stahl?',
+            'Der Korrelationsfaktor ist nicht universell.',
+          ],
+          {
+            1: 'Aluminium kann sehr wohl mit Vickers geprüft werden — kleine Pyramide, geringe Last (z. B. HV5).',
+            2: 'Die Einheit MPa ist für eine Faustformel mit HV korrekt — Pascal wäre zwar gleichwertig, aber nicht der Fehler.',
+            3: 'Aluminium hat eine messbare Zugfestigkeit — die Aussage ist sachlich falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['haerte-rm'] },
+      ),
+      tag(
+        ni(
+          'Ein Werker prüft einen gehärteten Wellenzapfen und liest $320\\,\\text{HV}$ ab. Welche Zugfestigkeit $R_m$ in $\\text{MPa}$ ist nach der Stahl-Faustformel zu erwarten?',
+          1120,
+          10,
+          'MPa',
+          `**Ansatz:** Faustformel anwenden: $R_m \\approx 3{,}5 \\cdot HV$.
+
+**Rechnung:** $R_m \\approx 3{,}5 \\cdot 320 = 1120\\,\\text{MPa}$.
+
+**Probe:** $320\\,\\text{HV}$ entspricht einem Vergütungsstahl wie 42CrMo4 in vergütetem Zustand — Tabellenwert $R_m \\approx 1100$–$1200\\,\\text{MPa}$. Passt. ✓
+
+**Typischer Fehler:** Faktor $3$ statt $3{,}5$ aus dem Kopf — würde $960\\,\\text{MPa}$ ergeben, also etwa $14\\,\\%$ zu niedrig.`,
+          [
+            'Faustformel: $R_m\\,[\\text{MPa}] \\approx 3{,}5 \\cdot HV$.',
+            'Hier mit $HV = 320$ einsetzen.',
+            'Erwartung: ein Vergütungsstahl im 1000-MPa-Bereich.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['haerte-rm'] },
+      ),
+    ],
+
+    // ───────────── SG 3: Prüfkraft ↔ Probendicke (pruefkraft) ─────────────
+    3: [
+      tag(
+        tf(
+          'Bei der Härteprüfung muss die Prüfkraft so gewählt werden, dass die Eindringtiefe deutlich kleiner als die Probendicke (oder Schichtdicke) ist — sonst verfälscht der weichere Untergrund das Ergebnis.',
+          true,
+          `**Ansatz:** Wenn die Eindringtiefe vergleichbar oder größer als die Probendicke wird, „spürt" der Eindringkörper den Untergrund — die gemessene Härte ist eine Mischung aus Schicht und Untergrund.
+
+**Rechnung:** Faustregel: Eindringtiefe $h \\leq \\tfrac{1}{10}$ der Probendicke (Vickers/Brinell), bzw. Probendicke $\\geq 10\\cdot h$. Bei einer $1\\,\\text{mm}$-Probe darf $h$ also höchstens $0{,}1\\,\\text{mm}$ betragen.
+
+**Probe:** DIN EN ISO 6507 (Vickers) und 6506 (Brinell) verlangen Mindest-Probendicken in Abhängigkeit von Prüfkraft und Eindringkörper. ✓
+
+**Typischer Fehler:** „Mehr Last = besseres Ergebnis" — das Gegenteil bei dünnen Proben oder Schichten. Hohe Last drückt durch.`,
+          [
+            'Was passiert, wenn der Eindringkörper bis zum Untergrund durchdrückt?',
+            'Welche Faustregel verbindet Eindringtiefe und Probendicke?',
+            'Eindringtiefe immer deutlich kleiner als Probendicke.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['pruefkraft'] },
+      ),
+      tag(
+        mc(
+          'Welcher Schritt ist der **erste** in der Wahl einer korrekten Härteprüf-Konfiguration für ein neues Bauteil?',
+          [
+            'Probendicke und ungefähre Härte abschätzen, daraus Verfahren und Prüfkraft auswählen',
+            'Sofort die größtmögliche Prüfkraft wählen — höhere Last gibt genauere Werte',
+            'Brinell mit $D = 10\\,\\text{mm}$ probieren, weil das die Standardprüfung ist',
+            'Mit dem Daumennagel über die Oberfläche kratzen, um die Härte abzuschätzen',
+          ],
+          0,
+          `**Ansatz:** Verfahren und Prüfkraft hängen direkt von Härtebereich und Probendicke ab. Eine Konfiguration ohne Vorab-Abschätzung führt fast immer zu falschen Werten.
+
+**Rechnung:** Beispiel: Härteprüfung an einem $0{,}5\\,\\text{mm}$ dünnen Blech mit $\\approx 200\\,\\text{HV}$. Mit HV30 entstehende Eindringtiefe: $h \\approx \\sqrt{0{,}1891 \\cdot 294/200}/7 \\approx 0{,}11\\,\\text{mm}$ — knapp am Limit (Probendicke $\\geq 10h = 1{,}1\\,\\text{mm}$). Besser HV5 oder HV10.
+
+**Probe:** DIN ISO 6507 verlangt explizit eine Mindestprobendicke in Abhängigkeit von Prüfkraft und Härte. ✓
+
+**Typischer Fehler:** Konfiguration „nach Bauchgefühl" — meist mit zu hoher Last, was Schicht- oder Probenuntergrund mitmisst.`,
+          [
+            'Welche Größen müssen vor der Prüfung bekannt sein?',
+            'Härte + Dicke → Methode + Last.',
+            'Norm-Tabellen zur Mindestdicke nutzen.',
+          ],
+          {
+            1: 'Hohe Last erzeugt tiefe Eindrücke — bei dünnen Proben durchgedrückt, Ergebnis verfälscht. „Mehr ist besser" ist hier falsch.',
+            2: 'Brinell mit $10\\,\\text{mm}$-Kugel passt nur für relativ weiche, dicke Proben. Für eine universelle Standardanwendung ist es nicht geeignet.',
+            3: 'Daumennagel-Kratzproben sind keine Härteprüfung — sie liefern keine Zahlenwerte und keine reproduzierbaren Aussagen.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['pruefkraft'] },
+      ),
+      tag(
+        mc(
+          'Was passiert, wenn die Prüfkraft bei einer Vickers-Messung **zu hoch** für die gegebene Probendicke gewählt wird?',
+          [
+            'Der Eindringkörper drückt bis zum härteren oder weicheren Untergrund durch — die gemessene Härte ist eine Mischung aus Schicht- und Untergrund-Härte.',
+            'Die Diagonale des Eindrucks wird zu klein — die Härte erscheint zu hoch.',
+            'Die Vickers-Pyramide wird beschädigt — sie ist nicht für hohe Lasten zugelassen.',
+            'Die Zugfestigkeit nach der Faustformel wird automatisch korrigiert — kein Fehler.',
+          ],
+          0,
+          `**Ansatz:** Bei zu großer Eindringtiefe verteilen sich Spannungsfelder bis in den Untergrund. Die elastisch-plastische Antwort ist dann die Summe von Schicht und Untergrund.
+
+**Rechnung:** Beispiel: Hartchrom-Schicht $0{,}1\\,\\text{mm}$ auf weichem Stahl-Grundkörper. HV30 erzeugt Eindringtiefe $\\approx 0{,}11\\,\\text{mm}$ — drückt durch die Schicht. Die gemessene Härte liegt zwischen Hartchrom ($\\approx 800\\,\\text{HV}$) und Stahl ($\\approx 200\\,\\text{HV}$).
+
+**Probe:** Lösung: Last reduzieren (HV0,5 oder HV1) → Eindringtiefe wenige $\\mu\\text{m}$ → reine Schichtmessung. ✓
+
+**Typischer Fehler:** Annehmen, dass eine größere Last zuverlässigere Mittelwerte liefert. Bei dünnen Schichten und Proben gilt das Gegenteil.`,
+          [
+            'Was passiert physikalisch, wenn der Eindringkörper bis zum Untergrund vordringt?',
+            'Spannungsfeld unter dem Eindringkörper reicht weit über die Eindringtiefe hinaus.',
+            'Faustregel: Probendicke mindestens das $10$-fache der Eindringtiefe.',
+          ],
+          {
+            1: 'Die Diagonale wird durch Untergrund-Effekte typischerweise **größer** (weichere Probe drückt nach), nicht kleiner — die Härte erscheint daher meist zu **niedrig**.',
+            2: 'Vickers-Diamantpyramiden sind für Lasten bis zu mehreren $\\text{kN}$ zugelassen — eine zu hohe Last beschädigt nicht die Pyramide, sondern verfälscht die Messung.',
+            3: 'Es gibt keine automatische Korrektur — der Fehler bleibt unentdeckt, wenn man die Geometrie nicht prüft.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['pruefkraft'] },
+      ),
+      tag(
+        mc(
+          'Ein Werkstattmitarbeiter prüft ein $1\\,\\text{mm}$ dickes Stahlblech mit Brinell ($D = 10\\,\\text{mm}$, $F = 29{,}4\\,\\text{kN}$) und ist überrascht, dass die Härte deutlich von Tabellenwerten abweicht. Wo liegt der Fehler?',
+          [
+            'Die $10\\,\\text{mm}$-Brinellkugel mit $29{,}4\\,\\text{kN}$ erzeugt eine Eindringtiefe in der Größenordnung von einigen Zehntelmillimetern — das Blech ist viel zu dünn (Faustregel: Probendicke $\\geq 10\\cdot h$).',
+            'Brinell darf bei Stahl nicht angewendet werden — nur Vickers funktioniert für Stahl.',
+            'Stahlbleche können nur mit Rockwell-A geprüft werden, weil sie zu weich sind.',
+            'Der Mitarbeiter hat die Probe nicht warm genug gemacht — ohne Vorwärmung verfälscht die Spannungsverteilung das Ergebnis.',
+          ],
+          0,
+          `**Ansatz:** Brinell mit $10\\,\\text{mm}$-Kugel und $29{,}4\\,\\text{kN}$ ist die Standardkonfiguration für Stahl ab $\\approx 6\\,\\text{mm}$ Dicke. Bei $1\\,\\text{mm}$ sind Eindringtiefe und Probendicke vergleichbar.
+
+**Rechnung:** Eindringtiefe $h \\approx F/(\\pi\\,D\\,HB)$. Mit $F = 29{,}4\\,\\text{kN}$, $D = 10\\,\\text{mm}$, $HB \\approx 150$: $h \\approx 29400/(\\pi\\cdot 10\\cdot 1{,}5) \\approx 624\\,\\text{N/mm}$ — Größenordnungs-Check zeigt $h$ im Bereich $\\approx 0{,}5\\,\\text{mm}$, also halbe Probendicke. Faustregel ($h \\leq 0{,}1\\,\\text{mm}$ bei $1\\,\\text{mm}$ Probe) verletzt.
+
+**Probe:** Lösung: kleinere Kugel ($D = 1\\,\\text{mm}$) und kleinere Last, oder Wechsel zu Vickers HV5/HV10. ✓
+
+**Typischer Fehler:** Die Norm-Tabelle zur Mindestprobendicke ignorieren und „Standardprüfung" auf jede Probe anwenden.`,
+          [
+            'Was sagt die Faustregel zur Mindestprobendicke?',
+            'Bei welchen Probendicken ist Brinell mit $10\\,\\text{mm}$ zulässig?',
+            'Eindringtiefe + Probendicke → Mismatch.',
+          ],
+          {
+            1: 'Brinell ist gerade für (weichere) Stähle das Standardverfahren — nicht „verboten". Der Fehler liegt in der Probendicke, nicht im Verfahren.',
+            2: 'HRA ist für sehr harte Schichten gedacht, nicht für allgemeine Bleche. Außerdem hat der Mitarbeiter HRA gar nicht eingesetzt.',
+            3: 'Härteprüfungen werden bei Raumtemperatur durchgeführt; Vorwärmung ist normfremd und nicht der Fehlergrund.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['pruefkraft'] },
+      ),
+      tag(
+        mc(
+          'Welche Faustregel gibt die Mindestprobendicke $t_\\text{min}$ in Abhängigkeit von der Eindringtiefe $h$ vor (Vickers / Brinell)?',
+          [
+            '$t_\\text{min} \\geq 10 \\cdot h$',
+            '$t_\\text{min} \\geq h$',
+            '$t_\\text{min} \\geq 0{,}5 \\cdot h$',
+            '$t_\\text{min}$ hängt nur von der Prüfkraft ab, nicht von $h$',
+          ],
+          0,
+          `**Ansatz:** Die plastische Verformungszone unter dem Eindringkörper ist mehrfach so tief wie der Eindruck selbst. Faustregel: Probendicke mindestens das $10$-fache der Eindringtiefe.
+
+**Rechnung:** DIN-Normen verlangen sogar Probendicken $\\geq 8 \\cdot h$ (Brinell) bzw. $\\geq 10 \\cdot d$ (Vickers, $d$ = Diagonale). Die Faustregel $t_\\text{min} \\geq 10 \\cdot h$ deckt beides konservativ ab.
+
+**Probe:** Beispiel HV30 mit Eindringtiefe $h \\approx 0{,}1\\,\\text{mm}$ → $t_\\text{min} \\geq 1\\,\\text{mm}$ Probendicke nötig. ✓
+
+**Typischer Fehler:** Probendicke gleich oder nur geringfügig größer als Eindringtiefe — der Untergrund-Effekt wird unterschätzt.`,
+          [
+            'Wie tief reicht das Spannungsfeld unter dem Eindringkörper?',
+            'Faktor $10$ ist eine konservative Norm-Faustregel.',
+            'Probendicke gleich $h$ → durchgedrückt.',
+          ],
+          {
+            1: 'Probendicke nur gleich der Eindringtiefe wäre direkt durchgedrückt — der Untergrund würde voll mitgemessen.',
+            2: '$t_\\text{min} = 0{,}5 \\cdot h$ wäre kleiner als die Eindringtiefe — physikalisch unmöglich (Probe zerstört).',
+            3: 'Eindringtiefe $h$ ist die zentrale Größe; Prüfkraft beeinflusst $h$, aber die Faustregel bezieht sich auf $h$ und Probendicke.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['pruefkraft'] },
+      ),
+    ],
+  },
 }
