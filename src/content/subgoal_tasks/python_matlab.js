@@ -628,4 +628,642 @@ Matlab dagegen nutzt camelCase: \`numIterations\`.
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // py-1-4 — Kontrollstrukturen  (4 subGoals)
+  // 24 Aufgaben mit pedagogy-Tags · alle 20 Matrix-Zeilen + 4 Bonus.
+  // ───────────────────────────────────────────────────────────────────────
+  'py-1-4': {
+    // ── SG 0 — `einrueckung` — Python: Einrückung statt `end` ────────────
+    0: [
+      // Row 1 · recognize · true-false · uses=[einrueckung]
+      tf(
+        'In Python definiert KONSISTENTE EINRÜCKUNG (typischerweise 4 Spaces) den Inhalt eines Codeblocks — ein abschließendes `end`-Schlüsselwort wie in Matlab gibt es nicht.',
+        true,
+        `**Ansatz:** Python erzwingt Einrückung als Teil der Syntax — der Compiler erkennt Blöcke an gleicher Einrücktiefe, nicht an Klammern oder \`end\`.
+
+**Rechnung:** \`if x > 0:\\n    print('positiv')\\n    print('zweite Zeile im Block')\\nprint('außerhalb')\` — die ersten beiden \`print\` gehören zum if-Block (gleiche Einrückung), das dritte nicht. Konvention laut PEP 8: 4 Leerzeichen pro Stufe.
+
+**Probe:** Matlab-Pendant: \`if x > 0\\n    disp('positiv')\\n    disp('zweite Zeile')\\nend\\ndisp('außerhalb')\`. Hier definiert \`end\` das Block-Ende, nicht die Einrückung. ✓
+
+**Typischer Fehler:** Tabs und Spaces mischen — Python wirft \`TabError\` (Python 3) oder \`IndentationError\`. Editor-Einstellungen prüfen, immer entweder Tabs ODER Spaces nutzen.`,
+        [
+          'Welches Symbol beendet einen Block in Python?',
+          'Was definiert die Block-Zugehörigkeit?',
+          'Einrückung — kein \`end\`, keine Klammern.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['einrueckung'] },
+      ),
+      // Row 2 · apply-guided · multiple-choice · uses=[einrueckung]
+      mc(
+        'Welcher der folgenden Python-Schnipsel ist syntaktisch KORREKT?',
+        [
+          '`if x > 0:`<br>`    print("ok")`',
+          '`if x > 0`<br>`    print("ok")`<br>`end`',
+          '`if x > 0:`<br>`print("ok")`',
+          '`if x > 0:`<br>`{`<br>`    print("ok")`<br>`}`',
+        ],
+        0,
+        `**Ansatz:** Korrekte Python-If-Syntax: \`if Bedingung:\` + EINGERÜCKTER Block-Inhalt. Drei Pflicht-Elemente: Bedingung, Doppelpunkt, eingerückter Body.
+
+**Rechnung:** Option A: \`if x > 0:\\n    print("ok")\` — Doppelpunkt ✓, Einrückung ✓.
+- B fehlt der Doppelpunkt, hat \`end\` (Matlab).
+- C hat Doppelpunkt, aber das \`print\` ist NICHT eingerückt → IndentationError.
+- D nutzt geschweifte Klammern (C/Java-Stil) — Python interpretiert \`{\` als Set/Dict, gibt SyntaxError oder unerwartetes Verhalten.
+
+**Probe:** \`>>> x = 5; \\nif x > 0:\\n    print("ok")\` → \`ok\` ✓.
+
+**Typischer Fehler:** Doppelpunkt vergessen oder Einrückung weglassen — beides gibt klare Errors. Selten: Klammern setzen wie in C — Python kommentarlos, aber nicht das Erwartete.`,
+        [
+          'Welche zwei Markierungen sind Pflicht in Python?',
+          'Was passiert ohne Doppelpunkt?',
+          'Doppelpunkt + Einrückung — keine Klammern, kein \`end\`.',
+        ],
+        {
+          '1': 'Fehlender Doppelpunkt → \`SyntaxError\`. Plus: \`end\` ist Matlab-Stil, nicht Python.',
+          '2': 'Print ohne Einrückung → \`IndentationError: expected an indented block\`. Der Body MUSS eingerückt sein.',
+          '3': 'Geschweifte Klammern sind in Python für Sets/Dicts reserviert. \`{...}\` als Codeblock funktioniert nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['einrueckung'] },
+      ),
+      // Row 3 · apply-independent · multiple-choice · uses=[einrueckung]
+      mc(
+        'Was passiert beim Ausführen dieses Python-Codes?\n```\nif x > 0:\nprint("ok")\n```',
+        [
+          '`IndentationError: expected an indented block` — der Body muss eingerückt sein.',
+          'Funktioniert: gibt "ok" aus.',
+          '`SyntaxError: unexpected EOF`',
+          '`NameError`',
+        ],
+        0,
+        `**Ansatz:** Nach \`:\` erwartet Python einen eingerückten Block. Der \`print\`-Befehl steht aber auf Spalte 0 (gleiche Einrückung wie \`if\`) — also außerhalb des Blocks.
+
+**Rechnung:** Python's Parser sucht nach \`:\` einen eingerückten Body. Findet er stattdessen eine Zeile ohne Einrückung, wirft er \`IndentationError: expected an indented block after 'if' statement\`.
+
+**Probe:** \`>>> if 1 > 0:\\n... print("ok")\` (mit Spalte 0 für print) → \`IndentationError\`. ✓ Korrektur: \`    print("ok")\` (4 Spaces).
+
+**Typischer Fehler:** Aus C/Java kommen, wo \`if (cond) statement;\` ohne Einrückung gültig ist. Python erzwingt strukturelle Einrückung.`,
+        [
+          'Was erwartet Python nach dem Doppelpunkt?',
+          'Steht \`print\` eingerückt?',
+          'Body fehlt → IndentationError.',
+        ],
+        {
+          '1': 'Funktioniert NICHT — der Body ist falsch positioniert. Ohne Einrückung wirft Python \`IndentationError\`.',
+          '2': 'EOF-Fehler tritt auf, wenn der String/Block unvollständig ist. Hier ist der Block nicht eingerückt — das ist \`IndentationError\`, nicht \`SyntaxError\`.',
+          '3': '\`NameError\` würde gelten, wenn \`x\` oder \`print\` undefined wären. Der Fehler ist hier aber struktureller Art (Einrückung), nicht semantisch.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['einrueckung'] },
+      ),
+      // Row 4 · error-analysis · multiple-choice · uses=[einrueckung]
+      mc(
+        'Ein Lerner schreibt diesen Python-Code:\n```\nif x > 0\n    print("ok")\n```\nWas meldet der Interpreter?',
+        [
+          '`SyntaxError` — der Doppelpunkt am Ende der `if`-Zeile fehlt.',
+          'Funktioniert: \"ok\" wird ausgegeben.',
+          '`IndentationError`',
+          '`NameError: x is not defined`',
+        ],
+        0,
+        `**Ansatz:** Python verlangt nach \`if Bedingung\` ein \`:\` — sonst ist die Zeile keine gültige if-Anweisung.
+
+**Rechnung:** Korrekt: \`if x > 0:\\n    print("ok")\`. Ohne \`:\` wirft Python \`SyntaxError: expected ':'\` (in neueren Versionen mit Hint), in älteren \`SyntaxError: invalid syntax\`.
+
+**Probe:** Test im REPL: \`>>> if 1 > 0\\n... print("ok")\` → \`SyntaxError\`. ✓
+
+**Typischer Fehler:** Aus Matlab/C++/Java mitnehmen, wo Bedingungen ohne nachfolgenden \`:\` stehen. In Python ist der Doppelpunkt Pflicht für \`if\`/\`elif\`/\`else\`/\`for\`/\`while\`/\`def\`/\`class\`.`,
+        [
+          'Was muss am Ende der if-Zeile stehen?',
+          'Welches Symbol fehlt?',
+          'Doppelpunkt \`:\` zwingend.',
+        ],
+        {
+          '1': 'Funktioniert NICHT — Python parst die Zeile nicht als if-Anweisung. Der Doppelpunkt ist Pflicht.',
+          '2': '\`IndentationError\` käme erst NACH erfolgreichem Parsen. Hier scheitert das Parsen schon bei der if-Zeile (Doppelpunkt fehlt).',
+          '3': '\`x\` mag undefiniert sein, aber das wäre ein Laufzeit-Fehler. Hier kommt schon beim Parsen ein \`SyntaxError\`.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['einrueckung'] },
+      ),
+      // Row 5 · transfer · multiple-choice · uses=[einrueckung]
+      mc(
+        'Du übersetzt einen Matlab `if-elseif-else-end`-Block nach Python. Welche Aussage ist KORREKT?',
+        [
+          'In Python heißt es `elif` statt `elseif`; `end` entfällt; jede `if`/`elif`/`else`-Zeile braucht `:`; Block-Inhalt wird eingerückt.',
+          'Der Code ist 1:1 übertragbar — Matlab und Python sind gleich.',
+          'In Python heißt es `else if` als zwei getrennte Wörter; `end` muss explizit geschrieben werden.',
+          'Python verwendet geschweifte Klammern statt Einrückung.',
+        ],
+        0,
+        `**Ansatz:** Vier Migrationsregeln Matlab → Python für if-Konstrukte: Schlüsselwort, Block-Ende, Doppelpunkt, Einrückung.
+
+**Rechnung:**
+
+\`\`\`
+% Matlab                  # Python
+if x > 0                  if x > 0:
+    y = 1;                    y = 1
+elseif x == 0             elif x == 0:
+    y = 0;                    y = 0
+else                      else:
+    y = -1;                   y = -1
+end                       (kein end)
+\`\`\`
+
+**Probe:** Vier Punkte: \`elseif\` → \`elif\` ✓, \`end\` weg ✓, \`:\` an jede Header-Zeile ✓, Body eingerückt ✓. Semikolons in Matlab unterdrücken Output und sind in Python nicht nötig.
+
+**Typischer Fehler:** \`elseif\` direkt schreiben — Python kennt das nicht (\`SyntaxError\`). Oder Java-\`else if\` mit Leerzeichen — auch nicht gültig in Python.`,
+        [
+          'Wie heißt \`elseif\` in Python?',
+          'Was passiert mit \`end\` bei der Migration?',
+          'Vier Regeln: Schlüsselwort, end weg, :, Einrückung.',
+        ],
+        {
+          '1': 'Matlab und Python unterscheiden sich syntaktisch deutlich — keine 1:1-Übertragung möglich.',
+          '2': '\`else if\` (zwei Wörter) gibt es in Python nicht — heißt zusammen \`elif\`. \`end\` entfällt komplett.',
+          '3': 'Python nutzt EINRÜCKUNG, NICHT geschweifte Klammern. Klammern sind für Sets/Dicts reserviert.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['einrueckung'] },
+      ),
+      // Bonus · recognize · true-false · uses=[einrueckung]
+      tf(
+        'Python erlaubt sowohl Tabs als auch Spaces zur Einrückung; im selben Codeblock dürfen sie aber NICHT gemischt werden — sonst meldet Python 3 einen `TabError`.',
+        true,
+        `**Ansatz:** Python ist tolerant bei der Wahl (Tab ODER Spaces), aber strikt bei Konsistenz. Mischung führt zu undefiniertem Block-Layout.
+
+**Rechnung:** PEP 8 empfiehlt 4 Leerzeichen. Python 3 weigert sich, Tabs und Spaces im selben Block zu mischen — wirft \`TabError: inconsistent use of tabs and spaces in indentation\`.
+
+**Probe:** Erste Zeile mit Tab, zweite mit 4 Spaces → \`TabError\`. Beide Zeilen mit 4 Spaces → läuft. ✓
+
+**Typischer Fehler:** In einem Editor mit Auto-Indent verschiedene Einrückungstiefen verwenden, ohne dass die Tab-Setting konsistent ist. Lösung: Editor-Einstellung "Tabs zu Spaces", konsistent 4 Spaces.`,
+        [
+          'Sind Tabs grundsätzlich verboten?',
+          'Was passiert bei Mischung im selben Block?',
+          'Konsistenz nötig: nicht mischen, sonst TabError.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['einrueckung'] },
+      ),
+    ],
+
+    // ── SG 1 — `eq-vs-assign` — `==` Vergleich, `=` Zuweisung ────────────
+    1: [
+      // Row 6 · recognize · true-false · uses=[eq-vs-assign]
+      tf(
+        'In Python ist `=` der Zuweisungsoperator (weist einen Wert an einen Namen) und `==` der Vergleichsoperator (liefert `True`/`False`) — eine Verwechslung führt entweder zu `SyntaxError` oder zu einem stillen Bug.',
+        true,
+        `**Ansatz:** Beide Symbole sehen ähnlich aus, machen aber etwas grundsätzlich Verschiedenes. Pythons strenger Parser hilft, den schlimmsten Fall zu vermeiden.
+
+**Rechnung:** \`x = 5\` setzt $x$ auf $5$ (kein Wert für Ausdrücke). \`x == 5\` testet, ob $x$ gleich $5$ ist, und liefert \`True\` oder \`False\`.
+
+**Probe:** \`>>> x = 5\` → kein Output (Statement). \`>>> x == 5\` → \`True\`. ✓ \`>>> if x = 5:\` → \`SyntaxError: invalid syntax\` ✓.
+
+**Typischer Fehler:** Aus C kommen, wo \`if (x = 5)\` zuweist UND testet. Python verbietet Zuweisung in Bedingungen (außer Walrus \`:=\` ab 3.8) — bewusste Designentscheidung gegen häufige Bugs.`,
+        [
+          'Was tut \`=\` als Operator?',
+          'Was tut \`==\`?',
+          'Eines weist zu, das andere vergleicht.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+      // Row 7 · apply-guided · multiple-choice · uses=[eq-vs-assign]
+      mc(
+        'Welche Python-Zeile prüft, ob `x` den Wert `5` HAT (ohne ihn zu verändern)?',
+        ['`if x == 5:`', '`if x = 5:`', '`if x is 5:`', '`if x equals 5:`'],
+        0,
+        `**Ansatz:** Wert-Vergleich in Python = \`==\`. Identitätsvergleich (\`is\`) ist für Objekte gedacht, nicht für Zahlen.
+
+**Rechnung:** \`if x == 5:\` testet Wertgleichheit und liefert \`True\` oder \`False\`. Korrekt für die Frage "hat x den Wert 5?".
+
+**Probe:** \`>>> x = 5\\n>>> if x == 5: print("ja")\` → \`ja\` ✓.
+
+**Typischer Fehler:** \`if x = 5:\` schreiben (C-Stil) — \`SyntaxError\`. Oder \`if x is 5:\` — funktioniert für kleine ints zufällig wegen Integer-Caching, ist aber semantisch falsch (\`is\` testet Identität, nicht Wert) und liefert für andere Werte \`False\`.`,
+        [
+          'Welcher Operator vergleicht Werte?',
+          'Was macht \`=\` allein?',
+          '\`==\` für Wertvergleich.',
+        ],
+        {
+          '1': '\`if x = 5:\` gibt \`SyntaxError\` — \`=\` darf NICHT in einer if-Bedingung stehen. Plus: würde es funktionieren, würde es zuweisen, nicht prüfen.',
+          '2': '\`is\` testet OBJEKT-Identität, nicht Wertgleichheit. Für kleine ints liefert es zwar oft \`True\` (wegen interner Caches), ist aber semantisch falsch und unzuverlässig (z.B. für $x = 1000$ kann es \`False\` geben).',
+          '3': '\`equals\` ist KEIN Python-Schlüsselwort — \`SyntaxError\`. Java hat \`.equals()\` als Methode, Python nutzt \`==\`.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+      // Row 8 · apply-independent · multiple-choice · uses=[eq-vs-assign]
+      mc(
+        'Welche Aussage über `=` und `==` in Python ist KORREKT?',
+        [
+          '`x = 5` weist `x` den Wert 5 zu (Statement, kein Wert); `x == 5` vergleicht und liefert True oder False (Ausdruck).',
+          'Beide weisen zu — `==` ist nur eine Schreibvariante.',
+          'Beide vergleichen — `=` ist veraltet.',
+          '`==` weist zu, `=` vergleicht (umgekehrte Konvention).',
+        ],
+        0,
+        `**Ansatz:** Ein Operator weist zu (Seiteneffekt), der andere vergleicht (liefert Wert). Wichtig zu unterscheiden.
+
+**Rechnung:** \`x = 5\` ist ein Statement, hat KEINEN Rückgabewert. \`x == 5\` ist ein Ausdruck, liefert \`bool\`.
+
+**Probe:** \`>>> y = (x = 5)\` → \`SyntaxError\` (Zuweisung ist kein Ausdruck). \`>>> y = (x == 5)\` → läuft, $y$ wird \`True\` oder \`False\`. ✓
+
+**Typischer Fehler:** \`=\` und \`==\` als äquivalent ansehen — gerade bei flüchtigem Lesen. Ein einziges Zeichen Unterschied, aber komplett verschiedene Semantik.`,
+        [
+          'Welcher Operator hat einen Seiteneffekt (verändert)?',
+          'Welcher liefert einen Wahrheitswert?',
+          '\`=\` Statement (zuweisen) · \`==\` Ausdruck (vergleichen).',
+        ],
+        {
+          '1': '\`==\` weist NICHTS zu — vergleicht nur. Das wäre fatal, wenn \`==\` zuweisen würde.',
+          '2': 'Beide vergleichen ist falsch — \`x = 5\` weist 5 an x zu.',
+          '3': 'Die Konvention ist \`=\` zuweisen, \`==\` vergleichen — exakt wie in C/Java/JS. Verwechslung gefährlich.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+      // Row 9 · error-analysis · multiple-choice · uses=[eq-vs-assign]
+      mc(
+        'Ein Lerner schreibt `if x = 5:` in Python, in der Erwartung, dass `x` mit `5` verglichen wird. Was meldet Python?',
+        [
+          '`SyntaxError` — Python erlaubt KEINE Zuweisung in einer if-Bedingung. Korrekt: `if x == 5:`.',
+          'Funktioniert: x wird zu 5 gesetzt und der Block ausgeführt.',
+          'Funktioniert: x wird mit 5 verglichen.',
+          '`NameError`',
+        ],
+        0,
+        `**Ansatz:** Python's Parser erkennt \`=\` als Zuweisungs-Statement. Inside einer Bedingung erwartet er einen AUSDRUCK. Statement statt Ausdruck → SyntaxError.
+
+**Rechnung:** \`if x = 5:\` wirft \`SyntaxError: invalid syntax\` (oder hilfreicher: \`expected ':' after assignment\` in neueren Versionen). Korrektur: \`if x == 5:\` (Vergleich).
+
+**Probe:** \`>>> x = 3\\n>>> if x = 5: print("ja")\` → \`SyntaxError\` ✓.
+
+**Typischer Fehler:** C-Reflex (dort ist \`if (x = 5)\` legal — weist zu UND testet, weil \`=\` einen Wert liefert). Python verbietet das absichtlich, weil es eine häufige Quelle stiller Bugs ist.`,
+        [
+          'Welche Operation gehört in eine if-Bedingung?',
+          'Erlaubt Python Zuweisung in if?',
+          'Ausdruck (Vergleich) erforderlich, kein Statement.',
+        ],
+        {
+          '1': 'Funktioniert NICHT — Python verbietet Zuweisung in if. C macht das, Python nicht.',
+          '2': 'Vergleich wäre \`==\`, nicht \`=\`. Plus: in dieser Form geht überhaupt nichts durch.',
+          '3': '\`NameError\` käme bei undefinierten Namen zur LAUFZEIT. Hier scheitert Python schon beim Parsen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+      // Row 10 · transfer · multiple-choice · uses=[eq-vs-assign]
+      mc(
+        'In C kann man `if (x = berechne()) { ... }` schreiben — das weist zu UND testet. Welcher Python-Code erreicht ein äquivalentes Verhalten OHNE den Walrus-Operator?',
+        [
+          '`x = berechne()`<br>`if x:`<br>`    ...`',
+          '`if x = berechne():`<br>`    ...`',
+          '`if x == berechne():`<br>`    ...`',
+          '`if x in berechne():`<br>`    ...`',
+        ],
+        0,
+        `**Ansatz:** Da Python Zuweisung in if verbietet, splittet man in zwei Zeilen: erst zuweisen, dann testen.
+
+**Rechnung:** Zwei Zeilen lesen sich als "berechne den Wert und speichere in $x$, dann teste, ob er truthy ist". Funktional äquivalent zum C-Idiom.
+
+**Probe:** Mit Walrus (Python 3.8+): \`if x := berechne():\` macht beides in einer Zeile. Ohne Walrus die zweistufige Form.
+
+**Typischer Fehler:** Direkten C-Code übernehmen → \`SyntaxError\`. Oder \`if x == berechne():\` schreiben — vergleicht $x$ mit dem RÜCKGABEWERT, weist aber NICHTS zu (gefährlich, wenn $x$ vorher undefined oder veraltet).`,
+        [
+          'Wie weist man in Python zu?',
+          'Wie testet man in Python?',
+          'Splitten: erst \`x = ...\`, dann \`if x:\`.',
+        ],
+        {
+          '1': '\`if x = berechne():\` ist genau das, was Python verbietet — \`SyntaxError\`.',
+          '2': '\`if x == berechne():\` vergleicht $x$ mit der Rückgabe, weist aber NICHTS zu. Wenn $x$ vorher 0 oder undefined ist, falsch.',
+          '3': '\`in\` testet Containment in einer Sequenz/Container — nicht das, was hier gefragt ist.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+      // Bonus · recognize · true-false · uses=[eq-vs-assign]
+      tf(
+        'Der Walrus-Operator `:=` (Python 3.8+) erlaubt Zuweisung INNERHALB eines Ausdrucks: `if (n := len(lst)) > 5:` weist `n` den Wert der Länge zu UND prüft die Bedingung.',
+        true,
+        `**Ansatz:** \`:=\` (formell "Assignment Expression") füllt die Lücke, die \`=\` in Bedingungen offen ließ — aber explizit mit eigenem Operator-Symbol, damit der Parser nicht raten muss.
+
+**Rechnung:** \`if (n := len(lst)) > 5:\` ist äquivalent zu:
+\`\`\`
+n = len(lst)
+if n > 5:
+\`\`\`
+... aber in einer Zeile. Klammern um \`(n := ...)\` sind in vielen Kontexten nötig.
+
+**Probe:** \`>>> lst = [1, 2, 3, 4, 5, 6]\\n>>> if (n := len(lst)) > 5: print(f"length {n}")\` → \`length 6\` ✓.
+
+**Typischer Fehler:** Walrus mit \`=\` verwechseln — das Doppelpunkt-Gleich \`:=\` ist explizit. Vor 3.8 gibt es das nicht; bei älteren Python-Versionen wirft das \`SyntaxError\`.`,
+        [
+          'Seit welcher Python-Version gibt es den Walrus?',
+          'Was macht \`:=\` semantisch?',
+          'Zuweisen UND Wert liefern in einem Ausdruck.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['eq-vs-assign'] },
+      ),
+    ],
+
+    // ── SG 2 — `for-range` — Python 0..n-1, Matlab 1..n ─────────────────
+    2: [
+      // Row 11 · recognize · true-false · uses=[for-range]
+      tf(
+        '`for i in range(5)` durchläuft in Python die Werte $i = 0, 1, 2, 3, 4$ — also $n$ Werte ab $0$, der Endwert $n$ ist NICHT enthalten.',
+        true,
+        `**Ansatz:** \`range(n)\` erzeugt das halboffene Intervall $[0, n)$ — links inklusiv, rechts exklusiv. Identisch zur Slicing-Konvention.
+
+**Rechnung:** \`range(5)\` $\\to \\{0, 1, 2, 3, 4\\}$. Insgesamt $5$ Werte ($n - 0 = 5$).
+
+**Probe:** \`>>> list(range(5))\` → \`[0, 1, 2, 3, 4]\` ✓. Anzahl: $5$ ✓.
+
+**Typischer Fehler:** Matlab-Reflex: \`for i = 1:5\` → $1, 2, 3, 4, 5$. Python startet bei 0 und schließt 5 aus.`,
+        [
+          'Wie viele Werte produziert \`range(n)\`?',
+          'Was ist der erste, was der letzte Wert?',
+          '0..n-1 — n Werte gesamt.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['for-range'] },
+      ),
+      // Row 12 · apply-guided · multiple-choice · uses=[for-range]
+      mc(
+        'Welche Werte durchläuft `i` in `for i in range(2, 7):`?',
+        ['`2, 3, 4, 5, 6`', '`2, 3, 4, 5, 6, 7`', '`1, 2, 3, 4, 5`', '`0, 1, 2, ..., 6`'],
+        0,
+        `**Ansatz:** \`range(a, b)\` erzeugt das halboffene Intervall $[a, b)$ — also $a, a+1, \\ldots, b-1$.
+
+**Rechnung:** \`range(2, 7)\` → $2, 3, 4, 5, 6$. Anzahl: $7 - 2 = 5$ Werte. Endwert $7$ ist EXKLUSIV.
+
+**Probe:** \`>>> list(range(2, 7))\` → \`[2, 3, 4, 5, 6]\` ✓.
+
+**Typischer Fehler:** Endwert mit-zählen → $2, 3, 4, 5, 6, 7$. Oder bei $1$ statt $2$ starten — falsch um $1$ in beide Richtungen.`,
+        [
+          'Was ist der Startwert?',
+          'Was ist der letzte Wert (vor dem Stop)?',
+          'Halb-offen $[a, b)$.',
+        ],
+        {
+          '1': 'Endwert $7$ wäre dabei — die rechte Grenze ist aber EXKLUSIV.',
+          '2': 'Startwert ist $a = 2$, nicht $1$. Off-by-one in den Anfang.',
+          '3': '$0, 1, \\ldots, 6$ wäre \`range(7)\` mit nur einem Argument. Hier sind aber zwei: Start $2$, Stop $7$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['for-range'] },
+      ),
+      // Row 13 · apply-independent · number-input · uses=[for-range]
+      ni(
+        'Wie viele Werte produziert `range(3, 12)` in Python?',
+        9, 0, '',
+        `**Ansatz:** Anzahl Werte in \`range(a, b)\` ist $b - a$ (für $a \\le b$).
+
+**Rechnung:** $12 - 3 = 9$. Konkret: \`range(3, 12)\` → $3, 4, 5, 6, 7, 8, 9, 10, 11$. Neun Werte.
+
+**Probe:** \`>>> len(list(range(3, 12)))\` → \`9\` ✓. \`>>> list(range(3, 12))\` → \`[3, 4, 5, 6, 7, 8, 9, 10, 11]\` ✓.
+
+**Typischer Fehler:** $12$ einschließen → $10$ Werte. Oder $b - a + 1 = 10$ rechnen (Matlab-Formel).`,
+        [
+          'Was ist die Anzahl-Formel für \`range(a, b)\`?',
+          '$b - a$, nicht $b - a + 1$.',
+          '$12 - 3 = 9$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['for-range'] },
+      ),
+      // Row 14 · error-analysis · multiple-choice · uses=[for-range]
+      mc(
+        'Ein Lerner möchte mit Python die Zahlen 1 BIS 5 (inklusiv) durchlaufen und schreibt `for i in range(1, 5):`. Was hat er falsch gemacht?',
+        [
+          'Die rechte Grenze ist EXKLUSIV — `range(1, 5)` durchläuft nur $1, 2, 3, 4$. Korrekt für $1$ bis $5$ inklusive: `range(1, 6)`.',
+          '`range` darf nicht mit zwei Argumenten aufgerufen werden.',
+          '`for i in` ist falsch — muss `for i =` sein.',
+          'Python kann nur ab 0 zählen.',
+        ],
+        0,
+        `**Ansatz:** Python-\`range\` ist halboffen — wenn man bis $b$ INKLUSIVE will, muss man $b + 1$ als Stop angeben.
+
+**Rechnung:** Gewünscht: $1, 2, 3, 4, 5$ (5 Werte). \`range(1, 5)\` → $1, 2, 3, 4$ (4 Werte). \`range(1, 6)\` → $1, 2, 3, 4, 5$ (5 Werte) ✓.
+
+**Probe:** \`>>> list(range(1, 6))\` → \`[1, 2, 3, 4, 5]\` ✓.
+
+**Typischer Fehler:** Aus Matlab kommen, wo \`for i = 1:5\` GENAU $1, 2, 3, 4, 5$ liefert (inklusiv). Python ist exklusiv — Stop muss um $1$ höher.`,
+        [
+          'Welche Werte produziert \`range(1, 5)\`?',
+          'Welche Anpassung macht den Endwert inklusiv?',
+          'Stop um $+1$ erhöhen.',
+        ],
+        {
+          '1': '\`range\` mit zwei Argumenten ist gültig (\`range(start, stop)\`). Das ist nicht der Fehler.',
+          '2': '\`for i in\` ist die Python-Syntax für for-Schleifen über Iterables. Matlab nutzt \`for i =\`, Python \`for i in\`.',
+          '3': '\`range\` kann auch mit anderem Startwert: \`range(5, 10)\` → $5, 6, 7, 8, 9$. Python-Limitation existiert hier nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['for-range'] },
+      ),
+      // Row 15 · transfer · multiple-choice · uses=[for-range]
+      mc(
+        'Matlab-Code `for i = 0:4` durchläuft die fünf Werte $0, 1, 2, 3, 4$. Welcher Python-Code macht GENAU dasselbe?',
+        ['`for i in range(5):`', '`for i in range(4):`', '`for i in range(0, 4):`', '`for i in range(1, 5):`'],
+        0,
+        `**Ansatz:** Matlab \`a:b\` ist inklusiv → erzeugt $b - a + 1$ Werte. Python \`range(a, b)\` ist exklusiv → erzeugt $b - a$ Werte. Bei Migration: Stop um $+1$ erhöhen.
+
+**Rechnung:** Matlab \`0:4\` → $0, 1, 2, 3, 4$ (5 Werte). Python-Äquivalent: Werte $0$ bis $4$, also \`range(5)\` (Stop $5$ exklusiv) ODER \`range(0, 5)\`.
+
+**Probe:** \`>>> list(range(5))\` → \`[0, 1, 2, 3, 4]\` ✓. Identisch zu Matlab \`0:4\`. ✓
+
+**Typischer Fehler:** Matlab-Endwert direkt übernehmen → \`range(4)\` (nur $0, 1, 2, 3$ — vier Werte, ein zu wenig).`,
+        [
+          'Wieviele Werte hat Matlab \`0:4\`?',
+          'Welcher Stop in Python liefert dieselbe Menge?',
+          'Stop um 1 erhöhen → \`range(5)\`.',
+        ],
+        {
+          '1': '\`range(4)\` → $0, 1, 2, 3$ (vier Werte). Matlab \`0:4\` hat aber FÜNF Werte.',
+          '2': '\`range(0, 4)\` ist äquivalent zu \`range(4)\` — vier Werte, immer noch eins zu wenig.',
+          '3': '\`range(1, 5)\` → $1, 2, 3, 4$ — startet bei 1 statt 0. Falscher Startwert.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['for-range'] },
+      ),
+      // Bonus · apply-independent · number-input · uses=[for-range]
+      ni(
+        'Was ist die Summe aller Werte, die `for i in range(5):` in Python erzeugt?',
+        10, 0, '',
+        `**Ansatz:** Werte sind $0, 1, 2, 3, 4$ — Summe ausrechnen.
+
+**Rechnung:** $0 + 1 + 2 + 3 + 4 = 10$. Allgemein: $\\sum_{i=0}^{n-1} i = \\frac{n(n-1)}{2}$. Hier: $5 \\cdot 4 / 2 = 10$ ✓.
+
+**Probe:** \`>>> sum(range(5))\` → \`10\` ✓.
+
+**Typischer Fehler:** $1+2+3+4+5 = 15$ rechnen (Matlab-Bereich). Python startet bei 0 und endet bei 4.`,
+        [
+          'Welche Werte durchläuft \`range(5)\`?',
+          'Summen-Formel: $n(n-1)/2$ für $0..n-1$.',
+          '$0+1+2+3+4 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['for-range'] },
+      ),
+    ],
+
+    // ── SG 3 — `while-abbruch` — Endlos-Schleife verhindern ──────────────
+    3: [
+      // Row 16 · recognize · true-false · uses=[while-abbruch]
+      tf(
+        'Eine `while`-Schleife in Python braucht zwingend einen Mechanismus, der die Bedingung irgendwann FALSE werden lässt — sonst entsteht eine Endlos-Schleife.',
+        true,
+        `**Ansatz:** Eine while-Schleife terminiert nur, wenn die Bedingung im Schleifenkörper irgendwann auf False wechselt. Geschieht das nie, läuft sie endlos.
+
+**Rechnung:** Korrekt: \`i = 0\\nwhile i < 10:\\n    print(i)\\n    i += 1\` — \`i\` wird inkrementiert, irgendwann gilt \`i < 10\` nicht mehr. Falsch (Endlos): \`i = 0\\nwhile i < 10:\\n    print(i)\` — \`i\` bleibt 0.
+
+**Probe:** Faustregel: jede while-Schleife muss MINDESTENS eine Variable in der Bedingung verändern. Notausstieg: \`break\` (springt sofort raus).
+
+**Typischer Fehler:** Inkrement vergessen (häufigster Bug bei Anfängern). Oder Inkrement in falschen Block (z.B. außerhalb der while-Body, also nie ausgeführt).`,
+        [
+          'Was beendet eine while-Schleife?',
+          'Was ist nötig, damit die Bedingung false wird?',
+          'Variable im Body verändern, die in der Bedingung steht.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+      // Row 17 · apply-guided · multiple-choice · uses=[while-abbruch]
+      mc(
+        'Welche dieser while-Schleifen läuft GENAU 5 Mal durch und terminiert dann?',
+        [
+          '`i = 0`<br>`while i < 5:`<br>`    print(i)`<br>`    i = i + 1`',
+          '`while True:`<br>`    print("hi")`',
+          '`i = 0`<br>`while i < 5:`<br>`    print(i)`',
+          '`i = 5`<br>`while i < 5:`<br>`    print(i)`<br>`    i = i + 1`',
+        ],
+        0,
+        `**Ansatz:** Drei Eigenschaften prüfen: Startwert, Bedingung, Update im Body. Alle drei zusammen entscheiden über Iterationszahl.
+
+**Rechnung:** Option A: $i = 0$, $i < 5$, $i$ wird inkrementiert.
+- iter 1: $i=0$, druckt 0, $i \\to 1$
+- iter 2: $i=1$, druckt 1, $i \\to 2$
+- iter 3: $i=2$, druckt 2, $i \\to 3$
+- iter 4: $i=3$, druckt 3, $i \\to 4$
+- iter 5: $i=4$, druckt 4, $i \\to 5$
+- check: $5 < 5$ false → exit. Total: 5 Iterationen ✓.
+
+**Probe:** Equivalent: \`for i in range(5): print(i)\` (5 Iterationen). ✓
+
+**Typischer Fehler:** Inkrement-Position oder -Größe falsch wählen. Oder \`while True\` ohne \`break\` schreiben.`,
+        [
+          'Wie viele Werte durchläuft \`i\`?',
+          'Wird \`i\` im Körper aktualisiert?',
+          '$i = 0, 1, 2, 3, 4$ — fünf Werte.',
+        ],
+        {
+          '1': '\`while True\` ohne Inkrement oder \`break\` läuft endlos.',
+          '2': 'Ohne Update von \`i\` bleibt \`i = 0\` und die Bedingung \`i < 5\` immer wahr → Endlosschleife.',
+          '3': 'Schon zu Beginn ist $i = 5$, also \`5 < 5\` false. Schleife läuft 0 mal — terminiert sofort, aber nicht "5 mal".',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+      // Row 18 · apply-independent · multiple-choice · uses=[while-abbruch]
+      mc(
+        'Wie oft wird der Schleifenkörper von folgendem Code ausgeführt?\n```\nn = 5\nwhile n > 0:\n    n = n - 1\n```',
+        ['`5`', '`6`', '`4`', 'Endlos'],
+        0,
+        `**Ansatz:** Schleife terminiert, wenn \`n > 0\` false wird, also bei $n = 0$. Pro Iteration sinkt $n$ um $1$.
+
+**Rechnung:**
+- Start: $n = 5$. \`5 > 0\` true → iter 1: $n \\to 4$.
+- $n = 4$ > 0 → iter 2: $n \\to 3$.
+- $n = 3$ > 0 → iter 3: $n \\to 2$.
+- $n = 2$ > 0 → iter 4: $n \\to 1$.
+- $n = 1$ > 0 → iter 5: $n \\to 0$.
+- Check: \`0 > 0\` false → exit. Total: 5 Iterationen.
+
+**Probe:** Allgemein bei Start $n_0$ und Bedingung \`n > 0\` mit Update \`n -= 1\`: genau $n_0$ Iterationen. ✓
+
+**Typischer Fehler:** $6$ Iterationen zählen (Off-by-one — vergessen, dass die letzte Iteration $n$ auf $0$ setzt, dann wird die Bedingung getestet und es endet). Oder $4$ — vergessen, dass die Iteration mit $n = 1$ noch läuft.`,
+        [
+          'Bei welchem $n$ stoppt die Schleife?',
+          'Wie verändert sich $n$ pro Iteration?',
+          'Von $5$ runter bis $0$ — wie viele Schritte?',
+        ],
+        {
+          '1': '$6$ wäre, wenn auch die Iteration mit $n = 0$ liefe — die Bedingung wird aber VOR der Iteration getestet, $0 > 0$ ist false, also kein zusätzlicher Durchlauf.',
+          '2': '$4$ würde nur bis $n = 1$ laufen — aber die Bedingung \`1 > 0\` ist wahr, also läuft auch diese Iteration.',
+          '3': 'Die Schleife terminiert, weil $n$ in jedem Schritt verringert wird. Endlos wäre nur ohne Update.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+      // Row 19 · error-analysis · multiple-choice · uses=[while-abbruch]
+      mc(
+        'Ein Studierender schreibt:\n```\ni = 0\nwhile i < 10:\n    print(i)\n```\nWas passiert?',
+        [
+          'ENDLOSSCHLEIFE — `i` wird im Körper nie verändert, daher bleibt `i < 10` immer wahr.',
+          'Druckt `0, 1, 2, ..., 9` und terminiert.',
+          'Druckt nur `0` und terminiert.',
+          '`IndentationError`',
+        ],
+        0,
+        `**Ansatz:** Zähler-Variable in der Bedingung muss im Körper verändert werden — sonst kein Termination.
+
+**Rechnung:** \`i = 0\` und Bedingung \`i < 10\`. Im Körper steht NUR \`print(i)\` — keine Veränderung von \`i\`. Daher bleibt $i = 0$ ewig, die Bedingung bleibt wahr.
+
+**Probe:** Beim Test im REPL würde der Code \`0\` immer wieder drucken, bis man Strg+C drückt. ✓ Korrektur: \`i = i + 1\` (oder kürzer \`i += 1\`) als zweite Zeile im Body.
+
+**Typischer Fehler:** Inkrement im FALSCHEN Block — z.B. AUSSERHALB der while-Body (auf Spalte 0). Dann wird \`i += 1\` nie ausgeführt, weil die while-Schleife vorher endlos ist.`,
+        [
+          'Welche Variable muss sich verändern?',
+          'Wo in der Schleife passiert das?',
+          'Inkrement \`i += 1\` fehlt → Endlos.',
+        ],
+        {
+          '1': 'Würde gelten, wenn \`i\` im Körper inkrementiert wäre. Hier fehlt das Update.',
+          '2': 'Ohne Update läuft die Iteration mit $i = 0$ unendlich oft — \`0\` wird wiederholt gedruckt.',
+          '3': 'Der Code ist syntaktisch korrekt — \`while\` mit \`:\` und eingerücktem Body. Kein IndentationError.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+      // Row 20 · transfer · multiple-choice · uses=[while-abbruch]
+      mc(
+        'In einem iterativen Algorithmus willst du abbrechen, sobald die Differenz `delta` "klein genug" ist (Toleranz $10^{-9}$). Welche while-Bedingung ist BESSER GEEIGNET?',
+        [
+          '`while delta > 1e-9:` — läuft, solange Differenz noch zu groß ist; terminiert, wenn sie unter Toleranz fällt.',
+          '`while delta == 0:` — Floats erreichen exakt 0 fast nie → potenzielle Endlosschleife.',
+          '`while delta:` — bricht nur ab, wenn delta exakt 0 ist; bei Floats fast nie.',
+          '`while True:` — Endlosschleife ohne Abbruch.',
+        ],
+        0,
+        `**Ansatz:** Numerische Iteration braucht eine RELATIVE oder ABSOLUTE Toleranz als Abbruchkriterium — nicht exakte Gleichheit (Floats erreichen exakt $0$ fast nie).
+
+**Rechnung:** \`while delta > 1e-9:\` läuft, solange die Differenz größer als die Toleranz ist. Im Körper wird $\\delta$ aktualisiert (z.B. neue Iteration berechnen). Sobald $\\delta \\le 10^{-9}$, terminiert die Schleife.
+
+**Probe:** Newton-Verfahren-Pattern: \`while abs(f(x)) > 1e-10: x = x - f(x)/df(x)\`. ✓
+
+**Typischer Fehler:** \`while delta != 0:\` oder \`while delta == 0:\` — beides ist bei Floats wegen Rundungsfehlern unzuverlässig. Toleranz ist die robuste Lösung.`,
+        [
+          'Welcher Wert ist "klein genug"?',
+          'Toleranz oder exakte Gleichheit?',
+          'Toleranz: \`> eps\` als while-Bedingung.',
+        ],
+        {
+          '1': '\`while delta == 0:\` läuft NUR, wenn delta exakt 0 ist. Bei numerischer Iteration startet delta meist groß und sinkt — wird selten exakt 0. Plus: missverstanden — sollte \`!= 0\` sein, aber selbst das hat das gleiche Float-Problem.',
+          '2': '\`while delta:\` ist gleichwertig zu \`while delta != 0:\` — testet auf "truthy". Bei Floats fast nie 0, also nahezu Endlos.',
+          '3': '\`while True:\` ohne \`break\` ist eine echte Endlosschleife — kein Abbruchmechanismus.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+      // Bonus · recognize · true-false · uses=[while-abbruch]
+      tf(
+        '`break` in Python verlässt die innerste umschließende Schleife sofort — ein Notausstieg, falls die normale Bedingung nicht greift.',
+        true,
+        `**Ansatz:** \`break\` ist ein Sprungbefehl: wird er erreicht, springt der Kontrollfluss aus der INNERSTEN Schleife heraus, OHNE die Bedingung erneut zu testen.
+
+**Rechnung:** Beispiel:
+\`\`\`
+while True:
+    eingabe = input()
+    if eingabe == 'q':
+        break
+    print(eingabe)
+\`\`\`
+Hier ist die while-Bedingung immer wahr — terminiert wird nur über \`break\`.
+
+**Probe:** Bei verschachtelten Schleifen wirkt \`break\` nur auf die DIREKT umgebende Schleife — die äußere läuft weiter. Für Mehrfach-Ausstieg: Flag-Variable oder Funktion mit \`return\`.
+
+**Typischer Fehler:** Annehmen, \`break\` bricht ALLE Schleifen ab — tut es nicht. Plus: \`continue\` mit \`break\` verwechseln (\`continue\` springt zum Anfang der nächsten Iteration, terminiert nicht).`,
+        [
+          'Was macht \`break\` mit dem Kontrollfluss?',
+          'Wie viele Schleifen verlässt es?',
+          'Innerste — sofort raus, ohne Bedingung zu prüfen.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['while-abbruch'] },
+      ),
+    ],
+  },
 }

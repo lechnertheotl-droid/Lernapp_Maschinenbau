@@ -553,15 +553,43 @@ while n < 100:                  # while n < 100
                                 # end
 \`\`\`
 
-**Häufigster Fehler:** Vergessener Doppelpunkt \`:\` am Ende der if/for/while-Zeile in Python!`,
+**Häufigster Fehler:** Vergessener Doppelpunkt \`:\` am Ende der if/for/while-Zeile in Python!
+
+**Vergleich vs. Zuweisung — \`==\` und \`=\`:**
+
+| Operator | Bedeutung | Beispiel | Wert |
+|---|---|---|---|
+| \`=\` | Zuweisung | \`x = 5\` | weist 5 an x zu (kein Ausdruck) |
+| \`==\` | Vergleich | \`x == 5\` | True oder False |
+| \`!=\` | Ungleichheit | \`x != 5\` | True oder False |
+
+In Python ist \`if x = 5:\` ein **\`SyntaxError\`** — der \`=\` darf NICHT in einer if-Bedingung stehen (anders als in C). Wer Zuweisung UND Bedingung in einer Zeile braucht, nutzt seit Python 3.8 den Walrus-Operator: \`if (n := len(lst)) > 5:\`.
+
+**Range-Konventionen:**
+- Python: \`range(n)\` $\\to 0, 1, \\ldots, n-1$ (Endwert exklusiv)
+- Python: \`range(a, b)\` $\\to a, a+1, \\ldots, b-1$ (Endwert exklusiv); Anzahl $= b - a$
+- Matlab: \`a:b\` $\\to a, a+1, \\ldots, b$ (Endwert INKLUSIV); Anzahl $= b - a + 1$
+
+**While und Endlos-Schleife:** Eine while-Schleife muss eine Variable verändern, die in der Bedingung vorkommt — sonst Endlos-Schleife. Notausstieg: \`break\` (verlässt die innerste Schleife).`,
           exercises: [
             {
               type: 'multiple-choice',
               question: 'Was gibt dieser Code aus?\n```python\nfor i in range(3):\n    print(i)\n```',
               options: ['1 2 3', '0 1 2', '0 1 2 3', '1 2'],
               correctIndex: 1,
-              explanation: '`range(3)` erzeugt 0, 1, 2 — drei Werte, startend bei 0.',
-              hints: ['`range(n)` beginnt bei 0 und endet bei n-1.'],
+              explanation: `**Ansatz:** \`range(n)\` erzeugt die Folge $0, 1, \\ldots, n-1$ — startet bei 0, der Endwert ist EXKLUSIV.
+
+**Rechnung:** \`range(3)\` $= \\{0, 1, 2\\}$. Die for-Schleife durchläuft diese drei Werte und druckt sie. Output: \`0\`, \`1\`, \`2\` (jeder in eigener Zeile, hier als "0 1 2" zusammengefasst).
+
+**Probe:** Anzahl Werte: $3 - 0 = 3$ ✓. \`>>> list(range(3))\` → \`[0, 1, 2]\` ✓.
+
+**Typischer Fehler:** Matlab-Reflex (\`for i = 1:3\` liefert $1, 2, 3$). Python startet bei 0 und schließt 3 aus.`,
+              hints: [
+                'Bei welchem Wert startet \`range(n)\`?',
+                'Wie viele Werte produziert \`range(3)\`?',
+                'Endwert exklusiv — drei Werte, beginnend bei 0.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['for-range'] },
               wrongAnswerExplanations: {
                 "0": '`1 2 3` ist der Matlab-Denkansatz: dort startet die Indizierung bei 1. Python-`range(n)` startet dagegen bei 0 und liefert $0, 1, \\dots, n-1$. Anzahl Werte stimmt (3), aber der Start ist falsch.',
                 "2": '`0 1 2 3` sind 4 Werte und entspraechen `range(4)`. `range(3)` liefert genau 3 Werte, und der Endwert 3 ist exklusiv — also nicht enthalten.',
@@ -572,16 +600,38 @@ while n < 100:                  # while n < 100
               type: 'true-false',
               statement: 'In Python wird ein Codeblock durch geschweifte Klammern `{}` definiert.',
               correct: false,
-              explanation: 'Python nutzt Einrückung (Indentation) statt Klammern für Codeblöcke.',
-              hints: ['Welche Sprache nutzt Klammern, welche Einrückung?'],
+              explanation: `**Ansatz:** Python nutzt EINRÜCKUNG (typisch 4 Spaces) statt Block-Klammern wie C/Java/Matlab.
+
+**Rechnung:** Korrekte Python-Block-Notation: \`if x > 0:\\n    print("ok")\` — die Einrückung der nächsten Zeile zeigt, dass diese zum if-Block gehört. Geschweifte Klammern \`{ }\` sind in Python für **Sets** und **Dictionaries** reserviert, NICHT für Codeblöcke.
+
+**Probe:** \`>>> {1, 2, 3}\` → set, \`>>> {"a": 1}\` → dict. Beide haben mit Codeblöcken nichts zu tun. ✓
+
+**Typischer Fehler:** C/Java-Reflex \`if (x > 0) { ... }\` direkt nach Python übersetzen — Python akzeptiert das nicht; \`:\` und Einrückung sind Pflicht.`,
+              hints: [
+                'Welche Sprache nutzt geschweifte Klammern für Blöcke?',
+                'Was bedeutet \`{...}\` in Python?',
+                'Einrückung definiert den Block, kein Klammer-Symbol.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['einrueckung'] },
             },
             {
               type: 'multiple-choice',
               question: 'Wie lautet das Matlab-Äquivalent zu `for i in range(1, 6):`?',
               options: ['for i = 1:6', 'for i = 1:5', 'for i = 0:5', 'for i in 1:5'],
               correctIndex: 1,
-              explanation: '`range(1, 6)` gibt 1,2,3,4,5. In Matlab: `for i = 1:5` (Endwert inklusive).',
-              hints: ['In Matlab ist der Endwert inklusive, in Python exklusiv.'],
+              explanation: `**Ansatz:** Python: \`range(a, b)\` $\\to a, a+1, \\ldots, b-1$ (Endwert exklusiv). Matlab: \`a:b\` $\\to a, a+1, \\ldots, b$ (Endwert INKLUSIV). Die rechte Grenze in Matlab muss um $1$ kleiner als in Python sein.
+
+**Rechnung:** Python \`range(1, 6)\` durchläuft $1, 2, 3, 4, 5$. Matlab-Äquivalent muss DIESE Werte erzeugen → \`for i = 1:5\` (Endwert 5 inklusiv).
+
+**Probe:** Anzahl Werte: in Python $6 - 1 = 5$, in Matlab $5 - 1 + 1 = 5$. ✓
+
+**Typischer Fehler:** Endwert direkt übernehmen (\`for i = 1:6\`) — gibt einen Wert zu viel, weil Matlab inklusiv ist.`,
+              hints: [
+                'Welche Werte durchläuft \`range(1, 6)\`?',
+                'Wie ist die Matlab-Range-Konvention bei der rechten Grenze?',
+                'Matlab inklusiv → eine kleiner als Python.',
+              ],
+              pedagogy: { stage: 'transfer', subGoal: 2, uses: ['for-range'] },
               wrongAnswerExplanations: {
                 "0": '`for i = 1:6` wuerde in Matlab die Werte $1, 2, 3, 4, 5, 6$ liefern — einen zu viel. Der Unterschied: Matlab ist End-inklusiv, Python-`range(1,6)` End-exklusiv, liefert also nur bis 5.',
                 "2": '`for i = 0:5` beginnt in Matlab bei 0 — das widerspricht `range(1, 6)`, das bei 1 startet. Auch passt Matlabs 1-basierte Konvention nicht zu Index 0 als Startwert fuer Arrays.',
