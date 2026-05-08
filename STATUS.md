@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2999 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2198 (73 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1364 / 1364 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 316 / 1134 (28 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3019 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2218 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1375 / 1375 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 320 / 1134 (28 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **155** (Lesson-Path: 94 · Goal-Tasks: 61)
-- 4-Block: 113/155 (73 %) 🟡
-- MC-wAE: 78/78 (100 %) ✅
-- Sub-Goals: 12/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **175** (Lesson-Path: 94 · Goal-Tasks: 81)
+- 4-Block: 133/175 (76 %) 🟡
+- MC-wAE: 89/89 (100 %) ✅
+- Sub-Goals: 16/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -449,7 +449,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `int-1-1` Stammfunktion — das Umkehren der Ableitung | 3 | 3/3 | 21 | 14/1/3/2/1 | 21/21 | 14/14 | ✅ | — |
 | `int-1-2` Grundintegrale | 4 | 4/4 | 26 | 12/7/4/3/0 | 26/26 | 12/12 | ✅ | — |
-| `int-1-3` Summenregel & Faktorregel | 4 | 0/4 | 5 | 4/1/0/0/0 | 5/5 | 4/4 | ✅ | +4 Goal |
+| `int-1-3` Summenregel & Faktorregel | 4 | 4/4 | 25 | 15/3/4/2/1 | 25/25 | 15/15 | ✅ | — |
 | `int-1-4` Das bestimmte Integral | 4 | 0/4 | 5 | 1/4/0/0/0 | 3/5 | 1/1 | ✅ | +4 Goal, +2 4B |
 | `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 0/5 | 4 | 3/1/0/0/0 | 3/4 | 3/3 | ✅ | +5 Goal, +1 4B |
 | `int-2-1` Substitution | 6 | 0/6 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +6 Goal, +1 4B |
@@ -7585,7 +7585,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 29 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 28 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8165,52 +8165,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-1-3` · Summenregel & Faktorregel
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`, `plus-c`
-  - `int-1-2` → `int-pot-regel`, `int-summe`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `sum-regel-int` — Summenregel: $\int(f+g)dx=\int f\,dx+\int g\,dx$ (SG 0)
-  2. `faktor-regel-int` — Faktorregel: $\int c\,f(x)dx=c\int f(x)dx$ (SG 1)
-  3. `kein-prod-regel` — $\int f\cdot g\,dx\neq(\int f)(\int g)$ — partielle Integration nötig (SG 2)
-  4. `plus-c-konsequent` — $+C$ bei unbestimmten Integralen konsequent mitschreiben (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `sum-regel-int` · **0/5+** — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
-  - 🔴 [1] _hoch_ · Konzepte: `faktor-regel-int` · **0/5+** — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
-  - 🔴 [2] _hoch_ · Konzepte: `kein-prod-regel` · **0/5+** — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
-  - 🔴 [3] _mittel_ · Konzepte: `plus-c-konsequent` · **0/5+** — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 | $x$ als Konstante behandelt |
-| 10 | 1 | transfer           | matching         | `faktor-regel-int`, `sum-regel-int` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-1-4` · Das bestimmte Integral
 
@@ -10251,7 +10205,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 39 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 40 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10417,6 +10371,51 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+
+#### `int-1-3` · Summenregel & Faktorregel
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`, `plus-c`
+  - `int-1-2` → `int-pot-regel`, `int-summe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sum-regel-int` — Summenregel: $\int(f+g)dx=\int f\,dx+\int g\,dx$ (SG 0)
+  2. `faktor-regel-int` — Faktorregel: $\int c\,f(x)dx=c\int f(x)dx$ (SG 1)
+  3. `kein-prod-regel` — $\int f\cdot g\,dx\neq(\int f)(\int g)$ — partielle Integration nötig (SG 2)
+  4. `plus-c-konsequent` — $+C$ bei unbestimmten Integralen konsequent mitschreiben (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sum-regel-int` · **5/5+** — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
+  - ✅ [1] _hoch_ · Konzepte: `faktor-regel-int` · **5/5+** — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
+  - ✅ [2] _hoch_ · Konzepte: `kein-prod-regel` · **5/5+** — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
+  - ✅ [3] _mittel_ · Konzepte: `plus-c-konsequent` · **5/5+** — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sum-regel-int` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `faktor-regel-int` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `faktor-regel-int` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `faktor-regel-int` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `faktor-regel-int` | 1 | 1 | ✅ | $x$ als Konstante behandelt |
+| 10 | 1 | transfer           | matching         | `faktor-regel-int`, `sum-regel-int` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `vek-1-2` · Skalarprodukt
 
