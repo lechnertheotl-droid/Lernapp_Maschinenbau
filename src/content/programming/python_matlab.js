@@ -500,7 +500,41 @@ a * 2      % → [2, 4, 6, 8]
 a .^ 2     % → [1, 4, 9, 16]  (Punkt = elementweise!)
 sum(a)     % → 10
 mean(a)    % → 2.5
-\`\`\``,
+\`\`\`
+
+**Slicing (Python) — rechte Grenze EXKLUSIV:**
+
+\`\`\`python
+werte = [10, 20, 30, 40, 50]
+werte[1:4]   # → [20, 30, 40]   (Indices 1, 2, 3 — Index 4 NICHT enthalten)
+werte[:3]    # → [10, 20, 30]   (von Anfang bis Index 2)
+werte[2:]    # → [30, 40, 50]   (von Index 2 bis Ende)
+werte[:]     # → komplette Kopie
+\`\`\`
+
+Anzahl Elemente: \`len(werte[a:b]) == b - a\` (solange beide im Bereich liegen).
+
+**dtype von Listen vs. NumPy-Arrays — homogen vs. heterogen:**
+
+Python-Listen sind heterogen: \`[1, 'a', 2.5]\` ist erlaubt. NumPy-Arrays haben EINEN \`dtype\`, der für ALLE Elemente gilt — bei gemischter Eingabe promoviert NumPy zum gemeinsamen Typ:
+
+| Eingabe | Ergebnis-dtype | Werte |
+|---|---|---|
+| \`np.array([1, 2, 3])\` | \`int64\` | int |
+| \`np.array([1, 2.5, 3])\` | \`float64\` | $1{,}0$ statt $1$ |
+| \`np.array([1, 'a'])\` | \`<U21\` (Unicode) | $'1'$ als String |
+| \`np.array([True, False])\` | \`bool\` | bool |
+| \`np.array([True, False, 1])\` | \`int64\` | bool als int promoviert |
+
+**Achtung — Truncation bei int-Arrays:** Hat ein Array \`dtype=int64\`, werden float-Zuweisungen STILL abgeschnitten:
+
+\`\`\`python
+arr = np.array([0, 0, 0])     # dtype=int64
+arr[0] = 5.7                   # silent cast 5.7 → 5
+print(arr)                     # → [5 0 0]
+\`\`\`
+
+Lösung: Array gleich als float anlegen — \`np.array([0.0, 0.0, 0.0])\` oder \`np.zeros(3, dtype=float)\`.`,
           exercises: [
             {
               type: 'number-input',
@@ -508,23 +542,56 @@ mean(a)    % → 2.5
               correctValue: 30,
               tolerance: 0,
               unit: '',
-              explanation: 'Python zählt ab 0: a[0]=10, a[1]=20, a[2]=30.',
-              hints: ['Python beginnt die Indizierung bei 0, nicht bei 1.'],
+              explanation: `**Ansatz:** Python indiziert Listen ab 0 — der Index $i$ liefert das $(i+1)$-te Element der Liste.
+
+**Rechnung:** $a[0] = 10$ (1. Element), $a[1] = 20$ (2. Element), $a[2] = 30$ (3. Element).
+
+**Probe:** Identitäts-Check: \`len(a) = 5\`, gültige Indices sind $0, 1, 2, 3, 4$. Index $2$ liegt im Bereich, das Element ist $30$. ✓
+
+**Typischer Fehler:** Matlab-Reflex — dort wäre \`a(2) = 20\` (zweites Element). In Python ergibt \`a[2]\` aber das DRITTE Element, weil Python ab $0$ zählt.`,
+              hints: [
+                'Bei welchem Index startet Python — 0 oder 1?',
+                'Welche Position hat Index 2 in der Liste?',
+                'Index 0=10, Index 1=20, Index 2=?',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['index-base'] },
             },
             {
               type: 'true-false',
               statement: 'In Matlab gibt `a(0)` das erste Element eines Arrays zurück.',
               correct: false,
-              explanation: 'Matlab zählt ab 1! Das erste Element ist `a(1)`. `a(0)` gibt einen Fehler.',
-              hints: ['Matlab beginnt bei einem anderen Index als Python.'],
+              explanation: `**Ansatz:** Matlab indiziert Arrays ab 1 — \`a(1)\` ist das erste Element. Index 0 ist nicht gültig.
+
+**Rechnung:** \`>> a = [10, 20, 30]; a(0)\` → \`Array indices must be positive integers or logical values.\` (Fehlermeldung in Matlab).
+
+**Probe:** Erstes Element in Matlab: \`a(1) = 10\`. Letztes Element: \`a(end) = 30\` oder \`a(length(a)) = 30\`. ✓ Im Vergleich: Python erstes Element \`a[0]\`, letztes \`a[-1]\`.
+
+**Typischer Fehler:** Python-Reflex \`a[0]\` oder C-Reflex (0-basiert) auf Matlab übertragen. Matlab folgt der mathematischen Konvention (Vektor $v_1, v_2, \\ldots$).`,
+              hints: [
+                'Welche Indizierung nutzt Matlab?',
+                'Wie schreibt man "erstes Element" in Matlab?',
+                'Matlab: ab 1; Python: ab 0.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['index-base'] },
             },
             {
               type: 'multiple-choice',
               question: 'Welcher Befehl erzeugt in Python ein NumPy-Array mit den Werten 1 bis 5?',
               options: ['np.array(1, 5)', 'np.arange(1, 6)', 'np.range(1, 5)', 'np.linspace(1, 5)'],
               correctIndex: 1,
-              explanation: '`np.arange(1, 6)` erzeugt `[1, 2, 3, 4, 5]`. Der Endwert ist exklusiv!',
-              hints: ['`arange` funktioniert ähnlich wie `range` — der Endwert ist nicht enthalten.'],
+              explanation: `**Ansatz:** \`np.arange(start, stop)\` erzeugt ganze Zahlen von \`start\` bis \`stop - 1\` (rechte Grenze EXKLUSIV — wie Python \`range\`).
+
+**Rechnung:** \`np.arange(1, 6)\` → \`array([1, 2, 3, 4, 5])\`. Würde man \`np.arange(1, 5)\` schreiben, fehlte die 5 (nur bis 4).
+
+**Probe:** \`>>> np.arange(1, 6)\` → \`array([1, 2, 3, 4, 5])\` ✓. Anzahl Elemente: \`6 - 1 = 5\`.
+
+**Typischer Fehler:** Vergessen, dass die rechte Grenze exklusiv ist, und z.B. \`np.arange(1, 5)\` schreiben — das liefert nur \`[1, 2, 3, 4]\` (vier Werte statt fünf).`,
+              hints: [
+                'Welche NumPy-Funktion erzeugt ganzzahlige Folgen?',
+                'Ist die rechte Grenze inklusiv oder exklusiv?',
+                'Für 1..5 muss die obere Grenze 6 sein.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['numpy-vec'] },
               wrongAnswerExplanations: {
                 "0": '`np.array(1, 5)` gibt einen Fehler: `np.array` erwartet als erstes Argument eine Liste oder ein iterierbares Objekt, nicht zwei Einzelzahlen. Korrekt waere `np.array([1, 2, 3, 4, 5])`.',
                 "2": '`np.range` existiert in NumPy nicht. Die Funktion heisst `np.arange` (angelehnt an Pythons eingebautes `range`, aber fuer Arrays). Tippfehler aus Verwechslung mit Pythons `range`.',
