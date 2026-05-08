@@ -314,25 +314,47 @@ type(True)   # <class 'bool'>
             ],
           },
           content: String.raw`**Arithmetische Operatoren:**
-| Operator | Python | Matlab | Bedeutung |
-|---|---|---|---|
-| Addition | \`+\` | \`+\` | Summe |
-| Subtraktion | \`-\` | \`-\` | Differenz |
-| Multiplikation | \`*\` | \`*\` | Produkt |
-| Division | \`/\` | \`/\` | Quotient (float) |
-| Ganzzahldivision | \`//\` | \`floor(a/b)\` | Abgerundeter Quotient |
-| Modulo | \`%\` | \`mod(a,b)\` | Rest der Division |
-| Potenz | \`**\` | \`^\` | Potenzierung |
+| Operator | Python | Matlab (Skalar) | Matlab (Array elementweise) | Bedeutung |
+|---|---|---|---|---|
+| Addition | \`+\` | \`+\` | \`+\` | Summe |
+| Subtraktion | \`-\` | \`-\` | \`-\` | Differenz |
+| Multiplikation | \`*\` | \`*\` | \`.*\` | Produkt |
+| Division | \`/\` | \`/\` | \`./\` | Quotient (Python: immer float) |
+| Ganzzahldivision | \`//\` | \`floor(a/b)\` | — | Abgerundeter Quotient |
+| Modulo | \`%\` | \`mod(a,b)\` | — | Rest der Division |
+| Potenz | \`**\` | \`^\` | \`.^\` | Potenzierung |
 
-**Wichtig:** In Python liefert \`/\` immer ein \`float\`: \`7 / 2 = 3.5\`. Für den ganzzahligen Anteil: \`7 // 2 = 3\`.
+**Wichtig (Division):** In Python 3 liefert \`/\` IMMER einen \`float\`, auch bei int-Operanden: \`6 / 2 = 3.0\`, \`7 / 2 = 3.5\`. Für den ganzzahligen Anteil: \`7 // 2 = 3\`. Für den Rest: \`7 % 2 = 1\`. Identität: \`a == (a // b) * b + (a % b)\`.
 
-**Vergleichsoperatoren:** \`==\`, \`!=\`, \`<\`, \`>\`, \`<=\`, \`>=\` — liefern \`True\` oder \`False\`.
+**Wichtig (Potenz, Matlab-Arrays):** Bei Matlab-Arrays unterscheidet man Matrix-Potenz \`A^2\` (=\`A*A\`, nur für quadratische Matrizen) von elementweiser Potenz \`A.^2\` (jedes Element quadrieren). Gleiches Muster: \`*\` vs. \`.*\`, \`/\` vs. \`./\`. In Python+NumPy: \`A * B\` ist immer elementweise, \`A @ B\` ist Matrix-Multiplikation.
+
+**Vergleichsoperatoren:** \`==\`, \`!=\`, \`<\`, \`>\`, \`<=\`, \`>=\` — liefern \`True\` oder \`False\`. Python erlaubt VERKETTETE Vergleiche: \`0 < x < 10\` ist äquivalent zu \`(0 < x) and (x < 10)\` (Matlab unterstützt das nicht — dort muss man explizit \`x > 0 && x < 10\` schreiben).
+
+**Float-Vergleich (wichtig für Numerik):** Wegen IEEE-754-Rundung gilt z.B. \`0.1 + 0.2 == 0.3\` → \`False\`, weil \`0.1 + 0.2 = 0.30000000000000004\`. Robuster Vergleich:
+
+\`\`\`python
+abs(a - b) < 1e-9          # absolute Toleranz
+math.isclose(a, b)         # Standardlib (rel_tol=1e-09 default)
+\`\`\`
+
+Faustregel: Floats nie mit \`==\` auf Gleichheit prüfen — immer eine Toleranz nutzen.
 
 **Logische Operatoren:**
-- Python: \`and\`, \`or\`, \`not\`
-- Matlab: \`&&\`, \`||\`, \`~\`
+| Operation | Python | Matlab (skalar) | Matlab (elementweise) |
+|---|---|---|---|
+| UND | \`and\` | \`&&\` | \`&\` |
+| ODER | \`or\` | \`\|\|\` | \`\|\` |
+| NICHT | \`not\` | \`~\` | \`~\` |
 
-**Operatorreihenfolge:** Wie in Mathe: Klammern → Potenz → Punkt → Strich. Im Zweifel: Klammern setzen!`,
+In Python wirft \`x > 0 && x < 10\` einen \`SyntaxError\` — Python-Logik nutzt Wörter, nicht Symbole.
+
+**Wahrheitswerte und int (Subtyp-Beziehung):** In Python ist \`bool\` ein Subtyp von \`int\` — daher gilt \`True == 1\` und \`False == 0\`. Folgen:
+- \`True + True == 2\` (bool wird zu int promoviert)
+- \`sum([True, False, True])\` → \`2\` (zählt Treffer)
+- \`if 0:\` und \`if False:\` verhalten sich identisch (beide "falsy")
+- Aber: \`type(True) == type(1)\` ist \`False\`, weil \`type()\` die KONKRETE Klasse liefert
+
+**Operatorreihenfolge:** Wie in Mathe: Klammern → Potenz \`**\` → unäres Minus → Punkt (\`* / // %\`) → Strich (\`+ -\`) → Vergleiche → \`not\` → \`and\` → \`or\`. Im Zweifel: Klammern setzen!`,
           exercises: [
             {
               type: 'number-input',
@@ -340,8 +362,19 @@ type(True)   # <class 'bool'>
               correctValue: 3,
               tolerance: 0,
               unit: '',
-              explanation: '`17 // 5 = 3` — Ganzzahldivision rundet ab (17 ÷ 5 = 3.4 → 3).',
-              hints: ['`//` rundet immer nach unten ab.', '17 ÷ 5 = 3 Rest 2'],
+              explanation: `**Ansatz:** \`//\` ist die Ganzzahldivision in Python — sie liefert den abgerundeten Quotienten zur Null hin (für positive Werte: floor).
+
+**Rechnung:** $17 \\div 5 = 3{,}4$. Ganzzahliger Anteil = $3$, Rest = $2$. Also \`17 // 5 = 3\`.
+
+**Probe:** Identität $a = (a //\\ b) \\cdot b + (a \\%\\ b)$: $3 \\cdot 5 + 2 = 17$ ✓.
+
+**Typischer Fehler:** \`/\` mit \`//\` verwechseln: \`17 / 5\` liefert in Python 3 immer einen float (\`3.4\`), niemals 3. Für die ganze Zahl ist \`//\` nötig.`,
+              hints: [
+                'Welcher Operator schneidet den Rest ab — `/` oder `//`?',
+                'Wie oft passt 5 ganz in 17?',
+                '$17 = 3 \\cdot 5 + 2$ → Quotient 3, Rest 2.',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['div-op'] },
             },
             {
               type: 'number-input',
@@ -349,20 +382,42 @@ type(True)   # <class 'bool'>
               correctValue: 2,
               tolerance: 0,
               unit: '',
-              explanation: '`17 % 5 = 2` — der Rest der Division (17 = 3×5 + 2).',
-              hints: ['`%` gibt den Rest der Division zurück.'],
+              explanation: `**Ansatz:** Der Modulo-Operator \`%\` liefert den REST der Ganzzahldivision $a$ durch $b$, sodass $a = (a //\\ b) \\cdot b + (a \\%\\ b)$.
+
+**Rechnung:** $17 = 3 \\cdot 5 + 2$ → der Rest ist $2$. Also \`17 % 5 = 2\`.
+
+**Probe:** \`17 // 5 = 3\`, $3 \\cdot 5 = 15$, $17 - 15 = 2$ ✓.
+
+**Typischer Fehler:** \`%\` als Prozent oder als String-Formatter (Python 2) interpretieren. In Python 3 ist \`%\` zwischen Zahlen IMMER Modulo — Prozentrechnung und Print-Formatting sind separate Konstrukte.`,
+              hints: [
+                'Was bedeutet \`%\` zwischen ganzen Zahlen?',
+                'Berechne erst $17 //\\ 5$, dann den Rest.',
+                'Rest = $17 - 3 \\cdot 5 = 2$.',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['div-op'] },
             },
             {
               type: 'multiple-choice',
               question: 'Was ergibt `2 ** 3 + 1` in Python?',
               options: ['7', '8', '9', '16'],
               correctIndex: 2,
-              explanation: '`2 ** 3 = 8`, dann `8 + 1 = 9`. Potenz wird vor Addition ausgewertet.',
-              hints: ['Potenz hat höhere Priorität als Addition.'],
+              explanation: `**Ansatz:** Potenz \`**\` bindet stärker als Addition. Reihenfolge: Klammern → Potenz → Punkt → Strich.
+
+**Rechnung:** $2^3 = 8$, dann $8 + 1 = 9$.
+
+**Probe:** Mit expliziten Klammern: $(2^3) + 1 = 8 + 1 = 9$ ✓. Wäre die Aufgabe $2^{3+1}$ gemeint, müsste sie \`2 ** (3 + 1)\` heißen.
+
+**Typischer Fehler:** \`**\` und \`+\` als gleichrangig sehen und von links nach rechts rechnen — das gäbe einen anderen Wert.`,
+              hints: [
+                'Welche Operation hat höheren Rang — Potenz oder Addition?',
+                'Erst die Potenz, dann erst die Summe.',
+                '$2^3 = 8$, dann $+1$.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['pot-op'] },
               wrongAnswerExplanations: {
                 "0": '`7` entsteht durch $2^3 - 1$ — also durch Subtraktion statt Addition. Hier steht aber `+ 1`. Korrekt: $8 + 1 = 9$.',
                 "1": '`8` ist nur $2^3$, die `+ 1` wurde vergessen. Der ganze Ausdruck wird ausgewertet, nicht nur die Potenz. Regel: Zuerst Potenz, dann Addition.',
-                "3": '`16` entsteht, wenn man $2^{(3+1)} = 2^4 = 16$ rechnet. Das waere die Interpretation, wenn `+ 1` im Exponenten stuende. Ohne Klammer bindet `**` aber nur an die Zahl davor: $2^3 + 1$.',
+                "3": '`16` entsteht, wenn man $2^{(3+1)} = 2^4 = 16$ rechnet. Das wäre die Interpretation, wenn `+ 1` im Exponenten stünde. Ohne Klammer bindet `**` aber nur an die Zahl davor: $2^3 + 1$.',
               },
             },
           ],
@@ -741,6 +796,36 @@ quadrat = @(x) x.^2;
 quadrat(5)  % → 25
 \`\`\`
 
+**Rückgabe:**
+
+| Sprache | Schlüsselwort | Mehrere Werte |
+|---|---|---|
+| Python | \`return wert\` | \`return a, b\` (Tuple); Aufruf: \`x, y = f(...)\` |
+| Matlab | Zuweisung an Header-Variable | \`function [a, b] = f(...)\` mit \`a = ...; b = ...;\` |
+
+Eine Python-Funktion ohne \`return\` liefert implizit \`None\`. Mehrere Rückgaben werden in Python als Tupel verpackt.
+
+**Docstring (Python) / Header-Kommentar (Matlab):**
+
+\`\`\`python
+def kraft(m, a):
+    """Berechnet die Kraft F = m · a in Newton."""
+    return m * a
+
+print(kraft.__doc__)   # → "Berechnet die Kraft F = m · a in Newton."
+help(kraft)            # zeigt Signatur + Docstring
+\`\`\`
+
+\`\`\`matlab
+function F = kraft(m, a)
+    % KRAFT  Berechnet die Kraft F = m·a in Newton.
+    %   F = kraft(m, a) gibt das Produkt aus Masse und Beschleunigung zurück.
+    F = m * a;
+end
+\`\`\`
+
+Konvention: triple-quoted Strings (\`"""..."""\`) als erstes Statement nach \`def\` — NICHT \`#\`-Kommentar (das wäre kein Docstring). In Matlab: \`%\`-Kommentarzeilen direkt nach dem Function-Header werden von \`help kraft\` angezeigt.
+
 **Tipp:** Nutze Funktionen, um Berechnungen wiederverwendbar zu machen. Jede Formel aus dem Maschinenbau kann eine Funktion werden!`,
           exercises: [
             {
@@ -748,8 +833,19 @@ quadrat(5)  % → 25
               question: 'Was gibt `kraft(5)` zurück, wenn `def kraft(m, a=9.81): return m * a`?',
               options: ['5', '9.81', '49.05', 'Fehler'],
               correctIndex: 2,
-              explanation: '`kraft(5)` nutzt den Standardwert `a=9.81`: 5 × 9.81 = 49.05.',
-              hints: ['Wenn `a` nicht angegeben wird, wird der Standardwert verwendet.'],
+              explanation: `**Ansatz:** Bei einem Default-Parameter wird der Standardwert genutzt, wenn der Aufrufer das Argument weglässt.
+
+**Rechnung:** \`kraft(5)\` setzt $m = 5$ und nimmt $a = 9{,}81$ aus dem Default. \`return m * a\` $\\to 5 \\cdot 9{,}81 = 49{,}05$.
+
+**Probe:** \`>>> def kraft(m, a=9.81): return m * a\\n>>> kraft(5)\` → \`49.05\` ✓. Mit explizitem zweiten Argument: \`kraft(5, 10)\` → \`50\`.
+
+**Typischer Fehler:** Glauben, der Aufruf ohne zweites Argument wirft \`TypeError\`. Default-Parameter machen das Argument optional.`,
+              hints: [
+                'Was bedeutet \`a=9.81\` in der Signatur?',
+                'Welcher Wert wird für \`a\` verwendet, wenn nichts angegeben wird?',
+                '$5 \\cdot 9{,}81 = ?$',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['default-par'] },
               wrongAnswerExplanations: {
                 "0": '`5` ist nur der uebergebene Wert fuer `m`, ohne jede Rechnung. Die Funktion fuehrt aber `return m * a` aus — hier mit Default `a=9.81` also $5 \\cdot 9{,}81$.',
                 "1": '`9.81` ist der Default-Wert von `a` alleine. Die Multiplikation $m \\cdot a$ wird tatsaechlich ausgefuehrt. Ergebnis: $5 \\cdot 9{,}81 = 49{,}05$.',
@@ -761,8 +857,19 @@ quadrat(5)  % → 25
               question: 'Wie definiert man in Matlab eine anonyme Funktion f(x) = sin(x)/x?',
               options: ['f = @(x) sin(x)/x', 'f = lambda x: sin(x)/x', 'def f(x) = sin(x)/x', 'function f = sin(x)/x'],
               correctIndex: 0,
-              explanation: 'In Matlab: `@(x)` definiert eine anonyme Funktion mit Parameter `x`.',
-              hints: ['Matlab nutzt das `@`-Symbol für anonyme Funktionen.'],
+              explanation: `**Ansatz:** Matlab nutzt für anonyme Funktionen das \`@\`-Symbol — Python-Pendant ist \`lambda\`.
+
+**Rechnung:** Korrekte Matlab-Syntax: \`f = @(x) sin(x)/x\` — \`@(x)\` deklariert die Parameter, danach steht der Ausdruck. Aufruf: \`f(0.5)\` → \`sin(0.5)/0.5\` $\\approx 0{,}9589$.
+
+**Probe:** Python-Äquivalent: \`f = lambda x: math.sin(x)/x\`. Beides definiert eine Einzeiler-Funktion ohne Block.
+
+**Typischer Fehler:** Python-Syntax (\`lambda\`) auf Matlab übertragen — Matlab kennt das Keyword nicht. Oder vermischte Syntax wie \`def f(x) = ...\`.`,
+              hints: [
+                'Welches Symbol nutzt Matlab für anonyme Funktionen?',
+                'Wo stehen die Parameter?',
+                '\`@(x) <ausdruck>\` als kompakte Form.',
+              ],
+              pedagogy: { stage: 'transfer', subGoal: 3, uses: ['lambda'] },
               wrongAnswerExplanations: {
                 "1": '`lambda x: ...` ist Python-Syntax fuer Lambda-Ausdruecke. Matlab kennt kein `lambda`-Keyword; dort uebernimmt `@(x)` diese Rolle.',
                 "2": '`def ... = ...` existiert in keiner der beiden Sprachen. Python nutzt `def f(x): return ...` (mit Body), Matlab nutzt `function` oder `@(x)`. Hier sind zwei Syntaxen vermischt.',
@@ -773,8 +880,19 @@ quadrat(5)  % → 25
               type: 'true-false',
               statement: 'Eine Python-Funktion kann mehrere Werte gleichzeitig zurückgeben.',
               correct: true,
-              explanation: 'Ja! `return a, b, c` gibt ein Tuple zurück: `x, y, z = funktion()`.',
-              hints: ['Denke an Tuples.'],
+              explanation: `**Ansatz:** Python verpackt mehrere durch Komma getrennte Rückgabewerte automatisch in ein Tupel — beim Aufruf kann man sie wieder entpacken.
+
+**Rechnung:** \`def stats(lst): return min(lst), max(lst)\` gibt zwei Werte als Tupel zurück. Beim Aufruf: \`lo, hi = stats([1, 2, 3])\` entpackt zu \`lo = 1\`, \`hi = 3\`.
+
+**Probe:** \`>>> def f(): return 1, 2, 3\\n>>> a, b, c = f()\\n>>> (a, b, c)\` → \`(1, 2, 3)\` ✓. Matlab macht dasselbe per \`function [a, b] = f(...)\`.
+
+**Typischer Fehler:** Glauben, eine Funktion könne nur einen Wert zurückgeben (Java/C-Reflex). Python und Matlab erlauben mehrere — über Tupel bzw. Output-Listen.`,
+              hints: [
+                'Wie kann eine Python-Funktion mehrere Werte verpacken?',
+                'Was passiert mit \`return a, b\`?',
+                'Komma → Tupel; auf Empfängerseite entpacken: \`x, y = f()\`.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 1, uses: ['rueckgabe'] },
             },
           ],
         },
