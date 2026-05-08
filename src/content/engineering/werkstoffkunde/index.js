@@ -137,21 +137,35 @@ const unit1 = makeUnit({
         '**Keramiken** (Al₂O₃, SiC) sind sehr hart und hitzebeständig, aber spröde — kein Zug!\n\n' +
         '**Kunststoffe** (PA, PTFE, POM) sind leicht und korrosionsbeständig, aber weniger steif.\n\n' +
         '**Verbundwerkstoffe** (CFK, GFK) kombinieren hohe Steifigkeit mit geringem Gewicht.',
-      formulaTitle: 'Vergleichskennwerte',
+      formulaTitle: 'Werkstoffgruppen — Eigenschaften & Leichtbau',
       formulaContent:
-        '| Werkstoff | E-Modul | $R_m$ | Dichte |\n' +
+        '**Vergleichstabelle Kennwerte:**\n\n' +
+        '| Werkstoff | E-Modul | $R_m$ | Dichte $\\rho$ | $E/\\rho$ |\n' +
+        '|---|---|---|---|---|\n' +
+        '| Stahl S235 | 210 GPa | 360–510 MPa | 7,85 g/cm³ | $\\approx 27$ |\n' +
+        '| Aluminium 6060 | 70 GPa | 150–195 MPa | 2,70 g/cm³ | $\\approx 26$ |\n' +
+        '| PA6 / Nylon | 3 GPa | 70–80 MPa | 1,14 g/cm³ | $\\approx 2{,}6$ |\n' +
+        '| Al₂O₃ (Keramik) | 380 GPa | ($\\sigma_\\text{Druck} \\approx 2000$ MPa) | 3,9 g/cm³ | $\\approx 97$ |\n' +
+        '| CFK (uni) | 130 GPa | 1500–2000 MPa | 1,6 g/cm³ | $\\approx 81$ |\n' +
+        '| GFK | 30–45 GPa | 800–1200 MPa | 1,8 g/cm³ | $\\approx 17$–$25$ |\n\n' +
+        '**Charakteristische Eigenschaften der Werkstoffgruppen:**\n\n' +
+        '| Gruppe | Stärken | Schwächen | Typische Anwendung |\n' +
         '|---|---|---|---|\n' +
-        '| Stahl S235 | 210 GPa | 360–510 MPa | 7,85 g/cm³ |\n' +
-        '| Alu 6060 | 70 GPa | 150–195 MPa | 2,70 g/cm³ |\n' +
-        '| Nylon (PA6) | 3 GPa | 70–80 MPa | 1,14 g/cm³ |\n' +
-        '| Al₂O₃ | 380 GPa | (Druck: ~2000 MPa) | 3,9 g/cm³ |\n\n' +
-        '**Spezifische Steifigkeit** = $E/\\rho$ — wichtig für Leichtbau.',
+        '| Metalle | zäh, umformbar, gut wärme-/elektrisch leitend | korrosionsanfällig (Stahl) | tragende Bauteile, Stromschienen |\n' +
+        '| Keramik | hart, hitzebeständig, verschleißfest | spröde (kein Zug, keine Schläge) | Schneidwerkzeuge, Gleitringe, Lager |\n' +
+        '| Kunststoffe | leicht, korrosionsfest, billig in Großserie | niedriger E-Modul, temperaturlimitiert | Gehäuse, Dichtungen, Gleitlager |\n' +
+        '| Verbunde (CFK, GFK) | hohe spezifische Steifigkeit $E/\\rho$, Korrosionsfestigkeit | anisotrop, teuer (CFK), reparaturschwierig | Flugzeug, Sportwagen, Rotorblätter |\n\n' +
+        '**Leichtbau-Kennzahl — spezifische Steifigkeit:**\n' +
+        '$$\\frac{E}{\\rho}$$\n' +
+        'Bei vorgegebener Dehnsteifigkeit ist die Bauteilmasse $m \\propto \\rho/E = 1/(E/\\rho)$. Hoher $E/\\rho$-Wert = niedrige Masse für gleiche Steifigkeit. Stahl und Aluminium liegen mit $\\approx 27$ bzw. $\\approx 26$ erstaunlich gleichauf — der echte Sprung kommt erst mit Faserverbunden ($\\approx 80$).',
       masteryQuestion: 'Welcher Werkstoff ist für eine hochtemperaturfeste, verschleißarme Gleitführung am besten geeignet?',
       masteryOptions: ['Polyethylen (PE)', 'Stahl S235', 'Aluminiumoxid-Keramik (Al₂O₃)', 'Kupfer'],
       correctIndex: 2,
       masteryExplanation:
-        'Keramiken wie Al₂O₃ sind extrem hart (hohe Verschleißfestigkeit) und hitzebeständig bis über 1000 °C. ' +
-        'Kunststoffe erweichen bei hohen Temperaturen, Stahl und Kupfer haben zu geringe Härte für Gleitführungen unter extremer Belastung.',
+        '**Ansatz:** Anforderung „hochtemperaturfest + verschleißarm" filtert die Werkstoffgruppen: Kunststoffe scheiden bei hoher Temperatur aus, weiche Metalle (Cu, Baustahl) verschleißen schnell.\n\n' +
+        '**Rechnung:** Keramiken wie Al₂O₃ haben Härte $\\approx 2000\\,\\text{HV}$ und sind formstabil bis weit über $1000\\,°\\text{C}$. PE erweicht ab $\\approx 100\\,°\\text{C}$, S235 verliert oberhalb $\\approx 500\\,°\\text{C}$ deutlich an Festigkeit, Cu ist mit $\\approx 50\\,\\text{HV}$ extrem weich.\n\n' +
+        '**Probe:** Industriell werden Hochtemperatur-Gleitführungen (z. B. in Pumpen für heiße Medien) tatsächlich aus Al₂O₃, SiC oder ZrO₂ gefertigt — passt. ✓\n\n' +
+        '**Typischer Fehler:** „Stahl ist hart" — ungehärteter Baustahl hat nur ca. $130\\,\\text{HV}$, das ist eine Größenordnung unter Al₂O₃; ohne gehärtete Schicht ist er für Verschleißbelastung nicht geeignet.',
       masteryHints: [
         'Hohe Temperatur + hohe Verschleißfestigkeit → Keramik.',
         'Kunststoffe erweichen bei ca. 100–250 °C.',
@@ -243,14 +257,24 @@ const unit2 = makeUnit({
         '- **Rockwell (HRC / HRB):** Diamantkegel (HRC) oder Kugel (HRB) — sehr schnell, direkt vom Messgerät ablesbar.',
       formulaTitle: 'Kennwerte & Korrelation',
       formulaContent:
-        '**Vickers-Härte:** HV $= 0{,}1891 \\cdot F / d^{2}$ (F in N, d als mittlere Diagonale in mm).\n\n' +
-        '**Brinell-Härte:** HB $\\approx 0{,}102 \\cdot F / A_\\text{abdruck}$.\n\n' +
-        '**Faustformel Stahl:** $R_m \\approx 3{,}5 \\cdot \\text{HB}$ (in MPa). So kann man aus einer schnellen Härteprüfung die Zugfestigkeit grob abschätzen.\n\n' +
+        '**Vickers-Härte (DIN EN ISO 6507):** Diamantpyramide $136°$, Diagonale $d$ messen.\n' +
+        '$$\\text{HV} = 0{,}1891 \\cdot \\frac{F}{d^{2}}$$\n' +
+        '($F$ in N, $d$ als mittlere Diagonale in mm).\n\n' +
+        '**Brinell-Härte (DIN EN ISO 6506):** Hartmetallkugel $D = 1$–$10\\,\\text{mm}$, Abdruck-Durchmesser $d$ messen.\n' +
+        '$$\\text{HB} \\approx 0{,}102 \\cdot \\frac{F}{A_\\text{abdruck}}$$\n\n' +
+        '**Rockwell C (DIN EN ISO 6508):** Diamantkegel $120°$, Vorlast $98\\,\\text{N}$, Hauptlast $1373\\,\\text{N}$. Gerät misst die Eindringtiefe $h$ direkt:\n' +
+        '$$\\text{HRC} = 100 - \\frac{h}{0{,}002\\,\\text{mm}}$$\n' +
+        'Anzeige direkt am Messgerät — schnellste Methode in der Serienfertigung.\n\n' +
+        '**Faustformel Stahl:** $R_m\\,[\\text{MPa}] \\approx 3{,}5 \\cdot \\text{HV}$. Aus einer schnellen Härteprüfung lässt sich die Zugfestigkeit grob abschätzen (Stahl-spezifisch; bei Aluminium liegt der Faktor bei $\\approx 3{,}0$–$3{,}3$).\n\n' +
+        '**Faustregel Probendicke / Eindringtiefe:**\n' +
+        '$$t_\\text{min} \\geq 10 \\cdot h$$\n' +
+        'Liegt die Probendicke (oder Schichtdicke) unter dem $10$-fachen der Eindringtiefe, drückt der Eindringkörper bis zum Untergrund durch — die Härte wird verfälscht. Lösung: kleinere Last oder Mikro-Vickers (HV0,1 mit $F < 2\\,\\text{N}$).\n\n' +
         '**Typische Werte:**\n' +
         '- Reineisen: ~100 HV\n' +
         '- Baustahl S235: ~120–150 HV\n' +
         '- Vergütungsstahl 42CrMo4: ~280–320 HV\n' +
         '- Gehärteter Werkzeugstahl: bis 900 HV\n' +
+        '- Hartmetall: ~1500 HV\n' +
         '- Al₂O₃-Keramik: ~2000 HV',
       masteryQuestion: 'Welches Verfahren eignet sich am besten für eine dünne Oberflächenschicht (z. B. gehärtete Randschicht)?',
       masteryOptions: ['Vickers (HV)', 'Brinell (HB) mit 10 mm Kugel', 'Rockwell B (HRB)', 'Keine der Methoden'],
@@ -263,6 +287,7 @@ const unit2 = makeUnit({
       masteryHints: [
         'Kleiner Eindruck ist nötig, um nur die dünne Schicht zu messen.',
         'Welches Verfahren hat den kleinsten Eindruck?',
+        'Faustregel: Eindringtiefe $h \\leq \\tfrac{1}{10}$ der Schichtdicke — sonst zählt der Untergrund mit.',
       ],
       masteryWrongAnswerExplanations: {
         "1": 'Brinell mit 10 mm Kugel erzeugt einen vergleichsweise großen Abdruck (Durchmesser mehrere Millimeter, Eindringtiefe zu groß). Die dünne Schicht würde durchdrückt und der weichere Grundwerkstoff verfälscht das Ergebnis. Kleine Eindrücke liefert nur Vickers (insbesondere Micro-Vickers).',

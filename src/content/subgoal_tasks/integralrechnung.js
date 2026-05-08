@@ -972,6 +972,563 @@ export const integralrechnungSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-3 — Summenregel & Faktorregel  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-3': {
+
+    // ── [0] Summenregel: gliedweise integrieren ───────────────────────────
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[sum-regel-int]
+      tf(
+        'Die Summenregel der Integration $\\int (f(x) + g(x))\\,dx = \\int f(x)\\,dx + \\int g(x)\\,dx$ gilt auch für Differenzen — denn $f - g = f + (-1) \\cdot g$ kombiniert mit der Faktorregel ergibt $\\int (f - g)\\,dx = \\int f\\,dx - \\int g\\,dx$.',
+        true,
+        `**Ansatz:** Die Differenz $f - g$ als Summe $f + (-1) \\cdot g$ schreiben und Linearität (Summen- + Faktorregel) anwenden.
+
+**Rechnung:** $\\int (f - g)\\,dx = \\int (f + (-1) \\cdot g)\\,dx = \\int f\\,dx + (-1) \\int g\\,dx = \\int f\\,dx - \\int g\\,dx$.
+
+**Probe:** Beispiel $\\int (x^{2} - x)\\,dx = \\dfrac{x^{3}}{3} - \\dfrac{x^{2}}{2} + C$. Probe: $\\left(\\dfrac{x^{3}}{3} - \\dfrac{x^{2}}{2}\\right)' = x^{2} - x$. ✓
+
+**Typischer Fehler:** Glauben, eine Differenz brauche eine eigene Regel — sie folgt direkt aus Summen- und Faktorregel.`,
+        [
+          'Wie kann man $f - g$ als Summe schreiben?',
+          'Faktorregel mit $c = -1$ liefert $\\int -g\\,dx = -\\int g\\,dx$.',
+          'Kombinierte Anwendung: $\\int (f + (-g))\\,dx = \\int f\\,dx + \\int -g\\,dx = \\int f\\,dx - \\int g\\,dx$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[sum-regel-int]
+      ni(
+        'Berechne $\\int (3x^{2} + 8x)\\,dx$ und gib den Wert der Stammfunktion bei $x = 2$ an, mit $C = 0$.',
+        24,
+        0,
+        '',
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren, dann einsetzen.
+
+**Rechnung:** $\\int 3x^{2}\\,dx = x^{3}$, $\\int 8x\\,dx = 4x^{2}$. Stammfunktion: $F(x) = x^{3} + 4x^{2} + C$. Mit $C = 0$: $F(2) = 8 + 16 = 24$.
+
+**Probe:** $F'(x) = 3x^{2} + 8x$ ✓. Einsetzen: $F(2) = 2^{3} + 4 \\cdot 2^{2} = 8 + 16 = 24$.
+
+**Typischer Fehler:** $4 \\cdot 2^{2}$ als $(4 \\cdot 2)^{2} = 64$ falsch ausrechnen — Punkt vor Strich, also $4 \\cdot 4 = 16$.`,
+        [
+          'Beide Glieder einzeln integrieren mit Potenzregel.',
+          'Faktor durch neuen Exponenten teilen: $\\int 3x^{2}\\,dx = x^{3}$, $\\int 8x\\,dx = 4x^{2}$.',
+          'Einsetzen: $F(2) = 2^{3} + 4 \\cdot 2^{2}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[sum-regel-int]
+      mc(
+        'Markus berechnet $\\int (x^{2} - 4)\\,dx$ und schreibt: $\\dfrac{x^{3}}{3} - 4 + C$. Wo liegt der Fehler?',
+        [
+          'Der konstante Summand $-4$ wurde nicht integriert — $\\int -4\\,dx = -4x$ (nicht $-4$). Korrekt: $\\dfrac{x^{3}}{3} - 4x + C$.',
+          'Markus hat richtig gerechnet — die Konstante $-4$ darf so stehen bleiben.',
+          '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ ist falsch — korrekt wäre $\\dfrac{x^{3}}{2}$.',
+          'Konstanten dürfen bei der Summenregel weggelassen werden, weil sie zum $+C$-Anteil gehören.',
+        ],
+        0,
+        `**Ansatz:** Probe — Markus' Ergebnis ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $\\left(\\dfrac{x^{3}}{3} - 4\\right)' = x^{2} - 0 = x^{2}$. Aber der Integrand ist $x^{2} - 4$. Differenz: $-4 \\neq 0$ — Markus' $F$ ist keine Stammfunktion. Korrektur: $\\int -4\\,dx = -4x$, also $F(x) = \\dfrac{x^{3}}{3} - 4x + C$.
+
+**Probe:** $\\left(\\dfrac{x^{3}}{3} - 4x\\right)' = x^{2} - 4$ ✓.
+
+**Typischer Fehler:** Konstante stehenlassen statt zu integrieren — $\\int c\\,dx = cx$ (denn $(cx)' = c$).`,
+        [
+          'Mache die Probe: leite Markus\' Ergebnis ab.',
+          'Was ist $\\int -4\\,dx$? Erinnere dich: $(-4x)\' = -4$.',
+          'Vergleiche dein Ergebnis mit dem Integrand $x^{2} - 4$.',
+        ],
+        {
+          1: 'Probe widerlegt: $\\left(\\dfrac{x^{3}}{3} - 4\\right)\' = x^{2}$, nicht $x^{2} - 4$. Konstanten verschwinden beim Ableiten — also muss die $-4$ im Integrand zu $-4x$ in der Stammfunktion werden.',
+          2: '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ ist korrekt (Potenzregel: Exponent +1, durch neuen Exponenten teilen). $\\dfrac{x^{3}}{2}$ wäre Stammfunktion von $\\dfrac{3x^{2}}{2}$, nicht von $x^{2}$.',
+          3: 'Konstanten gehören NICHT zum $+C$-Anteil — sie müssen integriert werden zu $cx$. $+C$ ist die Integrationskonstante aus der Familie aller Stammfunktionen, nicht der konstante Summand des Integrands.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Bonus 1 (Mengen-Regel + Variation): SG 0 · apply-guided · multiple-choice
+      mc(
+        'Welches Ergebnis liefert $\\int (\\cos(x) + 2x)\\,dx$?',
+        [
+          '$\\sin(x) + x^{2} + C$',
+          '$-\\sin(x) + x^{2} + C$',
+          '$\\sin(x) + 2x + C$',
+          '$\\sin(x) + 2 + C$',
+        ],
+        0,
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren mit den Grundintegralen für $\\cos$ und der Potenzregel.
+
+**Rechnung:** $\\int \\cos(x)\\,dx = \\sin(x)$, $\\int 2x\\,dx = 2 \\cdot \\dfrac{x^{2}}{2} = x^{2}$. Zusammen: $F(x) = \\sin(x) + x^{2} + C$.
+
+**Probe:** $F'(x) = \\cos(x) + 2x$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei $\\int \\cos$ vertauschen oder $\\int 2x$ als $2x$ stehenlassen statt zu $x^{2}$ zu integrieren.`,
+        [
+          'Beide Glieder einzeln integrieren.',
+          '$\\int \\cos(x)\\,dx = \\sin(x)$ — kein Minus!',
+          '$\\int 2x\\,dx = x^{2}$ (Potenzregel: Faktor $2$ durch neuen Exponenten $2$ geteilt).',
+        ],
+        {
+          1: 'Du hast das Vorzeichen-Muster von $\\int \\sin(x)\\,dx = -\\cos(x)$ auf $\\cos$ übertragen. Aber $\\int \\cos(x)\\,dx = +\\sin(x)$ (kein Minus): nur $\\sin$ bekommt das Minus beim Integrieren.',
+          2: 'Du hast $\\int 2x\\,dx$ als $2x$ stehengelassen, aber $\\int 2x\\,dx = 2 \\cdot \\dfrac{x^{2}}{2} = x^{2}$. Probe: $(2x)\' = 2 \\neq 2x$.',
+          3: 'Du hast $2x$ abgeleitet ($= 2$) statt zu integrieren. Beim Integrieren wird der Exponent erhöht: $\\int 2x\\,dx = x^{2}$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 5 ist von ex-int-1-3-c (LP) bereits abgedeckt. Bonus 2 — sorting transfer.
+      sorting(
+        'Bringe die Schritte zur Berechnung von $\\int (x^{3} + 2x^{2} - 5)\\,dx$ in die richtige Reihenfolge.',
+        [
+          'Summenregel anwenden: jedes Glied einzeln integrieren.',
+          'Potenzregel auf jedes Glied: $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4}$, $\\int 2x^{2}\\,dx = \\dfrac{2x^{3}}{3}$, $\\int -5\\,dx = -5x$.',
+          'Ergebnisse zusammensetzen: $\\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x$.',
+          'Integrationskonstante $+C$ ergänzen: $\\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x + C$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Strukturierte Anwendung der Linearität — Summenregel zerlegt, Potenzregel löst jedes Glied, Zusammensetzen, $+C$ am Ende.
+
+**Rechnung:** $F(x) = \\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x + C$.
+
+**Probe:** $F'(x) = x^{3} + 2x^{2} - 5$ ✓.
+
+**Typischer Fehler:** Das $+C$ vor dem Zusammensetzen einfügen oder ganz weglassen — Konvention: $+C$ am Schluss als letzter Schritt.`,
+        [
+          'Womit beginnt man bei einer Summe — Zerlegung oder Endergebnis?',
+          'Wann wird die Potenzregel auf die einzelnen Glieder angewandt?',
+          'Wo gehört die Integrationskonstante hin — am Anfang, während des Rechnens oder am Schluss?',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+    ],
+
+    // ── [1] Faktorregel: konstante Faktor vor das Integral ────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[faktor-regel-int]
+      tf(
+        'Eine konstante Zahl $c \\in \\mathbb{R}$ darf vor das Integral gezogen werden: $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$.',
+        true,
+        `**Ansatz:** Definition der Faktorregel — gilt für beliebige reelle Konstanten.
+
+**Rechnung:** Beweis über die Linearität der Ableitung: $(c \\cdot F(x))' = c \\cdot F'(x) = c \\cdot f(x)$, also ist $c \\cdot F(x)$ Stammfunktion von $c \\cdot f(x)$, und $\\int c \\cdot f(x)\\,dx = c \\cdot F(x) + C = c \\cdot \\int f(x)\\,dx$.
+
+**Probe:** Beispiel $\\int 5\\cos(x)\\,dx = 5\\sin(x) + C$. Probe: $(5\\sin(x))' = 5\\cos(x)$ ✓.
+
+**Typischer Fehler:** Die Regel auch auf VARIABLE "Faktoren" wie $x$ oder $\\sin(x)$ anwenden — dort gilt sie NICHT. Faktorregel verlangt eine echte Konstante.`,
+        [
+          'Was bedeutet "konstanter Faktor"?',
+          'Beweis über Linearität der Ableitung: $(c F)\' = c F\'$.',
+          'Beispiel: $\\int 7 x^{2}\\,dx = 7 \\int x^{2}\\,dx = 7 \\cdot \\dfrac{x^{3}}{3} + C$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · number-input · uses=[faktor-regel-int]
+      ni(
+        'Berechne $\\int (-3) \\sin(x)\\,dx = a \\cdot \\cos(x) + C$. Bestimme den Wert von $a$.',
+        3,
+        0,
+        '',
+        `**Ansatz:** Faktorregel: $-3$ vor das Integral ziehen, dann Grundintegral $\\int \\sin(x)\\,dx = -\\cos(x) + C$.
+
+**Rechnung:** $\\int (-3)\\sin(x)\\,dx = -3 \\cdot \\int \\sin(x)\\,dx = -3 \\cdot (-\\cos(x)) + C = 3\\cos(x) + C$. Also $a = 3$.
+
+**Probe:** $(3\\cos(x))' = -3\\sin(x)$ ✓.
+
+**Typischer Fehler:** Das doppelte Minus übersehen — $-3 \\cdot (-\\cos x) = +3\\cos x$, nicht $-3\\cos x$.`,
+        [
+          'Faktorregel: $-3$ vor das Integral ziehen.',
+          '$\\int \\sin(x)\\,dx = -\\cos(x) + C$ (mit Minus).',
+          'Doppeltes Minus: $-3 \\cdot (-\\cos x) = +3\\cos x$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[faktor-regel-int] ($x$ als Konstante behandelt)
+      mc(
+        'Anna berechnet $\\int x \\cdot \\cos(x)\\,dx$ und schreibt: $x \\cdot \\sin(x) + C$ — sie hat $x$ als Faktor vor das Integral gezogen ($x \\cdot \\int \\cos x\\,dx = x \\sin x$). Was ist der Fehler?',
+        [
+          '$x$ ist KEINE Konstante, sondern eine Variable. Die Faktorregel $\\int c \\cdot f\\,dx = c \\int f\\,dx$ gilt nur für *konstante* $c$. Probe: $(x \\sin x)\' = \\sin x + x \\cos x \\neq x \\cos x$. Für $\\int x \\cos x\\,dx$ braucht man partielle Integration.',
+          'Anna hat richtig gerechnet — die Faktorregel erlaubt jeden Faktor.',
+          'Anna hätte $\\sin(x)$ als $-\\sin(x)$ schreiben müssen — das Vorzeichen ist falsch.',
+          'Anna hätte $x$ vor das Integral als $1$ ziehen müssen, also $1 \\cdot \\int \\cos x\\,dx = \\sin x + C$.',
+        ],
+        0,
+        `**Ansatz:** Definition der Faktorregel prüfen — gilt nur für konstante Faktoren, nicht für Variable.
+
+**Rechnung:** Probe an Annas Ergebnis: $(x \\sin(x))' = 1 \\cdot \\sin(x) + x \\cdot \\cos(x) = \\sin(x) + x\\cos(x) \\neq x\\cos(x)$ (Produktregel der Ableitung). Annas $F$ ist keine Stammfunktion.
+
+**Probe:** Korrekt löst man $\\int x \\cos x\\,dx$ mit partieller Integration: $u = x$, $v' = \\cos x$ → $u v - \\int u'v\\,dx = x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$. Probe: $(x\\sin x + \\cos x)' = \\sin x + x\\cos x - \\sin x = x\\cos x$ ✓.
+
+**Typischer Fehler:** Variable wie $x$ als "Faktor" missverstehen — die Faktorregel verlangt eine reelle Zahl, keine $x$-abhängige Größe.`,
+        [
+          'Wende die Produktregel der Ableitung auf Annas Ergebnis $x \\sin x$ an.',
+          'Was verlangt die Faktorregel — was darf vor das Integral?',
+          '$x$ ist eine Variable, keine Konstante. Welche Methode braucht man für Produkte?',
+        ],
+        {
+          1: 'Probe widerlegt: $(x\\sin x)\' = \\sin x + x\\cos x \\neq x\\cos x$. Die Faktorregel erlaubt nur KONSTANTE Faktoren ($c \\in \\mathbb{R}$), nicht Variable.',
+          2: 'Annas $\\sin(x)$ ist korrekt: $\\int \\cos x\\,dx = +\\sin x$ (ohne Minus). Der eigentliche Fehler liegt darin, dass $x$ überhaupt vor das Integral gezogen wurde.',
+          3: 'Du kannst $x$ nicht durch $1$ "ersetzen" — der $x$-Faktor ändert das Integral substantiell. $\\int x \\cos x\\,dx \\neq \\int \\cos x\\,dx$. Korrekt: partielle Integration.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · matching · uses=[faktor-regel-int, sum-regel-int]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int 4x\\,dx$',         right: '$2x^{2}$' },
+          { left: '$\\int (-3)\\sin(x)\\,dx$', right: '$3\\cos(x)$' },
+          { left: '$\\int 5e^{x}\\,dx$',     right: '$5e^{x}$' },
+          { left: '$\\int 2\\cos(x)\\,dx$',  right: '$2\\sin(x)$' },
+        ],
+        `**Ansatz:** Faktorregel — Konstante vor das Integral, dann Grundintegral; Vorzeichen sorgfältig prüfen.
+
+**Rechnung:**
+- $\\int 4x\\,dx = 4 \\cdot \\dfrac{x^{2}}{2} = 2x^{2}$.
+- $\\int -3\\sin x\\,dx = -3 \\cdot (-\\cos x) = 3\\cos x$.
+- $\\int 5e^{x}\\,dx = 5 e^{x}$.
+- $\\int 2\\cos x\\,dx = 2 \\sin x$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integrand vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei $\\int -3\\sin x\\,dx$ das doppelte Minus vergessen oder $\\int -3\\sin x\\,dx = -3\\cos x$ schreiben (richtig: $+3\\cos x$).`,
+        [
+          'Konstante darf vor das Integral.',
+          'Grundintegrale für $\\sin$, $\\cos$, $e^{x}$ — Vorzeichen merken.',
+          'Bei $-3\\sin x$: zwei Minuszeichen heben sich auf zu $+3\\cos x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
+      ),
+
+      // Bonus (Mengen-Regel + Variation): SG 1 · apply-guided · multiple-choice
+      mc(
+        'Berechne $\\int -7 x^{4}\\,dx$.',
+        [
+          '$-\\dfrac{7}{5} x^{5} + C$',
+          '$-7 x^{5} + C$',
+          '$-\\dfrac{7}{4} x^{5} + C$',
+          '$-\\dfrac{7}{4} x^{4} + C$',
+        ],
+        0,
+        `**Ansatz:** Faktorregel — $-7$ vor das Integral, dann Potenzregel auf $x^{4}$.
+
+**Rechnung:** $\\int -7 x^{4}\\,dx = -7 \\int x^{4}\\,dx = -7 \\cdot \\dfrac{x^{5}}{5} + C = -\\dfrac{7}{5} x^{5} + C$.
+
+**Probe:** $\\left(-\\dfrac{7}{5} x^{5}\\right)' = -\\dfrac{7}{5} \\cdot 5 x^{4} = -7 x^{4}$ ✓.
+
+**Typischer Fehler:** Den Faktor $-7$ unverändert vor $x^{5}$ schreiben, statt durch den neuen Exponenten $5$ zu teilen.`,
+        [
+          '$-7$ ist konstanter Faktor — vor das Integral.',
+          'Potenzregel: Exponent $4 \\to 5$, dann durch $5$ teilen.',
+          'Faktor $-7$ durch $5$: $-\\dfrac{7}{5}$.',
+        ],
+        {
+          1: 'Du hast den Faktor $-7$ stehen gelassen, ohne durch den neuen Exponenten $5$ zu teilen. Probe: $(-7 x^{5})\' = -35 x^{4} \\neq -7 x^{4}$. Korrekt: $-7 \\cdot \\dfrac{x^{5}}{5} = -\\dfrac{7}{5} x^{5}$.',
+          2: 'Du hast durch den ALTEN Exponenten $4$ geteilt statt durch den neuen Exponenten $5$. Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1}$ — der Nenner ist $n + 1$, nicht $n$. Probe: $\\left(-\\dfrac{7}{4} x^{5}\\right)\' = -\\dfrac{35}{4} x^{4} \\neq -7 x^{4}$.',
+          3: 'Du hast den Exponenten gar nicht erhöht. Beim Integrieren wird der Exponent um $1$ erhöht: $x^{4} \\to x^{5}$. Probe: $\\left(-\\dfrac{7}{4} x^{4}\\right)\' = -7 x^{3} \\neq -7 x^{4}$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+    ],
+
+    // ── [2] Keine Produktregel der Integration ────────────────────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[kein-prod-regel]
+      tf(
+        'Für ein Produkt von Funktionen gilt: $\\int f(x) \\cdot g(x)\\,dx = \\left(\\int f(x)\\,dx\\right) \\cdot \\left(\\int g(x)\\,dx\\right)$.',
+        false,
+        `**Ansatz:** Probe an einem Gegenbeispiel — wenn die Aussage stimmen würde, müsste sie für jedes Paar $f, g$ gelten.
+
+**Rechnung:** Test mit $f(x) = x$, $g(x) = x$, also $f \\cdot g = x^{2}$.
+- Linke Seite: $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$.
+- Rechte Seite: $\\left(\\int x\\,dx\\right) \\cdot \\left(\\int x\\,dx\\right) = \\dfrac{x^{2}}{2} \\cdot \\dfrac{x^{2}}{2} = \\dfrac{x^{4}}{4}$.
+
+$\\dfrac{x^{3}}{3} \\neq \\dfrac{x^{4}}{4}$ — die Aussage ist falsch.
+
+**Probe:** Eine echte "Produktregel der Integration" gibt es NICHT. Stattdessen partielle Integration (Umkehrung der Produktregel der Ableitung): $\\int u v'\\,dx = uv - \\int u'v\\,dx$.
+
+**Typischer Fehler:** Aus der Existenz der Summenregel $\\int (f+g) = \\int f + \\int g$ auf eine analoge Produktregel schließen — beide Operationen verhalten sich bei Integration sehr unterschiedlich.`,
+        [
+          'Probiere ein konkretes Beispiel: $f(x) = g(x) = x$.',
+          'Linke und rechte Seite einzeln berechnen.',
+          'Stimmen die Ergebnisse überein? Wenn nicht, ist die Aussage falsch.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welche Aussage über das Integral $\\int x \\cdot e^{x}\\,dx$ ist korrekt?',
+        [
+          'Für ein Produkt zweier Funktionen gibt es KEINE einfache Stammfunktions-Multiplikation; man braucht partielle Integration ($\\int u v\'\\,dx = uv - \\int u\'v\\,dx$). Resultat: $(x - 1)e^{x} + C$.',
+          '$\\int x \\cdot e^{x}\\,dx = \\left(\\int x\\,dx\\right) \\cdot \\left(\\int e^{x}\\,dx\\right) = \\dfrac{x^{2}}{2} \\cdot e^{x} + C$.',
+          '$\\int x \\cdot e^{x}\\,dx = x \\cdot e^{x} + C$, weil $x$ als Faktor vor das Integral gezogen werden darf.',
+          'Der Integrand $x \\cdot e^{x}$ besitzt keine elementare Stammfunktion.',
+        ],
+        0,
+        `**Ansatz:** Erkennen, dass ein PRODUKT keine einfache Stammfunktions-Regel hat, sondern partielle Integration verlangt.
+
+**Rechnung:** Partielle Integration mit $u = x$, $v' = e^{x}$ (also $u' = 1$, $v = e^{x}$): $\\int x e^{x}\\,dx = u v - \\int u' v\\,dx = x e^{x} - \\int e^{x}\\,dx = x e^{x} - e^{x} + C = (x - 1) e^{x} + C$.
+
+**Probe:** $((x-1)e^{x})' = e^{x} + (x-1)e^{x} = e^{x}(1 + x - 1) = x e^{x}$ ✓.
+
+**Typischer Fehler:** Die Stammfunktionen $\\dfrac{x^{2}}{2}$ und $e^{x}$ einfach multiplizieren — würde $\\dfrac{x^{2}}{2} e^{x}$ liefern, das aber abgeleitet $x e^{x} + \\dfrac{x^{2}}{2} e^{x}$ ergibt (Produktregel der Ableitung), nicht $x e^{x}$.`,
+        [
+          'Ist $x \\cdot e^{x}$ eine Summe oder ein Produkt?',
+          'Welche Methode löst Integrale von Produkten zweier Funktionen?',
+          'Partielle Integration: $\\int u v\'\\,dx = uv - \\int u\'v\\,dx$. Setze $u = x$, $v\' = e^{x}$.',
+        ],
+        {
+          1: 'Stammfunktionen darf man NICHT einfach multiplizieren — es gibt keine Produktregel der Integration. Probe: $\\left(\\dfrac{x^{2}}{2} e^{x}\\right)\' = x e^{x} + \\dfrac{x^{2}}{2} e^{x} \\neq x e^{x}$.',
+          2: '$x$ ist eine VARIABLE, keine Konstante — die Faktorregel gilt nur für konstante Faktoren ($c \\in \\mathbb{R}$). Probe: $(x e^{x})\' = e^{x} + x e^{x} \\neq x e^{x}$.',
+          3: 'Falsch — $x e^{x}$ besitzt sehr wohl eine elementare Stammfunktion, nämlich $(x - 1)e^{x} + C$. Sie wird durch partielle Integration gefunden.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welches der folgenden Integrale kann NICHT mit Summen- und Faktorregel allein gelöst werden, sondern verlangt eine spezielle Technik (z. B. partielle Integration)?',
+        [
+          '$\\int x \\cdot \\sin(x)\\,dx$',
+          '$\\int (x + \\sin(x))\\,dx$',
+          '$\\int 5\\sin(x)\\,dx$',
+          '$\\int 3 x^{2}\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Die Linearität (Summen- + Faktorregel) löst nur Summen einfacher Terme oder konstante Faktoren — Produkte von zwei x-abhängigen Funktionen brauchen mehr.
+
+**Rechnung:** $x \\cdot \\sin(x)$ ist ein PRODUKT zweier x-abhängiger Funktionen ($x$ und $\\sin x$). Hier scheitert die Linearität — partielle Integration mit $u = x$, $v' = \\sin x$ liefert $\\int x \\sin x\\,dx = -x\\cos x + \\sin x + C$.
+
+**Probe:** $(-x\\cos x + \\sin x)' = -\\cos x + x\\sin x + \\cos x = x\\sin x$ ✓. Die anderen drei Integrale: $\\int (x + \\sin x)\\,dx = \\dfrac{x^{2}}{2} - \\cos x + C$ (Summe), $\\int 5\\sin x\\,dx = -5\\cos x + C$ (konstanter Faktor), $\\int 3x^{2}\\,dx = x^{3} + C$ (Potenzregel mit Faktor) — alle mit Linearität allein.
+
+**Typischer Fehler:** Ein Produkt $x \\cdot f(x)$ mit einer Summe $x + f(x)$ verwechseln — das mathematische "+" und "·" sind völlig unterschiedlich behandelt.`,
+        [
+          'Was unterscheidet Produkt von Summe?',
+          'Linearität (Summen-/Faktorregel) zerlegt Summen — was zerlegt sie nicht?',
+          'Welche Methode für Produkte zweier x-abhängiger Funktionen?',
+        ],
+        {
+          1: '$x + \\sin(x)$ ist eine SUMME — die Summenregel zerlegt sie: $\\int (x + \\sin x)\\,dx = \\dfrac{x^{2}}{2} + (-\\cos x) + C$. Linearität ausreichend.',
+          2: '$5\\sin(x)$ hat einen KONSTANTEN Faktor $5$ vor $\\sin x$ — Faktorregel: $\\int 5\\sin x\\,dx = 5 \\cdot (-\\cos x) + C = -5\\cos x + C$. Linearität ausreichend.',
+          3: '$3 x^{2}$ ist konstanter Faktor mal Potenz — Faktorregel + Potenzregel reichen: $\\int 3 x^{2}\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} = x^{3} + C$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Lukas schreibt: $\\int x \\cdot \\cos(x)\\,dx = \\dfrac{x^{2}}{2} \\cdot \\sin(x) + C$ — er hat die Stammfunktion von $x$ und die Stammfunktion von $\\cos(x)$ multipliziert. Wo liegt der Fehler?',
+        [
+          'Es gibt keine Produktregel der Integration: $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right)\\left(\\int g\\,dx\\right)$. Probe: $\\left(\\dfrac{x^{2}}{2} \\sin x\\right)\' = x \\sin x + \\dfrac{x^{2}}{2} \\cos x \\neq x \\cos x$. Hier braucht es partielle Integration (Resultat: $x \\sin x + \\cos x + C$).',
+          'Lukas hat richtig gerechnet — Stammfunktionen darf man immer multiplizieren.',
+          'Lukas hätte $\\sin(x)$ als $-\\sin(x)$ schreiben müssen — das Vorzeichen ist falsch.',
+          'Lukas hätte die Reihenfolge umkehren müssen: erst $\\cos x$ integrieren, dann $x$ — das gibt das richtige Ergebnis.',
+        ],
+        0,
+        `**Ansatz:** Probe — Lukas' Ergebnis ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $\\left(\\dfrac{x^{2}}{2} \\sin(x)\\right)' = x \\sin(x) + \\dfrac{x^{2}}{2} \\cos(x)$ (Produktregel der Ableitung). Das ist NICHT $x \\cos(x)$ — Lukas' $F$ ist keine Stammfunktion.
+
+Korrekt: partielle Integration mit $u = x$, $v' = \\cos x$ (also $u' = 1$, $v = \\sin x$): $\\int x \\cos x\\,dx = u v - \\int u' v\\,dx = x \\sin x - \\int \\sin x\\,dx = x \\sin x - (-\\cos x) + C = x \\sin x + \\cos x + C$.
+
+**Probe:** $(x \\sin x + \\cos x)' = \\sin x + x \\cos x - \\sin x = x \\cos x$ ✓.
+
+**Typischer Fehler:** Stammfunktionen multiplizieren — die analog zur Summenregel "Produktregel" existiert NICHT für Integrale.`,
+        [
+          'Wende die Produktregel der ABLEITUNG auf Lukas\' Ergebnis an.',
+          'Erhältst du den Integrand $x \\cos x$ zurück?',
+          'Welche Methode löst $\\int x \\cdot \\cos x\\,dx$ tatsächlich?',
+        ],
+        {
+          1: 'Probe widerlegt: $\\left(\\dfrac{x^{2}}{2} \\sin x\\right)\' = x \\sin x + \\dfrac{x^{2}}{2} \\cos x \\neq x \\cos x$. Die Multiplikation der Stammfunktionen ergibt nicht die Stammfunktion des Produkts.',
+          2: 'Lukas\' $\\sin(x)$ ist korrekt: $\\int \\cos x\\,dx = +\\sin x$ (ohne Minus). Der eigentliche Fehler ist die unzulässige Multiplikation der Stammfunktionen.',
+          3: 'Multiplikation ist kommutativ — die Reihenfolge ist irrelevant. Das echte Problem: Stammfunktionen multiplizieren ist KEINE gültige Operation, egal in welcher Reihenfolge.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welches der folgenden Integrale erlaubt eine Lösung MIT Summen- und Faktorregel allein (ohne partielle Integration oder Substitution)?',
+        [
+          '$\\int (3 x^{2} + \\sin x)\\,dx$',
+          '$\\int x \\cdot \\sin(x)\\,dx$',
+          '$\\int e^{x} \\cdot \\cos(x)\\,dx$',
+          '$\\int x^{2} \\cdot \\ln(x)\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Linearität greift bei Summen einfacher Terme und konstanten Faktoren — bei Produkten zweier x-abhängiger Funktionen scheitert sie.
+
+**Rechnung:** $\\int (3x^{2} + \\sin x)\\,dx = \\int 3x^{2}\\,dx + \\int \\sin x\\,dx = x^{3} - \\cos x + C$. Reine Summenregel + Faktorregel + Grundintegrale.
+
+**Probe:** $(x^{3} - \\cos x)' = 3x^{2} + \\sin x$ ✓. Die anderen drei Integrale enthalten alle Produkte zweier x-abhängiger Funktionen ($x \\cdot \\sin x$, $e^{x} \\cdot \\cos x$, $x^{2} \\cdot \\ln x$) — da reicht Linearität nicht.
+
+**Typischer Fehler:** Produkt mit Summe verwechseln — $x \\cdot \\sin x$ und $x + \\sin x$ sehen ähnlich aus, sind aber mathematisch grundverschieden.`,
+        [
+          'Welches Integral ist eine Summe, welches ein Produkt?',
+          'Linearität löst Summen einfacher Terme — passt zu welchem Integral?',
+          'Produkte zweier x-abhängiger Funktionen brauchen partielle Integration.',
+        ],
+        {
+          1: '$x \\cdot \\sin(x)$ ist ein Produkt zweier x-abhängiger Funktionen — partielle Integration nötig. Mit Linearität allein nicht lösbar.',
+          2: '$e^{x} \\cdot \\cos(x)$ ist ein Produkt — partielle Integration (sogar zweimal mit "Trick", da das Ausgangsintegral wiederkehrt). Linearität reicht nicht.',
+          3: '$x^{2} \\cdot \\ln(x)$ ist ein Produkt — partielle Integration mit $u = \\ln x$, $v\' = x^{2}$. Linearität reicht nicht.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+    ],
+
+    // ── [3] Integrationskonstante $+C$ konsequent mitschreiben ─────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[plus-c-konsequent]
+      tf(
+        'Bei einem unbestimmten Integral darf die Integrationskonstante $+C$ nur dann mitgeschrieben werden, wenn der Integrand selbst eine konstante Komponente enthält.',
+        false,
+        `**Ansatz:** Definition des unbestimmten Integrals prüfen — woher kommt $+C$ überhaupt?
+
+**Rechnung:** Das unbestimmte Integral $\\int f(x)\\,dx = F(x) + C$ verlangt $+C$ UNABHÄNGIG vom Integrand. Beispiel ohne Konstante im Integrand: $\\int 2x\\,dx = x^{2} + C$. Die $C$ kommt nicht aus einer Konstante in $f$, sondern aus der Tatsache, dass die Stammfunktion nur bis auf eine additive Konstante eindeutig ist (jede Konstante verschwindet beim Ableiten).
+
+**Probe:** $(x^{2} + C)' = 2x + 0 = 2x = f(x)$ — funktioniert für JEDES $C \\in \\mathbb{R}$. Die ganze Familie $\\{x^{2} + C : C \\in \\mathbb{R}\\}$ besteht aus Stammfunktionen.
+
+**Typischer Fehler:** $+C$ als "Stellvertreter für Konstante im Integrand" missverstehen. Tatsächlich ist $+C$ Teil der unbestimmten Integration selbst — egal welcher Integrand.`,
+        [
+          'Woher kommt das $+C$ — vom Integrand oder von der Definition des unbestimmten Integrals?',
+          'Beispiel: $\\int 2x\\,dx$ — keine Konstante im Integrand. Trotzdem $+C$?',
+          'Probe: $(x^{2} + 7)\' = 2x$, $(x^{2} - 100)\' = 2x$ — alle Stammfunktionen.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Welches der folgenden Ergebnisse ist KORREKT geschrieben — inklusive Integrationskonstante?',
+        [
+          '$\\int 4x\\,dx = 2x^{2} + C$',
+          '$\\int 4x\\,dx = 2x^{2}$',
+          '$\\int 4x\\,dx = 2x^{2} + 5$',
+          '$\\int 4x\\,dx = 2x^{2} + C \\cdot x$',
+        ],
+        0,
+        `**Ansatz:** Vollständiges unbestimmtes Integral = Stammfunktion + freie Integrationskonstante $+C$.
+
+**Rechnung:** $\\int 4x\\,dx = 4 \\cdot \\dfrac{x^{2}}{2} + C = 2x^{2} + C$. Die Integrationskonstante $C$ steht für eine BELIEBIGE reelle Zahl, nicht für einen festen Wert wie $5$ oder einen $x$-abhängigen Term.
+
+**Probe:** $(2x^{2} + C)' = 4x$ für jedes $C$ ✓.
+
+**Typischer Fehler:** $+C$ weglassen (Standard-Punktabzug) oder durch eine konkrete Zahl ersetzen — letzteres engt die Stammfunktionsfamilie unzulässig ein.`,
+        [
+          'Was bedeutet "+C" — eine konkrete Zahl oder ein Platzhalter für jede beliebige Konstante?',
+          'Schau dir jede Option an — welche enthält genau ein Symbol "$+C$" am Ende?',
+          'Probe: leite das vermeintliche $F$ ab. Ergibt es $4x$ für JEDE Wahl von $C$?',
+        ],
+        {
+          1: 'Die Stammfunktion $2x^{2}$ ist richtig, aber die Integrationskonstante $+C$ fehlt. Bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt — $+C$ ist Pflicht.',
+          2: '$+5$ ist eine SPEZIELLE Wahl von $C$ — engt die Stammfunktionsfamilie unzulässig ein. Das unbestimmte Integral steht für ALLE Stammfunktionen, also $+C$ mit beliebigem $C \\in \\mathbb{R}$.',
+          3: '$C \\cdot x$ ist KEINE Konstante, sondern eine $x$-abhängige Funktion. Probe: $(2x^{2} + Cx)\' = 4x + C \\neq 4x$ (außer $C = 0$). Die Integrationskonstante muss konstant sein.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Welche der folgenden Funktionen ist KEINE Stammfunktion von $f(x) = 2x$?',
+        [
+          '$F(x) = 2x$',
+          '$F(x) = x^{2} + 7$',
+          '$F(x) = x^{2} - 100$',
+          '$F(x) = x^{2}$',
+        ],
+        0,
+        `**Ansatz:** Probe — jeden Kandidaten ableiten und mit $f(x) = 2x$ vergleichen.
+
+**Rechnung:**
+- $(2x)' = 2 \\neq 2x$ ✗ — also KEINE Stammfunktion.
+- $(x^{2} + 7)' = 2x$ ✓
+- $(x^{2} - 100)' = 2x$ ✓
+- $(x^{2})' = 2x$ ✓
+
+**Probe:** Drei der vier Kandidaten sind Mitglieder der Familie $\\{x^{2} + C : C \\in \\mathbb{R}\\}$ (mit $C = 7$, $C = -100$, $C = 0$). Nur $2x$ liegt nicht in dieser Familie.
+
+**Typischer Fehler:** $f(x) = 2x$ und $F(x) = 2x$ verwechseln — sie heißen ähnlich, sind aber Integrand bzw. (vermeintliche) Stammfunktion. Hier ist $2x$ aber nur der Integrand selbst, kein Stammfunktion.`,
+        [
+          'Stammfunktion $F$ erfüllt $F\'(x) = f(x)$.',
+          'Leite jede Option ab und prüfe, ob $2x$ herauskommt.',
+          'Achte auf den Sonderfall, wo $F = f$ ist — ist das automatisch eine Stammfunktion?',
+        ],
+        {
+          1: '$(x^{2} + 7)\' = 2x + 0 = 2x = f(x)$ ✓ — die $7$ verschwindet beim Ableiten. Das ist eine korrekte Stammfunktion (mit $C = 7$).',
+          2: '$(x^{2} - 100)\' = 2x = f(x)$ ✓ — auch mit großen negativen Konstanten bleibt die Ableitung gleich. Korrekte Stammfunktion (mit $C = -100$).',
+          3: '$(x^{2})\' = 2x = f(x)$ ✓ — die einfachste Stammfunktion (mit $C = 0$). Auch korrekt.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Tom schreibt: $\\int (3x^{2} + 2)\\,dx = x^{3} + 2x$. Was ist der Fehler?',
+        [
+          'Es fehlt die Integrationskonstante $+C$ — bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt. Korrekt: $x^{3} + 2x + C$.',
+          'Der konstante Term $2$ darf nicht integriert werden, weil er konstant ist.',
+          'Der Faktor $3$ in $3x^{2}$ wurde nicht durch den Exponenten geteilt — korrekt wäre $\\dfrac{x^{3}}{3}$.',
+          'Tom hätte zwei Konstanten benötigt: $x^{3} + C_{1} + 2x + C_{2}$.',
+        ],
+        0,
+        `**Ansatz:** Probe — $F(x) = x^{3} + 2x$ ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $F'(x) = (x^{3} + 2x)' = 3x^{2} + 2 = f(x)$ ✓ — der Funktionsterm ist KORREKT! Es fehlt nur das $+C$. Korrekt: $x^{3} + 2x + C$.
+
+**Probe:** $(x^{3} + 2x + C)' = 3x^{2} + 2$ für jedes $C \\in \\mathbb{R}$ — ganze Familie an Stammfunktionen.
+
+**Typischer Fehler:** $+C$ vergessen ist der häufigste Punktabzug bei unbestimmten Integralen — selbst wenn die Stammfunktion sonst stimmt.`,
+        [
+          'Mache die Probe: leite Toms $F$ ab.',
+          'Stimmt der Funktionsterm? Wenn ja, was fehlt am Endergebnis?',
+          'Bei unbestimmten Integralen ist EIN bestimmter Zusatz immer Pflicht.',
+        ],
+        {
+          1: '$\\int 2\\,dx = 2x$ — Konstanten werden integriert, sie verschwinden NICHT. Toms $2x$ ist genau richtig: $(2x)\' = 2$ ✓.',
+          2: '$\\int 3x^{2}\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} = x^{3}$ — der Faktor $3$ wurde durch den neuen Exponenten geteilt, korrekt vereinfacht. Toms $x^{3}$ ist richtig.',
+          3: 'Mehrere Konstanten in der Stammfunktion lassen sich immer zu EINER Konstante zusammenfassen ($C = C_{1} + C_{2}$). Standardform ist deshalb genau ein $+C$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · matching · uses=[plus-c-konsequent]
+      matching(
+        'Ordne jedem unbestimmten Integral das KORREKT geschriebene Ergebnis (inklusive $+C$) zu.',
+        [
+          { left: '$\\int 6x\\,dx$',     right: '$3x^{2} + C$' },
+          { left: '$\\int e^{x}\\,dx$',  right: '$e^{x} + C$' },
+          { left: '$\\int \\sin(x)\\,dx$', right: '$-\\cos(x) + C$' },
+          { left: '$\\int 4\\,dx$',      right: '$4x + C$' },
+        ],
+        `**Ansatz:** Für jedes Integral die Stammfunktion finden und das verpflichtende $+C$ ergänzen.
+
+**Rechnung:**
+- $\\int 6x\\,dx = 3x^{2} + C$ (Probe: $(3x^{2})' = 6x$ ✓).
+- $\\int e^{x}\\,dx = e^{x} + C$ (Probe: $(e^{x})' = e^{x}$ ✓).
+- $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (Probe: $(-\\cos x)' = \\sin x$ ✓).
+- $\\int 4\\,dx = 4x + C$ (Probe: $(4x)' = 4$ ✓).
+
+**Probe:** Vier verschiedene Integrale, vier verschiedene Stammfunktionen — alle mit $+C$ vollständig.
+
+**Typischer Fehler:** $+C$ weglassen oder das falsche Vorzeichen bei $\\int \\sin(x)\\,dx$ schreiben (richtig: $-\\cos(x)$, mit Minus).`,
+        [
+          'Berechne jeweils die Stammfunktion mit Faktor- und/oder Grundintegralen.',
+          'Vergiss das $+C$ am Ende NICHT.',
+          'Bei $\\int \\sin x\\,dx$: Vorzeichen prüfen — wo kommt das Minus her?',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {
