@@ -320,6 +320,7 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       '2': 'Du hast abgeleitet statt integriert: $(3x^{2})\' = 6x$, $(2x)\' = 2$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int (3x^{2} + 2x)\\,dx = x^{3} + x^{2} + C$.',
       '3': 'Rechnerisch ist $\\dfrac{3x^{3}}{3} + \\dfrac{2x^{2}}{2} = x^{3} + x^{2}$ gleich — aber Ergebnisse müssen vereinfacht werden (in Prüfungen Punktabzug). Kürze die Koeffizienten: $\\dfrac{3}{3} = 1$, $\\dfrac{2}{2} = 1$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['sum-regel-int'] },
   },
   'ex-int-1-3-b': {
     id: 'ex-int-1-3-b', lessonId: 'int-1-3', type: 'multiple-choice',
@@ -343,6 +344,7 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       '2': 'Du hast $\\cos$ unverändert gelassen — das wäre, als ob Integration nichts an $\\cos$ ändert. Tatsächlich ist $\\int \\cos(x)\\,dx = \\sin(x)$, mit Faktor: $\\int 5\\cos(x)\\,dx = 5\\sin(x) + C$.',
       '3': 'Du hast den Faktor $5$ ins Argument von $\\sin$ verschoben — aber $5\\cos(x) \\neq \\cos(5x)$. Die $5$ ist konstanter Vorfaktor (Faktorregel): $\\int 5\\cos(x)\\,dx = 5 \\cdot \\int \\cos(x)\\,dx = 5\\sin(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['faktor-regel-int'] },
   },
   'ex-int-1-3-c': {
     id: 'ex-int-1-3-c', lessonId: 'int-1-3', type: 'number-input',
@@ -363,6 +365,7 @@ $$F(2) = 2^{4} - 3 \\cdot 2^{2} + 2 = 16 - 12 + 2 = 6.$$
       '$2^{4} = 16$ und $3 \\cdot 2^{2} = 12$.',
       'Dann $16 - 12 + 2$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['sum-regel-int'] },
   },
   'ex-int-1-3-d': {
     id: 'ex-int-1-3-d', lessonId: 'int-1-3', type: 'multiple-choice',
@@ -396,10 +399,11 @@ Zusammen: $e^{x} + 2\\cos(x) + 3x + C$.
       '2': 'Du hast $\\int 3\\,dx$ als $-3x$ gerechnet — aber $\\int 3\\,dx = 3x + C$ (Konstante mal $x$, kein Vorzeichenwechsel). Außerdem scheint das Vorzeichen bei $\\cos$ korrekt zu sein; der Fehler liegt beim letzten Term.',
       '3': 'Du hast $\\int e^{x}\\,dx = xe^{x}$ verwendet — das ist falsch ($xe^{x}$ ist Ergebnis einer partiellen Integration von $x \\cdot e^{x}$). Für $e^{x}$ selbst gilt $\\int e^{x}\\,dx = e^{x}$, also insgesamt $e^{x} + 2\\cos(x) + 3x + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
   },
   'ex-int-1-3-mastery': {
     id: 'ex-int-1-3-mastery', lessonId: 'int-1-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$\\int (6x^{2} - 4x + e^{x})\\,dx = ?$',
+    question: '[PRÜFUNG] $\\int (6x^{2} - 4x + e^{x})\\,dx = ?$',
     options: ['$2x^{3} - 2x^{2} + e^{x} + C$', '$12x - 4 + e^{x} + C$', '$2x^{3} - 4x^{2} + e^{x} + C$', '$6x^{3} - 2x^{2} + e^{x} + C$'],
     correctIndex: 0,
     explanation: `**Ansatz:** Summen- und Faktorregel anwenden, Potenzregel und Grundintegral für $e^{x}$.
@@ -424,6 +428,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Bei $-4x$ hast du nicht korrekt durch den neuen Exponenten $2$ geteilt: $\\int (-4x)\\,dx = -4 \\cdot \\dfrac{x^{2}}{2} = -2x^{2}$ (nicht $-4x^{2}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
       '3': 'Bei $6x^{2}$ hast du nicht durch den neuen Exponenten $3$ geteilt: $\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3} = 2x^{3}$ (nicht $6x^{3}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
   },
 
   // ── Lesson 4: Das bestimmte Integral ──────────────────────────────────────
