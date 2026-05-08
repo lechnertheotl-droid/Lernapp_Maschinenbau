@@ -87,25 +87,40 @@ export const elektrotechnikTopicDef =
           },
           content: String.raw`## Ohmsches Gesetz und Grundbegriffe
 
-Das **Ohmsche Gesetz** beschreibt den Zusammenhang zwischen Spannung, Widerstand und Strom:
+Das **Ohmsche Gesetz** beschreibt den linearen Zusammenhang zwischen Spannung, Strom und Widerstand an einem ohmschen Bauteil:
 
-$$U = R \cdot I$$
+$$U = R \cdot I \quad \Longleftrightarrow \quad I = \frac{U}{R} \quad \Longleftrightarrow \quad R = \frac{U}{I}$$
 
-| Größe | Symbol | Einheit |
-|-------|--------|---------|
-| Spannung | $U$ | Volt (V) |
-| Strom | $I$ | Ampere (A) |
-| Widerstand | $R$ | Ohm ($\Omega$) |
+**Einheiten — vor jeder Rechnung in SI umrechnen:**
 
-### Reihenschaltung
+| Größe | Symbol | SI-Einheit | Häufige Vorsätze |
+|-------|--------|-----------|------------------|
+| Spannung $U$ | V (Volt) | $1\,\text{V}$ | $1\,\text{kV}=1000\,\text{V}$, $1\,\text{mV}=0{,}001\,\text{V}$ |
+| Strom $I$ | A (Ampere) | $1\,\text{A}$ | $1\,\text{mA}=0{,}001\,\text{A}$, $1\,\mu\text{A}=10^{-6}\,\text{A}$ |
+| Widerstand $R$ | $\Omega$ (Ohm) | $1\,\Omega$ | $1\,\text{k}\Omega=1000\,\Omega$, $1\,\text{M}\Omega=10^{6}\,\Omega$ |
+
+**Merke:** Bevor du $U=R\cdot I$ einsetzt, alles in V, A, $\Omega$ umrechnen — sonst verschiebt sich das Ergebnis um den Faktor $10^{3}$ oder mehr.
+
+### Reihenschaltung — Widerstände addieren
 
 $$R_\text{ges} = R_1 + R_2 + \ldots + R_n$$
 
-### Parallelschaltung
+In Reihe gilt: **gleicher Strom überall**, Spannungen teilen sich auf die Einzelwiderstände auf.
+
+### Parallelschaltung — Kehrwerte addieren
 
 $$\frac{1}{R_\text{ges}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}$$
 
-Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
+Parallel gilt: **gleiche Spannung an allen Zweigen**, der Gesamtstrom teilt sich auf. Der Ergebniswiderstand ist immer **kleiner** als der kleinste Einzelwiderstand.
+
+### Spezialfall — genau zwei Widerstände parallel
+
+$$R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2} \qquad \text{(Produkt durch Summe)}$$
+
+Aus dieser Formel folgen direkt zwei Merksätze:
+
+- Zwei **gleiche** Widerstände parallel ergeben $R/2$ (z. B. $200\,\Omega \parallel 200\,\Omega = 100\,\Omega$).
+- Ein sehr kleiner Widerstand parallel zu einem großen "kurz schließt" den großen — das Ergebnis liegt nahe am kleineren der beiden.
 `,
           exercises: [
             {
@@ -114,23 +129,37 @@ Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
               correctValue: 9.4,
               tolerance: 0.05,
               unit: 'V',
-              explanation: '$U = R \\cdot I = 470\\,\\Omega \\cdot 0{,}02\\,\\text{A} = 9{,}4\\,\\text{V}$',
+              explanation: `**Ansatz:** Ohmsches Gesetz $U = R \\cdot I$. Vorher den Strom von mA in A umrechnen.
+
+**Rechnung:** $I = 20\\,\\text{mA} = 0{,}02\\,\\text{A}$, also $U = 470\\,\\Omega \\cdot 0{,}02\\,\\text{A} = 9{,}4\\,\\text{V}$.
+
+**Probe:** Rückwärts $I = U/R = 9{,}4\\,\\text{V}/470\\,\\Omega = 0{,}02\\,\\text{A} = 20\\,\\text{mA}$ ✓.
+
+**Typischer Fehler:** mA nicht in A umrechnen ($470 \\cdot 20 = 9400\\,\\text{V}$ — Faktor 1000 zu groß).`,
               hints: [
-                '$U = R \\cdot I$',
-                'Strom in Ampere umrechnen: $20\\,\\text{mA} = 0{,}02\\,\\text{A}$',
-                '$470 \\cdot 0{,}02 = 9{,}4$',
+                '$U = R \\cdot I$ — Spannung gleich Widerstand mal Strom.',
+                'Strom in SI: $20\\,\\text{mA} = 20/1000\\,\\text{A} = 0{,}02\\,\\text{A}$.',
+                'Einsetzen: $470 \\cdot 0{,}02 = 9{,}4\\,\\text{V}$.',
               ],
+              pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['einheiten-uia', 'ohm'] },
             },
             {
               type: 'true-false',
               statement: 'Zwei gleiche Widerstände $R$ in Parallelschaltung ergeben einen Gesamtwiderstand von $R/2$.',
               correct: true,
-              explanation: '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R} \\Rightarrow R_\\text{ges} = \\frac{R}{2}$',
+              explanation: `**Ansatz:** Parallelschaltungs-Spezialfall mit $R_1 = R_2 = R$.
+
+**Rechnung:** $\\dfrac{1}{R_\\text{ges}} = \\dfrac{1}{R} + \\dfrac{1}{R} = \\dfrac{2}{R} \\Rightarrow R_\\text{ges} = \\dfrac{R}{2}$. Mit Produkt-durch-Summe ebenso: $\\dfrac{R\\cdot R}{R+R} = \\dfrac{R^{2}}{2R} = \\dfrac{R}{2}$.
+
+**Probe:** Für $R = 200\\,\\Omega$ → $R_\\text{ges} = 100\\,\\Omega$, kleiner als $R$ ✓ (Parallel-Resultat ist immer kleiner als der kleinste Einzelwiderstand).
+
+**Typischer Fehler:** Annahme $R_\\text{ges} = 2R$ (Reihen-Logik versehentlich auf Parallel angewendet).`,
               hints: [
-                '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R_1} + \\frac{1}{R_2}$',
-                '$\\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R}$',
-                '$R_\\text{ges} = R/2$',
+                'Bei Parallelschaltung addieren sich die Kehrwerte, nicht die Widerstände.',
+                '$\\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R}$ — Kehrwerte zweier gleicher Widerstände.',
+                'Kehrwert nehmen: $R_\\text{ges} = R/2$.',
               ],
+              pedagogy: { stage: 'recognize', subGoal: 4, uses: ['r-prod-sum'] },
             },
             {
               type: 'number-input',
@@ -138,12 +167,19 @@ Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
               correctValue: 0.048,
               tolerance: 0.001,
               unit: 'A',
-              explanation: '$R_\\text{ges} = 100 + 150 = 250\\,\\Omega$. $I = U/R_\\text{ges} = 12/250 = 0{,}048\\,\\text{A}$',
+              explanation: `**Ansatz:** Reihenschaltung → Widerstände addieren. Dann Ohmsches Gesetz $I = U/R_\\text{ges}$ anwenden (in Reihe fließt überall derselbe Strom).
+
+**Rechnung:** $R_\\text{ges} = 100 + 150 = 250\\,\\Omega$, also $I = 12\\,\\text{V}/250\\,\\Omega = 0{,}048\\,\\text{A}$.
+
+**Probe:** $U_1 = R_1\\cdot I = 100 \\cdot 0{,}048 = 4{,}8\\,\\text{V}$, $U_2 = 150 \\cdot 0{,}048 = 7{,}2\\,\\text{V}$, Summe $= 12\\,\\text{V}$ ✓ (Maschensatz).
+
+**Typischer Fehler:** Parallelschaltungs-Formel verwendet ($R_\\text{ges} = 100\\cdot150/(100+150) = 60\\,\\Omega$, $I = 0{,}2\\,\\text{A}$).`,
               hints: [
-                'Reihe: $R_\\text{ges} = R_1 + R_2$',
-                '$I = U / R_\\text{ges}$',
-                '$12 / 250 = 0{,}048\\,\\text{A}$',
+                'Reihenschaltung: $R_\\text{ges} = R_1 + R_2$.',
+                'Ohmsches Gesetz nach $I$ umstellen: $I = U / R_\\text{ges}$.',
+                '$12 / 250 = 0{,}048$. Antwort in Ampere — also $0{,}048$, nicht 48.',
               ],
+              pedagogy: { stage: 'transfer', subGoal: 2, uses: ['reihe-r', 'ohm'] },
             },
           ],
         },

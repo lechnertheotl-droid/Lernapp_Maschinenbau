@@ -29,6 +29,7 @@ export const exercises_int_u1 = {
       '2': 'Der Kehrwert $\\frac{1}{f(x)}$ ist eine rein algebraische Operation, die mit Integration nichts zu tun hat. Die Stammfunktion kommt aus dem Umkehren des Ableitens: $F\'(x) = f(x)$. Beispiel: Kehrwert von $f(x) = 2x$ ist $\\frac{1}{2x}$, aber die Stammfunktion ist $x^{2}$.',
       '3': 'Die Nullstelle ist ein $x$-Wert, an dem $f(x) = 0$ ist — eine Zahl, keine Funktion. Die Stammfunktion ist dagegen eine ganze Funktion $F(x)$ mit $F\'(x) = f(x)$. Beispiel: $f(x) = 2x$ hat die Nullstelle $x = 0$, aber die Stammfunktion $F(x) = x^{2}$.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['stammfunktion'] },
   },
   'ex-int-1-1-b': {
     id: 'ex-int-1-1-b', lessonId: 'int-1-1', type: 'multiple-choice',
@@ -57,6 +58,7 @@ export const exercises_int_u1 = {
       '2': '$C$ ist gerade nicht fest auf $0$ gesetzt, sondern steht stellvertretend für jede beliebige reelle Konstante. Würde $C = 0$ gelten, wäre $x^{2}$ die einzige Stammfunktion von $2x$ — aber auch $x^{2} + 5$ oder $x^{2} - 7$ haben die Ableitung $2x$.',
       '3': 'Ein Anfangswert $F(x_{0}) = y_{0}$ legt $C$ erst bei zusätzlicher Bedingung fest — ohne Randbedingung bleibt $C$ beliebig. Die Grundaussage ist: $(F(x) + C)\' = f(x)$ für jedes $C$, deshalb muss man $C$ mitschreiben.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['plus-c'] },
   },
   'ex-int-1-1-c': {
     id: 'ex-int-1-1-c', lessonId: 'int-1-1', type: 'matching',
@@ -83,6 +85,7 @@ export const exercises_int_u1 = {
       'Die Potenzregel der Ableitung rückwärts: aus $x^{n}$ wird $n \\cdot x^{n-1}$.',
       'Zur Kontrolle: $(x^{n+1}/(n+1))\' = x^{n}$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['stammfunktion', 'rueckwaerts'] },
   },
   'ex-int-1-1-d': {
     id: 'ex-int-1-1-d', lessonId: 'int-1-1', type: 'multiple-choice',
@@ -116,6 +119,7 @@ Beide $3x^{2}$ und $3x^{2} + 5$ sind Stammfunktionen — sie unterscheiden sich 
       '1': 'Beim Ableiten von $6x^{2}$ erhält man $12x$, nicht $6x$ — der Koeffizient wurde beim Integrieren nicht durch den neuen Exponenten geteilt. Potenzregel: $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2} + C$.',
       '2': 'Abgeleitet ergibt $x^{3}$ den Wert $3x^{2}$, nicht $6x$ — das wäre eine Stammfunktion von $3x^{2}$, nicht von $6x$. Richtig: Exponent von $6x^{1}$ auf $x^{2}$ erhöhen und durch $2$ teilen, also $3x^{2} + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['plus-c'] },
   },
   'ex-int-1-1-mastery': {
     id: 'ex-int-1-1-mastery', lessonId: 'int-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -140,6 +144,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Bei $(x^{4})\' = 4x^{4}$ hast du den Exponenten nicht um $1$ reduziert. Ableitungs-Potenzregel: $(x^{n})\' = n \\cdot x^{n-1}$, also $(x^{4})\' = 4x^{3}$ (nicht $4x^{4}$). Richtiges Ergebnis: $4x^{3} + 2$.',
       '3': 'Die Konstante $7$ hast du korrekt weggelassen, aber $(2x)\' = 2$ — nicht $2x$. Merke: $(c \\cdot x)\' = c$, der Faktor bleibt, $x$ verschwindet. Richtig: $4x^{3} + 2$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
   },
 
   // ── Lesson 2: Grundintegrale ──────────────────────────────────────────────
@@ -165,6 +170,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast abgeleitet statt integriert — $(x^{3})\' = 3x^{2}$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4} + C$.',
       '3': 'Du hast durch den alten Exponenten $3$ geteilt statt durch den neuen Exponenten $n+1 = 4$. Regel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$, also hier $\\dfrac{x^{4}}{4} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['int-pot-regel'] },
   },
   'ex-int-1-2-b': {
     id: 'ex-int-1-2-b', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -188,6 +194,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast abgeleitet ($(\\sin)\' = \\cos$, dann $(\\cos)\' = -\\sin$) — aber nicht $\\cos$ selbst hat als Stammfunktion $-\\cos$. Beim Integrieren von $\\cos$ gehst du zu der Funktion, deren Ableitung $\\cos$ ist: $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
       '3': '$\\tan(x)$ ist keine Stammfunktion von $\\cos(x)$, sondern von $\\frac{1}{\\cos^{2}(x)}$ (da $(\\tan)\' = \\sec^{2}$). Die Stammfunktion von $\\cos$ findest du über $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-c': {
     id: 'ex-int-1-2-c', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -200,7 +207,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
 
 **Probe:** $(e^{x} + C)' = e^{x}$. ✓
 
-**Merke:** Diese Besonderheit macht $e^{x}$ zur wichtigsten Funktion in Analysis und Technik (DGL, Wachstum, RC-Glied).`,
+**Typischer Fehler:** Potenzregel $\\int x^{n}\\,dx = \\frac{x^{n+1}}{n+1}$ auf $e^{x}$ anwenden — die gilt aber nur für variable Basis $x$ mit FESTEM Exponenten $n$, nicht für die Exponentialfunktion (feste Basis $e$, variabler Exponent $x$). Dann landet man fälschlich bei $\\frac{e^{x}}{x}$ oder $x \\cdot e^{x}$. Richtig: $\\int e^{x}\\,dx = e^{x} + C$.`,
     hints: [
       '$e^{x}$ ist die einzige Funktion, die ihre eigene Ableitung ist.',
       'Was ist dann ihre Stammfunktion?',
@@ -211,6 +218,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Durch $x$ dividieren entsteht hier aus falsch angewandter Potenzregel — die gilt aber nicht für $e^{x}$. Die Ableitung bzw. Stammfunktion der Exponentialfunktion ist die Funktion selbst: $\\int e^{x}\\,dx = e^{x} + C$.',
       '3': 'Du hast den Logarithmus als "Umkehroperation" eingebracht — $\\ln(e^{x}) = x$ ist zwar eine Vereinfachung, hat aber nichts mit Integration zu tun. Richtig: $(e^{x})\' = e^{x}$, also $\\int e^{x}\\,dx = e^{x} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-d': {
     id: 'ex-int-1-2-d', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -234,6 +242,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '1': 'Die Stammfunktion $\\ln(x)$ ist nur für $x > 0$ definiert, aber $\\frac{1}{x}$ existiert auch für $x < 0$. Deshalb braucht man den Betrag: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ für alle $x \\neq 0$.',
       '3': 'Du hast abgeleitet statt integriert: $\\left(\\frac{1}{x}\\right)\' = -\\frac{1}{x^{2}}$. Beim Integrieren brauchst du die Funktion, deren Ableitung $\\frac{1}{x}$ ist — das ist $\\ln|x|$, also $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['int-1-x'] },
   },
   'ex-int-1-2-e': {
     id: 'ex-int-1-2-e', lessonId: 'int-1-2', type: 'matching',
@@ -244,24 +253,27 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       { left: '$\\int e^{x}\\,dx$', right: '$e^{x} + C$' },
       { left: '$\\int x^{2}\\,dx$', right: '$\\dfrac{x^{3}}{3} + C$' },
     ],
-    explanation: `**Ansatz:** Rückwärts die Ableitungen der Standardfunktionen nutzen.
+    explanation: `**Ansatz:** Rückwärts die Ableitungen der Standardfunktionen nutzen — jede rechte Seite muss beim Ableiten den Integranden links ergeben.
 
 **Rechnung:**
-- $(-\\cos(x))' = \\sin(x) \\Rightarrow \\int \\sin(x)\\,dx = -\\cos(x) + C$.
-- $(\\sin(x))' = \\cos(x) \\Rightarrow \\int \\cos(x)\\,dx = \\sin(x) + C$.
-- $(e^{x})' = e^{x} \\Rightarrow \\int e^{x}\\,dx = e^{x} + C$.
-- Potenzregel: $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$.
+- $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (denn $(-\\cos)' = -(-\\sin) = \\sin$).
+- $\\int \\cos(x)\\,dx = \\sin(x) + C$ (denn $(\\sin)' = \\cos$).
+- $\\int e^{x}\\,dx = e^{x} + C$ (denn $(e^{x})' = e^{x}$).
+- $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$ (Potenzregel).
 
-**Typischer Fehler:** Vorzeichen bei $\\sin/\\cos$ vertauschen. Merksatz: Beim Integrieren von $\\sin$ bekommst du das Minus.`,
+**Probe:** Alle vier rechten Seiten ableiten und mit dem zugehörigen Integranden vergleichen — jede Identität reproduziert exakt die linke Spalte. ✓
+
+**Typischer Fehler:** Vorzeichen bei $\\sin / \\cos$ vertauschen. Merksatz: Beim Integrieren von $\\sin$ bekommst du das Minus, beim Integrieren von $\\cos$ nicht.`,
     hints: [
-      'Welche Funktion ergibt abgeleitet den Integranden?',
+      'Welche Funktion ergibt abgeleitet den jeweiligen Integranden?',
       'Vorzeichen bei $\\sin / \\cos$: nur $\\int \\sin(x)\\,dx$ hat ein Minus.',
-      'Potenzregel für $x^{2}$: Exponent $+1$, dann teilen.',
+      'Potenzregel für $x^{2}$: Exponent um $1$ erhöhen, dann durch den neuen Exponenten $3$ teilen.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 2, uses: ['int-exp-trig'] },
   },
   'ex-int-1-2-mastery': {
     id: 'ex-int-1-2-mastery', lessonId: 'int-1-2', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$\\int \\sin(x)\\,dx = ?$',
+    question: '[PRÜFUNG] $\\int \\sin(x)\\,dx = ?$',
     options: ['$\\cos(x) + C$', '$-\\cos(x) + C$', '$\\sin(x) + C$', '$-\\sin(x) + C$'],
     correctIndex: 1,
     explanation: `**Ansatz:** Rückwärts die Ableitung des Kosinus lesen: $(\\cos(x))' = -\\sin(x)$, also $(-\\cos(x))' = \\sin(x)$.
@@ -281,6 +293,7 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '2': 'Du hast $\\sin$ mit sich selbst als Stammfunktion genommen — das wäre nur richtig, wenn $(\\sin)\' = \\sin$ wäre, aber tatsächlich ist $(\\sin)\' = \\cos$. Richtig: $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
       '3': '$(-\\sin(x))\' = -\\cos(x)$, nicht $\\sin(x)$ — also ist $-\\sin$ keine Stammfunktion von $\\sin$. Man braucht die Funktion, deren Ableitung $\\sin$ ergibt: $(-\\cos)\' = -(-\\sin) = \\sin$, also $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['int-exp-trig'] },
   },
 
   // ── Lesson 3: Summenregel & Faktorregel ───────────────────────────────────
@@ -701,8 +714,17 @@ $$F'(x) = f(x) \\quad \\Longleftrightarrow \\quad \\int f(x)\\,dx = F(x) + C$$
 Das Symbol $\\int$ heißt **Integralzeichen** und $dx$ zeigt an, nach welcher Variable wir integrieren.`,
       },
       {
-        id: 'int-1-1-s2', type: 'explanation-formal', title: 'Die Integrationskonstante C',
-        content: `**Warum steht da immer "$+C$"?**
+        id: 'int-1-1-s2', type: 'explanation-formal', title: 'Stammfunktion, Integrationskonstante & Probe',
+        content: `**Konzept-Übersicht:**
+
+| Konzept | Formel | Beispiel |
+|---|---|---|
+| Stammfunktion $F$ von $f$ | $F'(x) = f(x)$ | $F(x) = x^{2}$ ist Stammfunktion von $f(x) = 2x$, denn $(x^{2})' = 2x$. |
+| Unbestimmtes Integral | $\\int f(x)\\,dx = F(x) + C$ | $\\int 2x\\,dx = x^{2} + C$ |
+| Rückwärts-Ableiten | Suche $F$, sodass $F'(x) = f(x)$ ergibt | Aus $f(x) = 4x^{3}$: welcher Term wird beim Ableiten zu $4x^{3}$? Antwort: $x^{4}$. |
+| Probe | $F$ ableiten und mit $f$ vergleichen | $F(x) = x^{2} + 7$ → $F'(x) = 2x = f(x)$ ✓ |
+
+**Warum steht da immer "$+C$"?**
 
 Beim Ableiten verschwindet jede Konstante:
 $$(F(x) + 5)' = F'(x) + 0 = f(x)$$
@@ -816,7 +838,16 @@ Merke: **Exponent um 1 erhöhen**, dann durch den **neuen Exponenten teilen**.
 - $\\int \\sqrt{x}\\,dx = \\int x^{1/2}\\,dx = \\dfrac{x^{3/2}}{3/2} + C = \\dfrac{2}{3}x^{3/2} + C$
 
 **Warum gilt die Potenzregel nicht für $n = -1$?**
-Weil $\\dfrac{x^{0}}{0}$ nicht definiert ist! Für $n = -1$ gilt stattdessen: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.`,
+Weil $\\dfrac{x^{0}}{0}$ nicht definiert ist! Für $n = -1$ gilt stattdessen: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.
+
+**Summen- und Faktorregel (gliedweise integrieren):**
+
+| Regel | Formel | Beispiel |
+|---|---|---|
+| Summenregel | $\\int (f + g)\\,dx = \\int f\\,dx + \\int g\\,dx$ | $\\int (x^{2} + \\cos x)\\,dx = \\dfrac{x^{3}}{3} + \\sin x + C$ |
+| Faktorregel | $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$ ($c$ konstant) | $\\int 5 e^{x}\\,dx = 5 e^{x} + C$ |
+
+**Achtung:** Es gibt KEINE analoge "Produktregel der Integration". $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right) \\cdot \\left(\\int g\\,dx\\right)$ — Produkte erfordern partielle Integration (siehe spätere Lesson).`,
       },
       { id: 'int-1-2-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-int-1-2-a' },
       { id: 'int-1-2-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-int-1-2-b' },
