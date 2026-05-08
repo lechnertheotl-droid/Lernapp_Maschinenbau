@@ -243,7 +243,13 @@ export const exercises_dgl_u1 = {
       '$y\' \\cdot y = q(x)$',
     ],
     correctIndex: 1,
-    explanation: 'Die Standardform ist $y\' + p(x) \\cdot y = q(x)$. Dabei heißt $q(x)$ die Störfunktion. Für $q(x) = 0$ ist die DGL homogen.',
+    explanation: `**Ansatz:** Eine *lineare* DGL 1. Ordnung enthält $y$ und $y'$ jeweils nur in 1. Potenz. Die Standardform isoliert die höchste Ableitung mit Koeffizient 1.
+
+**Rechnung:** Standardform: $y' + p(x)\\cdot y = q(x)$. Hier ist $p(x)$ der Koeffizient bei $y$ und $q(x)$ die Störfunktion (rechte Seite).
+
+**Probe:** Beispiel $y' + 2x\\,y = e^x$: $p(x)=2x$, $q(x)=e^x$ — passt zur Standardform. Lösbar mit integrierendem Faktor $\\mu = e^{\\int p\\,dx}$.
+
+**Typischer Fehler:** Form $y' = y^2 + p(x)$ (nichtlinear wegen $y^2$) oder $y'\\cdot y = q(x)$ (Produkt $y\\cdot y'$ → nichtlinear) für linear halten. Linearität verlangt $y$ und $y'$ ohne Potenzen, ohne Produkte miteinander.`,
     hints: [
       'Wie sieht die kanonische Form einer linearen DGL 1. Ordnung aus?',
       'Standardform: $y\' + p(x) \\cdot y = q(x)$ — höchste Ableitung $y\'$, Koeffizienten von $x$ abhängig.',
@@ -265,7 +271,13 @@ export const exercises_dgl_u1 = {
       '$\\mu = e^{p(x)}$',
     ],
     correctIndex: 1,
-    explanation: 'Der integrierende Faktor ist $\\mu(x) = e^{\\int p(x)\\,dx}$. Multipliziert man die DGL mit $\\mu$, wird die linke Seite zu $(\\mu \\cdot y)\' = \\mu \\cdot q$.',
+    explanation: `**Ansatz:** Suche eine Funktion $\\mu(x)$, sodass die linke Seite $\\mu(y' + p\\,y)$ als Ableitung des Produkts $\\mu\\cdot y$ geschrieben werden kann.
+
+**Rechnung:** $(\\mu\\cdot y)' = \\mu' y + \\mu y' = \\mu(y' + (\\mu'/\\mu)\\,y)$. Damit das mit $\\mu(y' + p\\,y)$ übereinstimmt, muss $\\mu'/\\mu = p$, d. h. $\\mu' = p\\,\\mu$. Diese DGL für $\\mu$ wird durch $\\mu = e^{\\int p\\,dx}$ gelöst.
+
+**Probe:** Mit $p(x) = 3$ und $\\mu = e^{3x}$: $\\mu' = 3e^{3x} = p\\cdot \\mu$ ✓. Multipliziert man die ursprüngliche DGL mit $\\mu$, wird $(\\mu\\cdot y)' = \\mu\\cdot q$ — direkt integrierbar.
+
+**Typischer Fehler:** $p$ und $q$ vertauschen ($\\mu = e^{\\int q\\,dx}$, falsch — die rechte Seite spielt für $\\mu$ keine Rolle), Integral vergessen ($\\mu = e^p$), oder e-Funktion ganz weglassen ($\\mu = \\int p\\,dx$).`,
     hints: [
       'Welche Funktion macht $y\' + p y$ zu einer Ableitung eines Produkts?',
       'Trick: $\\mu \\cdot y\' + \\mu \\cdot p \\cdot y = (\\mu \\cdot y)\'$, wenn $\\mu\' = \\mu \\cdot p$.',
@@ -287,7 +299,13 @@ export const exercises_dgl_u1 = {
       '$y = C \\cdot \\cos(2x)$',
     ],
     correctIndex: 1,
-    explanation: 'Homogene lineare DGL: $y\' = -2y$. Lösung: $y = Ce^{-2x}$. Alternativ: $\\mu = e^{2x}$, dann $(e^{2x} \\cdot y)\' = 0 \\Rightarrow y = Ce^{-2x}$.',
+    explanation: `**Ansatz:** Homogene lineare DGL mit konstantem Koeffizienten — Lösung über Trennung der Variablen oder direkt aus der Formel $y_h = C\\,e^{-\\int p\\,dx}$.
+
+**Rechnung:** $y' + 2y = 0 \\Leftrightarrow y' = -2y$. Mit $p(x) = 2$: $y_h = C\\,e^{-\\int 2\\,dx} = C\\,e^{-2x}$. Alternative: $\\frac{dy}{y} = -2\\,dx \\Rightarrow \\ln|y| = -2x + C_1 \\Rightarrow y = C\\,e^{-2x}$.
+
+**Probe:** $y' = -2C\\,e^{-2x} = -2\\,(C\\,e^{-2x}) = -2y$ ✓ — DGL erfüllt für jedes $C \\in \\mathbb{R}$.
+
+**Typischer Fehler:** Vorzeichen im Exponenten umdrehen ($Ce^{+2x}$ ist Lösung von $y' = +2y$, nicht $y' = -2y$). Oder lineare Funktion $2x + C$ ansetzen — passt zur DGL $y' = 2$, nicht $y' = -2y$.`,
     hints: [
       'Erkenne die Form: homogen mit konstantem Koeffizienten.',
       'Trennung der Variablen: $\\frac{dy}{y} = -2 \\, dx$ → $\\ln|y| = -2x + C_1$.',
@@ -305,7 +323,13 @@ export const exercises_dgl_u1 = {
     correctValue: 2.26,
     tolerance: 0.1,
     unit: '',
-    explanation: '$\\mu = e^x$. $(e^x y)\' = 3e^x \\Rightarrow e^x y = 3e^x + C \\Rightarrow y = 3 + Ce^{-x}$. AWP: $y(0) = 1 = 3 + C \\Rightarrow C = -2$. Also $y(x) = 3 - 2e^{-x}$, $y(1) = 3 - 2e^{-1} \\approx 2.26$.',
+    explanation: `**Ansatz:** Standardform $y' + 1\\cdot y = 3$ → $p(x) = 1$, $q(x) = 3$. Methode des integrierenden Faktors anwenden.
+
+**Rechnung:** $\\mu = e^{\\int 1\\,dx} = e^x$. Multiplizieren: $(e^x y)' = 3\\,e^x$. Integrieren: $e^x y = 3\\,e^x + C \\Rightarrow y(x) = 3 + C\\,e^{-x}$. AWP: $y(0) = 3 + C = 1 \\Rightarrow C = -2$. Also $y(x) = 3 - 2\\,e^{-x}$ und $y(1) = 3 - 2/e \\approx 2{,}264$.
+
+**Probe:** $y'(x) = 2\\,e^{-x}$; einsetzen: $y' + y = 2\\,e^{-x} + 3 - 2\\,e^{-x} = 3$ ✓. Anfangswert: $y(0) = 3 - 2 = 1$ ✓. Asymptotik: $y \\to 3$ für $x \\to \\infty$ (Gleichgewicht).
+
+**Typischer Fehler:** Statt $C\\,e^{-x}$ den Term $C\\,e^{+x}$ ansetzen (Vorzeichen aus $1/\\mu$ vergessen) oder die Partikulärlösung $y_p = 3$ als $y_p = 3x$ anschreiben (denn die Stör­funktion ist eine Konstante, nicht $3x$).`,
     hints: [
       'Erst integrierenden Faktor $\\mu = e^{\\int p \\, dx}$ berechnen.',
       'Hier $p(x) = 1$ → $\\mu = e^x$. Dann $(e^x y)\' = 3 e^x$ integrieren.',
@@ -322,7 +346,13 @@ export const exercises_dgl_u1 = {
       '$y = 6x + Ce^{3x}$',
     ],
     correctIndex: 0,
-    explanation: 'Homogene Lösung: $y_h = Ce^{3x}$. Partikuläre Lösung (Ansatz $y_p = \\text{const}$): $0 - 3y_p = 6 \\Rightarrow y_p = -2$. Allgemein: $y = Ce^{3x} - 2$.',
+    explanation: `**Ansatz:** Allgemeine Lösung = homogene Lösung $y_h$ + partikuläre Lösung $y_p$. Bei konstanter Stör­funktion: $y_p$ als Konstante ansetzen.
+
+**Rechnung:** Homogen: $y' - 3y = 0 \\Rightarrow y_h = C\\,e^{3x}$. Partikulär (Ansatz $y_p = \\text{const}$, also $y_p' = 0$): einsetzen liefert $0 - 3\\,y_p = 6 \\Rightarrow y_p = -2$. Allgemein: $y(x) = C\\,e^{3x} - 2$.
+
+**Probe:** $y' = 3C\\,e^{3x}$; $y' - 3y = 3C\\,e^{3x} - 3(C\\,e^{3x} - 2) = 6$ ✓ für jedes $C$.
+
+**Typischer Fehler:** Vorzeichen im homogenen Teil umkehren ($Ce^{-3x}$, falsch) oder die Stör­funktion $6$ direkt als $y_p$ übernehmen (Lösungs­ansatz vergessen — $y_p$ folgt aus der DGL, nicht aus der rechten Seite).`,
     hints: [
       'Strategie: Homogene Lösung + partikuläre Lösung = allgemeine Lösung.',
       'Homogen: $y_h\' - 3y_h = 0 \\Rightarrow y_h = Ce^{3x}$.',
@@ -770,7 +800,21 @@ $$y = \\frac{1}{\\mu} \\left( \\int \\mu \\cdot q\\,dx + C \\right)$$
 - $e^{2x} y = \\frac{1}{3}e^{3x} + C$
 - $y = \\frac{1}{3}e^{x} + Ce^{-2x}$
 
-Dabei ist $Ce^{-2x}$ die **homogene Lösung** und $\\frac{1}{3}e^x$ die **partikuläre Lösung**.`,
+Dabei ist $Ce^{-2x}$ die **homogene Lösung** und $\\frac{1}{3}e^x$ die **partikuläre Lösung**.
+
+**Homogene Lösung allgemein:**
+$$y_h(x) = C \\cdot e^{-\\int p(x)\\,dx}$$
+Sie löst $y' + p(x)\\,y = 0$ und enthält die freie Konstante $C$ (Schritt 1 der Variation der Konstanten).
+
+**Variation der Konstanten (alternative Methode):** Statt des integrierenden Faktors kann man $y_p$ über den Ansatz $y_p(x) = C(x)\\cdot u(x)$ mit $u(x) = e^{-\\int p\\,dx}$ bestimmen. Einsetzen liefert
+$$C'(x) = q(x)/u(x) \\quad\\Rightarrow\\quad C(x) = \\int q(x)/u(x)\\,dx.$$
+Dann ist $y = y_h + y_p = C\\,u(x) + C(x)\\,u(x)$.
+
+**Anwendung RC-Kreis:** Beim Aufladen eines Konden­sators über einen Widerstand $R$ an einer Spannungs­quelle $U_0$ gilt
+$$\\dot U + \\frac{U}{RC} = \\frac{U_0}{RC}.$$
+Mit $\\tau := RC$ (Zeit­konstante, Einheit Sekunden) und AB $U(0)=0$:
+$$U(t) = U_0\\,(1 - e^{-t/\\tau}).$$
+Beim *Entladen* ($U_0 = 0$, $U(0) = U_0$) folgt $U(t) = U_0\\,e^{-t/\\tau}$, Halbwertszeit $t_{1/2} = \\tau\\,\\ln 2 \\approx 0{,}693\\,\\tau$.`,
       },
       { id: 'dgl-1-3-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-1-3-a' },
       { id: 'dgl-1-3-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-1-3-b' },

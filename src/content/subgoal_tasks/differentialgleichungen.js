@@ -1304,6 +1304,721 @@ export const differentialgleichungenSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-1-3 — Lineare DGL 1. Ordnung  (6 subGoals)
+  // Je ≥ 5 Aufgaben = mind. 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-1-3': {
+
+    // ── [0] Standardform y' + p(x)·y = q(x) ─────────────────────────────
+    0: [
+      tf(
+        'Die DGL $y\' + 3y = \\cos x$ ist in Standardform; dabei sind $p(x)=3$ und $q(x)=\\cos x$.',
+        true,
+        `**Ansatz:** Standardform einer linearen DGL 1. Ordnung: $y\' + p(x)\\,y = q(x)$. Identifiziere den Koeffizienten $p$ vor $y$ (links) und die Stör­funktion $q$ (rechts).
+
+**Rechnung:** In $y\' + 3y = \\cos x$: vor $y$ steht $3$ → $p(x) = 3$ (konstant). Rechts steht $\\cos x$ → $q(x) = \\cos x$.
+
+**Probe:** Einsetzen: $y\' + 3\\,y = \\cos x$ ist exakt die Form $y\' + p(x)\\,y = q(x)$ — passt.
+
+**Typischer Fehler:** $p$ und $q$ vertauschen oder Vorzeichen vergessen. $p$ steht vor $y$, $q$ ist die rechte Seite.`,
+        [
+          'Standardform: $y\' + p(x)\\cdot y = q(x)$.',
+          '$p$ = Koeffizient vor $y$.',
+          '$q$ = rechte Seite (Stör­funktion).',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Welche der folgenden DGL liegt bereits in Standardform $y\' + p(x)\\,y = q(x)$ vor?',
+        [
+          '$y\' + 3x\\,y = e^x$',
+          '$2y\' + 4y = 6$',
+          '$y\'\\cdot y = x$',
+          '$y\'\' + 2y = 0$',
+        ],
+        0,
+        `**Ansatz:** Standardform verlangt: höchste Ableitung $y\'$ mit Koeffizient *exakt $1$*, lineare Form (keine Produkte $y\\cdot y\'$, keine höheren Potenzen), Ordnung 1.
+
+**Rechnung:**
+- $y\' + 3x\\,y = e^x$: Koeffizient von $y\'$ ist $1$, $p(x)=3x$, $q(x)=e^x$ → **Standardform** ✓.
+- $2y\' + 4y = 6$: Koeffizient $2$ vor $y\'$ → erst durch $2$ teilen ($y\' + 2y = 3$).
+- $y\'\\cdot y = x$: Produkt $y\'\\cdot y$ → nichtlinear, keine lineare DGL.
+- $y\'\' + 2y = 0$: Ordnung 2, nicht 1.
+
+**Probe:** Form-Test: ist die linke Seite $y\' + (\\text{etwas})\\cdot y$? Hier ja: $y\' + 3x\\,y$.
+
+**Typischer Fehler:** Annehmen, „in Standardform" heißt einfach „linear". Es heißt zusätzlich: Koeffizient vor $y\'$ muss $1$ sein; sonst muss man erst teilen.`,
+        [
+          'Welcher Koeffizient steht vor $y\'$?',
+          'Standardform verlangt Koeffizient $1$ vor $y\'$.',
+          'Nichtlinearität (Produkte, Potenzen) und Ordnung $> 1$ ausschließen.',
+        ],
+        {
+          1: 'Koeffizient $2$ vor $y\'$ — noch nicht Standardform. Teile durch $2$: $y\' + 2y = 3$ ist die Standardform.',
+          2: 'Produkt $y\'\\cdot y$ → nichtlinear. Standardform verlangt $y$ und $y\'$ jeweils nur in 1. Potenz und ohne Produkt miteinander.',
+          3: 'Hier steht $y\'\'$ — das ist eine DGL 2. Ordnung. Standardform 1. Ordnung verlangt $y\'$ als höchste Ableitung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Bringe $2y\' = 4xy + 6$ in Standardform. Welcher Koeffizient $p(x)$ steht dann vor $y$?',
+        [
+          '$p(x) = -2x$',
+          '$p(x) = 4x$',
+          '$p(x) = 2x$',
+          '$p(x) = -4x$',
+        ],
+        0,
+        `**Ansatz:** Standardform $y\' + p(x)\\,y = q(x)$ erreicht man durch (1) alle $y$-Terme nach links, (2) durch den Koeffizienten von $y\'$ teilen.
+
+**Rechnung:** $2y\' = 4xy + 6$ → $2y\' - 4xy = 6$ (alle $y$-Terme links) → $y\' - 2xy = 3$ (durch $2$ geteilt). Damit $p(x) = -2x$, $q(x) = 3$.
+
+**Probe:** Einsetzen: $y\' + (-2x)\\,y = 3$ ✓ — Standardform mit korrektem Vorzeichen.
+
+**Typischer Fehler:** Vorzeichen vergessen ($p = +2x$): vergisst, dass beim Sortieren $4xy$ auf die andere Seite wandert und Vorzeichen wechselt. Oder Division vergessen ($p = -4x$): teilt die rechte Seite nicht durch $2$.`,
+        [
+          'Erst alle $y$-Terme auf eine Seite — mit Vorzeichen­wechsel beim Wandern.',
+          'Dann durch den Koeffizienten von $y\'$ teilen.',
+          'Test am Ende: Form $y\' + p(x)\\,y = q(x)$?',
+        ],
+        {
+          1: 'Vorzeichen vergessen. $4xy$ wandert von rechts nach links → Vorzeichen­wechsel zu $-4xy$. Nach Division durch $2$: $-2xy$, also $p = -2x$.',
+          2: 'Vorzeichen umgekehrt. Beim Sortieren $2y\' = 4xy + 6$ → $2y\' - 4xy = 6$ — also negatives Vorzeichen vor $4xy$.',
+          3: 'Division durch $2$ vergessen. Du hast nur sortiert ($2y\' - 4xy = 6$), aber $p$ ist der Koeffizient nach Normierung — Standardform verlangt Koeffizient $1$ vor $y\'$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Ein Lerner schreibt $3y\' + 6y = 9$ als Standardform mit $p(x) = 6$, $q(x) = 9$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — die Koeffizienten sind direkt ablesbar.',
+          'Falsch: Standardform verlangt Koeffizient $1$ vor $y\'$. Erst durch $3$ teilen: $y\' + 2y = 3$, dann ist $p = 2$, $q = 3$.',
+          'Falsch: $p$ und $q$ wurden vertauscht.',
+          'Falsch: bei konstanten Koeffizienten ist die Standardform nicht definiert.',
+        ],
+        1,
+        `**Ansatz:** Standardform­definition: Koeffizient vor $y\'$ muss $1$ sein. Vor dem Identifizieren von $p$ und $q$ also normieren.
+
+**Rechnung:** $3y\' + 6y = 9$ → durch $3$ teilen → $y\' + 2y = 3$. Hier sind $p(x) = 2$ und $q(x) = 3$ — *nicht* $p = 6$ und $q = 9$.
+
+**Probe:** Test mit $\\mu = e^{2x}$ (richtiges $p$): $(e^{2x} y)\' = 3\\,e^{2x}$. Hätte man $p = 6$ angenommen, wäre $\\mu = e^{6x}$ — und die Methode würde scheitern.
+
+**Typischer Fehler:** Den Faktor vor $y\'$ ignorieren und „Koeffizient = was vor $y$ steht" lesen, ohne vorher zu normieren. Bei nicht-konstanten Faktoren (z. B. $\\sin(x)\\,y\'$) wäre das besonders verheerend.`,
+        [
+          'Wie lautet die Definition der Standardform — was muss vor $y\'$ stehen?',
+          'Was passiert, wenn man die DGL durch den Koeffizienten von $y\'$ teilt?',
+          'Probe: Berechne $\\mu$ mit $p = 6$ und $p = 2$ — welches passt zur original DGL?',
+        ],
+        {
+          0: 'Nicht direkt — Standardform verlangt Koeffizient $1$ vor $y\'$. $3y\'$ ist nicht normiert.',
+          2: '$p$ und $q$ sind nicht vertauscht — $p$ ist links bei $y$, $q$ rechts. Aber beide Werte sind $\\times 3$ zu groß, weil nicht durch $3$ geteilt wurde.',
+          3: 'Doch — Standardform ist auch bei konstanten Koeffizienten wohldefiniert. Sie ist sogar besonders einfach: $p$ und $q$ sind direkt Konstanten.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      matching(
+        'Bringe jede DGL in Standardform $y\' + p(x)\\,y = q(x)$ und ordne das richtige $(p,q)$-Paar zu.',
+        [
+          { left: '$y\' + 5y = 7$', right: '$p = 5$, $q = 7$' },
+          { left: '$3y\' + 6xy = 9$', right: '$p = 2x$, $q = 3$' },
+          { left: '$y\' = 4y + e^x$', right: '$p = -4$, $q = e^x$' },
+          { left: '$xy\' + y = \\sin x$ (für $x>0$)', right: '$p = 1/x$, $q = \\sin(x)/x$' },
+        ],
+        `**Ansatz:** Pro DGL (1) $y$-Terme nach links, (2) durch den Koeffizienten von $y\'$ teilen, (3) $p$ (links bei $y$) und $q$ (rechts) ablesen.
+
+**Rechnung:**
+- $y\' + 5y = 7$: bereits Standardform → $p=5$, $q=7$.
+- $3y\' + 6xy = 9$: durch $3$ → $y\' + 2x\\,y = 3$ → $p=2x$, $q=3$.
+- $y\' = 4y + e^x$: sortieren → $y\' - 4y = e^x$ → $p=-4$, $q=e^x$.
+- $xy\' + y = \\sin x$: durch $x$ → $y\' + (1/x)y = \\sin(x)/x$ → $p=1/x$, $q=\\sin(x)/x$.
+
+**Probe:** Test je DGL: einsetzen in $y\' + p\\,y$ ergibt die ursprüngliche linke Seite (nach Normierung).
+
+**Typischer Fehler:** Bei der dritten DGL das Vorzeichen vergessen — beim Sortieren wandert $4y$ von rechts nach links und wird $-4y$.`,
+        [
+          'Erst sortieren ($y$ nach links), dann durch Koeffizient von $y\'$ teilen.',
+          'Vorzeichen­wechsel beim Sortieren beachten.',
+          'Auch nicht-konstante Koeffizienten ($1/x$, $\\sin x$) sind erlaubt.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+    ],
+
+    // ── [1] Integrierender Faktor μ = e^∫p dx ────────────────────────────
+    1: [
+      tf(
+        'Für die DGL $y\' + 2y = q(x)$ lautet der integrierende Faktor $\\mu(x) = e^{2x}$.',
+        true,
+        `**Ansatz:** Formel $\\mu(x) = e^{\\int p(x)\\,dx}$. Mit konstantem $p$ wird der Exponent linear in $x$.
+
+**Rechnung:** $p(x) = 2$ → $\\int 2\\,dx = 2x$ (Konstante weggelassen, weil $\\mu$ nur bis auf Vorfaktor eindeutig) → $\\mu = e^{2x}$.
+
+**Probe:** Test: $\\mu\' = 2\\,e^{2x} = p\\cdot \\mu$ ✓ — die definierende Eigenschaft des integrierenden Faktors.
+
+**Typischer Fehler:** Vorzeichen­fehler ($\\mu = e^{-2x}$, das wäre für $p = -2$) oder Integral vergessen ($\\mu = e^p = e^2$, eine Konstante — die hilft nichts).`,
+        [
+          '$\\mu = e^{\\int p\\,dx}$.',
+          'Konstantes $p$ → linearer Exponent.',
+          'Test: $\\mu\' = p\\,\\mu$?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      mc(
+        'Berechne den integrierenden Faktor $\\mu(x)$ für $y\' + 5y = e^x$.',
+        [
+          '$\\mu = e^{5x}$',
+          '$\\mu = e^x$',
+          '$\\mu = e^{x/5}$',
+          '$\\mu = 5x$',
+        ],
+        0,
+        `**Ansatz:** Identifiziere $p(x) = 5$, integriere, in den Exponenten der e-Funktion.
+
+**Rechnung:** $\\int 5\\,dx = 5x$ → $\\mu(x) = e^{5x}$.
+
+**Probe:** Test: $\\mu\' = 5\\,e^{5x} = 5\\,\\mu = p\\,\\mu$ ✓.
+
+**Typischer Fehler:** Mit dem Stör­funktions-Exponenten verwechseln ($q = e^x$ → $\\mu = e^x$, falsch — $\\mu$ folgt nur aus $p$, nicht aus $q$).`,
+        [
+          'Identifiziere $p(x)$ — der Koeffizient bei $y$ in Standardform.',
+          'Bilde Stamm­funktion $\\int p\\,dx$.',
+          'Setze sie in den Exponenten der e-Funktion ein.',
+        ],
+        {
+          1: '$p$ und Stör­funktion verwechselt: rechts steht $e^x$ (das ist $q$), aber für $\\mu$ braucht man $p = 5$. → $\\mu = e^{5x}$.',
+          2: 'Falsche Operation auf $p = 5$: nicht $\\int 5/5\\,dx = x/5$, sondern $\\int 5\\,dx = 5x$.',
+          3: 'Die e-Funktion fehlt komplett: $\\mu = e^{\\int p\\,dx}$, nicht $\\mu = \\int p\\,dx$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      ni(
+        'Berechne $\\mu(1)$ für die DGL $y\' + 2x\\,y = q(x)$ (auf 2 Dezimalstellen).',
+        2.72, 0.05, '',
+        `**Ansatz:** $p(x) = 2x$ → Stamm­funktion bilden, $\\mu = e^{\\int p\\,dx}$ aufstellen, an $x=1$ auswerten.
+
+**Rechnung:** $\\int 2x\\,dx = x^2$ → $\\mu(x) = e^{x^2}$. Bei $x = 1$: $\\mu(1) = e^{1} = e \\approx 2{,}718$.
+
+**Probe:** Test: $\\mu\' = 2x\\,e^{x^2} = p\\cdot \\mu$ ✓. Allgemein steigt $\\mu$ bei $x>0$ stark an, weil der Exponent quadratisch wächst.
+
+**Typischer Fehler:** $\\int 2x\\,dx$ als $2$ (Ableitung statt Stamm­funktion) oder als $2x^2$ (Faktor $1/2$ aus der Potenz vergessen). Korrekt: $\\int 2x\\,dx = x^2$.`,
+        [
+          '$p(x) = 2x$. Stamm­funktion?',
+          '$\\int 2x\\,dx = x^2$ — Potenzregel rückwärts.',
+          'Bei $x = 1$: $e^{1} = e$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\' + p(x)\\,y = q(x)$ den Faktor $\\mu = e^{p(x)}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — der Faktor enthält direkt $p(x)$ im Exponenten.',
+          'Falsch: korrekt ist $\\mu = e^{\\int p(x)\\,dx}$ — der Exponent ist die *Stamm­funktion* von $p$, nicht $p$ selbst. Probe: für $p = x$ wäre $\\mu = e^{x^2/2}$, nicht $\\mu = e^x$.',
+          'Falsch: $\\mu$ muss eine Linearkombination aus $p$ und $q$ sein.',
+          'Falsch: $\\mu = e^{p(x)}$ funktioniert nur, wenn $p$ konstant ist.',
+        ],
+        1,
+        `**Ansatz:** Definitions­bedingung des integrierenden Faktors: $\\mu\' = p\\cdot \\mu$.
+
+**Rechnung:** Mit $\\mu = e^{p(x)}$ folgt $\\mu\' = p\'(x)\\cdot e^{p(x)} = p\'\\cdot \\mu$ — die Bedingung wäre $\\mu\' = p\\,\\mu$, nicht $\\mu\' = p\'\\,\\mu$. Daher passt $\\mu = e^{p}$ *nicht*. Korrekt: $\\mu = e^{\\int p\\,dx}$, dann ist nach Hauptsatz der Differential­rechnung $\\mu\' = p\\cdot \\mu$ ✓.
+
+**Probe:** Spezial­fall $p(x) = x$: Lerner-Form $\\mu = e^x$ → $\\mu\' = e^x \\neq x\\cdot e^x = p\\,\\mu$. Korrekte Form $\\mu = e^{x^2/2}$ → $\\mu\' = x\\,e^{x^2/2} = p\\,\\mu$ ✓.
+
+**Typischer Fehler:** Die Notation $\\int$ als „nichts machen, einfach $p$ nehmen" interpretieren — gerade bei nicht-konstantem $p$ ist die Stamm­funktion eine andere Funktion als $p$ selbst.`,
+        [
+          'Definitions­bedingung: $\\mu\' = p\\,\\mu$.',
+          'Was ist $\\mu\'$, wenn $\\mu = e^{p(x)}$ (Kettenregel)?',
+          'Vergleich mit $\\mu = e^{\\int p\\,dx}$ — was ist da $\\mu\'$?',
+        ],
+        {
+          0: 'Genau das ist der Irrtum — der Exponent muss die *Stamm­funktion* sein. Bei konstantem $p$ wäre der Unterschied unsichtbar (Stamm­funktion $= p\\cdot x$), aber bei variablem $p$ entscheidend.',
+          2: '$\\mu$ hängt überhaupt nicht von $q$ ab — der integrierende Faktor wird allein aus $p$ gewonnen. $q$ kommt erst in der Lösungsformel ins Spiel.',
+          3: 'Bei konstantem $p = a$ wäre $\\int a\\,dx = a\\,x$ — der korrekte $\\mu = e^{ax}$ und der Lerner-$\\mu = e^a$ sind nicht gleich. Nur bei $a = 0$ stimmen beide trivial überein.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      ni(
+        'Bestimme $\\mu(2)$ für die DGL $y\' + (1/x)\\,y = q(x)$ im Bereich $x > 0$.',
+        2, 0.05, '',
+        `**Ansatz:** $p(x) = 1/x$ → Stamm­funktion ist $\\ln|x|$, der integrierende Faktor wird zu einer Potenz von $x$.
+
+**Rechnung:** $\\int (1/x)\\,dx = \\ln|x|$. Für $x > 0$ also $\\ln x$. $\\mu(x) = e^{\\ln x} = x$. Bei $x=2$: $\\mu(2) = 2$.
+
+**Probe:** Test: $\\mu\' = 1$, $p\\,\\mu = (1/x)\\cdot x = 1$ ✓.
+
+**Typischer Fehler:** $\\int 1/x\\,dx$ als $1/x^2$ oder $-1/x^2$ (Ableitung statt Stamm­funktion) oder die e-Funktion stehen lassen ($\\mu = e^{\\ln x}$) statt zu $x$ zu vereinfachen.`,
+        [
+          'Stamm­funktion von $1/x$ ist $\\ln|x|$.',
+          '$e^{\\ln x} = x$ (für $x > 0$).',
+          'Bei $x=2$: $\\mu(2) = 2$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+    ],
+
+    // ── [2] Lösungsformel y = (1/μ)·[∫μ·q dx + C] ───────────────────────
+    2: [
+      tf(
+        'Die Lösungsformel $y = (1/\\mu)\\,(\\int \\mu\\cdot q\\,dx + C)$ liefert die *allgemeine* Lösung — sie enthält die homogene Lösung (über $C/\\mu$) und eine partikuläre Lösung in einem.',
+        true,
+        `**Ansatz:** Formel zerlegen: $y = (1/\\mu)\\,\\int \\mu\\,q\\,dx + C/\\mu$. Der erste Summand ist eine Partikulär­lösung, der zweite die homogene Lösung mit Vorfaktor $C$.
+
+**Rechnung:** Bei der homogenen Lösung gilt $y_h = C/\\mu = C\\,e^{-\\int p\\,dx}$ — passt zur Standard­form für homogene Lösungen.
+
+**Probe:** Beispiel $y\' + 2y = e^x$: $\\mu = e^{2x}$, $\\int e^{2x}\\,e^x\\,dx = e^{3x}/3$. Damit $y = e^{-2x}\\,(e^{3x}/3 + C) = e^x/3 + C\\,e^{-2x}$ — homogen ($C\\,e^{-2x}$) plus partikulär ($e^x/3$).
+
+**Typischer Fehler:** Glauben, die Formel liefere nur die partikuläre Lösung. Tatsächlich enthält das $C$ im Inneren die ganze Lösungs­schar.`,
+        [
+          'Was ist $y_h$ in Bezug auf $\\mu$?',
+          '$y_h = C/\\mu$ — der zweite Summand der Formel.',
+          'Erster Summand $(1/\\mu)\\,\\int \\mu\\,q$: partikulär.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      mc(
+        'Bestimme die allgemeine Lösung von $y\' + 2y = e^x$.',
+        [
+          '$y = \\tfrac{1}{3}\\,e^x + C\\,e^{-2x}$',
+          '$y = e^x + C\\,e^{-2x}$',
+          '$y = \\tfrac{1}{3}\\,e^x - C\\,e^{-2x}$',
+          '$y = \\tfrac{1}{3}\\,e^{2x} + C\\,e^x$',
+        ],
+        0,
+        `**Ansatz:** Lösungsformel anwenden: $\\mu$ bestimmen, $\\int \\mu\\,q\\,dx$ ausrechnen, mit $1/\\mu$ multiplizieren.
+
+**Rechnung:** $p=2$, $q=e^x$. $\\mu = e^{2x}$. $\\int e^{2x}\\cdot e^x\\,dx = \\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$. $y = e^{-2x}\\cdot(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^{x} + C\\,e^{-2x}$.
+
+**Probe:** $y\' = \\tfrac{1}{3}\\,e^x - 2C\\,e^{-2x}$. $y\' + 2y = \\tfrac{1}{3}\\,e^x - 2C\\,e^{-2x} + \\tfrac{2}{3}\\,e^x + 2C\\,e^{-2x} = e^x$ ✓.
+
+**Typischer Fehler:** $\\int e^{2x}\\cdot e^x = \\int e^{2x+x}$ vergessen ($e^{2x}\\cdot e^x = e^{3x}$, nicht $e^{2x}\\cdot e^x = e^{2x}$). Oder Vorfaktor $\\tfrac{1}{3}$ aus $\\int e^{3x}\\,dx$ vergessen.`,
+        [
+          '$\\mu = e^{\\int 2\\,dx} = e^{2x}$.',
+          '$\\int e^{2x}\\cdot e^x\\,dx = \\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$.',
+          'Mit $1/\\mu = e^{-2x}$ multiplizieren — bei $C$ wird daraus $C\\,e^{-2x}$.',
+        ],
+        {
+          1: 'Vorfaktor $\\tfrac{1}{3}$ vergessen: $\\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$, nicht $e^{3x}$.',
+          2: 'Vorzeichen­fehler: $C$ soll *zu* der Stamm­funktion addiert werden, nicht subtrahiert. Auch das Vorzeichen vor $C\\,e^{-2x}$ wäre dann falsch.',
+          3: 'Exponenten-Addition vergessen: $e^{2x}\\cdot e^x = e^{3x}$, nicht $e^{2x}$. Außerdem ist $C\\,e^{-2x}$ die homogene Lösung, nicht $C\\,e^{x}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      ni(
+        'Löse das AWP $y\' + y = 2$, $y(0) = 0$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        1.26, 0.05, '',
+        `**Ansatz:** Lösungsformel mit AB anwenden — $\\mu$ bestimmen, integrieren, $C$ aus AB fixieren, an $x=1$ auswerten.
+
+**Rechnung:** $p = 1$, $q = 2$. $\\mu = e^x$. $(e^x y)\' = 2\\,e^x$ → $e^x y = 2\\,e^x + C$ → $y(x) = 2 + C\\,e^{-x}$. AB: $y(0) = 2 + C = 0 \\Rightarrow C = -2$. Damit $y(x) = 2 - 2\\,e^{-x}$ und $y(1) = 2 - 2/e \\approx 2 - 0{,}7358 \\approx 1{,}264$.
+
+**Probe:** $y\'(x) = 2\\,e^{-x}$; $y\' + y = 2\\,e^{-x} + 2 - 2\\,e^{-x} = 2$ ✓; $y(0) = 0$ ✓; Asymptotik: $y \\to 2$ für $x \\to \\infty$.
+
+**Typischer Fehler:** Vorzeichen im Exponenten ($Ce^{+x}$ statt $Ce^{-x}$ — beim Multiplizieren mit $1/\\mu = e^{-x}$ entsteht $e^{-x}$, nicht $e^{+x}$) oder Partikulär­lösung als $y_p = 2x$ statt Konstante $2$ ansetzen.`,
+        [
+          '$\\mu = e^{\\int 1\\,dx} = e^x$.',
+          'Partikulär: $y_p = 2$ (Konstante, weil rechte Seite konstant).',
+          'AB: $y(0) = 0$ liefert $C = -2$, dann $y(1) = 2 - 2/e$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      mc(
+        'Ein Lerner berechnet bei $y\' + 2y = e^x$ den integrierenden Faktor $\\mu = e^{2x}$ korrekt, vergisst dann aber die Multiplikation mit $1/\\mu$ am Ende. Er schreibt $y = \\tfrac{1}{3}\\,e^{3x} + C$. Welcher Fehler liegt vor?',
+        [
+          'Korrekt — die Stamm­funktion liefert direkt $y$.',
+          'Multiplikation mit $1/\\mu = e^{-2x}$ vergessen. Korrekt: $y = e^{-2x}(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^x + C\\,e^{-2x}$.',
+          'Falsche Konstante — $C$ muss durch $\\mu$ geteilt werden, $C/\\mu \\neq C$.',
+          'Falsch — der Faktor $\\mu$ darf nur auf der linken Seite multipliziert werden, nicht auf der rechten.',
+        ],
+        1,
+        `**Ansatz:** Nach $\\mu\\cdot y = \\int \\mu\\,q\\,dx + C$ folgt der finale Schritt: durch $\\mu$ teilen, um $y$ allein zu isolieren.
+
+**Rechnung:** $\\mu y = \\tfrac{1}{3}\\,e^{3x} + C$. Beide Seiten durch $\\mu = e^{2x}$ teilen: $y = (1/e^{2x})\\,(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^{x} + C\\,e^{-2x}$.
+
+**Probe:** Test der Lerner-Form $y = \\tfrac{1}{3}\\,e^{3x} + C$: $y\' = e^{3x}$. Soll: $y\' + 2y = e^{3x} + \\tfrac{2}{3}\\,e^{3x} + 2C = \\tfrac{5}{3}\\,e^{3x} + 2C \\neq e^x$ — DGL verletzt.
+
+**Typischer Fehler:** Den Schritt „$\\mu\\,y$ aus dem Integral isolieren" mit „$y$ ist gleich Integral" verwechseln. Solange $\\mu \\neq 1$ ist, muss man am Ende noch durch $\\mu$ teilen.`,
+        [
+          'Was bleibt nach dem Integrieren auf der linken Seite?',
+          '$\\mu y = \\ldots$ — durch $\\mu$ teilen!',
+          'Probe: einsetzen der vermeintlichen Lösung in die DGL.',
+        ],
+        {
+          0: 'Probe scheitert: $y = \\tfrac{1}{3}\\,e^{3x} + C$ erfüllt die DGL nicht. Es fehlt der entscheidende Divisions­schritt.',
+          2: 'Doch — $C$ wird genauso durch $\\mu$ geteilt: $C/\\mu = C\\,e^{-2x}$. Die Konstante ist nicht ausgenommen.',
+          3: 'Die Multiplikation mit $\\mu$ erfolgt auf *beiden* Seiten der DGL — sonst wäre die Gleichung nicht erhalten. Das ist nicht der Fehler.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      ni(
+        'Löse das AWP $y\' - y = e^{2x}$, $y(0) = 0$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        4.67, 0.05, '',
+        `**Ansatz:** Lösungsformel mit $p = -1$, $q = e^{2x}$ und AB anwenden.
+
+**Rechnung:** $\\mu = e^{-x}$. $(e^{-x} y)\' = e^{-x}\\cdot e^{2x} = e^{x}$ → $e^{-x} y = e^{x} + C$ → $y(x) = e^{2x} + C\\,e^{x}$. AB: $y(0) = 1 + C = 0 \\Rightarrow C = -1$. Damit $y(x) = e^{2x} - e^x$ und $y(1) = e^2 - e \\approx 7{,}389 - 2{,}718 \\approx 4{,}671$.
+
+**Probe:** $y\'(x) = 2\\,e^{2x} - e^x$; $y\' - y = 2\\,e^{2x} - e^x - e^{2x} + e^x = e^{2x}$ ✓; $y(0) = 1 - 1 = 0$ ✓.
+
+**Typischer Fehler:** Bei $p = -1$ den integrierenden Faktor als $\\mu = e^{x}$ statt $e^{-x}$ — Vorzeichen vergessen. Oder $\\int e^{-x}\\cdot e^{2x}\\,dx$ als $e^{2x}$ (statt $e^x$) verrechnen.`,
+        [
+          'Standardform: $y\' + (-1)\\,y = e^{2x}$ → $p = -1$.',
+          '$\\mu = e^{-x}$.',
+          '$\\int e^{-x}\\cdot e^{2x}\\,dx = \\int e^x\\,dx = e^x$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+    ],
+
+    // ── [3] Variation der Konstanten ────────────────────────────────────
+    3: [
+      tf(
+        'Variation der Konstanten heißt: man ersetzt die Konstante $C$ in der homogenen Lösung $y_h = C\\,e^{-\\int p\\,dx}$ durch eine Funktion $C(x)$ und sucht damit eine partikuläre Lösung.',
+        true,
+        `**Ansatz:** VdK-Idee: aus $y_h = C\\cdot u(x)$ wird $y_p = C(x)\\cdot u(x)$. Setzt man diesen Ansatz in die inhomogene DGL ein, erhält man eine DGL für $C(x)$.
+
+**Rechnung:** Mit $u(x) = e^{-\\int p\\,dx}$ und $y_p = C(x)\\,u(x)$ folgt $y_p\' = C\'\\,u + C\\,u\' = C\'\\,u - C\\,p\\,u$. In $y\' + p\\,y = q$ einsetzen: $C\'\\,u - C\\,p\\,u + p\\,C\\,u = q \\Rightarrow C\'\\,u = q \\Rightarrow C\'(x) = q(x)/u(x)$.
+
+**Probe:** Beispiel $y\' + y = 2$: $u = e^{-x}$, $C\'(x) = 2/e^{-x} = 2\\,e^x$, $C(x) = 2\\,e^x$. $y_p = 2\\,e^x\\cdot e^{-x} = 2$ ✓ — Partikulär­lösung passt.
+
+**Typischer Fehler:** „Variation" mit „Verändern" gleichsetzen und glauben, man tausche überall $C$ durch $C(x)$ aus. Tatsächlich nur in $y_p$, parallel bleibt $y_h$ mit konstantem $C$.`,
+        [
+          'Welche Funktion ersetzt die Konstante?',
+          '$C \\to C(x)$, dann einsetzen in die inhomogene DGL.',
+          'Daraus entsteht eine direkte DGL für $C\'(x)$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Welcher Schritt steht bei Variation der Konstanten am Anfang?',
+        [
+          'Die homogene Lösung $y_h = C\\,e^{-\\int p\\,dx}$ bestimmen — sie liefert die Form, in der $C$ später zu $C(x)$ wird.',
+          'Den integrierenden Faktor $\\mu = e^{\\int p\\,dx}$ bestimmen.',
+          'Eine Partikulär­lösung in der Form der Stör­funktion ansetzen.',
+          'Die Anfangs­bedingung in die inhomogene DGL einsetzen.',
+        ],
+        0,
+        `**Ansatz:** VdK braucht die *Form* der homogenen Lösung als Basis — die Konstante darin wird zur Funktion $C(x)$.
+
+**Rechnung:** Standard­ablauf VdK: (1) $y_h$ bestimmen → liefert Basis $u(x) = e^{-\\int p\\,dx}$. (2) Ansatz $y_p = C(x)\\cdot u(x)$. (3) Einsetzen in die DGL und nach $C\'(x)$ auflösen. (4) $C(x)$ integrieren. (5) $y = y_h + y_p$.
+
+**Probe:** Ohne $y_h$ als Basis hätte VdK keine Struktur — der Name „Variation der *Konstanten*" weist direkt darauf hin: die Konstante stammt aus $y_h$.
+
+**Typischer Fehler:** Den integrierenden Faktor als VdK-Schritt missdeuten — das ist die *alternative* Methode (Methode des integrierenden Faktors), keine VdK. Oder mit der Anfangs­bedingung anfangen, bevor die allgemeine Lösung steht.`,
+        [
+          'Was wird bei VdK „variiert"?',
+          'Die Konstante in der homogenen Lösung.',
+          'Also muss zuerst $y_h$ stehen.',
+        ],
+        {
+          1: '$\\mu$ ist die *alternative* Lösungs­methode (integrierender Faktor) — VdK ist eine andere Methode, die mit der homogenen Lösung beginnt.',
+          2: 'Das ist die Methode des *unbestimmten Ansatzes* (für spezielle Stör­funktionen). Bei VdK setzt man $y_p = C(x)\\cdot y_h(x)$, nicht eine Form der Stör­funktion.',
+          3: 'Anfangs­bedingung kommt am Schluss, nach Bestimmung der allgemeinen Lösung. Erst die Form, dann die Bedingung.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Wende Variation der Konstanten auf $y\' + 2y = e^x$ an: was ist $C\'(x)$ im Ansatz $y_p = C(x)\\,e^{-2x}$?',
+        [
+          '$C\'(x) = e^{3x}$',
+          '$C\'(x) = e^{x}$',
+          '$C\'(x) = e^{-x}$',
+          '$C\'(x) = e^{-3x}$',
+        ],
+        0,
+        `**Ansatz:** Aus dem Ansatz $y_p = C(x)\\,u(x)$ mit $u(x) = e^{-2x}$ folgt durch Einsetzen in die DGL eine direkte DGL für $C\'(x)$.
+
+**Rechnung:** $y_p\' = C\'\\,e^{-2x} + C\\,(-2)\\,e^{-2x} = C\'\\,e^{-2x} - 2C\\,e^{-2x}$. In $y\' + 2y = e^x$ einsetzen: $C\'\\,e^{-2x} - 2C\\,e^{-2x} + 2\\,C\\,e^{-2x} = e^x \\Rightarrow C\'\\,e^{-2x} = e^x \\Rightarrow C\'(x) = e^x/e^{-2x} = e^{3x}$.
+
+**Probe:** Integration: $C(x) = \\tfrac{1}{3}\\,e^{3x}$ → $y_p = \\tfrac{1}{3}\\,e^{3x}\\cdot e^{-2x} = \\tfrac{1}{3}\\,e^x$ ✓ (passt zur Methode des integrierenden Faktors).
+
+**Typischer Fehler:** Vorzeichen in $u(x)$ vergessen ($u = e^{+2x}$ — falsch) oder die Subtraktions­glieder $-2C\\,e^{-2x}$ nicht mit $+2y_p = +2\\,C\\,e^{-2x}$ wegheben — dann kürzt sich die DGL nicht zur reinen $C\'$-Gleichung.`,
+        [
+          '$y_p = C(x)\\,e^{-2x}$, $y_p\' = C\'\\,e^{-2x} - 2C\\,e^{-2x}$.',
+          'In DGL einsetzen — $C$-Terme heben sich raus.',
+          'Es bleibt $C\'\\,e^{-2x} = e^x$, also $C\'(x) = e^{3x}$.',
+        ],
+        {
+          1: 'Du hast $1/e^{-2x}$ als $1/e^{2x} = e^{-2x}$ gerechnet — also $e^x \\cdot e^{-2x} = e^{-x}$? Nein, korrekt ist $e^x / e^{-2x} = e^{x-(-2x)} = e^{3x}$.',
+          2: 'Hier wurde $1/e^{-2x}$ als $e^{-2x}$ statt $e^{2x}$ behandelt — Vorzeichen­fehler. Richtig: $e^x \\cdot e^{2x} = e^{3x}$.',
+          3: 'Vorzeichen sowohl bei $u$ als auch beim Quotienten falsch. Doppelter Vorzeichen­fehler bringt $e^{-3x}$ statt $e^{3x}$.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Ein Lerner setzt bei VdK $y_p = C(x)\\,e^{-2x}$ an, vergisst aber die Produktregel und schreibt $y_p\' = C\\,e^{-2x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — bei konstantem $C$ stimmt das.',
+          'Bei VdK ist $C(x)$ aber eine *Funktion* von $x$. Die Produkt­regel liefert $y_p\' = C\'\\,e^{-2x} - 2C\\,e^{-2x}$ — der Term $C\'\\,e^{-2x}$ ist genau der, aus dem $C\'(x)$ bestimmt wird.',
+          'Falsch — bei VdK darf man die Produkt­regel komplett weglassen.',
+          'Falsch — $y_p\' = -2\\,e^{-2x}$ ist der korrekte Ausdruck.',
+        ],
+        1,
+        `**Ansatz:** Wenn $C$ eine Funktion ist, gilt die Produkt­regel: $(C\\cdot u)\' = C\'\\,u + C\\,u\'$. Genau das ist der Punkt von VdK — der zusätzliche Term $C\'\\,u$ erlaubt das Konstruieren einer Partikulär­lösung.
+
+**Rechnung:** $y_p = C(x)\\,e^{-2x}$. Mit Produkt­regel: $y_p\' = C\'\\,e^{-2x} + C\\,(-2)\\,e^{-2x} = C\'\\,e^{-2x} - 2C\\,e^{-2x}$. Wenn $C\'$ wegfiele, wäre $y_p\' = -2y_p$, also wäre $y_p$ wieder eine homogene Lösung — keine Partikulär­lösung.
+
+**Probe:** Setze $y_p\' = -2y_p$ in $y\' + 2y = q$: $-2y_p + 2y_p = 0 \\neq q$ (außer bei $q \\equiv 0$). Daher *muss* der $C\'$-Term mit, sonst funktioniert VdK nicht.
+
+**Typischer Fehler:** Bei einer „Konstante" automatisch denken, ihre Ableitung sei null. Bei VdK ist sie aber explizit eine Funktion von $x$, also hat sie eine Ableitung.`,
+        [
+          'Was sagt die Produkt­regel für $(C(x)\\cdot u(x))\'$?',
+          '$C(x)$ ist hier eine Funktion, nicht konstant.',
+          'Ohne $C\'$-Term wäre $y_p$ wieder homogen — kein Mehrwert.',
+        ],
+        {
+          0: 'Bei *konstantem* $C$ stimmt $y_p\' = C\\cdot u\'$ — aber bei VdK ist $C$ ja gerade *keine* Konstante, sondern variiert mit $x$.',
+          2: 'Im Gegenteil — gerade die Produkt­regel ist der Kern von VdK. Sie liefert den $C\'$-Term, aus dem die Partikulär­lösung folgt.',
+          3: 'Das wäre nur die Ableitung von $u(x) = e^{-2x}$ ohne den Vorfaktor. Die ganze Funktion $y_p = C(x)\\,e^{-2x}$ hat zwei Beiträge: $C\'\\,u + C\\,u\'$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      sorting(
+        'Bringe die Schritte der Variation der Konstanten in die richtige Reihenfolge.',
+        [
+          'Homogene Lösung $y_h = C\\,e^{-\\int p\\,dx}$ bestimmen.',
+          'Partikulär­ansatz $y_p = C(x)\\cdot e^{-\\int p\\,dx}$ aufstellen — Konstante zur Funktion machen.',
+          '$y_p$ in die inhomogene DGL einsetzen, $C(x)$-Terme heben sich → DGL für $C\'(x)$.',
+          '$C\'(x)$ integrieren zu $C(x)$, daraus $y_p$.',
+          'Allgemeine Lösung als $y = y_h + y_p$ zusammensetzen.',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** VdK ist ein 5-Schritte-Rezept: erst die homogene Form, dann VdK-Ansatz, einsetzen, integrieren, kombinieren.
+
+**Rechnung:** Schritt 1 liefert $u(x) = e^{-\\int p\\,dx}$. Schritt 2 ersetzt $C \\to C(x)$. Schritt 3 reduziert auf eine direkte Gleichung für $C\'$. Schritt 4 liefert $C(x)$ durch Integration. Schritt 5 ergibt die allgemeine Lösung.
+
+**Probe:** Ohne Schritt 1 kennt man die Form von $u(x)$ nicht. Ohne Schritt 3 fehlt die Gleichung für $C\'$. Ohne Schritt 4 bleibt $C(x)$ unbekannt. Ohne Schritt 5 hat man nur die partikuläre, nicht die allgemeine Lösung.
+
+**Typischer Fehler:** $C(x)$ direkt durch Inspektion erraten wollen, ohne den $C\'$-Schritt sauber durchzuführen — funktioniert nur in Trivialfällen.`,
+        [
+          'Was ist die *Basis* der Variation?',
+          'Erst $y_h$, dann variieren.',
+          '$y = y_h + y_p$ ist erst nach Integration der gesamte Aufbau.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+    ],
+
+    // ── [4] Homogene Lösung y_h = C·e^{-∫p dx} ──────────────────────────
+    4: [
+      tf(
+        'Für die DGL $y\' + 3y = q(x)$ ist die homogene Lösung $y_h = C\\,e^{-3x}$.',
+        true,
+        `**Ansatz:** Homogene Lösung erfüllt $y_h\' + p\\,y_h = 0$. Lösung über Trennung der Variablen oder direkt aus $y_h = C\\,e^{-\\int p\\,dx}$.
+
+**Rechnung:** $p(x) = 3$ → $\\int p\\,dx = 3x$ → $y_h = C\\,e^{-3x}$. Wichtig: das *negative* Vorzeichen im Exponenten ist Standard für die homogene Lösung.
+
+**Probe:** $y_h\' = -3C\\,e^{-3x} = -3\\,y_h$; $y_h\' + 3y_h = -3y_h + 3y_h = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — $y_h = Ce^{+3x}$ wäre Lösung von $y\' = +3y$, also $y\' - 3y = 0$, nicht $y\' + 3y = 0$.`,
+        [
+          'Formel: $y_h = C\\,e^{-\\int p\\,dx}$.',
+          'Achtung: *negatives* Vorzeichen vor dem Integral.',
+          'Test: $y_h\' + p\\,y_h = 0$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      mc(
+        'Bestimme die homogene Lösung $y_h$ der DGL $y\' - 4y = q(x)$.',
+        [
+          '$y_h = C\\,e^{4x}$',
+          '$y_h = C\\,e^{-4x}$',
+          '$y_h = C\\,e^{4}\\cdot x$',
+          '$y_h = -4\\,C\\,e^{x}$',
+        ],
+        0,
+        `**Ansatz:** Standardform $y\' + (-4)\\,y = q(x)$ → $p = -4$, daher Exponent $-\\int p\\,dx = -(-4x) = +4x$.
+
+**Rechnung:** $y_h = C\\,e^{-\\int p\\,dx} = C\\,e^{-(-4x)} = C\\,e^{+4x}$.
+
+**Probe:** $y_h\' = 4C\\,e^{4x} = 4\\,y_h$; $y_h\' - 4y_h = 4y_h - 4y_h = 0$ ✓.
+
+**Typischer Fehler:** Doppeltes Vorzeichen vergessen — beide negativen Vorzeichen heben sich. Ergebnis ist $e^{+4x}$, nicht $e^{-4x}$.`,
+        [
+          'Standardform: $y\' + p\\,y = q$. Was ist $p$, wenn ursprünglich $y\' - 4y$ steht?',
+          '$p = -4$, also $-\\int p\\,dx = +4x$.',
+          'Vorzeichen $\\times$ Vorzeichen = $+$.',
+        ],
+        {
+          1: 'Vorzeichen falsch zugeordnet: $y\' - 4y$ heißt $p = -4$, nicht $p = +4$. Dann ist $-\\int p\\,dx = +4x$, nicht $-4x$.',
+          2: 'Polynomial statt exponentiell — passt zu DGL $y\' = 4$ (konstante Steigung), nicht zu $y\' - 4y = 0$ (proportional).',
+          3: '$y\'$ und $y$ wurden vertauscht oder $-4$ als Vorfaktor von $y_h$ eingebaut. Die Konstante $C$ ist beliebig — sie wird aus AB bestimmt, nicht aus dem DGL-Koeffizienten.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      ni(
+        'Bestimme die homogene Lösung von $y\' + 2y = 0$ mit AB $y(0) = 5$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        0.68, 0.02, '',
+        `**Ansatz:** Homogene Lösung $y_h = C\\,e^{-2x}$ → AB $\\to C$ → an $x=1$ auswerten.
+
+**Rechnung:** $y_h(0) = C\\,e^{0} = C = 5$. Damit $y(x) = 5\\,e^{-2x}$ und $y(1) = 5\\,e^{-2} = 5/e^2 \\approx 5/7{,}389 \\approx 0{,}677$.
+
+**Probe:** $y\'(x) = -10\\,e^{-2x}$; $y\' + 2y = -10\\,e^{-2x} + 10\\,e^{-2x} = 0$ ✓. AB: $y(0) = 5$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen ($y(1) = 5e^2 \\approx 36{,}9$, falsch — passt zu $y\' = +2y$, nicht $y\' + 2y = 0$). Oder $5/e^2$ als $5/e \\approx 1{,}84$ verrechnen.`,
+        [
+          'Form: $y_h = C\\,e^{-2x}$.',
+          'AB liefert $C = 5$.',
+          'Bei $x = 1$: $5/e^2$. Bekannt: $e^2 \\approx 7{,}39$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für die homogene Lösung von $y\' - 5y = 0$ den Ausdruck $y_h = C\\,e^{-5x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — der Vorfaktor $-5$ landet im Exponenten.',
+          'Falsch: aus $y\' - 5y = 0$ folgt $y\' = 5y$, also $y_h = C\\,e^{+5x}$. Das negative Vorzeichen im Exponenten passt zu $y\' + 5y = 0$, nicht zu $y\' - 5y = 0$.',
+          'Falsch: bei homogenen DGL ist $C = 0$, also $y_h \\equiv 0$.',
+          'Falsch: das Vorzeichen muss umgekehrt werden, weil $y_h$ immer abklingen muss.',
+        ],
+        1,
+        `**Ansatz:** Standardform $y\' + p\\,y = 0$ identifizieren — bei $y\' - 5y$ ist $p = -5$, nicht $+5$.
+
+**Rechnung:** $p = -5$ → $y_h = C\\,e^{-\\int p\\,dx} = C\\,e^{-(-5x)} = C\\,e^{+5x}$.
+
+**Probe:** Test mit $y_h = C\\,e^{5x}$: $y_h\' = 5C\\,e^{5x} = 5\\,y_h$; $y_h\' - 5y_h = 0$ ✓. Test der Lerner-Form $y_h = C\\,e^{-5x}$: $y_h\' = -5y_h$; $y_h\' - 5y_h = -10y_h \\neq 0$ — falsch.
+
+**Typischer Fehler:** Sich nur am Vorzeichen vor $y$ in der DGL orientieren ohne in Standardform zu bringen. Es kommt auf das Vorzeichen von $p$ in der Form $y\' + p\\,y$ an, nicht auf das Vorzeichen, wie es ursprünglich vor $y$ steht.`,
+        [
+          'Standardform: $y\' + p\\,y = 0$. Was ist $p$ bei $y\' - 5y$?',
+          '$p = -5$ → $-\\int p\\,dx = +5x$.',
+          'Probe: einsetzen der Lerner-Form in die DGL.',
+        ],
+        {
+          0: 'Genau das ist das Missverständnis — der Vorfaktor wandert *nicht 1:1* in den Exponenten. Erst Standardform, dann Vorzeichen­wechsel beim $-\\int p\\,dx$.',
+          2: '$C$ ist beliebig — die *triviale* Lösung $y \\equiv 0$ entspricht $C = 0$, ist aber nicht die einzige. Allgemeine homogene Lösung hat $C \\neq 0$.',
+          3: 'Es gibt keine universelle „muss abklingen"-Regel. Bei $y\' - 5y = 0$ wächst die Lösung ($e^{+5x}$) — das ist exakt das, was die DGL vorgibt.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      ni(
+        'Bestimme die homogene Lösung von $y\' + (1/x)\\,y = 0$ ($x > 0$) mit AB $y(1) = 4$ und berechne $y(2)$ (auf 2 Dezimalstellen).',
+        2, 0.05, '',
+        `**Ansatz:** Bei nicht-konstantem $p$ erst Stamm­funktion bilden, dann homogene Lösung als $C\\,e^{-\\int p\\,dx}$ aufschreiben.
+
+**Rechnung:** $\\int (1/x)\\,dx = \\ln x$ (für $x > 0$). $y_h = C\\,e^{-\\ln x} = C\\cdot e^{\\ln(1/x)} = C/x$. AB: $y_h(1) = C/1 = 4 \\Rightarrow C = 4$. Damit $y(x) = 4/x$ und $y(2) = 4/2 = 2$.
+
+**Probe:** $y\'(x) = -4/x^2$; $y\' + (1/x)\\,y = -4/x^2 + (1/x)\\cdot 4/x = -4/x^2 + 4/x^2 = 0$ ✓; $y(1) = 4$ ✓.
+
+**Typischer Fehler:** $e^{-\\ln x}$ als $-\\ln x$ stehen lassen oder als $e^{-x} \\cdot x$ verrechnen. Korrekt: $e^{-\\ln x} = 1/e^{\\ln x} = 1/x$.`,
+        [
+          'Stamm­funktion von $1/x$ ist $\\ln x$.',
+          '$y_h = C\\,e^{-\\ln x} = C/x$.',
+          'AB liefert $C$, dann an $x=2$ auswerten.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+    ],
+
+    // ── [5] RC-Kreis $\dot U + U/(RC) = U_0/(RC)$ ───────────────────────
+    5: [
+      tf(
+        'Beim RC-Lade­kreis $\\dot U + U/(RC) = U_0/(RC)$ ist die Zeitkonstante $\\tau = RC$.',
+        true,
+        `**Ansatz:** Standardform-Vergleich: $\\dot U + p\\,U = q$ mit $p = 1/(RC)$. Zeitkonstante $\\tau = 1/p$, also $\\tau = RC$.
+
+**Rechnung:** $\\tau = RC$ ist die charakteristische Zeit, in der sich die Spannung um den Faktor $1 - 1/e \\approx 63{,}2\\,\\%$ dem End­wert annähert. $U(t) = U_0(1 - e^{-t/\\tau})$.
+
+**Probe:** Bei $t = \\tau$: $U(\\tau) = U_0(1 - 1/e) \\approx 0{,}632\\,U_0$ — typische Faustformel für RC-Kreise.
+
+**Typischer Fehler:** $\\tau = R/C$ oder $\\tau = 1/(RC)$ angeben — beides hat falsche Einheit oder falsche Größenordnung. Einheits­check: $[R]\\cdot[C] = \\Omega \\cdot \\mathrm{F} = \\mathrm{V/A} \\cdot \\mathrm{As/V} = \\mathrm{s}$ ✓.`,
+        [
+          'Vergleich mit Standardform: was ist $p$?',
+          '$p = 1/(RC)$ → $\\tau = 1/p = RC$.',
+          'Einheits­check: $\\Omega \\cdot \\mathrm{F} = \\mathrm{s}$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      mc(
+        'Welche Funktion löst das RC-Aufladungs-AWP $\\dot U + U/(RC) = U_0/(RC)$ mit $U(0) = 0$?',
+        [
+          '$U(t) = U_0\\,(1 - e^{-t/(RC)})$',
+          '$U(t) = U_0\\,e^{-t/(RC)}$',
+          '$U(t) = U_0\\,(1 - e^{-RC\\cdot t})$',
+          '$U(t) = U_0\\cdot t/(RC)$',
+        ],
+        0,
+        `**Ansatz:** Inhomogene lineare DGL 1. Ordnung mit konstanter Stör­funktion. Lösung: $U_h + U_p$ mit $U_p = U_0$ (konstant, Gleich­gewicht) und $U_h = C\\,e^{-t/(RC)}$. AB liefert $C$.
+
+**Rechnung:** $U(t) = U_0 + C\\,e^{-t/(RC)}$. AB: $U(0) = U_0 + C = 0 \\Rightarrow C = -U_0$. Damit $U(t) = U_0 - U_0\\,e^{-t/(RC)} = U_0(1 - e^{-t/(RC)})$.
+
+**Probe:** $U(0) = U_0(1 - 1) = 0$ ✓; $\\lim_{t\\to\\infty} U(t) = U_0$ ✓ (Endwert = Speise­spannung); $\\dot U = (U_0/(RC))\\,e^{-t/(RC)}$, einsetzen: $\\dot U + U/(RC) = (U_0/(RC))\\,e^{-t/(RC)} + (U_0/(RC))(1 - e^{-t/(RC)}) = U_0/(RC)$ ✓.
+
+**Typischer Fehler:** Entladungs­lösung statt Aufladungs­lösung wählen ($U_0\\,e^{-t/(RC)}$ — passt zur DGL $\\dot U + U/(RC) = 0$, also Entladen). Oder $RC$ und $1/(RC)$ verwechseln im Exponenten.`,
+        [
+          'Endwert $U(\\infty) = U_0$ → $U_p = U_0$.',
+          'Homogen: $U_h = C\\,e^{-t/(RC)}$.',
+          'AB $U(0) = 0$ liefert $C = -U_0$.',
+        ],
+        {
+          1: 'Das ist die *Entladungs*-Lösung (DGL $\\dot U + U/(RC) = 0$, also rechte Seite Null). Hier wird der Konden­sator aber *aufgeladen* (rechte Seite $U_0/(RC) \\neq 0$) — Endwert $U_0$, nicht $0$.',
+          2: 'Im Exponenten steht $RC\\cdot t$ statt $t/(RC)$ — das ist dimensions­los falsch. $RC$ hat Einheit Sekunden, also gehört es als Nenner unter $t$.',
+          3: 'Lineare Aufladung passt zu konstanter Strom­quelle, nicht zur RC-DGL. Mit dieser Form wäre $\\dot U = U_0/(RC)$ (konstant), aber die DGL hat zusätzlich den Term $U/(RC)$, der die Ladung verlangsamt.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      ni(
+        'Ein RC-Lade­kreis hat $R = 1\\,\\mathrm{k\\Omega}$, $C = 1\\,\\mathrm{mF}$, $U_0 = 10\\,\\mathrm{V}$ und $U(0) = 0$. Welche Spannung liegt nach $t = 2\\,\\mathrm{s}$ am Konden­sator (auf 2 Dezimal­stellen, in V)?',
+        8.65, 0.05, 'V',
+        `**Ansatz:** Lösungs­formel $U(t) = U_0(1 - e^{-t/\\tau})$ mit $\\tau = RC$. Werte einsetzen.
+
+**Rechnung:** $\\tau = R\\cdot C = 10^3\\,\\Omega \\cdot 10^{-3}\\,\\mathrm{F} = 1\\,\\mathrm{s}$. $U(2) = 10\\,(1 - e^{-2/1}) = 10\\,(1 - e^{-2}) \\approx 10\\,(1 - 0{,}1353) \\approx 8{,}647\\,\\mathrm{V}$.
+
+**Probe:** Bei $t = \\tau = 1\\,\\mathrm{s}$: $U(1) = 10\\,(1 - 1/e) \\approx 6{,}32\\,\\mathrm{V}$ — die berühmten 63 % nach einer Zeit­konstante. Bei $t = 2\\tau$ etwa $86{,}5\\,\\%$ ✓.
+
+**Typischer Fehler:** Einheits­fehler bei $RC$: $1\\,\\mathrm{k\\Omega}\\cdot 1\\,\\mathrm{mF} = 1\\,\\mathrm{s}$ (nicht $1\\,\\mathrm{ms}$ oder $1\\,\\mu\\mathrm{s}$). Oder $e^{-2}$ als $-e^2$ oder $e^2 \\approx 7{,}39$ verrechnen.`,
+        [
+          '$\\tau = RC = 1\\,\\mathrm{s}$ (Einheits­produkt).',
+          'Lösung: $U(t) = 10\\,(1 - e^{-t/\\tau})$.',
+          '$e^{-2} \\approx 0{,}135$, also $U(2) \\approx 10\\cdot 0{,}865$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      mc(
+        'Ein Lerner gibt für $R = 100\\,\\Omega$, $C = 10\\,\\mu\\mathrm{F}$ die Zeitkonstante als $\\tau = 1000\\,\\mathrm{s}$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — $\\tau = R\\cdot C = 100\\cdot 10 = 1000\\,\\mathrm{s}$.',
+          'Einheits­fehler: $\\mu\\mathrm{F} = 10^{-6}\\,\\mathrm{F}$. $\\tau = 100\\,\\Omega\\cdot 10^{-5}\\,\\mathrm{F} = 10^{-3}\\,\\mathrm{s} = 1\\,\\mathrm{ms}$ — drei Größen­ordnungen kleiner.',
+          'Falsch — $\\tau = R/C$, nicht $R\\cdot C$.',
+          'Falsch — $\\tau$ hat Einheit V, nicht s.',
+        ],
+        1,
+        `**Ansatz:** Bei Größen mit SI-Vorsätzen ($\\mu$, m, k, M) immer in Basis­einheiten umrechnen, *bevor* man multipliziert.
+
+**Rechnung:** $C = 10\\,\\mu\\mathrm{F} = 10\\cdot 10^{-6}\\,\\mathrm{F} = 10^{-5}\\,\\mathrm{F}$. $\\tau = R\\cdot C = 100\\,\\Omega \\cdot 10^{-5}\\,\\mathrm{F} = 10^{-3}\\,\\mathrm{s} = 1\\,\\mathrm{ms}$.
+
+**Probe:** Einheits­check: $\\Omega\\cdot \\mathrm{F} = \\mathrm{V/A} \\cdot \\mathrm{C/V} = \\mathrm{C/A} = \\mathrm{s}$ ✓. Größen­ordnung: für typische Elektronik liegt $\\tau$ im Mikro- bis Millisekunden-Bereich, $1000\\,\\mathrm{s}$ ($\\approx 17\\,\\mathrm{min}$) wäre für solche Bauteil­werte unrealistisch.
+
+**Typischer Fehler:** $\\mu$-Vorsatz vergessen oder mit $\\mathrm{m}$ verwechseln. $\\mu = 10^{-6}$, $\\mathrm{m} = 10^{-3}$, $\\mathrm{k} = 10^3$ — drei Größen­ordnungen Unterschied pro Stufe.`,
+        [
+          'SI-Vorsatz $\\mu$ steht für $10^{-6}$.',
+          'Erst in Basis­einheiten, dann multiplizieren.',
+          'Größen­ordnungs­check: $1000\\,\\mathrm{s}$ ist physikalisch unrealistisch.',
+        ],
+        {
+          0: 'Hier wurde der Vorsatz $\\mu$ ignoriert: $10\\,\\mu\\mathrm{F}$ heißt $10^{-5}\\,\\mathrm{F}$, nicht $10\\,\\mathrm{F}$. Drei Zehner­potenzen zu groß macht $1000$ statt $0{,}001$.',
+          2: '$\\tau = R\\cdot C$, nicht $R/C$. Ohne $C$ als Faktor wäre die Einheit $\\Omega/\\mathrm{F} = 1/\\mathrm{s}^2$ — falsche Dimension.',
+          3: '$\\tau$ ist eine Zeit­konstante, also Einheit Sekunden. Volt wäre falsch — die Spannung $U_0$ hat Volt, aber $\\tau$ nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      ni(
+        'Ein RC-Konden­sator entlädt sich gemäß $\\dot U + U/\\tau = 0$ mit $U(0) = U_0$ und $\\tau = 2\\,\\mathrm{s}$. Nach welcher Zeit ist die Spannung auf die Hälfte gefallen (auf 2 Dezimal­stellen, in s)?',
+        1.39, 0.02, 's',
+        `**Ansatz:** Entladungs-Lösung $U(t) = U_0\\,e^{-t/\\tau}$. Halbwertszeit $t_{1/2}$ mit $U(t_{1/2}) = U_0/2$ ansetzen.
+
+**Rechnung:** $U_0\\,e^{-t/\\tau} = U_0/2 \\Rightarrow e^{-t/\\tau} = 1/2 \\Rightarrow -t/\\tau = \\ln(1/2) = -\\ln 2 \\Rightarrow t = \\tau\\cdot \\ln 2$. Mit $\\tau = 2\\,\\mathrm{s}$: $t_{1/2} = 2\\cdot \\ln 2 \\approx 2\\cdot 0{,}6931 \\approx 1{,}386\\,\\mathrm{s}$.
+
+**Probe:** Test: $U(1{,}386) = U_0\\,e^{-1{,}386/2} = U_0\\,e^{-0{,}693} \\approx U_0\\cdot 0{,}5 = U_0/2$ ✓. Allgemeine Regel: Halbwertszeit = $\\tau\\cdot \\ln 2 \\approx 0{,}693\\,\\tau$.
+
+**Typischer Fehler:** $t_{1/2} = \\tau/2$ ansetzen — das ist die Faust­formel für *lineare* Abnahme, gilt aber nicht für exponentielle Entladung. Oder $\\ln 2$ mit $\\log_{10} 2 \\approx 0{,}301$ verwechseln.`,
+        [
+          '$U(t) = U_0\\,e^{-t/\\tau}$.',
+          'Setze $U(t_{1/2}) = U_0/2$, löse nach $t_{1/2}$.',
+          '$t_{1/2} = \\tau\\,\\ln 2$. $\\ln 2 \\approx 0{,}693$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-2-2 — DGL-Systeme  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
