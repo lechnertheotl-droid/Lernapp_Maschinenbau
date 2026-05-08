@@ -1304,6 +1304,1453 @@ export const differentialgleichungenSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-1-3 — Lineare DGL 1. Ordnung  (6 subGoals)
+  // Je ≥ 5 Aufgaben = mind. 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-1-3': {
+
+    // ── [0] Standardform y' + p(x)·y = q(x) ─────────────────────────────
+    0: [
+      tf(
+        'Die DGL $y\' + 3y = \\cos x$ ist in Standardform; dabei sind $p(x)=3$ und $q(x)=\\cos x$.',
+        true,
+        `**Ansatz:** Standardform einer linearen DGL 1. Ordnung: $y\' + p(x)\\,y = q(x)$. Identifiziere den Koeffizienten $p$ vor $y$ (links) und die Stör­funktion $q$ (rechts).
+
+**Rechnung:** In $y\' + 3y = \\cos x$: vor $y$ steht $3$ → $p(x) = 3$ (konstant). Rechts steht $\\cos x$ → $q(x) = \\cos x$.
+
+**Probe:** Einsetzen: $y\' + 3\\,y = \\cos x$ ist exakt die Form $y\' + p(x)\\,y = q(x)$ — passt.
+
+**Typischer Fehler:** $p$ und $q$ vertauschen oder Vorzeichen vergessen. $p$ steht vor $y$, $q$ ist die rechte Seite.`,
+        [
+          'Standardform: $y\' + p(x)\\cdot y = q(x)$.',
+          '$p$ = Koeffizient vor $y$.',
+          '$q$ = rechte Seite (Stör­funktion).',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Welche der folgenden DGL liegt bereits in Standardform $y\' + p(x)\\,y = q(x)$ vor?',
+        [
+          '$y\' + 3x\\,y = e^x$',
+          '$2y\' + 4y = 6$',
+          '$y\'\\cdot y = x$',
+          '$y\'\' + 2y = 0$',
+        ],
+        0,
+        `**Ansatz:** Standardform verlangt: höchste Ableitung $y\'$ mit Koeffizient *exakt $1$*, lineare Form (keine Produkte $y\\cdot y\'$, keine höheren Potenzen), Ordnung 1.
+
+**Rechnung:**
+- $y\' + 3x\\,y = e^x$: Koeffizient von $y\'$ ist $1$, $p(x)=3x$, $q(x)=e^x$ → **Standardform** ✓.
+- $2y\' + 4y = 6$: Koeffizient $2$ vor $y\'$ → erst durch $2$ teilen ($y\' + 2y = 3$).
+- $y\'\\cdot y = x$: Produkt $y\'\\cdot y$ → nichtlinear, keine lineare DGL.
+- $y\'\' + 2y = 0$: Ordnung 2, nicht 1.
+
+**Probe:** Form-Test: ist die linke Seite $y\' + (\\text{etwas})\\cdot y$? Hier ja: $y\' + 3x\\,y$.
+
+**Typischer Fehler:** Annehmen, „in Standardform" heißt einfach „linear". Es heißt zusätzlich: Koeffizient vor $y\'$ muss $1$ sein; sonst muss man erst teilen.`,
+        [
+          'Welcher Koeffizient steht vor $y\'$?',
+          'Standardform verlangt Koeffizient $1$ vor $y\'$.',
+          'Nichtlinearität (Produkte, Potenzen) und Ordnung $> 1$ ausschließen.',
+        ],
+        {
+          1: 'Koeffizient $2$ vor $y\'$ — noch nicht Standardform. Teile durch $2$: $y\' + 2y = 3$ ist die Standardform.',
+          2: 'Produkt $y\'\\cdot y$ → nichtlinear. Standardform verlangt $y$ und $y\'$ jeweils nur in 1. Potenz und ohne Produkt miteinander.',
+          3: 'Hier steht $y\'\'$ — das ist eine DGL 2. Ordnung. Standardform 1. Ordnung verlangt $y\'$ als höchste Ableitung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Bringe $2y\' = 4xy + 6$ in Standardform. Welcher Koeffizient $p(x)$ steht dann vor $y$?',
+        [
+          '$p(x) = -2x$',
+          '$p(x) = 4x$',
+          '$p(x) = 2x$',
+          '$p(x) = -4x$',
+        ],
+        0,
+        `**Ansatz:** Standardform $y\' + p(x)\\,y = q(x)$ erreicht man durch (1) alle $y$-Terme nach links, (2) durch den Koeffizienten von $y\'$ teilen.
+
+**Rechnung:** $2y\' = 4xy + 6$ → $2y\' - 4xy = 6$ (alle $y$-Terme links) → $y\' - 2xy = 3$ (durch $2$ geteilt). Damit $p(x) = -2x$, $q(x) = 3$.
+
+**Probe:** Einsetzen: $y\' + (-2x)\\,y = 3$ ✓ — Standardform mit korrektem Vorzeichen.
+
+**Typischer Fehler:** Vorzeichen vergessen ($p = +2x$): vergisst, dass beim Sortieren $4xy$ auf die andere Seite wandert und Vorzeichen wechselt. Oder Division vergessen ($p = -4x$): teilt die rechte Seite nicht durch $2$.`,
+        [
+          'Erst alle $y$-Terme auf eine Seite — mit Vorzeichen­wechsel beim Wandern.',
+          'Dann durch den Koeffizienten von $y\'$ teilen.',
+          'Test am Ende: Form $y\' + p(x)\\,y = q(x)$?',
+        ],
+        {
+          1: 'Vorzeichen vergessen. $4xy$ wandert von rechts nach links → Vorzeichen­wechsel zu $-4xy$. Nach Division durch $2$: $-2xy$, also $p = -2x$.',
+          2: 'Vorzeichen umgekehrt. Beim Sortieren $2y\' = 4xy + 6$ → $2y\' - 4xy = 6$ — also negatives Vorzeichen vor $4xy$.',
+          3: 'Division durch $2$ vergessen. Du hast nur sortiert ($2y\' - 4xy = 6$), aber $p$ ist der Koeffizient nach Normierung — Standardform verlangt Koeffizient $1$ vor $y\'$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      mc(
+        'Ein Lerner schreibt $3y\' + 6y = 9$ als Standardform mit $p(x) = 6$, $q(x) = 9$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — die Koeffizienten sind direkt ablesbar.',
+          'Falsch: Standardform verlangt Koeffizient $1$ vor $y\'$. Erst durch $3$ teilen: $y\' + 2y = 3$, dann ist $p = 2$, $q = 3$.',
+          'Falsch: $p$ und $q$ wurden vertauscht.',
+          'Falsch: bei konstanten Koeffizienten ist die Standardform nicht definiert.',
+        ],
+        1,
+        `**Ansatz:** Standardform­definition: Koeffizient vor $y\'$ muss $1$ sein. Vor dem Identifizieren von $p$ und $q$ also normieren.
+
+**Rechnung:** $3y\' + 6y = 9$ → durch $3$ teilen → $y\' + 2y = 3$. Hier sind $p(x) = 2$ und $q(x) = 3$ — *nicht* $p = 6$ und $q = 9$.
+
+**Probe:** Test mit $\\mu = e^{2x}$ (richtiges $p$): $(e^{2x} y)\' = 3\\,e^{2x}$. Hätte man $p = 6$ angenommen, wäre $\\mu = e^{6x}$ — und die Methode würde scheitern.
+
+**Typischer Fehler:** Den Faktor vor $y\'$ ignorieren und „Koeffizient = was vor $y$ steht" lesen, ohne vorher zu normieren. Bei nicht-konstanten Faktoren (z. B. $\\sin(x)\\,y\'$) wäre das besonders verheerend.`,
+        [
+          'Wie lautet die Definition der Standardform — was muss vor $y\'$ stehen?',
+          'Was passiert, wenn man die DGL durch den Koeffizienten von $y\'$ teilt?',
+          'Probe: Berechne $\\mu$ mit $p = 6$ und $p = 2$ — welches passt zur original DGL?',
+        ],
+        {
+          0: 'Nicht direkt — Standardform verlangt Koeffizient $1$ vor $y\'$. $3y\'$ ist nicht normiert.',
+          2: '$p$ und $q$ sind nicht vertauscht — $p$ ist links bei $y$, $q$ rechts. Aber beide Werte sind $\\times 3$ zu groß, weil nicht durch $3$ geteilt wurde.',
+          3: 'Doch — Standardform ist auch bei konstanten Koeffizienten wohldefiniert. Sie ist sogar besonders einfach: $p$ und $q$ sind direkt Konstanten.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+      matching(
+        'Bringe jede DGL in Standardform $y\' + p(x)\\,y = q(x)$ und ordne das richtige $(p,q)$-Paar zu.',
+        [
+          { left: '$y\' + 5y = 7$', right: '$p = 5$, $q = 7$' },
+          { left: '$3y\' + 6xy = 9$', right: '$p = 2x$, $q = 3$' },
+          { left: '$y\' = 4y + e^x$', right: '$p = -4$, $q = e^x$' },
+          { left: '$xy\' + y = \\sin x$ (für $x>0$)', right: '$p = 1/x$, $q = \\sin(x)/x$' },
+        ],
+        `**Ansatz:** Pro DGL (1) $y$-Terme nach links, (2) durch den Koeffizienten von $y\'$ teilen, (3) $p$ (links bei $y$) und $q$ (rechts) ablesen.
+
+**Rechnung:**
+- $y\' + 5y = 7$: bereits Standardform → $p=5$, $q=7$.
+- $3y\' + 6xy = 9$: durch $3$ → $y\' + 2x\\,y = 3$ → $p=2x$, $q=3$.
+- $y\' = 4y + e^x$: sortieren → $y\' - 4y = e^x$ → $p=-4$, $q=e^x$.
+- $xy\' + y = \\sin x$: durch $x$ → $y\' + (1/x)y = \\sin(x)/x$ → $p=1/x$, $q=\\sin(x)/x$.
+
+**Probe:** Test je DGL: einsetzen in $y\' + p\\,y$ ergibt die ursprüngliche linke Seite (nach Normierung).
+
+**Typischer Fehler:** Bei der dritten DGL das Vorzeichen vergessen — beim Sortieren wandert $4y$ von rechts nach links und wird $-4y$.`,
+        [
+          'Erst sortieren ($y$ nach links), dann durch Koeffizient von $y\'$ teilen.',
+          'Vorzeichen­wechsel beim Sortieren beachten.',
+          'Auch nicht-konstante Koeffizienten ($1/x$, $\\sin x$) sind erlaubt.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['lin1-standardform'] },
+      ),
+    ],
+
+    // ── [1] Integrierender Faktor μ = e^∫p dx ────────────────────────────
+    1: [
+      tf(
+        'Für die DGL $y\' + 2y = q(x)$ lautet der integrierende Faktor $\\mu(x) = e^{2x}$.',
+        true,
+        `**Ansatz:** Formel $\\mu(x) = e^{\\int p(x)\\,dx}$. Mit konstantem $p$ wird der Exponent linear in $x$.
+
+**Rechnung:** $p(x) = 2$ → $\\int 2\\,dx = 2x$ (Konstante weggelassen, weil $\\mu$ nur bis auf Vorfaktor eindeutig) → $\\mu = e^{2x}$.
+
+**Probe:** Test: $\\mu\' = 2\\,e^{2x} = p\\cdot \\mu$ ✓ — die definierende Eigenschaft des integrierenden Faktors.
+
+**Typischer Fehler:** Vorzeichen­fehler ($\\mu = e^{-2x}$, das wäre für $p = -2$) oder Integral vergessen ($\\mu = e^p = e^2$, eine Konstante — die hilft nichts).`,
+        [
+          '$\\mu = e^{\\int p\\,dx}$.',
+          'Konstantes $p$ → linearer Exponent.',
+          'Test: $\\mu\' = p\\,\\mu$?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      mc(
+        'Berechne den integrierenden Faktor $\\mu(x)$ für $y\' + 5y = e^x$.',
+        [
+          '$\\mu = e^{5x}$',
+          '$\\mu = e^x$',
+          '$\\mu = e^{x/5}$',
+          '$\\mu = 5x$',
+        ],
+        0,
+        `**Ansatz:** Identifiziere $p(x) = 5$, integriere, in den Exponenten der e-Funktion.
+
+**Rechnung:** $\\int 5\\,dx = 5x$ → $\\mu(x) = e^{5x}$.
+
+**Probe:** Test: $\\mu\' = 5\\,e^{5x} = 5\\,\\mu = p\\,\\mu$ ✓.
+
+**Typischer Fehler:** Mit dem Stör­funktions-Exponenten verwechseln ($q = e^x$ → $\\mu = e^x$, falsch — $\\mu$ folgt nur aus $p$, nicht aus $q$).`,
+        [
+          'Identifiziere $p(x)$ — der Koeffizient bei $y$ in Standardform.',
+          'Bilde Stamm­funktion $\\int p\\,dx$.',
+          'Setze sie in den Exponenten der e-Funktion ein.',
+        ],
+        {
+          1: '$p$ und Stör­funktion verwechselt: rechts steht $e^x$ (das ist $q$), aber für $\\mu$ braucht man $p = 5$. → $\\mu = e^{5x}$.',
+          2: 'Falsche Operation auf $p = 5$: nicht $\\int 5/5\\,dx = x/5$, sondern $\\int 5\\,dx = 5x$.',
+          3: 'Die e-Funktion fehlt komplett: $\\mu = e^{\\int p\\,dx}$, nicht $\\mu = \\int p\\,dx$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      ni(
+        'Berechne $\\mu(1)$ für die DGL $y\' + 2x\\,y = q(x)$ (auf 2 Dezimalstellen).',
+        2.72, 0.05, '',
+        `**Ansatz:** $p(x) = 2x$ → Stamm­funktion bilden, $\\mu = e^{\\int p\\,dx}$ aufstellen, an $x=1$ auswerten.
+
+**Rechnung:** $\\int 2x\\,dx = x^2$ → $\\mu(x) = e^{x^2}$. Bei $x = 1$: $\\mu(1) = e^{1} = e \\approx 2{,}718$.
+
+**Probe:** Test: $\\mu\' = 2x\\,e^{x^2} = p\\cdot \\mu$ ✓. Allgemein steigt $\\mu$ bei $x>0$ stark an, weil der Exponent quadratisch wächst.
+
+**Typischer Fehler:** $\\int 2x\\,dx$ als $2$ (Ableitung statt Stamm­funktion) oder als $2x^2$ (Faktor $1/2$ aus der Potenz vergessen). Korrekt: $\\int 2x\\,dx = x^2$.`,
+        [
+          '$p(x) = 2x$. Stamm­funktion?',
+          '$\\int 2x\\,dx = x^2$ — Potenzregel rückwärts.',
+          'Bei $x = 1$: $e^{1} = e$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\' + p(x)\\,y = q(x)$ den Faktor $\\mu = e^{p(x)}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — der Faktor enthält direkt $p(x)$ im Exponenten.',
+          'Falsch: korrekt ist $\\mu = e^{\\int p(x)\\,dx}$ — der Exponent ist die *Stamm­funktion* von $p$, nicht $p$ selbst. Probe: für $p = x$ wäre $\\mu = e^{x^2/2}$, nicht $\\mu = e^x$.',
+          'Falsch: $\\mu$ muss eine Linearkombination aus $p$ und $q$ sein.',
+          'Falsch: $\\mu = e^{p(x)}$ funktioniert nur, wenn $p$ konstant ist.',
+        ],
+        1,
+        `**Ansatz:** Definitions­bedingung des integrierenden Faktors: $\\mu\' = p\\cdot \\mu$.
+
+**Rechnung:** Mit $\\mu = e^{p(x)}$ folgt $\\mu\' = p\'(x)\\cdot e^{p(x)} = p\'\\cdot \\mu$ — die Bedingung wäre $\\mu\' = p\\,\\mu$, nicht $\\mu\' = p\'\\,\\mu$. Daher passt $\\mu = e^{p}$ *nicht*. Korrekt: $\\mu = e^{\\int p\\,dx}$, dann ist nach Hauptsatz der Differential­rechnung $\\mu\' = p\\cdot \\mu$ ✓.
+
+**Probe:** Spezial­fall $p(x) = x$: Lerner-Form $\\mu = e^x$ → $\\mu\' = e^x \\neq x\\cdot e^x = p\\,\\mu$. Korrekte Form $\\mu = e^{x^2/2}$ → $\\mu\' = x\\,e^{x^2/2} = p\\,\\mu$ ✓.
+
+**Typischer Fehler:** Die Notation $\\int$ als „nichts machen, einfach $p$ nehmen" interpretieren — gerade bei nicht-konstantem $p$ ist die Stamm­funktion eine andere Funktion als $p$ selbst.`,
+        [
+          'Definitions­bedingung: $\\mu\' = p\\,\\mu$.',
+          'Was ist $\\mu\'$, wenn $\\mu = e^{p(x)}$ (Kettenregel)?',
+          'Vergleich mit $\\mu = e^{\\int p\\,dx}$ — was ist da $\\mu\'$?',
+        ],
+        {
+          0: 'Genau das ist der Irrtum — der Exponent muss die *Stamm­funktion* sein. Bei konstantem $p$ wäre der Unterschied unsichtbar (Stamm­funktion $= p\\cdot x$), aber bei variablem $p$ entscheidend.',
+          2: '$\\mu$ hängt überhaupt nicht von $q$ ab — der integrierende Faktor wird allein aus $p$ gewonnen. $q$ kommt erst in der Lösungsformel ins Spiel.',
+          3: 'Bei konstantem $p = a$ wäre $\\int a\\,dx = a\\,x$ — der korrekte $\\mu = e^{ax}$ und der Lerner-$\\mu = e^a$ sind nicht gleich. Nur bei $a = 0$ stimmen beide trivial überein.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+      ni(
+        'Bestimme $\\mu(2)$ für die DGL $y\' + (1/x)\\,y = q(x)$ im Bereich $x > 0$.',
+        2, 0.05, '',
+        `**Ansatz:** $p(x) = 1/x$ → Stamm­funktion ist $\\ln|x|$, der integrierende Faktor wird zu einer Potenz von $x$.
+
+**Rechnung:** $\\int (1/x)\\,dx = \\ln|x|$. Für $x > 0$ also $\\ln x$. $\\mu(x) = e^{\\ln x} = x$. Bei $x=2$: $\\mu(2) = 2$.
+
+**Probe:** Test: $\\mu\' = 1$, $p\\,\\mu = (1/x)\\cdot x = 1$ ✓.
+
+**Typischer Fehler:** $\\int 1/x\\,dx$ als $1/x^2$ oder $-1/x^2$ (Ableitung statt Stamm­funktion) oder die e-Funktion stehen lassen ($\\mu = e^{\\ln x}$) statt zu $x$ zu vereinfachen.`,
+        [
+          'Stamm­funktion von $1/x$ ist $\\ln|x|$.',
+          '$e^{\\ln x} = x$ (für $x > 0$).',
+          'Bei $x=2$: $\\mu(2) = 2$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['lin1-mu'] },
+      ),
+    ],
+
+    // ── [2] Lösungsformel y = (1/μ)·[∫μ·q dx + C] ───────────────────────
+    2: [
+      tf(
+        'Die Lösungsformel $y = (1/\\mu)\\,(\\int \\mu\\cdot q\\,dx + C)$ liefert die *allgemeine* Lösung — sie enthält die homogene Lösung (über $C/\\mu$) und eine partikuläre Lösung in einem.',
+        true,
+        `**Ansatz:** Formel zerlegen: $y = (1/\\mu)\\,\\int \\mu\\,q\\,dx + C/\\mu$. Der erste Summand ist eine Partikulär­lösung, der zweite die homogene Lösung mit Vorfaktor $C$.
+
+**Rechnung:** Bei der homogenen Lösung gilt $y_h = C/\\mu = C\\,e^{-\\int p\\,dx}$ — passt zur Standard­form für homogene Lösungen.
+
+**Probe:** Beispiel $y\' + 2y = e^x$: $\\mu = e^{2x}$, $\\int e^{2x}\\,e^x\\,dx = e^{3x}/3$. Damit $y = e^{-2x}\\,(e^{3x}/3 + C) = e^x/3 + C\\,e^{-2x}$ — homogen ($C\\,e^{-2x}$) plus partikulär ($e^x/3$).
+
+**Typischer Fehler:** Glauben, die Formel liefere nur die partikuläre Lösung. Tatsächlich enthält das $C$ im Inneren die ganze Lösungs­schar.`,
+        [
+          'Was ist $y_h$ in Bezug auf $\\mu$?',
+          '$y_h = C/\\mu$ — der zweite Summand der Formel.',
+          'Erster Summand $(1/\\mu)\\,\\int \\mu\\,q$: partikulär.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      mc(
+        'Bestimme die allgemeine Lösung von $y\' + 2y = e^x$.',
+        [
+          '$y = \\tfrac{1}{3}\\,e^x + C\\,e^{-2x}$',
+          '$y = e^x + C\\,e^{-2x}$',
+          '$y = \\tfrac{1}{3}\\,e^x - C\\,e^{-2x}$',
+          '$y = \\tfrac{1}{3}\\,e^{2x} + C\\,e^x$',
+        ],
+        0,
+        `**Ansatz:** Lösungsformel anwenden: $\\mu$ bestimmen, $\\int \\mu\\,q\\,dx$ ausrechnen, mit $1/\\mu$ multiplizieren.
+
+**Rechnung:** $p=2$, $q=e^x$. $\\mu = e^{2x}$. $\\int e^{2x}\\cdot e^x\\,dx = \\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$. $y = e^{-2x}\\cdot(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^{x} + C\\,e^{-2x}$.
+
+**Probe:** $y\' = \\tfrac{1}{3}\\,e^x - 2C\\,e^{-2x}$. $y\' + 2y = \\tfrac{1}{3}\\,e^x - 2C\\,e^{-2x} + \\tfrac{2}{3}\\,e^x + 2C\\,e^{-2x} = e^x$ ✓.
+
+**Typischer Fehler:** $\\int e^{2x}\\cdot e^x = \\int e^{2x+x}$ vergessen ($e^{2x}\\cdot e^x = e^{3x}$, nicht $e^{2x}\\cdot e^x = e^{2x}$). Oder Vorfaktor $\\tfrac{1}{3}$ aus $\\int e^{3x}\\,dx$ vergessen.`,
+        [
+          '$\\mu = e^{\\int 2\\,dx} = e^{2x}$.',
+          '$\\int e^{2x}\\cdot e^x\\,dx = \\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$.',
+          'Mit $1/\\mu = e^{-2x}$ multiplizieren — bei $C$ wird daraus $C\\,e^{-2x}$.',
+        ],
+        {
+          1: 'Vorfaktor $\\tfrac{1}{3}$ vergessen: $\\int e^{3x}\\,dx = \\tfrac{1}{3}\\,e^{3x}$, nicht $e^{3x}$.',
+          2: 'Vorzeichen­fehler: $C$ soll *zu* der Stamm­funktion addiert werden, nicht subtrahiert. Auch das Vorzeichen vor $C\\,e^{-2x}$ wäre dann falsch.',
+          3: 'Exponenten-Addition vergessen: $e^{2x}\\cdot e^x = e^{3x}$, nicht $e^{2x}$. Außerdem ist $C\\,e^{-2x}$ die homogene Lösung, nicht $C\\,e^{x}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      ni(
+        'Löse das AWP $y\' + y = 2$, $y(0) = 0$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        1.26, 0.05, '',
+        `**Ansatz:** Lösungsformel mit AB anwenden — $\\mu$ bestimmen, integrieren, $C$ aus AB fixieren, an $x=1$ auswerten.
+
+**Rechnung:** $p = 1$, $q = 2$. $\\mu = e^x$. $(e^x y)\' = 2\\,e^x$ → $e^x y = 2\\,e^x + C$ → $y(x) = 2 + C\\,e^{-x}$. AB: $y(0) = 2 + C = 0 \\Rightarrow C = -2$. Damit $y(x) = 2 - 2\\,e^{-x}$ und $y(1) = 2 - 2/e \\approx 2 - 0{,}7358 \\approx 1{,}264$.
+
+**Probe:** $y\'(x) = 2\\,e^{-x}$; $y\' + y = 2\\,e^{-x} + 2 - 2\\,e^{-x} = 2$ ✓; $y(0) = 0$ ✓; Asymptotik: $y \\to 2$ für $x \\to \\infty$.
+
+**Typischer Fehler:** Vorzeichen im Exponenten ($Ce^{+x}$ statt $Ce^{-x}$ — beim Multiplizieren mit $1/\\mu = e^{-x}$ entsteht $e^{-x}$, nicht $e^{+x}$) oder Partikulär­lösung als $y_p = 2x$ statt Konstante $2$ ansetzen.`,
+        [
+          '$\\mu = e^{\\int 1\\,dx} = e^x$.',
+          'Partikulär: $y_p = 2$ (Konstante, weil rechte Seite konstant).',
+          'AB: $y(0) = 0$ liefert $C = -2$, dann $y(1) = 2 - 2/e$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      mc(
+        'Ein Lerner berechnet bei $y\' + 2y = e^x$ den integrierenden Faktor $\\mu = e^{2x}$ korrekt, vergisst dann aber die Multiplikation mit $1/\\mu$ am Ende. Er schreibt $y = \\tfrac{1}{3}\\,e^{3x} + C$. Welcher Fehler liegt vor?',
+        [
+          'Korrekt — die Stamm­funktion liefert direkt $y$.',
+          'Multiplikation mit $1/\\mu = e^{-2x}$ vergessen. Korrekt: $y = e^{-2x}(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^x + C\\,e^{-2x}$.',
+          'Falsche Konstante — $C$ muss durch $\\mu$ geteilt werden, $C/\\mu \\neq C$.',
+          'Falsch — der Faktor $\\mu$ darf nur auf der linken Seite multipliziert werden, nicht auf der rechten.',
+        ],
+        1,
+        `**Ansatz:** Nach $\\mu\\cdot y = \\int \\mu\\,q\\,dx + C$ folgt der finale Schritt: durch $\\mu$ teilen, um $y$ allein zu isolieren.
+
+**Rechnung:** $\\mu y = \\tfrac{1}{3}\\,e^{3x} + C$. Beide Seiten durch $\\mu = e^{2x}$ teilen: $y = (1/e^{2x})\\,(\\tfrac{1}{3}\\,e^{3x} + C) = \\tfrac{1}{3}\\,e^{x} + C\\,e^{-2x}$.
+
+**Probe:** Test der Lerner-Form $y = \\tfrac{1}{3}\\,e^{3x} + C$: $y\' = e^{3x}$. Soll: $y\' + 2y = e^{3x} + \\tfrac{2}{3}\\,e^{3x} + 2C = \\tfrac{5}{3}\\,e^{3x} + 2C \\neq e^x$ — DGL verletzt.
+
+**Typischer Fehler:** Den Schritt „$\\mu\\,y$ aus dem Integral isolieren" mit „$y$ ist gleich Integral" verwechseln. Solange $\\mu \\neq 1$ ist, muss man am Ende noch durch $\\mu$ teilen.`,
+        [
+          'Was bleibt nach dem Integrieren auf der linken Seite?',
+          '$\\mu y = \\ldots$ — durch $\\mu$ teilen!',
+          'Probe: einsetzen der vermeintlichen Lösung in die DGL.',
+        ],
+        {
+          0: 'Probe scheitert: $y = \\tfrac{1}{3}\\,e^{3x} + C$ erfüllt die DGL nicht. Es fehlt der entscheidende Divisions­schritt.',
+          2: 'Doch — $C$ wird genauso durch $\\mu$ geteilt: $C/\\mu = C\\,e^{-2x}$. Die Konstante ist nicht ausgenommen.',
+          3: 'Die Multiplikation mit $\\mu$ erfolgt auf *beiden* Seiten der DGL — sonst wäre die Gleichung nicht erhalten. Das ist nicht der Fehler.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+      ni(
+        'Löse das AWP $y\' - y = e^{2x}$, $y(0) = 0$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        4.67, 0.05, '',
+        `**Ansatz:** Lösungsformel mit $p = -1$, $q = e^{2x}$ und AB anwenden.
+
+**Rechnung:** $\\mu = e^{-x}$. $(e^{-x} y)\' = e^{-x}\\cdot e^{2x} = e^{x}$ → $e^{-x} y = e^{x} + C$ → $y(x) = e^{2x} + C\\,e^{x}$. AB: $y(0) = 1 + C = 0 \\Rightarrow C = -1$. Damit $y(x) = e^{2x} - e^x$ und $y(1) = e^2 - e \\approx 7{,}389 - 2{,}718 \\approx 4{,}671$.
+
+**Probe:** $y\'(x) = 2\\,e^{2x} - e^x$; $y\' - y = 2\\,e^{2x} - e^x - e^{2x} + e^x = e^{2x}$ ✓; $y(0) = 1 - 1 = 0$ ✓.
+
+**Typischer Fehler:** Bei $p = -1$ den integrierenden Faktor als $\\mu = e^{x}$ statt $e^{-x}$ — Vorzeichen vergessen. Oder $\\int e^{-x}\\cdot e^{2x}\\,dx$ als $e^{2x}$ (statt $e^x$) verrechnen.`,
+        [
+          'Standardform: $y\' + (-1)\\,y = e^{2x}$ → $p = -1$.',
+          '$\\mu = e^{-x}$.',
+          '$\\int e^{-x}\\cdot e^{2x}\\,dx = \\int e^x\\,dx = e^x$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['lin1-formel'] },
+      ),
+    ],
+
+    // ── [3] Variation der Konstanten ────────────────────────────────────
+    3: [
+      tf(
+        'Variation der Konstanten heißt: man ersetzt die Konstante $C$ in der homogenen Lösung $y_h = C\\,e^{-\\int p\\,dx}$ durch eine Funktion $C(x)$ und sucht damit eine partikuläre Lösung.',
+        true,
+        `**Ansatz:** VdK-Idee: aus $y_h = C\\cdot u(x)$ wird $y_p = C(x)\\cdot u(x)$. Setzt man diesen Ansatz in die inhomogene DGL ein, erhält man eine DGL für $C(x)$.
+
+**Rechnung:** Mit $u(x) = e^{-\\int p\\,dx}$ und $y_p = C(x)\\,u(x)$ folgt $y_p\' = C\'\\,u + C\\,u\' = C\'\\,u - C\\,p\\,u$. In $y\' + p\\,y = q$ einsetzen: $C\'\\,u - C\\,p\\,u + p\\,C\\,u = q \\Rightarrow C\'\\,u = q \\Rightarrow C\'(x) = q(x)/u(x)$.
+
+**Probe:** Beispiel $y\' + y = 2$: $u = e^{-x}$, $C\'(x) = 2/e^{-x} = 2\\,e^x$, $C(x) = 2\\,e^x$. $y_p = 2\\,e^x\\cdot e^{-x} = 2$ ✓ — Partikulär­lösung passt.
+
+**Typischer Fehler:** „Variation" mit „Verändern" gleichsetzen und glauben, man tausche überall $C$ durch $C(x)$ aus. Tatsächlich nur in $y_p$, parallel bleibt $y_h$ mit konstantem $C$.`,
+        [
+          'Welche Funktion ersetzt die Konstante?',
+          '$C \\to C(x)$, dann einsetzen in die inhomogene DGL.',
+          'Daraus entsteht eine direkte DGL für $C\'(x)$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Welcher Schritt steht bei Variation der Konstanten am Anfang?',
+        [
+          'Die homogene Lösung $y_h = C\\,e^{-\\int p\\,dx}$ bestimmen — sie liefert die Form, in der $C$ später zu $C(x)$ wird.',
+          'Den integrierenden Faktor $\\mu = e^{\\int p\\,dx}$ bestimmen.',
+          'Eine Partikulär­lösung in der Form der Stör­funktion ansetzen.',
+          'Die Anfangs­bedingung in die inhomogene DGL einsetzen.',
+        ],
+        0,
+        `**Ansatz:** VdK braucht die *Form* der homogenen Lösung als Basis — die Konstante darin wird zur Funktion $C(x)$.
+
+**Rechnung:** Standard­ablauf VdK: (1) $y_h$ bestimmen → liefert Basis $u(x) = e^{-\\int p\\,dx}$. (2) Ansatz $y_p = C(x)\\cdot u(x)$. (3) Einsetzen in die DGL und nach $C\'(x)$ auflösen. (4) $C(x)$ integrieren. (5) $y = y_h + y_p$.
+
+**Probe:** Ohne $y_h$ als Basis hätte VdK keine Struktur — der Name „Variation der *Konstanten*" weist direkt darauf hin: die Konstante stammt aus $y_h$.
+
+**Typischer Fehler:** Den integrierenden Faktor als VdK-Schritt missdeuten — das ist die *alternative* Methode (Methode des integrierenden Faktors), keine VdK. Oder mit der Anfangs­bedingung anfangen, bevor die allgemeine Lösung steht.`,
+        [
+          'Was wird bei VdK „variiert"?',
+          'Die Konstante in der homogenen Lösung.',
+          'Also muss zuerst $y_h$ stehen.',
+        ],
+        {
+          1: '$\\mu$ ist die *alternative* Lösungs­methode (integrierender Faktor) — VdK ist eine andere Methode, die mit der homogenen Lösung beginnt.',
+          2: 'Das ist die Methode des *unbestimmten Ansatzes* (für spezielle Stör­funktionen). Bei VdK setzt man $y_p = C(x)\\cdot y_h(x)$, nicht eine Form der Stör­funktion.',
+          3: 'Anfangs­bedingung kommt am Schluss, nach Bestimmung der allgemeinen Lösung. Erst die Form, dann die Bedingung.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Wende Variation der Konstanten auf $y\' + 2y = e^x$ an: was ist $C\'(x)$ im Ansatz $y_p = C(x)\\,e^{-2x}$?',
+        [
+          '$C\'(x) = e^{3x}$',
+          '$C\'(x) = e^{x}$',
+          '$C\'(x) = e^{-x}$',
+          '$C\'(x) = e^{-3x}$',
+        ],
+        0,
+        `**Ansatz:** Aus dem Ansatz $y_p = C(x)\\,u(x)$ mit $u(x) = e^{-2x}$ folgt durch Einsetzen in die DGL eine direkte DGL für $C\'(x)$.
+
+**Rechnung:** $y_p\' = C\'\\,e^{-2x} + C\\,(-2)\\,e^{-2x} = C\'\\,e^{-2x} - 2C\\,e^{-2x}$. In $y\' + 2y = e^x$ einsetzen: $C\'\\,e^{-2x} - 2C\\,e^{-2x} + 2\\,C\\,e^{-2x} = e^x \\Rightarrow C\'\\,e^{-2x} = e^x \\Rightarrow C\'(x) = e^x/e^{-2x} = e^{3x}$.
+
+**Probe:** Integration: $C(x) = \\tfrac{1}{3}\\,e^{3x}$ → $y_p = \\tfrac{1}{3}\\,e^{3x}\\cdot e^{-2x} = \\tfrac{1}{3}\\,e^x$ ✓ (passt zur Methode des integrierenden Faktors).
+
+**Typischer Fehler:** Vorzeichen in $u(x)$ vergessen ($u = e^{+2x}$ — falsch) oder die Subtraktions­glieder $-2C\\,e^{-2x}$ nicht mit $+2y_p = +2\\,C\\,e^{-2x}$ wegheben — dann kürzt sich die DGL nicht zur reinen $C\'$-Gleichung.`,
+        [
+          '$y_p = C(x)\\,e^{-2x}$, $y_p\' = C\'\\,e^{-2x} - 2C\\,e^{-2x}$.',
+          'In DGL einsetzen — $C$-Terme heben sich raus.',
+          'Es bleibt $C\'\\,e^{-2x} = e^x$, also $C\'(x) = e^{3x}$.',
+        ],
+        {
+          1: 'Du hast $1/e^{-2x}$ als $1/e^{2x} = e^{-2x}$ gerechnet — also $e^x \\cdot e^{-2x} = e^{-x}$? Nein, korrekt ist $e^x / e^{-2x} = e^{x-(-2x)} = e^{3x}$.',
+          2: 'Hier wurde $1/e^{-2x}$ als $e^{-2x}$ statt $e^{2x}$ behandelt — Vorzeichen­fehler. Richtig: $e^x \\cdot e^{2x} = e^{3x}$.',
+          3: 'Vorzeichen sowohl bei $u$ als auch beim Quotienten falsch. Doppelter Vorzeichen­fehler bringt $e^{-3x}$ statt $e^{3x}$.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      mc(
+        'Ein Lerner setzt bei VdK $y_p = C(x)\\,e^{-2x}$ an, vergisst aber die Produktregel und schreibt $y_p\' = C\\,e^{-2x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — bei konstantem $C$ stimmt das.',
+          'Bei VdK ist $C(x)$ aber eine *Funktion* von $x$. Die Produkt­regel liefert $y_p\' = C\'\\,e^{-2x} - 2C\\,e^{-2x}$ — der Term $C\'\\,e^{-2x}$ ist genau der, aus dem $C\'(x)$ bestimmt wird.',
+          'Falsch — bei VdK darf man die Produkt­regel komplett weglassen.',
+          'Falsch — $y_p\' = -2\\,e^{-2x}$ ist der korrekte Ausdruck.',
+        ],
+        1,
+        `**Ansatz:** Wenn $C$ eine Funktion ist, gilt die Produkt­regel: $(C\\cdot u)\' = C\'\\,u + C\\,u\'$. Genau das ist der Punkt von VdK — der zusätzliche Term $C\'\\,u$ erlaubt das Konstruieren einer Partikulär­lösung.
+
+**Rechnung:** $y_p = C(x)\\,e^{-2x}$. Mit Produkt­regel: $y_p\' = C\'\\,e^{-2x} + C\\,(-2)\\,e^{-2x} = C\'\\,e^{-2x} - 2C\\,e^{-2x}$. Wenn $C\'$ wegfiele, wäre $y_p\' = -2y_p$, also wäre $y_p$ wieder eine homogene Lösung — keine Partikulär­lösung.
+
+**Probe:** Setze $y_p\' = -2y_p$ in $y\' + 2y = q$: $-2y_p + 2y_p = 0 \\neq q$ (außer bei $q \\equiv 0$). Daher *muss* der $C\'$-Term mit, sonst funktioniert VdK nicht.
+
+**Typischer Fehler:** Bei einer „Konstante" automatisch denken, ihre Ableitung sei null. Bei VdK ist sie aber explizit eine Funktion von $x$, also hat sie eine Ableitung.`,
+        [
+          'Was sagt die Produkt­regel für $(C(x)\\cdot u(x))\'$?',
+          '$C(x)$ ist hier eine Funktion, nicht konstant.',
+          'Ohne $C\'$-Term wäre $y_p$ wieder homogen — kein Mehrwert.',
+        ],
+        {
+          0: 'Bei *konstantem* $C$ stimmt $y_p\' = C\\cdot u\'$ — aber bei VdK ist $C$ ja gerade *keine* Konstante, sondern variiert mit $x$.',
+          2: 'Im Gegenteil — gerade die Produkt­regel ist der Kern von VdK. Sie liefert den $C\'$-Term, aus dem die Partikulär­lösung folgt.',
+          3: 'Das wäre nur die Ableitung von $u(x) = e^{-2x}$ ohne den Vorfaktor. Die ganze Funktion $y_p = C(x)\\,e^{-2x}$ hat zwei Beiträge: $C\'\\,u + C\\,u\'$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+      sorting(
+        'Bringe die Schritte der Variation der Konstanten in die richtige Reihenfolge.',
+        [
+          'Homogene Lösung $y_h = C\\,e^{-\\int p\\,dx}$ bestimmen.',
+          'Partikulär­ansatz $y_p = C(x)\\cdot e^{-\\int p\\,dx}$ aufstellen — Konstante zur Funktion machen.',
+          '$y_p$ in die inhomogene DGL einsetzen, $C(x)$-Terme heben sich → DGL für $C\'(x)$.',
+          '$C\'(x)$ integrieren zu $C(x)$, daraus $y_p$.',
+          'Allgemeine Lösung als $y = y_h + y_p$ zusammensetzen.',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** VdK ist ein 5-Schritte-Rezept: erst die homogene Form, dann VdK-Ansatz, einsetzen, integrieren, kombinieren.
+
+**Rechnung:** Schritt 1 liefert $u(x) = e^{-\\int p\\,dx}$. Schritt 2 ersetzt $C \\to C(x)$. Schritt 3 reduziert auf eine direkte Gleichung für $C\'$. Schritt 4 liefert $C(x)$ durch Integration. Schritt 5 ergibt die allgemeine Lösung.
+
+**Probe:** Ohne Schritt 1 kennt man die Form von $u(x)$ nicht. Ohne Schritt 3 fehlt die Gleichung für $C\'$. Ohne Schritt 4 bleibt $C(x)$ unbekannt. Ohne Schritt 5 hat man nur die partikuläre, nicht die allgemeine Lösung.
+
+**Typischer Fehler:** $C(x)$ direkt durch Inspektion erraten wollen, ohne den $C\'$-Schritt sauber durchzuführen — funktioniert nur in Trivialfällen.`,
+        [
+          'Was ist die *Basis* der Variation?',
+          'Erst $y_h$, dann variieren.',
+          '$y = y_h + y_p$ ist erst nach Integration der gesamte Aufbau.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['lin1-vdk'] },
+      ),
+    ],
+
+    // ── [4] Homogene Lösung y_h = C·e^{-∫p dx} ──────────────────────────
+    4: [
+      tf(
+        'Für die DGL $y\' + 3y = q(x)$ ist die homogene Lösung $y_h = C\\,e^{-3x}$.',
+        true,
+        `**Ansatz:** Homogene Lösung erfüllt $y_h\' + p\\,y_h = 0$. Lösung über Trennung der Variablen oder direkt aus $y_h = C\\,e^{-\\int p\\,dx}$.
+
+**Rechnung:** $p(x) = 3$ → $\\int p\\,dx = 3x$ → $y_h = C\\,e^{-3x}$. Wichtig: das *negative* Vorzeichen im Exponenten ist Standard für die homogene Lösung.
+
+**Probe:** $y_h\' = -3C\\,e^{-3x} = -3\\,y_h$; $y_h\' + 3y_h = -3y_h + 3y_h = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — $y_h = Ce^{+3x}$ wäre Lösung von $y\' = +3y$, also $y\' - 3y = 0$, nicht $y\' + 3y = 0$.`,
+        [
+          'Formel: $y_h = C\\,e^{-\\int p\\,dx}$.',
+          'Achtung: *negatives* Vorzeichen vor dem Integral.',
+          'Test: $y_h\' + p\\,y_h = 0$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      mc(
+        'Bestimme die homogene Lösung $y_h$ der DGL $y\' - 4y = q(x)$.',
+        [
+          '$y_h = C\\,e^{4x}$',
+          '$y_h = C\\,e^{-4x}$',
+          '$y_h = C\\,e^{4}\\cdot x$',
+          '$y_h = -4\\,C\\,e^{x}$',
+        ],
+        0,
+        `**Ansatz:** Standardform $y\' + (-4)\\,y = q(x)$ → $p = -4$, daher Exponent $-\\int p\\,dx = -(-4x) = +4x$.
+
+**Rechnung:** $y_h = C\\,e^{-\\int p\\,dx} = C\\,e^{-(-4x)} = C\\,e^{+4x}$.
+
+**Probe:** $y_h\' = 4C\\,e^{4x} = 4\\,y_h$; $y_h\' - 4y_h = 4y_h - 4y_h = 0$ ✓.
+
+**Typischer Fehler:** Doppeltes Vorzeichen vergessen — beide negativen Vorzeichen heben sich. Ergebnis ist $e^{+4x}$, nicht $e^{-4x}$.`,
+        [
+          'Standardform: $y\' + p\\,y = q$. Was ist $p$, wenn ursprünglich $y\' - 4y$ steht?',
+          '$p = -4$, also $-\\int p\\,dx = +4x$.',
+          'Vorzeichen $\\times$ Vorzeichen = $+$.',
+        ],
+        {
+          1: 'Vorzeichen falsch zugeordnet: $y\' - 4y$ heißt $p = -4$, nicht $p = +4$. Dann ist $-\\int p\\,dx = +4x$, nicht $-4x$.',
+          2: 'Polynomial statt exponentiell — passt zu DGL $y\' = 4$ (konstante Steigung), nicht zu $y\' - 4y = 0$ (proportional).',
+          3: '$y\'$ und $y$ wurden vertauscht oder $-4$ als Vorfaktor von $y_h$ eingebaut. Die Konstante $C$ ist beliebig — sie wird aus AB bestimmt, nicht aus dem DGL-Koeffizienten.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      ni(
+        'Bestimme die homogene Lösung von $y\' + 2y = 0$ mit AB $y(0) = 5$ und berechne $y(1)$ (auf 2 Dezimalstellen).',
+        0.68, 0.02, '',
+        `**Ansatz:** Homogene Lösung $y_h = C\\,e^{-2x}$ → AB $\\to C$ → an $x=1$ auswerten.
+
+**Rechnung:** $y_h(0) = C\\,e^{0} = C = 5$. Damit $y(x) = 5\\,e^{-2x}$ und $y(1) = 5\\,e^{-2} = 5/e^2 \\approx 5/7{,}389 \\approx 0{,}677$.
+
+**Probe:** $y\'(x) = -10\\,e^{-2x}$; $y\' + 2y = -10\\,e^{-2x} + 10\\,e^{-2x} = 0$ ✓. AB: $y(0) = 5$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen ($y(1) = 5e^2 \\approx 36{,}9$, falsch — passt zu $y\' = +2y$, nicht $y\' + 2y = 0$). Oder $5/e^2$ als $5/e \\approx 1{,}84$ verrechnen.`,
+        [
+          'Form: $y_h = C\\,e^{-2x}$.',
+          'AB liefert $C = 5$.',
+          'Bei $x = 1$: $5/e^2$. Bekannt: $e^2 \\approx 7{,}39$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für die homogene Lösung von $y\' - 5y = 0$ den Ausdruck $y_h = C\\,e^{-5x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — der Vorfaktor $-5$ landet im Exponenten.',
+          'Falsch: aus $y\' - 5y = 0$ folgt $y\' = 5y$, also $y_h = C\\,e^{+5x}$. Das negative Vorzeichen im Exponenten passt zu $y\' + 5y = 0$, nicht zu $y\' - 5y = 0$.',
+          'Falsch: bei homogenen DGL ist $C = 0$, also $y_h \\equiv 0$.',
+          'Falsch: das Vorzeichen muss umgekehrt werden, weil $y_h$ immer abklingen muss.',
+        ],
+        1,
+        `**Ansatz:** Standardform $y\' + p\\,y = 0$ identifizieren — bei $y\' - 5y$ ist $p = -5$, nicht $+5$.
+
+**Rechnung:** $p = -5$ → $y_h = C\\,e^{-\\int p\\,dx} = C\\,e^{-(-5x)} = C\\,e^{+5x}$.
+
+**Probe:** Test mit $y_h = C\\,e^{5x}$: $y_h\' = 5C\\,e^{5x} = 5\\,y_h$; $y_h\' - 5y_h = 0$ ✓. Test der Lerner-Form $y_h = C\\,e^{-5x}$: $y_h\' = -5y_h$; $y_h\' - 5y_h = -10y_h \\neq 0$ — falsch.
+
+**Typischer Fehler:** Sich nur am Vorzeichen vor $y$ in der DGL orientieren ohne in Standardform zu bringen. Es kommt auf das Vorzeichen von $p$ in der Form $y\' + p\\,y$ an, nicht auf das Vorzeichen, wie es ursprünglich vor $y$ steht.`,
+        [
+          'Standardform: $y\' + p\\,y = 0$. Was ist $p$ bei $y\' - 5y$?',
+          '$p = -5$ → $-\\int p\\,dx = +5x$.',
+          'Probe: einsetzen der Lerner-Form in die DGL.',
+        ],
+        {
+          0: 'Genau das ist das Missverständnis — der Vorfaktor wandert *nicht 1:1* in den Exponenten. Erst Standardform, dann Vorzeichen­wechsel beim $-\\int p\\,dx$.',
+          2: '$C$ ist beliebig — die *triviale* Lösung $y \\equiv 0$ entspricht $C = 0$, ist aber nicht die einzige. Allgemeine homogene Lösung hat $C \\neq 0$.',
+          3: 'Es gibt keine universelle „muss abklingen"-Regel. Bei $y\' - 5y = 0$ wächst die Lösung ($e^{+5x}$) — das ist exakt das, was die DGL vorgibt.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+      ni(
+        'Bestimme die homogene Lösung von $y\' + (1/x)\\,y = 0$ ($x > 0$) mit AB $y(1) = 4$ und berechne $y(2)$ (auf 2 Dezimalstellen).',
+        2, 0.05, '',
+        `**Ansatz:** Bei nicht-konstantem $p$ erst Stamm­funktion bilden, dann homogene Lösung als $C\\,e^{-\\int p\\,dx}$ aufschreiben.
+
+**Rechnung:** $\\int (1/x)\\,dx = \\ln x$ (für $x > 0$). $y_h = C\\,e^{-\\ln x} = C\\cdot e^{\\ln(1/x)} = C/x$. AB: $y_h(1) = C/1 = 4 \\Rightarrow C = 4$. Damit $y(x) = 4/x$ und $y(2) = 4/2 = 2$.
+
+**Probe:** $y\'(x) = -4/x^2$; $y\' + (1/x)\\,y = -4/x^2 + (1/x)\\cdot 4/x = -4/x^2 + 4/x^2 = 0$ ✓; $y(1) = 4$ ✓.
+
+**Typischer Fehler:** $e^{-\\ln x}$ als $-\\ln x$ stehen lassen oder als $e^{-x} \\cdot x$ verrechnen. Korrekt: $e^{-\\ln x} = 1/e^{\\ln x} = 1/x$.`,
+        [
+          'Stamm­funktion von $1/x$ ist $\\ln x$.',
+          '$y_h = C\\,e^{-\\ln x} = C/x$.',
+          'AB liefert $C$, dann an $x=2$ auswerten.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['lin1-yh'] },
+      ),
+    ],
+
+    // ── [5] RC-Kreis $\dot U + U/(RC) = U_0/(RC)$ ───────────────────────
+    5: [
+      tf(
+        'Beim RC-Lade­kreis $\\dot U + U/(RC) = U_0/(RC)$ ist die Zeitkonstante $\\tau = RC$.',
+        true,
+        `**Ansatz:** Standardform-Vergleich: $\\dot U + p\\,U = q$ mit $p = 1/(RC)$. Zeitkonstante $\\tau = 1/p$, also $\\tau = RC$.
+
+**Rechnung:** $\\tau = RC$ ist die charakteristische Zeit, in der sich die Spannung um den Faktor $1 - 1/e \\approx 63{,}2\\,\\%$ dem End­wert annähert. $U(t) = U_0(1 - e^{-t/\\tau})$.
+
+**Probe:** Bei $t = \\tau$: $U(\\tau) = U_0(1 - 1/e) \\approx 0{,}632\\,U_0$ — typische Faustformel für RC-Kreise.
+
+**Typischer Fehler:** $\\tau = R/C$ oder $\\tau = 1/(RC)$ angeben — beides hat falsche Einheit oder falsche Größenordnung. Einheits­check: $[R]\\cdot[C] = \\Omega \\cdot \\mathrm{F} = \\mathrm{V/A} \\cdot \\mathrm{As/V} = \\mathrm{s}$ ✓.`,
+        [
+          'Vergleich mit Standardform: was ist $p$?',
+          '$p = 1/(RC)$ → $\\tau = 1/p = RC$.',
+          'Einheits­check: $\\Omega \\cdot \\mathrm{F} = \\mathrm{s}$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      mc(
+        'Welche Funktion löst das RC-Aufladungs-AWP $\\dot U + U/(RC) = U_0/(RC)$ mit $U(0) = 0$?',
+        [
+          '$U(t) = U_0\\,(1 - e^{-t/(RC)})$',
+          '$U(t) = U_0\\,e^{-t/(RC)}$',
+          '$U(t) = U_0\\,(1 - e^{-RC\\cdot t})$',
+          '$U(t) = U_0\\cdot t/(RC)$',
+        ],
+        0,
+        `**Ansatz:** Inhomogene lineare DGL 1. Ordnung mit konstanter Stör­funktion. Lösung: $U_h + U_p$ mit $U_p = U_0$ (konstant, Gleich­gewicht) und $U_h = C\\,e^{-t/(RC)}$. AB liefert $C$.
+
+**Rechnung:** $U(t) = U_0 + C\\,e^{-t/(RC)}$. AB: $U(0) = U_0 + C = 0 \\Rightarrow C = -U_0$. Damit $U(t) = U_0 - U_0\\,e^{-t/(RC)} = U_0(1 - e^{-t/(RC)})$.
+
+**Probe:** $U(0) = U_0(1 - 1) = 0$ ✓; $\\lim_{t\\to\\infty} U(t) = U_0$ ✓ (Endwert = Speise­spannung); $\\dot U = (U_0/(RC))\\,e^{-t/(RC)}$, einsetzen: $\\dot U + U/(RC) = (U_0/(RC))\\,e^{-t/(RC)} + (U_0/(RC))(1 - e^{-t/(RC)}) = U_0/(RC)$ ✓.
+
+**Typischer Fehler:** Entladungs­lösung statt Aufladungs­lösung wählen ($U_0\\,e^{-t/(RC)}$ — passt zur DGL $\\dot U + U/(RC) = 0$, also Entladen). Oder $RC$ und $1/(RC)$ verwechseln im Exponenten.`,
+        [
+          'Endwert $U(\\infty) = U_0$ → $U_p = U_0$.',
+          'Homogen: $U_h = C\\,e^{-t/(RC)}$.',
+          'AB $U(0) = 0$ liefert $C = -U_0$.',
+        ],
+        {
+          1: 'Das ist die *Entladungs*-Lösung (DGL $\\dot U + U/(RC) = 0$, also rechte Seite Null). Hier wird der Konden­sator aber *aufgeladen* (rechte Seite $U_0/(RC) \\neq 0$) — Endwert $U_0$, nicht $0$.',
+          2: 'Im Exponenten steht $RC\\cdot t$ statt $t/(RC)$ — das ist dimensions­los falsch. $RC$ hat Einheit Sekunden, also gehört es als Nenner unter $t$.',
+          3: 'Lineare Aufladung passt zu konstanter Strom­quelle, nicht zur RC-DGL. Mit dieser Form wäre $\\dot U = U_0/(RC)$ (konstant), aber die DGL hat zusätzlich den Term $U/(RC)$, der die Ladung verlangsamt.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      ni(
+        'Ein RC-Lade­kreis hat $R = 1\\,\\mathrm{k\\Omega}$, $C = 1\\,\\mathrm{mF}$, $U_0 = 10\\,\\mathrm{V}$ und $U(0) = 0$. Welche Spannung liegt nach $t = 2\\,\\mathrm{s}$ am Konden­sator (auf 2 Dezimal­stellen, in V)?',
+        8.65, 0.05, 'V',
+        `**Ansatz:** Lösungs­formel $U(t) = U_0(1 - e^{-t/\\tau})$ mit $\\tau = RC$. Werte einsetzen.
+
+**Rechnung:** $\\tau = R\\cdot C = 10^3\\,\\Omega \\cdot 10^{-3}\\,\\mathrm{F} = 1\\,\\mathrm{s}$. $U(2) = 10\\,(1 - e^{-2/1}) = 10\\,(1 - e^{-2}) \\approx 10\\,(1 - 0{,}1353) \\approx 8{,}647\\,\\mathrm{V}$.
+
+**Probe:** Bei $t = \\tau = 1\\,\\mathrm{s}$: $U(1) = 10\\,(1 - 1/e) \\approx 6{,}32\\,\\mathrm{V}$ — die berühmten 63 % nach einer Zeit­konstante. Bei $t = 2\\tau$ etwa $86{,}5\\,\\%$ ✓.
+
+**Typischer Fehler:** Einheits­fehler bei $RC$: $1\\,\\mathrm{k\\Omega}\\cdot 1\\,\\mathrm{mF} = 1\\,\\mathrm{s}$ (nicht $1\\,\\mathrm{ms}$ oder $1\\,\\mu\\mathrm{s}$). Oder $e^{-2}$ als $-e^2$ oder $e^2 \\approx 7{,}39$ verrechnen.`,
+        [
+          '$\\tau = RC = 1\\,\\mathrm{s}$ (Einheits­produkt).',
+          'Lösung: $U(t) = 10\\,(1 - e^{-t/\\tau})$.',
+          '$e^{-2} \\approx 0{,}135$, also $U(2) \\approx 10\\cdot 0{,}865$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      mc(
+        'Ein Lerner gibt für $R = 100\\,\\Omega$, $C = 10\\,\\mu\\mathrm{F}$ die Zeitkonstante als $\\tau = 1000\\,\\mathrm{s}$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — $\\tau = R\\cdot C = 100\\cdot 10 = 1000\\,\\mathrm{s}$.',
+          'Einheits­fehler: $\\mu\\mathrm{F} = 10^{-6}\\,\\mathrm{F}$. $\\tau = 100\\,\\Omega\\cdot 10^{-5}\\,\\mathrm{F} = 10^{-3}\\,\\mathrm{s} = 1\\,\\mathrm{ms}$ — drei Größen­ordnungen kleiner.',
+          'Falsch — $\\tau = R/C$, nicht $R\\cdot C$.',
+          'Falsch — $\\tau$ hat Einheit V, nicht s.',
+        ],
+        1,
+        `**Ansatz:** Bei Größen mit SI-Vorsätzen ($\\mu$, m, k, M) immer in Basis­einheiten umrechnen, *bevor* man multipliziert.
+
+**Rechnung:** $C = 10\\,\\mu\\mathrm{F} = 10\\cdot 10^{-6}\\,\\mathrm{F} = 10^{-5}\\,\\mathrm{F}$. $\\tau = R\\cdot C = 100\\,\\Omega \\cdot 10^{-5}\\,\\mathrm{F} = 10^{-3}\\,\\mathrm{s} = 1\\,\\mathrm{ms}$.
+
+**Probe:** Einheits­check: $\\Omega\\cdot \\mathrm{F} = \\mathrm{V/A} \\cdot \\mathrm{C/V} = \\mathrm{C/A} = \\mathrm{s}$ ✓. Größen­ordnung: für typische Elektronik liegt $\\tau$ im Mikro- bis Millisekunden-Bereich, $1000\\,\\mathrm{s}$ ($\\approx 17\\,\\mathrm{min}$) wäre für solche Bauteil­werte unrealistisch.
+
+**Typischer Fehler:** $\\mu$-Vorsatz vergessen oder mit $\\mathrm{m}$ verwechseln. $\\mu = 10^{-6}$, $\\mathrm{m} = 10^{-3}$, $\\mathrm{k} = 10^3$ — drei Größen­ordnungen Unterschied pro Stufe.`,
+        [
+          'SI-Vorsatz $\\mu$ steht für $10^{-6}$.',
+          'Erst in Basis­einheiten, dann multiplizieren.',
+          'Größen­ordnungs­check: $1000\\,\\mathrm{s}$ ist physikalisch unrealistisch.',
+        ],
+        {
+          0: 'Hier wurde der Vorsatz $\\mu$ ignoriert: $10\\,\\mu\\mathrm{F}$ heißt $10^{-5}\\,\\mathrm{F}$, nicht $10\\,\\mathrm{F}$. Drei Zehner­potenzen zu groß macht $1000$ statt $0{,}001$.',
+          2: '$\\tau = R\\cdot C$, nicht $R/C$. Ohne $C$ als Faktor wäre die Einheit $\\Omega/\\mathrm{F} = 1/\\mathrm{s}^2$ — falsche Dimension.',
+          3: '$\\tau$ ist eine Zeit­konstante, also Einheit Sekunden. Volt wäre falsch — die Spannung $U_0$ hat Volt, aber $\\tau$ nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+      ni(
+        'Ein RC-Konden­sator entlädt sich gemäß $\\dot U + U/\\tau = 0$ mit $U(0) = U_0$ und $\\tau = 2\\,\\mathrm{s}$. Nach welcher Zeit ist die Spannung auf die Hälfte gefallen (auf 2 Dezimal­stellen, in s)?',
+        1.39, 0.02, 's',
+        `**Ansatz:** Entladungs-Lösung $U(t) = U_0\\,e^{-t/\\tau}$. Halbwertszeit $t_{1/2}$ mit $U(t_{1/2}) = U_0/2$ ansetzen.
+
+**Rechnung:** $U_0\\,e^{-t/\\tau} = U_0/2 \\Rightarrow e^{-t/\\tau} = 1/2 \\Rightarrow -t/\\tau = \\ln(1/2) = -\\ln 2 \\Rightarrow t = \\tau\\cdot \\ln 2$. Mit $\\tau = 2\\,\\mathrm{s}$: $t_{1/2} = 2\\cdot \\ln 2 \\approx 2\\cdot 0{,}6931 \\approx 1{,}386\\,\\mathrm{s}$.
+
+**Probe:** Test: $U(1{,}386) = U_0\\,e^{-1{,}386/2} = U_0\\,e^{-0{,}693} \\approx U_0\\cdot 0{,}5 = U_0/2$ ✓. Allgemeine Regel: Halbwertszeit = $\\tau\\cdot \\ln 2 \\approx 0{,}693\\,\\tau$.
+
+**Typischer Fehler:** $t_{1/2} = \\tau/2$ ansetzen — das ist die Faust­formel für *lineare* Abnahme, gilt aber nicht für exponentielle Entladung. Oder $\\ln 2$ mit $\\log_{10} 2 \\approx 0{,}301$ verwechseln.`,
+        [
+          '$U(t) = U_0\\,e^{-t/\\tau}$.',
+          'Setze $U(t_{1/2}) = U_0/2$, löse nach $t_{1/2}$.',
+          '$t_{1/2} = \\tau\\,\\ln 2$. $\\ln 2 \\approx 0{,}693$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['lin1-rc'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // dgl-1-4 — DGL 2. Ordnung mit konstanten Koeffizienten  (6 subGoals)
+  // Je ≥ 5 Aufgaben = mind. 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-1-4': {
+
+    // ── [0] Char. Gleichung über Ansatz y = e^(λx) ──────────────────────
+    0: [
+      tf(
+        'Aus dem Ansatz $y = e^{\\lambda x}$ folgt für die DGL $y\'\' - 3y\' + 2y = 0$ die charakteristische Gleichung $\\lambda^2 - 3\\lambda + 2 = 0$.',
+        true,
+        `**Ansatz:** Exponential­ansatz einsetzen, $e^{\\lambda x}$ ausklammern, kürzen — übrig bleibt eine Polynom­gleichung.
+
+**Rechnung:** $y = e^{\\lambda x}$, $y\' = \\lambda\\,e^{\\lambda x}$, $y\'\' = \\lambda^2\\,e^{\\lambda x}$. Einsetzen: $\\lambda^2\\,e^{\\lambda x} - 3\\lambda\\,e^{\\lambda x} + 2\\,e^{\\lambda x} = 0$. Faktor $e^{\\lambda x}$ raus → $\\lambda^2 - 3\\lambda + 2 = 0$.
+
+**Probe:** Wurzeln $(\\lambda-1)(\\lambda-2) = 0$ → $\\lambda_1 = 1, \\lambda_2 = 2$. Test: $y = e^x$ → $y\'\' - 3y\' + 2y = e^x - 3e^x + 2e^x = 0$ ✓.
+
+**Typischer Fehler:** Beim Einsetzen die Ableitungs­potenzen vergessen — jede Ableitung von $e^{\\lambda x}$ liefert einen Faktor $\\lambda$, also $y\'\\to \\lambda$, $y\'\'\\to \\lambda^2$.`,
+        [
+          '$y = e^{\\lambda x}$ → $y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$.',
+          'Einsetzen und gemeinsamen Faktor $e^{\\lambda x}$ ausklammern.',
+          'Übrig bleibt das Polynom in $\\lambda$ mit den Koeffizienten der DGL.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['char-gleichung'] },
+      ),
+      mc(
+        'Wie lautet die charakteristische Gleichung der DGL $2y\'\' + 5y\' - 3y = 0$?',
+        [
+          '$2\\lambda^2 + 5\\lambda - 3 = 0$',
+          '$\\lambda^2 + 5\\lambda - 3 = 0$',
+          '$2\\lambda + 5 - 3 = 0$',
+          '$2\\lambda^2 + 5\\lambda + 3 = 0$',
+        ],
+        0,
+        `**Ansatz:** Koeffizienten der DGL direkt in das Polynom übertragen — der Koeffizient vor $y\'\'$ wird Koeffizient von $\\lambda^2$, vor $y\'$ von $\\lambda$, vor $y$ konstant.
+
+**Rechnung:** Aus $2y\'\' + 5y\' + (-3)y = 0$ wird $2\\lambda^2 + 5\\lambda - 3 = 0$. Vorzeichen mit übertragen!
+
+**Probe:** Diskriminante $D = 25 - 4\\cdot 2\\cdot (-3) = 25 + 24 = 49$ → $\\lambda = (-5\\pm 7)/4$, also $\\lambda_1 = 1/2, \\lambda_2 = -3$. Test mit $y = e^{x/2}$: $y\'\' = e^{x/2}/4$, $2y\'\' + 5y\' - 3y = 2/4 + 5/2 - 3 = 0{,}5 + 2{,}5 - 3 = 0$ ✓.
+
+**Typischer Fehler:** Den Koeffizienten $a = 2$ vor $\\lambda^2$ vergessen oder das Vorzeichen vor $-3$ verschlucken (so wird aus $-3$ ein $+3$).`,
+        [
+          'Welcher Koeffizient steht vor $y\'\'$? Das wird der Koeffizient von $\\lambda^2$.',
+          'Vorzeichen unbedingt mitnehmen — $-3y$ wird zu $-3$ als Konstante.',
+          'Char. Gleichung hat dieselbe Form wie die DGL, nur mit $\\lambda^k$ statt $y^{(k)}$.',
+        ],
+        {
+          1: 'Den Koeffizienten $a=2$ vor $y\'\'$ ignoriert. Char. Gleichung übernimmt alle Koeffizienten der DGL — nicht nur die einsen.',
+          2: 'Den $\\lambda^2$-Term komplett weggelassen — das wäre Ordnung 1. Ordnung 2 verlangt einen $\\lambda^2$-Term.',
+          3: 'Vorzeichen­fehler: aus $-3y$ wird $-3$ in der char. Gleichung, nicht $+3$. Vorzeichen werden 1:1 übernommen.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['char-gleichung'] },
+      ),
+      ni(
+        'Welcher positive Wert von $\\lambda$ erfüllt die charakteristische Gleichung $\\lambda^2 - \\lambda - 6 = 0$?',
+        3, 0.05, '',
+        `**Ansatz:** Quadratische Gleichung über pq-Formel oder Faktorisieren lösen, beide Wurzeln vergleichen, die positive auswählen.
+
+**Rechnung:** $\\lambda^2 - \\lambda - 6 = 0$. Diskriminante $D = 1 + 24 = 25$. $\\lambda = (1 \\pm 5)/2$ → $\\lambda_1 = 3$, $\\lambda_2 = -2$. Positive Wurzel: $\\lambda = 3$.
+
+**Probe:** $\\lambda = 3$: $9 - 3 - 6 = 0$ ✓. Faktorisieren: $(\\lambda - 3)(\\lambda + 2) = \\lambda^2 - \\lambda - 6$ ✓.
+
+**Typischer Fehler:** pq-Formel mit $p = -1$, $q = -6$ verwenden und Vorzeichen­fehler beim Quadrieren machen ($(-1/2)^2 = 1/4$, nicht $-1/4$). Oder die Diskriminante als $1 - 24 = -23$ rechnen (Vorzeichen vergessen).`,
+        [
+          'pq-Formel: $\\lambda = -p/2 \\pm \\sqrt{(p/2)^2 - q}$ mit $p = -1, q = -6$.',
+          'Diskriminante $= 1 + 24 = 25$.',
+          'Beide Wurzeln berechnen, positive auswählen.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['char-gleichung'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\'\' + 2y\' + y = 0$ die charakteristische Gleichung $\\lambda + 2\\lambda + 1 = 0$. Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — die Koeffizienten sind direkt übernommen.',
+          'Der quadratische Term $\\lambda^2$ aus $y\'\'$ wurde vergessen. Korrekt: $\\lambda^2 + 2\\lambda + 1 = 0$, faktorisiert $(\\lambda+1)^2$ → Doppelwurzel $\\lambda = -1$.',
+          'Falsch: das mittlere $\\lambda$ muss $\\lambda^2$ heißen.',
+          'Falsch: char. Gleichungen haben immer Diskriminante $\\geq 0$.',
+        ],
+        1,
+        `**Ansatz:** Beim Übersetzen $y^{(k)} \\to \\lambda^k$ darf keine Potenz fehlen — jede Ableitungs­ordnung wird zur entsprechenden $\\lambda$-Potenz.
+
+**Rechnung:** $y\'\' + 2y\' + y = 0$ → $\\lambda^2 + 2\\lambda + 1 = 0$. Diskriminante $D = 4 - 4 = 0$ → Doppelwurzel. $(\\lambda + 1)^2 = 0 \\Rightarrow \\lambda = -1$ doppelt.
+
+**Probe:** Lösung $y = (C_1 + C_2 x)\\,e^{-x}$. Test mit $y = e^{-x}$: $y\'\' = e^{-x}$, $y\' = -e^{-x}$. $y\'\' + 2y\' + y = e^{-x} - 2e^{-x} + e^{-x} = 0$ ✓.
+
+**Typischer Fehler:** Genau das, was der Lerner macht — alle Ableitungen werden naiv zu $\\lambda$, ohne Potenz. Dann erhält man fälschlich eine lineare Gleichung statt einer quadratischen.`,
+        [
+          'Welche Potenz von $\\lambda$ kommt aus $y\'\'$?',
+          '$y\'\' \\to \\lambda^2$, $y\' \\to \\lambda$, $y \\to 1$.',
+          'Die Ordnung der DGL = Grad der char. Gleichung.',
+        ],
+        {
+          0: 'Genau das ist der Fehler — der Lerner hat $\\lambda^2$ als $\\lambda$ geschrieben. Dadurch wird die Gleichung linear statt quadratisch.',
+          2: 'Der Hinweis ist im Prinzip korrekt, aber die Erklärung wäre besser, wenn sie die Lösung gleich nennt: Doppelwurzel $\\lambda = -1$ liefert $y = (C_1 + C_2 x)e^{-x}$.',
+          3: 'Char. Gleichungen können sehr wohl negative Diskriminante haben — das ist der Fall *komplexer* Wurzeln (Schwingung). Beispiel: $\\lambda^2 + 1 = 0$, $D = -4$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['char-gleichung'] },
+      ),
+      mc(
+        'Welche DGL führt auf die charakteristische Gleichung $\\lambda^2 + 4 = 0$?',
+        [
+          '$y\'\' + 4y = 0$',
+          '$y\'\' - 4y = 0$',
+          '$y\'\' + 4y\' = 0$',
+          '$4y\'\' + y = 0$',
+        ],
+        0,
+        `**Ansatz:** Rückwärts­abbildung: $\\lambda^2 \\to y\'\'$, konstante $\\to y$, $\\lambda \\to y\'$. Vorzeichen 1:1 mit übernehmen.
+
+**Rechnung:** $\\lambda^2 + 4 = 0$ → $y\'\' + 4\\cdot y = 0$ → $y\'\' + 4y = 0$.
+
+**Probe:** Mit $y = e^{\\lambda x}$ in $y\'\' + 4y = 0$ einsetzen: $\\lambda^2 e^{\\lambda x} + 4 e^{\\lambda x} = (\\lambda^2 + 4)e^{\\lambda x}$ → char. Gleichung $\\lambda^2 + 4 = 0$ ✓.
+
+**Typischer Fehler:** Die Konstante $4$ als Koeffizient vor $y\'$ statt vor $y$ einbauen ($y\'\' + 4y\' = 0$ würde zu char. Gl. $\\lambda^2 + 4\\lambda = 0$ führen). Oder Vorzeichen umkehren.`,
+        [
+          'Welcher Term in der char. Gleichung kommt aus $y$ (ohne Strich)?',
+          'Konstante in char. Gleichung ↔ Koeffizient vor $y$.',
+          '$\\lambda^k$ ↔ $y^{(k)}$, $\\lambda^0 = 1$ ↔ $y$.',
+        ],
+        {
+          1: 'Vorzeichen umgekehrt: $y\'\' - 4y = 0$ führt auf $\\lambda^2 - 4 = 0$, das hat reelle Wurzeln $\\pm 2$. Wir suchen aber $+4$ als konstanten Term.',
+          2: 'Das wäre $\\lambda^2 + 4\\lambda = 0$ — der konstante Term fehlt komplett, dafür kommt ein linearer Term hinzu. Falsche Position.',
+          3: 'Hier ist der Vorfaktor $4$ vor $y\'\'$, nicht vor $y$. Char. Gleichung wäre $4\\lambda^2 + 1 = 0$, also $\\lambda^2 = -1/4$.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['char-gleichung'] },
+      ),
+    ],
+
+    // ── [1] D > 0 (zwei reelle Wurzeln) ─────────────────────────────────
+    1: [
+      tf(
+        'Hat die charakteristische Gleichung zwei verschiedene reelle Wurzeln $\\lambda_1 \\neq \\lambda_2$, ist die allgemeine Lösung $y(x) = C_1\\,e^{\\lambda_1 x} + C_2\\,e^{\\lambda_2 x}$.',
+        true,
+        `**Ansatz:** Bei zwei verschiedenen reellen Wurzeln liefert jeder Exponential­ansatz $e^{\\lambda_i x}$ eine linear unabhängige Lösung. Die Linearkombination ist die allgemeine Lösung.
+
+**Rechnung:** Beide Lösungen $y_1 = e^{\\lambda_1 x}$ und $y_2 = e^{\\lambda_2 x}$ erfüllen die DGL. Linear unabhängig (Wronski-Determinante $\\neq 0$ für $\\lambda_1 \\neq \\lambda_2$). Allgemeine Lösung: $y = C_1 y_1 + C_2 y_2$.
+
+**Probe:** Beispiel $y\'\' - 5y\' + 6y = 0$: $\\lambda^2 - 5\\lambda + 6 = (\\lambda-2)(\\lambda-3)$ → $\\lambda_1 = 2, \\lambda_2 = 3$. Lösung $y = C_1 e^{2x} + C_2 e^{3x}$ ✓.
+
+**Typischer Fehler:** Bei zwei verschiedenen Wurzeln Doppelwurzel-Form $(C_1 + C_2 x)e^{\\lambda x}$ ansetzen — das gilt nur, wenn $\\lambda_1 = \\lambda_2$.`,
+        [
+          'Wie sieht eine Lösung der DGL bei reellen, verschiedenen Wurzeln aus?',
+          'Linear unabhängig: $e^{\\lambda_1 x}$ und $e^{\\lambda_2 x}$.',
+          'Allgemeine Lösung = Linearkombination beider.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['fall-d-pos'] },
+      ),
+      mc(
+        'Bestimme die allgemeine Lösung von $y\'\' - 5y\' + 6y = 0$.',
+        [
+          '$y = C_1\\,e^{2x} + C_2\\,e^{3x}$',
+          '$y = C_1\\,e^{-2x} + C_2\\,e^{-3x}$',
+          '$y = (C_1 + C_2 x)\\,e^{5x/2}$',
+          '$y = e^{2{,}5x}(C_1\\cos(0{,}5 x) + C_2\\sin(0{,}5 x))$',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung lösen, Diskriminante prüfen, passende Form anwenden.
+
+**Rechnung:** $\\lambda^2 - 5\\lambda + 6 = 0$ → $D = 25 - 24 = 1 > 0$ → zwei verschiedene reelle Wurzeln. $(\\lambda-2)(\\lambda-3) = 0 \\Rightarrow \\lambda_1 = 2, \\lambda_2 = 3$. Lösung: $y = C_1 e^{2x} + C_2 e^{3x}$.
+
+**Probe:** Vieta: $\\lambda_1 + \\lambda_2 = 5$ ✓, $\\lambda_1 \\cdot \\lambda_2 = 6$ ✓. Test mit $y = e^{2x}$: $y\'\'-5y\'+6y = 4 - 10 + 6 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen­fehler bei den Wurzeln (Vieta: Summe = $-(-5)/1 = +5$, also beide Wurzeln $> 0$, nicht $<0$). Oder Doppelwurzel-Form ansetzen, obwohl $D > 0$.`,
+        [
+          'Diskriminante: $D = 25 - 24 = 1 > 0$.',
+          'Wurzeln: $\\lambda_{1,2} = (5 \\pm 1)/2$.',
+          'Form für $D > 0$: $C_1 e^{\\lambda_1 x} + C_2 e^{\\lambda_2 x}$.',
+        ],
+        {
+          1: 'Vorzeichen falsch: Vieta sagt $\\lambda_1 + \\lambda_2 = +5$ (Koeffizient von $\\lambda$ mit umgekehrten Vorzeichen). Wenn beide Wurzeln negativ wären, wäre die Summe negativ.',
+          2: 'Doppelwurzel-Form passt nur bei $D = 0$. Hier ist $D = 1 \\neq 0$, also zwei verschiedene Wurzeln.',
+          3: 'Komplexe Form für $D < 0$. Hier ist $D = 1 > 0$, also reelle Wurzeln, kein Schwingungs­verhalten.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['fall-d-pos'] },
+      ),
+      ni(
+        'Bei der DGL $y\'\' - 7y\' + 12y = 0$ hat die char. Gleichung zwei reelle Wurzeln. Wie groß ist das Produkt $\\lambda_1 \\cdot \\lambda_2$?',
+        12, 0.05, '',
+        `**Ansatz:** Vieta-Satz: für $\\lambda^2 + p\\lambda + q = 0$ ist $\\lambda_1 + \\lambda_2 = -p$ und $\\lambda_1 \\cdot \\lambda_2 = q$. Direkt aus den Koeffizienten ablesen.
+
+**Rechnung:** $\\lambda^2 - 7\\lambda + 12 = 0$ → $p = -7$, $q = 12$ → Produkt $= q = 12$. Faktorisieren: $(\\lambda - 3)(\\lambda - 4) = 0 \\Rightarrow \\lambda_1 = 3, \\lambda_2 = 4$. Probe: $3\\cdot 4 = 12$ ✓.
+
+**Probe:** Summe: $\\lambda_1 + \\lambda_2 = 3 + 4 = 7 = -p$ ✓. Beide Vieta-Beziehungen erfüllt.
+
+**Typischer Fehler:** $\\lambda_1$ und $\\lambda_2$ einzeln berechnen wollen und dann multiplizieren — funktioniert auch, ist aber Umweg. Vieta liefert das Produkt direkt aus dem konstanten Term.`,
+        [
+          'Vieta: für $\\lambda^2 + p\\lambda + q = 0$ ist $\\lambda_1\\cdot\\lambda_2 = q$.',
+          'Konstanter Term der char. Gleichung ist $12$.',
+          'Optional verifizieren: $(\\lambda-3)(\\lambda-4) = \\lambda^2 - 7\\lambda + 12$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['fall-d-pos', 'char-gleichung'] },
+      ),
+      mc(
+        'Ein Lerner gibt für $y\'\' + 5y\' + 6y = 0$ die Lösung $y = C_1 e^{2x} + C_2 e^{3x}$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — die Wurzeln $2$ und $3$ erfüllen $\\lambda^2 + 5\\lambda + 6 = 0$.',
+          'Vorzeichen­fehler: $\\lambda^2 + 5\\lambda + 6 = (\\lambda + 2)(\\lambda + 3) = 0 \\Rightarrow \\lambda = -2, -3$. Korrekt: $y = C_1 e^{-2x} + C_2 e^{-3x}$.',
+          'Falsch: bei DGL 2. Ordnung gibt es immer drei Wurzeln.',
+          'Falsch: $C_1, C_2$ müssen beide gleich sein.',
+        ],
+        1,
+        `**Ansatz:** Vieta-Probe: für $\\lambda^2 + p\\lambda + q = 0$ ist $\\lambda_1 + \\lambda_2 = -p$ (Summe = *negativer* Koeffizient von $\\lambda$).
+
+**Rechnung:** Hier $p = +5$, $q = +6$. Summe der Wurzeln $= -5$, Produkt $= +6$. Beide Wurzeln müssen also negativ sein und das Produkt positiv. → $\\lambda = -2, -3$ (denn $-2 + -3 = -5$ ✓, $(-2)\\cdot(-3) = 6$ ✓).
+
+**Probe:** Test mit $y = e^{-2x}$: $y\'\' = 4e^{-2x}$, $y\' = -2e^{-2x}$. $y\'\' + 5y\' + 6y = 4 - 10 + 6 = 0$ ✓. Lerner-Form $y = e^{2x}$: $y\'\' + 5y\' + 6y = 4 + 10 + 6 = 20 \\neq 0$ — DGL nicht erfüllt.
+
+**Typischer Fehler:** Bei $(\\lambda - a)(\\lambda - b) = \\lambda^2 - (a+b)\\lambda + ab$ vergessen, dass das mittlere Vorzeichen *negativ* die Summe ist. Bei $+5\\lambda$ ist $-(a+b) = +5$, also $a+b = -5$, also Wurzeln negativ.`,
+        [
+          'Vieta: bei $\\lambda^2 + p\\lambda + q$ ist Summe $= -p$, Produkt $= q$.',
+          'Vorzeichen vor $5\\lambda$ ist $+$ → Summe der Wurzeln $= -5$.',
+          'Probe: einsetzen der Lerner-Lösung in die DGL.',
+        ],
+        {
+          0: 'Lerner-Lösung scheitert bei der Probe: $y = e^{2x}$ gibt $4 + 10 + 6 = 20$, nicht $0$. Vorzeichen verwechselt.',
+          2: 'DGL 2. Ordnung hat immer *zwei* Wurzeln (mit Vielfachheit), nie drei. Drei wäre Ordnung 3.',
+          3: '$C_1$ und $C_2$ sind beliebig wählbar (durch AB), keine Gleichheits­bedingung. Sie sind die zwei freien Parameter der Lösungs­schar.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['fall-d-pos'] },
+      ),
+      matching(
+        'Ordne jeder DGL ihr Wurzelpaar $(\\lambda_1, \\lambda_2)$ zu (alle haben $D > 0$).',
+        [
+          { left: '$y\'\' - 5y\' + 6y = 0$', right: '$\\lambda_1 = 2, \\lambda_2 = 3$' },
+          { left: '$y\'\' + 3y\' + 2y = 0$', right: '$\\lambda_1 = -1, \\lambda_2 = -2$' },
+          { left: '$y\'\' - y\' - 6y = 0$', right: '$\\lambda_1 = 3, \\lambda_2 = -2$' },
+          { left: '$y\'\' - 9y = 0$', right: '$\\lambda_1 = 3, \\lambda_2 = -3$' },
+        ],
+        `**Ansatz:** Jede char. Gleichung über pq-Formel oder Vieta lösen — Vorzeichen sorgfältig.
+
+**Rechnung:**
+- $\\lambda^2 - 5\\lambda + 6 = (\\lambda-2)(\\lambda-3)$ → $\\lambda = 2, 3$.
+- $\\lambda^2 + 3\\lambda + 2 = (\\lambda+1)(\\lambda+2)$ → $\\lambda = -1, -2$.
+- $\\lambda^2 - \\lambda - 6 = (\\lambda-3)(\\lambda+2)$ → $\\lambda = 3, -2$.
+- $\\lambda^2 - 9 = (\\lambda-3)(\\lambda+3)$ → $\\lambda = 3, -3$.
+
+**Probe:** Vieta für jedes Paar: Summe und Produkt mit den Koeffizienten der jeweiligen char. Gleichung vergleichen.
+
+**Typischer Fehler:** Bei (3) und (4) gleichgesetzte Wurzel­paare verwechseln — beide enthalten ein $\\lambda = 3$, aber unterschiedliche Partner ($-2$ vs. $-3$). Vieta-Probe entscheidet: Produkt $-6$ vs. $-9$.`,
+        [
+          'Pro DGL char. Gleichung aufstellen.',
+          'Faktorisieren oder pq-Formel.',
+          'Vorzeichen­bilanz prüfen: Summe und Produkt der Wurzeln.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['fall-d-pos'] },
+      ),
+    ],
+
+    // ── [2] D = 0 (Doppelwurzel) ────────────────────────────────────────
+    2: [
+      tf(
+        'Bei einer Doppelwurzel $\\lambda$ der char. Gleichung lautet die allgemeine Lösung $y(x) = (C_1 + C_2 x)\\,e^{\\lambda x}$.',
+        true,
+        `**Ansatz:** Bei Doppelwurzel liefert $e^{\\lambda x}$ allein nur *eine* Lösung. Die zweite linear unabhängige Lösung ist $x\\,e^{\\lambda x}$ — der Vorfaktor $x$ ist nötig.
+
+**Rechnung:** Mit $\\lambda$ doppelt: erste Lösung $y_1 = e^{\\lambda x}$, zweite Lösung $y_2 = x\\,e^{\\lambda x}$. Allgemeine Lösung: $y = C_1\\,e^{\\lambda x} + C_2\\,x\\,e^{\\lambda x} = (C_1 + C_2 x)\\,e^{\\lambda x}$.
+
+**Probe:** Beispiel $y\'\' - 4y\' + 4y = 0$: $\\lambda = 2$ doppelt. Test mit $y_2 = x\\,e^{2x}$: $y_2\' = e^{2x} + 2x\\,e^{2x}$, $y_2\'\' = 4e^{2x} + 4x\\,e^{2x}$. Einsetzen: $4e^{2x} + 4x e^{2x} - 4(e^{2x} + 2x e^{2x}) + 4x e^{2x} = 4e^{2x}(1 + x - 1 - 2x + x) = 0$ ✓.
+
+**Typischer Fehler:** Bei Doppelwurzel den $x$-Vorfaktor vergessen — dann hat man nur *eine* Lösung statt zwei und kann keine zweite AB erfüllen.`,
+        [
+          'Wie viele linear unabhängige Lösungen braucht eine DGL 2. Ordnung?',
+          'Bei Doppelwurzel: $e^{\\lambda x}$ und $x\\,e^{\\lambda x}$.',
+          'Allgemein: $(C_1 + C_2 x)\\,e^{\\lambda x}$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['fall-d-null'] },
+      ),
+      mc(
+        'Welche der folgenden DGL hat eine *Doppelwurzel* in ihrer char. Gleichung?',
+        [
+          '$y\'\' - 4y\' + 4y = 0$',
+          '$y\'\' - 5y\' + 6y = 0$',
+          '$y\'\' + y = 0$',
+          '$y\'\' - 4y = 0$',
+        ],
+        0,
+        `**Ansatz:** Diskriminante prüfen: $D = b^2 - 4ac = 0$ → Doppelwurzel.
+
+**Rechnung:**
+- $\\lambda^2 - 4\\lambda + 4$: $D = 16 - 16 = 0$ → **Doppelwurzel** $\\lambda = 2$ ✓.
+- $\\lambda^2 - 5\\lambda + 6$: $D = 25 - 24 = 1 > 0$ → zwei reelle Wurzeln (2 und 3).
+- $\\lambda^2 + 1$: $D = -4 < 0$ → komplexe Wurzeln $\\pm i$.
+- $\\lambda^2 - 4$: $D = 16 > 0$ → zwei reelle Wurzeln $\\pm 2$.
+
+**Probe:** Faktorisieren: $\\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2$ — Doppelwurzel $\\lambda = 2$ klar erkennbar.
+
+**Typischer Fehler:** $D = 0$ mit $D < 0$ verwechseln — bei $D < 0$ entsteht Schwingung, bei $D = 0$ der „Grenzfall" mit linearem Vorfaktor $x$.`,
+        [
+          'Diskriminante $D = b^2 - 4ac$ pro DGL berechnen.',
+          'Doppelwurzel ⇔ $D = 0$.',
+          'Faktorisierungs-Test: $(\\lambda - r)^2 = \\lambda^2 - 2r\\lambda + r^2$.',
+        ],
+        {
+          1: '$D = 25 - 24 = 1 \\neq 0$ → zwei verschiedene reelle Wurzeln, keine Doppelwurzel.',
+          2: '$D = 0 - 4 = -4 < 0$ → komplexe Wurzeln (Schwingung), keine Doppelwurzel.',
+          3: '$D = 0 - 4\\cdot 1\\cdot(-4) = +16 > 0$ → zwei reelle Wurzeln $\\pm 2$, keine Doppelwurzel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['fall-d-null'] },
+      ),
+      ni(
+        'Welche Doppelwurzel hat die char. Gleichung von $y\'\' - 6y\' + 9y = 0$?',
+        3, 0.05, '',
+        `**Ansatz:** Char. Gleichung aufstellen, $D = 0$ verifizieren, dann Wurzel über $\\lambda = -b/(2a)$ ablesen.
+
+**Rechnung:** $\\lambda^2 - 6\\lambda + 9 = 0$. $D = 36 - 36 = 0$ → Doppelwurzel. $\\lambda = -(-6)/(2\\cdot 1) = 3$. Faktorisierung: $(\\lambda - 3)^2 = \\lambda^2 - 6\\lambda + 9$ ✓.
+
+**Probe:** Allgemeine Lösung: $y = (C_1 + C_2 x)\\,e^{3x}$. Test mit $y_2 = x\\,e^{3x}$: $y_2\' = e^{3x} + 3x e^{3x}$, $y_2\'\' = 6e^{3x} + 9x e^{3x}$. Einsetzen: $6e^{3x} + 9x e^{3x} - 6(e^{3x} + 3x e^{3x}) + 9x e^{3x} = e^{3x}(6 + 9x - 6 - 18x + 9x) = 0$ ✓.
+
+**Typischer Fehler:** Wurzel als $-3$ ansetzen (Vorzeichen­fehler beim $-b/(2a)$) oder als $9$ direkt vom konstanten Term übernehmen ($9$ ist $\\lambda^2$, nicht $\\lambda$).`,
+        [
+          '$D = 36 - 36 = 0$ → Doppelwurzel.',
+          'Doppelwurzel-Formel: $\\lambda = -b/(2a)$.',
+          'Hier: $\\lambda = -(-6)/2 = 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['fall-d-null'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\'\' - 4y\' + 4y = 0$ die Lösung $y(x) = C\\,e^{2x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — bei Doppelwurzel reicht eine e-Funktion mit einer Konstante.',
+          'Bei Doppelwurzel braucht man eine *zweite* linear unabhängige Lösung. Korrekt: $y = (C_1 + C_2 x)\\,e^{2x}$ — der Faktor $x$ liefert die fehlende Lösung.',
+          'Die Lösung müsste $y = C\\,e^{4x}$ heißen.',
+          'DGL 2. Ordnung haben nur dann eine eindeutige Lösung, wenn alle Konstanten gleich sind.',
+        ],
+        1,
+        `**Ansatz:** Eine DGL 2. Ordnung verlangt zwei freie Konstanten (zwei Anfangs­bedingungen). Eine einzelne $e$-Funktion liefert nur einen Parameter — die zweite linear unabhängige Lösung muss ergänzt werden.
+
+**Rechnung:** Char. Gleichung $\\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2$ → $\\lambda = 2$ doppelt. Erste Lösung: $y_1 = e^{2x}$. Zweite linear unabhängige Lösung: $y_2 = x\\,e^{2x}$ (Reduktion der Ordnung oder allgemeine Theorie). Allgemein: $y = (C_1 + C_2 x)\\,e^{2x}$.
+
+**Probe:** Mit $y_2 = x\\,e^{2x}$: $y_2\' = e^{2x} + 2x e^{2x}$, $y_2\'\' = 4e^{2x} + 4x e^{2x}$. Einsetzen: $4e^{2x} + 4x e^{2x} - 4(e^{2x} + 2x e^{2x}) + 4x e^{2x} = e^{2x}(4 + 4x - 4 - 8x + 4x) = 0$ ✓.
+
+**Typischer Fehler:** Beim Auswendiglernen nur den Standardfall ($D > 0$, zwei e-Funktionen) im Kopf haben und bei Doppelwurzel automatisch $C\\,e^{\\lambda x}$ ansetzen — der $x$-Faktor wird übersehen.`,
+        [
+          'Eine DGL 2. Ordnung braucht *zwei* Lösungs­konstanten — wo ist die zweite?',
+          'Bei Doppelwurzel reicht $e^{\\lambda x}$ allein nicht.',
+          'Faktor $x$ liefert die zweite linear unabhängige Lösung.',
+        ],
+        {
+          0: 'Eine DGL 2. Ordnung benötigt *zwei* freie Konstanten — eine reicht nicht, sonst ließe sich kein AWP mit zwei Anfangs­bedingungen lösen.',
+          2: 'Doppelwurzel ist $\\lambda = 2$ (aus $-b/(2a) = 4/2 = 2$), nicht $\\lambda = 4$. Konstanter Term $4$ ist $\\lambda^2$, nicht $\\lambda$.',
+          3: 'Es gibt keine „alle Konstanten gleich"-Bedingung. $C_1$ und $C_2$ sind unabhängige Parameter, durch zwei AB festzulegen.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['fall-d-null'] },
+      ),
+      mc(
+        'Ein Auto stößt gegen einen Stoßdämpfer; die Bewegung folgt der DGL $\\ddot x + 2\\dot x + x = 0$. Welche Lösungsform passt — und wie heißt das Verhalten?',
+        [
+          '$x(t) = (C_1 + C_2 t)\\,e^{-t}$ — *kritisch gedämpfte* Bewegung (Doppelwurzel $\\lambda = -1$).',
+          '$x(t) = C_1\\,e^{-t} + C_2\\,e^{-2t}$ — gewöhnliche Dämpfung (zwei reelle Wurzeln).',
+          '$x(t) = e^{-t}(C_1 \\cos t + C_2 \\sin t)$ — schwach gedämpfte Schwingung.',
+          '$x(t) = C_1\\,e^{t} + C_2\\,t\\,e^{t}$ — instabil (positive Wurzel).',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung lösen, Diskriminante prüfen, Lösungsform und physikalisches Verhalten daraus ableiten.
+
+**Rechnung:** $\\lambda^2 + 2\\lambda + 1 = 0$. $D = 4 - 4 = 0$ → Doppelwurzel. $\\lambda = -2/2 = -1$. Lösungsform: $x(t) = (C_1 + C_2 t)\\,e^{-t}$.
+
+**Probe:** Verhalten: für $t \\to \\infty$ geht $e^{-t} \\to 0$ schneller als $t$ wächst → $x(t) \\to 0$ ohne Über­schwinger. Das ist *kritische Dämpfung* — der Grenzfall zwischen schwacher Dämpfung (Schwingung) und Über­dämpfung (zwei reelle Wurzeln, langsamere Rückkehr).
+
+**Typischer Fehler:** Bei $D = 0$ direkt zur komplexen Form springen ($e^{-t}\\cos t$ — falsch, das ist $D < 0$) oder Vorzeichen verwechseln (positive Wurzel, instabil — falsch, $\\lambda = -1 < 0$).`,
+        [
+          'Diskriminante prüfen: $4 - 4 = 0$ → Doppelwurzel.',
+          'Doppelwurzel-Lösung: $(C_1 + C_2 t)\\,e^{\\lambda t}$.',
+          'Verhalten bei $\\lambda < 0$ und Doppelwurzel: kritisch gedämpft.',
+        ],
+        {
+          1: '$D = 0$, also Doppelwurzel — *zwei verschiedene* Wurzeln gibt es hier nicht. Form $C_1 e^{\\lambda_1 t} + C_2 e^{\\lambda_2 t}$ passt nur bei $D > 0$.',
+          2: 'Schwingungs­lösung erfordert $D < 0$ (komplexe Wurzeln). Hier $D = 0$ — Grenzfall ohne Schwingung.',
+          3: '$\\lambda = -1$, also negative Wurzel → abklingende, nicht aufklingende Bewegung. Außerdem: die Form $e^t + t\\,e^t$ wäre für $\\lambda = +1$.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['fall-d-null'] },
+      ),
+    ],
+
+    // ── [3] D < 0 (komplexe Wurzeln, Schwingung) ────────────────────────
+    3: [
+      tf(
+        'Komplexe Wurzeln $\\lambda = \\alpha \\pm i\\beta$ der char. Gleichung führen auf die reelle Lösung $y(x) = e^{\\alpha x}(C_1\\cos(\\beta x) + C_2\\sin(\\beta x))$ — eine Schwingung mit Dämpfung $e^{\\alpha x}$.',
+        true,
+        `**Ansatz:** Komplexe Wurzeln treten als konjugierte Paare auf. Über Eulerformel werden $e^{(\\alpha\\pm i\\beta)x}$ in reelle $\\cos$/$\\sin$-Linearkombinationen umgeschrieben.
+
+**Rechnung:** $e^{\\lambda x} = e^{(\\alpha \\pm i\\beta)x} = e^{\\alpha x}(\\cos(\\beta x) \\pm i\\sin(\\beta x))$. Reelle Linearkombination: $y = e^{\\alpha x}(C_1\\cos(\\beta x) + C_2\\sin(\\beta x))$. Realteil $\\alpha$ → exponentielle Dämpfung, Imaginärteil $\\beta$ → Kreisfrequenz.
+
+**Probe:** Beispiel $y\'\' + 4y = 0$: $\\lambda = \\pm 2i$, $\\alpha = 0$, $\\beta = 2$. Lösung $y = C_1\\cos 2x + C_2\\sin 2x$ — ungedämpfte Schwingung mit Frequenz 2.
+
+**Typischer Fehler:** $\\alpha$ und $\\beta$ in der Lösungs­form vertauschen — der *Real*teil $\\alpha$ gehört in den Vorfaktor $e^{\\alpha x}$, der *Imaginär*teil $\\beta$ in $\\cos$ und $\\sin$.`,
+        [
+          'Eulerformel: $e^{i\\beta x} = \\cos(\\beta x) + i\\sin(\\beta x)$.',
+          'Realteil $\\alpha$ → Dämpfung im e-Faktor.',
+          'Imaginärteil $\\beta$ → Frequenz in $\\cos/\\sin$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['fall-d-neg'] },
+      ),
+      mc(
+        'Bestimme die allgemeine Lösung von $y\'\' + 9y = 0$.',
+        [
+          '$y = C_1 \\cos(3x) + C_2 \\sin(3x)$',
+          '$y = C_1 \\cos(9x) + C_2 \\sin(9x)$',
+          '$y = e^{3x}(C_1\\cos x + C_2\\sin x)$',
+          '$y = C_1 e^{3x} + C_2 e^{-3x}$',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung aufstellen, Wurzeln klassifizieren, korrekte Lösungsform.
+
+**Rechnung:** $\\lambda^2 + 9 = 0$ → $\\lambda^2 = -9$ → $\\lambda = \\pm 3i$. Also $\\alpha = 0$, $\\beta = 3$. Lösung: $y = e^{0}(C_1\\cos(3x) + C_2\\sin(3x)) = C_1\\cos(3x) + C_2\\sin(3x)$.
+
+**Probe:** $y\'\' = -9C_1\\cos(3x) - 9C_2\\sin(3x) = -9y$ → $y\'\' + 9y = 0$ ✓. Ungedämpfte Schwingung mit Frequenz $\\beta = 3$ (Periode $T = 2\\pi/3$).
+
+**Typischer Fehler:** $\\beta = 9$ statt $\\beta = \\sqrt{9} = 3$ ansetzen — die Frequenz ist die Wurzel des konstanten Terms, nicht der Term selbst. Oder reelle Form ($e^{\\pm 3x}$) ansetzen, weil das Vorzeichen in $\\lambda^2 = -9$ vergessen wurde.`,
+        [
+          'Wurzel: $\\lambda^2 = -9 \\Rightarrow \\lambda = \\pm 3i$.',
+          'Imaginärteil $\\beta = 3$ → Frequenz im $\\cos/\\sin$.',
+          'Realteil $\\alpha = 0$ → kein Dämpfungs­faktor.',
+        ],
+        {
+          1: '$\\beta = \\sqrt{9} = 3$, nicht $9$. Die Frequenz ist die Wurzel des konstanten Terms.',
+          2: 'Hier wurde $\\alpha = 3$ angenommen — falsch. Aus $\\lambda^2 + 9 = 0$ folgt $\\alpha = 0$ (kein linearer Term in $\\lambda$). Wäre $\\alpha \\neq 0$, müsste die char. Gleichung einen $\\lambda$-Term haben.',
+          3: 'Reelle Form gilt bei $D > 0$. Hier $D = -36 < 0$ → komplex, also $\\cos/\\sin$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['fall-d-neg'] },
+      ),
+      ni(
+        'Die DGL $y\'\' + 2y\' + 5y = 0$ hat komplexe Wurzeln $\\alpha \\pm i\\beta$. Wie groß ist $\\beta$?',
+        2, 0.05, '',
+        `**Ansatz:** Char. Gleichung aufstellen, Diskriminante berechnen, $\\alpha$ und $\\beta$ über $\\lambda = -b/(2a) \\pm i\\sqrt{|D|}/(2a)$ bestimmen.
+
+**Rechnung:** $\\lambda^2 + 2\\lambda + 5 = 0$. $D = 4 - 20 = -16 < 0$ → komplex. $\\lambda = (-2 \\pm \\sqrt{-16})/2 = (-2 \\pm 4i)/2 = -1 \\pm 2i$. Also $\\alpha = -1$, $\\beta = 2$.
+
+**Probe:** Lösung $y = e^{-x}(C_1\\cos 2x + C_2\\sin 2x)$. Test mit $y_1 = e^{-x}\\cos 2x$: $y_1\' = -e^{-x}\\cos 2x - 2e^{-x}\\sin 2x$, $y_1\'\' = e^{-x}\\cos 2x + 2e^{-x}\\sin 2x + 2e^{-x}\\sin 2x - 4e^{-x}\\cos 2x = -3e^{-x}\\cos 2x + 4e^{-x}\\sin 2x$. Einsetzen: $y_1\'\' + 2y_1\' + 5y_1 = e^{-x}[(-3 + 4\\sin/\\cos) + 2(-1 - 2\\sin/\\cos) + 5]\\cos 2x$ → $(-3 - 2 + 5)\\cos 2x + (4 - 4)\\sin 2x = 0$ ✓.
+
+**Typischer Fehler:** $\\beta = \\sqrt{|D|} = 4$ statt $\\beta = \\sqrt{|D|}/(2a) = 4/2 = 2$. Der Faktor $1/(2a)$ aus der pq-Formel wird oft vergessen.`,
+        [
+          '$D = b^2 - 4ac = 4 - 20 = -16$.',
+          '$\\lambda = -b/(2a) \\pm i\\,\\sqrt{|D|}/(2a)$.',
+          '$\\beta = \\sqrt{16}/2 = 2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['fall-d-neg'] },
+      ),
+      mc(
+        'Ein Lerner gibt für $y\'\' + 4y\' + 13y = 0$ die Lösung $y = e^{2x}(C_1\\cos(3x) + C_2\\sin(3x))$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Korrekt — die Wurzeln sind $2 \\pm 3i$.',
+          'Vorzeichen­fehler bei $\\alpha$: $\\lambda = (-4 \\pm \\sqrt{16-52})/2 = -2 \\pm 3i$. Also $\\alpha = -2$ (negativ), nicht $+2$. Korrekt: $y = e^{-2x}(C_1\\cos(3x) + C_2\\sin(3x))$.',
+          'Falsch: bei DGL 2. Ordnung gibt es keine komplexen Wurzeln.',
+          'Falsch: $\\beta$ muss positiv und kleiner als $\\alpha$ sein.',
+        ],
+        1,
+        `**Ansatz:** $\\alpha = -b/(2a)$ — Vorzeichen wird vom $b$-Term übernommen. Bei positivem $b$ (also $+4y\'$) ist $\\alpha$ negativ.
+
+**Rechnung:** $\\lambda^2 + 4\\lambda + 13 = 0$. $D = 16 - 52 = -36$. $\\lambda = (-4 \\pm 6i)/2 = -2 \\pm 3i$. Also $\\alpha = -2$, $\\beta = 3$. Lösung $y = e^{-2x}(C_1\\cos 3x + C_2\\sin 3x)$ — gedämpfte Schwingung.
+
+**Probe:** Test der Lerner-Form $y = e^{2x}\\cos 3x$: $y\' = 2e^{2x}\\cos 3x - 3e^{2x}\\sin 3x$, $y\'\' = 4e^{2x}\\cos 3x - 6e^{2x}\\sin 3x - 6e^{2x}\\sin 3x - 9e^{2x}\\cos 3x = -5e^{2x}\\cos 3x - 12e^{2x}\\sin 3x$. $y\'\' + 4y\' + 13y = e^{2x}[(-5 + 8 + 13)\\cos 3x + (-12 - 12)\\sin 3x] = e^{2x}(16\\cos 3x - 24\\sin 3x) \\neq 0$ — DGL nicht erfüllt.
+
+**Typischer Fehler:** Vorzeichen von $\\alpha$ aus dem $-b/(2a)$-Term verwechseln. Wenn $b > 0$ in $\\lambda^2 + b\\lambda + c$, ist $\\alpha = -b/2 < 0$ (Dämpfung). Wenn $b < 0$, ist $\\alpha > 0$ (instabil).`,
+        [
+          '$\\alpha = -b/(2a)$ — Vorzeichen aus $b$ ablesen.',
+          'In $y\'\' + 4y\' + 13y$: $b = +4$ → $\\alpha = -2$.',
+          'Probe: einsetzen der Lerner-Form in die DGL.',
+        ],
+        {
+          0: 'Lerner-Form scheitert in der Probe ($16\\cos 3x - 24\\sin 3x \\neq 0$). Vorzeichen von $\\alpha$ falsch.',
+          2: 'Doch — wenn $D < 0$, sind die Wurzeln zwingend komplex. Das ist der dritte Fall der Klassifikation.',
+          3: 'Es gibt keine Größen­ordnungs­bedingung zwischen $\\alpha$ und $\\beta$. Beide hängen unabhängig vom $b$- und $D$-Anteil ab.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['fall-d-neg'] },
+      ),
+      ni(
+        'Löse das AWP $y\'\' + 9y = 0$, $y(0) = 2$, $y\'(0) = 3$ und berechne $y(\\pi/6)$ (auf 2 Dezimal­stellen).',
+        1, 0.05, '',
+        `**Ansatz:** Allgemeine Lösung über char. Gleichung, $C_1$ und $C_2$ aus den beiden AB bestimmen, an Zielstelle auswerten.
+
+**Rechnung:** $\\lambda^2 + 9 = 0 \\Rightarrow \\lambda = \\pm 3i$ → $y = C_1\\cos 3x + C_2\\sin 3x$. AB: $y(0) = C_1 = 2$. $y\'(x) = -3C_1\\sin 3x + 3C_2\\cos 3x$, $y\'(0) = 3C_2 = 3 \\Rightarrow C_2 = 1$. Damit $y(x) = 2\\cos 3x + \\sin 3x$. Bei $x = \\pi/6$: $3x = \\pi/2$, $\\cos(\\pi/2) = 0$, $\\sin(\\pi/2) = 1$. $y(\\pi/6) = 2\\cdot 0 + 1 = 1$.
+
+**Probe:** $y(0) = 2\\cdot 1 + 0 = 2$ ✓. $y\'(0) = -3\\cdot 2\\cdot 0 + 3\\cdot 1\\cdot 1 = 3$ ✓. Lösung erfüllt beide AB.
+
+**Typischer Fehler:** Den Vorfaktor $3$ in der Ableitung vergessen ($y\'(0) = C_2$ statt $3C_2$). Oder bei der Auswertung $\\sin/\\cos$ vertauschen.`,
+        [
+          'Allgemein: $y = C_1\\cos 3x + C_2\\sin 3x$.',
+          'AB: $y(0) = C_1 = 2$; $y\'(0) = 3C_2 = 3 \\Rightarrow C_2 = 1$.',
+          'Bei $3x = \\pi/2$: $\\cos = 0$, $\\sin = 1$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['fall-d-neg'] },
+      ),
+    ],
+
+    // ── [4] Dämpfung: α<0/0/>0 ──────────────────────────────────────────
+    4: [
+      tf(
+        'Bei der DGL $y\'\' + 2y\' + 10y = 0$ ist der Real­teil der komplexen Wurzeln $\\alpha = -1 < 0$ — die Schwingung klingt also ab (gedämpfte Schwingung).',
+        true,
+        `**Ansatz:** Realteil aus $\\lambda = -b/(2a) \\pm i\\beta$ ablesen, Vorzeichen für Verhalten interpretieren.
+
+**Rechnung:** $\\lambda^2 + 2\\lambda + 10 = 0$. $D = 4 - 40 = -36 < 0$. $\\lambda = -1 \\pm 3i$. $\\alpha = -1$, $\\beta = 3$. $\\alpha < 0$ → exponentielles Abklingen.
+
+**Probe:** Lösung $y = e^{-x}(C_1\\cos 3x + C_2\\sin 3x)$. Für $x \\to \\infty$: $e^{-x} \\to 0$, also Amplitude geht gegen $0$ — gedämpfte Schwingung.
+
+**Typischer Fehler:** $\\alpha$ als positiv interpretieren, weil $b = +2$ in der DGL steht — tatsächlich ist $\\alpha = -b/(2a)$, also negativ bei positivem $b$.`,
+        [
+          '$\\alpha = -b/(2a)$ aus den Koeffizienten der DGL.',
+          '$b = 2 > 0 \\Rightarrow \\alpha = -1 < 0$.',
+          '$\\alpha < 0$ → Amplitude $e^{\\alpha x} \\to 0$ → abklingend.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['daempfung'] },
+      ),
+      mc(
+        'Welche der folgenden DGL beschreibt eine *ungedämpfte* Schwingung?',
+        [
+          '$y\'\' + y = 0$',
+          '$y\'\' + 2y\' + y = 0$',
+          '$y\'\' - 2y\' + 5y = 0$',
+          '$y\'\' + 4y\' + 5y = 0$',
+        ],
+        0,
+        `**Ansatz:** „Ungedämpft" bedeutet $\\alpha = 0$, also kein $y\'$-Term in der DGL (oder ein $y\'$-Term mit Koeffizient $0$).
+
+**Rechnung:**
+- $y\'\' + y = 0$: $\\lambda^2 + 1 = 0 \\Rightarrow \\lambda = \\pm i$, $\\alpha = 0$, $\\beta = 1$ → **ungedämpft** ✓.
+- $y\'\' + 2y\' + y = 0$: $D = 4-4 = 0$, Doppelwurzel — keine Schwingung, sondern kritisch gedämpft.
+- $y\'\' - 2y\' + 5y = 0$: $\\lambda = 1 \\pm 2i$, $\\alpha = +1 > 0$ — *aufklingende* Schwingung (instabil).
+- $y\'\' + 4y\' + 5y = 0$: $\\lambda = -2 \\pm i$, $\\alpha = -2 < 0$ — gedämpfte Schwingung.
+
+**Probe:** Lösung von $y\'\' + y = 0$: $y = C_1\\cos x + C_2\\sin x$ — Amplitude konstant für alle $x$, kein Abklingen.
+
+**Typischer Fehler:** „Doppelwurzel" mit „ungedämpft" verwechseln — Doppelwurzel ist der *Grenzfall* zwischen gedämpfter Schwingung und reiner Exponential­abnahme, kein Schwingungs­fall.`,
+        [
+          'Ungedämpft ⇔ $\\alpha = 0$ ⇔ kein $y\'$-Term.',
+          'Test: ist die DGL der Form $y\'\' + c\\,y = 0$ mit $c > 0$?',
+          'Klassifikation der anderen Optionen über char. Gleichung.',
+        ],
+        {
+          1: '$D = 0$ → Doppelwurzel → kritisch gedämpft, *keine* Schwingung. Es bleibt nur exponentielle Abnahme mit linearem Vorfaktor.',
+          2: '$\\alpha = +1 > 0$ → die „Schwingung" wächst — eine *instabile* Schwingung, keine ungedämpfte.',
+          3: '$\\alpha = -2 < 0$ → gedämpft (Amplitude klingt ab), nicht ungedämpft.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['daempfung'] },
+      ),
+      mc(
+        'Welches Verhalten zeigt die Lösung von $y\'\' + 4y\' + 5y = 0$?',
+        [
+          'Gedämpfte Schwingung mit $\\alpha = -2$, $\\beta = 1$ — die Amplitude klingt mit $e^{-2x}$ ab.',
+          'Ungedämpfte Schwingung mit Frequenz $\\beta = 5$.',
+          'Aufklingende Schwingung — Amplitude wächst exponentiell.',
+          'Kritische Dämpfung ohne Schwingung.',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung lösen, $\\alpha$ und $\\beta$ identifizieren, Vorzeichen von $\\alpha$ bestimmen.
+
+**Rechnung:** $\\lambda^2 + 4\\lambda + 5 = 0$. $D = 16 - 20 = -4 < 0$. $\\lambda = (-4 \\pm 2i)/2 = -2 \\pm i$. $\\alpha = -2$, $\\beta = 1$. Lösung: $y = e^{-2x}(C_1\\cos x + C_2\\sin x)$ — gedämpfte Schwingung.
+
+**Probe:** Verhalten: bei $x \\to \\infty$ geht $e^{-2x}\\cos x \\to 0$ — Amplitude klingt mit Faktor $e^{-2}$ pro Zeiteinheit ab.
+
+**Typischer Fehler:** $\\beta$ aus dem konstanten Term direkt ablesen ($\\beta = 5$ statt $\\beta = \\sqrt{|D|}/(2a) = 1$). Oder Vorzeichen von $\\alpha$ verwechseln.`,
+        [
+          '$D = 16 - 20 = -4 < 0$ → komplexe Wurzeln, also Schwingung.',
+          '$\\alpha = -b/(2a) = -2$.',
+          '$\\beta = \\sqrt{|D|}/(2a) = 2/2 = 1$.',
+        ],
+        {
+          1: 'Ungedämpft hieße $\\alpha = 0$ — hier ist $\\alpha = -2$. Außerdem: $\\beta = 1$, nicht $5$ (der konstante Term ist nicht direkt $\\beta$).',
+          2: 'Aufklingend wäre $\\alpha > 0$ — hier ist $\\alpha = -2 < 0$, also Dämpfung.',
+          3: 'Kritische Dämpfung wäre $D = 0$. Hier $D = -4 < 0$ → komplexe Wurzeln, also Schwingungs­fall.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['daempfung'] },
+      ),
+      mc(
+        'Ein Lerner sagt: „Eine DGL $y\'\' + 2y\' + 2y = 0$ ist instabil, weil der Koeffizient $+2$ vor $y\'$ steht." Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — positiver Vorfaktor vor $y\'$ heißt instabil.',
+          'Falsch: $\\alpha = -b/(2a)$, also bei $b = +2$ ist $\\alpha = -1 < 0$ — die Schwingung ist *abklingend*, nicht instabil. Ein positiver Vorfaktor vor $y\'$ wirkt als Dämpfung.',
+          'Falsch — die Stabilität hängt nur vom konstanten Term $c$ ab.',
+          'Falsch — DGL 2. Ordnung sind immer instabil.',
+        ],
+        1,
+        `**Ansatz:** Stabilitätskriterium über das Vorzeichen von $\\alpha$, nicht über die Vorzeichen der DGL-Koeffizienten direkt.
+
+**Rechnung:** $\\lambda^2 + 2\\lambda + 2 = 0$. $D = 4 - 8 = -4 < 0$. $\\lambda = -1 \\pm i$. $\\alpha = -1 < 0$ → gedämpft, *stabil*.
+
+**Probe:** Lösung $y = e^{-x}(C_1\\cos x + C_2\\sin x) \\to 0$ für $x \\to \\infty$ — Amplitude klingt ab. Würde der $y\'$-Term mit *negativem* Vorfaktor stehen ($y\'\' - 2y\' + 2y$), wäre $\\alpha = +1 > 0$ → instabil.
+
+**Typischer Fehler:** Positiven Koeffizienten vor $y\'$ als „antreibend" lesen — physikalisch wirkt er aber wie eine Reibungs­kraft (proportional zur Geschwindigkeit, der Bewegung entgegen­gesetzt). Das Minus­zeichen in $\\alpha = -b/(2a)$ kehrt das Vorzeichen um.`,
+        [
+          'Was sagt das Vorzeichen von $\\alpha$?',
+          '$\\alpha = -b/(2a)$ — Vorzeichen­wechsel beim Übergang DGL → $\\alpha$.',
+          '$b = +2$, $a = +1$ → $\\alpha = -1 < 0$ → stabil (gedämpft).',
+        ],
+        {
+          0: 'Genau das ist der Trugschluss — physikalisch wirkt $y\'$ mit positivem Vorfaktor als Reibung. Die Vorzeichen­umkehr in $\\alpha = -b/(2a)$ macht es zu einer Dämpfung.',
+          2: 'Stabilität hängt vom *Realteil* der Wurzeln ab — $\\alpha$ folgt aus $b$ (über $-b/(2a)$), nicht direkt aus $c$. Der konstante Term $c$ steuert primär die Frequenz und ob überhaupt Schwingung auftritt.',
+          3: 'Ist falsch — viele DGL 2. Ordnung sind stabil. Klassisch: gedämpfte Pendel, RLC-Kreise mit Widerstand. Stabilität hängt ab von den Wurzeln, nicht von der Ordnung.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['daempfung'] },
+      ),
+      matching(
+        'Ordne jeder DGL ihr Schwingungs­verhalten zu (alle haben komplexe oder Doppel­wurzeln).',
+        [
+          { left: '$y\'\' + 9y = 0$', right: 'Ungedämpfte Schwingung ($\\alpha = 0$, $\\beta = 3$)' },
+          { left: '$y\'\' + 2y\' + 10y = 0$', right: 'Abklingende Schwingung ($\\alpha = -1$, $\\beta = 3$)' },
+          { left: '$y\'\' - 2y\' + 5y = 0$', right: 'Aufklingende Schwingung ($\\alpha = +1$, $\\beta = 2$)' },
+          { left: '$y\'\' + 4y\' + 4y = 0$', right: 'Kritisch gedämpft (Doppelwurzel $\\lambda = -2$)' },
+        ],
+        `**Ansatz:** Pro DGL char. Gleichung lösen, Diskriminante prüfen, $\\alpha$ und $\\beta$ ablesen, Verhalten klassifizieren.
+
+**Rechnung:**
+- $\\lambda^2 + 9 = 0 \\Rightarrow \\pm 3i$ → $\\alpha = 0$, $\\beta = 3$, ungedämpft.
+- $\\lambda^2 + 2\\lambda + 10 = 0 \\Rightarrow -1 \\pm 3i$ → abklingend.
+- $\\lambda^2 - 2\\lambda + 5 = 0 \\Rightarrow 1 \\pm 2i$ → aufklingend ($\\alpha > 0$).
+- $\\lambda^2 + 4\\lambda + 4 = (\\lambda + 2)^2 \\Rightarrow$ Doppelwurzel $\\lambda = -2$ → kritisch gedämpft.
+
+**Probe:** Vorzeichen von $\\alpha$: Term $+y\'$ → $\\alpha < 0$ (Dämpfung); Term $-y\'$ → $\\alpha > 0$ (Anfachung); kein $y\'$-Term → $\\alpha = 0$ (ungedämpft).
+
+**Typischer Fehler:** Aufklingend mit Doppelwurzel verwechseln — beide haben kein „Schwingungs"-Charakter im engen Sinne, aber aufklingend ist Schwingung mit wachsender Amplitude, Doppelwurzel hat keine Schwingung.`,
+        [
+          'Pro DGL: Diskriminante, Wurzeln, Vorzeichen von $\\alpha$.',
+          '$\\alpha = 0$ → ungedämpft; $\\alpha < 0$ → abklingend; $\\alpha > 0$ → aufklingend.',
+          '$D = 0$ → kritische Dämpfung (kein Schwingungs­charakter).',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['daempfung', 'fall-d-neg'] },
+      ),
+    ],
+
+    // ── [5] Feder-Masse-System ──────────────────────────────────────────
+    5: [
+      tf(
+        'Für eine ungedämpfte Feder mit Masse $m = 2\\,\\mathrm{kg}$ und Federsteifigkeit $k = 8\\,\\mathrm{N/m}$ ist die Eigenkreisfrequenz $\\omega_0 = 2\\,\\mathrm{rad/s}$.',
+        true,
+        `**Ansatz:** Eigenkreisfrequenz nach Newton: $m\\ddot x + k x = 0$ → $\\ddot x + (k/m) x = 0$ → char. Gleichung $\\lambda^2 + k/m = 0$ → $\\omega_0 = \\sqrt{k/m}$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{k/m} = \\sqrt{8/2} = \\sqrt{4} = 2\\,\\mathrm{rad/s}$.
+
+**Probe:** Einheits­check: $[k/m] = \\mathrm{(N/m)/kg} = \\mathrm{(kg\\,m/s^2)/(m\\,kg)} = 1/\\mathrm{s^2}$ → $\\sqrt{1/\\mathrm{s^2}} = 1/\\mathrm{s} = \\mathrm{rad/s}$ ✓.
+
+**Typischer Fehler:** Quadrat­wurzel vergessen ($\\omega_0 = k/m = 4$ statt $\\omega_0 = 2$). Oder $k$ und $m$ vertauschen.`,
+        [
+          'Eigenkreisfrequenz: $\\omega_0 = \\sqrt{k/m}$.',
+          '$k = 8$, $m = 2$ → $k/m = 4$.',
+          '$\\sqrt{4} = 2$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['feder-masse'] },
+      ),
+      mc(
+        'Eine Feder hat $m = 4\\,\\mathrm{kg}$, $k = 16\\,\\mathrm{N/m}$, keine Dämpfung. Welche Eigenkreisfrequenz $\\omega_0$ resultiert?',
+        [
+          '$\\omega_0 = 2\\,\\mathrm{rad/s}$',
+          '$\\omega_0 = 4\\,\\mathrm{rad/s}$',
+          '$\\omega_0 = 64\\,\\mathrm{rad/s}$',
+          '$\\omega_0 = 0{,}25\\,\\mathrm{rad/s}$',
+        ],
+        0,
+        `**Ansatz:** Standardformel $\\omega_0 = \\sqrt{k/m}$ anwenden.
+
+**Rechnung:** $\\omega_0 = \\sqrt{16/4} = \\sqrt{4} = 2\\,\\mathrm{rad/s}$.
+
+**Probe:** DGL $4\\ddot x + 16 x = 0$ → $\\ddot x + 4 x = 0$ → $\\lambda^2 + 4 = 0$ → $\\lambda = \\pm 2i$. Lösung $x(t) = C_1\\cos(2t) + C_2\\sin(2t)$ — Frequenz $2$, also $\\omega_0 = 2$.
+
+**Typischer Fehler:** Wurzel vergessen ($\\omega_0 = k/m = 4$). Oder $k\\cdot m$ statt $k/m$ rechnen ($\\omega_0 = \\sqrt{16\\cdot 4} = 8$, falsch).`,
+        [
+          '$\\omega_0 = \\sqrt{k/m}$.',
+          '$k/m = 16/4 = 4$.',
+          'Wurzel: $\\sqrt{4} = 2$.',
+        ],
+        {
+          1: 'Wurzel vergessen: $k/m = 4$, aber $\\omega_0 = \\sqrt{4} = 2$, nicht $4$.',
+          2: 'Hier wurde $k\\cdot m$ statt $k/m$ gerechnet ($16\\cdot 4 = 64$). Formel: $\\omega_0 = \\sqrt{k/m}$ — Quotient, nicht Produkt.',
+          3: '$m/k$ statt $k/m$ — Reziproke verwechselt. $\\omega_0 = \\sqrt{4/16} = 0{,}5$ wäre, oder $\\sqrt{1/16}\\approx 0{,}25$, beides falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['feder-masse'] },
+      ),
+      ni(
+        'Eine ungedämpfte Feder­masse hat $m = 1\\,\\mathrm{kg}$ und $k = 4\\,\\mathrm{N/m}$. Wie groß ist die Schwingungsperiode $T$ (auf 2 Dezimal­stellen, in s)?',
+        3.14, 0.05, 's',
+        `**Ansatz:** Eigenkreisfrequenz $\\omega_0$ berechnen, dann $T = 2\\pi/\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{k/m} = \\sqrt{4/1} = 2\\,\\mathrm{rad/s}$. $T = 2\\pi/\\omega_0 = 2\\pi/2 = \\pi \\approx 3{,}14\\,\\mathrm{s}$.
+
+**Probe:** DGL $\\ddot x + 4 x = 0$, Lösung $x(t) = A\\cos(2t + \\varphi)$. Periode: $\\cos$ wiederholt sich nach $2\\pi/\\omega_0 = \\pi$ → die Schwingung dauert $\\pi$ Sekunden für eine volle Schwingung.
+
+**Typischer Fehler:** $T = \\omega_0 = 2\\,\\mathrm{s}$ ansetzen — verwechselt Frequenz und Periode. Oder $T = 1/\\omega_0 = 0{,}5\\,\\mathrm{s}$ (das wäre $1/$Kreisfrequenz, nicht $T$).`,
+        [
+          '$\\omega_0 = \\sqrt{k/m} = 2\\,\\mathrm{rad/s}$.',
+          'Periode: $T = 2\\pi/\\omega_0$.',
+          '$T = \\pi \\approx 3{,}14\\,\\mathrm{s}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['feder-masse'] },
+      ),
+      mc(
+        'Ein Lerner setzt für eine Feder mit $m = 0{,}5\\,\\mathrm{kg}$, $k = 2\\,\\mathrm{N/m}$ die Eigenkreisfrequenz als $\\omega_0 = k/m = 4\\,\\mathrm{rad/s}$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — $\\omega_0 = k/m = 4\\,\\mathrm{rad/s}$.',
+          'Wurzel vergessen: $\\omega_0 = \\sqrt{k/m} = \\sqrt{4} = 2\\,\\mathrm{rad/s}$. Einheits­check: $\\sqrt{(N/m)/kg} = 1/s$ — die Wurzel ist nötig, sonst stimmt die Einheit nicht.',
+          'Falsch — $\\omega_0$ hängt nur von $m$ ab.',
+          'Falsch — Eigenfrequenz ist immer $1\\,\\mathrm{rad/s}$.',
+        ],
+        1,
+        `**Ansatz:** Ergebnis dimensions­geprüft: $[k/m] = \\mathrm{N/(m\\cdot kg)} = 1/\\mathrm{s^2}$. Daher *muss* eine Wurzel gezogen werden, um auf Einheit Sekunde$^{-1}$ zu kommen.
+
+**Rechnung:** $\\omega_0 = \\sqrt{k/m} = \\sqrt{2/0{,}5} = \\sqrt{4} = 2\\,\\mathrm{rad/s}$. Die Lerner-Variante $\\omega_0 = 4$ hat Einheit $1/\\mathrm{s^2}$, nicht $\\mathrm{rad/s}$.
+
+**Probe:** DGL: $0{,}5\\,\\ddot x + 2 x = 0$ → $\\ddot x + 4 x = 0$ → $\\lambda^2 + 4 = 0$ → $\\lambda = \\pm 2i$. Frequenz $\\beta = 2$, also $\\omega_0 = 2$, nicht $4$.
+
+**Typischer Fehler:** Die Formel $k/m$ direkt mit $\\omega_0$ identifizieren, ohne die Wurzel. Tatsächlich ist $k/m = \\omega_0^2$, also $\\omega_0 = \\sqrt{k/m}$.`,
+        [
+          'Formel: $\\omega_0 = \\sqrt{k/m}$, nicht $k/m$.',
+          'Einheits­check: $\\sqrt{[k/m]} = 1/\\mathrm{s} = \\mathrm{rad/s}$.',
+          'Für die DGL: $\\omega_0$ ist die Wurzel des konstanten Terms.',
+        ],
+        {
+          0: 'Genau das ist der Fehler — die Wurzel fehlt. Einheits­check: $k/m$ hat Einheit $1/\\mathrm{s^2}$, nicht $1/\\mathrm{s}$.',
+          2: '$\\omega_0$ hängt vom *Quotienten* $k/m$ ab — beide Größen wirken zusammen. Doppelte $m$ → halbe $\\omega_0^2$, doppelte $k$ → doppelte $\\omega_0^2$.',
+          3: 'Eigenfrequenz hängt von Bauteil­werten ab und ist im Allgemeinen nicht $1\\,\\mathrm{rad/s}$. Beispiel: Pendel mit $l=1\\,\\mathrm{m}$ → $\\omega_0 = \\sqrt{g/l} \\approx 3{,}13\\,\\mathrm{rad/s}$.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['feder-masse'] },
+      ),
+      ni(
+        'Eine Feder mit $m = 1\\,\\mathrm{kg}$, $d = 2\\,\\mathrm{Ns/m}$, $k = 10\\,\\mathrm{N/m}$ schwingt gedämpft gemäß $m\\ddot x + d\\dot x + kx = 0$. Welche Kreisfrequenz $\\omega_d$ hat die gedämpfte Schwingung (in rad/s)?',
+        3, 0.05, 'rad/s',
+        `**Ansatz:** Char. Gleichung lösen, $\\beta$ identifizieren — $\\beta = \\omega_d$ ist die Frequenz der gedämpften Schwingung.
+
+**Rechnung:** $\\ddot x + 2\\dot x + 10 x = 0$ (durch $m=1$ teilen). $\\lambda^2 + 2\\lambda + 10 = 0$. $D = 4 - 40 = -36$. $\\lambda = (-2 \\pm 6i)/2 = -1 \\pm 3i$. Also $\\alpha = -1$ (Dämpfungs­rate), $\\beta = \\omega_d = 3\\,\\mathrm{rad/s}$.
+
+**Probe:** $\\omega_d^2 = \\omega_0^2 - \\alpha^2$ (Allgemein­formel der gedämpften Schwingung). Hier $\\omega_0 = \\sqrt{k/m} = \\sqrt{10}$, $\\alpha = d/(2m) = 1$, also $\\omega_d^2 = 10 - 1 = 9$ → $\\omega_d = 3$ ✓.
+
+**Typischer Fehler:** $\\omega_d = \\omega_0 = \\sqrt{10} \\approx 3{,}16$ statt $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = 3$. Bei schwacher Dämpfung sind beide nah beieinander, aber nicht identisch.`,
+        [
+          'Char. Gleichung: $\\lambda^2 + 2\\lambda + 10 = 0$.',
+          'Wurzeln: $\\lambda = -1 \\pm 3i$.',
+          '$\\omega_d = \\beta = 3\\,\\mathrm{rad/s}$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['feder-masse'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-2-2 — DGL-Systeme  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
