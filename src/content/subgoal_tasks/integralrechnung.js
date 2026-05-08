@@ -17,6 +17,961 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const integralrechnungSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-1 — Stammfunktion: das Umkehren der Ableitung  (3 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-1': {
+
+    // ── [0] Stammfunktion durch „Rückwärts-Ableiten" erkennen ──────────────
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[stammfunktion]
+      tf(
+        'Eine Funktion $F$ heißt Stammfunktion von $f$, wenn $F\'(x) = f(x)$ für alle $x$ im Definitionsbereich gilt.',
+        true,
+        `**Ansatz:** Die Definition der Stammfunktion direkt prüfen.
+
+**Rechnung:** Genau diese Bedingung — $F'(x) = f(x)$ — definiert die Stammfunktion. Integration ist die Umkehrung der Differentiation.
+
+**Probe:** Für $f(x) = 2x$ ist $F(x) = x^{2}$ Stammfunktion, denn $(x^{2})' = 2x$. ✓
+
+**Typischer Fehler:** Richtung der Ableitung verwechseln — gefordert ist $F'(x) = f(x)$, NICHT $f'(x) = F(x)$.`,
+        [
+          'Was ist die Umkehrung der Ableitung?',
+          'Definition: $F$ ist Stammfunktion von $f$, wenn ein bestimmter Ableitungs-Zusammenhang gilt.',
+          'Schau die Ableitung von $F$ an — was muss sie laut Definition ergeben?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 2: SG 0 · apply-guided · multiple-choice · uses=[rueckwaerts]
+      mc(
+        'Welche Funktion $F$ ist eine Stammfunktion von $f(x) = 4x^{3}$ — gefunden durch Rückwärts-Ableiten?',
+        [
+          '$F(x) = x^{4}$',
+          '$F(x) = 12x^{2}$',
+          '$F(x) = 4x^{4}$',
+          '$F(x) = \\frac{x^{4}}{4}$',
+        ],
+        0,
+        `**Ansatz:** Rückwärts-Ableiten — welcher Term ergibt beim Ableiten $4x^{3}$?
+
+**Rechnung:** $(x^{4})' = 4 \\cdot x^{4-1} = 4x^{3} = f(x)$ ✓ (Potenzregel: Exponent kommt nach vorn, neuer Exponent ist um 1 kleiner).
+
+**Probe:** $\\frac{d}{dx}(x^{4}) = 4x^{3}$. ✓
+
+**Typischer Fehler:** Statt $x^{4}$ wird $4x^{4}$ angegeben — der Faktor $4$ wurde nicht durch den neuen Exponenten geteilt.`,
+        [
+          'Welche Operation kehrt das Ableiten um? Suche die Funktion, deren Ableitung $4x^{3}$ ergibt.',
+          'Potenzregel rückwärts: aus $x^{n}$ wird beim Integrieren $\\frac{x^{n+1}}{n+1}$.',
+          'Für $f(x) = 4x^{3}$: Exponent um $1$ erhöhen → $x^{4}$. Den Faktor $4$ durch den neuen Exponenten $4$ teilen — also $4 \\cdot \\frac{x^{4}}{4} = x^{4}$.',
+        ],
+        {
+          1: 'Du hast $4x^{3}$ abgeleitet statt eine Stammfunktion gesucht — falsche Richtung. $\\frac{d}{dx}(4x^{3}) = 12x^{2}$, aber die Probe verlangt das Umgekehrte: $F(x) = x^{4}$ mit $F\'(x) = 4x^{3}$.',
+          2: 'Beim Integrieren von $4x^{3}$ muss der Faktor durch den neuen Exponenten geteilt werden: $\\int 4x^{3}\\,dx = 4 \\cdot \\frac{x^{4}}{4} = x^{4}$. Probe: $(4x^{4})\' = 16x^{3} \\neq 4x^{3}$.',
+          3: 'Du hast $\\int x^{3}\\,dx = \\frac{x^{4}}{4}$ gerechnet — den Faktor $4$ aber vergessen. Korrekt: $\\int 4x^{3}\\,dx = 4 \\cdot \\frac{x^{4}}{4} = x^{4}$, nicht $\\frac{x^{4}}{4}$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['rueckwaerts'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · multiple-choice · uses=[rueckwaerts, stammfunktion]
+      mc(
+        'Welche der folgenden Funktionen ist eine Stammfunktion von $f(x) = 6x^{2} + 4$?',
+        [
+          '$F(x) = 2x^{3} + 4x$',
+          '$F(x) = 12x$',
+          '$F(x) = 6x^{3} + 4x$',
+          '$F(x) = 2x^{3} + 4$',
+        ],
+        0,
+        `**Ansatz:** Gliedweise integrieren — Potenzregel rückwärts auf jeden Summanden.
+
+**Rechnung:** $\\int 6x^{2}\\,dx = 6 \\cdot \\frac{x^{3}}{3} = 2x^{3}$. $\\int 4\\,dx = 4x$. Summe: $F(x) = 2x^{3} + 4x$.
+
+**Probe:** $F'(x) = 6x^{2} + 4 = f(x)$. ✓
+
+**Typischer Fehler:** Konstante $4$ vergessen zu integrieren — $\\int 4\\,dx = 4x$ (nicht $4$), denn $(4x)' = 4$.`,
+        [
+          'Setze die Potenzregel gliedweise an: für jedes $a x^{n}$ ist die Stammfunktion $a \\cdot \\frac{x^{n+1}}{n+1}$.',
+          'Konstante $4$ ist $4 \\cdot x^{0}$ — Stammfunktion: $4 \\cdot \\frac{x^{1}}{1} = 4x$.',
+          'Probe: leite dein Ergebnis ab und prüfe, ob $6x^{2} + 4$ herauskommt.',
+        ],
+        {
+          1: 'Du hast $f(x) = 6x^{2} + 4$ abgeleitet statt eine Stammfunktion gesucht: $f\'(x) = 12x + 0 = 12x$. Gesucht ist die Umkehrung. Korrekt: $F(x) = 2x^{3} + 4x$, denn $F\'(x) = 6x^{2} + 4$.',
+          2: 'Beim Integrieren von $6x^{2}$ muss der Faktor durch den neuen Exponenten ($3$) geteilt werden: $\\int 6x^{2}\\,dx = 2x^{3}$, nicht $6x^{3}$. Probe: $(6x^{3})\' = 18x^{2} \\neq 6x^{2}$.',
+          3: 'Der konstante Summand $4$ in $f(x)$ wurde nicht integriert — $\\int 4\\,dx = 4x$, nicht $4$. Probe: $(2x^{3} + 4)\' = 6x^{2} + 0 \\neq 6x^{2} + 4$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['rueckwaerts', 'stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[stammfunktion]
+      mc(
+        'Eine Studentin soll eine Stammfunktion von $f(x) = 3x^{2}$ angeben und schreibt $F(x) = 6x$. Was ist der Fehler?',
+        [
+          'Sie hat $f$ abgeleitet statt eine Stammfunktion gesucht — Stammfunktion und Ableitung sind invers, sie ist in die falsche Richtung gelaufen. Korrekt: $F(x) = x^{3}$, denn $(x^{3})\' = 3x^{2}$.',
+          'Nichts — $F(x) = 6x$ ist korrekt, denn $(3x^{2})\' = 6x$.',
+          'Sie hat den Faktor $3$ nicht durch den neuen Exponenten geteilt — korrekt wäre $F(x) = x^{2}$.',
+          'Sie hat zu weit integriert — korrekt wäre $F(x) = 3x^{3}$.',
+        ],
+        0,
+        `**Ansatz:** Probe — das behauptete $F$ ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $(6x)' = 6$, aber $f(x) = 3x^{2}$. Mismatch: $6 \\neq 3x^{2}$. Beobachtung: $(3x^{2})' = 6x$ — die Studentin hat genau $f(x)$ abgeleitet, statt eine Stammfunktion zu finden.
+
+**Probe:** Korrekte Stammfunktion ist $F(x) = x^{3}$ — denn $F'(x) = 3x^{2} = f(x)$. ✓
+
+**Typischer Fehler:** Stammfunktion und Ableitung verwechseln — wer in die falsche Richtung rechnet, bekommt $f'$ statt $F$.`,
+        [
+          'Mache die Probe: leite ihr $F$ ab und schaue, ob $f$ herauskommt.',
+          '$(6x)\' = ?$ — vergleiche mit $f(x) = 3x^{2}$.',
+          'Schau in die andere Richtung: $(3x^{2})\' = ?$ — vielleicht hat sie genau das berechnet.',
+        ],
+        {
+          1: 'Probe widerlegt das sofort: $(6x)\' = 6 \\neq 3x^{2}$. Wer hier "korrekt" sagt, hat die Probe nicht durchgeführt.',
+          2: '$F(x) = x^{2}$ wäre auch falsch: $(x^{2})\' = 2x \\neq 3x^{2}$. Korrekt: Exponent von $3x^{2}$ um $1$ erhöhen ($x^{3}$) und den Faktor $3$ durch den neuen Exponenten $3$ teilen — $\\frac{3x^{3}}{3} = x^{3}$.',
+          3: '$F(x) = 3x^{3}$ wäre auch falsch: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Hier wurde nicht "zu weit integriert", sondern schlicht abgeleitet — die Studentin lief in die umgekehrte Richtung.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['stammfunktion'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · matching · uses=[stammfunktion, rueckwaerts]
+      matching(
+        'Ordne jeder Funktion $f(x)$ eine korrekte Stammfunktion $F(x)$ zu (Probe: $F\'(x) = f(x)$).',
+        [
+          { left: '$f(x) = 4x$',     right: '$F(x) = 2x^{2}$' },
+          { left: '$f(x) = 5x^{4}$', right: '$F(x) = x^{5}$' },
+          { left: '$f(x) = 12x^{2}$', right: '$F(x) = 4x^{3}$' },
+          { left: '$f(x) = 7$',      right: '$F(x) = 7x$' },
+        ],
+        `**Ansatz:** Leite jede rechte Seite ab und vergleiche mit der linken.
+
+**Rechnung:**
+- $(2x^{2})' = 4x$ ✓
+- $(x^{5})' = 5x^{4}$ ✓
+- $(4x^{3})' = 12x^{2}$ ✓
+- $(7x)' = 7$ ✓
+
+**Probe:** Alle vier Ableitungen reproduzieren die zugehörige linke Spalte eindeutig.
+
+**Typischer Fehler:** Faktor und Exponent vertauschen — z. B. $5x^{5}$ statt $x^{5}$ als Stammfunktion von $5x^{4}$.`,
+        [
+          'Leite jede rechte Seite ab — das Ergebnis muss die zugeordnete linke Seite ergeben.',
+          'Potenzregel: $(x^{n})\' = n \\cdot x^{n-1}$.',
+          'Konstante mal $x$: $(c \\cdot x)\' = c$. Konstante allein: $(c)\' = 0$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['stammfunktion', 'rueckwaerts'] },
+      ),
+    ],
+
+    // ── [1] Integrationskonstante $+C$ nicht vergessen ──────────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[plus-c]
+      tf(
+        'Wenn $F(x) = x^{2}$ Stammfunktion von $f(x) = 2x$ ist, dann ist auch $G(x) = x^{2} + 17$ Stammfunktion von $f(x) = 2x$.',
+        true,
+        `**Ansatz:** Probe — beide Funktionen ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $F'(x) = 2x$ ✓. $G'(x) = (x^{2} + 17)' = 2x + 0 = 2x$ ✓. Beide sind Stammfunktionen.
+
+**Probe:** Konstanten verschwinden beim Ableiten — egal welcher Wert addiert wird, die Ableitung bleibt gleich.
+
+**Typischer Fehler:** Glauben, "die" Stammfunktion sei eindeutig. Tatsächlich gibt es eine ganze Familie $F + C$ mit identischer Ableitung.`,
+        [
+          'Was passiert beim Ableiten mit einer additiven Konstanten?',
+          '$(x^{2} + 17)\' = ?$',
+          'Vergleiche das Ergebnis mit $f(x) = 2x$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 7: SG 1 · apply-guided · multiple-choice · uses=[plus-c]
+      mc(
+        '$F(x) = x^{3}$ ist eine Stammfunktion von $f(x) = 3x^{2}$. Welche der folgenden Funktionen ist EBENFALLS eine Stammfunktion von $f(x) = 3x^{2}$?',
+        [
+          '$F(x) = x^{3} - 12$',
+          '$F(x) = 3x^{3}$',
+          '$F(x) = x^{3} + 3x^{2}$',
+          '$F(x) = 3x^{2} + C$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktionen unterscheiden sich nur um eine additive Konstante: $F + C$ ist auch Stammfunktion.
+
+**Rechnung:** Mit $C = -12$ ergibt $F(x) = x^{3} - 12$. Probe: $(x^{3} - 12)' = 3x^{2} - 0 = 3x^{2} = f(x)$. ✓
+
+**Probe:** Alle Familienmitglieder $x^{3} + C$ haben dieselbe Ableitung $3x^{2}$.
+
+**Typischer Fehler:** Den Funktionsterm $f$ selbst zur Stammfunktion addieren — $f$ und $F$ stehen im Ableitungs-Verhältnis, nicht im Additionsverhältnis.`,
+        [
+          'Welche zusätzliche Operation darf man auf $F$ anwenden, ohne die Ableitung zu verändern?',
+          'Konstante addieren — Wert beliebig.',
+          'Suche die Option, die genau "$x^{3}$ + Konstante" ist.',
+        ],
+        {
+          1: 'Du hast den Faktor $3$ multipliziert statt eine Konstante addiert. Probe: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Stammfunktionen unterscheiden sich nur additiv um eine Konstante, nicht multiplikativ.',
+          2: 'Du hast $f(x)$ zu $F(x)$ addiert — das ist keine Konstante, sondern ein Funktionsterm. Probe: $(x^{3} + 3x^{2})\' = 3x^{2} + 6x \\neq 3x^{2}$. Erlaubt ist nur das Addieren einer reinen Zahl.',
+          3: 'Du hast $f$ und $F$ verwechselt: $f(x) = 3x^{2}$ ist die zu integrierende Funktion, $F(x) = x^{3}$ ist die Stammfunktion. Probe: $(3x^{2} + C)\' = 6x \\neq 3x^{2}$ — also keine Stammfunktion.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · multiple-choice · uses=[plus-c]
+      mc(
+        'Schreibe das unbestimmte Integral $\\int 8x^{3}\\,dx$ vollständig — inklusive Integrationskonstante.',
+        [
+          '$2x^{4} + C$',
+          '$2x^{4}$',
+          '$8x^{4} + C$',
+          '$24x^{2} + C$',
+        ],
+        0,
+        `**Ansatz:** Potenzregel rückwärts plus Integrationskonstante.
+
+**Rechnung:** $\\int 8x^{3}\\,dx = 8 \\cdot \\frac{x^{4}}{4} + C = 2x^{4} + C$.
+
+**Probe:** $(2x^{4} + C)' = 8x^{3} + 0 = 8x^{3} = f(x)$. ✓
+
+**Typischer Fehler:** $+C$ weglassen — bei unbestimmten Integralen ist das ein Standardpunktabzug in Prüfungen.`,
+        [
+          'Potenzregel: $\\int x^{n}\\,dx = \\frac{x^{n+1}}{n+1} + C$ für $n \\neq -1$.',
+          'Faktor $8$ darf vor das Integral gezogen werden — und dann durch den neuen Exponenten geteilt.',
+          'Vergiss das $+C$ nicht!',
+        ],
+        {
+          1: 'Der Funktionsterm $2x^{4}$ ist richtig, aber die Integrationskonstante $+C$ fehlt. Beim unbestimmten Integral ist die Stammfunktion nur bis auf eine Konstante bestimmt — $C$ MUSS mitgeschrieben werden.',
+          2: 'Der Faktor $8$ wurde nicht durch den neuen Exponenten $4$ geteilt: $\\int 8x^{3}\\,dx = 8 \\cdot \\frac{x^{4}}{4} = 2x^{4}$, nicht $8x^{4}$. Probe: $(8x^{4})\' = 32x^{3} \\neq 8x^{3}$.',
+          3: 'Du hast $8x^{3}$ abgeleitet ($24x^{2}$) statt zu integrieren — falsche Richtung. Probe: $(24x^{2} + C)\' = 48x \\neq 8x^{3}$. Korrekt: Exponent erhöhen, nicht absenken.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[plus-c]
+      mc(
+        'Tom rechnet $\\int (4x + 6)\\,dx = 2x^{2} + 6x$ und gibt das als Endergebnis ab. Was ist der Fehler?',
+        [
+          'Die Integrationskonstante $+C$ fehlt — bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt. Korrekt: $2x^{2} + 6x + C$.',
+          'Der Funktionsterm ist falsch — korrekt wäre $4x^{2} + 6$.',
+          '$\\int 6\\,dx = 0$, weil $6$ konstant ist — die $6x$ darf nicht auftauchen.',
+          'Tom hätte den Faktor $4$ nicht durch den neuen Exponenten teilen dürfen — korrekt wäre $4x^{2} + 6x$.',
+        ],
+        0,
+        `**Ansatz:** Regel des unbestimmten Integrals — Stammfunktion plus Integrationskonstante.
+
+**Rechnung:** $\\int 4x\\,dx = 2x^{2}$, $\\int 6\\,dx = 6x$, also $\\int (4x + 6)\\,dx = 2x^{2} + 6x + C$. Toms Funktionsterm ist korrekt — ihm fehlt nur das $+C$.
+
+**Probe:** $(2x^{2} + 6x + C)' = 4x + 6 + 0 = 4x + 6 = f(x)$. ✓
+
+**Typischer Fehler:** Beim unbestimmten Integral wird $+C$ erfahrungsgemäß bei jedem zweiten Studenten-Ergebnis vergessen — Standardpunktabzug.`,
+        [
+          'Was verlangt das *unbestimmte* Integral, was das bestimmte nicht braucht?',
+          'Familie aller Stammfunktionen — wie kennzeichnet man sie?',
+          'Schau auf das Endergebnis: fehlt etwas Wichtiges am Schluss?',
+        ],
+        {
+          1: 'Toms Funktionsterm ist korrekt: $\\int 4x\\,dx = 4 \\cdot \\frac{x^{2}}{2} = 2x^{2}$ (Faktor $4$ durch neuen Exponenten $2$ geteilt). $4x^{2} + 6$ wäre die Ableitung von $\\frac{4}{3}x^{3} + 6x$ — das passt nicht zur Aufgabe.',
+          2: 'Falsch — eine Konstante hat NICHT das Integral $0$. $\\int 6\\,dx = 6x + C$, denn $(6x)\' = 6$. Toms $6x$ ist genau richtig.',
+          3: 'Falsch — Toms $2x^{2}$ ist genau richtig: $\\int 4x\\,dx = 4 \\cdot \\frac{x^{2}}{2} = 2x^{2}$. Den Faktor durch den neuen Exponenten zu teilen ist die korrekte Anwendung der Potenzregel.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Matrix-Zeile 10 (Zusatz, da ex-int-1-1-d schon Zeile 10 deckt): SG 1 · transfer · multiple-choice · uses=[plus-c]
+      mc(
+        'Welche Aussage über die Funktion $h(x) = x^{4} + 5x + 9$ ist korrekt?',
+        [
+          '$h$ ist eine von unendlich vielen Stammfunktionen von $f(x) = 4x^{3} + 5$ — sie unterscheiden sich nur um eine additive Konstante.',
+          '$h$ ist die einzige Stammfunktion von $f(x) = 4x^{3} + 5$, weil die $9$ den Anfangswert eindeutig festlegt.',
+          '$h$ ist gar keine Stammfunktion, weil eine Konstante wie $9$ in einer Stammfunktion nicht vorkommen darf.',
+          '$h$ ist Stammfunktion von $f(x) = h\'(x) + C$ — die Konstante $C$ ist wesentlicher Teil von $f$.',
+        ],
+        0,
+        `**Ansatz:** Probe — $h$ ableiten, $f$ identifizieren; dann reflektieren, ob $h$ eindeutig ist.
+
+**Rechnung:** $h'(x) = 4x^{3} + 5 + 0 = 4x^{3} + 5$. Also ist $h$ Stammfunktion von $f(x) = 4x^{3} + 5$. Auch $h(x) - 9 = x^{4} + 5x$ oder $h(x) + 100 = x^{4} + 5x + 109$ wären Stammfunktionen — Familie $\\{x^{4} + 5x + C : C \\in \\mathbb{R}\\}$.
+
+**Probe:** $(x^{4} + 5x + C)' = 4x^{3} + 5$ unabhängig vom Wert von $C$. Die $9$ verschwindet beim Ableiten.
+
+**Typischer Fehler:** Glauben, eine konkrete Konstante in der Stammfunktion legt sie fest. Tatsächlich verschwindet die Konstante beim Ableiten — die Familie bleibt unendlich, solange keine Anfangsbedingung dazukommt.`,
+        [
+          'Leite $h$ ab und finde so $f$.',
+          'Wie viele Funktionen haben dieselbe Ableitung wie $h$?',
+          'Was passiert, wenn du in $h$ die $9$ durch $4$ oder $-100$ ersetzt? Bleibt die Ableitung gleich?',
+        ],
+        {
+          1: 'Falsch — die $9$ ist nur ein bestimmter Wert von $C$. $x^{4} + 5x + 100$ ist genauso eine Stammfunktion. Eindeutigkeit bekommt man erst durch eine Anfangsbedingung wie $h(0) = 9$.',
+          2: 'Probe widerlegt: $h\'(x) = 4x^{3} + 5$, also IST $h$ Stammfunktion. Konstanten gehören selbstverständlich in Stammfunktionen — sie sind das $+C$ der Familie.',
+          3: 'Falsch — die Integrationskonstante steht in $F$, nicht in $f$. $f$ ist die zu integrierende Funktion und hat per Definition keinen $+C$-Anhang.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['plus-c'] },
+      ),
+
+      // Bonus (Mengen-Regel): SG 1 · ni · uses=[plus-c]
+      ni(
+        'Eine Funktion $F$ erfüllt $F\'(x) = 6x^{2}$ und die Anfangsbedingung $F(1) = 4$. Allgemeine Stammfunktion: $F(x) = 2x^{3} + C$. Bestimme den Wert von $C$.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, dann Anfangsbedingung einsetzen, um $C$ festzulegen.
+
+**Rechnung:** $F(x) = 2x^{3} + C$. Einsetzen: $F(1) = 2 \\cdot 1^{3} + C = 2 + C$. Bedingung: $2 + C = 4 \\Rightarrow C = 2$.
+
+**Probe:** Mit $C = 2$ gilt $F(x) = 2x^{3} + 2$, $F(1) = 2 + 2 = 4$ ✓ und $F'(x) = 6x^{2}$ ✓.
+
+**Typischer Fehler:** $C = 4$ einsetzen, weil rechts der Wert $4$ steht — vergisst, dass $2x^{3}$ bei $x = 1$ schon einen Beitrag von $2$ liefert.`,
+        [
+          'Forme die Anfangsbedingung in eine Gleichung für $C$ um.',
+          'Berechne $F(1) = 2 \\cdot 1^{3} + C$ und setze gleich $4$.',
+          'Löse die entstandene Gleichung $2 + C = 4$ nach $C$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['plus-c'] },
+      ),
+    ],
+
+    // ── [2] Probe durch Ableiten der gefundenen Stammfunktion ───────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[probe-ableiten]
+      tf(
+        'Um zu prüfen, ob $F(x) = x^{4} + 2$ eine Stammfunktion von $f(x) = 4x^{3}$ ist, leitet man $F$ ab und vergleicht das Ergebnis mit $f$.',
+        true,
+        `**Ansatz:** Definition der Probe — Ableitung von $F$ muss $f$ ergeben.
+
+**Rechnung:** $F'(x) = (x^{4} + 2)' = 4x^{3} + 0 = 4x^{3} = f(x)$. ✓ Probe erfolgreich.
+
+**Probe:** Genau dies IST die Probe — Ableiten und mit $f$ vergleichen.
+
+**Typischer Fehler:** Statt $F$ ableiten, $f$ erneut integrieren wollen — das ist nur eine "Lösung", nicht die Probe.`,
+        [
+          'Was ist die Definition einer Stammfunktion? $F\'(x) = ?$',
+          'Probe = Anwendung der Definition auf das konkrete Paar $(F, f)$.',
+          'Hier: $F$ ableiten und mit $f$ vergleichen — passt die Aussage zu dieser Methode?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[probe-ableiten]
+      mc(
+        'Behauptung: $F(x) = \\tfrac{1}{2}x^{4} + x$ ist Stammfunktion von $f(x) = 2x^{3} + 1$. Welche Rechnung ist die korrekte Probe?',
+        [
+          '$F\'(x) = 2x^{3} + 1$ — stimmt mit $f$ überein, also ist $F$ Stammfunktion.',
+          '$\\int F(x)\\,dx = \\tfrac{1}{10}x^{5} + \\tfrac{1}{2}x^{2}$ — und dann mit $f$ vergleichen.',
+          '$f\'(x) = 6x^{2}$ — und dann mit $F$ vergleichen.',
+          'Setze $x = 1$: $F(1) = 1{,}5$ und $f(1) = 3$ — die Werte unterscheiden sich, also keine Probe nötig.',
+        ],
+        0,
+        `**Ansatz:** Probe einer behaupteten Stammfunktion = $F$ ableiten und mit $f$ vergleichen.
+
+**Rechnung:** $F'(x) = (\\tfrac{1}{2}x^{4})' + (x)' = \\tfrac{1}{2} \\cdot 4x^{3} + 1 = 2x^{3} + 1 = f(x)$. ✓
+
+**Probe:** Identität gilt für alle $x$ — die Probe bestätigt: $F$ ist Stammfunktion.
+
+**Typischer Fehler:** $F$ erneut integrieren oder $f$ ableiten — beides ist die falsche Operation für die Probe.`,
+        [
+          'Definition Stammfunktion: $F\'(x) = f(x)$. Womit fängt die Probe an?',
+          '$F$ ableiten — gliedweise.',
+          'Vergleiche das Ergebnis mit $f(x) = 2x^{3} + 1$.',
+        ],
+        {
+          1: 'Du integrierst die Stammfunktion — dabei kommst du zu noch höheren Stammfunktionen, nicht zu $f$. Die Probe verlangt den umgekehrten Weg: $F$ ableiten, nicht erneut integrieren.',
+          2: 'Du leitest $f$ ab statt $F$. Die Probe verlangt die Ableitung der *behaupteten Stammfunktion* — also $F\'$, nicht $f\'$. Hier wäre $f\'(x) = 6x^{2}$, das hilft beim Beweisen nicht.',
+          3: 'Punktweises Vergleichen reicht nicht — $F$ und $f$ stehen NICHT im Werte-Verhältnis, sondern im Ableitungs-Verhältnis. Probe heißt $F\'(x) = f(x)$ für ALLE $x$, nicht nur an einem Einzelpunkt.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 13 (Zusatz, da ex-int-1-1-mastery schon Zeile 13 deckt): SG 2 · apply-independent · multiple-choice · uses=[probe-ableiten, rueckwaerts]
+      mc(
+        'Du sollst eine Stammfunktion von $f(x) = 5x^{4} + 6x$ finden und durch Probe verifizieren. Welche Funktion besteht die Probe?',
+        [
+          '$F(x) = x^{5} + 3x^{2}$',
+          '$F(x) = 5x^{5} + 6x^{2}$',
+          '$F(x) = x^{5} + 6x$',
+          '$F(x) = 20x^{3} + 6$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktion gliedweise ansetzen, dann Probe durch Ableiten.
+
+**Rechnung:** $\\int 5x^{4}\\,dx = 5 \\cdot \\frac{x^{5}}{5} = x^{5}$. $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2}$. Also $F(x) = x^{5} + 3x^{2}$.
+
+**Probe:** $F'(x) = 5x^{4} + 6x = f(x)$. ✓ Identität für alle $x$.
+
+**Typischer Fehler:** Faktor und Exponent vertauschen — $5x^{5}$ statt $x^{5}$ entsteht, wenn man den Faktor $5$ stehen lässt, statt durch den neuen Exponenten zu teilen.`,
+        [
+          'Zwei Glieder einzeln integrieren.',
+          'Potenzregel: Exponent erhöhen, dann Faktor durch neuen Exponenten teilen.',
+          'Probe: ableiten und mit $f(x) = 5x^{4} + 6x$ vergleichen.',
+        ],
+        {
+          1: 'Der Faktor $5$ wurde nicht durch den neuen Exponenten $5$ geteilt: $\\int 5x^{4}\\,dx = 5 \\cdot \\frac{x^{5}}{5} = x^{5}$, nicht $5x^{5}$. Probe: $(5x^{5})\' = 25x^{4} \\neq 5x^{4}$.',
+          2: 'Du hast $\\int 6x\\,dx = 6x$ angenommen — aber $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2}$. Probe: $(x^{5} + 6x)\' = 5x^{4} + 6 \\neq 5x^{4} + 6x$.',
+          3: 'Du hast $f(x)$ abgeleitet statt eine Stammfunktion gesucht: $f\'(x) = 20x^{3} + 6$. Falsche Richtung. Probe: $(20x^{3} + 6)\' = 60x^{2} \\neq 5x^{4} + 6x$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[probe-ableiten]
+      mc(
+        'Lina behauptet: $F(x) = x^{3} + 5$ ist Stammfunktion von $f(x) = 3x^{2} + 5$. Sie schreibt als Probe: „$F$ und $f$ enthalten beide den Term $+5$, also stimmt es." Was ist der Fehler ihrer Probe?',
+        [
+          'Probe heißt Ableiten — Linas $F$ liefert $F\'(x) = 3x^{2}$, nicht $3x^{2} + 5$. Die $5$ in $F$ verschwindet beim Ableiten und kann den $+5$-Term in $f$ nicht erzeugen. Korrekt: $F(x) = x^{3} + 5x + C$.',
+          'Lina hat richtig — der gemeinsame Term $+5$ beweist, dass $F$ Stammfunktion von $f$ ist.',
+          'Lina hätte die Konstante $5$ in $F$ als $C$ schreiben müssen — sonst ist es nur eine spezielle Stammfunktion und keine vollständige.',
+          'Linas $F$ ist falsch, weil die korrekte Stammfunktion $F(x) = \\tfrac{1}{3}x^{3} + \\tfrac{5}{2}x^{2}$ wäre.',
+        ],
+        0,
+        `**Ansatz:** Probe = Ableitung von $F$ mit $f$ vergleichen, nicht oberflächlich Terme abgleichen.
+
+**Rechnung:** $F'(x) = (x^{3})' + (5)' = 3x^{2} + 0 = 3x^{2}$. Aber $f(x) = 3x^{2} + 5$. Differenz: $5 \\neq 0$ — Linas $F$ ist KEINE Stammfunktion. Korrekte Stammfunktion: $\\int (3x^{2} + 5)\\,dx = x^{3} + 5x + C$.
+
+**Probe:** Mit der Korrektur $F(x) = x^{3} + 5x$ gilt $F'(x) = 3x^{2} + 5 = f(x)$. ✓
+
+**Typischer Fehler:** Konstanten in $F$ und $f$ "kompensieren" sich nicht — die Konstante in $F$ verschwindet beim Ableiten, der Term $+5$ in $f$ muss durch $+5x$ in $F$ erzeugt werden.`,
+        [
+          'Mache die Probe sorgfältig: leite Linas $F$ Glied für Glied ab.',
+          'Was passiert mit der $5$ in $x^{3} + 5$ beim Ableiten?',
+          'Vergleiche dein Ergebnis mit $f(x) = 3x^{2} + 5$ — fehlt etwas?',
+        ],
+        {
+          1: 'Probe widerlegt das sofort: $F\'(x) = 3x^{2} \\neq 3x^{2} + 5$. Gemeinsame Terme zwischen $F$ und $f$ sind kein Beweis — Probe ist Ableitungs-Vergleich, nicht Term-Abgleich.',
+          2: 'Auch wenn man die $5$ als spezielles $C$ liest, bleibt $F\'(x) = 3x^{2} \\neq 3x^{2} + 5$. Das eigentliche Problem: der Term $+5$ in $f$ muss zu $+5x$ in $F$ integriert werden, er kann nicht in der Konstanten von $F$ versteckt sein.',
+          3: 'Das ist die Stammfunktion von $x^{2} + 5x$, nicht von $3x^{2} + 5$. Probe widerlegt: $(\\tfrac{1}{3}x^{3} + \\tfrac{5}{2}x^{2})\' = x^{2} + 5x \\neq 3x^{2} + 5$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['probe-ableiten'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · sorting · uses=[probe-ableiten, rueckwaerts]
+      sorting(
+        'Bringe die Schritte zur Verifikation, dass $F(x) = \\tfrac{1}{4}x^{4} - x^{2}$ Stammfunktion von $f(x) = x^{3} - 2x$ ist, in die richtige Reihenfolge.',
+        [
+          'Behauptung notieren: $F(x) = \\tfrac{1}{4}x^{4} - x^{2}$ soll Stammfunktion von $f(x) = x^{3} - 2x$ sein.',
+          '$F$ gliedweise ableiten: $F\'(x) = \\tfrac{1}{4} \\cdot 4x^{3} - 2x = x^{3} - 2x$.',
+          'Mit $f$ vergleichen: $x^{3} - 2x = f(x)$ — Identität für alle $x$.',
+          'Schluss: $F\'(x) = f(x)$ ist erfüllt — $F$ ist Stammfunktion von $f$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Probe = kanonische Vier-Schritt-Sequenz: Behauptung formulieren, Ableitung berechnen, Vergleich, Schlussfolgerung.
+
+**Rechnung:** $F'(x) = \\tfrac{1}{4} \\cdot 4 \\cdot x^{4-1} - 2 \\cdot x^{2-1} = x^{3} - 2x$. Stimmt exakt mit $f$ überein.
+
+**Probe:** Schritt 3 zeigt: Identität gilt für alle $x$. Schritt 4 ist die formale Schlussfolgerung — daher gehört er ans Ende.
+
+**Typischer Fehler:** Vergleich vor Ableitung — man kann $F$ und $f$ erst gegenüberstellen, NACHDEM die Ableitung berechnet ist. Ohne Ableitung wäre der Vergleich sinnlos.`,
+        [
+          'Was steht am Anfang einer Probe — Behauptung oder Schluss?',
+          'Kannst du $F$ und $f$ vergleichen, BEVOR du $F$ abgeleitet hast?',
+          'Den Schluss zieht man am Ende — nicht zwischen den Rechenschritten.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['probe-ableiten', 'rueckwaerts'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // int-1-2 — Grundintegrale  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-2': {
+
+    // ── [0] Potenzregel $\int x^n\,dx = x^{n+1}/(n+1) + C$ für $n\neq -1$ ──
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[int-pot-regel]
+      tf(
+        'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ gilt für jedes ganze $n \\in \\mathbb{Z}$.',
+        false,
+        `**Ansatz:** Die Formel an der Stelle prüfen, an der sie problematisch werden könnte — beim Wert $n = -1$.
+
+**Rechnung:** Für $n = -1$ wird der Nenner $n + 1 = 0$. Die Formel liefert $\\dfrac{x^{0}}{0}$ — Division durch Null, undefiniert. Daher gilt die Potenzregel nur für $n \\neq -1$.
+
+**Probe:** Sonderfall: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ (separate Regel, nicht aus der Potenzregel ableitbar).
+
+**Typischer Fehler:** Die Bedingung "$n \\neq -1$" überlesen und für alle $n$ einsetzen — gibt bei $n = -1$ einen Nullnenner.`,
+        [
+          'Probiere $n = -1$ — was wird im Nenner $n + 1$?',
+          'Welcher Wert macht die Formel $\\dfrac{x^{n+1}}{n+1}$ undefiniert?',
+          'Für $n = -1$: $\\dfrac{x^{0}}{0}$ — geht das?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[int-pot-regel]
+      ni(
+        'Berechne $\\int x^{4}\\,dx = \\dfrac{x^{5}}{a} + C$. Bestimme den Wert von $a$.',
+        5,
+        0,
+        '',
+        `**Ansatz:** Potenzregel — Exponent um $1$ erhöhen, dann durch den neuen Exponenten teilen.
+
+**Rechnung:** $\\int x^{4}\\,dx = \\dfrac{x^{4+1}}{4+1} + C = \\dfrac{x^{5}}{5} + C$. Also $a = 5$.
+
+**Probe:** $\\left(\\dfrac{x^{5}}{5}\\right)' = \\dfrac{5x^{4}}{5} = x^{4}$. ✓
+
+**Typischer Fehler:** Durch den ALTEN Exponenten $4$ teilen statt durch den neuen $5$ — gibt fälschlich $\\dfrac{x^{5}}{4}$.`,
+        [
+          'Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$.',
+          'Für $n = 4$ wird der neue Exponent $n + 1 = 5$.',
+          'Im Nenner steht der NEUE Exponent (also $5$), nicht der alte.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[int-pot-regel] ($n=-1$ falsch behandelt)
+      mc(
+        'Anna soll $\\int x^{-1}\\,dx$ berechnen und schreibt mit der Potenzregel: $\\int x^{-1}\\,dx = \\dfrac{x^{-1+1}}{-1+1} + C = \\dfrac{x^{0}}{0} + C$. Wo liegt der Fehler?',
+        [
+          'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ gilt nur für $n \\neq -1$ — bei $n = -1$ entsteht eine Division durch Null. Der Sonderfall lautet $\\int x^{-1}\\,dx = \\ln|x| + C$.',
+          'Anna hat den Exponenten falsch erhöht — $-1 + 1 = 1$ (nicht $0$), also $\\int x^{-1}\\,dx = x + C$.',
+          'Der Term $x^{0} = 0$ — daher kann man die Potenzregel nicht anwenden.',
+          'Sie hätte den Faktor $-1$ vor das Integral ziehen müssen: $\\int x^{-1}\\,dx = -\\int x\\,dx = -\\dfrac{x^{2}}{2} + C$.',
+        ],
+        0,
+        `**Ansatz:** Untersuchen, wo die Potenzregel an Grenzen stößt.
+
+**Rechnung:** $-1 + 1 = 0$ — der Nenner wird Null, die Formel ist hier nicht definiert. Daher die Bedingung "$n \\neq -1$" in der Potenzregel. Für genau $n = -1$ gibt es eine eigene Regel: $\\int x^{-1}\\,dx = \\ln|x| + C$.
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x} = x^{-1}$. ✓
+
+**Typischer Fehler:** Die Ausnahme "$n \\neq -1$" überlesen und stur die Formel anwenden — landet bei einem Nullnenner.`,
+        [
+          'Welche Voraussetzung hat die Potenzregel?',
+          'Was passiert mit dem Nenner $n + 1$, wenn $n = -1$ ist?',
+          'Für $n = -1$ existiert ein anderer Stammfunktions-Typ — welcher?',
+        ],
+        {
+          1: 'Anna hat $-1 + 1 = 0$ tatsächlich richtig gerechnet ($x^{-1+1} = x^{0} = 1$) — der Nenner $0$ ist das echte Problem. $\\int x^{-1}\\,dx = x + C$ wäre falsch: Probe $(x)\' = 1 \\neq x^{-1}$.',
+          2: '$x^{0} = 1$, nicht $0$. Das eigentliche Problem ist der Nenner: $-1 + 1 = 0$ — Division durch Null, deshalb ist die Potenzregel hier ungültig.',
+          3: 'Die Faktorregel $\\int c \\cdot f\\,dx = c \\int f\\,dx$ greift nur bei einem konstanten Vorfaktor — $x^{-1} = \\dfrac{1}{x}$ ist KEIN Faktor, sondern eine ganze Funktion. Probe der vorgeschlagenen Lösung: $\\left(-\\dfrac{x^{2}}{2}\\right)\' = -x \\neq x^{-1}$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · number-input · uses=[int-pot-regel]
+      ni(
+        'Berechne $\\int 12\\,x^{2}\\,dx$ und gib den Wert der Stammfunktion $F$ bei $x = 2$ an (für die spezielle Wahl $C = 0$).',
+        32,
+        0,
+        '',
+        `**Ansatz:** Faktor vor das Integral ziehen, dann Potenzregel auf $x^{2}$ anwenden, am Ende einsetzen.
+
+**Rechnung:** $\\int 12 x^{2}\\,dx = 12 \\cdot \\dfrac{x^{3}}{3} + C = 4x^{3} + C$. Mit $C = 0$: $F(x) = 4x^{3}$. Bei $x = 2$: $F(2) = 4 \\cdot 8 = 32$.
+
+**Probe:** $F'(x) = 12 x^{2} = f(x)$ ✓. Einsetzen: $F(2) = 4 \\cdot 2^{3} = 32$.
+
+**Typischer Fehler:** Den Faktor $12$ NICHT durch den neuen Exponenten $3$ teilen — würde zu $12 x^{3}$ führen, $F(2) = 96$.`,
+        [
+          'Konstante darf vor das Integral: $\\int 12 x^{2}\\,dx = 12 \\int x^{2}\\,dx$.',
+          '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ — also $12 \\cdot \\dfrac{x^{3}}{3} = 4 x^{3}$.',
+          'Einsetzen: $F(2) = 4 \\cdot 2^{3} = 4 \\cdot 8$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+
+      // Bonus (Mengen-Regel + Typen-Variation): SG 0 · matching · uses=[int-pot-regel]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int x^{4}\\,dx$',     right: '$\\dfrac{x^{5}}{5}$' },
+          { left: '$\\int x^{1/2}\\,dx$',   right: '$\\dfrac{2}{3} x^{3/2}$' },
+          { left: '$\\int x^{-2}\\,dx$',    right: '$-\\dfrac{1}{x}$' },
+          { left: '$\\int 1\\,dx$',         right: '$x$' },
+        ],
+        `**Ansatz:** Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ (für $n \\neq -1$) auf jeden Fall einzeln anwenden.
+
+**Rechnung:**
+- $\\int x^{4}\\,dx = \\dfrac{x^{5}}{5} + C$.
+- $\\int x^{1/2}\\,dx = \\dfrac{x^{3/2}}{3/2} + C = \\dfrac{2}{3} x^{3/2} + C$.
+- $\\int x^{-2}\\,dx = \\dfrac{x^{-1}}{-1} + C = -\\dfrac{1}{x} + C$.
+- $\\int 1\\,dx = \\int x^{0}\\,dx = \\dfrac{x^{1}}{1} + C = x + C$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integranden vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei Bruch-Exponenten ($n = 1/2$) den Bruch $1/(n+1) = 1/(3/2) = 2/3$ falsch berechnen oder bei $n = -2$ das Vorzeichen vergessen.`,
+        [
+          'Wende auf jeden Integranden die Potenzregel an: Exponent +1, dann teilen.',
+          'Bruchexponent $n = 1/2$: neuer Exponent $3/2$, Faktor $1/(3/2) = 2/3$.',
+          'Negativer Exponent $n = -2$: neuer Exponent $-1$, Faktor $1/(-1) = -1$ → $-x^{-1} = -1/x$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['int-pot-regel'] },
+      ),
+    ],
+
+    // ── [1] Sonderfall $\int 1/x\,dx = \ln|x| + C$ ──────────────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[int-1-x]
+      tf(
+        'Die Stammfunktion $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ gilt für alle $x \\neq 0$ — der Betrag ist nötig, weil $\\ln$ nur für positive Argumente definiert ist, $\\dfrac{1}{x}$ aber auch für $x < 0$ existiert.',
+        true,
+        `**Ansatz:** Definitionsbereiche von $\\ln$ und $\\dfrac{1}{x}$ vergleichen.
+
+**Rechnung:** $\\dfrac{1}{x}$ ist definiert für alle $x \\neq 0$ (also auch negative $x$). $\\ln(x)$ aber nur für $x > 0$. Damit die Stammfunktion auf dem ganzen Definitionsbereich von $\\dfrac{1}{x}$ gilt, schreibt man $\\ln|x|$.
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x}$ — sowohl für $x > 0$ als auch für $x < 0$. ✓
+
+**Typischer Fehler:** Den Betrag weglassen und $\\ln(x)$ schreiben — geht nur für $x > 0$ und ist auf $x < 0$ schlicht nicht definiert.`,
+        [
+          'Für welche $x$ ist $\\ln(x)$ definiert? Für welche $\\dfrac{1}{x}$?',
+          'Was passiert mit $\\ln(x)$, wenn $x = -2$?',
+          'Der Betrag macht das Argument positiv — und damit erlaubt für $\\ln$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · multiple-choice · uses=[int-1-x]
+      mc(
+        'Welche Stammfunktion hat $f(x) = \\dfrac{4}{x}$?',
+        [
+          '$F(x) = 4 \\ln|x| + C$',
+          '$F(x) = \\tfrac{1}{4} \\ln|x| + C$',
+          '$F(x) = 4 \\ln(x) + C$',
+          '$F(x) = \\dfrac{4}{\\ln|x|} + C$',
+        ],
+        0,
+        `**Ansatz:** Faktorregel — den konstanten Faktor $4$ vor das Integral ziehen, dann Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ anwenden.
+
+**Rechnung:** $\\int \\dfrac{4}{x}\\,dx = 4 \\int \\dfrac{1}{x}\\,dx = 4 \\ln|x| + C$.
+
+**Probe:** $(4 \\ln|x|)' = 4 \\cdot \\dfrac{1}{x} = \\dfrac{4}{x} = f(x)$. ✓
+
+**Typischer Fehler:** Den Betrag weglassen oder den Faktor $4$ in den Nenner schreiben — beides verändert den Definitionsbereich oder die Funktion.`,
+        [
+          'Wie behandelt man den konstanten Faktor $4$ vor $\\dfrac{1}{x}$?',
+          'Faktorregel: $\\int c \\cdot f\\,dx = c \\int f\\,dx$.',
+          'Die innere Stammfunktion ist der Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+        ],
+        {
+          1: 'Du hast den Faktor $4$ in den Kehrwert geschoben statt ihn als Multiplikator vor $\\ln|x|$ zu behalten. Faktorregel: $\\int 4 \\cdot \\dfrac{1}{x}\\,dx = 4 \\int \\dfrac{1}{x}\\,dx = 4 \\ln|x| + C$. Probe der falschen Antwort: $\\left(\\tfrac{1}{4} \\ln|x|\\right)\' = \\tfrac{1}{4x} \\neq \\dfrac{4}{x}$.',
+          2: 'Der Funktionsterm ist fast richtig, aber der Betrag fehlt — $\\ln(x)$ ist nur für $x > 0$ definiert, $\\dfrac{4}{x}$ aber auch für $x < 0$. Korrekt mit Betrag: $4 \\ln|x| + C$.',
+          3: 'Du hast $\\ln$ in den Nenner gesetzt — das ist eine ganz andere Funktion. Faktorregel verlangt einfache Multiplikation: $4 \\cdot \\ln|x|$. Probe der falschen Antwort: $\\left(\\dfrac{4}{\\ln|x|}\\right)\' = -\\dfrac{4}{x \\ln^{2}|x|} \\neq \\dfrac{4}{x}$.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[int-1-x, int-pot-regel]
+      mc(
+        'Lukas berechnet $\\int \\dfrac{1}{x}\\,dx$ mit der Potenzregel: $\\int x^{-1}\\,dx = \\dfrac{x^{-1+1}}{-1+1} + C = \\dfrac{x^{0}}{0} + C$. Was ist hier der Fehler?',
+        [
+          'Die Potenzregel $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$ ist für $n = -1$ nicht definiert (Division durch Null im Nenner). Der Sonderfall lautet $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+          'Lukas hat $-1 + 1 = 0$ falsch gerechnet — korrekt wäre $-1 + 1 = 1$, also $\\int x^{-1}\\,dx = x + C$.',
+          '$x^{0} = 0$, also kann man die Formel nicht anwenden.',
+          'Bei Brüchen muss man immer mit Substitution $u = \\ln(x)$ arbeiten — die Potenzregel funktioniert grundsätzlich nicht für $\\dfrac{1}{x}$.',
+        ],
+        0,
+        `**Ansatz:** Erkennen, dass $n = -1$ in der Potenzregel ausdrücklich ausgeschlossen ist.
+
+**Rechnung:** Die Bedingung "$n \\neq -1$" wurde übersehen. Für $n = -1$ wird der Nenner $n + 1 = 0$ — Division durch Null, undefiniert. Stattdessen gilt: $\\int x^{-1}\\,dx = \\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$ (separater Sonderfall).
+
+**Probe:** $(\\ln|x|)' = \\dfrac{1}{x}$ ✓ — die Sonderfall-Stammfunktion ist korrekt.
+
+**Typischer Fehler:** Die Bedingung "$n \\neq -1$" der Potenzregel überlesen und auch für $n = -1$ einsetzen — der Nullnenner zeigt sofort, dass die Formel hier nicht greift.`,
+        [
+          'Welche Voraussetzung hat die Potenzregel? Steht da etwas zu $n$?',
+          '$-1 + 1 = ?$ und ist das ein gültiger Nenner?',
+          'Welche eigene Regel gibt es speziell für $\\dfrac{1}{x} = x^{-1}$?',
+        ],
+        {
+          1: '$-1 + 1 = 0$ ist arithmetisch korrekt, das hat Lukas richtig gemacht. $x^{-1+1} = x^{0} = 1$. Das echte Problem ist der Nenner: $0$. $\\int x^{-1}\\,dx = x + C$ wäre falsch — Probe: $(x)\' = 1 \\neq \\dfrac{1}{x}$.',
+          2: '$x^{0} = 1$, nicht $0$. Lukas\' Schritt $x^{0} = 1$ wäre rechnerisch okay — der Fehler liegt im Nenner: $-1 + 1 = 0$, also $\\dfrac{1}{0}$, undefiniert.',
+          3: 'Die Potenzregel funktioniert sehr wohl für andere Brüche wie $\\dfrac{1}{x^{2}} = x^{-2}$ ($\\int x^{-2}\\,dx = -\\dfrac{1}{x} + C$). Nur der Spezialfall $n = -1$ ist ausgeschlossen — und dafür gibt es die Regel $\\ln|x| + C$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['int-1-x', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · multiple-choice · uses=[int-1-x]
+      mc(
+        'Eine Funktion $F$ erfüllt $F\'(x) = \\dfrac{6}{x}$ für $x > 0$ und die Anfangsbedingung $F(1) = 0$. Welche Funktion ist $F$?',
+        [
+          '$F(x) = 6 \\ln(x)$',
+          '$F(x) = 6 \\ln(x) + 6$',
+          '$F(x) = -\\dfrac{6}{x^{2}}$',
+          '$F(x) = \\dfrac{6}{\\ln(x)}$',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, dann Anfangsbedingung einsetzen.
+
+**Rechnung:** $\\int \\dfrac{6}{x}\\,dx = 6 \\ln|x| + C$. Für $x > 0$ ist $\\ln|x| = \\ln(x)$. Also $F(x) = 6 \\ln(x) + C$. Einsetzen: $F(1) = 6 \\ln(1) + C = 6 \\cdot 0 + C = C$. Bedingung $F(1) = 0$ liefert $C = 0$. Damit $F(x) = 6 \\ln(x)$.
+
+**Probe:** $F'(x) = 6 \\cdot \\dfrac{1}{x} = \\dfrac{6}{x}$ ✓ und $F(1) = 6 \\ln 1 = 0$ ✓.
+
+**Typischer Fehler:** $C = F(1) = 0$ verwechseln mit $C = 0 + 6 = 6$ — vergisst, dass $6 \\ln 1 = 0$ und nicht $6$ ist.`,
+        [
+          'Schritt 1: allgemeine Stammfunktion mit Faktorregel und $\\int \\dfrac{1}{x}\\,dx$.',
+          'Schritt 2: Anfangsbedingung einsetzen — $\\ln 1 = 0$.',
+          'Schritt 3: $C$ aus der Bedingung bestimmen.',
+        ],
+        {
+          1: '$C = 6$ entsteht, wenn man $F(1) = 6 + C = 0$ rechnet — aber $6 \\ln(1) = 6 \\cdot 0 = 0$, nicht $6$. Mit $F(1) = 0 + C = 0$ folgt $C = 0$, also $F(x) = 6 \\ln(x)$.',
+          2: 'Du hast $\\dfrac{6}{x}$ abgeleitet ($-\\dfrac{6}{x^{2}}$) statt zu integrieren. Probe: $\\left(-\\dfrac{6}{x^{2}}\\right)\' = \\dfrac{12}{x^{3}} \\neq \\dfrac{6}{x}$. Korrekt: integrieren liefert $6 \\ln(x) + C$.',
+          3: 'Du hast den Logarithmus in den Nenner gesetzt — das ist eine andere Funktion. Probe: $\\left(\\dfrac{6}{\\ln(x)}\\right)\' = -\\dfrac{6}{x \\ln^{2}(x)} \\neq \\dfrac{6}{x}$. Korrekt: $6 \\ln(x)$ als Multiplikator.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['int-1-x'] },
+      ),
+
+      // Bonus (Mengen-Regel + Typen-Variation): SG 1 · ni · uses=[int-1-x]
+      ni(
+        'Berechne $\\int \\dfrac{2}{x}\\,dx$ und gib den Wert der Stammfunktion $F$ bei $x = e$ an (für $C = 0$).',
+        2,
+        0.001,
+        '',
+        `**Ansatz:** Faktorregel ($2$ vor das Integral) plus Sonderfall $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$, dann einsetzen.
+
+**Rechnung:** $\\int \\dfrac{2}{x}\\,dx = 2 \\ln|x| + C$. Mit $C = 0$: $F(x) = 2 \\ln|x|$. Bei $x = e$ (positiv): $F(e) = 2 \\ln(e) = 2 \\cdot 1 = 2$.
+
+**Probe:** $F'(x) = 2 \\cdot \\dfrac{1}{x} = \\dfrac{2}{x}$ ✓. Einsetzen: $F(e) = 2 \\ln e = 2$.
+
+**Typischer Fehler:** $\\ln(e) = e$ statt $\\ln(e) = 1$ einsetzen — Definition: $\\ln$ ist Umkehrfunktion zu $e^{x}$, also $\\ln(e^{1}) = 1$.`,
+        [
+          'Konstanter Faktor $2$ darf vor das Integral.',
+          'Sonderfall: $\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C$.',
+          'Wert von $\\ln(e)$? Definition: $\\ln(e^{x}) = x$, also $\\ln(e) = \\ln(e^{1}) = 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['int-1-x'] },
+      ),
+    ],
+
+    // ── [2] Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig ─────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[int-exp-trig]
+      tf(
+        'Es gilt $\\int \\sin(x)\\,dx = -\\cos(x) + C$ und $\\int \\cos(x)\\,dx = +\\sin(x) + C$ — nur das $\\sin$-Integral bekommt das Minus.',
+        true,
+        `**Ansatz:** Beide Stammfunktionen durch Probe verifizieren.
+
+**Rechnung:**
+- $(-\\cos(x))' = -(-\\sin(x)) = \\sin(x)$ ✓ → $\\int \\sin(x)\\,dx = -\\cos(x) + C$.
+- $(\\sin(x))' = \\cos(x)$ ✓ → $\\int \\cos(x)\\,dx = \\sin(x) + C$.
+
+**Probe:** Beide Identitäten reproduzieren beim Ableiten den Integranden.
+
+**Typischer Fehler:** Vorzeichen vertauschen — $\\int \\sin\\,dx = +\\cos$ ist eine der häufigsten Klausurfehler.`,
+        [
+          'Was ist $(\\cos x)\'$? Was ist $(-\\cos x)\'$?',
+          'Welcher der beiden Integranden bekommt das Minus?',
+          'Probe: leite beide rechte Seiten ab und vergleiche.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · number-input · uses=[int-exp-trig]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = \\sin(x)$ erfüllt die Anfangsbedingung $F(0) = 0$. Berechne $F(\\pi/2)$.',
+        1,
+        0.001,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion bestimmen, $C$ aus Anfangsbedingung, dann einsetzen.
+
+**Rechnung:** $\\int \\sin(x)\\,dx = -\\cos(x) + C$. Bedingung: $F(0) = -\\cos(0) + C = -1 + C = 0 \\Rightarrow C = 1$. Damit $F(x) = -\\cos(x) + 1$. Einsetzen: $F(\\pi/2) = -\\cos(\\pi/2) + 1 = -0 + 1 = 1$.
+
+**Probe:** $F'(x) = \\sin(x)$ ✓ und $F(0) = -1 + 1 = 0$ ✓.
+
+**Typischer Fehler:** $\\cos(0) = 0$ statt $\\cos(0) = 1$ einsetzen — gibt $C = 0$ und damit $F(\\pi/2) = 0$.`,
+        [
+          'Schritt 1: $\\int \\sin(x)\\,dx = ?$ — Vorzeichen beachten.',
+          'Schritt 2: Anfangsbedingung — was ist $\\cos(0)$?',
+          'Schritt 3: einsetzen, $\\cos(\\pi/2) = 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[int-exp-trig] (Vorzeichen sin/cos)
+      mc(
+        'Tim schreibt $\\int \\sin(x)\\,dx = \\cos(x) + C$. Was ist der Fehler?',
+        [
+          'Es fehlt das Minuszeichen — korrekt: $\\int \\sin(x)\\,dx = -\\cos(x) + C$. Probe: $(\\cos x)\' = -\\sin x \\neq \\sin x$, aber $(-\\cos x)\' = \\sin x$ ✓.',
+          'Der Funktionsterm ist falsch — $\\sin$ ist seine eigene Stammfunktion, also $\\int \\sin(x)\\,dx = \\sin(x) + C$.',
+          'Tim hat zu wenig integriert — korrekt wäre $-\\tfrac{1}{2} \\cos^{2}(x) + C$.',
+          'Bei trigonometrischen Funktionen muss vor dem Integrieren das Argument $x$ durch eine Variable substituiert werden.',
+        ],
+        0,
+        `**Ansatz:** Probe — $(\\cos x)' = -\\sin x$, also kann $\\cos x$ Stammfunktion von $-\\sin x$ sein, NICHT von $+\\sin x$.
+
+**Rechnung:** Es gilt $(\\cos x)' = -\\sin x$. Daraus folgt $(-\\cos x)' = -(-\\sin x) = +\\sin x$. Also $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (mit Minus).
+
+**Probe:** $(-\\cos(x) + C)' = \\sin(x) + 0 = \\sin(x)$ ✓.
+
+**Typischer Fehler:** Tim hat das Vorzeichen der Ableitung von $\\cos$ vergessen — $(\\cos)' = -\\sin$, deshalb braucht $\\int \\sin$ ein Minus.`,
+        [
+          'Mache Tims Probe: leite $\\cos x$ ab — was kommt raus?',
+          '$(\\cos x)\' = -\\sin x$. Dann ist $\\cos x$ Stammfunktion wovon?',
+          'Mit dem Minus davor ($-\\cos x$) verschwindet das negative Vorzeichen beim Ableiten.',
+        ],
+        {
+          1: 'Falsch — $\\sin$ ist nicht seine eigene Stammfunktion. Probe: $(\\sin x)\' = \\cos x \\neq \\sin x$. Eigene Stammfunktion ist nur $e^{x}$.',
+          2: '$-\\tfrac{1}{2} \\cos^{2}(x)$ ist die Stammfunktion von $\\sin x \\cos x$ (Kettenregel rückwärts), nicht von $\\sin x$. Probe: $\\left(-\\tfrac{1}{2}\\cos^{2}x\\right)\' = \\sin x \\cos x \\neq \\sin x$.',
+          3: 'Bei $\\int \\sin(x)\\,dx$ ist keine Substitution nötig — $\\sin x$ ist ein Standard-Grundintegral. Substitutionsregel braucht man nur bei verketteten Argumenten wie $\\sin(2x)$ oder $\\sin(x^{2})$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Bonus 1 (Mengen-Regel): SG 2 · ni · uses=[int-exp-trig]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = e^{x}$ erfüllt die Anfangsbedingung $F(0) = 5$. Bestimme den Wert der Integrationskonstante $C$ in $F(x) = e^{x} + C$.',
+        4,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion ansetzen, Anfangsbedingung einsetzen.
+
+**Rechnung:** $\\int e^{x}\\,dx = e^{x} + C$. Bedingung: $F(0) = e^{0} + C = 1 + C = 5 \\Rightarrow C = 4$.
+
+**Probe:** Mit $C = 4$ gilt $F(x) = e^{x} + 4$, $F(0) = 1 + 4 = 5$ ✓ und $F'(x) = e^{x}$ ✓.
+
+**Typischer Fehler:** $e^{0} = 0$ einsetzen statt $e^{0} = 1$ — gibt fälschlich $C = 5$.`,
+        [
+          'Allgemeine Stammfunktion: $F(x) = e^{x} + C$.',
+          'Bei $x = 0$: was ist $e^{0}$?',
+          '$1 + C = 5$ — löse nach $C$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+
+      // Bonus 2 (Mengen-Regel + matching-Variation): SG 2 · matching · uses=[int-exp-trig]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int 2\\sin(x)\\,dx$',  right: '$-2\\cos(x)$' },
+          { left: '$\\int 3\\cos(x)\\,dx$',  right: '$3\\sin(x)$' },
+          { left: '$\\int 5e^{x}\\,dx$',     right: '$5e^{x}$' },
+          { left: '$\\int (-\\sin(x))\\,dx$', right: '$\\cos(x)$' },
+        ],
+        `**Ansatz:** Faktorregel + Grundintegrale gliedweise. Beim Vorzeichen vor $\\sin/\\cos$ sorgfältig sein.
+
+**Rechnung:**
+- $\\int 2\\sin x\\,dx = 2 \\cdot (-\\cos x) = -2\\cos x$.
+- $\\int 3\\cos x\\,dx = 3 \\sin x$.
+- $\\int 5 e^{x}\\,dx = 5 e^{x}$.
+- $\\int -\\sin x\\,dx = -(-\\cos x) = +\\cos x$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integranden vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei $\\int (-\\sin x)\\,dx$ das doppelte Minus vergessen — Probe: $(\\cos x)' = -\\sin x$, also $\\int -\\sin x\\,dx = +\\cos x$.`,
+        [
+          'Konstanten dürfen vor das Integral.',
+          'Welche Grundintegrale gelten für $\\sin$, $\\cos$, $e^{x}$? Vorzeichen merken.',
+          'Bei $\\int -\\sin x\\,dx$: zwei Minuszeichen heben sich auf.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['int-exp-trig'] },
+      ),
+    ],
+
+    // ── [3] Summen- und Faktorregel beim Integrieren ───────────────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[int-summe]
+      tf(
+        'Die Summenregel der Integration besagt: $\\int (f(x) + g(x))\\,dx = \\int f(x)\\,dx + \\int g(x)\\,dx$ — Summen werden gliedweise integriert.',
+        true,
+        `**Ansatz:** Linearität des Integrals — Integration vertauscht mit Addition.
+
+**Rechnung:** Per Definition (Linearität): $\\int (f + g)\\,dx = \\int f\\,dx + \\int g\\,dx$. Beweis über die Linearität der Ableitung: $(F + G)' = F' + G' = f + g$, also ist $F + G$ Stammfunktion von $f + g$.
+
+**Probe:** Beispiel $\\int (x^{2} + \\cos x)\\,dx = \\dfrac{x^{3}}{3} + \\sin x + C$. Probe: $\\left(\\dfrac{x^{3}}{3} + \\sin x\\right)' = x^{2} + \\cos x$. ✓
+
+**Typischer Fehler:** Die Summenregel auf PRODUKTE übertragen — $\\int (f \\cdot g)\\,dx \\neq \\int f\\,dx \\cdot \\int g\\,dx$ (für Produkte braucht man partielle Integration).`,
+        [
+          'Wie hängt die Linearität der Ableitung mit der Integration zusammen?',
+          'Was ist $(F + G)\'$ in Termen von $F\'$ und $G\'$?',
+          'Aus $(F + G)\' = f + g$ folgt $\\int (f + g) = F + G + C = \\int f + \\int g$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['int-summe'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[int-summe, int-pot-regel]
+      mc(
+        'Welches Ergebnis liefert $\\int (3x^{2} + 4x)\\,dx$ mit Summen- und Faktorregel?',
+        [
+          '$x^{3} + 2x^{2} + C$',
+          '$3x^{3} + 4x^{2} + C$',
+          '$6x + 4 + C$',
+          '$\\dfrac{3x^{3}}{3} + \\dfrac{4x^{2}}{2}$',
+        ],
+        0,
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren. Faktorregel — Konstante vor das Integral.
+
+**Rechnung:** $\\int (3x^{2} + 4x)\\,dx = 3 \\int x^{2}\\,dx + 4 \\int x\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} + 4 \\cdot \\dfrac{x^{2}}{2} + C = x^{3} + 2x^{2} + C$.
+
+**Probe:** $(x^{3} + 2x^{2})' = 3x^{2} + 4x = f(x)$ ✓.
+
+**Typischer Fehler:** Die Faktoren $3$ und $4$ stehen lassen, statt sie durch die neuen Exponenten $3$ und $2$ zu teilen — gibt fälschlich $3x^{3} + 4x^{2}$.`,
+        [
+          'Glied für Glied: $\\int 3x^{2}\\,dx = ?$, $\\int 4x\\,dx = ?$.',
+          'Faktor durch neuen Exponenten teilen — $3 / 3 = 1$, $4 / 2 = 2$.',
+          'Vereinfache: $\\dfrac{3x^{3}}{3} = x^{3}$, $\\dfrac{4x^{2}}{2} = 2x^{2}$.',
+        ],
+        {
+          1: 'Du hast die Faktoren $3$ und $4$ stehen gelassen, ohne durch den neuen Exponenten zu teilen. Probe: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$. Korrekt: $3 \\cdot \\dfrac{x^{3}}{3} = x^{3}$.',
+          2: 'Du hast abgeleitet statt integriert: $(3x^{2})\' = 6x$, $(4x)\' = 4$. Beim Integrieren wird der Exponent erhöht, nicht abgesenkt.',
+          3: 'Der Funktionsterm ist mathematisch gleich richtig, aber unvereinfacht UND ohne $+C$. In Prüfungen kürzt man $\\dfrac{3x^{3}}{3} = x^{3}$ und schreibt zwingend $+C$ — sonst Punktabzug.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · number-input · uses=[int-summe, int-pot-regel]
+      ni(
+        'Berechne $\\int (4x^{3} + 6x^{2})\\,dx$. Welcher konstante Vorfaktor steht in der Stammfunktion vor $x^{3}$?',
+        2,
+        0,
+        '',
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren.
+
+**Rechnung:** $\\int 4x^{3}\\,dx = 4 \\cdot \\dfrac{x^{4}}{4} = x^{4}$. $\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3} = 2x^{3}$. Stammfunktion: $F(x) = x^{4} + 2x^{3} + C$. Vorfaktor von $x^{3}$ ist $2$.
+
+**Probe:** $F'(x) = 4x^{3} + 6x^{2} = f(x)$ ✓.
+
+**Typischer Fehler:** Den Vorfaktor von $x^{4}$ mit dem Vorfaktor von $x^{3}$ verwechseln — gefragt ist $x^{3}$, nicht $x^{4}$.`,
+        [
+          'Integriere $4x^{3}$ und $6x^{2}$ einzeln.',
+          '$\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3}$ — vereinfache.',
+          'Welcher Faktor steht jetzt direkt vor $x^{3}$?',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[int-summe]
+      mc(
+        'Maja schreibt $\\int (x^{2} \\cdot \\sin x)\\,dx = \\dfrac{x^{3}}{3} \\cdot (-\\cos x) + C$ — sie hat einfach die beiden Stammfunktionen multipliziert. Was ist der Fehler?',
+        [
+          'Für ein PRODUKT $f \\cdot g$ gibt es KEINE einfache "Produktregel der Integration" — $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right) \\cdot \\left(\\int g\\,dx\\right)$. Hier braucht es partielle Integration.',
+          'Die Reihenfolge der Faktoren ist falsch — korrekt wäre $(-\\cos x) \\cdot \\dfrac{x^{3}}{3} + C$.',
+          'Sie hat $\\sin$ falsch integriert — korrekt: $\\int \\sin x\\,dx = +\\cos x + C$ (kein Minus).',
+          'Die Summenregel verlangt, dass man die Funktionen ADDIERT statt multipliziert; richtig wäre $\\dfrac{x^{3}}{3} - \\cos x + C$.',
+        ],
+        0,
+        `**Ansatz:** Probe durch Ableiten — die Produktregel der DIFFERENTIATION zeigt sofort, dass eine analoge Regel beim Integrieren NICHT gilt.
+
+**Rechnung:** $\\left(\\dfrac{x^{3}}{3} \\cdot (-\\cos x)\\right)' = x^{2} \\cdot (-\\cos x) + \\dfrac{x^{3}}{3} \\cdot \\sin x \\neq x^{2} \\sin x$. Die Summenregel gilt nur für Summen $f + g$, nicht für Produkte $f \\cdot g$.
+
+**Probe:** Korrekt löst man $\\int x^{2} \\sin x\\,dx$ mit partieller Integration: $u = x^{2}$, $v' = \\sin x$ → ergibt $-x^{2} \\cos x + 2x \\sin x + 2 \\cos x + C$ (siehe spätere Lesson).
+
+**Typischer Fehler:** Die Linearität (Summen-/Faktorregel) auf Produkte übertragen. Merksatz: Integration eines Produkts braucht IMMER partielle Integration oder Substitution.`,
+        [
+          'Wende die Produktregel der Ableitung auf Majas Ergebnis an.',
+          'Stimmt die Probe für ein Produkt $f \\cdot g$, wenn man die Stammfunktionen multipliziert?',
+          'Welche Methode ist nötig für $\\int f \\cdot g\\,dx$?',
+        ],
+        {
+          1: 'Multiplikation ist kommutativ — Reihenfolge ist hier irrelevant. Das echte Problem: man darf die beiden Stammfunktionen überhaupt nicht multiplizieren, denn das ist nicht Stammfunktion des Produkts der Integranden.',
+          2: 'Falsch — $\\int \\sin x\\,dx = -\\cos x + C$ (mit Minus, denn $(\\cos x)\' = -\\sin x$). Maja hat das Minus korrekt geschrieben. Der Fehler liegt im Multiplizieren der Stammfunktionen.',
+          3: 'Die Summenregel gilt für SUMMEN — der Integrand ist hier aber ein PRODUKT $x^{2} \\cdot \\sin x$. $\\dfrac{x^{3}}{3} - \\cos x$ wäre die Stammfunktion von $x^{2} - \\sin x$ (Summe), nicht von $x^{2} \\sin x$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['int-summe'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · number-input · uses=[int-summe, int-pot-regel]
+      ni(
+        'Eine Stammfunktion $F$ von $f(x) = 3x^{2} - 8x + 5$ erfüllt $F(0) = 7$. Berechne $F(1)$.',
+        9,
+        0,
+        '',
+        `**Ansatz:** Allgemeine Stammfunktion mit Summenregel, $C$ aus $F(0) = 7$, dann $F(1)$ einsetzen.
+
+**Rechnung:** $\\int (3x^{2} - 8x + 5)\\,dx = x^{3} - 4x^{2} + 5x + C$. $F(0) = 0 - 0 + 0 + C = C = 7$. Also $F(x) = x^{3} - 4x^{2} + 5x + 7$. Einsetzen: $F(1) = 1 - 4 + 5 + 7 = 9$.
+
+**Probe:** $F'(x) = 3x^{2} - 8x + 5 = f(x)$ ✓ und $F(0) = 7$ ✓.
+
+**Typischer Fehler:** $C = 0$ annehmen, statt aus der Anfangsbedingung zu bestimmen — landet bei $F(1) = 1 - 4 + 5 = 2$.`,
+        [
+          'Schritt 1: gliedweise integrieren mit Summen- und Faktorregel.',
+          'Schritt 2: Anfangsbedingung $F(0) = 7$ nutzen — bei $x = 0$ verschwinden alle $x$-Terme.',
+          'Schritt 3: $F(1) = 1 - 4 + 5 + C$, mit $C$ aus Schritt 2.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['int-summe', 'int-pot-regel'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {

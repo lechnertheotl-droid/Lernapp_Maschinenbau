@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-07 · `npm run status`_
+_auto-generiert · 2026-05-08 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2823 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2005 (71 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1266 / 1266 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 281 / 1134 (25 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2909 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2101 (72 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1313 / 1313 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 298 / 1134 (26 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **119** (Lesson-Path: 94 · Goal-Tasks: 25)
-- 4-Block: 75/119 (63 %) 🟡
-- MC-wAE: 61/61 (100 %) ✅
-- Sub-Goals: 5/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **155** (Lesson-Path: 94 · Goal-Tasks: 61)
+- 4-Block: 113/155 (73 %) 🟡
+- MC-wAE: 78/78 (100 %) ✅
+- Sub-Goals: 12/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -447,8 +447,8 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `int-1-1` Stammfunktion — das Umkehren der Ableitung | 3 | 0/3 | 5 | 4/0/0/1/0 | 5/5 | 4/4 | ✅ | +3 Goal |
-| `int-1-2` Grundintegrale | 4 | 0/4 | 6 | 5/0/0/1/0 | 4/6 | 5/5 | ✅ | +4 Goal, +2 4B |
+| `int-1-1` Stammfunktion — das Umkehren der Ableitung | 3 | 3/3 | 21 | 14/1/3/2/1 | 21/21 | 14/14 | ✅ | — |
+| `int-1-2` Grundintegrale | 4 | 4/4 | 26 | 12/7/4/3/0 | 26/26 | 12/12 | ✅ | — |
 | `int-1-3` Summenregel & Faktorregel | 4 | 0/4 | 5 | 4/1/0/0/0 | 5/5 | 4/4 | ✅ | +4 Goal |
 | `int-1-4` Das bestimmte Integral | 4 | 0/4 | 5 | 1/4/0/0/0 | 3/5 | 1/1 | ✅ | +4 Goal, +2 4B |
 | `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 0/5 | 4 | 3/1/0/0/0 | 3/4 | 3/3 | ✅ | +5 Goal, +1 4B |
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **181** (Lesson-Path: 61 · Goal-Tasks: 120)
-- 4-Block: 145/181 (80 %) 🟡
-- MC-wAE: 79/79 (100 %) ✅
-- Sub-Goals: 24/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **231** (Lesson-Path: 61 · Goal-Tasks: 170)
+- 4-Block: 203/231 (88 %) 🟡
+- MC-wAE: 109/109 (100 %) ✅
+- Sub-Goals: 34/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -574,8 +574,8 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `dgl-1-1` Was ist eine Differentialgleichung? | 5 | 0/5 | 4 | 3/0/1/0/0 | 0/4 | 3/3 | ✅ | +5 Goal, +4 4B |
-| `dgl-1-2` Trennung der Variablen | 5 | 0/5 | 4 | 3/1/0/0/0 | 0/4 | 3/3 | ✅ | +5 Goal, +4 4B |
+| `dgl-1-1` Was ist eine Differentialgleichung? | 5 | 5/5 | 29 | 19/0/6/4/0 | 29/29 | 19/19 | ✅ | — |
+| `dgl-1-2` Trennung der Variablen | 5 | 5/5 | 29 | 17/5/5/1/1 | 29/29 | 17/17 | ✅ | — |
 | `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 0/6 | 5 | 4/1/0/0/0 | 0/5 | 4/4 | ✅ | +6 Goal, +5 4B |
 | `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +5 Goal, +4 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 117 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 115 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -5305,112 +5305,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-#### `dgl-1-1` · Was ist eine Differentialgleichung?
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `dgl-def` — DGL: Gleichung, in der Funktion und ihre Ableitungen vorkommen
-  2. `dgl-ordnung` — Ordnung = höchste vorkommende Ableitung ⇐ `dgl-def` (SG 0)
-  3. `dgl-linear` — Linear $\iff$ $y$ und Ableitungen nur in 1. Potenz, keine Produkte $y\cdot y'$ ⇐ `dgl-def` (SG 1)
-  4. `dgl-homogen` — Homogen $\iff$ rechte Seite $=0$; sonst inhomogen ⇐ `dgl-def` (SG 2)
-  5. `awp` — Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung ⇐ `dgl-def` (SG 3)
-  6. `ode-vs-pde` — Gewöhnlich (ODE: 1 unabh. Variable) vs. partiell (PDE) ⇐ `dgl-def` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `dgl-ordnung` · **0/5+** — Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
-  - 🔴 [1] _hoch_ · Konzepte: `dgl-linear` · **0/5+** — Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
-  - 🔴 [2] _hoch_ · Konzepte: `dgl-homogen` · **0/5+** — Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
-  - 🔴 [3] _mittel_ · Konzepte: `awp` · **0/5+** — Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung
-  - 🔴 [4] _niedrig_ · Konzepte: `ode-vs-pde` · **0/5+** — Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `dgl-ordnung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `dgl-ordnung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `dgl-ordnung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `dgl-ordnung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `dgl-ordnung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `dgl-linear` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `dgl-linear` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `dgl-linear` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `dgl-linear` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `dgl-linear` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `dgl-homogen` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `dgl-homogen` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `dgl-homogen` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `dgl-homogen` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `dgl-homogen`, `dgl-linear` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `awp` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `awp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `awp` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `awp` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `awp` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `ode-vs-pde` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `ode-vs-pde` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `ode-vs-pde` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `ode-vs-pde` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `ode-vs-pde` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-1-a`, `ex-dgl-1-1-b`, `ex-dgl-1-1-c`, `ex-dgl-1-1-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-
-#### `dgl-1-2` · Trennung der Variablen
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-def`, `awp`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `tdv-erkennen` — Anwendbarkeit: $y'=f(x)\,g(y)$ — Produkt aus reiner $x$- und reiner $y$-Funktion (SG 0)
-  2. `tdv-trennen` — Trennung: $dy/g(y)=f(x)\,dx$ sauber sortieren ⇐ `tdv-erkennen` (SG 1)
-  3. `tdv-integrieren` — Beide Seiten integrieren, $C$ nur einmal ansetzen ⇐ `tdv-trennen` (SG 2)
-  4. `tdv-awp` — Anfangsbedingung $y(x_0)=y_0$ → $C$ bestimmen, vor Umformen nach $y$ ⇐ `tdv-integrieren` (SG 3)
-  5. `tdv-betrag` — Betragsstriche bei $\int 1/y\,dy=\ln|y|$ + Fallunterscheidung ⇐ `tdv-integrieren` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `tdv-erkennen` · **0/5+** — Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
-  - 🔴 [1] _hoch_ · Konzepte: `tdv-trennen` · **0/5+** — $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
-  - 🔴 [2] _hoch_ · Konzepte: `tdv-integrieren` · **0/5+** — Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
-  - 🔴 [3] _hoch_ · Konzepte: `tdv-awp` · **0/5+** — Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$
-  - 🔴 [4] _mittel_ · Konzepte: `tdv-betrag` · **0/5+** — Betragsstriche bei $\int 1/y\,dy = \ln|y|$ nicht vergessen und Fallunterscheidung prüfen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `tdv-erkennen` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `tdv-erkennen` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `tdv-erkennen` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `tdv-erkennen` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `tdv-erkennen` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `tdv-trennen` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `tdv-trennen` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `tdv-trennen` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `tdv-trennen` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | sorting          | `tdv-trennen`, `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `tdv-integrieren` | 1 | 0 | 🔴 | $C$ doppelt angesetzt |
-| 15 | 2 | transfer           | number-input     | `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `tdv-awp` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `tdv-awp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `tdv-awp`, `tdv-integrieren` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `tdv-awp` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `tdv-awp` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `tdv-betrag` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `tdv-betrag` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `tdv-betrag` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `tdv-betrag` | 1 | 0 | 🔴 | Betragsstriche vergessen |
-| 25 | 4 | transfer           | multiple-choice  | `tdv-betrag` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-2-a`, `ex-dgl-1-2-b`, `ex-dgl-1-2-c`, `ex-dgl-1-2-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-
 #### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
@@ -7888,7 +7782,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 31 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 29 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8468,44 +8362,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-1-1` · Stammfunktion — das Umkehren der Ableitung
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `stammfunktion` — Stammfunktion $F$ mit $F'(x)=f(x)$ — Umkehrung der Ableitung (SG 0)
-  2. `rueckwaerts` — Stammfunktion durch „Rückwärts-Ableiten" finden ⇐ `stammfunktion` (SG 0)
-  3. `plus-c` — Integrationskonstante $+C$ niemals vergessen — unbestimmtes Integral ⇐ `stammfunktion` (SG 1)
-  4. `probe-ableiten` — Probe: gefundene Stammfunktion ableiten und mit $f$ vergleichen ⇐ `stammfunktion` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `stammfunktion`, `rueckwaerts` · **0/5+** — Stammfunktion durch „Rückwärts-Ableiten" erkennen
-  - 🔴 [1] _hoch_ · Konzepte: `plus-c` · **0/5+** — Integrationskonstante $+C$ nicht vergessen
-  - 🔴 [2] _mittel_ · Konzepte: `probe-ableiten` · **0/5+** — Probe durch Ableiten der gefundenen Stammfunktion
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `stammfunktion` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `rueckwaerts` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `rueckwaerts`, `stammfunktion` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `stammfunktion` | 1 | 0 | 🔴 | Ableitung statt Stammfunktion |
-|  5 | 0 | transfer           | matching         | `stammfunktion`, `rueckwaerts` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `plus-c` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `plus-c` | 1 | 0 | 🔴 | +C vergessen |
-| 10 | 1 | transfer           | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `probe-ableiten` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `probe-ableiten` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `probe-ableiten`, `rueckwaerts` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `probe-ableiten` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | sorting          | `probe-ableiten`, `rueckwaerts` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-1-3` · Summenregel & Faktorregel
 
@@ -9429,52 +9285,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-2-a`, `ex-la-1-2-b`, `ex-la-1-2-c`, `ex-la-1-2-d`, `ex-la-1-2-e`, `ex-la-1-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-1-2` · Grundintegrale
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`, `plus-c`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `int-pot-regel` — $\int x^n dx=x^{n+1}/(n+1)+C$ für $n\neq -1$ (SG 0)
-  2. `int-1-x` — Sonderfall $\int 1/x\,dx=\ln|x|+C$ ⇐ `int-pot-regel` (SG 1)
-  3. `int-exp-trig` — Stammfunktionen: $e^x\to e^x$, $\sin x\to -\cos x$, $\cos x\to \sin x$ (SG 2)
-  4. `int-summe` — Summen- und Faktorregel beim Integrieren (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `int-pot-regel` · **0/5+** — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
-  - 🔴 [1] _hoch_ · Konzepte: `int-1-x` · **0/5+** — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
-  - 🔴 [2] _hoch_ · Konzepte: `int-exp-trig` · **0/5+** — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
-  - 🔴 [3] _mittel_ · Konzepte: `int-summe` · **0/5+** — Summen- und Faktorregel beim Integrieren
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `int-pot-regel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `int-pot-regel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `int-pot-regel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `int-pot-regel` | 1 | 0 | 🔴 | $n=-1$ falsch behandelt |
-|  5 | 0 | transfer           | number-input     | `int-pot-regel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `int-1-x` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `int-1-x`, `int-pot-regel` | 1 | 0 | 🔴 | Potenzregel mit $n=-1$ fehlerhaft angewandt |
-| 10 | 1 | transfer           | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `int-exp-trig` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `int-exp-trig` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `int-exp-trig` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `int-exp-trig` | 1 | 0 | 🔴 | Vorzeichen bei $\sin/\cos$ |
-| 15 | 2 | transfer           | matching         | `int-exp-trig` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `int-summe` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `int-summe` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-1-2-c`, `ex-int-1-2-e`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-4` · Gemischte Übungen
 
@@ -10638,7 +10448,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 32 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 35 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10766,6 +10576,50 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+
+#### `int-1-2` · Grundintegrale
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`, `plus-c`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `int-pot-regel` — $\int x^n dx=x^{n+1}/(n+1)+C$ für $n\neq -1$ (SG 0)
+  2. `int-1-x` — Sonderfall $\int 1/x\,dx=\ln|x|+C$ ⇐ `int-pot-regel` (SG 1)
+  3. `int-exp-trig` — Stammfunktionen: $e^x\to e^x$, $\sin x\to -\cos x$, $\cos x\to \sin x$ (SG 2)
+  4. `int-summe` — Summen- und Faktorregel beim Integrieren (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `int-pot-regel` · **5/5+** — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
+  - ✅ [1] _hoch_ · Konzepte: `int-1-x` · **5/5+** — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
+  - ✅ [2] _hoch_ · Konzepte: `int-exp-trig` · **5/5+** — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
+  - ✅ [3] _mittel_ · Konzepte: `int-summe` · **5/5+** — Summen- und Faktorregel beim Integrieren
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `int-pot-regel` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `int-pot-regel` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `int-pot-regel` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `int-pot-regel` | 1 | 1 | ✅ | $n=-1$ falsch behandelt |
+|  5 | 0 | transfer           | number-input     | `int-pot-regel` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `int-1-x` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `int-1-x` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `int-1-x` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `int-1-x`, `int-pot-regel` | 1 | 1 | ✅ | Potenzregel mit $n=-1$ fehlerhaft angewandt |
+| 10 | 1 | transfer           | multiple-choice  | `int-1-x` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `int-exp-trig` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `int-exp-trig` | 1 | 3 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `int-exp-trig` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `int-exp-trig` | 1 | 1 | ✅ | Vorzeichen bei $\sin/\cos$ |
+| 15 | 2 | transfer           | matching         | `int-exp-trig` | 1 | 2 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `int-summe` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `int-summe`, `int-pot-regel` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `int-summe`, `int-pot-regel` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `int-summe` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `int-summe`, `int-pot-regel` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `py-1-1` · Variablen & Datentypen
 
@@ -11122,6 +10976,108 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+
+#### `dgl-1-1` · Was ist eine Differentialgleichung?
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `dgl-def` — DGL: Gleichung, in der Funktion und ihre Ableitungen vorkommen
+  2. `dgl-ordnung` — Ordnung = höchste vorkommende Ableitung ⇐ `dgl-def` (SG 0)
+  3. `dgl-linear` — Linear $\iff$ $y$ und Ableitungen nur in 1. Potenz, keine Produkte $y\cdot y'$ ⇐ `dgl-def` (SG 1)
+  4. `dgl-homogen` — Homogen $\iff$ rechte Seite $=0$; sonst inhomogen ⇐ `dgl-def` (SG 2)
+  5. `awp` — Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung ⇐ `dgl-def` (SG 3)
+  6. `ode-vs-pde` — Gewöhnlich (ODE: 1 unabh. Variable) vs. partiell (PDE) ⇐ `dgl-def` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `dgl-ordnung` · **5/5+** — Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
+  - ✅ [1] _hoch_ · Konzepte: `dgl-linear` · **5/5+** — Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
+  - ✅ [2] _hoch_ · Konzepte: `dgl-homogen` · **5/5+** — Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
+  - ✅ [3] _mittel_ · Konzepte: `awp` · **5/5+** — Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung
+  - ✅ [4] _niedrig_ · Konzepte: `ode-vs-pde` · **5/5+** — Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `dgl-ordnung` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `dgl-ordnung` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `dgl-ordnung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `dgl-ordnung` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `dgl-ordnung` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `dgl-linear` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `dgl-linear` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `dgl-linear` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `dgl-linear` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `dgl-linear` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `dgl-homogen` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `dgl-homogen` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `dgl-homogen` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `dgl-homogen` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `dgl-homogen`, `dgl-linear` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `awp` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `awp` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `awp` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `awp` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `awp` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `ode-vs-pde` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `ode-vs-pde` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `ode-vs-pde` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `ode-vs-pde` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `ode-vs-pde` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `dgl-1-2` · Trennung der Variablen
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `dgl-1-1` → `dgl-def`, `awp`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `tdv-erkennen` — Anwendbarkeit: $y'=f(x)\,g(y)$ — Produkt aus reiner $x$- und reiner $y$-Funktion (SG 0)
+  2. `tdv-trennen` — Trennung: $dy/g(y)=f(x)\,dx$ sauber sortieren ⇐ `tdv-erkennen` (SG 1)
+  3. `tdv-integrieren` — Beide Seiten integrieren, $C$ nur einmal ansetzen ⇐ `tdv-trennen` (SG 2)
+  4. `tdv-awp` — Anfangsbedingung $y(x_0)=y_0$ → $C$ bestimmen, vor Umformen nach $y$ ⇐ `tdv-integrieren` (SG 3)
+  5. `tdv-betrag` — Betragsstriche bei $\int 1/y\,dy=\ln|y|$ + Fallunterscheidung ⇐ `tdv-integrieren` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `tdv-erkennen` · **5/5+** — Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
+  - ✅ [1] _hoch_ · Konzepte: `tdv-trennen` · **5/5+** — $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
+  - ✅ [2] _hoch_ · Konzepte: `tdv-integrieren` · **5/5+** — Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
+  - ✅ [3] _hoch_ · Konzepte: `tdv-awp` · **5/5+** — Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$
+  - ✅ [4] _mittel_ · Konzepte: `tdv-betrag` · **5/5+** — Betragsstriche bei $\int 1/y\,dy = \ln|y|$ nicht vergessen und Fallunterscheidung prüfen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `tdv-erkennen` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `tdv-erkennen` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `tdv-erkennen` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `tdv-erkennen` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `tdv-erkennen` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `tdv-trennen` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `tdv-trennen` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `tdv-trennen` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `tdv-trennen` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | sorting          | `tdv-trennen`, `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `tdv-integrieren` | 1 | 1 | ✅ | $C$ doppelt angesetzt |
+| 15 | 2 | transfer           | number-input     | `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `tdv-awp` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `tdv-awp` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `tdv-awp`, `tdv-integrieren` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `tdv-awp` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `tdv-awp` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `tdv-betrag` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `tdv-betrag` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `tdv-betrag` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `tdv-betrag` | 1 | 1 | ✅ | Betragsstriche vergessen |
+| 25 | 4 | transfer           | multiple-choice  | `tdv-betrag` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
 
