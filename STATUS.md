@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3249 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2475 (76 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1498 / 1498 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 364 / 1134 (32 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3274 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2501 (76 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1511 / 1511 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 369 / 1134 (33 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **195** (Lesson-Path: 94 · Goal-Tasks: 101)
-- 4-Block: 155/195 (79 %) 🟡
-- MC-wAE: 100/100 (100 %) ✅
-- Sub-Goals: 20/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **220** (Lesson-Path: 94 · Goal-Tasks: 126)
+- 4-Block: 181/220 (82 %) 🟡
+- MC-wAE: 113/113 (100 %) ✅
+- Sub-Goals: 25/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -451,7 +451,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | `int-1-2` Grundintegrale | 4 | 4/4 | 26 | 12/7/4/3/0 | 26/26 | 12/12 | ✅ | — |
 | `int-1-3` Summenregel & Faktorregel | 4 | 4/4 | 25 | 15/3/4/2/1 | 25/25 | 15/15 | ✅ | — |
 | `int-1-4` Das bestimmte Integral | 4 | 4/4 | 25 | 12/8/4/1/0 | 25/25 | 12/12 | ✅ | — |
-| `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 0/5 | 4 | 3/1/0/0/0 | 3/4 | 3/3 | ✅ | +5 Goal, +1 4B |
+| `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 5/5 | 29 | 16/7/5/1/0 | 29/29 | 16/16 | ✅ | — |
 | `int-2-1` Substitution | 6 | 0/6 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +6 Goal, +1 4B |
 | `int-2-2` Partielle Integration | 5 | 0/5 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +5 Goal, +1 4B |
 | `int-2-3` Partialbruchzerlegung | 6 | 0/6 | 4 | 3/1/0/0/0 | 4/4 | 3/3 | ✅ | +6 Goal |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 104 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 103 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4576,60 +4576,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-4-a`, `ex-la-2-4-b`, `ex-la-2-4-c`, `ex-la-2-4-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`
-  - `int-1-4` → `hauptsatz-12`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `hauptsatz-1` — Teil 1: $F(x)=\int_a^x f(t)dt$ ist differenzierbar mit $F'(x)=f(x)$ (SG 0)
-  2. `hauptsatz-2` — Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ für jede Stammfunktion $F$ (SG 1)
-  3. `hs-stetig-vorau` — Voraussetzung: $f$ stetig auf $[a,b]$ ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 2)
-  4. `leibniz-regel` — Leibniz-Regel: $\frac{d}{dx}\int_{a(x)}^{b(x)}f(t)dt=f(b)b'-f(a)a'$ ⇐ `hauptsatz-1` (SG 3)
-  5. `umkehr-op` — Folgerung: Integration und Differentiation sind Umkehroperationen ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-1` · **0/5+** — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `hauptsatz-2` · **0/5+** — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
-  - 🔴 [2] _hoch_ · Konzepte: `hs-stetig-vorau` · **0/5+** — Voraussetzung: $f$ stetig auf $[a,b]$
-  - 🔴 [3] _mittel_ · Konzepte: `leibniz-regel` · **0/5+** — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
-  - 🔴 [4] _hoch_ · Konzepte: `umkehr-op` · **0/5+** — Folgerung: Integration und Differentiation sind Umkehroperationen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `umkehr-op` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-5': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-3` · Partialbruchzerlegung
 
@@ -9787,7 +9733,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 45 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 46 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10687,6 +10633,58 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-5': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`
+  - `int-1-4` → `hauptsatz-12`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hauptsatz-1` — Teil 1: $F(x)=\int_a^x f(t)dt$ ist differenzierbar mit $F'(x)=f(x)$ (SG 0)
+  2. `hauptsatz-2` — Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ für jede Stammfunktion $F$ (SG 1)
+  3. `hs-stetig-vorau` — Voraussetzung: $f$ stetig auf $[a,b]$ ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 2)
+  4. `leibniz-regel` — Leibniz-Regel: $\frac{d}{dx}\int_{a(x)}^{b(x)}f(t)dt=f(b)b'-f(a)a'$ ⇐ `hauptsatz-1` (SG 3)
+  5. `umkehr-op` — Folgerung: Integration und Differentiation sind Umkehroperationen ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `hauptsatz-1` · **5/5+** — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
+  - ✅ [1] _hoch_ · Konzepte: `hauptsatz-2` · **5/5+** — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
+  - ✅ [2] _hoch_ · Konzepte: `hs-stetig-vorau` · **5/5+** — Voraussetzung: $f$ stetig auf $[a,b]$
+  - ✅ [3] _mittel_ · Konzepte: `leibniz-regel` · **5/5+** — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
+  - ✅ [4] _hoch_ · Konzepte: `umkehr-op` · **5/5+** — Folgerung: Integration und Differentiation sind Umkehroperationen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `hauptsatz-1` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hauptsatz-2` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `hauptsatz-2` | 1 | 2 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `umkehr-op` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-op` | 1 | 2 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `umkehr-op` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-op` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `umkehr-op` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-5': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `dgl-1-1` · Was ist eine Differentialgleichung?
 

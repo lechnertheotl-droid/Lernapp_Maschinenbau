@@ -2065,6 +2065,676 @@ Korrekt: partielle Integration mit $u = x$, $v' = \\cos x$ (also $u' = 1$, $v = 
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-5 — Hauptsatz der Differential- und Integralrechnung  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-5': {
+
+    // ── [0] Teil 1: $F(x) = \int_a^x f(t)dt$ ist differenzierbar mit $F'(x) = f(x)$
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[hauptsatz-1]
+      tf(
+        'Die Funktion $F(x) = \\int_{a}^{x} f(t)\\,dt$ ist eine Stammfunktion von $f$ — das heißt, $F\'(x) = f(x)$.',
+        true,
+        `**Ansatz:** Aussage von Hauptsatz Teil 1: das Integral als Funktion der oberen Grenze ist genau die Stammfunktion.
+
+**Rechnung:** Per Hauptsatz Teil 1 gilt $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x)$ — sofern $f$ stetig ist. Daraus folgt direkt: $F$ erfüllt $F'(x) = f(x)$, also Stammfunktion.
+
+**Probe:** Beispiel $f(t) = t^{2}$: $F(x) = \\int_{0}^{x} t^{2}\\,dt = \\dfrac{x^{3}}{3}$. Probe: $F'(x) = x^{2} = f(x)$. ✓
+
+**Typischer Fehler:** Glauben, $F$ sei "nur das Integral" — tatsächlich ist $F$ als Funktion der oberen Grenze eine vollwertige Stammfunktion (deren Wahl von $C$ durch die untere Grenze $a$ bestimmt ist).`,
+        [
+          'Was sagt der Hauptsatz Teil 1 über die Ableitung von $F(x) = \\int_{a}^{x} f(t)\\,dt$?',
+          'Welche Bedingung erfüllt $F$ damit für eine Stammfunktion?',
+          'Probe: berechne $F$ für $f(t) = t^{2}$ und leite $F$ ab.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['hauptsatz-1'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[hauptsatz-1]
+      ni(
+        'Sei $F(x) = \\int_{2}^{x} t^{3}\\,dt$. Berechne $F\'(5)$.',
+        125,
+        0,
+        '',
+        `**Ansatz:** Hauptsatz Teil 1 direkt: $\\dfrac{d}{dx}\\int_{a}^{x} f(t)\\,dt = f(x)$ — also $F'(x) = $ Integrand bei $x$.
+
+**Rechnung:** Mit $f(t) = t^{3}$: $F'(x) = x^{3}$. Bei $x = 5$: $F'(5) = 5^{3} = 125$.
+
+**Probe:** Explizit: $F(x) = \\dfrac{x^{4}}{4} - \\dfrac{16}{4} = \\dfrac{x^{4} - 16}{4}$, $F'(x) = x^{3}$. ✓
+
+**Typischer Fehler:** $F(5)$ statt $F'(5)$ berechnen — das wäre $\\dfrac{625 - 16}{4} \\approx 152{,}25$, ein anderer Wert.`,
+        [
+          'Hauptsatz Teil 1: $F\'(x) = f(x)$, hier $f(t) = t^{3}$.',
+          'Bei $x = 5$: $F\'(5) = 5^{3}$.',
+          '$5^{3} = 125$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['hauptsatz-1'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[hauptsatz-1]
+      mc(
+        'Anna behauptet: „$F(x) = \\int_{0}^{x} t^{2}\\,dt = \\dfrac{x^{3}}{3}$, also ist $F\'(x) = \\dfrac{x^{3}}{3}$." Wo liegt der Fehler?',
+        [
+          'Anna hat $F\'(x) = F(x)$ gesetzt — aber Hauptsatz Teil 1 sagt $F\'(x) = f(x) = x^{2}$ (Integrand, nicht Integral). Sie hat den Ableitungs-Schritt vergessen oder mit der Berechnung von $F$ verwechselt.',
+          'Anna hätte zusätzlich $+C$ schreiben müssen.',
+          '$\\int_{0}^{x} t^{2}\\,dt = \\dfrac{x^{3}}{3}$ ist falsch — korrekt wäre $\\dfrac{x^{2}}{2}$.',
+          '$F\'(x)$ existiert nicht, weil das Integral als Funktion nicht differenzierbar ist.',
+        ],
+        0,
+        `**Ansatz:** Klar zwischen $F(x)$ (Integral als Funktion) und $F'(x)$ (Ableitung davon) trennen.
+
+**Rechnung:** $F(x) = \\int_{0}^{x} t^{2}\\,dt = \\dfrac{x^{3}}{3}$ — korrekt. Aber jetzt nach Hauptsatz Teil 1: $F'(x) = f(x) = x^{2}$. Ableitung der Funktion $\\dfrac{x^{3}}{3}$ explizit: $\\left(\\dfrac{x^{3}}{3}\\right)' = x^{2}$ ✓ — gleicher Wert.
+
+**Probe:** Anna gibt $F(x)$ aus, nicht $F'(x)$. Wer Anna nachläuft, würde fälschlich $F''(x) = x^{2}$ als nächste Frage erwarten.
+
+**Typischer Fehler:** Den Hauptsatz Teil 1 als "Integral = Ableitung" missverstehen — er sagt: ABLEITUNG des Integrals (nach oberer Grenze) ergibt den Integranden.`,
+        [
+          'Was unterscheidet $F(x)$ und $F\'(x)$?',
+          'Anna gibt $\\dfrac{x^{3}}{3}$ — ist das der Integralwert oder die Ableitung des Integrals?',
+          'Hauptsatz Teil 1: $F\'(x) = f(x)$, nicht $F\'(x) = F(x)$.',
+        ],
+        {
+          1: '$+C$ ist beim bestimmten Integral irrelevant — $F(x) = \\int_{0}^{x} t^{2}\\,dt$ ist eine konkrete Funktion ohne freies $C$. Annas Fehler liegt darin, dass sie $F\'(x)$ mit $F(x)$ verwechselt.',
+          2: '$\\int_{0}^{x} t^{2}\\,dt = \\dfrac{x^{3}}{3}$ ist KORREKT (Potenzregel + Hauptsatz Teil 2). Probe: $\\left(\\dfrac{x^{3}}{3}\\right)\' = x^{2} = t^{2}\\big|_{t=x}$ ✓. Annas Fehler liegt nicht hier.',
+          3: 'Falsch — $F$ IST differenzierbar, weil $f(t) = t^{2}$ stetig ist. Hauptsatz Teil 1 garantiert genau das: $F\'(x) = f(x) = x^{2}$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['hauptsatz-1'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · multiple-choice · uses=[hauptsatz-1]
+      mc(
+        'Sei $G(x) = \\int_{1}^{x} \\cos(t)\\,dt$. Welche Aussage über $G$ ist korrekt?',
+        [
+          '$G$ ist eine Stammfunktion von $\\cos$ mit $G(1) = 0$, also $G(x) = \\sin(x) - \\sin(1)$ und $G\'(x) = \\cos(x)$.',
+          '$G(x) = \\cos(x)$ und $G\'(x) = -\\sin(x)$.',
+          '$G$ ist konstant, weil $\\cos$ stetig ist.',
+          '$G(x) = -\\sin(x)$ und $G\'(x) = -\\cos(x)$.',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz Teil 1 + explizite Stammfunktion: $\\int \\cos\\,dt = \\sin t + C$, dann mit Untergrenze $a = 1$ konkretisieren.
+
+**Rechnung:** $G(x) = [\\sin t]_{1}^{x} = \\sin x - \\sin 1$. Hauptsatz Teil 1: $G'(x) = \\cos(x)$. Probe: $G(1) = \\sin 1 - \\sin 1 = 0$ ✓ (untere Grenze fixiert das $C$).
+
+**Probe:** $G$ ist Stammfunktion von $\\cos$ mit $G(1) = 0$ — beides korrekt. Und $G'(x) = \\cos x$ direkt aus dem Hauptsatz.
+
+**Typischer Fehler:** $G$ mit $\\cos$ selbst gleichsetzen — $G$ ist das INTEGRAL von $\\cos$, also die Stammfunktion (entwickelt sich wie $\\sin$).`,
+        [
+          'Berechne $G$ explizit über $[\\sin t]_{1}^{x}$.',
+          'Hauptsatz Teil 1: $G\'(x) = ?$ direkt aus dem Integranden ablesen.',
+          'Was ist $G(1)$ — der Integralwert mit gleicher unterer und oberer Grenze?',
+        ],
+        {
+          1: '$G(x) = \\cos(x)$ wäre nur richtig, wenn $G$ als Funktion DIREKT durch den Integranden gegeben wäre — tatsächlich ist $G$ aber die STAMMFUNKTION ($\\sin$-artig). Probe: $G(1) = \\cos(1) \\neq 0$, was nicht zu $\\int_{1}^{1} \\cos = 0$ passt.',
+          2: '$G$ ist nicht konstant, denn $G\'(x) = \\cos(x) \\neq 0$ (außer an isolierten Punkten). Stetigkeit von $\\cos$ heißt, dass $G$ existiert und differenzierbar ist — nicht konstant.',
+          3: '$-\\sin(x)$ wäre Stammfunktion von $-\\cos$, nicht von $\\cos$. Probe: $(-\\sin)\' = -\\cos \\neq \\cos$. Korrekt: $G(x) = \\sin(x) - \\sin(1)$, $G\'(x) = \\cos(x)$.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['hauptsatz-1'] },
+      ),
+
+      // Bonus (Mengen-Regel + Variation): SG 0 · ni · uses=[hauptsatz-1]
+      ni(
+        'Sei $H(x) = \\int_{0}^{x} e^{t}\\,dt$. Berechne $H\'(2)$ (auf 3 Nachkommastellen).',
+        7.389,
+        0.01,
+        '',
+        `**Ansatz:** Hauptsatz Teil 1: $H'(x) = $ Integrand bei $x$.
+
+**Rechnung:** Mit $f(t) = e^{t}$: $H'(x) = e^{x}$. Bei $x = 2$: $H'(2) = e^{2} \\approx 7{,}389$.
+
+**Probe:** Explizit: $H(x) = [e^{t}]_{0}^{x} = e^{x} - 1$. Ableitung: $H'(x) = e^{x}$ ✓.
+
+**Typischer Fehler:** $e^{2}$ mit $2 \\cdot e$ verwechseln (Logarithmus-Regel falsch angewandt). $e^{2} \\approx 7{,}389$, NICHT $2 e \\approx 5{,}437$.`,
+        [
+          'Hauptsatz Teil 1: $H\'(x) = e^{x}$ (Integrand zurück).',
+          'Bei $x = 2$: $H\'(2) = e^{2}$.',
+          '$e^{2} \\approx 7{,}389$ (Taschenrechner).',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['hauptsatz-1'] },
+      ),
+    ],
+
+    // ── [1] Teil 2: $\int_a^b f dx = F(b) - F(a)$ ─────────────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[hauptsatz-2]
+      tf(
+        'Wenn $F$ irgendeine Stammfunktion von $f$ ist (also $F\'(x) = f(x)$), dann gilt $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$ — unabhängig davon, welche konkrete Stammfunktion gewählt wird.',
+        true,
+        `**Ansatz:** Aussage von Hauptsatz Teil 2 — die Wahl der Stammfunktion ist egal, das Ergebnis ist eindeutig.
+
+**Rechnung:** $F$ und $\\tilde{F} = F + C$ sind beide Stammfunktionen, aber die Differenz $F(b) - F(a)$ ist unabhängig von $C$: $\\tilde{F}(b) - \\tilde{F}(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a)$.
+
+**Probe:** Beispiel $f(x) = 2x$: Mit $F(x) = x^{2}$ ist $F(2) - F(0) = 4 - 0 = 4$. Mit $\\tilde{F}(x) = x^{2} + 100$: $\\tilde{F}(2) - \\tilde{F}(0) = 104 - 100 = 4$ ✓.
+
+**Typischer Fehler:** Glauben, man müsse "die" Stammfunktion (mit $C = 0$) finden — irgendeine reicht.`,
+        [
+          'Was passiert mit $C$, wenn man $F(b) - F(a)$ bildet?',
+          'Algebraisch: $(F(b) + C) - (F(a) + C) = ?$',
+          'Beispiel: rechne $\\int_{0}^{2} 2x\\,dx$ mit zwei verschiedenen Stammfunktionen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['hauptsatz-2'] },
+      ),
+
+      // Matrix-Zeile 7: SG 1 · apply-guided · multiple-choice · uses=[hauptsatz-2]
+      mc(
+        'Berechne $\\int_{0}^{2} (3x^{2} + 1)\\,dx$ mit dem Hauptsatz.',
+        [
+          '$10$',
+          '$8$',
+          '$26$',
+          '$-10$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktion mit Summenregel + Potenzregel, dann Hauptsatz $F(b) - F(a)$.
+
+**Rechnung:** $F(x) = x^{3} + x$. $F(2) = 8 + 2 = 10$, $F(0) = 0$. $\\int_{0}^{2} (3x^{2} + 1)\\,dx = F(2) - F(0) = 10$.
+
+**Probe:** $F'(x) = 3x^{2} + 1$ ✓ (Integrand zurückgewonnen).
+
+**Typischer Fehler:** Konstanten Term $1$ als "$1$" stehen lassen statt zu $x$ zu integrieren — gibt $F = x^{3}$ und falsche $8$.`,
+        [
+          'Stammfunktion: $\\int 3x^{2}\\,dx = x^{3}$, $\\int 1\\,dx = x$.',
+          '$F(2) = 8 + 2 = 10$, $F(0) = 0$.',
+          'Hauptsatz: $F(2) - F(0) = 10$.',
+        ],
+        {
+          1: 'Du hast den konstanten Term $1$ nicht integriert — $\\int 1\\,dx = x$ (nicht $1$). Mit korrekter Stammfunktion $F = x^{3} + x$ ergibt $F(2) - F(0) = 10$, nicht $8$.',
+          2: 'Du hast den Faktor $3$ in $3x^{2}$ stehen gelassen statt durch den neuen Exponenten $3$ zu teilen: $\\int 3x^{2}\\,dx = x^{3}$ (nicht $3x^{3}$). Probe der falschen Stammfunktion: $(3x^{3})\' = 9x^{2} \\neq 3x^{2}$.',
+          3: 'Du hast die Grenzen vertauscht: $F(0) - F(2) = 0 - 10 = -10$. Hauptsatz verlangt $F(b) - F(a) = F(\\text{obere Grenze}) - F(\\text{untere Grenze})$, hier $F(2) - F(0) = +10$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['hauptsatz-2'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · number-input · uses=[hauptsatz-2]
+      ni(
+        'Berechne $\\int_{1}^{4} \\dfrac{1}{x^{2}}\\,dx$.',
+        0.75,
+        0.001,
+        '',
+        `**Ansatz:** Stammfunktion über Potenzregel mit negativem Exponenten: $\\dfrac{1}{x^{2}} = x^{-2}$.
+
+**Rechnung:** $\\int x^{-2}\\,dx = \\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$. Also $F(x) = -\\dfrac{1}{x}$. $F(4) = -\\dfrac{1}{4}$, $F(1) = -1$. $\\int_{1}^{4} \\dfrac{1}{x^{2}}\\,dx = F(4) - F(1) = -\\dfrac{1}{4} - (-1) = \\dfrac{3}{4} = 0{,}75$.
+
+**Probe:** $F'(x) = \\left(-x^{-1}\\right)' = x^{-2} = \\dfrac{1}{x^{2}}$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen: bei $\\int x^{-2}\\,dx = \\dfrac{x^{-1}}{-1}$ steht im Nenner $-1$, also Minus. Wer das übersieht, bekommt $+1/x$ statt $-1/x$.`,
+        [
+          'Stammfunktion: $\\int x^{-2}\\,dx = -x^{-1} = -\\dfrac{1}{x}$.',
+          '$F(4) = -1/4$, $F(1) = -1$.',
+          'Differenz: $-1/4 - (-1) = -1/4 + 1 = 3/4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['hauptsatz-2'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[hauptsatz-2]
+      mc(
+        'Tom rechnet $\\int_{2}^{5} e^{x}\\,dx = e^{5} + e^{2} \\approx 148{,}4 + 7{,}4 = 155{,}8$. Wo liegt der Fehler?',
+        [
+          'Tom hat $F(b) + F(a)$ gerechnet — Hauptsatz verlangt aber die Differenz $F(b) - F(a)$. Korrekt: $\\int_{2}^{5} e^{x}\\,dx = e^{5} - e^{2} \\approx 141{,}0$.',
+          'Tom hat richtig — Exponentialfunktionen werden bei der Integration additiv kombiniert.',
+          '$\\int e^{x}\\,dx \\neq e^{x}$ — korrekt wäre $x \\cdot e^{x}$.',
+          'Tom hätte am Ende $+C$ addieren müssen.',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz Teil 2: $\\int_{a}^{b} f\\,dx = F(b) - F(a)$ (Differenz, nicht Summe).
+
+**Rechnung:** $F(x) = e^{x}$, $F(5) = e^{5} \\approx 148{,}41$, $F(2) = e^{2} \\approx 7{,}39$. Korrekt: $F(5) - F(2) \\approx 141{,}02$. Tom hat addiert statt subtrahiert.
+
+**Probe:** $\\int_{2}^{5} e^{x}\\,dx = [e^{x}]_{2}^{5} = e^{5} - e^{2} \\approx 141{,}0$ ✓.
+
+**Typischer Fehler:** "Differenz" als "Summe" missverstehen, besonders wenn beide Werte positiv sind und addieren "natürlicher" wirkt.`,
+        [
+          'Welche Operation verlangt der Hauptsatz: $F(b) + F(a)$ oder $F(b) - F(a)$?',
+          'Tom hat $e^{5} + e^{2}$ gerechnet — was wäre korrekt?',
+          '$e^{5} - e^{2} = ?$',
+        ],
+        {
+          1: 'Falsch — Integration ist NICHT additiv in dem Sinne. Hauptsatz Teil 2 verlangt EINE einzige Differenz $F(b) - F(a)$, nicht eine Summe. Probe: $\\int_{2}^{5} e^{x}\\,dx = e^{5} - e^{2}$, nicht $+$.',
+          2: '$\\int e^{x}\\,dx = e^{x} + C$ ist KORREKT (Grundintegral, $e^{x}$ ist seine eigene Stammfunktion). Probe: $(e^{x})\' = e^{x}$ ✓. $x \\cdot e^{x}$ wäre Stammfunktion von $(x+1)e^{x}$ (per partieller Integration).',
+          3: 'Beim BESTIMMTEN Integral kürzt sich $C$ in $F(b) - F(a)$ raus — kein $+C$ am Ende. Tom\'s eigentlicher Fehler ist die Verwechslung von $+$ und $-$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['hauptsatz-2'] },
+      ),
+
+      // Bonus (Mengen-Regel) zu Z10: SG 1 · transfer · number-input · uses=[hauptsatz-2]
+      ni(
+        'Berechne $\\int_{-1}^{2} (3x^{2} - 4x + 1)\\,dx$ mit dem Hauptsatz.',
+        6,
+        0,
+        '',
+        `**Ansatz:** Summenregel auf Polynom + Hauptsatz.
+
+**Rechnung:** $F(x) = x^{3} - 2x^{2} + x$. $F(2) = 8 - 8 + 2 = 2$. $F(-1) = -1 - 2 - 1 = -4$. $\\int_{-1}^{2} (3x^{2} - 4x + 1)\\,dx = F(2) - F(-1) = 2 - (-4) = 6$.
+
+**Probe:** $F'(x) = 3x^{2} - 4x + 1$ ✓.
+
+**Typischer Fehler:** Bei $F(-1) = -1 - 2 - 1$ ein Vorzeichen verlieren — ungerade Potenzen behalten Vorzeichen ($(-1)^{3} = -1$), gerade Potenzen ergeben positiv ($(-1)^{2} = 1$, also $-2 \\cdot 1 = -2$).`,
+        [
+          'Stammfunktion gliedweise: $\\int 3x^{2} = x^{3}$, $\\int -4x = -2x^{2}$, $\\int 1 = x$.',
+          '$F(2) = 8 - 8 + 2 = 2$.',
+          '$F(-1) = (-1)^{3} - 2 \\cdot (-1)^{2} + (-1) = -1 - 2 - 1 = -4$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['hauptsatz-2'] },
+      ),
+    ],
+
+    // ── [2] Voraussetzung: $f$ stetig auf $[a, b]$ ────────────────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[hs-stetig-vorau]
+      tf(
+        'Der Hauptsatz der Differential- und Integralrechnung setzt voraus, dass die Funktion $f$ auf dem betrachteten Intervall $[a, b]$ stetig ist.',
+        true,
+        `**Ansatz:** Voraussetzung des Hauptsatzes nachschlagen — Stetigkeit ist die Schlüssel-Bedingung.
+
+**Rechnung:** Sowohl Teil 1 als auch Teil 2 setzen Stetigkeit von $f$ auf $[a, b]$ voraus. Ohne Stetigkeit könnten die Stammfunktion oder die Differenz $F(b) - F(a)$ nicht sinnvoll definiert sein. Beispiel: $f(x) = \\dfrac{1}{x^{2}}$ auf $[-1, 1]$ — Pol bei $0$, also nicht stetig — Hauptsatz nicht anwendbar (Integral divergiert).
+
+**Probe:** Für stetiges $f$: $F(x) = \\int_{a}^{x} f(t)\\,dt$ ist differenzierbar (Teil 1) und $\\int_{a}^{b} f\\,dx = F(b) - F(a)$ (Teil 2). Beide Schlüsse hängen an der Stetigkeit.
+
+**Typischer Fehler:** Glauben, der Hauptsatz gilt für jede Funktion — bei Sprungstellen oder Polen ist Vorsicht geboten (uneigentliche Integrale, andere Methoden).`,
+        [
+          'Welche Eigenschaft von $f$ wird im Hauptsatz vorausgesetzt?',
+          'Was passiert bei Polen oder Sprungstellen?',
+          'Beispiel: $\\int_{-1}^{1} 1/x^{2}\\,dx$ — anwendbar?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['hs-stetig-vorau'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[hs-stetig-vorau]
+      mc(
+        'Welche der folgenden Funktionen erfüllt die Voraussetzungen des Hauptsatzes auf dem Intervall $[0, 2]$ (also: ist stetig auf $[0, 2]$)?',
+        [
+          '$f(x) = x^{2} + \\sin(x)$',
+          '$f(x) = \\dfrac{1}{x}$',
+          '$f(x) = \\tan(x)$',
+          '$f(x) = \\begin{cases} 1, & x \\leq 1 \\\\ 2, & x > 1 \\end{cases}$',
+        ],
+        0,
+        `**Ansatz:** Stetigkeit jeder Funktion auf $[0, 2]$ prüfen — nach Polen, Sprungstellen, Definitionslücken suchen.
+
+**Rechnung:**
+- $x^{2} + \\sin(x)$: stetig auf ganz $\\mathbb{R}$ ✓ (Polynom + trig).
+- $1/x$: nicht definiert bei $x = 0$ — Pol, also nicht stetig auf $[0, 2]$.
+- $\\tan(x)$: Pol bei $x = \\pi/2 \\approx 1{,}57 \\in [0, 2]$ — nicht stetig.
+- Stückweise mit Sprung bei $x = 1$: nicht stetig (linksseitig $1$, rechtsseitig $2$).
+
+**Probe:** Hauptsatz auf $f(x) = x^{2} + \\sin(x)$ liefert $\\int_{0}^{2} f\\,dx = \\left[\\dfrac{x^{3}}{3} - \\cos x\\right]_{0}^{2} = \\dfrac{8}{3} - \\cos 2 + 1 \\approx 4{,}083$ — saubere endliche Zahl.
+
+**Typischer Fehler:** Pole/Definitionslücken übersehen — gerade an Randpunkten ($1/x$ bei $0$) oder im Inneren ($\\tan$ bei $\\pi/2$).`,
+        [
+          'Stetigkeit prüfen: gibt es Pole, Sprünge oder Definitionslücken in $[0, 2]$?',
+          '$1/x$: was passiert bei $x = 0$?',
+          '$\\tan(x)$: gibt es einen Pol in $[0, 2]$?',
+        ],
+        {
+          1: '$1/x$ ist bei $x = 0 \\in [0, 2]$ nicht definiert (Pol). Damit nicht stetig auf dem geschlossenen Intervall $[0, 2]$ — Hauptsatz nicht anwendbar.',
+          2: '$\\tan(x) = \\sin(x)/\\cos(x)$ hat einen Pol bei $\\cos(x) = 0$, also bei $x = \\pi/2 \\approx 1{,}57$. Da $\\pi/2 \\in [0, 2]$, ist $\\tan$ nicht stetig auf $[0, 2]$.',
+          3: 'Sprungstelle bei $x = 1$: linksseitiger Grenzwert $= 1$, rechtsseitiger $= 2$. Stetigkeit verlangt Übereinstimmung — verletzt. Hauptsatz nicht direkt anwendbar (für Sprung-Integrale braucht es Zerlegung).',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['hs-stetig-vorau'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · multiple-choice · uses=[hs-stetig-vorau]
+      mc(
+        'Auf welchem der folgenden Intervalle ist $f(x) = \\dfrac{1}{x - 3}$ stetig (und damit der Hauptsatz anwendbar)?',
+        [
+          '$[0, 2]$',
+          '$[2, 4]$',
+          '$[3, 5]$',
+          '$[1, 3]$',
+        ],
+        0,
+        `**Ansatz:** $f(x) = \\dfrac{1}{x - 3}$ hat einen Pol genau dort, wo $x - 3 = 0$, also bei $x = 3$. Auf jedem Intervall, das $3$ NICHT enthält, ist $f$ stetig.
+
+**Rechnung:**
+- $[0, 2]$: $3 \\notin [0, 2]$ ✓ — stetig, Hauptsatz anwendbar.
+- $[2, 4]$: $3 \\in [2, 4]$ — Pol im Inneren, nicht stetig.
+- $[3, 5]$: $3$ ist Randpunkt, $f(3)$ nicht definiert — nicht stetig auf dem geschlossenen Intervall.
+- $[1, 3]$: $3$ ist Randpunkt, $f(3)$ nicht definiert — nicht stetig.
+
+**Probe:** Auf $[0, 2]$: $\\int_{0}^{2} \\dfrac{1}{x-3}\\,dx = [\\ln|x-3|]_{0}^{2} = \\ln 1 - \\ln 3 = -\\ln 3 \\approx -1{,}099$. Saubere endliche Zahl.
+
+**Typischer Fehler:** Randpunkte vergessen prüfen — $f(3)$ ist nicht definiert, also auch der Randpunkt $x = 3$ verletzt die Stetigkeit auf einem geschlossenen Intervall.`,
+        [
+          'Wo hat $f(x) = 1/(x - 3)$ einen Pol?',
+          'Welches Intervall enthält den Pol $x = 3$ NICHT?',
+          'Achtung: auch Randpunkte zählen — wenn $3$ am Rand liegt, ist $f$ dort nicht definiert.',
+        ],
+        {
+          1: '$3 \\in [2, 4]$ ist genau im Inneren — Pol mitten im Intervall. Funktion divergiert dort, Stetigkeit verletzt.',
+          2: '$3$ ist linker Randpunkt von $[3, 5]$. $f(3)$ ist nicht definiert (Division durch null), also verletzt Stetigkeit auf dem geschlossenen Intervall.',
+          3: '$3$ ist rechter Randpunkt von $[1, 3]$. Wie bei (3): $f(3)$ nicht definiert → nicht stetig auf dem geschlossenen Intervall.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['hs-stetig-vorau'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[hs-stetig-vorau]
+      mc(
+        'Markus berechnet $\\int_{-1}^{1} \\dfrac{1}{x^{2}}\\,dx$ mit dem Hauptsatz: Stammfunktion $F(x) = -\\dfrac{1}{x}$, also $F(1) - F(-1) = -1 - 1 = -2$. Wo liegt der Fehler?',
+        [
+          '$f(x) = \\dfrac{1}{x^{2}}$ hat einen Pol bei $x = 0 \\in [-1, 1]$ — die Stetigkeits-Voraussetzung des Hauptsatzes ist verletzt. Das Integral ist tatsächlich uneigentlich und divergent ($\\to +\\infty$). Markus\' formale Rechnung $-2$ ist mathematisch sinnlos.',
+          'Markus hat das Vorzeichen vergessen — korrekt wäre $+2$, nicht $-2$.',
+          'Stammfunktion $-\\dfrac{1}{x}$ ist falsch — korrekt wäre $-\\dfrac{1}{2x^{2}}$.',
+          'Markus hätte die Reihenfolge der Grenzen umdrehen müssen.',
+        ],
+        0,
+        `**Ansatz:** Stetigkeit von $f$ auf $[-1, 1]$ prüfen — bei Pol ist der Hauptsatz nicht direkt anwendbar.
+
+**Rechnung:** $f(x) = 1/x^{2}$ hat einen Pol bei $x = 0$. Da $0 \\in [-1, 1]$, ist $f$ NICHT stetig auf dem Intervall — Voraussetzung des Hauptsatzes verletzt. Das uneigentliche Integral $\\int_{-1}^{1} 1/x^{2}\\,dx$ zerlegt sich in $\\int_{-1}^{0} + \\int_{0}^{1}$, und beide divergieren ($\\to \\infty$). Markus\' formaler Wert $-2$ ist Pseudo-Resultat.
+
+**Probe:** Bemerkung: $f(x) = 1/x^{2} > 0$ überall — wie kann das Integral negativ sein? Schon der Vorzeichen-Widerspruch zeigt: etwas stimmt nicht.
+
+**Typischer Fehler:** Den Hauptsatz mechanisch anwenden, ohne die Stetigkeits-Voraussetzung zu prüfen. Bei Polen ist das uneigentliche Integral zu untersuchen.`,
+        [
+          'Schau das Vorzeichen an: $1/x^{2} > 0$ — kann das Integral wirklich negativ sein?',
+          'Wo hat $f$ einen Pol? Liegt der im Integrationsbereich?',
+          'Was ist die Voraussetzung des Hauptsatzes?',
+        ],
+        {
+          1: 'Selbst mit positivem Vorzeichen wäre die Antwort falsch — das Integral existiert gar nicht (divergent). Markus\' eigentlicher Fehler ist NICHT das Vorzeichen, sondern das blinde Anwenden des Hauptsatzes trotz Pol.',
+          2: 'Stammfunktion $-1/x$ ist KORREKT: $\\int x^{-2}\\,dx = x^{-1}/(-1) = -1/x$. Probe: $(-1/x)\' = 1/x^{2}$ ✓. Markus\' Fehler liegt nicht in der Stammfunktion.',
+          3: 'Reihenfolge der Grenzen ist mit $-1 < 1$ korrekt — untere ist $-1$, obere ist $1$. Hauptsatz: $F(1) - F(-1)$. Markus\' Schritt ist mechanisch richtig, aber unzulässig wegen des Pols.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['hs-stetig-vorau'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · multiple-choice · uses=[hs-stetig-vorau]
+      mc(
+        'Welche Aussage über die Rolle der Stetigkeit im Hauptsatz ist korrekt?',
+        [
+          'Die Stetigkeit von $f$ auf $[a, b]$ garantiert sowohl die Existenz einer Stammfunktion (Teil 1: $F(x) = \\int_{a}^{x} f(t)\\,dt$ ist differenzierbar) als auch die Anwendbarkeit der Differenz-Formel (Teil 2: $F(b) - F(a)$).',
+          'Stetigkeit ist nur für Teil 1 nötig, Teil 2 funktioniert für jede integrierbare Funktion.',
+          'Stetigkeit ist nur für Teil 2 nötig, Teil 1 gilt auch ohne diese Voraussetzung.',
+          'Der Hauptsatz gilt für jede integrierbare Funktion — Stetigkeit ist nicht erforderlich.',
+        ],
+        0,
+        `**Ansatz:** Stetigkeit als gemeinsame Voraussetzung beider Teile des Hauptsatzes erinnern.
+
+**Rechnung:** Teil 1 nutzt: $f$ stetig $\\Rightarrow$ $F(x) = \\int_{a}^{x} f$ ist differenzierbar (sogar mit $F'(x) = f(x)$). Teil 2 nutzt $f$ stetig $\\Rightarrow$ $f$ besitzt eine Stammfunktion $F$ und das bestimmte Integral lässt sich als $F(b) - F(a)$ schreiben. Beide Teile setzen Stetigkeit voraus.
+
+**Probe:** Ein Gegenbeispiel ohne Stetigkeit: $f(x) = 1/x^{2}$ auf $[-1, 1]$ — weder existiert eine Stammfunktion über den ganzen Bereich noch konvergiert das Integral. Beide Teile scheitern simultan.
+
+**Typischer Fehler:** Die beiden Teile des Hauptsatzes als unabhängig betrachten — sie haben aber dieselbe Voraussetzung (Stetigkeit) und liefern komplementäre Aussagen.`,
+        [
+          'Welche Voraussetzung haben beide Teile des Hauptsatzes gemeinsam?',
+          'Was würde passieren, wenn $f$ einen Pol auf $[a, b]$ hat?',
+          'Die Stetigkeit ist die Schlüsselbedingung für die ganze Maschinerie.',
+        ],
+        {
+          1: 'Falsch — auch Teil 2 verlangt Stetigkeit, weil sonst eine Stammfunktion gar nicht existieren muss. Eine Funktion mit Sprungstelle hat möglicherweise gar keine Stammfunktion in elementarem Sinn.',
+          2: 'Falsch — auch Teil 1 verlangt Stetigkeit, sonst ist $F(x) = \\int_{a}^{x} f$ möglicherweise nicht differenzierbar, oder $F\'(x) \\neq f(x)$ an Sprungstellen.',
+          3: 'Integrierbarkeit allein reicht NICHT. Beispiel: $1/x^{2}$ ist auf $[\\epsilon, 1]$ integrierbar, aber das Integral $\\int_{-1}^{1} 1/x^{2}\\,dx$ divergiert. Stetigkeit ist die SAUBERE Voraussetzung.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['hs-stetig-vorau'] },
+      ),
+    ],
+
+    // ── [3] Leibniz-Regel: variable Grenzen ──────────────────────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[leibniz-regel]
+      tf(
+        'Die Leibniz-Regel verallgemeinert Hauptsatz Teil 1 auf variable Grenzen: $\\dfrac{d}{dx} \\int_{a(x)}^{b(x)} f(t)\\,dt = f(b(x)) \\cdot b\'(x) - f(a(x)) \\cdot a\'(x)$.',
+        true,
+        `**Ansatz:** Aussage der Leibniz-Regel — Kettenregel auf Hauptsatz Teil 1 angewandt.
+
+**Rechnung:** Sei $\\Phi(x) = \\int_{a(x)}^{b(x)} f(t)\\,dt = G(b(x)) - G(a(x))$ mit $G$ Stammfunktion von $f$. Kettenregel auf jede Komponente: $\\Phi'(x) = G'(b(x)) \\cdot b'(x) - G'(a(x)) \\cdot a'(x) = f(b(x)) b'(x) - f(a(x)) a'(x)$.
+
+**Probe:** Spezialfall $a(x) = a$ konstant, $b(x) = x$: Leibniz-Regel liefert $f(x) \\cdot 1 - f(a) \\cdot 0 = f(x)$ — Hauptsatz Teil 1 zurückgewonnen. ✓
+
+**Typischer Fehler:** Bei der oberen Grenze die Kettenregel-Anwendung $b'(x)$ vergessen — wer einfach $f(b(x))$ als Antwort gibt, vergisst den Faktor $b'(x)$.`,
+        [
+          'Wie würde Hauptsatz Teil 1 lauten, wenn auch $a$ variabel ist?',
+          'Kettenregel auf $G(b(x))$ und $G(a(x))$.',
+          'Spezialfall $a(x) = a$ (konst), $b(x) = x$ — was bleibt von der Formel übrig?',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['leibniz-regel'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[leibniz-regel]
+      mc(
+        'Berechne $\\dfrac{d}{dx} \\int_{0}^{x^{2}} \\cos(t)\\,dt$ mit der Leibniz-Regel.',
+        [
+          '$2x \\cos(x^{2})$',
+          '$\\cos(x^{2})$',
+          '$2x \\sin(x^{2})$',
+          '$\\sin(x^{2})$',
+        ],
+        0,
+        `**Ansatz:** Leibniz-Regel mit $a(x) = 0$ (also $a'(x) = 0$), $b(x) = x^{2}$ (also $b'(x) = 2x$), $f(t) = \\cos t$.
+
+**Rechnung:** $\\dfrac{d}{dx} \\int_{0}^{x^{2}} \\cos t\\,dt = f(b(x)) \\cdot b'(x) - f(a(x)) \\cdot a'(x) = \\cos(x^{2}) \\cdot 2x - \\cos(0) \\cdot 0 = 2x \\cos(x^{2})$.
+
+**Probe:** Explizit: $\\int_{0}^{x^{2}} \\cos t\\,dt = \\sin(x^{2}) - \\sin 0 = \\sin(x^{2})$. Ableitung mit Kettenregel: $(\\sin(x^{2}))' = \\cos(x^{2}) \\cdot 2x$ ✓.
+
+**Typischer Fehler:** Den Faktor $b'(x) = 2x$ vergessen — wer nur $\\cos(x^{2})$ als Antwort gibt, hat die Kettenregel an der oberen Grenze ausgelassen.`,
+        [
+          'Identifiziere $a(x)$, $b(x)$, $f(t)$ in der Leibniz-Regel.',
+          '$a(x) = 0$, $b(x) = x^{2}$, $f(t) = \\cos t$.',
+          'Berechne $a\'(x), b\'(x)$ und setze in $f(b(x)) b\'(x) - f(a(x)) a\'(x)$ ein.',
+        ],
+        {
+          1: 'Du hast den Faktor $b\'(x) = 2x$ vergessen. Leibniz-Regel verlangt $f(b(x)) \\cdot b\'(x)$ — die Kettenregel an der oberen Grenze. Probe der falschen Antwort: $(\\sin(x^{2}))\' = 2x \\cos(x^{2}) \\neq \\cos(x^{2})$.',
+          2: 'Du hast $\\cos$ und $\\sin$ vertauscht. Die Stammfunktion von $\\cos$ ist $\\sin$, aber der LEIBNIZ-Output liefert $f(b(x))$ — das ist der INTEGRAND $\\cos$ (nicht die Stammfunktion). Korrekt: $2x \\cos(x^{2})$.',
+          3: 'Doppelt falsch: $\\sin$ statt $\\cos$ UND der Faktor $b\'(x) = 2x$ fehlt. Leibniz-Regel: $f(b(x)) \\cdot b\'(x) = \\cos(x^{2}) \\cdot 2x$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['leibniz-regel'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · number-input · uses=[leibniz-regel]
+      ni(
+        'Sei $G(x) = \\int_{0}^{x^{2}} 3t\\,dt$. Berechne $G\'(2)$.',
+        48,
+        0,
+        '',
+        `**Ansatz:** Leibniz-Regel mit $a(x) = 0$, $b(x) = x^{2}$, $f(t) = 3t$.
+
+**Rechnung:** $G'(x) = f(b(x)) \\cdot b'(x) = 3 \\cdot x^{2} \\cdot 2x = 6x^{3}$. Bei $x = 2$: $G'(2) = 6 \\cdot 8 = 48$.
+
+**Probe:** Explizit: $G(x) = \\left[\\dfrac{3t^{2}}{2}\\right]_{0}^{x^{2}} = \\dfrac{3 x^{4}}{2}$. $G'(x) = 6 x^{3}$ ✓. $G'(2) = 48$.
+
+**Typischer Fehler:** Bei $f(b(x)) = 3 \\cdot x^{2}$ den Faktor $b'(x) = 2x$ vergessen — gibt nur $3x^{2}$, das wäre $G'(x)$ ohne Kettenregel.`,
+        [
+          'Leibniz-Regel: $G\'(x) = f(b(x)) \\cdot b\'(x)$, $a(x) = 0$ liefert keinen Beitrag.',
+          'Mit $b(x) = x^{2}$: $G\'(x) = 3 \\cdot (x^{2}) \\cdot 2x = 6x^{3}$.',
+          'Bei $x = 2$: $6 \\cdot 8 = 48$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['leibniz-regel'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[leibniz-regel]
+      mc(
+        'Lukas berechnet $\\dfrac{d}{dx} \\int_{0}^{x^{3}} t^{2}\\,dt$ und schreibt: „Hauptsatz Teil 1 sagt: Ableitung ergibt den Integranden bei der oberen Grenze, also $(x^{3})^{2} = x^{6}$." Wo liegt der Fehler?',
+        [
+          'Lukas hat die Kettenregel an der oberen Grenze vergessen. Leibniz-Regel: $\\dfrac{d}{dx} \\int_{0}^{b(x)} f(t)\\,dt = f(b(x)) \\cdot b\'(x)$. Hier $b(x) = x^{3}$, $b\'(x) = 3x^{2}$, also $\\dfrac{d}{dx}\\int_{0}^{x^{3}} t^{2}\\,dt = (x^{3})^{2} \\cdot 3x^{2} = 3x^{8}$, nicht $x^{6}$.',
+          'Lukas hat richtig — bei der oberen Grenze $b(x)$ ergibt der Hauptsatz $f(b(x))$ direkt.',
+          '$(x^{3})^{2} = x^{5}$ wäre korrekt (Exponentenaddition).',
+          'Die Ableitung sollte negativ sein, also $-x^{6}$.',
+        ],
+        0,
+        `**Ansatz:** Lukas wendet Hauptsatz Teil 1 für die Form $\\int_{a}^{x} f(t)\\,dt$ an — aber die obere Grenze ist HIER $b(x) = x^{3}$, nicht $x$. Daher gilt die allgemeinere Leibniz-Regel mit zusätzlichem Faktor $b'(x)$.
+
+**Rechnung:** Korrekt mit Leibniz: $\\dfrac{d}{dx} \\int_{0}^{x^{3}} t^{2}\\,dt = (x^{3})^{2} \\cdot (x^{3})' = x^{6} \\cdot 3x^{2} = 3x^{8}$. Lukas hat den Faktor $3x^{2}$ vergessen.
+
+**Probe:** Explizit: $G(x) = \\int_{0}^{x^{3}} t^{2}\\,dt = \\dfrac{(x^{3})^{3}}{3} = \\dfrac{x^{9}}{3}$. $G'(x) = 3x^{8}$ ✓.
+
+**Typischer Fehler:** Hauptsatz Teil 1 mechanisch auf jede obere Grenze anwenden, ohne die Kettenregel auf $b(x) = x^{3}$ zu beachten.`,
+        [
+          'Was ist der Unterschied zwischen $\\int_{0}^{x} f(t)\\,dt$ und $\\int_{0}^{x^{3}} f(t)\\,dt$?',
+          'Bei nicht-trivialer oberer Grenze: Kettenregel notwendig.',
+          'Probe: $G(x) = x^{9}/3$, $G\'(x) = 3x^{8}$ — passt das zu $x^{6}$?',
+        ],
+        {
+          1: 'Falsch — Lukas\' Ergebnis $x^{6}$ stimmt nicht. Probe: $G(x) = x^{9}/3$, $G\'(x) = 3x^{8}$ ($\\neq x^{6}$). Hauptsatz Teil 1 in seiner Standardform setzt voraus, dass die obere Grenze $x$ selbst ist — bei $b(x) = x^{3}$ braucht es die allgemeinere Leibniz-Regel mit $b\'(x)$.',
+          2: '$(x^{3})^{2} = x^{6}$ (Exponentenmultiplikation: $3 \\cdot 2 = 6$), nicht $x^{5}$. Lukas\' Schritt ist algebraisch korrekt, aber sein Ergebnis ist trotzdem unvollständig — der Faktor $b\'(x) = 3x^{2}$ fehlt.',
+          3: 'Vorzeichen ist nicht das Problem. Da $t^{2} \\geq 0$ und $x^{3} > 0$ für $x > 0$, ist $G(x) \\geq 0$, und $G\'(x) > 0$ für $x > 0$. Lukas\' eigentlicher Fehler: vergessener Faktor $b\'(x)$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['leibniz-regel'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · number-input · uses=[leibniz-regel]
+      ni(
+        'Sei $H(x) = \\int_{x}^{2x} t\\,dt$. Berechne $H\'(3)$.',
+        9,
+        0,
+        '',
+        `**Ansatz:** Leibniz-Regel mit BEIDEN variablen Grenzen: $a(x) = x$ (also $a'(x) = 1$), $b(x) = 2x$ (also $b'(x) = 2$), $f(t) = t$.
+
+**Rechnung:** $H'(x) = f(b(x)) \\cdot b'(x) - f(a(x)) \\cdot a'(x) = (2x) \\cdot 2 - x \\cdot 1 = 4x - x = 3x$. Bei $x = 3$: $H'(3) = 9$.
+
+**Probe:** Explizit: $H(x) = \\left[\\dfrac{t^{2}}{2}\\right]_{x}^{2x} = \\dfrac{(2x)^{2}}{2} - \\dfrac{x^{2}}{2} = 2x^{2} - \\dfrac{x^{2}}{2} = \\dfrac{3x^{2}}{2}$. $H'(x) = 3x$ ✓. $H'(3) = 9$.
+
+**Typischer Fehler:** Den UNTEREN Term $f(a(x)) \\cdot a'(x) = x \\cdot 1 = x$ vergessen abzuziehen — gibt $4x$ statt $3x$, also $H'(3) = 12$ (falsch).`,
+        [
+          'Beide Grenzen variabel: Leibniz-Regel mit zwei Termen.',
+          '$f(b(x)) \\cdot b\'(x) = (2x) \\cdot 2 = 4x$, $f(a(x)) \\cdot a\'(x) = x \\cdot 1 = x$.',
+          'Differenz: $4x - x = 3x$, bei $x = 3$ ergibt $9$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['leibniz-regel'] },
+      ),
+    ],
+
+    // ── [4] Folgerung: Integration und Differentiation sind Umkehroperationen ──
+    4: [
+      // Matrix-Zeile 21: SG 4 · recognize · true-false · uses=[umkehr-op]
+      tf(
+        'Integration und Differentiation sind Umkehroperationen: einerseits $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x)$ (Integral ableiten gibt Integrand zurück), andererseits $\\int_{a}^{x} f\'(t)\\,dt = f(x) - f(a)$ (Ableitung integrieren gibt Funktion bis auf Konstante zurück).',
+        true,
+        `**Ansatz:** Beide Richtungen der Umkehrbeziehung gleichzeitig prüfen.
+
+**Rechnung:**
+- Integration $\\to$ Differentiation: Hauptsatz Teil 1 direkt — $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x)$.
+- Differentiation $\\to$ Integration: Hauptsatz Teil 2 angewandt auf Stammfunktion $f$ von $f'$: $\\int_{a}^{x} f'(t)\\,dt = f(x) - f(a)$.
+
+**Probe:** Beispiel $f(x) = x^{3}$, $f'(x) = 3x^{2}$. Test 1: $\\dfrac{d}{dx} \\int_{0}^{x} 3t^{2}\\,dt = 3x^{2}$ ✓. Test 2: $\\int_{0}^{x} 3t^{2}\\,dt = x^{3} - 0 = f(x) - f(0)$ ✓.
+
+**Typischer Fehler:** Glauben, "Umkehroperationen" heißt $\\int_{a}^{x} f'(t)\\,dt = f'(x)$ — falsch, das wäre eine andere Aussage.`,
+        [
+          'Wie heben sich Integration und Differentiation auf — was sagt der Hauptsatz?',
+          'Test 1: erst integrieren, dann ableiten. Was kommt heraus?',
+          'Test 2: erst ableiten, dann integrieren. Was kommt heraus (bis auf Randwert)?',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['umkehr-op'] },
+      ),
+
+      // Matrix-Zeile 23: SG 4 · apply-independent · multiple-choice · uses=[umkehr-op]
+      mc(
+        'Vereinfache $\\dfrac{d}{dx} \\int_{2}^{x} \\sqrt{1 + t^{4}}\\,dt$ — möglichst direkt, ohne den Integranden zu berechnen.',
+        [
+          '$\\sqrt{1 + x^{4}}$',
+          '$\\dfrac{1}{2\\sqrt{1 + x^{4}}} \\cdot 4x^{3}$',
+          '$\\sqrt{1 + x^{4}} - \\sqrt{1 + 16}$',
+          '$0$',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz Teil 1 in Reinform — Ableitung des Integrals nach der oberen Grenze ist der Integrand.
+
+**Rechnung:** $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x)$. Hier $f(t) = \\sqrt{1 + t^{4}}$, also Ergebnis $f(x) = \\sqrt{1 + x^{4}}$. Konstante untere Grenze $a = 2$ liefert keinen Beitrag, weil $a'(x) = 0$.
+
+**Probe:** Sehr eleganter Trick — auch wenn der Integrand $\\sqrt{1 + t^{4}}$ KEINE elementare Stammfunktion besitzt, ist die Ableitung des Integrals trivial: einfach Integrand zurück.
+
+**Typischer Fehler:** Die Kettenregel auf $\\sqrt{1 + t^{4}}$ anwenden — die ist hier irrelevant, weil wir nicht den Integranden ableiten, sondern das ganze Integral.`,
+        [
+          'Hauptsatz Teil 1: $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = ?$',
+          'Antwort: $f(x)$ — der Integrand mit $t \\to x$.',
+          'Kein Stammfunktion-Berechnen nötig!',
+        ],
+        {
+          1: 'Du hast die Ableitung des INTEGRANDEN $\\sqrt{1 + t^{4}}$ berechnet — das ist hier nicht gefragt. Hauptsatz Teil 1 sagt: Ableitung des INTEGRALS nach der oberen Grenze gibt direkt den Integranden zurück.',
+          2: 'Du hast Hauptsatz Teil 2 angewandt: $\\int_{2}^{x} f\\,dt = F(x) - F(2)$, dann abgeleitet: $f(x) - 0 = f(x)$. Das ist okay, aber du hast die $-\\sqrt{1+16}$ stehen gelassen — die ist Konstante und verschwindet beim Ableiten.',
+          3: 'Wenn das Integral konstant wäre, wäre die Ableitung null — aber hier ist das Integral eine FUNKTION von $x$ (variable obere Grenze), und Hauptsatz Teil 1 sagt: Ableitung gibt den Integranden $f(x) = \\sqrt{1 + x^{4}} \\neq 0$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['umkehr-op'] },
+      ),
+
+      // Matrix-Zeile 24: SG 4 · error-analysis · multiple-choice · uses=[umkehr-op]
+      mc(
+        'Eine Studentin schreibt: „$\\int_{0}^{x} f\'(t)\\,dt = f\'(x)$, weil Integration und Differentiation sich aufheben." Wo liegt der Fehler?',
+        [
+          'Die Reihenfolge ist falsch: $\\int_{a}^{x} f\'(t)\\,dt = f(x) - f(a)$ — Integration und Differentiation heben sich auf, ABER nicht zur Ausgangs-ABLEITUNG, sondern zur Ausgangs-FUNKTION (bis auf den Randwert $f(a)$). Hier also $f(x) - f(0)$, nicht $f\'(x)$.',
+          'Sie hat richtig gerechnet — Integration und Differentiation heben sich genau zu $f\'(x)$ auf.',
+          '$\\int_{0}^{x} f\'(t)\\,dt = 0$, weil $f\'$ und $f$ verschiedene Funktionen sind.',
+          'Sie hätte zuerst $f$ ableiten und dann nochmal ableiten müssen.',
+        ],
+        0,
+        `**Ansatz:** Welche Operation hebt welche auf? Genau hinschauen, was integriert und was differenziert wird.
+
+**Rechnung:** $\\int_{0}^{x} f'(t)\\,dt$ ist Hauptsatz Teil 2 mit Integrand $f'$ — hat Stammfunktion $f$ (denn $(f)' = f'$). Also: $\\int_{0}^{x} f'(t)\\,dt = f(x) - f(0)$. Die Studentin gibt $f'(x)$ aus — eine andere Funktion.
+
+**Probe:** Beispiel $f(x) = x^{3}$, $f'(x) = 3x^{2}$. $\\int_{0}^{x} 3t^{2}\\,dt = x^{3} - 0 = f(x)$, NICHT $f'(x) = 3x^{2}$. Die Studentin würde fälschlich behaupten, das Ergebnis sei $3x^{2}$.
+
+**Typischer Fehler:** "Umkehroperationen" als "die Operationen kürzen sich vollständig" missverstehen — tatsächlich kürzen sie sich bis auf einen Randwert.`,
+        [
+          'Was passiert bei $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt$? (Hauptsatz Teil 1)',
+          'Was passiert bei $\\int_{a}^{x} f\'(t)\\,dt$? (Hauptsatz Teil 2)',
+          'Beide Operationen heben sich auf, aber mit unterschiedlichem "Rest".',
+        ],
+        {
+          1: 'Falsch — die Studentin hat NICHT richtig. Probe: $f = x^{3}$, $f\' = 3x^{2}$, $\\int_{0}^{x} 3t^{2}\\,dt = x^{3} \\neq 3x^{2}$.',
+          2: 'Falsch — $f$ und $f\'$ sind durchaus verschieden, aber das Integral $\\int_{0}^{x} f\'(t)\\,dt$ ist NICHT null. Es liefert $f(x) - f(0)$, eine sinnvolle (im Allgemeinen nicht-null) Funktion.',
+          3: 'Falsch — zweimal Ableiten gibt $f\'\'(x)$, nicht das, was gefragt war. Das Integral $\\int_{0}^{x} f\'(t)\\,dt$ liefert per Hauptsatz Teil 2: $f(x) - f(0)$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['umkehr-op'] },
+      ),
+
+      // Matrix-Zeile 25: SG 4 · transfer · matching · uses=[umkehr-op]
+      matching(
+        'Vereinfache jeden Ausdruck mit dem Hauptsatz und ordne ihn dem Endergebnis zu.',
+        [
+          { left: '$\\dfrac{d}{dx} \\int_{0}^{x} \\sin(t)\\,dt$',  right: '$\\sin(x)$' },
+          { left: '$\\int_{0}^{x} \\cos\'(t)\\,dt$',                right: '$\\cos(x) - 1$' },
+          { left: '$\\int_{0}^{x} (e^{t})\'\\,dt$',                 right: '$e^{x} - 1$' },
+          { left: '$\\dfrac{d}{dx} \\int_{1}^{x} \\dfrac{1}{t}\\,dt$', right: '$\\dfrac{1}{x}$' },
+        ],
+        `**Ansatz:** Beide Richtungen der Umkehrbeziehung systematisch anwenden.
+
+**Rechnung:**
+- $\\dfrac{d}{dx} \\int_{0}^{x} \\sin t\\,dt = \\sin x$ (Hauptsatz Teil 1 direkt).
+- $\\int_{0}^{x} \\cos'(t)\\,dt = \\cos x - \\cos 0 = \\cos x - 1$ (Hauptsatz Teil 2 mit Stammfunktion $\\cos$).
+- $\\int_{0}^{x} (e^{t})'\\,dt = e^{x} - e^{0} = e^{x} - 1$ (analog).
+- $\\dfrac{d}{dx} \\int_{1}^{x} \\dfrac{1}{t}\\,dt = \\dfrac{1}{x}$ (Hauptsatz Teil 1 — der Integrand $1/t$ wird zum $1/x$).
+
+**Probe:** Vier verschiedene Ergebnisse — Zuordnung eindeutig. Erste und vierte Zeile sind Teil-1-Anwendungen, zweite und dritte sind Teil-2-Anwendungen.
+
+**Typischer Fehler:** Bei den Teil-2-Aufgaben das $-f(a)$ vergessen (also $\\cos x$ statt $\\cos x - 1$).`,
+        [
+          'Bei $d/dx \\int$: Hauptsatz Teil 1 — Integrand zurück.',
+          'Bei $\\int f\'(t)\\,dt$: Hauptsatz Teil 2 — Stammfunktion $f$, also $f(x) - f(\\text{untere Grenze})$.',
+          'Vergiss bei den Teil-2-Aufgaben den Randwert $f(0)$ nicht.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['umkehr-op'] },
+      ),
+
+      // Bonus (Mengen-Regel + Variation) zu Z22 (LP-c deckt bereits): SG 4 · apply-guided · multiple-choice
+      mc(
+        'Welcher der folgenden Ausdrücke ist eine direkte Anwendung von Hauptsatz Teil 1 (Integration $\\to$ Differentiation hebt sich auf)?',
+        [
+          '$\\dfrac{d}{dx} \\int_{3}^{x} e^{t^{2}}\\,dt = e^{x^{2}}$',
+          '$\\dfrac{d}{dx} (e^{x^{2}}) = 2x e^{x^{2}}$',
+          '$\\int_{0}^{x} e^{t^{2}}\\,dt = \\dfrac{e^{x^{2}}}{2x}$',
+          '$e^{x^{2}} \\cdot \\dfrac{d}{dx}(x^{2}) = 2x e^{x^{2}}$',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz Teil 1 erkennen: $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x)$ — Ableitung eines Integrals (mit konstanter unterer und Variable als oberer Grenze) gibt den Integranden zurück.
+
+**Rechnung:** Die erste Option zeigt genau diesen Mechanismus: $f(t) = e^{t^{2}}$, untere Grenze $3$ konstant, obere Grenze $x$ — Hauptsatz Teil 1 liefert $f(x) = e^{x^{2}}$.
+
+**Probe:** Bemerkenswert: $e^{t^{2}}$ besitzt KEINE elementare Stammfunktion. Trotzdem ist die Ableitung des Integrals trivial — eines der elegantesten Resultate des Hauptsatzes.
+
+**Typischer Fehler:** Den Hauptsatz mit einer normalen Kettenregel-Ableitung verwechseln. Hauptsatz Teil 1 gilt für die Form $\\int_{a}^{x}$, nicht für direkte Funktionen.`,
+        [
+          'Welche Form hat Hauptsatz Teil 1?',
+          '$\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = ?$',
+          'Suche die Option, die genau diese Form abbildet.',
+        ],
+        {
+          1: 'Das ist eine direkte Anwendung der Kettenregel auf $e^{x^{2}}$ — keine Anwendung des Hauptsatzes. Hauptsatz Teil 1 würde voraussetzen, dass ein INTEGRAL abgeleitet wird, hier aber wird die Funktion $e^{x^{2}}$ selbst differenziert.',
+          2: 'Falsch — $\\int_{0}^{x} e^{t^{2}}\\,dt$ besitzt KEINE elementare Stammfunktion (das ist die Gauss\'sche Fehlerfunktion). $\\dfrac{e^{x^{2}}}{2x}$ ist nicht das Integral; das wäre eher die "rückwärts-Verkettung" der Kettenregel.',
+          3: 'Das ist erneut nur die Kettenregel ($e^{x^{2}}$ ableiten), nicht der Hauptsatz. Es fehlt die Form $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt$ — keine Integration involviert.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['umkehr-op'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {

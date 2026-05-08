@@ -584,6 +584,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Das ist falsch — Ableitungen können negativ oder null sein (z.B. bei fallenden Funktionen). Der Hauptsatz trifft eine ganz andere Aussage: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$.',
       '3': 'Nicht jedes Integral ist elementar berechenbar — z.B. $\\int e^{-x^{2}}\\,dx$ hat keine elementare Stammfunktion. Der Hauptsatz besagt lediglich die Formel $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, sofern $F$ bekannt ist.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['hauptsatz-2'] },
   },
   'ex-int-1-5-b': {
     id: 'ex-int-1-5-b', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -594,7 +595,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
 
 **Rechnung:** Nach Hauptsatz: $\\dfrac{d}{dx}\\int_{0}^{x} f(t)\\,dt = f(x)$. Hier ist $f(t) = t^{2}$, also $F'(x) = x^{2}$.
 
-**Probe (explizit):** $F(x) = \\dfrac{x^{3}}{3}$, $F'(x) = x^{2}$. ✓
+**Probe:** Explizit ausgerechnet ist $F(x) = \\dfrac{x^{3}}{3}$ (Stammfunktion); ableiten gibt $F'(x) = x^{2}$ — gleiches Ergebnis wie über den Hauptsatz. ✓
 
 **Typischer Fehler:** Option B ist $F(x)$ selbst, nicht $F'(x)$. Option C wäre die Ableitung der falschen Funktion.`,
     hints: [
@@ -607,6 +608,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': '$2x$ wäre $F\'\'(x)$, also die zweite Ableitung: Aus $F(x) = \\frac{x^{3}}{3}$ ergibt $F\'(x) = x^{2}$ und erst $F\'\'(x) = 2x$. Die Frage ist aber nach $F\'$, also $x^{2}$.',
       '3': 'Die Ableitung $F\'(x) = 0$ würde bedeuten, dass $F$ konstant ist — aber $F(x) = \\int_{0}^{x} t^{2}\\,dt = \\frac{x^{3}}{3}$ ist nicht konstant. Nach dem Hauptsatz ist $F\'(x) = f(x) = x^{2}$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['hauptsatz-1'] },
   },
   'ex-int-1-5-c': {
     id: 'ex-int-1-5-c', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -635,6 +637,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Nicht jede Funktion ist integrierbar (z.B. nicht-messbare Funktionen sind es nicht), das folgt nicht aus dem Hauptsatz. Der Hauptsatz liefert nur: Für stetige $f$ gilt $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, und Integration + Differentiation sind Umkehroperationen.',
       '3': 'Gerade das Gegenteil ist richtig: Teil 1 des Hauptsatzes garantiert, dass jede stetige Funktion eine Stammfunktion $F(x) = \\int_{a}^{x} f(t)\\,dt$ besitzt. Kernaussage: Integration und Differentiation sind invers zueinander.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 4, uses: ['umkehr-op'] },
   },
   'ex-int-1-5-mastery': {
     id: 'ex-int-1-5-mastery', lessonId: 'int-1-5', type: 'number-input', isMasteryCheck: true,
@@ -658,6 +661,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Stammfunktion: $F(x) = e^{x} + x^{2}$.',
       '$F(1) - F(0) = (e + 1) - 1 = e \\approx 2{,}72$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['hauptsatz-2'] },
   },
 }
 
@@ -1171,6 +1175,16 @@ $$\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$$
 **Zusammenfassung:**
 - Integration $\\to$ Ableitung $\\to$ zurück zur Ausgangsfunktion: $\\dfrac{d}{dx}\\int_{a}^{x} f(t)\\,dt = f(x)$
 - Ableitung $\\to$ Integration $\\to$ zurück (bis auf Konstante): $\\int_{a}^{x} f'(t)\\,dt = f(x) - f(a)$
+
+**Leibniz-Regel (Verallgemeinerung von Teil 1 auf variable Grenzen):**
+
+Für $\\Phi(x) = \\int_{a(x)}^{b(x)} f(t)\\,dt$ mit differenzierbaren Grenzen $a(x), b(x)$ gilt:
+
+$$\\frac{d}{dx} \\int_{a(x)}^{b(x)} f(t)\\,dt = f(b(x)) \\cdot b'(x) - f(a(x)) \\cdot a'(x)$$
+
+**Beispiel:** $\\dfrac{d}{dx} \\int_{0}^{x^{2}} \\cos(t)\\,dt = \\cos(x^{2}) \\cdot 2x - \\cos(0) \\cdot 0 = 2x \\cos(x^{2})$.
+
+Der Spezialfall $a(x) = a$ (konstant), $b(x) = x$ ergibt direkt Hauptsatz Teil 1: $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x) \\cdot 1 - f(a) \\cdot 0 = f(x)$.
 
 Diesen Satz haben wir bereits in Lektion 4 zum Berechnen bestimmter Integrale benutzt — jetzt kennen wir seine vollständige Formulierung.`,
       },
