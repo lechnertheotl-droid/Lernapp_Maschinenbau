@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3126 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2339 (75 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1421 / 1421 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 342 / 1134 (30 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3146 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2361 (75 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1432 / 1432 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 346 / 1134 (31 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **175** (Lesson-Path: 94 · Goal-Tasks: 81)
-- 4-Block: 133/175 (76 %) 🟡
-- MC-wAE: 89/89 (100 %) ✅
-- Sub-Goals: 16/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **195** (Lesson-Path: 94 · Goal-Tasks: 101)
+- 4-Block: 155/195 (79 %) 🟡
+- MC-wAE: 100/100 (100 %) ✅
+- Sub-Goals: 20/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -450,7 +450,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | `int-1-1` Stammfunktion — das Umkehren der Ableitung | 3 | 3/3 | 21 | 14/1/3/2/1 | 21/21 | 14/14 | ✅ | — |
 | `int-1-2` Grundintegrale | 4 | 4/4 | 26 | 12/7/4/3/0 | 26/26 | 12/12 | ✅ | — |
 | `int-1-3` Summenregel & Faktorregel | 4 | 4/4 | 25 | 15/3/4/2/1 | 25/25 | 15/15 | ✅ | — |
-| `int-1-4` Das bestimmte Integral | 4 | 0/4 | 5 | 1/4/0/0/0 | 3/5 | 1/1 | ✅ | +4 Goal, +2 4B |
+| `int-1-4` Das bestimmte Integral | 4 | 4/4 | 25 | 12/8/4/1/0 | 25/25 | 12/12 | ✅ | — |
 | `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 0/5 | 4 | 3/1/0/0/0 | 3/4 | 3/3 | ✅ | +5 Goal, +1 4B |
 | `int-2-1` Substitution | 6 | 0/6 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +6 Goal, +1 4B |
 | `int-2-2` Partielle Integration | 5 | 0/5 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +5 Goal, +1 4B |
@@ -7412,7 +7412,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 27 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 26 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7992,53 +7992,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-1-4` · Das bestimmte Integral
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`
-  - `int-1-2` → `int-pot-regel`, `int-exp-trig`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `hauptsatz-12` — Hauptsatz Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ mit beliebiger Stammfunktion $F$ (SG 0)
-  2. `geom-flaeche` — Geometrisch: Fläche zwischen Kurve und x-Achse — unterhalb negativ ⇐ `hauptsatz-12` (SG 1)
-  3. `grenzen-tausch` — Vertauschen der Grenzen dreht Vorzeichen: $\int_a^b=-\int_b^a$ ⇐ `hauptsatz-12` (SG 2)
-  4. `c-faellt-weg` — Bei bestimmtem Integral kürzt sich $C$ heraus ⇐ `hauptsatz-12` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-12` · **0/5+** — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
-  - 🔴 [1] _hoch_ · Konzepte: `geom-flaeche` · **0/5+** — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
-  - 🔴 [2] _mittel_ · Konzepte: `grenzen-tausch` · **0/5+** — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
-  - 🔴 [3] _mittel_ · Konzepte: `c-faellt-weg` · **0/5+** — Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `geom-flaeche` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `geom-flaeche`, `hauptsatz-12` | 1 | 0 | 🔴 | Vorzeichen |
-|  9 | 1 | error-analysis     | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 | Negative Fläche als Wert akzeptiert |
-| 10 | 1 | transfer           | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `c-faellt-weg`, `hauptsatz-12` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-1` · Substitution
 
