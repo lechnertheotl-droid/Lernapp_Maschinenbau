@@ -1348,4 +1348,701 @@ Matlab dagegen nutzt camelCase: \`numIterations\`.
       ),
     ],
   },
+
+
+  // ───────────────────────────────────────────────────────────────────────
+  // py-1-5 — Funktionen definieren  (5 subGoals)
+  // 25 Aufgaben mit pedagogy-Tags · alle 25 Matrix-Zeilen.
+  // ───────────────────────────────────────────────────────────────────────
+  'py-1-5': {
+    // ── SG 0 — `def-syntax` — `def name(param):` vs Matlab `function` ────
+    0: [
+      // Row 1 · recognize · true-false · uses=[def-syntax]
+      tf(
+        'Eine Python-Funktion wird mit `def name(param):` definiert; der Body ist eingerückt; ein abschließendes `end` gibt es nicht (im Gegensatz zu Matlab).',
+        true,
+        `**Ansatz:** Python folgt der Block-Syntax mit Doppelpunkt + Einrückung — auch für Funktionsdefinitionen. Matlab nutzt \`function ... end\`.
+
+**Rechnung:** Minimal-Beispiel:
+\`\`\`
+def quadrat(x):
+    return x ** 2
+\`\`\`
+Drei Pflicht-Elemente: \`def\`, Funktions-Header mit \`:\`, eingerückter Body. Kein \`end\` am Schluss.
+
+**Probe:** \`>>> def f(x): return x*2\\n>>> f(5)\` → \`10\` ✓. Matlab-Pendant in \`f.m\`: \`function y = f(x)\\n    y = x*2;\\nend\`.
+
+**Typischer Fehler:** Matlab-Stil mit \`end\` übernehmen — Python erkennt \`end\` nicht als Block-Marker. Oder Doppelpunkt vergessen → SyntaxError.`,
+        [
+          'Welches Schlüsselwort startet eine Python-Funktion?',
+          'Was steht am Ende der \`def\`-Zeile?',
+          'Doppelpunkt + Einrückung, kein \`end\`.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['def-syntax'] },
+      ),
+      // Row 2 · apply-guided · multiple-choice · uses=[def-syntax]
+      mc(
+        'Welche Python-Zeile definiert KORREKT eine Funktion `quadrat`, die einen Parameter `x` nimmt?',
+        ['`def quadrat(x):`', '`function quadrat(x):`', '`def quadrat: x`', '`quadrat(x) = ...`'],
+        0,
+        `**Ansatz:** Python-Funktions-Header: \`def\` + Name + Parameter in \`()\` + Doppelpunkt.
+
+**Rechnung:** Korrekt: \`def quadrat(x):\` mit anschließend eingerücktem Body (z.B. \`return x ** 2\`).
+
+**Probe:** \`>>> def quadrat(x):\\n...     return x*x\\n>>> quadrat(3)\` → \`9\` ✓.
+
+**Typischer Fehler:** Matlab-/JavaScript-\`function\` statt \`def\` schreiben — Python kennt \`function\` nicht als Schlüsselwort. Oder Klammern um den Parameter weglassen.`,
+        [
+          'Mit welchem Schlüsselwort beginnt die Python-Funktion?',
+          'Wo stehen die Parameter?',
+          '\`def Name(...)\:\`.',
+        ],
+        {
+          '1': '\`function\` ist Matlab/JavaScript-Stil. Python nutzt \`def\`.',
+          '2': 'Hier fehlen Klammern um den Parameter — \`def quadrat: x\` ist syntaktisch ungültig.',
+          '3': 'Math-Stil \`f(x) = ...\` ist nicht direkt Python — funktioniert nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['def-syntax'] },
+      ),
+      // Row 3 · apply-independent · multiple-choice · uses=[def-syntax]
+      mc(
+        'Was passiert beim Ausführen?\n```\ndef gruss(name):\n    print(f"Hallo {name}")\n\ngruss("Theo")\n```',
+        ['Druckt `Hallo Theo`', 'Druckt nichts (nur definiert)', '`TypeError`', 'Druckt `{name}`'],
+        0,
+        `**Ansatz:** Zwei Schritte — erst die Funktion definieren, dann aufrufen. Beim Aufruf wird der Body mit dem aktuellen Argument ausgeführt.
+
+**Rechnung:** \`gruss("Theo")\` setzt \`name = "Theo"\` und führt \`print(f"Hallo {name}")\` aus. F-String setzt \`{name}\` ein → \`Hallo Theo\`.
+
+**Probe:** \`>>> def gruss(name): print(f"Hallo {name}")\\n>>> gruss("Theo")\` → \`Hallo Theo\` ✓.
+
+**Typischer Fehler:** Glauben, die \`def\`-Zeile allein druckt etwas. Sie definiert nur — der Aufruf ist nötig. Oder den F-String-Mechanismus nicht kennen und denken, \`{name}\` bleibt als Literal stehen.`,
+        [
+          'Was passiert bei \`def ...\` allein?',
+          'Was bewirkt der Aufruf \`gruss("Theo")\`?',
+          'F-String setzt Variablen ein.',
+        ],
+        {
+          '1': 'Die \`def\`-Zeile allein druckt nichts. Aber \`gruss("Theo")\` IST ein Aufruf — also wird gedruckt.',
+          '2': '\`gruss\` akzeptiert ein String-Argument. Kein Typenkonflikt.',
+          '3': 'F-Strings (\`f"..."\`) ersetzen \`{name}\` durch den Wert von \`name\`. Würde stehen bleiben, wenn das \`f\`-Präfix fehlte.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['def-syntax'] },
+      ),
+      // Row 4 · error-analysis · multiple-choice · uses=[def-syntax]
+      mc(
+        'Ein Lerner schreibt:\n```\ndef quadrat(x)\n    return x ** 2\n```\nWelchen Fehler meldet Python?',
+        [
+          '`SyntaxError` — der Doppelpunkt am Ende der `def`-Zeile fehlt.',
+          'Funktioniert.',
+          '`IndentationError`',
+          '`NameError`',
+        ],
+        0,
+        `**Ansatz:** Jede Block-Header-Zeile in Python (def/if/for/while) braucht ein abschließendes \`:\`.
+
+**Rechnung:** Korrekt: \`def quadrat(x):\\n    return x ** 2\`. Ohne \`:\` → \`SyntaxError: expected ':'\`.
+
+**Probe:** Test im REPL: \`>>> def quadrat(x)\` → \`SyntaxError\` ✓.
+
+**Typischer Fehler:** Matlab-/JavaScript-Stil ohne Doppelpunkt übernehmen.`,
+        [
+          'Welches Symbol fehlt am Ende der \`def\`-Zeile?',
+          'Doppelpunkt nach dem Header.',
+          '\`def name(x)\`**:** ← Pflicht.',
+        ],
+        {
+          '1': 'Funktioniert NICHT — fehlender Doppelpunkt ist SyntaxError.',
+          '2': 'IndentationError tritt auf bei falscher Einrückung — hier scheitert das Parsen schon an der \`def\`-Zeile.',
+          '3': 'NameError wäre Laufzeit. Hier scheitert schon das Parsen.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['def-syntax'] },
+      ),
+      // Row 5 · transfer · multiple-choice · uses=[def-syntax]
+      mc(
+        'Du übersetzt diese Matlab-Funktion nach Python:\n```\nfunction y = doppel(x)\n    y = 2 * x;\nend\n```\nWelche Python-Form ist KORREKT?',
+        [
+          '`def doppel(x):`<br>`    return 2 * x`',
+          '`def doppel(x) -> y:`<br>`    y = 2 * x`',
+          '`function doppel(x):`<br>`    return 2 * x`',
+          '`def doppel(x):`<br>`    y = 2 * x`<br>`end`',
+        ],
+        0,
+        `**Ansatz:** Vier Migrationsregeln Matlab → Python für Funktionen: Schlüsselwort \`function\` → \`def\`, kein \`end\`, expliziter \`return\` statt Zuweisung an Output, Doppelpunkt + Einrückung.
+
+**Rechnung:**
+- \`function\` → \`def\` ✓
+- Output-Variable \`y\` aus Header → \`return\`-Statement ✓
+- \`end\` weg ✓
+- \`:\` an Header + Body eingerückt ✓
+
+**Probe:** \`>>> def doppel(x): return 2 * x\\n>>> doppel(7)\` → \`14\` ✓.
+
+**Typischer Fehler:** \`end\` in Python schreiben — wird zur Laufzeit entweder als undefinierter Name (NameError) oder still ignoriert, wenn \`end\` im Scope existiert.`,
+        [
+          'Was wird aus \`function\` in Python?',
+          'Wo kommt der Rückgabewert hin?',
+          '\`def\`, \`return\`, kein \`end\`, kein Header-Output-Name.',
+        ],
+        {
+          '1': 'Type-Annotation \`-> y\` mit Variablennamen ist ungültig — Python nutzt Typen wie \`-> int\`, nicht Variablen. Plus: \`y = ...\` ohne \`return\` gibt None zurück.',
+          '2': '\`function\` ist nicht Pythons Schlüsselwort. Heißt \`def\`.',
+          '3': '\`end\` ist Matlab-Syntax. In Python überflüssig (und potenziell NameError).',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['def-syntax'] },
+      ),
+    ],
+
+    // ── SG 1 — `rueckgabe` — Python `return`, Matlab Output-Variable ─────
+    1: [
+      // Row 6 · recognize · true-false · uses=[rueckgabe]
+      tf(
+        'Eine Python-Funktion gibt einen Wert mit `return` zurück; eine Matlab-Funktion weist den Wert an die im Header deklarierte Output-Variable zu (z.B. `function y = f(x)` plus `y = ...`).',
+        true,
+        `**Ansatz:** Beide Sprachen lösen das gleiche Problem unterschiedlich. Python: Rückgabe per Schlüsselwort. Matlab: Rückgabe per Zuweisung an benannte Output-Variable.
+
+**Rechnung:**
+
+Python:
+\`\`\`
+def f(x):
+    return x ** 2
+\`\`\`
+
+Matlab:
+\`\`\`
+function y = f(x)
+    y = x ^ 2;
+end
+\`\`\`
+
+**Probe:** Beide liefern \`f(3) = 9\`. ✓
+
+**Typischer Fehler:** Matlab-Stil in Python: \`def f(x): y = x**2\` (kein \`return\`!) — die Funktion liefert dann \`None\`, nicht den berechneten Wert.`,
+        [
+          'Welches Schlüsselwort gibt in Python einen Wert zurück?',
+          'Wie macht Matlab das?',
+          'Python: \`return\`, Matlab: Zuweisung an Header-Variable.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['rueckgabe'] },
+      ),
+      // Row 7 · apply-guided · multiple-choice · uses=[rueckgabe]
+      mc(
+        'Was gibt diese Funktion zurück?\n```\ndef add(a, b):\n    return a + b\n\nadd(3, 4)\n```',
+        ['`7`', '`(3, 4)`', '`"34"`', '`None`'],
+        0,
+        `**Ansatz:** Die Funktion addiert die Argumente und gibt das Ergebnis zurück.
+
+**Rechnung:** \`add(3, 4)\` setzt \`a = 3\`, \`b = 4\`. Body: \`return a + b\` → \`return 3 + 4\` → \`return 7\`.
+
+**Probe:** \`>>> def add(a, b): return a + b\\n>>> add(3, 4)\` → \`7\` ✓.
+
+**Typischer Fehler:** Annehmen, die Funktion gebe ein Tupel \`(3, 4)\` zurück. Komma im \`return\`-Statement würde das tun, hier aber explizit \`a + b\` (eine Zahl). Oder mit String-Konkatenation verwechseln (\`"34"\`) — geht nur, wenn Operanden Strings wären.`,
+        [
+          'Was tut der \`+\`-Operator hier?',
+          'Sind die Operanden Zahlen oder Strings?',
+          '$3 + 4 = ?$',
+        ],
+        {
+          '1': '\`(3, 4)\` wäre die Eingabe als Tupel — \`return a + b\` liefert aber den ADDITIVEN Wert, nicht das Tupel.',
+          '2': '\`"34"\` käme aus String-Konkatenation. \`a\` und \`b\` sind hier Zahlen, nicht Strings.',
+          '3': 'Die Funktion HAT ein \`return\` — gibt also nicht \`None\` zurück.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['rueckgabe'] },
+      ),
+      // Row 8 · apply-independent · multiple-choice · uses=[rueckgabe]
+      mc(
+        'Was gibt eine Python-Funktion OHNE expliziten `return`-Befehl zurück?',
+        ['`None`', '`0`', '`TypeError` beim Aufruf', 'Den Wert des letzten Statements'],
+        0,
+        `**Ansatz:** Python hat einen impliziten Default-Rückgabewert — und das ist NICHT der letzte Ausdruck (anders als in Ruby/Lisp).
+
+**Rechnung:** \`def f(): pass\\nresult = f()\\nprint(result)\` → \`None\`.
+
+**Probe:** \`>>> def f(x): x*2\\n>>> print(f(5))\` → \`None\` ✓ (der Wert \`10\` wird berechnet, aber nicht zurückgegeben).
+
+**Typischer Fehler:** Aus Ruby/Lisp/CoffeeScript kommen, wo der letzte Ausdruck implizit zurückgegeben wird. Python verlangt explizites \`return\`.`,
+        [
+          'Was ist der Python-Default ohne \`return\`?',
+          'Liefert Python implizit den letzten Wert?',
+          'Ohne \`return\` → \`None\`, immer.',
+        ],
+        {
+          '1': '\`0\` wäre der Java-/C-Default für \`int\`. Python hat \`None\` für "nichts".',
+          '2': 'TypeError gibt es nicht beim Aufruf einer Funktion ohne \`return\` — sie liefert einfach \`None\`.',
+          '3': 'Python ist NICHT Ruby/Lisp — der letzte Wert wird NICHT implizit zurückgegeben. \`return\` muss explizit sein.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['rueckgabe'] },
+      ),
+      // Row 9 · error-analysis · multiple-choice · uses=[rueckgabe]
+      mc(
+        'Ein Lerner schreibt:\n```\ndef quadrat(x):\n    x ** 2\n\nresult = quadrat(5)\nprint(result)\n```\nWas wird gedruckt?',
+        [
+          '`None` — `return` fehlt; `x ** 2` wird zwar berechnet, aber nicht zurückgegeben.',
+          '`25`',
+          'nichts',
+          '`TypeError`',
+        ],
+        0,
+        `**Ansatz:** Ohne explizites \`return\` liefert Python \`None\`. Der Lerner-Fehler: das \`return\`-Schlüsselwort vergessen.
+
+**Rechnung:** Body \`x ** 2\` ist ein Ausdruck, der berechnet, aber nicht zurückgegeben wird (kein Side Effect). \`quadrat(5)\` liefert \`None\`. \`print(None)\` druckt \`None\`.
+
+**Probe:** Korrektur: \`def quadrat(x): return x ** 2\`. Dann gibt \`quadrat(5)\` → \`25\` ✓.
+
+**Typischer Fehler:** Den Wert berechnen, aber nicht returnen — sehr häufig bei Anfängern. Plus: \`print(None)\` druckt das Wort \`None\` (keine leere Ausgabe).`,
+        [
+          'Wo fehlt das Schlüsselwort \`return\`?',
+          'Was passiert mit dem Wert von \`x ** 2\`?',
+          'Berechnet, nicht zurückgegeben → \`None\`.',
+        ],
+        {
+          '1': '\`25\` wäre die Antwort, wenn \`return\` davor stünde. Tut es nicht.',
+          '2': '\`print(None)\` druckt das Wort "None" — also nicht "nichts".',
+          '3': 'Kein TypeError — die Berechnung läuft, der Wert wird nur nicht zurückgegeben.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['rueckgabe'] },
+      ),
+      // Row 10 · transfer · multiple-choice · uses=[rueckgabe]
+      mc(
+        'Eine Python-Funktion soll SUMME und DIFFERENZ zweier Zahlen zurückgeben, sodass der Aufruf `s, d = f(a, b)` direkt entpackt werden kann. Welche Lösung ist KORREKT?',
+        [
+          '`def f(a, b):`<br>`    return a+b, a-b`',
+          '`def f(a, b):`<br>`    print(a+b, a-b)`',
+          '`def f(a, b):`<br>`    a+b, a-b`',
+          '`def f(a, b):`<br>`    return a+b`<br>`    return a-b`',
+        ],
+        0,
+        `**Ansatz:** \`return a, b\` packt zwei Werte in ein Tupel. Auf der Aufrufseite kann das Tupel mit \`x, y = f(...)\` entpackt werden.
+
+**Rechnung:** \`return a+b, a-b\` → Tupel \`(a+b, a-b)\`. Der Aufruf \`s, d = f(3, 1)\` setzt \`s = 4\`, \`d = 2\`.
+
+**Probe:** \`>>> def f(a, b): return a+b, a-b\\n>>> s, d = f(10, 3)\\n>>> (s, d)\` → \`(13, 7)\` ✓.
+
+**Typischer Fehler:** Zwei separate \`return\`-Statements schreiben — Python verlässt die Funktion beim ERSTEN \`return\`, das zweite wird nie ausgeführt. Oder \`print\` statt \`return\` — druckt, aber gibt \`None\` zurück.`,
+        [
+          'Was bedeutet \`return a, b\`?',
+          'Wo wird der zweite Wert verarbeitet?',
+          'Komma → Tupel, eine Zeile.',
+        ],
+        {
+          '1': '\`print\` druckt zur Konsole, gibt aber \`None\` zurück. \`s, d = f(...)\` → \`s, d = None\` → ValueError beim Entpacken.',
+          '2': 'Ohne \`return\` werden die berechneten Werte verworfen. Funktion liefert \`None\`.',
+          '3': 'Erstes \`return\` verlässt die Funktion sofort — das zweite \`return a-b\` wird nie erreicht.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['rueckgabe'] },
+      ),
+    ],
+
+    // ── SG 2 — `default-par` — Default-Parameter ────────────────────────
+    2: [
+      // Row 11 · recognize · true-false · uses=[default-par]
+      tf(
+        'Default-Parameter erlauben es, eine Python-Funktion auch ohne dieses Argument aufzurufen — der Standardwert wird in der Signatur mit `=` angegeben (z.B. `def f(x, y=0):`).',
+        true,
+        `**Ansatz:** Default-Parameter machen Argumente OPTIONAL. Wird das Argument beim Aufruf weggelassen, springt der Standardwert ein.
+
+**Rechnung:** \`def f(x, y=0): return x + y\`. Aufruf \`f(5)\` → $5 + 0 = 5$. Aufruf \`f(5, 3)\` → $5 + 3 = 8$.
+
+**Probe:** \`>>> def f(x, y=0): return x + y\\n>>> f(5)\` → \`5\`. \`>>> f(5, 3)\` → \`8\`. ✓
+
+**Typischer Fehler:** Defaults vor Pflicht-Parameter setzen (\`def f(x=0, y):\`) → \`SyntaxError: non-default argument follows default argument\`. Defaults müssen IMMER hinten stehen.`,
+        [
+          'Was bewirkt \`y=0\` im Header?',
+          'Was passiert, wenn \`y\` weggelassen wird?',
+          '\`y\` ist optional — Default greift.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['default-par'] },
+      ),
+      // Row 12 · apply-guided · multiple-choice · uses=[default-par]
+      mc(
+        'Was liefert `power(3)` bei dieser Funktion?\n```\ndef power(base, exp=2):\n    return base ** exp\n```',
+        ['`9`', '`3`', '`1`', '`TypeError`'],
+        0,
+        `**Ansatz:** Default \`exp=2\` greift, weil der Aufruf nur \`base\` angibt.
+
+**Rechnung:** \`power(3)\` → \`base = 3\`, \`exp = 2\` (default). Body: \`return 3 ** 2\` → \`9\`.
+
+**Probe:** \`>>> power(3)\` → \`9\` ✓. Mit explizitem zweiten Argument: \`power(3, 4)\` → \`81\`.
+
+**Typischer Fehler:** Annehmen, der Aufruf ohne zweites Argument wirft \`TypeError\` — Default-Parameter machen das Argument optional.`,
+        [
+          'Was ist der Default-Wert von \`exp\`?',
+          'Welche Operation führt \`return base ** exp\` aus?',
+          '$3^2 = ?$',
+        ],
+        {
+          '1': '\`3\` wäre nur, wenn Body z.B. \`return base * 1\` wäre. Hier steht aber \`** exp\` mit \`exp = 2\`.',
+          '2': '\`1\` wäre $3^0$ (exp=0). Default ist aber 2.',
+          '3': 'Kein TypeError — Default-Parameter erlauben den Aufruf ohne zweites Argument.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['default-par'] },
+      ),
+      // Row 13 · apply-independent · multiple-choice · uses=[default-par]
+      mc(
+        'Was liefert `greeting("Theo", "Hi")`?\n```\ndef greeting(name, msg="Hallo"):\n    return f"{msg}, {name}!"\n```',
+        ['`"Hi, Theo!"`', '`"Hallo, Theo!"`', '`"Hi, Hallo!"`', '`TypeError`'],
+        0,
+        `**Ansatz:** Wird ein Argument explizit übergeben, überschreibt es den Default. Reihenfolge zählt: erstes Argument → erster Parameter (\`name\`), zweites → zweiter (\`msg\`).
+
+**Rechnung:** \`greeting("Theo", "Hi")\` → \`name = "Theo"\`, \`msg = "Hi"\` (überschreibt Default "Hallo"). Body: \`return f"Hi, Theo!"\`.
+
+**Probe:** \`>>> greeting("Theo", "Hi")\` → \`'Hi, Theo!'\` ✓. Mit Default: \`greeting("Theo")\` → \`'Hallo, Theo!'\`.
+
+**Typischer Fehler:** Glauben, Default kann nicht überschrieben werden. Default ist NUR der Fallback, wenn nichts angegeben wird.`,
+        [
+          'Was passiert, wenn \`msg\` explizit übergeben wird?',
+          'Default oder explizites Argument — wer gewinnt?',
+          'Explizites Argument überschreibt Default.',
+        ],
+        {
+          '1': '"Hallo" wäre der DEFAULT — wird hier aber durch "Hi" überschrieben.',
+          '2': 'Beide Werte sind nicht im selben Slot. \`msg\` hat \`"Hi"\`, nicht beides.',
+          '3': 'Kein TypeError — beide Argumente sind valide.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['default-par'] },
+      ),
+      // Row 14 · error-analysis · multiple-choice · uses=[default-par]
+      mc(
+        'Ein Lerner schreibt:\n```\ndef f(x=0, y):\n    return x + y\n```\nWas meldet Python?',
+        [
+          '`SyntaxError: non-default argument follows default argument` — Default-Parameter müssen NACH den Pflicht-Parametern stehen.',
+          'Funktioniert.',
+          '`TypeError` beim Aufruf.',
+          '`IndentationError`',
+        ],
+        0,
+        `**Ansatz:** Python verlangt: Pflicht-Parameter zuerst, dann Defaults. Sonst ist beim Aufruf nicht eindeutig, welches Argument welchen Slot füllt.
+
+**Rechnung:** \`def f(x=0, y):\` ist syntaktisch ungültig. Korrekt umsortiert: \`def f(y, x=0):\` — \`y\` ist Pflicht, \`x\` optional.
+
+**Probe:** \`>>> def f(x=0, y): return x + y\` → \`SyntaxError: non-default argument follows default argument\` ✓.
+
+**Typischer Fehler:** Reihenfolge willkürlich wählen, ohne die Pflicht/Optional-Trennung zu beachten.`,
+        [
+          'Welche Reihenfolge verlangt Python?',
+          'Können Pflicht-Parameter NACH Default-Parametern stehen?',
+          'Pflicht zuerst, Default dahinter.',
+        ],
+        {
+          '1': 'Funktioniert NICHT — SyntaxError schon beim Parsen.',
+          '2': 'Der Fehler entsteht schon BEIM PARSEN, nicht erst beim Aufruf.',
+          '3': 'IndentationError gilt für falsche Einrückung — das Problem hier ist die Parameter-Reihenfolge.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['default-par'] },
+      ),
+      // Row 15 · transfer · multiple-choice · uses=[default-par]
+      mc(
+        'Was wird gedruckt?\n```\ndef append_value(x, lst=[]):\n    lst.append(x)\n    return lst\n\nprint(append_value(1))\nprint(append_value(2))\n```',
+        [
+          '`[1]` und `[1, 2]` (mutable Default wird zwischen Aufrufen geteilt).',
+          '`[1]` und `[2]`',
+          '`[1]` und `[1]`',
+          '`TypeError`',
+        ],
+        0,
+        `**Ansatz:** Eine berühmte Python-Falle: mutable Defaults (Listen, Dicts, Sets) werden EINMAL beim Definieren erzeugt und zwischen Aufrufen GETEILT.
+
+**Rechnung:** Aufruf 1: \`lst\` ist die einzige Default-Liste \`[]\`. Append \`1\` → \`[1]\`. Aufruf 2: \`lst\` ist DIESELBE Liste \`[1]\`. Append \`2\` → \`[1, 2]\`. Output: \`[1]\` dann \`[1, 2]\`.
+
+**Probe:** Sichere Variante: \`def append_value(x, lst=None):\\n    if lst is None: lst = []\\n    lst.append(x)\\n    return lst\`. Erzeugt jedes Mal eine neue Liste.
+
+**Typischer Fehler:** Annehmen, der Default \`[]\` werde bei JEDEM Aufruf neu evaluiert. Tut er NICHT — nur einmal beim Definieren.`,
+        [
+          'Wann wird ein Default-Wert ausgewertet?',
+          'Wird die Liste pro Aufruf neu erzeugt?',
+          'Mutable Default → einmalige Liste, geteilt zwischen Aufrufen.',
+        ],
+        {
+          '1': 'Würde gelten, wenn jede Aufruf eine NEUE Liste bekäme. Tut er aber nicht.',
+          '2': 'Würde gelten, wenn der Default unverändert bliebe — er wird aber zwischen Aufrufen verändert.',
+          '3': 'Kein TypeError — der Code läuft, nur das Verhalten überrascht.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['default-par'] },
+      ),
+    ],
+
+    // ── SG 3 — `lambda` — Lambda-Funktionen ────────────────────────────
+    3: [
+      // Row 16 · recognize · true-false · uses=[lambda]
+      tf(
+        'Eine Lambda-Funktion in Python ist eine kompakte, anonyme Inline-Funktion: `quadrat = lambda x: x**2` definiert eine Funktion mit Parameter `x`, die `x**2` zurückgibt — der Body ist auf einen Ausdruck beschränkt.',
+        true,
+        `**Ansatz:** \`lambda\` erzeugt ein Funktionsobjekt ohne Namen — meist genutzt für kurze Einzeiler oder als Argument an höhere Funktionen wie \`sorted\`, \`map\`, \`filter\`.
+
+**Rechnung:** \`quadrat = lambda x: x**2\` ist äquivalent zu:
+\`\`\`
+def quadrat(x):
+    return x ** 2
+\`\`\`
+Aber: KEIN \`return\` (implizit), KEIN Block (nur ein Ausdruck), KEIN Body mit Statements.
+
+**Probe:** \`>>> sqr = lambda x: x*x\\n>>> sqr(5)\` → \`25\` ✓. \`>>> type(sqr)\` → \`<class 'function'>\` (ist also eine echte Funktion).
+
+**Typischer Fehler:** \`return\` in einem Lambda schreiben → SyntaxError. Oder mehrzeiliges Verhalten erwarten — Lambda kann nur EINEN Ausdruck.`,
+        [
+          'Was ist der Body eines Lambdas — Statement oder Ausdruck?',
+          'Braucht Lambda \`return\`?',
+          'Kein \`return\`, ein Ausdruck, anonym.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['lambda'] },
+      ),
+      // Row 17 · apply-guided · multiple-choice · uses=[lambda]
+      mc(
+        'Was liefert dieser Code?\n```\nsqr = lambda x: x ** 2\nsqr(5)\n```',
+        ['`25`', '`5`', '`10`', '`TypeError`'],
+        0,
+        `**Ansatz:** \`sqr\` ist eine Funktion, die \`x\` quadriert. Aufruf mit \`5\` liefert $5^2 = 25$.
+
+**Rechnung:** \`sqr(5)\` → \`x = 5\` → Body: \`x ** 2\` → \`25\`.
+
+**Probe:** \`>>> sqr = lambda x: x ** 2; sqr(5)\` → \`25\` ✓.
+
+**Typischer Fehler:** Glauben, Lambda sei "etwas anderes" als eine Funktion — ist es nicht. Identisches Verhalten wie \`def\`.`,
+        [
+          'Was tut \`x ** 2\` für $x = 5$?',
+          '$5^2 = ?$',
+          '$5 \\cdot 5 = 25$.',
+        ],
+        {
+          '1': '\`5\` wäre, wenn der Body nur \`x\` zurückgäbe (ohne Quadrieren).',
+          '2': '\`10\` wäre $2x = 5 \\cdot 2$, also Multiplikation. Body ist aber \`** 2\` (Potenz).',
+          '3': 'Kein TypeError — Lambda mit einem Argument akzeptiert eine Zahl.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['lambda'] },
+      ),
+      // Row 18 · apply-independent · multiple-choice · uses=[lambda]
+      mc(
+        'Was liefert `add(3, 7)` bei `add = lambda a, b: a + b`?',
+        ['`10`', '`(3, 7)`', '`21`', '`"37"`'],
+        0,
+        `**Ansatz:** Lambda mit ZWEI Parametern. Body addiert beide.
+
+**Rechnung:** \`add(3, 7)\` → \`a = 3\`, \`b = 7\` → \`return a + b\` → \`10\`.
+
+**Probe:** \`>>> add = lambda a, b: a + b; add(3, 7)\` → \`10\` ✓.
+
+**Typischer Fehler:** Mehrere Argumente als Tupel verstehen — Lambdas können beliebig viele Parameter haben.`,
+        [
+          'Wie viele Parameter hat das Lambda?',
+          '$3 + 7 = ?$',
+          'Zwei Parameter, addieren.',
+        ],
+        {
+          '1': '\`(3, 7)\` wäre die Eingabe — die Funktion gibt aber das ADDITIVE Ergebnis zurück.',
+          '2': '\`21\` ist $3 \\cdot 7$ (Multiplikation). Body ist aber \`+\`.',
+          '3': '\`"37"\` wäre String-Konkatenation. Hier sind \`a, b\` Zahlen.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['lambda'] },
+      ),
+      // Row 19 · error-analysis · multiple-choice · uses=[lambda]
+      mc(
+        'Welcher der folgenden Lambda-Ausdrücke ist UNGÜLTIG?',
+        [
+          '`f = lambda x: return x ** 2`',
+          '`f = lambda x: x ** 2`',
+          '`f = lambda: 42`',
+          '`f = lambda x, y: x + y`',
+        ],
+        0,
+        `**Ansatz:** Der Body eines Lambdas muss ein AUSDRUCK sein, kein Statement. \`return\` ist ein Statement → SyntaxError.
+
+**Rechnung:** Korrekte Lambda-Form: \`lambda <params>: <ausdruck>\`. \`return\` davor ist falsch — der Wert wird IMPLIZIT zurückgegeben.
+
+**Probe:** \`>>> f = lambda x: return x*2\` → \`SyntaxError: invalid syntax\` ✓. Korrektur: \`lambda x: x*2\` (ohne return).
+
+**Typischer Fehler:** \`def\`-Stil ins Lambda übertragen. Lambda ist absichtlich kompakt — kein \`return\`, kein Block, ein Ausdruck.`,
+        [
+          'Was ist der Body eines Lambdas?',
+          'Darf \`return\` darin stehen?',
+          'Lambda-Body = Ausdruck, kein \`return\`.',
+        ],
+        {
+          '1': 'Standard-Lambda mit einem Parameter und Ausdruck — gültig.',
+          '2': 'Lambda OHNE Parameter (\`lambda:\` direkt mit Body) — gültig. Aufruf: \`f()\` → \`42\`.',
+          '3': 'Lambda mit zwei Parametern — gültig.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['lambda'] },
+      ),
+      // Row 20 · transfer · multiple-choice · uses=[lambda]
+      mc(
+        'Welche Funktion sortiert eine Liste von Tupeln nach dem ZWEITEN Element jedes Tupels?',
+        [
+          '`sorted(lst, key=lambda t: t[1])`',
+          '`sorted(lst, key=t[1])`',
+          '`sorted(lst).by(t[1])`',
+          '`lst.sort(2)`',
+        ],
+        0,
+        `**Ansatz:** \`sorted\` akzeptiert eine \`key\`-Funktion, die zu jedem Element den Sortierwert liefert. Lambdas sind die idiomatische Wahl für solche Inline-Schlüssel-Extraktoren.
+
+**Rechnung:** \`sorted(lst, key=lambda t: t[1])\` ruft für jedes Tupel \`t\` die Lambda-Funktion auf und sortiert nach \`t[1]\` (zweites Element).
+
+**Probe:** \`>>> sorted([(3, 'b'), (1, 'c'), (2, 'a')], key=lambda t: t[1])\` → \`[(2, 'a'), (3, 'b'), (1, 'c')]\` (nach \`'a'\`/\`'b'\`/\`'c'\` sortiert) ✓.
+
+**Typischer Fehler:** \`key\` direkt auf einen Wert setzen — \`key\` braucht eine FUNKTION. Oder Methodenkette wie \`.by(...)\` — gibt es nicht in Python.`,
+        [
+          'Wie liefert man \`sorted\` einen Sortierschlüssel?',
+          'Was tut die Lambda-Funktion mit einem Tupel?',
+          '\`key=lambda t: t[1]\` für 2. Element.',
+        ],
+        {
+          '1': '\`key=t[1]\` ist kein Ausdruck im Scope — \`t\` ist nicht definiert. Plus: \`key\` braucht eine FUNKTION, nicht einen einzelnen Wert.',
+          '2': '\`.by(...)\` gibt es in Python nicht. Andere Sprachen (Kotlin, Ruby) haben \`sortBy\`.',
+          '3': '\`lst.sort(2)\` macht nichts Definiertes — \`sort\` akzeptiert keine Zahl als Argument.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['lambda'] },
+      ),
+    ],
+
+    // ── SG 4 — `doc-str` — Docstring/Header-Kommentar ───────────────────
+    4: [
+      // Row 21 · recognize · true-false · uses=[doc-str]
+      tf(
+        'Ein Python-Docstring ist ein String direkt nach der `def`-Zeile (typisch in `"""triple-quotes"""`); er beschreibt, was die Funktion tut, und kann mit `help(funktion)` oder `funktion.__doc__` abgerufen werden.',
+        true,
+        `**Ansatz:** Docstrings sind eine Konvention der Python-Community (PEP 257) — eine standardisierte Stelle für Funktionsdokumentation, die von Tools (\`help()\`, IDE-Tooltips, Sphinx) gelesen wird.
+
+**Rechnung:**
+\`\`\`
+def kraft(m, a):
+    """Berechnet die Kraft F = m · a."""
+    return m * a
+
+print(kraft.__doc__)   # → "Berechnet die Kraft F = m · a."
+help(kraft)            # zeigt Signatur + Docstring
+\`\`\`
+
+**Probe:** Triple-quotes erlauben Mehrzeiler ohne Escape: \`"""Erste Zeile.\\n\\nDetails ..."""\` ✓.
+
+**Typischer Fehler:** \`#\`-Kommentar als Docstring nehmen — wird NICHT als Docstring erkannt, fehlt in \`__doc__\` (\`None\`).`,
+        [
+          'Wo steht der Docstring in der Funktion?',
+          'Welche Quoting-Form ist Konvention?',
+          'Erstes Statement nach \`def\` als triple-quoted String.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['doc-str'] },
+      ),
+      // Row 22 · apply-guided · multiple-choice · uses=[doc-str]
+      mc(
+        'Wo gehört der Docstring in einer Python-Funktion hin?\n```\ndef f(x):\n    [Position?]\n    return x ** 2\n```',
+        [
+          'Direkt nach der `def`-Zeile, als ERSTES Statement (vor `return`).',
+          'Vor der `def`-Zeile.',
+          'Am Ende der Funktion (nach `return`).',
+          'In einem `#`-Kommentar.',
+        ],
+        0,
+        `**Ansatz:** Per PEP-257-Konvention ist der Docstring das ERSTE Statement nach \`def\`. Nur dann erkennt Python ihn als Docstring und legt ihn in \`__doc__\` ab.
+
+**Rechnung:**
+\`\`\`
+def f(x):
+    """Quadrat von x."""
+    return x ** 2
+
+print(f.__doc__)  # → "Quadrat von x."
+\`\`\`
+
+**Probe:** Andere Position: vor \`def\` ist nur ein toter String, nach \`return\` UNERREICHBAR (Funktion ist da schon weg). Beides landet NICHT in \`__doc__\`.
+
+**Typischer Fehler:** Docstring nach Statement-Code platzieren — wird zwar als String-Literal erstellt, aber nicht als Docstring registriert.`,
+        [
+          'An welcher Position erkennt Python einen Docstring?',
+          'Erstes Statement, vor allem anderen Code.',
+          'Direkt nach \`def\`-Header.',
+        ],
+        {
+          '1': 'Vor \`def\` ist der String im Module-Scope, nicht im Funktions-Scope — kein Docstring der Funktion.',
+          '2': 'Nach \`return\` ist die Zeile UNERREICHBAR. Plus: nicht erstes Statement.',
+          '3': '\`#\`-Kommentare sind keine Docstrings. \`__doc__\` bleibt \`None\`.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['doc-str'] },
+      ),
+      // Row 23 · apply-independent · multiple-choice · uses=[doc-str]
+      mc(
+        'Was liefert `f.__doc__` für:\n```\ndef f(x):\n    """Liefert das Quadrat von x."""\n    return x ** 2\n```',
+        [
+          '`"Liefert das Quadrat von x."`',
+          '`None`',
+          'Den gesamten Quellcode der Funktion.',
+          '`TypeError`',
+        ],
+        0,
+        `**Ansatz:** \`__doc__\` ist ein automatisch gesetztes Attribut jeder Funktion mit Docstring — enthält genau den String aus dem ersten Statement nach \`def\`.
+
+**Rechnung:** Docstring \`"""Liefert das Quadrat von x."""\` → \`f.__doc__\` ist \`"Liefert das Quadrat von x."\` (ohne triple-quotes, die sind nur Quoting).
+
+**Probe:** \`>>> f.__doc__\` → \`'Liefert das Quadrat von x.'\` ✓. \`>>> help(f)\` zeigt zusätzlich die Signatur \`f(x)\` plus den Docstring.
+
+**Typischer Fehler:** Erwarten, dass \`__doc__\` Source Code liefert (das macht \`inspect.getsource(f)\`). Oder dass \`None\` käme — nur ohne Docstring.`,
+        [
+          'Wo speichert Python den Docstring?',
+          'Welcher String wird ohne Quotes zurückgegeben?',
+          '\`__doc__\` enthält genau den Docstring.',
+        ],
+        {
+          '1': '\`None\` käme nur, wenn die Funktion KEINEN Docstring hätte. Hier ist klar einer da.',
+          '2': 'Source Code liefert \`inspect.getsource(f)\`, nicht \`__doc__\`. Letzteres ist NUR der Doc-String.',
+          '3': 'Kein Fehler — \`__doc__\` ist Standard-Attribut jeder Funktion.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['doc-str'] },
+      ),
+      // Row 24 · error-analysis · multiple-choice · uses=[doc-str]
+      mc(
+        'Welche der folgenden Praktiken erzeugt KEINEN gültigen Python-Docstring?',
+        [
+          'Eine Zeile `# Berechnet ...` direkt nach `def f(x):`.',
+          '`"""Berechnet das Quadrat."""` als erstes Statement.',
+          '`"""Mehrzeiliger`<br>`Docstring."""` über mehrere Zeilen.',
+          '`\'Single-quoted Docstring\'` als erstes Statement.',
+        ],
+        0,
+        `**Ansatz:** Docstrings müssen STRING-LITERALE sein, kein \`#\`-Kommentar. Kommentare und Docstrings sind verschiedene Mechanismen.
+
+**Rechnung:** \`#\`-Kommentar nach \`def\` wird vom Parser ignoriert — der erste echte Statement-Code danach (z.B. \`return\`) lässt \`__doc__ = None\` zurück. String-Literale (Single, Double, Triple-Quotes) werden hingegen als Docstring erkannt, sofern sie das ERSTE Statement sind.
+
+**Probe:** \`>>> def f(x):\\n...     # Berechnet was\\n...     return x*2\\n>>> f.__doc__\` → \`None\` (kein Docstring!). Mit String stattdessen: \`>>> def f(x):\\n...     "Berechnet was"\\n...     return x*2\\n>>> f.__doc__\` → \`'Berechnet was'\` ✓.
+
+**Typischer Fehler:** \`#\`-Kommentar mit Docstring verwechseln. Nur String-Literale (mit Quotes!) werden als Docstring erkannt.`,
+        [
+          'Was unterscheidet einen Kommentar von einem Docstring?',
+          'Welche Notation erkennt Python als Docstring?',
+          'Kommentare beginnen mit \`#\` — Docstrings sind String-Literale.',
+        ],
+        {
+          '1': 'Triple-quoted String als erstes Statement — Standard-Konvention für Docstrings. Gültig.',
+          '2': 'Mehrzeiliger Docstring mit triple-quotes — gültig und idiomatisch.',
+          '3': 'Single-quoted String als erstes Statement IST gültiger Docstring (PEP-257 empfiehlt aber triple-quotes für Konsistenz).',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['doc-str'] },
+      ),
+      // Row 25 · transfer · matching · uses=[doc-str]
+      matching(
+        'Ordne der Sprache die typische Form der Funktions-Dokumentation zu.',
+        [
+          { left: 'Python (PEP 257)', right: '`"""triple-quoted string"""` als erstes Statement nach `def`' },
+          { left: 'Matlab (MathWorks-Konvention)', right: '`%`-Kommentarzeilen direkt nach dem `function`-Header' },
+          { left: 'C / C++', right: '`/* ... */` Block-Kommentar über der Funktion' },
+          { left: 'Java (Javadoc)', right: '`/** ... */` Kommentar mit `@param`/`@return`-Tags' },
+        ],
+        `**Ansatz:** Jede Sprache hat eine eigene Doc-Konvention, von Tools (\`help()\`, \`javadoc\`, IDE-Tooltips) lesbar.
+
+**Rechnung:**
+- Python: \`def f(x):\\n    """..."""\\n    ...\` — abrufbar mit \`help(f)\` oder \`f.__doc__\`.
+- Matlab: \`function y = f(x)\\n    % ...\\n    y = ...\` — abrufbar mit \`help f\`.
+- C/C++: \`/* ... */\` direkt vor der Funktion (Doxygen erkennt das mit \`/** ... */\`).
+- Java: \`/** @param x ... @return ... */\` — Javadoc generiert HTML-Dokumentation daraus.
+
+**Probe:** Vier Konventionen, vier eindeutige Formen. Tools für jede Sprache bauen auf diese Konvention auf. ✓
+
+**Typischer Fehler:** Konventionen vermischen — z.B. \`#\`-Kommentar in Python für Docs nutzen (verständlich, aber \`__doc__\` bleibt \`None\`).`,
+        [
+          'Welches Quoting-Symbol nutzt Python?',
+          'Wie kommentiert Matlab?',
+          'C/C++ vs. Java: \`/*\` vs. \`/**\`?',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['doc-str'] },
+      ),
+    ],
+  },
 }

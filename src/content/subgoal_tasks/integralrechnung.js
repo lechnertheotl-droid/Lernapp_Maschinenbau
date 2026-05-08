@@ -972,6 +972,1099 @@ export const integralrechnungSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-1-3 — Summenregel & Faktorregel  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-3': {
+
+    // ── [0] Summenregel: gliedweise integrieren ───────────────────────────
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[sum-regel-int]
+      tf(
+        'Die Summenregel der Integration $\\int (f(x) + g(x))\\,dx = \\int f(x)\\,dx + \\int g(x)\\,dx$ gilt auch für Differenzen — denn $f - g = f + (-1) \\cdot g$ kombiniert mit der Faktorregel ergibt $\\int (f - g)\\,dx = \\int f\\,dx - \\int g\\,dx$.',
+        true,
+        `**Ansatz:** Die Differenz $f - g$ als Summe $f + (-1) \\cdot g$ schreiben und Linearität (Summen- + Faktorregel) anwenden.
+
+**Rechnung:** $\\int (f - g)\\,dx = \\int (f + (-1) \\cdot g)\\,dx = \\int f\\,dx + (-1) \\int g\\,dx = \\int f\\,dx - \\int g\\,dx$.
+
+**Probe:** Beispiel $\\int (x^{2} - x)\\,dx = \\dfrac{x^{3}}{3} - \\dfrac{x^{2}}{2} + C$. Probe: $\\left(\\dfrac{x^{3}}{3} - \\dfrac{x^{2}}{2}\\right)' = x^{2} - x$. ✓
+
+**Typischer Fehler:** Glauben, eine Differenz brauche eine eigene Regel — sie folgt direkt aus Summen- und Faktorregel.`,
+        [
+          'Wie kann man $f - g$ als Summe schreiben?',
+          'Faktorregel mit $c = -1$ liefert $\\int -g\\,dx = -\\int g\\,dx$.',
+          'Kombinierte Anwendung: $\\int (f + (-g))\\,dx = \\int f\\,dx + \\int -g\\,dx = \\int f\\,dx - \\int g\\,dx$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[sum-regel-int]
+      ni(
+        'Berechne $\\int (3x^{2} + 8x)\\,dx$ und gib den Wert der Stammfunktion bei $x = 2$ an, mit $C = 0$.',
+        24,
+        0,
+        '',
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren, dann einsetzen.
+
+**Rechnung:** $\\int 3x^{2}\\,dx = x^{3}$, $\\int 8x\\,dx = 4x^{2}$. Stammfunktion: $F(x) = x^{3} + 4x^{2} + C$. Mit $C = 0$: $F(2) = 8 + 16 = 24$.
+
+**Probe:** $F'(x) = 3x^{2} + 8x$ ✓. Einsetzen: $F(2) = 2^{3} + 4 \\cdot 2^{2} = 8 + 16 = 24$.
+
+**Typischer Fehler:** $4 \\cdot 2^{2}$ als $(4 \\cdot 2)^{2} = 64$ falsch ausrechnen — Punkt vor Strich, also $4 \\cdot 4 = 16$.`,
+        [
+          'Beide Glieder einzeln integrieren mit Potenzregel.',
+          'Faktor durch neuen Exponenten teilen: $\\int 3x^{2}\\,dx = x^{3}$, $\\int 8x\\,dx = 4x^{2}$.',
+          'Einsetzen: $F(2) = 2^{3} + 4 \\cdot 2^{2}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[sum-regel-int]
+      mc(
+        'Markus berechnet $\\int (x^{2} - 4)\\,dx$ und schreibt: $\\dfrac{x^{3}}{3} - 4 + C$. Wo liegt der Fehler?',
+        [
+          'Der konstante Summand $-4$ wurde nicht integriert — $\\int -4\\,dx = -4x$ (nicht $-4$). Korrekt: $\\dfrac{x^{3}}{3} - 4x + C$.',
+          'Markus hat richtig gerechnet — die Konstante $-4$ darf so stehen bleiben.',
+          '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ ist falsch — korrekt wäre $\\dfrac{x^{3}}{2}$.',
+          'Konstanten dürfen bei der Summenregel weggelassen werden, weil sie zum $+C$-Anteil gehören.',
+        ],
+        0,
+        `**Ansatz:** Probe — Markus' Ergebnis ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $\\left(\\dfrac{x^{3}}{3} - 4\\right)' = x^{2} - 0 = x^{2}$. Aber der Integrand ist $x^{2} - 4$. Differenz: $-4 \\neq 0$ — Markus' $F$ ist keine Stammfunktion. Korrektur: $\\int -4\\,dx = -4x$, also $F(x) = \\dfrac{x^{3}}{3} - 4x + C$.
+
+**Probe:** $\\left(\\dfrac{x^{3}}{3} - 4x\\right)' = x^{2} - 4$ ✓.
+
+**Typischer Fehler:** Konstante stehenlassen statt zu integrieren — $\\int c\\,dx = cx$ (denn $(cx)' = c$).`,
+        [
+          'Mache die Probe: leite Markus\' Ergebnis ab.',
+          'Was ist $\\int -4\\,dx$? Erinnere dich: $(-4x)\' = -4$.',
+          'Vergleiche dein Ergebnis mit dem Integrand $x^{2} - 4$.',
+        ],
+        {
+          1: 'Probe widerlegt: $\\left(\\dfrac{x^{3}}{3} - 4\\right)\' = x^{2}$, nicht $x^{2} - 4$. Konstanten verschwinden beim Ableiten — also muss die $-4$ im Integrand zu $-4x$ in der Stammfunktion werden.',
+          2: '$\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$ ist korrekt (Potenzregel: Exponent +1, durch neuen Exponenten teilen). $\\dfrac{x^{3}}{2}$ wäre Stammfunktion von $\\dfrac{3x^{2}}{2}$, nicht von $x^{2}$.',
+          3: 'Konstanten gehören NICHT zum $+C$-Anteil — sie müssen integriert werden zu $cx$. $+C$ ist die Integrationskonstante aus der Familie aller Stammfunktionen, nicht der konstante Summand des Integrands.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Bonus 1 (Mengen-Regel + Variation): SG 0 · apply-guided · multiple-choice
+      mc(
+        'Welches Ergebnis liefert $\\int (\\cos(x) + 2x)\\,dx$?',
+        [
+          '$\\sin(x) + x^{2} + C$',
+          '$-\\sin(x) + x^{2} + C$',
+          '$\\sin(x) + 2x + C$',
+          '$\\sin(x) + 2 + C$',
+        ],
+        0,
+        `**Ansatz:** Summenregel — beide Glieder einzeln integrieren mit den Grundintegralen für $\\cos$ und der Potenzregel.
+
+**Rechnung:** $\\int \\cos(x)\\,dx = \\sin(x)$, $\\int 2x\\,dx = 2 \\cdot \\dfrac{x^{2}}{2} = x^{2}$. Zusammen: $F(x) = \\sin(x) + x^{2} + C$.
+
+**Probe:** $F'(x) = \\cos(x) + 2x$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei $\\int \\cos$ vertauschen oder $\\int 2x$ als $2x$ stehenlassen statt zu $x^{2}$ zu integrieren.`,
+        [
+          'Beide Glieder einzeln integrieren.',
+          '$\\int \\cos(x)\\,dx = \\sin(x)$ — kein Minus!',
+          '$\\int 2x\\,dx = x^{2}$ (Potenzregel: Faktor $2$ durch neuen Exponenten $2$ geteilt).',
+        ],
+        {
+          1: 'Du hast das Vorzeichen-Muster von $\\int \\sin(x)\\,dx = -\\cos(x)$ auf $\\cos$ übertragen. Aber $\\int \\cos(x)\\,dx = +\\sin(x)$ (kein Minus): nur $\\sin$ bekommt das Minus beim Integrieren.',
+          2: 'Du hast $\\int 2x\\,dx$ als $2x$ stehengelassen, aber $\\int 2x\\,dx = 2 \\cdot \\dfrac{x^{2}}{2} = x^{2}$. Probe: $(2x)\' = 2 \\neq 2x$.',
+          3: 'Du hast $2x$ abgeleitet ($= 2$) statt zu integrieren. Beim Integrieren wird der Exponent erhöht: $\\int 2x\\,dx = x^{2}$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+
+      // Matrix-Zeile 5 ist von ex-int-1-3-c (LP) bereits abgedeckt. Bonus 2 — sorting transfer.
+      sorting(
+        'Bringe die Schritte zur Berechnung von $\\int (x^{3} + 2x^{2} - 5)\\,dx$ in die richtige Reihenfolge.',
+        [
+          'Summenregel anwenden: jedes Glied einzeln integrieren.',
+          'Potenzregel auf jedes Glied: $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4}$, $\\int 2x^{2}\\,dx = \\dfrac{2x^{3}}{3}$, $\\int -5\\,dx = -5x$.',
+          'Ergebnisse zusammensetzen: $\\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x$.',
+          'Integrationskonstante $+C$ ergänzen: $\\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x + C$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Strukturierte Anwendung der Linearität — Summenregel zerlegt, Potenzregel löst jedes Glied, Zusammensetzen, $+C$ am Ende.
+
+**Rechnung:** $F(x) = \\dfrac{x^{4}}{4} + \\dfrac{2x^{3}}{3} - 5x + C$.
+
+**Probe:** $F'(x) = x^{3} + 2x^{2} - 5$ ✓.
+
+**Typischer Fehler:** Das $+C$ vor dem Zusammensetzen einfügen oder ganz weglassen — Konvention: $+C$ am Schluss als letzter Schritt.`,
+        [
+          'Womit beginnt man bei einer Summe — Zerlegung oder Endergebnis?',
+          'Wann wird die Potenzregel auf die einzelnen Glieder angewandt?',
+          'Wo gehört die Integrationskonstante hin — am Anfang, während des Rechnens oder am Schluss?',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['sum-regel-int'] },
+      ),
+    ],
+
+    // ── [1] Faktorregel: konstante Faktor vor das Integral ────────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[faktor-regel-int]
+      tf(
+        'Eine konstante Zahl $c \\in \\mathbb{R}$ darf vor das Integral gezogen werden: $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$.',
+        true,
+        `**Ansatz:** Definition der Faktorregel — gilt für beliebige reelle Konstanten.
+
+**Rechnung:** Beweis über die Linearität der Ableitung: $(c \\cdot F(x))' = c \\cdot F'(x) = c \\cdot f(x)$, also ist $c \\cdot F(x)$ Stammfunktion von $c \\cdot f(x)$, und $\\int c \\cdot f(x)\\,dx = c \\cdot F(x) + C = c \\cdot \\int f(x)\\,dx$.
+
+**Probe:** Beispiel $\\int 5\\cos(x)\\,dx = 5\\sin(x) + C$. Probe: $(5\\sin(x))' = 5\\cos(x)$ ✓.
+
+**Typischer Fehler:** Die Regel auch auf VARIABLE "Faktoren" wie $x$ oder $\\sin(x)$ anwenden — dort gilt sie NICHT. Faktorregel verlangt eine echte Konstante.`,
+        [
+          'Was bedeutet "konstanter Faktor"?',
+          'Beweis über Linearität der Ableitung: $(c F)\' = c F\'$.',
+          'Beispiel: $\\int 7 x^{2}\\,dx = 7 \\int x^{2}\\,dx = 7 \\cdot \\dfrac{x^{3}}{3} + C$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · number-input · uses=[faktor-regel-int]
+      ni(
+        'Berechne $\\int (-3) \\sin(x)\\,dx = a \\cdot \\cos(x) + C$. Bestimme den Wert von $a$.',
+        3,
+        0,
+        '',
+        `**Ansatz:** Faktorregel: $-3$ vor das Integral ziehen, dann Grundintegral $\\int \\sin(x)\\,dx = -\\cos(x) + C$.
+
+**Rechnung:** $\\int (-3)\\sin(x)\\,dx = -3 \\cdot \\int \\sin(x)\\,dx = -3 \\cdot (-\\cos(x)) + C = 3\\cos(x) + C$. Also $a = 3$.
+
+**Probe:** $(3\\cos(x))' = -3\\sin(x)$ ✓.
+
+**Typischer Fehler:** Das doppelte Minus übersehen — $-3 \\cdot (-\\cos x) = +3\\cos x$, nicht $-3\\cos x$.`,
+        [
+          'Faktorregel: $-3$ vor das Integral ziehen.',
+          '$\\int \\sin(x)\\,dx = -\\cos(x) + C$ (mit Minus).',
+          'Doppeltes Minus: $-3 \\cdot (-\\cos x) = +3\\cos x$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[faktor-regel-int] ($x$ als Konstante behandelt)
+      mc(
+        'Anna berechnet $\\int x \\cdot \\cos(x)\\,dx$ und schreibt: $x \\cdot \\sin(x) + C$ — sie hat $x$ als Faktor vor das Integral gezogen ($x \\cdot \\int \\cos x\\,dx = x \\sin x$). Was ist der Fehler?',
+        [
+          '$x$ ist KEINE Konstante, sondern eine Variable. Die Faktorregel $\\int c \\cdot f\\,dx = c \\int f\\,dx$ gilt nur für *konstante* $c$. Probe: $(x \\sin x)\' = \\sin x + x \\cos x \\neq x \\cos x$. Für $\\int x \\cos x\\,dx$ braucht man partielle Integration.',
+          'Anna hat richtig gerechnet — die Faktorregel erlaubt jeden Faktor.',
+          'Anna hätte $\\sin(x)$ als $-\\sin(x)$ schreiben müssen — das Vorzeichen ist falsch.',
+          'Anna hätte $x$ vor das Integral als $1$ ziehen müssen, also $1 \\cdot \\int \\cos x\\,dx = \\sin x + C$.',
+        ],
+        0,
+        `**Ansatz:** Definition der Faktorregel prüfen — gilt nur für konstante Faktoren, nicht für Variable.
+
+**Rechnung:** Probe an Annas Ergebnis: $(x \\sin(x))' = 1 \\cdot \\sin(x) + x \\cdot \\cos(x) = \\sin(x) + x\\cos(x) \\neq x\\cos(x)$ (Produktregel der Ableitung). Annas $F$ ist keine Stammfunktion.
+
+**Probe:** Korrekt löst man $\\int x \\cos x\\,dx$ mit partieller Integration: $u = x$, $v' = \\cos x$ → $u v - \\int u'v\\,dx = x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$. Probe: $(x\\sin x + \\cos x)' = \\sin x + x\\cos x - \\sin x = x\\cos x$ ✓.
+
+**Typischer Fehler:** Variable wie $x$ als "Faktor" missverstehen — die Faktorregel verlangt eine reelle Zahl, keine $x$-abhängige Größe.`,
+        [
+          'Wende die Produktregel der Ableitung auf Annas Ergebnis $x \\sin x$ an.',
+          'Was verlangt die Faktorregel — was darf vor das Integral?',
+          '$x$ ist eine Variable, keine Konstante. Welche Methode braucht man für Produkte?',
+        ],
+        {
+          1: 'Probe widerlegt: $(x\\sin x)\' = \\sin x + x\\cos x \\neq x\\cos x$. Die Faktorregel erlaubt nur KONSTANTE Faktoren ($c \\in \\mathbb{R}$), nicht Variable.',
+          2: 'Annas $\\sin(x)$ ist korrekt: $\\int \\cos x\\,dx = +\\sin x$ (ohne Minus). Der eigentliche Fehler liegt darin, dass $x$ überhaupt vor das Integral gezogen wurde.',
+          3: 'Du kannst $x$ nicht durch $1$ "ersetzen" — der $x$-Faktor ändert das Integral substantiell. $\\int x \\cos x\\,dx \\neq \\int \\cos x\\,dx$. Korrekt: partielle Integration.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · matching · uses=[faktor-regel-int, sum-regel-int]
+      matching(
+        'Ordne jedem Integral seine korrekte Stammfunktion zu (jeweils ohne Integrationskonstante).',
+        [
+          { left: '$\\int 4x\\,dx$',         right: '$2x^{2}$' },
+          { left: '$\\int (-3)\\sin(x)\\,dx$', right: '$3\\cos(x)$' },
+          { left: '$\\int 5e^{x}\\,dx$',     right: '$5e^{x}$' },
+          { left: '$\\int 2\\cos(x)\\,dx$',  right: '$2\\sin(x)$' },
+        ],
+        `**Ansatz:** Faktorregel — Konstante vor das Integral, dann Grundintegral; Vorzeichen sorgfältig prüfen.
+
+**Rechnung:**
+- $\\int 4x\\,dx = 4 \\cdot \\dfrac{x^{2}}{2} = 2x^{2}$.
+- $\\int -3\\sin x\\,dx = -3 \\cdot (-\\cos x) = 3\\cos x$.
+- $\\int 5e^{x}\\,dx = 5 e^{x}$.
+- $\\int 2\\cos x\\,dx = 2 \\sin x$.
+
+**Probe:** Jede rechte Seite ableiten und mit dem Integrand vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei $\\int -3\\sin x\\,dx$ das doppelte Minus vergessen oder $\\int -3\\sin x\\,dx = -3\\cos x$ schreiben (richtig: $+3\\cos x$).`,
+        [
+          'Konstante darf vor das Integral.',
+          'Grundintegrale für $\\sin$, $\\cos$, $e^{x}$ — Vorzeichen merken.',
+          'Bei $-3\\sin x$: zwei Minuszeichen heben sich auf zu $+3\\cos x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
+      ),
+
+      // Bonus (Mengen-Regel + Variation): SG 1 · apply-guided · multiple-choice
+      mc(
+        'Berechne $\\int -7 x^{4}\\,dx$.',
+        [
+          '$-\\dfrac{7}{5} x^{5} + C$',
+          '$-7 x^{5} + C$',
+          '$-\\dfrac{7}{4} x^{5} + C$',
+          '$-\\dfrac{7}{4} x^{4} + C$',
+        ],
+        0,
+        `**Ansatz:** Faktorregel — $-7$ vor das Integral, dann Potenzregel auf $x^{4}$.
+
+**Rechnung:** $\\int -7 x^{4}\\,dx = -7 \\int x^{4}\\,dx = -7 \\cdot \\dfrac{x^{5}}{5} + C = -\\dfrac{7}{5} x^{5} + C$.
+
+**Probe:** $\\left(-\\dfrac{7}{5} x^{5}\\right)' = -\\dfrac{7}{5} \\cdot 5 x^{4} = -7 x^{4}$ ✓.
+
+**Typischer Fehler:** Den Faktor $-7$ unverändert vor $x^{5}$ schreiben, statt durch den neuen Exponenten $5$ zu teilen.`,
+        [
+          '$-7$ ist konstanter Faktor — vor das Integral.',
+          'Potenzregel: Exponent $4 \\to 5$, dann durch $5$ teilen.',
+          'Faktor $-7$ durch $5$: $-\\dfrac{7}{5}$.',
+        ],
+        {
+          1: 'Du hast den Faktor $-7$ stehen gelassen, ohne durch den neuen Exponenten $5$ zu teilen. Probe: $(-7 x^{5})\' = -35 x^{4} \\neq -7 x^{4}$. Korrekt: $-7 \\cdot \\dfrac{x^{5}}{5} = -\\dfrac{7}{5} x^{5}$.',
+          2: 'Du hast durch den ALTEN Exponenten $4$ geteilt statt durch den neuen Exponenten $5$. Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1}$ — der Nenner ist $n + 1$, nicht $n$. Probe: $\\left(-\\dfrac{7}{4} x^{5}\\right)\' = -\\dfrac{35}{4} x^{4} \\neq -7 x^{4}$.',
+          3: 'Du hast den Exponenten gar nicht erhöht. Beim Integrieren wird der Exponent um $1$ erhöht: $x^{4} \\to x^{5}$. Probe: $\\left(-\\dfrac{7}{4} x^{4}\\right)\' = -7 x^{3} \\neq -7 x^{4}$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['faktor-regel-int'] },
+      ),
+    ],
+
+    // ── [2] Keine Produktregel der Integration ────────────────────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[kein-prod-regel]
+      tf(
+        'Für ein Produkt von Funktionen gilt: $\\int f(x) \\cdot g(x)\\,dx = \\left(\\int f(x)\\,dx\\right) \\cdot \\left(\\int g(x)\\,dx\\right)$.',
+        false,
+        `**Ansatz:** Probe an einem Gegenbeispiel — wenn die Aussage stimmen würde, müsste sie für jedes Paar $f, g$ gelten.
+
+**Rechnung:** Test mit $f(x) = x$, $g(x) = x$, also $f \\cdot g = x^{2}$.
+- Linke Seite: $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3} + C$.
+- Rechte Seite: $\\left(\\int x\\,dx\\right) \\cdot \\left(\\int x\\,dx\\right) = \\dfrac{x^{2}}{2} \\cdot \\dfrac{x^{2}}{2} = \\dfrac{x^{4}}{4}$.
+
+$\\dfrac{x^{3}}{3} \\neq \\dfrac{x^{4}}{4}$ — die Aussage ist falsch.
+
+**Probe:** Eine echte "Produktregel der Integration" gibt es NICHT. Stattdessen partielle Integration (Umkehrung der Produktregel der Ableitung): $\\int u v'\\,dx = uv - \\int u'v\\,dx$.
+
+**Typischer Fehler:** Aus der Existenz der Summenregel $\\int (f+g) = \\int f + \\int g$ auf eine analoge Produktregel schließen — beide Operationen verhalten sich bei Integration sehr unterschiedlich.`,
+        [
+          'Probiere ein konkretes Beispiel: $f(x) = g(x) = x$.',
+          'Linke und rechte Seite einzeln berechnen.',
+          'Stimmen die Ergebnisse überein? Wenn nicht, ist die Aussage falsch.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welche Aussage über das Integral $\\int x \\cdot e^{x}\\,dx$ ist korrekt?',
+        [
+          'Für ein Produkt zweier Funktionen gibt es KEINE einfache Stammfunktions-Multiplikation; man braucht partielle Integration ($\\int u v\'\\,dx = uv - \\int u\'v\\,dx$). Resultat: $(x - 1)e^{x} + C$.',
+          '$\\int x \\cdot e^{x}\\,dx = \\left(\\int x\\,dx\\right) \\cdot \\left(\\int e^{x}\\,dx\\right) = \\dfrac{x^{2}}{2} \\cdot e^{x} + C$.',
+          '$\\int x \\cdot e^{x}\\,dx = x \\cdot e^{x} + C$, weil $x$ als Faktor vor das Integral gezogen werden darf.',
+          'Der Integrand $x \\cdot e^{x}$ besitzt keine elementare Stammfunktion.',
+        ],
+        0,
+        `**Ansatz:** Erkennen, dass ein PRODUKT keine einfache Stammfunktions-Regel hat, sondern partielle Integration verlangt.
+
+**Rechnung:** Partielle Integration mit $u = x$, $v' = e^{x}$ (also $u' = 1$, $v = e^{x}$): $\\int x e^{x}\\,dx = u v - \\int u' v\\,dx = x e^{x} - \\int e^{x}\\,dx = x e^{x} - e^{x} + C = (x - 1) e^{x} + C$.
+
+**Probe:** $((x-1)e^{x})' = e^{x} + (x-1)e^{x} = e^{x}(1 + x - 1) = x e^{x}$ ✓.
+
+**Typischer Fehler:** Die Stammfunktionen $\\dfrac{x^{2}}{2}$ und $e^{x}$ einfach multiplizieren — würde $\\dfrac{x^{2}}{2} e^{x}$ liefern, das aber abgeleitet $x e^{x} + \\dfrac{x^{2}}{2} e^{x}$ ergibt (Produktregel der Ableitung), nicht $x e^{x}$.`,
+        [
+          'Ist $x \\cdot e^{x}$ eine Summe oder ein Produkt?',
+          'Welche Methode löst Integrale von Produkten zweier Funktionen?',
+          'Partielle Integration: $\\int u v\'\\,dx = uv - \\int u\'v\\,dx$. Setze $u = x$, $v\' = e^{x}$.',
+        ],
+        {
+          1: 'Stammfunktionen darf man NICHT einfach multiplizieren — es gibt keine Produktregel der Integration. Probe: $\\left(\\dfrac{x^{2}}{2} e^{x}\\right)\' = x e^{x} + \\dfrac{x^{2}}{2} e^{x} \\neq x e^{x}$.',
+          2: '$x$ ist eine VARIABLE, keine Konstante — die Faktorregel gilt nur für konstante Faktoren ($c \\in \\mathbb{R}$). Probe: $(x e^{x})\' = e^{x} + x e^{x} \\neq x e^{x}$.',
+          3: 'Falsch — $x e^{x}$ besitzt sehr wohl eine elementare Stammfunktion, nämlich $(x - 1)e^{x} + C$. Sie wird durch partielle Integration gefunden.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welches der folgenden Integrale kann NICHT mit Summen- und Faktorregel allein gelöst werden, sondern verlangt eine spezielle Technik (z. B. partielle Integration)?',
+        [
+          '$\\int x \\cdot \\sin(x)\\,dx$',
+          '$\\int (x + \\sin(x))\\,dx$',
+          '$\\int 5\\sin(x)\\,dx$',
+          '$\\int 3 x^{2}\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Die Linearität (Summen- + Faktorregel) löst nur Summen einfacher Terme oder konstante Faktoren — Produkte von zwei x-abhängigen Funktionen brauchen mehr.
+
+**Rechnung:** $x \\cdot \\sin(x)$ ist ein PRODUKT zweier x-abhängiger Funktionen ($x$ und $\\sin x$). Hier scheitert die Linearität — partielle Integration mit $u = x$, $v' = \\sin x$ liefert $\\int x \\sin x\\,dx = -x\\cos x + \\sin x + C$.
+
+**Probe:** $(-x\\cos x + \\sin x)' = -\\cos x + x\\sin x + \\cos x = x\\sin x$ ✓. Die anderen drei Integrale: $\\int (x + \\sin x)\\,dx = \\dfrac{x^{2}}{2} - \\cos x + C$ (Summe), $\\int 5\\sin x\\,dx = -5\\cos x + C$ (konstanter Faktor), $\\int 3x^{2}\\,dx = x^{3} + C$ (Potenzregel mit Faktor) — alle mit Linearität allein.
+
+**Typischer Fehler:** Ein Produkt $x \\cdot f(x)$ mit einer Summe $x + f(x)$ verwechseln — das mathematische "+" und "·" sind völlig unterschiedlich behandelt.`,
+        [
+          'Was unterscheidet Produkt von Summe?',
+          'Linearität (Summen-/Faktorregel) zerlegt Summen — was zerlegt sie nicht?',
+          'Welche Methode für Produkte zweier x-abhängiger Funktionen?',
+        ],
+        {
+          1: '$x + \\sin(x)$ ist eine SUMME — die Summenregel zerlegt sie: $\\int (x + \\sin x)\\,dx = \\dfrac{x^{2}}{2} + (-\\cos x) + C$. Linearität ausreichend.',
+          2: '$5\\sin(x)$ hat einen KONSTANTEN Faktor $5$ vor $\\sin x$ — Faktorregel: $\\int 5\\sin x\\,dx = 5 \\cdot (-\\cos x) + C = -5\\cos x + C$. Linearität ausreichend.',
+          3: '$3 x^{2}$ ist konstanter Faktor mal Potenz — Faktorregel + Potenzregel reichen: $\\int 3 x^{2}\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} = x^{3} + C$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Lukas schreibt: $\\int x \\cdot \\cos(x)\\,dx = \\dfrac{x^{2}}{2} \\cdot \\sin(x) + C$ — er hat die Stammfunktion von $x$ und die Stammfunktion von $\\cos(x)$ multipliziert. Wo liegt der Fehler?',
+        [
+          'Es gibt keine Produktregel der Integration: $\\int f \\cdot g\\,dx \\neq \\left(\\int f\\,dx\\right)\\left(\\int g\\,dx\\right)$. Probe: $\\left(\\dfrac{x^{2}}{2} \\sin x\\right)\' = x \\sin x + \\dfrac{x^{2}}{2} \\cos x \\neq x \\cos x$. Hier braucht es partielle Integration (Resultat: $x \\sin x + \\cos x + C$).',
+          'Lukas hat richtig gerechnet — Stammfunktionen darf man immer multiplizieren.',
+          'Lukas hätte $\\sin(x)$ als $-\\sin(x)$ schreiben müssen — das Vorzeichen ist falsch.',
+          'Lukas hätte die Reihenfolge umkehren müssen: erst $\\cos x$ integrieren, dann $x$ — das gibt das richtige Ergebnis.',
+        ],
+        0,
+        `**Ansatz:** Probe — Lukas' Ergebnis ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $\\left(\\dfrac{x^{2}}{2} \\sin(x)\\right)' = x \\sin(x) + \\dfrac{x^{2}}{2} \\cos(x)$ (Produktregel der Ableitung). Das ist NICHT $x \\cos(x)$ — Lukas' $F$ ist keine Stammfunktion.
+
+Korrekt: partielle Integration mit $u = x$, $v' = \\cos x$ (also $u' = 1$, $v = \\sin x$): $\\int x \\cos x\\,dx = u v - \\int u' v\\,dx = x \\sin x - \\int \\sin x\\,dx = x \\sin x - (-\\cos x) + C = x \\sin x + \\cos x + C$.
+
+**Probe:** $(x \\sin x + \\cos x)' = \\sin x + x \\cos x - \\sin x = x \\cos x$ ✓.
+
+**Typischer Fehler:** Stammfunktionen multiplizieren — die analog zur Summenregel "Produktregel" existiert NICHT für Integrale.`,
+        [
+          'Wende die Produktregel der ABLEITUNG auf Lukas\' Ergebnis an.',
+          'Erhältst du den Integrand $x \\cos x$ zurück?',
+          'Welche Methode löst $\\int x \\cdot \\cos x\\,dx$ tatsächlich?',
+        ],
+        {
+          1: 'Probe widerlegt: $\\left(\\dfrac{x^{2}}{2} \\sin x\\right)\' = x \\sin x + \\dfrac{x^{2}}{2} \\cos x \\neq x \\cos x$. Die Multiplikation der Stammfunktionen ergibt nicht die Stammfunktion des Produkts.',
+          2: 'Lukas\' $\\sin(x)$ ist korrekt: $\\int \\cos x\\,dx = +\\sin x$ (ohne Minus). Der eigentliche Fehler ist die unzulässige Multiplikation der Stammfunktionen.',
+          3: 'Multiplikation ist kommutativ — die Reihenfolge ist irrelevant. Das echte Problem: Stammfunktionen multiplizieren ist KEINE gültige Operation, egal in welcher Reihenfolge.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · multiple-choice · uses=[kein-prod-regel]
+      mc(
+        'Welches der folgenden Integrale erlaubt eine Lösung MIT Summen- und Faktorregel allein (ohne partielle Integration oder Substitution)?',
+        [
+          '$\\int (3 x^{2} + \\sin x)\\,dx$',
+          '$\\int x \\cdot \\sin(x)\\,dx$',
+          '$\\int e^{x} \\cdot \\cos(x)\\,dx$',
+          '$\\int x^{2} \\cdot \\ln(x)\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Linearität greift bei Summen einfacher Terme und konstanten Faktoren — bei Produkten zweier x-abhängiger Funktionen scheitert sie.
+
+**Rechnung:** $\\int (3x^{2} + \\sin x)\\,dx = \\int 3x^{2}\\,dx + \\int \\sin x\\,dx = x^{3} - \\cos x + C$. Reine Summenregel + Faktorregel + Grundintegrale.
+
+**Probe:** $(x^{3} - \\cos x)' = 3x^{2} + \\sin x$ ✓. Die anderen drei Integrale enthalten alle Produkte zweier x-abhängiger Funktionen ($x \\cdot \\sin x$, $e^{x} \\cdot \\cos x$, $x^{2} \\cdot \\ln x$) — da reicht Linearität nicht.
+
+**Typischer Fehler:** Produkt mit Summe verwechseln — $x \\cdot \\sin x$ und $x + \\sin x$ sehen ähnlich aus, sind aber mathematisch grundverschieden.`,
+        [
+          'Welches Integral ist eine Summe, welches ein Produkt?',
+          'Linearität löst Summen einfacher Terme — passt zu welchem Integral?',
+          'Produkte zweier x-abhängiger Funktionen brauchen partielle Integration.',
+        ],
+        {
+          1: '$x \\cdot \\sin(x)$ ist ein Produkt zweier x-abhängiger Funktionen — partielle Integration nötig. Mit Linearität allein nicht lösbar.',
+          2: '$e^{x} \\cdot \\cos(x)$ ist ein Produkt — partielle Integration (sogar zweimal mit "Trick", da das Ausgangsintegral wiederkehrt). Linearität reicht nicht.',
+          3: '$x^{2} \\cdot \\ln(x)$ ist ein Produkt — partielle Integration mit $u = \\ln x$, $v\' = x^{2}$. Linearität reicht nicht.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['kein-prod-regel'] },
+      ),
+    ],
+
+    // ── [3] Integrationskonstante $+C$ konsequent mitschreiben ─────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[plus-c-konsequent]
+      tf(
+        'Bei einem unbestimmten Integral darf die Integrationskonstante $+C$ nur dann mitgeschrieben werden, wenn der Integrand selbst eine konstante Komponente enthält.',
+        false,
+        `**Ansatz:** Definition des unbestimmten Integrals prüfen — woher kommt $+C$ überhaupt?
+
+**Rechnung:** Das unbestimmte Integral $\\int f(x)\\,dx = F(x) + C$ verlangt $+C$ UNABHÄNGIG vom Integrand. Beispiel ohne Konstante im Integrand: $\\int 2x\\,dx = x^{2} + C$. Die $C$ kommt nicht aus einer Konstante in $f$, sondern aus der Tatsache, dass die Stammfunktion nur bis auf eine additive Konstante eindeutig ist (jede Konstante verschwindet beim Ableiten).
+
+**Probe:** $(x^{2} + C)' = 2x + 0 = 2x = f(x)$ — funktioniert für JEDES $C \\in \\mathbb{R}$. Die ganze Familie $\\{x^{2} + C : C \\in \\mathbb{R}\\}$ besteht aus Stammfunktionen.
+
+**Typischer Fehler:** $+C$ als "Stellvertreter für Konstante im Integrand" missverstehen. Tatsächlich ist $+C$ Teil der unbestimmten Integration selbst — egal welcher Integrand.`,
+        [
+          'Woher kommt das $+C$ — vom Integrand oder von der Definition des unbestimmten Integrals?',
+          'Beispiel: $\\int 2x\\,dx$ — keine Konstante im Integrand. Trotzdem $+C$?',
+          'Probe: $(x^{2} + 7)\' = 2x$, $(x^{2} - 100)\' = 2x$ — alle Stammfunktionen.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Welches der folgenden Ergebnisse ist KORREKT geschrieben — inklusive Integrationskonstante?',
+        [
+          '$\\int 4x\\,dx = 2x^{2} + C$',
+          '$\\int 4x\\,dx = 2x^{2}$',
+          '$\\int 4x\\,dx = 2x^{2} + 5$',
+          '$\\int 4x\\,dx = 2x^{2} + C \\cdot x$',
+        ],
+        0,
+        `**Ansatz:** Vollständiges unbestimmtes Integral = Stammfunktion + freie Integrationskonstante $+C$.
+
+**Rechnung:** $\\int 4x\\,dx = 4 \\cdot \\dfrac{x^{2}}{2} + C = 2x^{2} + C$. Die Integrationskonstante $C$ steht für eine BELIEBIGE reelle Zahl, nicht für einen festen Wert wie $5$ oder einen $x$-abhängigen Term.
+
+**Probe:** $(2x^{2} + C)' = 4x$ für jedes $C$ ✓.
+
+**Typischer Fehler:** $+C$ weglassen (Standard-Punktabzug) oder durch eine konkrete Zahl ersetzen — letzteres engt die Stammfunktionsfamilie unzulässig ein.`,
+        [
+          'Was bedeutet "+C" — eine konkrete Zahl oder ein Platzhalter für jede beliebige Konstante?',
+          'Schau dir jede Option an — welche enthält genau ein Symbol "$+C$" am Ende?',
+          'Probe: leite das vermeintliche $F$ ab. Ergibt es $4x$ für JEDE Wahl von $C$?',
+        ],
+        {
+          1: 'Die Stammfunktion $2x^{2}$ ist richtig, aber die Integrationskonstante $+C$ fehlt. Bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt — $+C$ ist Pflicht.',
+          2: '$+5$ ist eine SPEZIELLE Wahl von $C$ — engt die Stammfunktionsfamilie unzulässig ein. Das unbestimmte Integral steht für ALLE Stammfunktionen, also $+C$ mit beliebigem $C \\in \\mathbb{R}$.',
+          3: '$C \\cdot x$ ist KEINE Konstante, sondern eine $x$-abhängige Funktion. Probe: $(2x^{2} + Cx)\' = 4x + C \\neq 4x$ (außer $C = 0$). Die Integrationskonstante muss konstant sein.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Welche der folgenden Funktionen ist KEINE Stammfunktion von $f(x) = 2x$?',
+        [
+          '$F(x) = 2x$',
+          '$F(x) = x^{2} + 7$',
+          '$F(x) = x^{2} - 100$',
+          '$F(x) = x^{2}$',
+        ],
+        0,
+        `**Ansatz:** Probe — jeden Kandidaten ableiten und mit $f(x) = 2x$ vergleichen.
+
+**Rechnung:**
+- $(2x)' = 2 \\neq 2x$ ✗ — also KEINE Stammfunktion.
+- $(x^{2} + 7)' = 2x$ ✓
+- $(x^{2} - 100)' = 2x$ ✓
+- $(x^{2})' = 2x$ ✓
+
+**Probe:** Drei der vier Kandidaten sind Mitglieder der Familie $\\{x^{2} + C : C \\in \\mathbb{R}\\}$ (mit $C = 7$, $C = -100$, $C = 0$). Nur $2x$ liegt nicht in dieser Familie.
+
+**Typischer Fehler:** $f(x) = 2x$ und $F(x) = 2x$ verwechseln — sie heißen ähnlich, sind aber Integrand bzw. (vermeintliche) Stammfunktion. Hier ist $2x$ aber nur der Integrand selbst, kein Stammfunktion.`,
+        [
+          'Stammfunktion $F$ erfüllt $F\'(x) = f(x)$.',
+          'Leite jede Option ab und prüfe, ob $2x$ herauskommt.',
+          'Achte auf den Sonderfall, wo $F = f$ ist — ist das automatisch eine Stammfunktion?',
+        ],
+        {
+          1: '$(x^{2} + 7)\' = 2x + 0 = 2x = f(x)$ ✓ — die $7$ verschwindet beim Ableiten. Das ist eine korrekte Stammfunktion (mit $C = 7$).',
+          2: '$(x^{2} - 100)\' = 2x = f(x)$ ✓ — auch mit großen negativen Konstanten bleibt die Ableitung gleich. Korrekte Stammfunktion (mit $C = -100$).',
+          3: '$(x^{2})\' = 2x = f(x)$ ✓ — die einfachste Stammfunktion (mit $C = 0$). Auch korrekt.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[plus-c-konsequent]
+      mc(
+        'Tom schreibt: $\\int (3x^{2} + 2)\\,dx = x^{3} + 2x$. Was ist der Fehler?',
+        [
+          'Es fehlt die Integrationskonstante $+C$ — bei unbestimmten Integralen ist die Stammfunktion nur bis auf eine additive Konstante bestimmt. Korrekt: $x^{3} + 2x + C$.',
+          'Der konstante Term $2$ darf nicht integriert werden, weil er konstant ist.',
+          'Der Faktor $3$ in $3x^{2}$ wurde nicht durch den Exponenten geteilt — korrekt wäre $\\dfrac{x^{3}}{3}$.',
+          'Tom hätte zwei Konstanten benötigt: $x^{3} + C_{1} + 2x + C_{2}$.',
+        ],
+        0,
+        `**Ansatz:** Probe — $F(x) = x^{3} + 2x$ ableiten und mit dem Integrand vergleichen.
+
+**Rechnung:** $F'(x) = (x^{3} + 2x)' = 3x^{2} + 2 = f(x)$ ✓ — der Funktionsterm ist KORREKT! Es fehlt nur das $+C$. Korrekt: $x^{3} + 2x + C$.
+
+**Probe:** $(x^{3} + 2x + C)' = 3x^{2} + 2$ für jedes $C \\in \\mathbb{R}$ — ganze Familie an Stammfunktionen.
+
+**Typischer Fehler:** $+C$ vergessen ist der häufigste Punktabzug bei unbestimmten Integralen — selbst wenn die Stammfunktion sonst stimmt.`,
+        [
+          'Mache die Probe: leite Toms $F$ ab.',
+          'Stimmt der Funktionsterm? Wenn ja, was fehlt am Endergebnis?',
+          'Bei unbestimmten Integralen ist EIN bestimmter Zusatz immer Pflicht.',
+        ],
+        {
+          1: '$\\int 2\\,dx = 2x$ — Konstanten werden integriert, sie verschwinden NICHT. Toms $2x$ ist genau richtig: $(2x)\' = 2$ ✓.',
+          2: '$\\int 3x^{2}\\,dx = 3 \\cdot \\dfrac{x^{3}}{3} = x^{3}$ — der Faktor $3$ wurde durch den neuen Exponenten geteilt, korrekt vereinfacht. Toms $x^{3}$ ist richtig.',
+          3: 'Mehrere Konstanten in der Stammfunktion lassen sich immer zu EINER Konstante zusammenfassen ($C = C_{1} + C_{2}$). Standardform ist deshalb genau ein $+C$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · matching · uses=[plus-c-konsequent]
+      matching(
+        'Ordne jedem unbestimmten Integral das KORREKT geschriebene Ergebnis (inklusive $+C$) zu.',
+        [
+          { left: '$\\int 6x\\,dx$',     right: '$3x^{2} + C$' },
+          { left: '$\\int e^{x}\\,dx$',  right: '$e^{x} + C$' },
+          { left: '$\\int \\sin(x)\\,dx$', right: '$-\\cos(x) + C$' },
+          { left: '$\\int 4\\,dx$',      right: '$4x + C$' },
+        ],
+        `**Ansatz:** Für jedes Integral die Stammfunktion finden und das verpflichtende $+C$ ergänzen.
+
+**Rechnung:**
+- $\\int 6x\\,dx = 3x^{2} + C$ (Probe: $(3x^{2})' = 6x$ ✓).
+- $\\int e^{x}\\,dx = e^{x} + C$ (Probe: $(e^{x})' = e^{x}$ ✓).
+- $\\int \\sin(x)\\,dx = -\\cos(x) + C$ (Probe: $(-\\cos x)' = \\sin x$ ✓).
+- $\\int 4\\,dx = 4x + C$ (Probe: $(4x)' = 4$ ✓).
+
+**Probe:** Vier verschiedene Integrale, vier verschiedene Stammfunktionen — alle mit $+C$ vollständig.
+
+**Typischer Fehler:** $+C$ weglassen oder das falsche Vorzeichen bei $\\int \\sin(x)\\,dx$ schreiben (richtig: $-\\cos(x)$, mit Minus).`,
+        [
+          'Berechne jeweils die Stammfunktion mit Faktor- und/oder Grundintegralen.',
+          'Vergiss das $+C$ am Ende NICHT.',
+          'Bei $\\int \\sin x\\,dx$: Vorzeichen prüfen — wo kommt das Minus her?',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['plus-c-konsequent'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // int-1-4 — Das bestimmte Integral  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-1-4': {
+
+    // ── [0] Hauptsatz: $\int_a^b f(x)dx = F(b) - F(a)$ ────────────────────
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[hauptsatz-12]
+      tf(
+        'Für eine beliebige Stammfunktion $F$ von $f$ gilt der Hauptsatz: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$.',
+        true,
+        `**Ansatz:** Definition des Hauptsatzes der Differential- und Integralrechnung (Teil 2).
+
+**Rechnung:** Per Hauptsatz: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$ für jede Stammfunktion $F$ mit $F'(x) = f(x)$. Die Wahl der Stammfunktion (mit oder ohne $+C$) ist egal — Konstanten kürzen sich.
+
+**Probe:** $\\int_{0}^{2} 2x\\,dx$ mit $F(x) = x^{2}$: $F(2) - F(0) = 4 - 0 = 4$. ✓ (Geometrisch: Dreieck mit Grundseite $2$, Höhe $4$, Fläche $= 4$.)
+
+**Typischer Fehler:** Reihenfolge $F(a) - F(b)$ statt $F(b) - F(a)$ — gibt das negative Ergebnis.`,
+        [
+          'Was ist die Aussage des Hauptsatzes?',
+          'Welche Reihenfolge bei der Differenz: $F(b) - F(a)$ oder $F(a) - F(b)$?',
+          'Probe: $\\int_{0}^{1} 2x\\,dx = 1 - 0 = 1$ — passt das zum Dreieck mit Fläche $1$?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['hauptsatz-12'] },
+      ),
+
+      // Matrix-Zeile 2: SG 0 · apply-guided · multiple-choice · uses=[hauptsatz-12]
+      mc(
+        'Berechne $\\int_{1}^{2} (4x + 3)\\,dx$.',
+        [
+          '$9$',
+          '$14$',
+          '$5$',
+          '$-9$',
+        ],
+        0,
+        `**Ansatz:** Stammfunktion mit Summen-/Faktorregel, dann Hauptsatz: $F(b) - F(a)$.
+
+**Rechnung:** $\\int (4x + 3)\\,dx = 2x^{2} + 3x + C$, also $F(x) = 2x^{2} + 3x$. $F(2) = 8 + 6 = 14$. $F(1) = 2 + 3 = 5$. $\\int_{1}^{2} = F(2) - F(1) = 14 - 5 = 9$.
+
+**Probe:** $F'(x) = 4x + 3$ ✓ (Integrand zurückgewonnen).
+
+**Typischer Fehler:** Nur $F(2) = 14$ als Ergebnis nehmen statt der Differenz $F(b) - F(a)$.`,
+        [
+          'Stammfunktion gliedweise: $\\int 4x\\,dx = 2x^{2}$, $\\int 3\\,dx = 3x$.',
+          '$F(2) = 14$, $F(1) = 5$ — beides berechnen.',
+          'Hauptsatz: $F(2) - F(1)$.',
+        ],
+        {
+          1: 'Du hast nur den Wert an der oberen Grenze $F(2) = 14$ verwendet und vergessen, $F(1) = 5$ abzuziehen. Hauptsatz verlangt die Differenz: $F(b) - F(a) = 14 - 5 = 9$.',
+          2: 'Du hast nur den Wert an der unteren Grenze $F(1) = 5$ angegeben statt der Differenz. Hauptsatz: $\\int_{a}^{b} f\\,dx = F(b) - F(a) = 14 - 5 = 9$.',
+          3: 'Du hast die Grenzen vertauscht: $F(1) - F(2) = 5 - 14 = -9$. Korrekt ist $F(b) - F(a) = F(2) - F(1) = 9$ (obere Grenze minus untere).',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['hauptsatz-12'] },
+      ),
+
+      // Bonus zu Matrix-Zeile 3 (LP-a + LP-b decken bereits Z3): SG 0 · apply-independent · number-input
+      ni(
+        'Berechne $\\int_{-1}^{2} 3x^{2}\\,dx$.',
+        9,
+        0,
+        '',
+        `**Ansatz:** Potenzregel: $\\int 3x^{2}\\,dx = x^{3}$, dann Hauptsatz mit negativer unterer Grenze.
+
+**Rechnung:** $F(x) = x^{3}$. $F(2) = 8$. $F(-1) = (-1)^{3} = -1$. $\\int_{-1}^{2} 3x^{2}\\,dx = F(2) - F(-1) = 8 - (-1) = 9$.
+
+**Probe:** $F'(x) = 3x^{2}$ ✓. Geometrisch: $3x^{2} \\geq 0$, also Integral positiv und gleich der Gesamtfläche unter der Parabel auf $[-1, 2]$.
+
+**Typischer Fehler:** Bei $F(-1) = (-1)^{3}$ das Vorzeichen vergessen — $(-1)^{3} = -1$ (ungerader Exponent), und in der Differenz wird daraus $- (-1) = +1$.`,
+        [
+          'Stammfunktion: $\\int 3x^{2}\\,dx = x^{3}$ (Faktor $3$ durch neuen Exponenten $3$ geteilt).',
+          'Bei der unteren Grenze: $(-1)^{3} = -1$ (ungerade Potenz behält Vorzeichen).',
+          'Differenz: $8 - (-1) = 8 + 1 = 9$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['hauptsatz-12'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[hauptsatz-12]
+      mc(
+        'Tom berechnet $\\int_{1}^{4} x^{2}\\,dx$ als $\\dfrac{1}{3}(4^{2} - 1^{2}) = \\dfrac{15}{3} = 5$. Wo liegt der Fehler?',
+        [
+          'Tom hat den Hauptsatz mit dem ALTEN Exponenten $2$ angewandt — er hat $b^{2} - a^{2}$ statt $b^{3} - a^{3}$ benutzt. Korrekt: Stammfunktion $F(x) = \\dfrac{x^{3}}{3}$ (Exponent +1), dann $F(4) - F(1) = \\dfrac{64}{3} - \\dfrac{1}{3} = 21$.',
+          'Tom hat richtig gerechnet — $\\dfrac{15}{3} = 5$ ist das korrekte Integral.',
+          'Tom hat das Vorzeichen vergessen — korrekt wäre $-5$.',
+          'Tom hätte die Konstante $C = 0$ am Ende addieren müssen.',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz korrekt anwenden — erst Stammfunktion (Potenzregel: Exponent +1, dann durch neuen Exponenten teilen), dann $F(b) - F(a)$.
+
+**Rechnung:** Tom hat den Schritt "Exponent erhöhen" vergessen: $\\int x^{2}\\,dx = \\dfrac{x^{3}}{3}$, nicht $\\dfrac{x^{2}}{3}$. Korrekt: $F(x) = \\dfrac{x^{3}}{3}$. $F(4) = \\dfrac{64}{3}$, $F(1) = \\dfrac{1}{3}$. $\\int_{1}^{4} x^{2}\\,dx = \\dfrac{64 - 1}{3} = \\dfrac{63}{3} = 21$.
+
+**Probe:** $F'(x) = \\dfrac{3x^{2}}{3} = x^{2}$ ✓.
+
+**Typischer Fehler:** Den Exponenten beim Integrieren NICHT um $1$ erhöhen — man landet dann auf der Stelle, wo $x^{n}$ "scheinbar" abgeleitet wurde.`,
+        [
+          'Schau Toms Stammfunktion an: hat er $x^{2}$ oder $x^{3}$?',
+          'Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1}$ — der NEUE Exponent ist $n+1$.',
+          'Korrekt: $F(x) = \\dfrac{x^{3}}{3}$. Nun $F(4) - F(1)$ richtig.',
+        ],
+        {
+          1: 'Probe widerlegt: $5 \\neq 21$. Mit Toms Methode wäre $F\'(x) = \\dfrac{2x}{3}$, das ist nicht $x^{2}$.',
+          2: 'Das Integral ist $+21$ (Funktion ist auf $[1, 4]$ positiv). Toms Fehler liegt an der Stammfunktion, nicht am Vorzeichen.',
+          3: 'Das $C$ kürzt sich beim bestimmten Integral immer raus: $(F + C)(b) - (F + C)(a) = F(b) - F(a)$. Toms eigentliches Problem ist der falsche Exponent in der Stammfunktion.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['hauptsatz-12'] },
+      ),
+
+      // Bonus zu Matrix-Zeile 5 (LP-d + LP-mastery decken bereits Z5): SG 0 · transfer · number-input
+      ni(
+        'Berechne $\\int_{0}^{\\pi/2} \\cos(x)\\,dx$.',
+        1,
+        0.001,
+        '',
+        `**Ansatz:** Grundintegral $\\int \\cos(x)\\,dx = \\sin(x) + C$, dann Hauptsatz mit den Werten von $\\sin$ an $0$ und $\\pi/2$.
+
+**Rechnung:** $F(x) = \\sin(x)$. $F(\\pi/2) = \\sin(\\pi/2) = 1$. $F(0) = \\sin(0) = 0$. $\\int_{0}^{\\pi/2} \\cos(x)\\,dx = F(\\pi/2) - F(0) = 1 - 0 = 1$.
+
+**Probe:** $F'(x) = \\cos(x)$ ✓. Geometrisch: Fläche unter $\\cos$ von $0$ bis $\\pi/2$ ist genau $1$ (kein $\\pi$!).
+
+**Typischer Fehler:** Stammfunktion als $-\\sin(x)$ schreiben (falsches Vorzeichen) — korrekt ist $\\int \\cos = +\\sin$ (kein Minus, denn $(\\sin)' = \\cos$).`,
+        [
+          'Stammfunktion: $\\int \\cos(x)\\,dx = \\sin(x) + C$ (kein Minus).',
+          '$\\sin(\\pi/2) = 1$ und $\\sin(0) = 0$.',
+          'Hauptsatz: $\\sin(\\pi/2) - \\sin(0) = 1 - 0$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['hauptsatz-12'] },
+      ),
+    ],
+
+    // ── [1] Geometrische Fläche — unterhalb der x-Achse zählt negativ ──────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[geom-flaeche]
+      tf(
+        'Wenn $f(x) < 0$ auf einem Intervall $[a, b]$, dann ist $\\int_{a}^{b} f(x)\\,dx$ negativ — er misst die geometrische Fläche unter der x-Achse mit negativem Vorzeichen.',
+        true,
+        `**Ansatz:** Geometrische Deutung des bestimmten Integrals — Vorzeichen folgt aus dem Vorzeichen von $f$.
+
+**Rechnung:** Für $f < 0$ liegt der Graph unterhalb der x-Achse. Die Riemann-Summe $\\sum f(x_{i}) \\Delta x$ besteht aus negativen Summanden, also ist das Integral negativ. Geometrisch wird die Fläche zwischen Kurve und x-Achse mit NEGATIVEM Vorzeichen "gezählt".
+
+**Probe:** $\\int_{0}^{1} (-x)\\,dx = -\\dfrac{1}{2}$ ($F = -\\dfrac{x^{2}}{2}$, $F(1) - F(0) = -\\dfrac{1}{2}$). Negativ, weil $-x < 0$ auf $(0, 1]$.
+
+**Typischer Fehler:** Geometrische Fläche (immer $\\geq 0$) und Integralwert (kann negativ sein) verwechseln. Geometrische Fläche ist $|{\\int}|$.`,
+        [
+          'Was ist das Vorzeichen der Riemann-Summe, wenn $f < 0$?',
+          'Beispiel: $\\int_{0}^{1} (-1)\\,dx = ?$',
+          'Erinnere dich: Integral $\\neq$ geometrische Fläche, wenn $f < 0$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['geom-flaeche'] },
+      ),
+
+      // Bonus zu Matrix-Zeile 7 (LP-c deckt Z7): SG 1 · apply-guided · multiple-choice
+      mc(
+        'Welche geometrische Bedeutung hat $\\int_{a}^{b} f(x)\\,dx$, wenn $f(x) < 0$ für alle $x \\in [a, b]$?',
+        [
+          'Der Wert ist NEGATIV — er entspricht dem negativen Inhalt der Fläche zwischen Kurve und x-Achse. Die geometrische Fläche selbst ist $|{\\int_{a}^{b} f\\,dx}|$.',
+          'Der Wert ist positiv — Flächen sind in der Geometrie immer positiv, unabhängig davon, ob die Kurve unter oder über der x-Achse liegt.',
+          'Der Wert ist null — eine negative Funktion integriert sich zu null.',
+          'Der Wert ist nicht definiert, weil Integration nur für $f \\geq 0$ sinnvoll ist.',
+        ],
+        0,
+        `**Ansatz:** Riemann-Summen-Definition prüfen — Vorzeichen folgt direkt aus $f < 0$.
+
+**Rechnung:** $\\int_{a}^{b} f(x)\\,dx$ ist Grenzwert von $\\sum f(x_{i}) \\Delta x$. Wenn alle $f(x_{i}) < 0$ und $\\Delta x > 0$, sind alle Summanden negativ — das Integral ist negativ. Beispiel: $\\int_{0}^{1} (-2x)\\,dx = -1$.
+
+**Probe:** $F(x) = -x^{2}$. $F(1) - F(0) = -1 - 0 = -1$. ✓
+
+**Typischer Fehler:** Glauben, das Integral mache automatisch eine "Fläche" und sei deshalb $\\geq 0$. Tatsächlich misst das Integral SIGNIERTE Flächen — Vorzeichen kommt aus dem Vorzeichen von $f$.`,
+        [
+          'Schau in die Riemann-Summe: $\\sum f(x_{i}) \\Delta x$ — was passiert, wenn alle $f(x_{i})$ negativ sind?',
+          'Beispiel: $\\int_{0}^{1} (-1)\\,dx = ?$',
+          'Geometrische Fläche und Integralwert sind nicht dasselbe.',
+        ],
+        {
+          1: 'Geometrische Flächen sind in der Schulgeometrie tatsächlich $\\geq 0$, aber das *bestimmte Integral* misst eine SIGNIERTE Fläche — mit Vorzeichen. Deshalb $\\int_{0}^{1} (-1)\\,dx = -1$, nicht $+1$.',
+          2: '$f(x) < 0$ für alle $x$ heißt nicht, dass das Integral null ist. Beispiel: $\\int_{0}^{1} (-1)\\,dx = -1 \\neq 0$. Null kommt nur bei symmetrischen positiv-/negativ-Anteilen.',
+          3: 'Integration ist für *jede* integrierbare Funktion definiert — nicht nur für $f \\geq 0$. Negative Funktionen liefern negative Integrale.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['geom-flaeche'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · number-input · uses=[geom-flaeche, hauptsatz-12]
+      ni(
+        'Berechne $\\int_{0}^{2} (-x)\\,dx$. Achte auf das Vorzeichen.',
+        -2,
+        0.001,
+        '',
+        `**Ansatz:** Hauptsatz mit Stammfunktion $-\\dfrac{x^{2}}{2}$ — Vorzeichen verfolgen.
+
+**Rechnung:** $F(x) = -\\dfrac{x^{2}}{2}$. $F(2) = -2$. $F(0) = 0$. $\\int_{0}^{2} (-x)\\,dx = F(2) - F(0) = -2 - 0 = -2$.
+
+**Probe:** $F'(x) = -x$ ✓. Geometrisch: $-x < 0$ auf $(0, 2]$ — Integral muss negativ sein. ✓ Geometrische Fläche $= |{-2}| = 2$.
+
+**Typischer Fehler:** Betrag nehmen "weil Flächen positiv sind" — das *Integral* einer negativen Funktion ist aber negativ.`,
+        [
+          'Stammfunktion: $\\int -x\\,dx = -\\dfrac{x^{2}}{2}$.',
+          '$F(2) = -2$, $F(0) = 0$.',
+          'Differenz: $-2 - 0 = -2$ (negativ, weil $-x < 0$).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['geom-flaeche', 'hauptsatz-12'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[geom-flaeche]
+      mc(
+        'Lisa berechnet $\\int_{-2}^{0} x^{3}\\,dx$ und kommt auf $-4$. Sie schreibt: „Die Fläche ist also $-4$." Was ist der Fehler in ihrer Aussage?',
+        [
+          'Das Integral ist $-4$ (korrekt berechnet), aber die FLÄCHE im geometrischen Sinn ist $|{-4}| = 4$. Lisa verwechselt den Integralwert (mit Vorzeichen) mit dem Flächeninhalt (immer $\\geq 0$).',
+          'Lisa hat das Integral falsch berechnet — korrekt wäre $+4$, also auch die Fläche $4$.',
+          'Die Stammfunktion $\\dfrac{x^{4}}{4}$ ist falsch — korrekt wäre $\\dfrac{x^{4}}{3}$.',
+          'Bei negativen Grenzen darf man nicht integrieren, daher ist die Antwort $-4$ ohnehin nicht aussagekräftig.',
+        ],
+        0,
+        `**Ansatz:** Integralwert und geometrische Fläche unterscheiden — das Integral ist signiert, die Fläche nicht.
+
+**Rechnung:** $F(x) = \\dfrac{x^{4}}{4}$. $F(0) = 0$, $F(-2) = \\dfrac{16}{4} = 4$. $\\int_{-2}^{0} x^{3}\\,dx = F(0) - F(-2) = 0 - 4 = -4$. Lisas Rechnung ist korrekt.
+
+**Probe:** Geometrisch ist $x^{3} < 0$ auf $[-2, 0)$ — also Integral negativ. ✓ Aber die FLÄCHE zwischen Kurve und x-Achse auf $[-2, 0]$ ist $|{-4}| = 4$ (positiver Wert).
+
+**Typischer Fehler:** "Fläche = Integral" gilt nur für $f \\geq 0$. Bei $f < 0$ ist Fläche $= |\\text{Integral}|$.`,
+        [
+          'Lisas Rechnung ist mathematisch okay — was stimmt mit ihrem WORT "Fläche" nicht?',
+          'Was ist das Vorzeichen einer geometrischen Fläche?',
+          'Der Integralwert kann negativ sein, die geometrische Fläche nicht.',
+        ],
+        {
+          1: 'Lisas Rechnung ist richtig: $F(0) - F(-2) = 0 - 4 = -4$. Das Integral ist tatsächlich $-4$, nicht $+4$. Der Fehler liegt nicht in der Berechnung, sondern in der Interpretation.',
+          2: 'Die Stammfunktion $\\dfrac{x^{4}}{4}$ ist KORREKT (Potenzregel: Exponent $3 \\to 4$, Faktor $1/4$). Probe: $\\left(\\dfrac{x^{4}}{4}\\right)\' = x^{3}$ ✓.',
+          3: 'Integration funktioniert für jedes Intervall — auch mit negativen Grenzen. Die Aussage "$-4$ aussagekräftig" ist sehr wohl gerechtfertigt: das Integral hat Vorzeichen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['geom-flaeche'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · multiple-choice · uses=[geom-flaeche]
+      mc(
+        'Eine Funktion $f$ erfüllt $f(x) > 0$ für $x \\in [0, 1]$ und $f(x) < 0$ für $x \\in [1, 2]$. Was bedeutet $\\int_{0}^{2} f(x)\\,dx = 0$ geometrisch?',
+        [
+          'Die Fläche oberhalb der x-Achse ($[0,1]$) und die Fläche unterhalb ($[1,2]$) sind betragsmäßig gleich groß — das Integral zählt sie mit umgekehrten Vorzeichen, sodass sich der Wert zu null aufhebt. Die geometrischen Flächen heben sich NICHT auf, sie sind nur gleich.',
+          '$f$ ist konstant null auf $[0, 2]$.',
+          '$f$ ist nicht integrierbar — null ist ein Hinweis auf Divergenz.',
+          'Das Integral kann nie null sein, wenn $f$ nicht überall null ist — die Aufgabe enthält einen Widerspruch.',
+        ],
+        0,
+        `**Ansatz:** Signiertheit des Integrals — positive und negative Anteile addieren sich.
+
+**Rechnung:** $\\int_{0}^{2} f\\,dx = \\int_{0}^{1} f\\,dx + \\int_{1}^{2} f\\,dx = A_{+} + (-A_{-})$, wobei $A_{+} > 0$ (Fläche oberhalb) und $A_{-} > 0$ (Fläche unterhalb, aber mit Minus, weil $f < 0$). Die Summe ist null, also $A_{+} = A_{-}$ — die geometrischen Flächen sind betragsmäßig gleich.
+
+**Probe:** Beispiel: $f(x) = \\sin(\\pi x)$ auf $[0, 2]$. $\\int_{0}^{2} \\sin(\\pi x)\\,dx = 0$, weil die positive Halbwelle und die negative Halbwelle gleich große Flächen einschließen.
+
+**Typischer Fehler:** Annehmen, "Integral $= 0$" heißt "$f \\equiv 0$". Tatsächlich kann das Integral null sein, wenn sich Flächen mit umgekehrten Vorzeichen aufheben.`,
+        [
+          'Was passiert, wenn ein Teil von $f$ positiv und ein Teil negativ ist?',
+          'Riemann-Summe: positive Summanden $+$ negative Summanden = ?',
+          'Beispiel: $\\sin(x)$ auf $[0, 2\\pi]$ — was ergibt $\\int$?',
+        ],
+        {
+          1: '$f$ ist nach Annahme NICHT null: positiv auf $[0,1]$, negativ auf $[1,2]$. Das Integral kann trotzdem null sein, wenn sich positive und negative Anteile aufheben.',
+          2: 'Integrierbarkeit hat nichts mit dem Wert null zu tun. Ein Integral kann sehr wohl exakt null werden, ohne dass die Funktion divergiert.',
+          3: 'Doch — siehe das Beispiel $\\sin(x)$ auf $[0, 2\\pi]$: $\\int = 0$, obwohl $\\sin$ nicht überall null ist. Vorzeichenwechsel macht die Aufhebung möglich.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['geom-flaeche'] },
+      ),
+    ],
+
+    // ── [2] Grenzen vertauschen dreht das Vorzeichen ──────────────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[grenzen-tausch]
+      tf(
+        'Wenn man die Integrationsgrenzen vertauscht, ändert sich das Vorzeichen des Integrals: $\\int_{a}^{b} f(x)\\,dx = -\\int_{b}^{a} f(x)\\,dx$.',
+        true,
+        `**Ansatz:** Folgt direkt aus dem Hauptsatz: $\\int_{a}^{b} f\\,dx = F(b) - F(a) = -(F(a) - F(b)) = -\\int_{b}^{a} f\\,dx$.
+
+**Rechnung:** Beispiel $\\int_{1}^{4} 2x\\,dx = 16 - 1 = 15$ und $\\int_{4}^{1} 2x\\,dx = 1 - 16 = -15$. Vorzeichen ist tatsächlich umgedreht.
+
+**Probe:** Konsistenz mit Additivität: $\\int_{a}^{a} f\\,dx = 0 = \\int_{a}^{b} f\\,dx + \\int_{b}^{a} f\\,dx$, also $\\int_{a}^{b} = -\\int_{b}^{a}$. ✓
+
+**Typischer Fehler:** Beim Vertauschen der Grenzen das Vorzeichen vergessen — gibt das negative Endergebnis.`,
+        [
+          'Hauptsatz: $\\int_{a}^{b} = F(b) - F(a)$. Was ist $\\int_{b}^{a}$?',
+          'Algebra: $F(a) - F(b) = -(F(b) - F(a))$.',
+          'Probe an einem konkreten Beispiel: $\\int_{0}^{2} 2x\\,dx = 4$ und $\\int_{2}^{0} 2x\\,dx = -4$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['grenzen-tausch'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[grenzen-tausch]
+      mc(
+        'Bekannt: $\\int_{1}^{4} f(x)\\,dx = 7$. Was ist $\\int_{4}^{1} f(x)\\,dx$?',
+        [
+          '$-7$',
+          '$7$',
+          '$0$',
+          '$14$',
+        ],
+        0,
+        `**Ansatz:** Regel "Grenzen vertauschen → Vorzeichen drehen": $\\int_{a}^{b} = -\\int_{b}^{a}$.
+
+**Rechnung:** $\\int_{4}^{1} f(x)\\,dx = -\\int_{1}^{4} f(x)\\,dx = -7$.
+
+**Probe:** Summe der beiden ergibt null: $\\int_{1}^{4} + \\int_{4}^{1} = 7 + (-7) = 0 = \\int_{1}^{1} f\\,dx$. ✓
+
+**Typischer Fehler:** Glauben, das Integral hängt nicht von der Reihenfolge der Grenzen ab — falsch, weil $F(b) - F(a) \\neq F(a) - F(b)$ im Allgemeinen.`,
+        [
+          'Regel: $\\int_{a}^{b} = -\\int_{b}^{a}$ — wie ändert sich der Wert beim Vertauschen?',
+          '$\\int_{4}^{1} = -\\int_{1}^{4}$.',
+          'Wenn $\\int_{1}^{4} = 7$, dann $\\int_{4}^{1} = -7$.',
+        ],
+        {
+          1: 'Du hast die Reihenfolge ignoriert — Vertauschen ändert das Vorzeichen. Hauptsatz: $F(1) - F(4) = -(F(4) - F(1)) = -7$.',
+          2: '$\\int_{4}^{1} = 0$ wäre nur wahr, wenn die Grenzen gleich wären ($\\int_{a}^{a} = 0$). Hier sind $4 \\neq 1$, also Vorzeichen-Drehung: $\\int_{4}^{1} = -7$.',
+          3: '$14 = 2 \\cdot 7$ kommt nicht aus dem Vertauschen der Grenzen. Korrekt ist NEGATION: $\\int_{4}^{1} = -7$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['grenzen-tausch'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · number-input · uses=[grenzen-tausch]
+      ni(
+        'Bekannt: $\\int_{0}^{3} f(x)\\,dx = 12$. Berechne $\\int_{3}^{0} f(x)\\,dx + \\int_{0}^{3} f(x)\\,dx$.',
+        0,
+        0,
+        '',
+        `**Ansatz:** Grenzen-Tausch-Regel anwenden: $\\int_{3}^{0} = -\\int_{0}^{3}$.
+
+**Rechnung:** $\\int_{3}^{0} f\\,dx = -\\int_{0}^{3} f\\,dx = -12$. Summe: $-12 + 12 = 0$.
+
+**Probe:** Allgemein gilt $\\int_{a}^{b} f\\,dx + \\int_{b}^{a} f\\,dx = 0$ für jede integrierbare Funktion (folgt aus dem Hauptsatz oder aus Additivität mit gleichen Grenzen).
+
+**Typischer Fehler:** $\\int_{3}^{0} + \\int_{0}^{3} = 24$ rechnen — Grenzen-Tausch-Regel ignoriert.`,
+        [
+          'Was ist $\\int_{3}^{0} f\\,dx$ in Termen von $\\int_{0}^{3} f\\,dx$?',
+          'Grenzen-Tausch-Regel: $\\int_{3}^{0} = -\\int_{0}^{3} = -12$.',
+          'Summe: $-12 + 12$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['grenzen-tausch'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[grenzen-tausch]
+      mc(
+        'Tim soll $\\int_{5}^{2} (2x)\\,dx$ berechnen. Er sagt: „Die untere Grenze muss kleiner sein als die obere, also schreibe ich um zu $\\int_{2}^{5} (2x)\\,dx = F(5) - F(2) = 25 - 4 = 21$." Was ist der Fehler?',
+        [
+          'Tim hat einfach die Grenzen getauscht, ohne das Vorzeichen zu drehen. Die Regel lautet $\\int_{a}^{b} = -\\int_{b}^{a}$. Korrekt: $\\int_{5}^{2} (2x)\\,dx = -\\int_{2}^{5} (2x)\\,dx = -21$ (mit Minus, nicht $+21$).',
+          'Tim hat richtig — die Reihenfolge der Grenzen ist im Integral egal, also $\\int_{5}^{2} = \\int_{2}^{5} = 21$.',
+          'Tim hat $F(5) - F(2)$ falsch ausgewertet — korrekt wäre $F(2) - F(5) = -21$, weil Stammfunktionen rückwärts gelesen werden müssen.',
+          'Bei Polynomen gilt eine Sonderregel: Grenzen dürfen ohne Vorzeichenwechsel vertauscht werden.',
+        ],
+        0,
+        `**Ansatz:** Anwenden der Grenzen-Tausch-Regel — beim Umschreiben muss das Vorzeichen drehen.
+
+**Rechnung:** $\\int_{5}^{2} (2x)\\,dx = -\\int_{2}^{5} (2x)\\,dx$. Letzteres mit Hauptsatz: $F(x) = x^{2}$, $F(5) - F(2) = 25 - 4 = 21$. Also $\\int_{5}^{2} (2x)\\,dx = -21$ (mit Minus).
+
+**Probe:** Direkter Hauptsatz: $\\int_{5}^{2} (2x)\\,dx = F(2) - F(5) = 4 - 25 = -21$. ✓ Konsistent mit Grenzen-Tausch-Regel.
+
+**Typischer Fehler:** Glauben, "Reihenfolge ist egal, weil ich integrieren kann" — das Integral selbst hängt sehr wohl von der Reihenfolge ab, sogar im Vorzeichen.`,
+        [
+          'Wie muss Tim das Vorzeichen anpassen, wenn er die Grenzen tauscht?',
+          'Regel: $\\int_{a}^{b} = -\\int_{b}^{a}$ — minus, nicht gleich.',
+          'Direkte Probe: $\\int_{5}^{2} (2x)\\,dx = F(2) - F(5) = -21$.',
+        ],
+        {
+          1: 'Reihenfolge der Grenzen IST relevant — das Vorzeichen ändert sich. $\\int_{5}^{2} \\neq \\int_{2}^{5}$, sondern $\\int_{5}^{2} = -\\int_{2}^{5}$.',
+          2: '$F(5) - F(2) = 21$ ist die korrekte Auswertung von $\\int_{2}^{5} (2x)\\,dx$ — Hauptsatz mit oberer Grenze minus untere. Tims Fehler liegt im VORZEICHEN beim Umschreiben.',
+          3: 'Es gibt keine "Polynom-Sonderregel". Die Grenzen-Tausch-Regel gilt für ALLE integrierbaren Funktionen — und sie verlangt immer einen Vorzeichenwechsel.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['grenzen-tausch'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · matching · uses=[grenzen-tausch]
+      matching(
+        'Gegeben: $\\int_{0}^{2} f(x)\\,dx = 5$ und $\\int_{2}^{7} f(x)\\,dx = 3$. Ordne jedem Integral seinen Wert zu.',
+        [
+          { left: '$\\int_{0}^{7} f(x)\\,dx$',   right: '$8$' },
+          { left: '$\\int_{2}^{0} f(x)\\,dx$',   right: '$-5$' },
+          { left: '$\\int_{7}^{2} f(x)\\,dx$',   right: '$-3$' },
+          { left: '$\\int_{7}^{0} f(x)\\,dx$',   right: '$-8$' },
+        ],
+        `**Ansatz:** Additivität ($\\int_{a}^{c} = \\int_{a}^{b} + \\int_{b}^{c}$) und Grenzen-Tausch-Regel kombinieren.
+
+**Rechnung:**
+- $\\int_{0}^{7} f\\,dx = \\int_{0}^{2} + \\int_{2}^{7} = 5 + 3 = 8$.
+- $\\int_{2}^{0} f\\,dx = -\\int_{0}^{2} = -5$.
+- $\\int_{7}^{2} f\\,dx = -\\int_{2}^{7} = -3$.
+- $\\int_{7}^{0} f\\,dx = -\\int_{0}^{7} = -8$.
+
+**Probe:** Konsistenz: $\\int_{0}^{7} + \\int_{7}^{0} = 8 + (-8) = 0$ ✓. Vier verschiedene Werte ($8, -5, -3, -8$) — Zuordnung eindeutig.
+
+**Typischer Fehler:** Bei $\\int_{7}^{0}$ einfach $\\int_{0}^{7} = 8$ schreiben — Grenzen-Tausch-Regel vergessen.`,
+        [
+          'Wende Additivität für $\\int_{0}^{7}$ an.',
+          'Wende Grenzen-Tausch-Regel für $\\int_{2}^{0}$ und $\\int_{7}^{2}$ an.',
+          'Kombiniere beide Regeln für $\\int_{7}^{0}$ — Tausch und Zerlegung.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['grenzen-tausch'] },
+      ),
+    ],
+
+    // ── [3] Integrationskonstante $C$ kürzt sich beim bestimmten Integral ──
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[c-faellt-weg]
+      tf(
+        'Beim bestimmten Integral fällt die Integrationskonstante $C$ heraus, weil sie sich beim Bilden der Differenz $F(b) - F(a)$ aufhebt: $(F(b) + C) - (F(a) + C) = F(b) - F(a)$.',
+        true,
+        `**Ansatz:** Algebraische Auswertung der Differenz.
+
+**Rechnung:** Sei $\\tilde{F}(x) = F(x) + C$ (alternative Stammfunktion). Dann $\\tilde{F}(b) - \\tilde{F}(a) = (F(b) + C) - (F(a) + C) = F(b) + C - F(a) - C = F(b) - F(a)$. Das Ergebnis ist UNABHÄNGIG von $C$.
+
+**Probe:** Konkret: $\\int_{1}^{3} 2x\\,dx$ mit $F(x) = x^{2}$ liefert $9 - 1 = 8$. Mit $\\tilde{F}(x) = x^{2} + 100$ liefert $\\tilde{F}(3) - \\tilde{F}(1) = 109 - 101 = 8$. ✓ Gleich.
+
+**Typischer Fehler:** Bei der Berechnung künstlich ein $+C$ am Ende anhängen — beim bestimmten Integral ist die Antwort eine Zahl, kein Funktionsterm.`,
+        [
+          'Was passiert mit $C$ in der Differenz $(F(b) + C) - (F(a) + C)$?',
+          'Algebraisch: $C$ kürzt sich heraus.',
+          'Beispiel: probiere die Berechnung mit $F(x) = x^{2}$ und mit $F(x) = x^{2} + 50$ — gleicher Endwert?',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['c-faellt-weg'] },
+      ),
+
+      // Matrix-Zeile 17: SG 3 · apply-guided · multiple-choice · uses=[c-faellt-weg]
+      mc(
+        'Welche Aussage über das bestimmte Integral $\\int_{1}^{4} 2x\\,dx$ ist korrekt?',
+        [
+          'Egal welche Stammfunktion $F$ man wählt (z. B. $x^{2}$, $x^{2} + 7$, $x^{2} - 100$), das Ergebnis $F(4) - F(1)$ ist immer $15$, weil sich die Konstante herauskürzt.',
+          'Man muss IMMER $C = 0$ wählen, sonst ergibt sich ein anderes Ergebnis.',
+          'Die Wahl von $C$ verändert das Ergebnis um genau $C \\cdot (b - a)$.',
+          'Das bestimmte Integral hängt von $C$ ab — Standardkonvention ist $C = 0$.',
+        ],
+        0,
+        `**Ansatz:** Beweis über $\\tilde{F}(x) = F(x) + C$ — Differenz auswerten.
+
+**Rechnung:** $\\tilde{F}(b) - \\tilde{F}(a) = F(b) + C - F(a) - C = F(b) - F(a)$. Bei $\\int_{1}^{4} 2x\\,dx$ mit $F(x) = x^{2} + C$: $(16 + C) - (1 + C) = 15$ — unabhängig von $C$.
+
+**Probe:** Drei Versuche mit verschiedenen $C$: $C = 0$ → $16 - 1 = 15$; $C = 7$ → $23 - 8 = 15$; $C = -100$ → $-84 - (-99) = 15$. ✓ Alle gleich.
+
+**Typischer Fehler:** Bei bestimmten Integralen wird oft "$+C$" am Ende geschrieben — falsch, das Ergebnis ist eine konkrete Zahl, kein Funktionsterm.`,
+        [
+          'Was passiert, wenn man $F(x) + C$ statt $F(x)$ nutzt — verändert das die Differenz $F(b) - F(a)$?',
+          'Konkret: rechne $\\int_{1}^{4} 2x\\,dx$ mit $F(x) = x^{2}$ und mit $F(x) = x^{2} + 1000$.',
+          'Verglichen: gleicher Wert?',
+        ],
+        {
+          1: '$C = 0$ ist nur eine bequeme Wahl — JEDER Wert von $C$ liefert dasselbe Ergebnis. Probe: $\\int_{1}^{4} 2x\\,dx$ mit $C = 7$: $(16 + 7) - (1 + 7) = 23 - 8 = 15$, also gleich.',
+          2: '$C \\cdot (b - a)$ würde gelten, wenn $\\tilde{F}(x) = F(x) + C \\cdot x$ wäre — das ist aber nicht die Form einer Stammfunktion. Bei $\\tilde{F}(x) = F(x) + C$ kürzt sich $C$ vollständig.',
+          3: 'Falsch — das bestimmte Integral ist UNABHÄNGIG von der Wahl der Stammfunktion (also von $C$). Es gibt keine Standardkonvention $C = 0$, weil $C$ immer wegfällt.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['c-faellt-weg'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · multiple-choice · uses=[c-faellt-weg]
+      mc(
+        'Eine Stammfunktion von $f(x) = 4x$ ist $F(x) = 2x^{2} + 7$ (mit $C = 7$). Berechne $\\int_{0}^{3} 4x\\,dx$ unter Verwendung genau dieser Stammfunktion.',
+        [
+          '$F(3) - F(0) = (18 + 7) - (0 + 7) = 25 - 7 = 18$',
+          '$F(3) + F(0) = (18 + 7) + (0 + 7) = 32$',
+          '$F(3) = 18 + 7 = 25$',
+          '$F(3) - F(0) - C = 25 - 7 - 7 = 11$',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz mit der konkreten Stammfunktion: $\\int_{0}^{3} 4x\\,dx = F(3) - F(0)$.
+
+**Rechnung:** $F(3) = 2 \\cdot 9 + 7 = 25$. $F(0) = 0 + 7 = 7$. Differenz: $25 - 7 = 18$. Die $7$ kürzt sich gegen die $7$ (denn beide haben dasselbe $C$).
+
+**Probe:** Mit $F(x) = 2x^{2}$ ($C = 0$): $F(3) - F(0) = 18 - 0 = 18$. ✓ Gleich. Direkt: $\\int_{0}^{3} 4x\\,dx = 2x^{2} \\big|_{0}^{3} = 18$.
+
+**Typischer Fehler:** $C$ vom Endergebnis abziehen — das passiert bereits automatisch bei der Differenz $F(b) - F(a)$.`,
+        [
+          'Hauptsatz: $\\int_{a}^{b} f\\,dx = F(b) - F(a)$.',
+          'Setze $F(x) = 2x^{2} + 7$ ein — bei $x = 0$ und $x = 3$ je den $7$-Anteil.',
+          'Differenz bilden: die $7$ aus $F(3)$ und die $7$ aus $F(0)$ heben sich auf.',
+        ],
+        {
+          1: 'Hauptsatz verlangt DIFFERENZ, nicht Summe. $F(3) + F(0)$ hätte keinen Bezug zum bestimmten Integral. Korrekt: $F(3) - F(0) = 18$.',
+          2: 'Du hast nur den oberen Wert eingesetzt, aber den Hauptsatz nicht zu Ende geführt. Es muss $F(3) - F(0)$ sein, nicht $F(3)$ allein. Damit wird auch das $+7$ aus der unteren Grenze wegsubtrahiert.',
+          3: 'Die Konstante $C = 7$ kürzt sich BEREITS in der Differenz $F(3) - F(0)$ raus — sie noch einmal abzuziehen ist doppelt gemoppelt. Korrekt: einfach $25 - 7 = 18$.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['c-faellt-weg'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[c-faellt-weg]
+      mc(
+        'Lukas behauptet: „Wenn ich beim bestimmten Integral $\\int_{1}^{3} 2x\\,dx$ statt der Stammfunktion $F(x) = x^{2}$ die Stammfunktion $\\tilde{F}(x) = x^{2} + 5$ verwende, bekomme ich ein anderes Ergebnis." Was ist der Fehler in seiner Behauptung?',
+        [
+          'Stammfunktionen unterscheiden sich nur um eine additive Konstante, die sich beim Bilden der Differenz $\\tilde{F}(b) - \\tilde{F}(a)$ wegkürzt: $(9 + 5) - (1 + 5) = 8 = 9 - 1$. Das bestimmte Integral ist UNABHÄNGIG von der Wahl der Stammfunktion.',
+          'Lukas hat richtig — verschiedene Stammfunktionen liefern verschiedene bestimmte Integrale.',
+          'Lukas muss am Ende noch $+C$ addieren, dann stimmt es.',
+          '$\\tilde{F}(x) = x^{2} + 5$ ist keine Stammfunktion von $2x$, daher die Diskrepanz.',
+        ],
+        0,
+        `**Ansatz:** Differenz $\\tilde{F}(b) - \\tilde{F}(a)$ explizit berechnen.
+
+**Rechnung:** $\\tilde{F}(3) - \\tilde{F}(1) = (9 + 5) - (1 + 5) = 14 - 6 = 8$. Mit $F(x) = x^{2}$: $F(3) - F(1) = 9 - 1 = 8$. ✓ Gleich.
+
+**Probe:** Allgemein: $\\tilde{F}(b) - \\tilde{F}(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a)$. Konstante kürzt sich, egal welcher Wert.
+
+**Typischer Fehler:** Glauben, das bestimmte Integral hänge von der Wahl der Stammfunktion ab — tatsächlich ist es DER Wert, der unabhängig von $C$ ist.`,
+        [
+          'Rechne $\\tilde{F}(3) - \\tilde{F}(1)$ explizit aus.',
+          'Vergleiche mit $F(3) - F(1) = 9 - 1 = 8$.',
+          'Was passiert mit der $5$ in der Differenz?',
+        ],
+        {
+          1: 'Falsch — verschiedene Stammfunktionen liefern IMMER dasselbe bestimmte Integral, weil sich Konstanten wegkürzen. Probe: mit $\\tilde{F} = x^{2} + 5$ ist $\\tilde{F}(3) - \\tilde{F}(1) = 14 - 6 = 8 = F(3) - F(1)$.',
+          2: 'Beim bestimmten Integral wird $+C$ NICHT addiert — das Ergebnis ist eine Zahl, kein Funktionsterm. Die $C$-Frage erledigt sich durch das Wegkürzen automatisch.',
+          3: 'Probe: $(\\tilde{F})\'(x) = (x^{2} + 5)\' = 2x$ ✓. $\\tilde{F}$ IST eine Stammfunktion von $2x$. Lukas\' Fehler ist NICHT die Wahl der Stammfunktion, sondern das Glauben, dass sie das Ergebnis ändert.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['c-faellt-weg'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · multiple-choice · uses=[c-faellt-weg, hauptsatz-12]
+      mc(
+        'Sei $F$ eine BELIEBIGE Stammfunktion von $f$ und es gelte $\\int_{0}^{5} f(x)\\,dx = 12$. Was ergibt $F(5) - F(0)$?',
+        [
+          '$12$ — per Hauptsatz, unabhängig von der konkreten Wahl von $F$ (also unabhängig von $C$).',
+          '$0$ — die Konstante $C$ kürzt sich raus, also bleibt nichts.',
+          '$-12$ — Differenzen drehen das Vorzeichen.',
+          'Hängt von $F$ ab — verschiedene Stammfunktionen liefern verschiedene Werte.',
+        ],
+        0,
+        `**Ansatz:** Hauptsatz Teil 2: $\\int_{a}^{b} f\\,dx = F(b) - F(a)$ — und dieses Ergebnis ist unabhängig von der Wahl der Stammfunktion.
+
+**Rechnung:** Per Definition ist $\\int_{0}^{5} f(x)\\,dx = F(5) - F(0)$ für jede Stammfunktion $F$. Da $\\int_{0}^{5} f\\,dx = 12$, folgt direkt $F(5) - F(0) = 12$.
+
+**Probe:** Wenn $F$ und $\\tilde{F}$ zwei Stammfunktionen sind, unterscheiden sie sich nur um $C$. Differenzen heben das $C$ auf: $(F + C)(5) - (F + C)(0) = F(5) - F(0) = 12$. ✓
+
+**Typischer Fehler:** Glauben, "$C$ kürzt sich" bedeute "$F(b) - F(a) = 0$" — tatsächlich kürzt sich nur die Konstante, das echte $f$-abhängige Ergebnis bleibt.`,
+        [
+          'Was ist die Aussage des Hauptsatzes?',
+          'Hängt $F(b) - F(a)$ von $C$ ab oder nicht?',
+          'Gegeben $\\int_{0}^{5} f\\,dx = 12$ — was sagt der Hauptsatz direkt über $F(5) - F(0)$?',
+        ],
+        {
+          1: 'Falsch — "$C$ kürzt sich" bedeutet, dass die Differenz nicht von $C$ abhängt, NICHT dass die Differenz null wird. Beispiel: $\\int_{0}^{2} 2x\\,dx = 4$, also $F(2) - F(0) = 4$, nicht $0$.',
+          2: 'Falsch — Hauptsatz definiert $\\int_{a}^{b} = F(b) - F(a)$, nicht $-(F(b) - F(a))$. Vorzeichen passt zur Reihenfolge der Grenzen, hier $0 < 5$, also positiv.',
+          3: 'Falsch — gerade die Eleganz des Hauptsatzes ist, dass $F(b) - F(a)$ UNABHÄNGIG von der Wahl der Stammfunktion ist (denn $C$ kürzt sich raus). Gleicher Wert für jede Stammfunktion.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['c-faellt-weg', 'hauptsatz-12'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {
