@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3066 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2270 (74 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1392 / 1392 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 330 / 1134 (29 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3126 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2339 (75 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1421 / 1421 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 342 / 1134 (30 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **231** (Lesson-Path: 61 · Goal-Tasks: 170)
-- 4-Block: 203/231 (88 %) 🟡
-- MC-wAE: 109/109 (100 %) ✅
-- Sub-Goals: 34/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **291** (Lesson-Path: 61 · Goal-Tasks: 230)
+- 4-Block: 272/291 (93 %) 🟡
+- MC-wAE: 138/138 (100 %) ✅
+- Sub-Goals: 46/57 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -576,8 +576,8 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `dgl-1-1` Was ist eine Differentialgleichung? | 5 | 5/5 | 29 | 19/0/6/4/0 | 29/29 | 19/19 | ✅ | — |
 | `dgl-1-2` Trennung der Variablen | 5 | 5/5 | 29 | 17/5/5/1/1 | 29/29 | 17/17 | ✅ | — |
-| `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 0/6 | 5 | 4/1/0/0/0 | 0/5 | 4/4 | ✅ | +6 Goal, +5 4B |
-| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
+| `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 6/6 | 35 | 18/9/6/1/1 | 35/35 | 18/18 | ✅ | — |
+| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 6/6 | 34 | 19/7/6/2/0 | 34/34 | 19/19 | ✅ | — |
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +5 Goal, +4 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 6/6 | 33 | 14/7/7/3/2 | 33/33 | 14/14 | ✅ | — |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 4 | 3/0/0/1/0 | 0/4 | 3/3 | ✅ | +6 Goal, +4 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 109 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 108 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4995,66 +4995,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-#### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-ordnung`, `dgl-linear`, `dgl-homogen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `char-gleichung` — Ansatz $y=e^{\lambda x}$ → char. Gleichung $a\lambda^2+b\lambda+c=0$ (SG 0)
-  2. `fall-d-pos` — D>0 (zwei reelle Wurzeln): $y=C_1 e^{\lambda_1 x}+C_2 e^{\lambda_2 x}$ ⇐ `char-gleichung` (SG 1)
-  3. `fall-d-null` — D=0 (Doppelwurzel): $y=(C_1+C_2 x)e^{\lambda x}$ ⇐ `char-gleichung` (SG 2)
-  4. `fall-d-neg` — D<0 (komplex $\alpha\pm i\beta$): $y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$ ⇐ `char-gleichung` (SG 3)
-  5. `daempfung` — Dämpfung: $\alpha<0$ abklingend, $\alpha=0$ ungedämpft, $\alpha>0$ instabil ⇐ `fall-d-neg` (SG 4)
-  6. `feder-masse` — Feder-Masse: $m\ddot x+d\dot x+kx=0$, $\omega_0=\sqrt{k/m}$ ⇐ `fall-d-neg` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `char-gleichung` · **0/5+** — Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
-  - 🔴 [1] _hoch_ · Konzepte: `fall-d-pos` · **0/5+** — D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
-  - 🔴 [2] _hoch_ · Konzepte: `fall-d-null` · **0/5+** — D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
-  - 🔴 [3] _hoch_ · Konzepte: `fall-d-neg` · **0/5+** — D < 0 (komplex $\alpha \pm i\beta$): $y = e^{\alpha x}(C_1 \cos\beta x + C_2 \sin\beta x)$ — Schwingung!
-  - 🔴 [4] _hoch_ · Konzepte: `daempfung` · **0/5+** — Dämpfung: $\alpha < 0$ abklingend, $\alpha = 0$ ungedämpft, $\alpha > 0$ instabil
-  - 🔴 [5] _hoch_ · Konzepte: `feder-masse` · **0/5+** — Feder-Masse: $m\ddot x + d\dot x + kx = 0$ — Eigenfrequenz $\omega_0 = \sqrt{k/m}$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `fall-d-pos`, `char-gleichung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 | Doppelwurzel-Faktor $x$ vergessen |
-| 15 | 2 | transfer           | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `daempfung` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `daempfung`, `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `feder-masse` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-
 #### `dgl-2-1` · Variation der Konstanten
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
@@ -7472,7 +7412,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 28 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 27 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8275,67 +8215,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `dgl-1-3` · Lineare DGL 1. Ordnung
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`, `awp`
-  - `dgl-1-2` → `tdv-trennen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `lin1-standardform` — Standardform: $y'+p(x)y=q(x)$ (SG 0)
-  2. `lin1-mu` — Integrierender Faktor $\mu(x)=e^{\int p(x)dx}$ ⇐ `lin1-standardform` (SG 1)
-  3. `lin1-formel` — Lösungsformel $y=(1/\mu)[\int\mu\cdot q\,dx+C]$ ⇐ `lin1-mu` (SG 2)
-  4. `lin1-vdk` — Alternative: Variation der Konstanten (homogen + partikulär) ⇐ `lin1-standardform` (SG 3)
-  5. `lin1-yh` — Homogene Lösung $y_h=Ce^{-\int p\,dx}$ ⇐ `lin1-standardform` (SG 4)
-  6. `lin1-rc` — Anwendung RC-Kreis: $\dot U+U/RC=U_0/RC$ ⇐ `lin1-formel` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `lin1-standardform` · **0/5+** — Standardform: $y' + p(x) y = q(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `lin1-mu` · **0/5+** — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
-  - 🔴 [2] _hoch_ · Konzepte: `lin1-formel` · **0/5+** — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
-  - 🔴 [3] _hoch_ · Konzepte: `lin1-vdk` · **0/5+** — Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
-  - 🔴 [4] _hoch_ · Konzepte: `lin1-yh` · **0/5+** — Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
-  - 🔴 [5] _mittel_ · Konzepte: `lin1-rc` · **0/5+** — Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `lin1-mu` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `lin1-mu` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | sorting          | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `lin1-rc` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `mech-2-3` · Kinematik
 
@@ -10151,7 +10030,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 40 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 41 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11517,6 +11396,65 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `dgl-1-3` · Lineare DGL 1. Ordnung
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`, `awp`
+  - `dgl-1-2` → `tdv-trennen`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lin1-standardform` — Standardform: $y'+p(x)y=q(x)$ (SG 0)
+  2. `lin1-mu` — Integrierender Faktor $\mu(x)=e^{\int p(x)dx}$ ⇐ `lin1-standardform` (SG 1)
+  3. `lin1-formel` — Lösungsformel $y=(1/\mu)[\int\mu\cdot q\,dx+C]$ ⇐ `lin1-mu` (SG 2)
+  4. `lin1-vdk` — Alternative: Variation der Konstanten (homogen + partikulär) ⇐ `lin1-standardform` (SG 3)
+  5. `lin1-yh` — Homogene Lösung $y_h=Ce^{-\int p\,dx}$ ⇐ `lin1-standardform` (SG 4)
+  6. `lin1-rc` — Anwendung RC-Kreis: $\dot U+U/RC=U_0/RC$ ⇐ `lin1-formel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `lin1-standardform` · **5/5+** — Standardform: $y' + p(x) y = q(x)$
+  - ✅ [1] _hoch_ · Konzepte: `lin1-mu` · **5/5+** — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
+  - ✅ [2] _hoch_ · Konzepte: `lin1-formel` · **5/5+** — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
+  - ✅ [3] _hoch_ · Konzepte: `lin1-vdk` · **5/5+** — Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
+  - ✅ [4] _hoch_ · Konzepte: `lin1-yh` · **5/5+** — Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
+  - ✅ [5] _mittel_ · Konzepte: `lin1-rc` · **5/5+** — Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `lin1-mu` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `lin1-mu` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `lin1-mu` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `lin1-mu` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `lin1-mu` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `lin1-formel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lin1-formel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `lin1-formel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lin1-formel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `lin1-formel` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | sorting          | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `lin1-yh` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lin1-yh` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `lin1-yh` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lin1-yh` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `lin1-yh` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `lin1-rc` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `lin1-rc` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `lin1-rc` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `lin1-rc` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | number-input     | `lin1-rc` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
