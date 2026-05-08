@@ -137,21 +137,35 @@ const unit1 = makeUnit({
         '**Keramiken** (Al₂O₃, SiC) sind sehr hart und hitzebeständig, aber spröde — kein Zug!\n\n' +
         '**Kunststoffe** (PA, PTFE, POM) sind leicht und korrosionsbeständig, aber weniger steif.\n\n' +
         '**Verbundwerkstoffe** (CFK, GFK) kombinieren hohe Steifigkeit mit geringem Gewicht.',
-      formulaTitle: 'Vergleichskennwerte',
+      formulaTitle: 'Werkstoffgruppen — Eigenschaften & Leichtbau',
       formulaContent:
-        '| Werkstoff | E-Modul | $R_m$ | Dichte |\n' +
+        '**Vergleichstabelle Kennwerte:**\n\n' +
+        '| Werkstoff | E-Modul | $R_m$ | Dichte $\\rho$ | $E/\\rho$ |\n' +
+        '|---|---|---|---|---|\n' +
+        '| Stahl S235 | 210 GPa | 360–510 MPa | 7,85 g/cm³ | $\\approx 27$ |\n' +
+        '| Aluminium 6060 | 70 GPa | 150–195 MPa | 2,70 g/cm³ | $\\approx 26$ |\n' +
+        '| PA6 / Nylon | 3 GPa | 70–80 MPa | 1,14 g/cm³ | $\\approx 2{,}6$ |\n' +
+        '| Al₂O₃ (Keramik) | 380 GPa | ($\\sigma_\\text{Druck} \\approx 2000$ MPa) | 3,9 g/cm³ | $\\approx 97$ |\n' +
+        '| CFK (uni) | 130 GPa | 1500–2000 MPa | 1,6 g/cm³ | $\\approx 81$ |\n' +
+        '| GFK | 30–45 GPa | 800–1200 MPa | 1,8 g/cm³ | $\\approx 17$–$25$ |\n\n' +
+        '**Charakteristische Eigenschaften der Werkstoffgruppen:**\n\n' +
+        '| Gruppe | Stärken | Schwächen | Typische Anwendung |\n' +
         '|---|---|---|---|\n' +
-        '| Stahl S235 | 210 GPa | 360–510 MPa | 7,85 g/cm³ |\n' +
-        '| Alu 6060 | 70 GPa | 150–195 MPa | 2,70 g/cm³ |\n' +
-        '| Nylon (PA6) | 3 GPa | 70–80 MPa | 1,14 g/cm³ |\n' +
-        '| Al₂O₃ | 380 GPa | (Druck: ~2000 MPa) | 3,9 g/cm³ |\n\n' +
-        '**Spezifische Steifigkeit** = $E/\\rho$ — wichtig für Leichtbau.',
+        '| Metalle | zäh, umformbar, gut wärme-/elektrisch leitend | korrosionsanfällig (Stahl) | tragende Bauteile, Stromschienen |\n' +
+        '| Keramik | hart, hitzebeständig, verschleißfest | spröde (kein Zug, keine Schläge) | Schneidwerkzeuge, Gleitringe, Lager |\n' +
+        '| Kunststoffe | leicht, korrosionsfest, billig in Großserie | niedriger E-Modul, temperaturlimitiert | Gehäuse, Dichtungen, Gleitlager |\n' +
+        '| Verbunde (CFK, GFK) | hohe spezifische Steifigkeit $E/\\rho$, Korrosionsfestigkeit | anisotrop, teuer (CFK), reparaturschwierig | Flugzeug, Sportwagen, Rotorblätter |\n\n' +
+        '**Leichtbau-Kennzahl — spezifische Steifigkeit:**\n' +
+        '$$\\frac{E}{\\rho}$$\n' +
+        'Bei vorgegebener Dehnsteifigkeit ist die Bauteilmasse $m \\propto \\rho/E = 1/(E/\\rho)$. Hoher $E/\\rho$-Wert = niedrige Masse für gleiche Steifigkeit. Stahl und Aluminium liegen mit $\\approx 27$ bzw. $\\approx 26$ erstaunlich gleichauf — der echte Sprung kommt erst mit Faserverbunden ($\\approx 80$).',
       masteryQuestion: 'Welcher Werkstoff ist für eine hochtemperaturfeste, verschleißarme Gleitführung am besten geeignet?',
       masteryOptions: ['Polyethylen (PE)', 'Stahl S235', 'Aluminiumoxid-Keramik (Al₂O₃)', 'Kupfer'],
       correctIndex: 2,
       masteryExplanation:
-        'Keramiken wie Al₂O₃ sind extrem hart (hohe Verschleißfestigkeit) und hitzebeständig bis über 1000 °C. ' +
-        'Kunststoffe erweichen bei hohen Temperaturen, Stahl und Kupfer haben zu geringe Härte für Gleitführungen unter extremer Belastung.',
+        '**Ansatz:** Anforderung „hochtemperaturfest + verschleißarm" filtert die Werkstoffgruppen: Kunststoffe scheiden bei hoher Temperatur aus, weiche Metalle (Cu, Baustahl) verschleißen schnell.\n\n' +
+        '**Rechnung:** Keramiken wie Al₂O₃ haben Härte $\\approx 2000\\,\\text{HV}$ und sind formstabil bis weit über $1000\\,°\\text{C}$. PE erweicht ab $\\approx 100\\,°\\text{C}$, S235 verliert oberhalb $\\approx 500\\,°\\text{C}$ deutlich an Festigkeit, Cu ist mit $\\approx 50\\,\\text{HV}$ extrem weich.\n\n' +
+        '**Probe:** Industriell werden Hochtemperatur-Gleitführungen (z. B. in Pumpen für heiße Medien) tatsächlich aus Al₂O₃, SiC oder ZrO₂ gefertigt — passt. ✓\n\n' +
+        '**Typischer Fehler:** „Stahl ist hart" — ungehärteter Baustahl hat nur ca. $130\\,\\text{HV}$, das ist eine Größenordnung unter Al₂O₃; ohne gehärtete Schicht ist er für Verschleißbelastung nicht geeignet.',
       masteryHints: [
         'Hohe Temperatur + hohe Verschleißfestigkeit → Keramik.',
         'Kunststoffe erweichen bei ca. 100–250 °C.',
