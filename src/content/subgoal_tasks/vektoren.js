@@ -1469,4 +1469,499 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-3: Kreuzprodukt
+  // SG0: Vektor senkrecht zu a,b · SG1: Betrag/Fläche · SG2: RH-Regel + Antikomm + Parallel · SG3: 3D + Komp.formel
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-3': {
+    // ===== Sub-Goal 0 — Kreuzprodukt liefert Vektor senkrecht zu a, b =====
+    0: [
+      tag(
+        tf(
+          'Das Kreuzprodukt $\\vec{a}\\times\\vec{b}$ liefert — wie das Skalarprodukt — eine Zahl (Skalar).',
+          false,
+          `**Ansatz:** Schon der Name verrät es: „Vektor"-Produkt liefert einen Vektor, „Skalar"-Produkt liefert einen Skalar.
+
+**Rechnung:** $\\vec{a}\\times\\vec{b}$ ist per Definition ein **Vektor** in 3D, der senkrecht auf beiden Ausgangsvektoren steht. $\\vec{a}\\cdot\\vec{b}$ hingegen liefert eine **Zahl** (Skalar).
+
+**Probe:** Beispiel $\\vec{a}=(1,0,0),\\vec{b}=(0,1,0)$: $\\vec{a}\\times\\vec{b}=(0,0,1)$ — sichtbar ein Vektor mit drei Komponenten. Skalarprodukt $\\vec{a}\\cdot\\vec{b}=0$ — eine Zahl.
+
+**Typischer Fehler:** Skalar- und Kreuzprodukt namentlich verwechseln. Spickzettel: SP $\\vec{a}\\cdot\\vec{b}\\to$ Zahl; KP $\\vec{a}\\times\\vec{b}\\to$ Vektor (nur 3D).`,
+          [
+            'Hör auf den Namen — „Skalar"-Produkt vs. „Vektor"-Produkt.',
+            'Welcher Operator liefert welchen Ergebnistyp?',
+            'Test mit Standard-Basisvektoren: $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$ — Vektor, nicht Zahl.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kp-vektor', 'kp-vs-sp'] },
+      ),
+
+      tag(
+        mc(
+          'Sei $\\vec{c}=\\vec{a}\\times\\vec{b}$ mit $\\vec{a},\\vec{b}\\ne\\vec{0}$ und nicht parallel. Welche Aussage über $\\vec{c}$ ist **richtig**?',
+          [
+            '$\\vec{c}\\perp\\vec{a}$ **und** $\\vec{c}\\perp\\vec{b}$ — das Kreuzprodukt steht senkrecht auf beiden Ausgangsvektoren.',
+            '$\\vec{c}\\parallel\\vec{a}$ — das Kreuzprodukt zeigt in dieselbe Richtung wie $\\vec{a}$.',
+            '$\\vec{c}\\perp\\vec{a}$, aber $\\vec{c}\\parallel\\vec{b}$ — nur einer der Ausgangsvektoren ist senkrecht.',
+            '$\\vec{c}=\\vec{a}+\\vec{b}$ — das Kreuzprodukt ist die Resultierende der beiden Vektoren.',
+          ],
+          0,
+          `**Ansatz:** Definitions-Eigenschaft des Kreuzprodukts: $\\vec{c}=\\vec{a}\\times\\vec{b}$ steht **senkrecht auf der Ebene**, die von $\\vec{a}$ und $\\vec{b}$ aufgespannt wird — also senkrecht auf beiden.
+
+**Rechnung:** Test über Skalarprodukt: $\\vec{c}\\cdot\\vec{a}=0$ und $\\vec{c}\\cdot\\vec{b}=0$. Beispiel $\\vec{a}=(1,2,0),\\vec{b}=(0,0,3)$: $\\vec{c}=(6,-3,0)$. $\\vec{c}\\cdot\\vec{a}=6-6+0=0$ ✓ und $\\vec{c}\\cdot\\vec{b}=0$ ✓.
+
+**Probe:** Anwendung: aus zwei Spannvektoren einer Ebene erhält man genau so den **Normalvektor** $\\vec{n}=\\vec{a}\\times\\vec{b}$.
+
+**Typischer Fehler:** Nur Senkrechtigkeit zu **einem** der beiden Vektoren glauben. Tatsächlich gilt es **beide** Senkrechtigkeitsbedingungen gleichzeitig.`,
+          [
+            'Welche Lage hat das Kreuzprodukt zur aufgespannten Ebene?',
+            'Senkrecht zur Ebene heißt: senkrecht zu jedem Vektor in der Ebene.',
+            'Probe per SP: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$ und $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=0$.',
+          ],
+          {
+            1: 'Wäre $\\vec{c}\\parallel\\vec{a}$, läge $\\vec{c}$ in der von $\\vec{a},\\vec{b}$ aufgespannten Ebene — nicht senkrecht zu ihr. Per Definition steht das Kreuzprodukt **senkrecht** zu beiden Spannvektoren.',
+            2: 'Asymmetrisch ist falsch: das Kreuzprodukt steht **gleich behandelt** senkrecht zu $\\vec{a}$ und zu $\\vec{b}$. Eine einseitige Senkrechtigkeit gibt es nicht.',
+            3: '$\\vec{a}+\\vec{b}$ ist die **Vektorsumme** (Diagonale im Parallelogramm), nicht das Kreuzprodukt. Außerdem liegt $\\vec{a}+\\vec{b}$ in der Ebene, das Kreuzprodukt steht senkrecht dazu.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kp-orthog'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet $\\vec{a}\\cdot\\vec{b}=5$ für $\\vec{a}=(1,2)$ und $\\vec{b}=(3,1)$ und schreibt: „Damit ist auch $\\vec{a}\\times\\vec{b}=5$." Was ist der Fehler?',
+          [
+            'Skalar- und Kreuzprodukt sind unterschiedliche Operationen mit unterschiedlichen Ergebnistypen. SP liefert Zahl ($5$), KP liefert Vektor — und ist überdies in 2D nicht klassisch definiert.',
+            'Stimmt — beide Produkte liefern denselben Wert, nur das Vorzeichen kann sich unterscheiden.',
+            'Der Fehler liegt im Wert: Das Skalarprodukt müsste eigentlich $7$ ergeben.',
+            'Es gibt keinen Fehler, solange die Vektoren senkrecht zueinander stehen.',
+          ],
+          0,
+          `**Ansatz:** Operationen klar trennen — Ergebnistyp und Definition prüfen.
+
+**Rechnung:** SP $\\vec{a}\\cdot\\vec{b}=1\\cdot 3+2\\cdot 1=5$ — eine **Zahl**. KP $\\vec{a}\\times\\vec{b}$ ist in 2D nicht klassisch definiert (3D-Operator); in 3D-Einbettung $\\vec{a}=(1,2,0),\\vec{b}=(3,1,0)$ ergäbe $\\vec{a}\\times\\vec{b}=(0,0,1\\cdot 1-2\\cdot 3)=(0,0,-5)$ — ein **Vektor**, nicht der Skalar $5$.
+
+**Probe:** Dimensions-Check: Wenn der Schüler „$\\vec{a}\\times\\vec{b}=5$" schreibt, fehlt die Vektor-Notation. Ein Vektor ist niemals einfach $5$ — er hat (in 3D) drei Komponenten.
+
+**Typischer Fehler:** Das gemeinsame Wort „Produkt" verleitet dazu, beide Operationen als gleichwertig zu sehen. Tatsächlich unterscheiden sie sich in **Ergebnistyp** (Skalar vs. Vektor), **Geometrie** (Winkel vs. Senkrechte) und **Dimension** (alle Dimensionen vs. nur 3D).`,
+          [
+            'Welchen Ergebnistyp liefert Skalarprodukt? Kreuzprodukt?',
+            'Eine Zahl wie $5$ kann niemals ein Vektor sein.',
+            'Das klassische Kreuzprodukt verlangt 3D-Vektoren.',
+          ],
+          {
+            1: 'Werte stimmen **nie** automatisch überein — SP ist Skalar, KP ist Vektor. Selbst wenn man beide auf eine Zahl reduziert (Betrag des KP), gilt $|\\vec{a}\\times\\vec{b}|\\ne\\vec{a}\\cdot\\vec{b}$ im Allgemeinen.',
+            2: 'Der SP-Wert $5$ ist korrekt: $1\\cdot 3+2\\cdot 1=5$. Der Fehler liegt **nicht** im Zahlenwert, sondern in der falschen Gleichsetzung mit dem Kreuzprodukt.',
+            3: 'Bei Senkrechten wäre SP $=0$ — nicht $5$. Auch bei Senkrechten unterscheiden sich SP und KP grundlegend (SP $=0$, KP $\\ne\\vec{0}$).',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['kp-vs-sp'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jede Aussage der korrekten Operation oder Eigenschaft zu.',
+          [
+            { left: '$\\vec{a}\\cdot\\vec{b}$ (Skalarprodukt)', right: 'liefert eine Zahl (Skalar)' },
+            { left: '$\\vec{a}\\times\\vec{b}$ (Kreuzprodukt)', right: 'liefert einen Vektor (nur 3D)' },
+            { left: '$\\vec{a}\\cdot\\vec{b}=0$', right: 'bedeutet $\\vec{a}\\perp\\vec{b}$ (Orthogonalität)' },
+            { left: '$\\vec{a}\\times\\vec{b}$ steht senkrecht', right: 'auf $\\vec{a}$ und auf $\\vec{b}$ (orthog. zur Ebene)' },
+          ],
+          `**Ansatz:** Vier Kernaussagen — zwei zu Operation/Ergebnistyp, zwei zur Geometrie.
+
+**Rechnung:** SP gibt Skalar zurück, KP gibt Vektor zurück. SP $=0$ ist die scharfe Senkrechtigkeitsbedingung. KP-Ergebnis liegt automatisch senkrecht zu beiden Spannvektoren.
+
+**Probe:** Gegenprobe — KP $=\\vec{0}$ (Nullvektor) wäre die scharfe Parallelitätsbedingung. Diese ist hier nicht enthalten, gehört aber zum vollständigen Bild.
+
+**Typischer Fehler:** Senkrechtigkeit von SP $=0$ mit KP-Eigenschaft verwechseln. SP-Test: ist der **Wert** null? KP-Eigenschaft: stehen **Ausgangsvektoren** senkrecht zum Ergebnis?`,
+          [
+            'SP und KP unterscheiden sich im Ergebnistyp — schon das ist ein Paar.',
+            'Die zwei „=0"-Bedingungen testen unterschiedliche geometrische Lagen.',
+            'KP-Ergebnis und Spannvektoren stehen orthogonal zueinander.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['kp-vs-sp', 'kp-orthog'] },
+      ),
+
+      tag(
+        tf(
+          'Für beliebige $\\vec{a},\\vec{b}\\in\\mathbb{R}^3$ gilt $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$.',
+          true,
+          `**Ansatz:** Das Kreuzprodukt steht per Definition senkrecht auf $\\vec{a}$ — und Skalarprodukt zwischen senkrechten Vektoren ist null.
+
+**Rechnung:** $(\\vec{a}\\times\\vec{b})\\perp\\vec{a}$ heißt $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$. Beispiel $\\vec{a}=(1,2,3),\\vec{b}=(4,5,6)$: $\\vec{a}\\times\\vec{b}=(2\\cdot 6-3\\cdot 5,\\;3\\cdot 4-1\\cdot 6,\\;1\\cdot 5-2\\cdot 4)=(-3,6,-3)$. SP mit $\\vec{a}$: $-3+12-9=0$ ✓.
+
+**Probe:** Analog $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=-12+30-18=0$ ✓ — das Kreuzprodukt steht auch senkrecht zu $\\vec{b}$.
+
+**Typischer Fehler:** Die Senkrechtigkeit nur als Daumenregel statt als algebraische Identität verstehen. Sie folgt **direkt** aus der Komponentenformel und gilt unbedingt.`,
+          [
+            'Welche Lage hat $\\vec{a}\\times\\vec{b}$ zu $\\vec{a}$?',
+            'Senkrecht — und Senkrechtigkeit prüft man per Skalarprodukt.',
+            '$\\vec{u}\\perp\\vec{v}\\iff\\vec{u}\\cdot\\vec{v}=0$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kp-orthog', 'kp-vektor'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Betrag = Parallelogramm-Fläche =====
+    1: [
+      tag(
+        tf(
+          'Der Betrag $|\\vec{a}\\times\\vec{b}|$ entspricht dem Flächeninhalt des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms.',
+          true,
+          `**Ansatz:** Geometrische Bedeutung der Formel $|\\vec{a}\\times\\vec{b}|=|\\vec{a}|\\cdot|\\vec{b}|\\sin\\varphi$.
+
+**Rechnung:** Parallelogramm-Fläche $=$ Grundseite $\\cdot$ Höhe $=|\\vec{a}|\\cdot(|\\vec{b}|\\sin\\varphi)=|\\vec{a}||\\vec{b}|\\sin\\varphi=|\\vec{a}\\times\\vec{b}|$. Die Höhe bekommt man durch Projektion: $\\vec{b}$ um Winkel $\\varphi$ gegen $\\vec{a}$ geneigt, der senkrechte Anteil ist $|\\vec{b}|\\sin\\varphi$.
+
+**Probe:** Spezialfall $\\varphi=90°$: Parallelogramm wird Rechteck, Fläche $=|\\vec{a}||\\vec{b}|\\sin 90°=|\\vec{a}||\\vec{b}|$. ✓ Spezialfall $\\varphi=0°$ (parallel): Fläche $=0$ — kein Parallelogramm.
+
+**Typischer Fehler:** Mit dem Betrag des Skalarprodukts $|\\vec{a}\\cdot\\vec{b}|=|\\vec{a}||\\vec{b}|\\cos\\varphi$ verwechseln — das ist die Projektions-Länge, nicht eine Fläche.`,
+          [
+            'Welche geometrische Größe verbinden $|\\vec{a}|$, $|\\vec{b}|$ und $\\sin\\varphi$?',
+            'Grundseite mal Höhe — das ist die klassische Parallelogramm-Formel.',
+            'Höhe = senkrechte Komponente $=|\\vec{b}|\\sin\\varphi$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Gegeben sind $|\\vec{a}|=4$, $|\\vec{b}|=3$ und der eingeschlossene Winkel $\\varphi=30°$. Wie groß ist $|\\vec{a}\\times\\vec{b}|$?',
+          ['$6$', '$12$', '$10{,}39$', '$0$'],
+          0,
+          `**Ansatz:** Betragsformel: $|\\vec{a}\\times\\vec{b}|=|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\sin\\varphi$.
+
+**Rechnung:** $\\sin 30°=0{,}5$. $|\\vec{a}\\times\\vec{b}|=4\\cdot 3\\cdot 0{,}5=6$.
+
+**Probe:** Plausibel: bei $\\varphi=90°$ wäre $|\\vec{a}\\times\\vec{b}|=12$ (Maximum). $30°<90°$ → kleinerer Wert. $6<12$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen ($\\cos 30°=\\sqrt{3}/2\\approx 0{,}866\\Rightarrow 12\\cdot 0{,}866\\approx 10{,}39$). Oder $\\sin$ vergessen und einfach $|\\vec{a}|\\cdot|\\vec{b}|=12$ rechnen.`,
+          [
+            'Welche Trigo-Funktion gehört zur KP-Betragsformel?',
+            'Standardwinkel: $\\sin 30°=0{,}5$.',
+            'Setz Werte ein: $4\\cdot 3\\cdot 0{,}5$.',
+          ],
+          {
+            1: '$12$ wäre $|\\vec{a}|\\cdot|\\vec{b}|$ ohne Winkelfaktor — das ist das **Maximum** bei $\\varphi=90°$, nicht bei $30°$.',
+            2: '$10{,}39\\approx 12\\cos 30°$ — du hast $\\cos$ statt $\\sin$ benutzt. Skalarprodukt nutzt $\\cos$, **Kreuzprodukt** nutzt $\\sin$.',
+            3: '$0$ wäre nur bei $\\varphi=0°$ oder $180°$ (parallel/antiparallel). $\\sin 30°=0{,}5\\ne 0$, also kein Nullbetrag.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Flächeninhalt des Parallelogramms, das von $\\vec{a}$ mit $|\\vec{a}|=5$ und $\\vec{b}$ mit $|\\vec{b}|=8$ aufgespannt wird, wenn der eingeschlossene Winkel $\\varphi=90°$ beträgt.',
+          40, 0, '',
+          `**Ansatz:** Parallelogramm-Fläche $=|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi$.
+
+**Rechnung:** $\\sin 90°=1$. Fläche $=5\\cdot 8\\cdot 1=40$.
+
+**Probe:** Bei $\\varphi=90°$ degeneriert das Parallelogramm zum **Rechteck** mit Seiten $5$ und $8$ — Fläche $=5\\cdot 8=40$. ✓
+
+**Typischer Fehler:** $\\sin 90°=0$ statt $1$ rechnen ($\\cos 90°=0$ verwechselt). Oder Beträge addieren statt multiplizieren ($5+8=13$).`,
+          [
+            'Was ist $\\sin 90°$?',
+            'Bei rechtem Winkel ist die Fläche maximal $=|\\vec{a}|\\cdot|\\vec{b}|$.',
+            'Hier: $5\\cdot 8\\cdot 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet die Parallelogramm-Fläche als $|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos\\varphi$ statt $\\sin\\varphi$. Bei $|\\vec{a}|=6$, $|\\vec{b}|=4$, $\\varphi=60°$ erhält er Fläche $=12$. Was ist der korrekte Wert — und was ist der Fehler?',
+          [
+            'Korrekt $|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi=6\\cdot 4\\cdot\\sin 60°\\approx 20{,}78$. Der Schüler hat $\\sin$ und $\\cos$ vertauscht — Skalarprodukt nutzt $\\cos$, Kreuzprodukt $\\sin$.',
+            'Der Schüler hat richtig — beide trigonometrischen Funktionen liefern hier dasselbe Ergebnis.',
+            'Korrekt sind beide Wege; $\\sin$ gilt nur in 3D, $\\cos$ funktioniert in 2D.',
+            'Der Fehler liegt nicht in $\\cos/\\sin$, sondern darin, dass die Beträge nicht multipliziert wurden.',
+          ],
+          0,
+          `**Ansatz:** Welche Trigo-Funktion gehört zu welchem Vektor-Produkt? SP $\\to\\cos$, KP $\\to\\sin$.
+
+**Rechnung:** $|\\vec{a}\\times\\vec{b}|=6\\cdot 4\\cdot\\sin 60°=24\\cdot\\frac{\\sqrt{3}}{2}=12\\sqrt{3}\\approx 20{,}78$. Schüler-Wert $|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos 60°=24\\cdot 0{,}5=12$ — wäre das Skalarprodukt, nicht der KP-Betrag.
+
+**Probe:** Dimensions-Check: Bei $\\varphi=90°$ liefert die Schüler-Formel mit $\\cos$ den Wert $0$ (kein Parallelogramm), aber tatsächlich ist hier die Fläche maximal! Genau bei $\\varphi=90°$ steht das Parallelogramm „gerade" — die korrekte Formel mit $\\sin$ liefert $|\\vec{a}|\\cdot|\\vec{b}|$, das Maximum.
+
+**Typischer Fehler:** SP- und KP-Formel namentlich vertauschen. Eselsbrücke: **C**os für SP (**C**alculation, Winkel), **S**in für KP (**S**enkrechte, Fläche).`,
+          [
+            'Welche Trigo-Funktion verbindet $|\\vec{a}|, |\\vec{b}|$ mit dem KP-Betrag?',
+            'Standard: $\\sin 60°=\\sqrt 3/2\\approx 0{,}866$.',
+            'Eselsbrücke: SP $\\to\\cos$, KP $\\to\\sin$.',
+          ],
+          {
+            1: '$\\cos 60°=0{,}5$ und $\\sin 60°\\approx 0{,}866$ — die Werte unterscheiden sich deutlich. Die Funktionen sind **nicht** austauschbar.',
+            2: 'Beide Formeln gelten in den jeweiligen Domänen — aber für Parallelogramm-Fläche ist $\\sin$ die richtige, **immer** und unabhängig von der Dimension.',
+            3: 'Beträge wurden korrekt multipliziert ($6\\cdot 4=24$). Der Fehler liegt **ausschließlich** in $\\cos$ statt $\\sin$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Flächeninhalt des Dreiecks mit den Spannvektoren $\\vec{a}=(2,0,0)$ und $\\vec{b}=(0,3,0)$. (Hinweis: Dreiecksfläche $=\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|$.)',
+          3, 0, '',
+          `**Ansatz:** Dreieck = halbes Parallelogramm. Erst $\\vec{a}\\times\\vec{b}$ berechnen, dann Betrag halbieren.
+
+**Rechnung:** Komponentenformel: $\\vec{a}\\times\\vec{b}=(0\\cdot 0-0\\cdot 3,\\;0\\cdot 0-2\\cdot 0,\\;2\\cdot 3-0\\cdot 0)=(0,0,6)$. $|\\vec{a}\\times\\vec{b}|=6$. Dreiecksfläche $=6/2=3$.
+
+**Probe:** Anschaulich: $\\vec{a}$ entlang $x$-Achse (Länge 2), $\\vec{b}$ entlang $y$-Achse (Länge 3) — rechtwinkliges Dreieck mit Katheten $2$ und $3$. Fläche $=\\tfrac{1}{2}\\cdot 2\\cdot 3=3$. ✓
+
+**Typischer Fehler:** Die $\\tfrac{1}{2}$ vergessen und die volle Parallelogramm-Fläche $6$ als Dreiecksfläche abliefern. Oder das Kreuzprodukt durch Skalarprodukt ersetzen ($\\vec{a}\\cdot\\vec{b}=0$ liefert keine Fläche).`,
+          [
+            'Beziehung Dreieck $\\leftrightarrow$ Parallelogramm: halbe Fläche.',
+            '$\\vec{a}\\times\\vec{b}$ in Komponenten ausrechnen — bei achsenparallelen Vektoren bleibt nur die $z$-Komponente.',
+            'Dreieck $=\\tfrac{1}{2}\\cdot 6$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['kp-betrag', 'kp-komp'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Antikommutativität, Rechte-Hand-Regel, Parallelitätstest =====
+    2: [
+      tag(
+        tf(
+          'Es gilt $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$ — beim Vertauschen der Reihenfolge dreht sich das Vorzeichen um.',
+          true,
+          `**Ansatz:** Antikommutativität ist eine **Definitionseigenschaft** des Kreuzprodukts.
+
+**Rechnung:** Komponentenformel: $\\vec{a}\\times\\vec{b}=(a_yb_z-a_zb_y,\\;a_zb_x-a_xb_z,\\;a_xb_y-a_yb_x)$. Vertauschung $a\\leftrightarrow b$ kehrt jedes Vorzeichen um (z. B. $a_yb_z-a_zb_y\\to b_ya_z-b_za_y=-(a_yb_z-a_zb_y)$). Also $\\vec{b}\\times\\vec{a}=-(\\vec{a}\\times\\vec{b})$.
+
+**Probe:** Beispiel $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$ vs. $\\hat{e}_y\\times\\hat{e}_x=-\\hat{e}_z$ ✓. Geometrisch: Rechte-Hand-Regel — vertauschte Reihenfolge dreht den Daumen um $180°$.
+
+**Typischer Fehler:** Mit dem Skalarprodukt verwechseln, das **kommutativ** ist ($\\vec{a}\\cdot\\vec{b}=\\vec{b}\\cdot\\vec{a}$). Skalar- und Kreuzprodukt verhalten sich algebraisch unterschiedlich.`,
+          [
+            'Symmetrie-Eigenschaft prüfen: kommutativ oder antikommutativ?',
+            'Welche Operation kehrt das Vorzeichen bei Reihenfolge-Tausch?',
+            'Beispiel: $\\hat{e}_x\\times\\hat{e}_y$ vs. $\\hat{e}_y\\times\\hat{e}_x$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['kp-antikomm'] },
+      ),
+
+      tag(
+        mc(
+          'Per Rechte-Hand-Regel — was ergibt $\\hat{e}_z\\times\\hat{e}_x$?',
+          ['$\\hat{e}_y$', '$-\\hat{e}_y$', '$\\hat{e}_z$', '$\\vec{0}$'],
+          0,
+          `**Ansatz:** Zyklische Reihenfolge $1\\to 2\\to 3\\to 1$ entspricht $x\\to y\\to z\\to x$. Bei zyklischer Reihenfolge: positives Ergebnis.
+
+**Rechnung:** $\\hat{e}_z\\times\\hat{e}_x$ — gehe von $z$ einen Schritt zyklisch weiter zu $x$, das Resultat ist der nächste Schritt: $y$. Also $\\hat{e}_z\\times\\hat{e}_x=\\hat{e}_y$.
+
+**Probe:** Komponentenformel mit $\\hat{e}_z=(0,0,1)$ und $\\hat{e}_x=(1,0,0)$: $\\hat{e}_z\\times\\hat{e}_x=(0\\cdot 0-1\\cdot 0,\\;1\\cdot 1-0\\cdot 0,\\;0\\cdot 0-0\\cdot 1)=(0,1,0)=\\hat{e}_y$ ✓.
+
+**Typischer Fehler:** Antizyklisch lesen ($z\\to x$ als Rückwärts-Sprung) und das negative Vorzeichen dazudenken — das wäre $\\hat{e}_x\\times\\hat{e}_z=-\\hat{e}_y$, aber hier ist $\\hat{e}_z\\times\\hat{e}_x$ in zyklischer Richtung.`,
+          [
+            'Zyklische Reihenfolge: $x\\to y\\to z\\to x\\to\\dots$',
+            '$\\hat{e}_i\\times\\hat{e}_j=\\hat{e}_k$, wenn $(i,j,k)$ zyklisch ist.',
+            '$z\\to x$: zyklisch — also Resultat $y$ mit positivem Vorzeichen.',
+          ],
+          {
+            1: '$-\\hat{e}_y$ ergibt sich bei **antizyklischer** Reihenfolge $\\hat{e}_x\\times\\hat{e}_z$. Hier ist $\\hat{e}_z\\times\\hat{e}_x$ zyklisch — also positives $\\hat{e}_y$.',
+            2: 'Das KP ist senkrecht zu beiden Ausgangsvektoren — kann also nicht parallel zu $\\hat{e}_z$ sein, da $\\hat{e}_z$ einer der Ausgangsvektoren ist.',
+            3: '$\\vec{0}$ tritt nur bei parallelen Vektoren auf. $\\hat{e}_z\\perp\\hat{e}_x$, also $\\sin 90°=1$ und KP ungleich Null.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['kp-rh-regel'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler schreibt: „Da Multiplikation kommutativ ist, gilt $\\vec{a}\\times\\vec{b}=\\vec{b}\\times\\vec{a}$." Was ist der Fehler?',
+          [
+            'Das **Kreuzprodukt** ist nicht kommutativ, sondern **antikommutativ**: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$. Der Vergleich mit gewöhnlicher Zahlen-Multiplikation ist hier nicht zulässig.',
+            'Der Schüler hat richtig — alle Multiplikationen sind kommutativ.',
+            'Kreuzprodukt ist nur in 3D antikommutativ; in 2D wäre es kommutativ.',
+            'Kreuzprodukt ist halb-kommutativ: gleich, aber mit halbiertem Betrag.',
+          ],
+          0,
+          `**Ansatz:** Kommutativität ist eine **algebraische Eigenschaft**, die für unterschiedliche Operationen unterschiedlich ist.
+
+**Rechnung:** Reelle Zahlen: $a\\cdot b=b\\cdot a$ (kommutativ). Skalarprodukt: $\\vec{a}\\cdot\\vec{b}=\\vec{b}\\cdot\\vec{a}$ (kommutativ). Kreuzprodukt: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$ — **anti**kommutativ.
+
+**Probe:** Beispiel $\\vec{a}=(1,0,0),\\vec{b}=(0,1,0)$: $\\vec{a}\\times\\vec{b}=(0,0,1)$ vs. $\\vec{b}\\times\\vec{a}=(0,0,-1)$ — entgegengesetzt, nicht gleich.
+
+**Typischer Fehler:** Begriffe „Multiplikation" über alle Operationen verallgemeinern. Jede Operation hat ihre eigenen algebraischen Regeln — Kreuzprodukt teilt mit gewöhnlicher Multiplikation den Namen, aber nicht die Kommutativität.`,
+          [
+            'Welche algebraische Eigenschaft hat das Kreuzprodukt bei Reihenfolge-Tausch?',
+            'Antikommutativ heißt: Vorzeichen-Wechsel.',
+            'Test mit konkretem Beispiel: $\\hat{e}_x\\times\\hat{e}_y$ vs. $\\hat{e}_y\\times\\hat{e}_x$.',
+          ],
+          {
+            1: 'Reelle Zahlen sind kommutativ — Kreuzprodukt ist es **nicht**. Gleich heißt: für **alle** Vektoren gleicher Wert. Hier ist es genau umgekehrt.',
+            2: 'Klassisches Kreuzprodukt existiert nur in 3D. Eine kommutative Variante in 2D gibt es nicht — die antikommutative Eigenschaft folgt direkt aus der Komponentenformel.',
+            3: '„Halb-kommutativ" ist keine etablierte Eigenschaft. Antikommutativ ist eine **scharfe** Aussage: Vorzeichenwechsel, nicht Betrags-Halbierung.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['kp-antikomm'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jedem Kreuzprodukt von Einheitsvektoren das korrekte Resultat zu.',
+          [
+            { left: '$\\hat{e}_x\\times\\hat{e}_y$', right: '$\\hat{e}_z$' },
+            { left: '$\\hat{e}_y\\times\\hat{e}_x$', right: '$-\\hat{e}_z$' },
+            { left: '$\\hat{e}_y\\times\\hat{e}_z$', right: '$\\hat{e}_x$' },
+            { left: '$\\hat{e}_z\\times\\hat{e}_y$', right: '$-\\hat{e}_x$' },
+          ],
+          `**Ansatz:** Zyklische Regel + Antikommutativität.
+
+**Rechnung:** Zyklische Reihenfolge $x\\to y\\to z\\to x$: $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$, $\\hat{e}_y\\times\\hat{e}_z=\\hat{e}_x$, $\\hat{e}_z\\times\\hat{e}_x=\\hat{e}_y$. Vertauschte Reihenfolge → negatives Vorzeichen: $\\hat{e}_y\\times\\hat{e}_x=-\\hat{e}_z$, $\\hat{e}_z\\times\\hat{e}_y=-\\hat{e}_x$.
+
+**Probe:** Komponentenformel-Check: $\\hat{e}_z\\times\\hat{e}_y=(0\\cdot 0-1\\cdot 1,\\;1\\cdot 0-0\\cdot 0,\\;0\\cdot 1-0\\cdot 0)=(-1,0,0)=-\\hat{e}_x$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen bei der antizyklischen Variante — $\\hat{e}_z\\times\\hat{e}_y$ ist $-\\hat{e}_x$, nicht $+\\hat{e}_x$.`,
+          [
+            'Zyklisch $x\\to y\\to z$: positives Vorzeichen.',
+            'Antizyklisch $z\\to y$ oder $y\\to x$: negatives Vorzeichen.',
+            'Antikommutativität: vertauschen $\\to$ Vorzeichen kippen.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['kp-rh-regel', 'kp-antikomm'] },
+      ),
+
+      tag(
+        tf(
+          'Wenn $\\vec{a}\\parallel\\vec{b}$ (parallel oder antiparallel), dann ist $\\vec{a}\\times\\vec{b}=\\vec{0}$.',
+          true,
+          `**Ansatz:** Bei parallelen Vektoren ist $\\varphi=0°$ oder $180°$ — und $\\sin 0°=\\sin 180°=0$.
+
+**Rechnung:** $|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi=|\\vec{a}||\\vec{b}|\\cdot 0=0$. Ein Vektor mit Betrag null ist der **Nullvektor**.
+
+**Probe:** Beispiel $\\vec{a}=(1,2,3),\\vec{b}=(2,4,6)=2\\vec{a}$: $\\vec{a}\\times\\vec{b}=2(\\vec{a}\\times\\vec{a})=\\vec{0}$ ✓ (jeder Vektor ist parallel zu sich selbst, $\\vec{a}\\times\\vec{a}=\\vec{0}$).
+
+**Typischer Fehler:** Für **antiparallele** Vektoren ($\\varphi=180°$) zweifeln — auch hier ist $\\sin 180°=0$, also $\\vec{a}\\times\\vec{b}=\\vec{0}$ unverändert.`,
+          [
+            'Welcher Wert hat $\\sin\\varphi$ bei parallelen Vektoren?',
+            '$\\sin 0°=\\sin 180°=0$.',
+            'KP-Betrag null $\\Rightarrow$ KP $=\\vec{0}$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['kp-parallel', 'kp-betrag'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — 3D + Komponentenformel =====
+    3: [
+      tag(
+        tf(
+          'Das klassische Kreuzprodukt ist auch in 2D definiert und liefert dort eine Zahl statt eines Vektors.',
+          false,
+          `**Ansatz:** Definition prüfen: Kreuzprodukt verlangt drei Dimensionen.
+
+**Rechnung:** Klassisches KP ist nur in **3D** definiert (gibt es eine Verallgemeinerung in 7D, aber nicht in 2D/4D). In 2D verwendet man Hilfskonstruktionen (z. B. Determinanten-Formel $a_xb_y-a_yb_x$ für die orientierte Fläche), aber das Ergebnis ist eine Pseudo-Größe, kein Vektor.
+
+**Probe:** Komponentenformel verlangt $z$-Komponenten — in 2D fehlen die. Man behilft sich, indem man 2D-Vektoren als 3D mit $z=0$ einbettet: $\\vec{a}=(a_x,a_y,0),\\vec{b}=(b_x,b_y,0)$ → $\\vec{a}\\times\\vec{b}=(0,0,a_xb_y-a_yb_x)$ — dann zeigt das Ergebnis aus der $xy$-Ebene heraus.
+
+**Typischer Fehler:** Die 2D-Determinanten-Form als „2D-Kreuzprodukt" missverstehen. Mathematisch bleibt: KP ist eine 3D-Operation.`,
+          [
+            'In welcher Dimension ist das KP klassisch definiert?',
+            'Komponentenformel braucht $a_x,a_y,a_z$ und $b_x,b_y,b_z$.',
+            'In 2D fehlen die $z$-Komponenten — die KP-Formel funktioniert nicht direkt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['kp-3d-only'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $z$-Komponente von $\\vec{a}\\times\\vec{b}$ mit $\\vec{a}=(1,\\,2,\\,3)$ und $\\vec{b}=(4,\\,5,\\,6)$.',
+          -3, 0, '',
+          `**Ansatz:** $z$-Komponente der KP-Formel: $a_xb_y-a_yb_x$.
+
+**Rechnung:** $a_xb_y-a_yb_x=1\\cdot 5-2\\cdot 4=5-8=-3$.
+
+**Probe:** Vollständig: $\\vec{a}\\times\\vec{b}=(2\\cdot 6-3\\cdot 5,\\;3\\cdot 4-1\\cdot 6,\\;1\\cdot 5-2\\cdot 4)=(-3,6,-3)$. $z$-Komponente $=-3$ ✓. Zusatz-Probe: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=-3+12-9=0$ — senkrecht zu $\\vec{a}$, plausibel.
+
+**Typischer Fehler:** Reihenfolge in der $z$-Formel umdrehen ($a_yb_x-a_xb_y=8-5=3$ statt $-3$) — das wäre das negative Vorzeichen.`,
+          [
+            'Zyklisches Schema: $z$-Komponente nutzt $a_x,b_y,a_y,b_x$.',
+            'Formel: $a_xb_y-a_yb_x$ — zuerst der „zyklisch nächste" Term, dann minus.',
+            'Vorzeichen-Check: bei $\\vec{a}=(1,2,3),\\vec{b}=(4,5,6)$ ist $a_xb_y=5$ und $a_yb_x=8$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kp-komp'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet die $y$-Komponente von $\\vec{a}\\times\\vec{b}$ als $a_xb_z-a_zb_x$ mit $\\vec{a}=(2,1,3),\\,\\vec{b}=(0,1,2)$ und erhält $4-0=4$. Was ist der korrekte Wert — und was ist der Fehler?',
+          [
+            'Korrekte Formel ist $a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=-4$. Der Schüler hat das Vorzeichen vertauscht — die $y$-Komponente verlangt $a_zb_x$ minus $a_xb_z$, nicht andersherum.',
+            'Der Schüler hat richtig — beide Reihenfolgen liefern dasselbe.',
+            'Der Schüler hat zwar die Reihenfolge vertauscht, aber das Vorzeichen kompensiert sich.',
+            'Die $y$-Komponente verlangt $a_xb_y-a_yb_x$ (wie bei der $z$-Komponente).',
+          ],
+          0,
+          `**Ansatz:** Vorzeichen-Schema in der $y$-Komponente präzise lesen.
+
+**Rechnung:** Korrekt: $(\\vec{a}\\times\\vec{b})_y=a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=0-4=-4$. Schüler-Variante $a_xb_z-a_zb_x=2\\cdot 2-3\\cdot 0=4$ — entgegengesetztes Vorzeichen.
+
+**Probe:** Vollständig: $\\vec{a}\\times\\vec{b}=(1\\cdot 2-3\\cdot 1,\\;3\\cdot 0-2\\cdot 2,\\;2\\cdot 1-1\\cdot 0)=(-1,-4,2)$. SP-Test: $(-1,-4,2)\\cdot\\vec{a}=-2-4+6=0$ ✓ — bestätigt $-4$.
+
+**Typischer Fehler:** Die zyklische Reihenfolge $x\\to y\\to z\\to x$ lokal anwenden. Die $y$-Komponente kommt aus den Indizes $(z,x)$, nicht $(x,z)$ — das verlangt das negative Vorzeichen, wenn man $a$- und $b$-Komponenten richtig zuordnet.`,
+          [
+            'Wie lautet die exakte Formel für die $y$-Komponente?',
+            'Schema: $y$-Komponente entsteht aus $a_z, b_x, a_x, b_z$ — und in einer **bestimmten** Reihenfolge.',
+            'Korrekt: $a_zb_x-a_xb_z$.',
+          ],
+          {
+            1: '$a_xb_z-a_zb_x$ liefert das **Negative** der korrekten $y$-Komponente — die Differenz im Vorzeichen ist nicht egal.',
+            2: 'Das stimmt rechnerisch ($-(-4)=4$, also Vorzeichen-Vertauschung), aber „kompensiert sich" ist falsch — das Endergebnis hat ein anderes Vorzeichen, was bei Anwendung (z. B. Drehmoment-Richtung) wichtig ist.',
+            3: '$a_xb_y-a_yb_x$ ist die $z$-Komponente, nicht die $y$. Jede Komponente nutzt eigene Indizes.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['kp-komp'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne $|\\vec{a}\\times\\vec{b}|$ für $\\vec{a}=(1,\\,0,\\,0)$ und $\\vec{b}=(0,\\,2,\\,0)$.',
+          2, 0, '',
+          `**Ansatz:** Erst Kreuzprodukt komponentenweise, dann Betrag via Pythagoras.
+
+**Rechnung:** $\\vec{a}\\times\\vec{b}=(0\\cdot 0-0\\cdot 2,\\;0\\cdot 0-1\\cdot 0,\\;1\\cdot 2-0\\cdot 0)=(0,0,2)$. Betrag $=\\sqrt{0+0+4}=2$.
+
+**Probe:** Geometrisch — $\\vec{a}$ entlang $x$-Achse (Länge 1), $\\vec{b}$ entlang $y$-Achse (Länge 2), eingeschlossener Winkel $90°$. Parallelogramm $=$ Rechteck mit Seiten $1$ und $2$, Fläche $=2$. ✓
+
+**Typischer Fehler:** Direkt $|\\vec{a}|\\cdot|\\vec{b}|=2$ rechnen — funktioniert hier zufällig, weil $\\sin 90°=1$. Bei beliebigem Winkel wäre die Formel ohne $\\sin$ falsch.`,
+          [
+            'Schritt 1: Komponentenformel anwenden.',
+            'Achsenparallele Vektoren ($\\vec{a}$ in $x$, $\\vec{b}$ in $y$): nur $z$-Komponente bleibt stehen.',
+            'Schritt 2: Betrag des Resultats $=\\sqrt{0^2+0^2+2^2}=2$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['kp-komp', 'kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $y$-Komponente von $\\vec{a}\\times\\vec{b}$ mit $\\vec{a}=(2,\\,1,\\,3)$ und $\\vec{b}=(0,\\,1,\\,2)$.',
+          -4, 0, '',
+          `**Ansatz:** $y$-Komponente: $a_zb_x-a_xb_z$.
+
+**Rechnung:** $a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=0-4=-4$.
+
+**Probe:** Volles Kreuzprodukt: $\\vec{a}\\times\\vec{b}=(1\\cdot 2-3\\cdot 1,\\;3\\cdot 0-2\\cdot 2,\\;2\\cdot 1-1\\cdot 0)=(-1,-4,2)$. SP $\\vec{a}\\cdot(-1,-4,2)=-2-4+6=0$ ✓ — KP steht senkrecht zu $\\vec{a}$, bestätigt das Ergebnis.
+
+**Typischer Fehler:** Vorzeichen vertauschen ($a_xb_z-a_zb_x=4$ statt $-4$). Die $y$-Komponente hat in der Standard-Komponentenformel die Reihenfolge $(a_z,b_x)$ vor $(a_x,b_z)$.`,
+          [
+            'Schema: $y$-Komponente nutzt $a_z, b_x, a_x, b_z$.',
+            'Formel: $a_zb_x-a_xb_z$ — Reihenfolge **dieser** Indizes.',
+            'Hier: $3\\cdot 0-2\\cdot 2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kp-komp'] },
+      ),
+    ],
+  },
 }

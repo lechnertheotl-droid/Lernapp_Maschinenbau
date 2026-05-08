@@ -421,20 +421,19 @@ export const exercises_vek_u1 = {
       'Immer den Nullvektor',
     ],
     correctIndex: 1,
-    explanation: `**Ansatz:** Merke den Unterschied zwischen Skalarprodukt und Kreuzprodukt.
+    explanation: `**Ansatz:** Skalarprodukt vs. Kreuzprodukt: Ergebnistyp und Lage zum Ausgangsvektor unterscheiden.
 
-**Definition:** Das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ ist ein **Vektor** (nur in 3D definiert), der **senkrecht** auf beiden Ausgangsvektoren steht. Richtung nach Rechte-Hand-Regel.
+**Rechnung:** Das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ liefert per Definition (nur in 3D) einen **Vektor**, der **senkrecht** auf beiden Ausgangsvektoren steht. Richtung nach Rechte-Hand-Regel. Anwendung: Normalvektor einer Ebene aus zwei Spannvektoren.
 
-**Test:** $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$ und $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = 0$ — das Kreuzprodukt ist orthogonal zu beiden.
+**Probe:** Test über Skalarprodukt: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$ und $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=0$ — beide null bestätigen die Orthogonalität zu $\\vec{a}$ und $\\vec{b}$.
 
-**Anwendung:** Damit bekommt man den **Normalvektor** einer Ebene, die von $\\vec{a}$ und $\\vec{b}$ aufgespannt wird.
-
-**Typischer Fehler:** "Eine Zahl" wäre das Skalarprodukt — Dimensionsverwechslung!`,
+**Typischer Fehler:** „Eine Zahl" wäre das **Skalarprodukt** $\\vec{a}\\cdot\\vec{b}$ — Dimensionsverwechslung. Skalarprodukt liefert Skalar, Kreuzprodukt liefert Vektor.`,
     hints: [
       'Kreuzprodukt oder Skalarprodukt? Kreuzprodukt liefert einen Vektor, Skalarprodukt eine Zahl.',
       'Steht das Ergebnis parallel zu den Ausgangsvektoren oder senkrecht dazu?',
       'Anwendung: Normalvektor der aufgespannten Ebene.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['kp-vektor', 'kp-orthog'] },
     wrongAnswerExplanations: {
       0: 'Eine Zahl liefert das *Skalarprodukt* $\\vec{a} \\cdot \\vec{b}$ — Dimensionsverwechslung. Das Kreuzprodukt liefert dagegen einen Vektor senkrecht zu beiden Ausgangsvektoren.',
       2: 'Das Kreuzprodukt steht per Konstruktion senkrecht auf beiden Vektoren, also auch senkrecht zu $\\vec{a}$ — nicht parallel. Prüfbar: $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$.',
@@ -450,18 +449,15 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** Wenn $\\vec{a} \\parallel \\vec{b}$, dann $\\varphi = 0°$ → $\\sin(0°) = 0$ → $|\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot 0 = 0$.
 
-**Geometrisch:** Das Kreuzprodukt-Betrag ist die Fläche des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms. Parallele Vektoren spannen kein Parallelogramm auf → Fläche $= 0$. ✓
+**Probe:** Geometrisch — der Betrag des Kreuzprodukts ist die Fläche des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms. Parallele Vektoren spannen kein Parallelogramm auf → Fläche $= 0$. ✓ Außerdem: Spickzettel — $\\vec{a}\\cdot\\vec{b}=0\\iff\\vec{a}\\perp\\vec{b}$ (Skalarprodukt = senkrecht-Test); $\\vec{a}\\times\\vec{b}=\\vec{0}\\iff\\vec{a}\\parallel\\vec{b}$ (Kreuzprodukt = parallel-Test).
 
-**Merkregel:**
-- $\\vec{a} \\cdot \\vec{b} = 0 \\;\\Leftrightarrow\\; \\vec{a} \\perp \\vec{b}$ (senkrecht)
-- $\\vec{a} \\times \\vec{b} = \\vec{0} \\;\\Leftrightarrow\\; \\vec{a} \\parallel \\vec{b}$ (parallel)
-
-**Typischer Fehler:** $|\\vec{a}| \\cdot |\\vec{b}|$ wäre das Maximum — das tritt bei $\\varphi = 90°$ auf, nicht bei Parallelität.`,
+**Typischer Fehler:** $|\\vec{a}| \\cdot |\\vec{b}|$ wäre das **Maximum** — das tritt bei $\\varphi = 90°$ auf ($\\sin 90°=1$), nicht bei Parallelität.`,
     hints: [
       'In die Formel einsetzen: $\\varphi = 0°$, weil die Vektoren parallel sind.',
       '$\\sin(0°) = 0$.',
       'Geometrisch: Parallele Vektoren spannen keine Fläche auf.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['kp-parallel', 'kp-betrag'] },
     wrongAnswerExplanations: {
       0: '$|\\vec{a}| \\cdot |\\vec{b}|$ ist das *Maximum* von $|\\vec{a} \\times \\vec{b}|$ — erreicht bei $\\sin\\varphi = 1$, also $\\varphi = 90°$ (Orthogonalität). Bei Parallelität ist $\\sin(0°) = 0$, also $|\\vec{a} \\times \\vec{b}| = 0$.',
       1: '$1$ ist keine plausible Länge — das Ergebnis hängt von den Beträgen ab. Bei $\\vec{a} \\parallel \\vec{b}$ ist $\\sin\\varphi = 0$ und daher $|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}| \\cdot 0 = 0$.',
@@ -484,24 +480,19 @@ export const exercises_vek_u1 = {
     question: '[PRÜFUNG] Das Kreuzprodukt der Einheitsvektoren $\\hat{e}_1 \\times \\hat{e}_2$ (x- und y-Richtung) ergibt:',
     options: ['$\\hat{e}_1$', '$-\\hat{e}_3$', '$\\hat{e}_3$', '$\\vec{0}$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Standardregel für die Einheitsvektoren eines Rechtssystems — Rechte-Hand-Regel oder zyklische Regel.
+    explanation: `**Ansatz:** Standardregel für die Einheitsvektoren eines Rechtssystems — Rechte-Hand-Regel oder zyklische Regel anwenden.
 
-**Zyklische Regel:**
-$$\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3, \\quad \\hat{e}_2 \\times \\hat{e}_3 = \\hat{e}_1, \\quad \\hat{e}_3 \\times \\hat{e}_1 = \\hat{e}_2$$
+**Rechnung:** Zyklisch $1\\to 2\\to 3\\to 1$: $\\hat{e}_1\\times\\hat{e}_2=\\hat{e}_3$, $\\hat{e}_2\\times\\hat{e}_3=\\hat{e}_1$, $\\hat{e}_3\\times\\hat{e}_1=\\hat{e}_2$. Werden Indizes *entgegen* der zyklischen Reihenfolge gewählt, kommt das Negative heraus ($\\hat{e}_2\\times\\hat{e}_1=-\\hat{e}_3$). Hier: $\\hat{e}_1\\times\\hat{e}_2=\\hat{e}_3$ — zyklisch, also positiv.
 
-Werden die Indizes *entgegen* der zyklischen Reihenfolge gewählt, erhält man das Negative: $\\hat{e}_2 \\times \\hat{e}_1 = -\\hat{e}_3$.
+**Probe:** Komponentenformel mit $\\hat{e}_1=(1,0,0)$ und $\\hat{e}_2=(0,1,0)$: $\\hat{e}_1\\times\\hat{e}_2=(0\\cdot 0-0\\cdot 1,\\;0\\cdot 0-1\\cdot 0,\\;1\\cdot 1-0\\cdot 0)=(0,0,1)=\\hat{e}_3$. ✓ Rechte-Hand-Regel-Check: Zeigefinger $x$, Mittelfinger $y$, Daumen zeigt in $+z$ — passt.
 
-**Rechnung mit der Komponentenformel:** $\\hat{e}_1 = (1,0,0)$, $\\hat{e}_2 = (0,1,0)$.
-$\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\cdot 0,\\; 1 \\cdot 1 - 0 \\cdot 0) = (0, 0, 1) = \\hat{e}_3$. ✓
-
-**Rechte-Hand-Regel:** Zeigefinger $\\to \\hat{e}_1$ (x), Mittelfinger $\\to \\hat{e}_2$ (y), Daumen $\\to \\hat{e}_3$ (z).
-
-**Typischer Fehler:** $-\\hat{e}_3$ ergibt sich bei vertauschter Reihenfolge $\\hat{e}_2 \\times \\hat{e}_1$ — das Kreuzprodukt ist *antikommutativ*.`,
+**Typischer Fehler:** $-\\hat{e}_3$ ergibt sich bei vertauschter Reihenfolge $\\hat{e}_2\\times\\hat{e}_1$ — das Kreuzprodukt ist **antikommutativ**: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$.`,
     hints: [
       'Rechte-Hand-Regel: Zeigefinger x, Mittelfinger y, Daumen zeigt in welche Richtung?',
       'Zyklisch: $1 \\to 2 \\to 3 \\to 1$. Passt $\\hat{e}_1 \\times \\hat{e}_2$ zur zyklischen Reihenfolge?',
       'Bei zyklischer Reihenfolge positives Ergebnis: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['kp-komp', 'kp-rh-regel'] },
     wrongAnswerExplanations: {
       0: '$\\hat{e}_1$ wäre parallel zu einem der Ausgangsvektoren — das widerspricht der Kreuzprodukt-Eigenschaft, senkrecht zu beiden zu stehen. Zyklische Regel: $\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3$.',
       1: '$-\\hat{e}_3$ ergibt sich bei *vertauschter* Reihenfolge $\\hat{e}_2 \\times \\hat{e}_1$ — hier aber ist $\\hat{e}_1$ zuerst, also zyklisch und positiv: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',

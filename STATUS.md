@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-07 · `npm run status`_
+_auto-generiert · 2026-05-08 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2909 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2101 (72 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1313 / 1313 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 298 / 1134 (26 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2929 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2124 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1320 / 1320 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 302 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **114** (Lesson-Path: 54 · Goal-Tasks: 60)
-- 4-Block: 82/114 (72 %) 🟡
-- MC-wAE: 58/58 (100 %) ✅
-- Sub-Goals: 11/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **134** (Lesson-Path: 54 · Goal-Tasks: 80)
+- 4-Block: 105/134 (78 %) 🟡
+- MC-wAE: 65/65 (100 %) ✅
+- Sub-Goals: 15/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -315,7 +315,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 3/3 | 23 | 10/4/6/2/1 | 23/23 | 10/10 | ✅ | — |
 | `vek-1-1` Vektoren — Grundbegriffe | 4 | 4/4 | 25 | 9/8/5/2/1 | 25/25 | 9/9 | ✅ | — |
 | `vek-1-2` Skalarprodukt | 4 | 4/4 | 26 | 10/10/5/1/0 | 26/26 | 10/10 | ✅ | — |
-| `vek-1-3` Kreuzprodukt | 4 | 0/4 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +4 Goal, +3 4B |
+| `vek-1-3` Kreuzprodukt | 4 | 4/4 | 23 | 10/5/6/2/0 | 23/23 | 10/10 | ✅ | — |
 | `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 0/6 | 3 | 3/0/0/0/0 | 1/3 | 3/3 | ✅ | +6 Goal, +2 4B |
 | `vek-2-1` Geradengleichung | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
 | `vek-2-2` Ebenengleichung | 6 | 0/6 | 5 | 4/0/1/0/0 | 2/5 | 4/4 | ✅ | +6 Goal, +3 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 115 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 114 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1976,58 +1976,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
-#### `vek-1-3` · Kreuzprodukt
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-2` → `sp-komp`, `sp-orthogonal`
-  - `vek-1-1` → `betrag`, `add-komp`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `kp-vektor` — $\vec a\times\vec b$ liefert einen Vektor (3D), nicht eine Zahl (SG 0)
-  2. `kp-3d-only` — Nur in 3D definiert ⇐ `kp-vektor` (SG 3)
-  3. `kp-komp` — Komponentenformel: $(a_y b_z-a_z b_y,\;a_z b_x-a_x b_z,\;a_x b_y-a_y b_x)$ ⇐ `kp-3d-only` (SG 3)
-  4. `kp-orthog` — Ergebnis $\perp\vec a$ und $\perp\vec b$ ⇐ `kp-vektor` (SG 0)
-  5. `kp-betrag` — $|\vec a\times\vec b|=|\vec a||\vec b|\sin\varphi$ = Parallelogrammfläche ⇐ `kp-vektor` (SG 1)
-  6. `kp-rh-regel` — Rechte-Hand-Regel: Zeigefinger $\vec a$, Mittel $\vec b$, Daumen Ergebnis ⇐ `kp-orthog` (SG 2)
-  7. `kp-antikomm` — $\vec a\times\vec b=-(\vec b\times\vec a)$ — antikommutativ ⇐ `kp-komp` (SG 2)
-  8. `kp-parallel` — Parallelitätstest: $\vec a\times\vec b=\vec 0\iff\vec a\parallel\vec b$ ⇐ `kp-betrag` (SG 2)
-  9. `kp-vs-sp` — Skalar- vs. Kreuzprodukt: Zahl vs. Vektor; Winkel vs. Senkrechte ⇐ `kp-vektor` (SG 0)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `kp-vektor`, `kp-orthog`, `kp-vs-sp` · **0/5+** — Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
-  - 🔴 [1] _hoch_ · Konzepte: `kp-betrag` · **0/5+** — Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
-  - 🔴 [2] _hoch_ · Konzepte: `kp-rh-regel`, `kp-antikomm`, `kp-parallel` · **0/5+** — Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
-  - 🔴 [3] _mittel_ · Konzepte: `kp-3d-only`, `kp-komp` · **0/5+** — Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kp-vektor`, `kp-vs-sp` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kp-vektor`, `kp-orthog` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `kp-orthog` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `kp-vs-sp` | 1 | 0 | 🔴 | Distraktor: Skalar- mit Kreuzprodukt verwechselt |
-|  5 | 0 | transfer           | matching         | `kp-vs-sp`, `kp-orthog` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kp-betrag` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kp-betrag` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `kp-betrag` | 1 | 0 | 🔴 | Parallelogrammfläche |
-|  9 | 1 | error-analysis     | multiple-choice  | `kp-betrag` | 1 | 0 | 🔴 | Distraktor: cos statt sin |
-| 10 | 1 | transfer           | number-input     | `kp-betrag`, `kp-komp` | 1 | 0 | 🔴 | Dreiecksfläche = ½ |a×b| |
-| 11 | 2 | recognize          | true-false       | `kp-antikomm` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kp-rh-regel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `kp-parallel`, `kp-betrag` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `kp-antikomm` | 1 | 0 | 🔴 | Distraktor: kommutativ angenommen |
-| 15 | 2 | transfer           | matching         | `kp-rh-regel`, `kp-antikomm` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `kp-3d-only` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `kp-komp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `kp-komp` | 1 | 0 | 🔴 | Resultatkomponente $z$ |
-| 19 | 3 | error-analysis     | multiple-choice  | `kp-komp` | 1 | 0 | 🔴 | Distraktor: Vorzeichen vertauscht |
-| 20 | 3 | transfer           | number-input     | `kp-komp`, `kp-betrag` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-3-a`, `ex-vek-1-3-b`, `ex-vek-1-3-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `vek-1-4` · Kräfte als Vektoren (Prüfung)
 
