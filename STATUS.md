@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2929 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2124 (73 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1320 / 1320 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 302 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2956 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2153 (73 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1330 / 1330 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 308 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **134** (Lesson-Path: 54 · Goal-Tasks: 80)
-- 4-Block: 105/134 (78 %) 🟡
-- MC-wAE: 65/65 (100 %) ✅
-- Sub-Goals: 15/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **161** (Lesson-Path: 54 · Goal-Tasks: 107)
+- 4-Block: 134/161 (83 %) 🟡
+- MC-wAE: 75/75 (100 %) ✅
+- Sub-Goals: 21/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -316,7 +316,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-1-1` Vektoren — Grundbegriffe | 4 | 4/4 | 25 | 9/8/5/2/1 | 25/25 | 9/9 | ✅ | — |
 | `vek-1-2` Skalarprodukt | 4 | 4/4 | 26 | 10/10/5/1/0 | 26/26 | 10/10 | ✅ | — |
 | `vek-1-3` Kreuzprodukt | 4 | 4/4 | 23 | 10/5/6/2/0 | 23/23 | 10/10 | ✅ | — |
-| `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 0/6 | 3 | 3/0/0/0/0 | 1/3 | 3/3 | ✅ | +6 Goal, +2 4B |
+| `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 6/6 | 30 | 13/10/6/0/1 | 30/30 | 13/13 | ✅ | — |
 | `vek-2-1` Geradengleichung | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
 | `vek-2-2` Ebenengleichung | 6 | 0/6 | 5 | 4/0/1/0/0 | 2/5 | 4/4 | ✅ | +6 Goal, +3 4B |
 | `vek-2-3` Abstände und Schnitte | 6 | 0/6 | 5 | 2/3/0/0/0 | 3/5 | 2/2 | ✅ | +6 Goal, +2 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 114 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 113 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1976,67 +1976,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
-#### `vek-1-4` · Kräfte als Vektoren (Prüfung)
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-1` → `add-komp`, `betrag`, `einheitsvektor`, `skalar-mul`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `kraft-vektor` — Kraft $\vec F$ ist Vektor mit Betrag und Richtung — Einheit Newton (SG 0)
-  2. `kraft-zerlegung` — $F_x=F\cos\alpha,\;F_y=F\sin\alpha$ (Winkel zur $x$-Achse) ⇐ `kraft-vektor` (SG 0)
-  3. `resultierende` — $\vec R=\sum\vec F_i$ komponentenweise ⇐ `kraft-zerlegung` (SG 1)
-  4. `gleichgewicht` — Gleichgewicht $\sum F_x=0\wedge\sum F_y=0\wedge\sum F_z=0$ ⇐ `resultierende` (SG 2)
-  5. `r-betrag-richtung` — $|\vec R|=\sqrt{R_x^2+R_y^2}$, $\tan\alpha=R_y/R_x$ ⇐ `resultierende` (SG 4)
-  6. `einheits-tech` — Einheitsvektor $\hat e=\vec a/|\vec a|$ — dimensionslos, Länge 1 (SG 3)
-  7. `plausi-vorzeichen` — Vorzeichen-Check: passt Resultate zur Skizze? ⇐ `kraft-zerlegung` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `kraft-vektor`, `kraft-zerlegung` · **0/5+** — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
-  - 🔴 [1] _hoch_ · Konzepte: `resultierende` · **0/5+** — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
-  - 🔴 [2] _hoch_ · Konzepte: `gleichgewicht` · **0/5+** — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
-  - 🔴 [3] _hoch_ · Konzepte: `einheits-tech` · **0/5+** — Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
-  - 🔴 [4] _hoch_ · Konzepte: `r-betrag-richtung` · **0/5+** — Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
-  - 🔴 [5] _mittel_ · Konzepte: `plausi-vorzeichen` · **0/5+** — Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `kraft-zerlegung` | 1 | 0 | 🔴 | sin/cos vertauscht |
-|  5 | 0 | transfer           | number-input     | `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  6 | 1 | recognize          | true-false       | `resultierende` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `resultierende` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] 3 Kräfte |
-| 11 | 2 | recognize          | true-false       | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 0 | 🔴 | Unbekannte Seilkraft |
-| 14 | 2 | error-analysis     | multiple-choice  | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 16 | 3 | recognize          | true-false       | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `einheits-tech` | 1 | 0 | 🔴 | Länge ≠ 1 als Ergebnis-Falle |
-| 20 | 3 | transfer           | number-input     | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `r-betrag-richtung` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `r-betrag-richtung` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `r-betrag-richtung`, `resultierende` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `r-betrag-richtung` | 1 | 0 | 🔴 | Quadrant beim arctan |
-| 25 | 4 | transfer           | number-input     | `r-betrag-richtung`, `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 26 | 5 | recognize          | true-false       | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `plausi-vorzeichen`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | sorting          | `plausi-vorzeichen`, `resultierende` | 1 | 0 | 🔴 | Lösungsstrategie ordnen |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
@@ -9341,7 +9280,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 20 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 21 Lessons
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
@@ -10395,6 +10334,65 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-3-1`, `ex-stat-1-3-2`, `ex-stat-1-3-3`, `ex-stat-1-3-4`, `ex-stat-1-3-5`, `ex-stat-1-3-6`, `ex-stat-1-3-7`, `ex-stat-1-3-8` … (+1 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+
+#### `vek-1-4` · Kräfte als Vektoren (Prüfung)
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-1` → `add-komp`, `betrag`, `einheitsvektor`, `skalar-mul`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kraft-vektor` — Kraft $\vec F$ ist Vektor mit Betrag und Richtung — Einheit Newton (SG 0)
+  2. `kraft-zerlegung` — $F_x=F\cos\alpha,\;F_y=F\sin\alpha$ (Winkel zur $x$-Achse) ⇐ `kraft-vektor` (SG 0)
+  3. `resultierende` — $\vec R=\sum\vec F_i$ komponentenweise ⇐ `kraft-zerlegung` (SG 1)
+  4. `gleichgewicht` — Gleichgewicht $\sum F_x=0\wedge\sum F_y=0\wedge\sum F_z=0$ ⇐ `resultierende` (SG 2)
+  5. `r-betrag-richtung` — $|\vec R|=\sqrt{R_x^2+R_y^2}$, $\tan\alpha=R_y/R_x$ ⇐ `resultierende` (SG 4)
+  6. `einheits-tech` — Einheitsvektor $\hat e=\vec a/|\vec a|$ — dimensionslos, Länge 1 (SG 3)
+  7. `plausi-vorzeichen` — Vorzeichen-Check: passt Resultate zur Skizze? ⇐ `kraft-zerlegung` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `kraft-vektor`, `kraft-zerlegung` · **5/5+** — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
+  - 🟡 [1] _hoch_ · Konzepte: `resultierende` · **4/5+** — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
+  - 🟡 [2] _hoch_ · Konzepte: `gleichgewicht` · **4/5+** — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
+  - 🟡 [3] _hoch_ · Konzepte: `einheits-tech` · **4/5+** — Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
+  - ✅ [4] _hoch_ · Konzepte: `r-betrag-richtung` · **5/5+** — Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
+  - ✅ [5] _mittel_ · Konzepte: `plausi-vorzeichen` · **5/5+** — Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ | sin/cos vertauscht |
+|  5 | 0 | transfer           | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `resultierende` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `resultierende` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] 3 Kräfte |
+| 11 | 2 | recognize          | true-false       | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 1 | ✅ | Unbekannte Seilkraft |
+| 14 | 2 | error-analysis     | multiple-choice  | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 16 | 3 | recognize          | true-false       | `einheits-tech` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `einheits-tech` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `einheits-tech` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `einheits-tech` | 1 | 1 | ✅ | Länge ≠ 1 als Ergebnis-Falle |
+| 20 | 3 | transfer           | number-input     | `einheits-tech` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `r-betrag-richtung` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `r-betrag-richtung` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `r-betrag-richtung`, `resultierende` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `r-betrag-richtung` | 1 | 1 | ✅ | Quadrant beim arctan |
+| 25 | 4 | transfer           | number-input     | `r-betrag-richtung`, `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 26 | 5 | recognize          | true-false       | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `plausi-vorzeichen`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | sorting          | `plausi-vorzeichen`, `resultierende` | 1 | 1 | ✅ | Lösungsstrategie ordnen |
+
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 ### 🟢 Niedrig (4-Block / wAE nachziehen) — 35 Lessons
 

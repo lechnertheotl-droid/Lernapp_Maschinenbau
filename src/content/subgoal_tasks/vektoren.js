@@ -1964,4 +1964,671 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-4: Kräfte als Vektoren (Prüfungs-Lesson — alle Aufgaben mit [PRÜFUNG])
+  // SG0: Komponenten-Zerlegung · SG1: Resultierende · SG2: Gleichgewicht
+  // SG3: Einheitsvektor · SG4: Betrag/Richtung · SG5: Plausibilitäts-Check
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-4': {
+    // ===== Sub-Goal 0 — Kraft-Komponenten-Zerlegung =====
+    0: [
+      tag(
+        tf(
+          '[PRÜFUNG] Bei einer Kraft $F$ unter dem Winkel $\\alpha$ **zur $x$-Achse** gilt $F_x=F\\cos\\alpha$ und $F_y=F\\sin\\alpha$.',
+          true,
+          `**Ansatz:** Standard-Zerlegung: Winkel zur $x$-Achse → $\\cos$ liefert $x$-Anteil, $\\sin$ liefert $y$-Anteil.
+
+**Rechnung:** Geometrisch: ein Pfeil der Länge $F$ unter Winkel $\\alpha$ projiziert auf die $x$-Achse die Strecke $F\\cos\\alpha$, auf die $y$-Achse die Strecke $F\\sin\\alpha$. Beispiel $F=100\\,\\text{N},\\,\\alpha=60°$: $F_x=50\\,\\text{N}$, $F_y\\approx 86{,}6\\,\\text{N}$.
+
+**Probe:** Längencheck — $F_x^2+F_y^2=F^2(\\cos^2\\alpha+\\sin^2\\alpha)=F^2$, also $\\sqrt{F_x^2+F_y^2}=F$ ✓ (Pythagoras).
+
+**Typischer Fehler:** Winkel zur **$y$-Achse** statt zur $x$-Achse genommen — dann sind $\\sin$ und $\\cos$ vertauscht. Immer den Bezugswinkel im Bild prüfen.`,
+          [
+            'Welcher Winkel-Bezug? Hier: Winkel zur $x$-Achse.',
+            'Projektionsregel: $\\cos$ → $x$-Achse, $\\sin$ → $y$-Achse.',
+            'Probe: $F_x^2+F_y^2$ muss $F^2$ ergeben.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft $F=100\\,\\text{N}$ wirkt unter $\\alpha=60°$ zur $x$-Achse. Wie groß ist die $x$-Komponente $F_x$?',
+          ['$50\\,\\text{N}$', '$86{,}6\\,\\text{N}$', '$100\\,\\text{N}$', '$0\\,\\text{N}$'],
+          0,
+          `**Ansatz:** Komponenten-Formel: $F_x=F\\cos\\alpha$.
+
+**Rechnung:** $F_x=100\\cdot\\cos 60°=100\\cdot 0{,}5=50\\,\\text{N}$.
+
+**Probe:** $F_y=100\\cdot\\sin 60°\\approx 86{,}6\\,\\text{N}$. Pythagoras: $\\sqrt{50^2+86{,}6^2}\\approx\\sqrt{2500+7500}=100$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ verwechselt: $100\\sin 60°\\approx 86{,}6$ wäre $F_y$, nicht $F_x$.`,
+          [
+            'Formel für $x$-Komponente: $F\\cos\\alpha$.',
+            'Standardwert: $\\cos 60°=0{,}5$.',
+            '$100\\cdot 0{,}5$.',
+          ],
+          {
+            1: 'Das ist $F_y=F\\sin 60°\\approx 86{,}6$ — du hast $\\sin$ und $\\cos$ vertauscht. Bei Winkel zur $x$-Achse gehört $\\cos$ zu $F_x$.',
+            2: '$100\\,\\text{N}$ wäre der gesamte Kraftbetrag — keine Zerlegung. Bei $\\alpha\\ne 0$ liegt nur ein Teil entlang $x$.',
+            3: '$0\\,\\text{N}$ entstünde bei $\\cos 90°=0$ — die Kraft müsste also senkrecht zur $x$-Achse stehen. Bei $60°$ ist aber $\\cos 60°=0{,}5$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Kraft $F=200\\,\\text{N}$ wirkt unter $\\alpha=30°$ zur $x$-Achse. Berechne die $y$-Komponente $F_y$ in N.',
+          100, 0, 'N',
+          `**Ansatz:** $F_y=F\\sin\\alpha$.
+
+**Rechnung:** $F_y=200\\cdot\\sin 30°=200\\cdot 0{,}5=100\\,\\text{N}$.
+
+**Probe:** $F_x=200\\cos 30°\\approx 173{,}2\\,\\text{N}$. Pythagoras: $\\sqrt{173{,}2^2+100^2}\\approx\\sqrt{30000+10000}=200$ ✓.
+
+**Typischer Fehler:** $\\cos 30°=\\sqrt 3/2\\approx 0{,}866$ statt $\\sin 30°=0{,}5$ einsetzen — gibt $\\approx 173{,}2$ statt $100$.`,
+          [
+            '$F_y$-Formel: $F\\sin\\alpha$.',
+            'Standardwert: $\\sin 30°=0{,}5$.',
+            '$200\\cdot 0{,}5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler rechnet die $x$-Komponente von $F=100\\,\\text{N}$ unter $\\alpha=60°$ als $F_x=F\\sin\\alpha\\approx 86{,}6\\,\\text{N}$. Was ist der Fehler — und welcher Wert ist korrekt?',
+          [
+            '$\\sin$ und $\\cos$ sind vertauscht. Korrekt: $F_x=F\\cos\\alpha=100\\cdot 0{,}5=50\\,\\text{N}$. Der Wert $86{,}6$ wäre $F_y$.',
+            'Die Rechnung ist korrekt — bei Winkel zur $x$-Achse gilt $F_x=F\\sin\\alpha$.',
+            'Sin ist richtig, aber der numerische Wert: $\\sin 60°=0{,}5$, also $F_x=50$.',
+            'Bei $\\alpha=60°$ liefern $\\sin$ und $\\cos$ denselben Wert — der Fehler liegt in der Einheit.',
+          ],
+          0,
+          `**Ansatz:** Zuordnung Trigo-Funktion ↔ Komponente prüfen. Bei Winkel zur $x$-Achse: $\\cos\\to F_x$, $\\sin\\to F_y$.
+
+**Rechnung:** Korrekt: $F_x=100\\cos 60°=50\\,\\text{N}$, $F_y=100\\sin 60°\\approx 86{,}6\\,\\text{N}$. Schüler hat $F_y$ als $F_x$ deklariert.
+
+**Probe:** Anschaulich — bei $\\alpha=60°$ neigt die Kraft sich „eher nach oben" (y-lastig), entsprechend ist $F_y>F_x$. Das passt zu $F_y=86{,}6>F_x=50$.
+
+**Typischer Fehler:** Zwei Verwechslungs-Quellen: (1) Winkel zur $y$-Achse mit Winkel zur $x$-Achse vertauschen, oder (2) blind $\\sin/\\cos$ raten. Eselsbrücke: bei kleinem $\\alpha$ liegt die Kraft fast in $x$-Richtung → $F_x$ groß → braucht $\\cos\\alpha\\approx 1$.`,
+          [
+            'Welche Trigo-Funktion gehört zu welcher Komponente?',
+            'Bei kleinem $\\alpha$ muss $F_x$ fast gleich $F$ sein — welche Funktion ist bei kleinem $\\alpha$ nahe 1?',
+            'Anschaulich-Test: bei $\\alpha=0°$ liegt die Kraft entlang $x$, also $F_x=F$. $\\cos 0°=1$ erfüllt das, $\\sin 0°=0$ nicht.',
+          ],
+          {
+            1: '$F_x=F\\sin\\alpha$ ist falsch — die $\\sin$-Funktion ist die $y$-Achsen-Projektion. Bei Winkel zur $x$-Achse gehört $\\cos$ zu $F_x$.',
+            2: '$\\sin 60°=\\sqrt 3/2\\approx 0{,}866$, **nicht** $0{,}5$. Auch wenn man die Werte vertauscht, ist die Methode falsch (sin gehört zu $F_y$).',
+            3: '$\\sin 60°=0{,}866$ und $\\cos 60°=0{,}5$ — nicht gleich. Bei $\\alpha=45°$ wären $\\sin$ und $\\cos$ gleich, hier nicht.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Kiste wird mit $F=400\\,\\text{N}$ unter einem Winkel von $\\alpha=60°$ über der Horizontalen gezogen. Welche Kraftkomponente $F_x$ wirkt parallel zum Boden (in N)?',
+          200, 0, 'N',
+          `**Ansatz:** Winkel zur Horizontalen $=$ Winkel zur $x$-Achse. $F_x=F\\cos\\alpha$.
+
+**Rechnung:** $F_x=400\\cdot\\cos 60°=400\\cdot 0{,}5=200\\,\\text{N}$.
+
+**Probe:** $F_y=400\\sin 60°\\approx 346{,}4\\,\\text{N}$ (Hebt die Kiste teilweise vom Boden ab). Pythagoras: $\\sqrt{200^2+346{,}4^2}\\approx 400$ ✓.
+
+**Typischer Fehler:** Anwender verwechseln „Kraft $400$ N" mit „horizontale Kraft" — dann reicht keine Zerlegung. Tatsächlich entlasten sich die $x$- und $y$-Anteile durch den Winkel.`,
+          [
+            'Winkel zur Horizontalen behandeln wie Winkel zur $x$-Achse.',
+            'Parallelkraft = $x$-Komponente.',
+            '$400\\cdot 0{,}5$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Resultierende =====
+    1: [
+      tag(
+        tf(
+          '[PRÜFUNG] Die Resultierende mehrerer Kräfte erhält man komponentenweise: $R_x=\\sum F_{ix}$ und $R_y=\\sum F_{iy}$.',
+          true,
+          `**Ansatz:** Vektoraddition wirkt komponentenweise. Resultierende ist die Vektorsumme aller Einzelkräfte.
+
+**Rechnung:** $\\vec R=\\sum_i\\vec F_i\\Rightarrow R_x=F_{1x}+F_{2x}+\\dots,\\;R_y=F_{1y}+F_{2y}+\\dots$. Beispiel $\\vec F_1=(3,0),\\vec F_2=(0,4)$: $R_x=3,R_y=4,\\vec R=(3,4)$.
+
+**Probe:** Geometrisch — Pfeile aneinandersetzen, vom Anfang des ersten zur Spitze des letzten. Algebraisch identisch zur Komponenten-Addition.
+
+**Typischer Fehler:** Beträge addieren ($|\\vec F_1|+|\\vec F_2|+\\dots$) — verliert die Richtungsinformation und überschätzt $|\\vec R|$.`,
+          [
+            'Wie addiert man Vektoren? Achse für Achse.',
+            'Pro Komponente einzeln summieren.',
+            'Beträge addieren ist falsch — Richtung würde verloren gehen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['resultierende'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Zwei Kräfte: $\\vec F_1$ mit $|F_1|=200\\,\\text{N}$ unter $60°$ zur $x$-Achse und $\\vec F_2$ mit $|F_2|=100\\,\\text{N}$ unter $0°$ zur $x$-Achse. Berechne $R_x$ in N.',
+          200, 0, 'N',
+          `**Ansatz:** Erst zerlegen, dann komponentenweise addieren.
+
+**Rechnung:** $F_{1x}=200\\cos 60°=200\\cdot 0{,}5=100\\,\\text{N}$. $F_{2x}=100\\cos 0°=100\\,\\text{N}$. $R_x=100+100=200\\,\\text{N}$.
+
+**Probe:** $F_{1y}=200\\sin 60°\\approx 173{,}2$, $F_{2y}=0$. $R_y\\approx 173{,}2$. Resultierende $\\vec R\\approx(200;\\,173{,}2)$, $|\\vec R|\\approx\\sqrt{40000+30000}\\approx 264{,}6\\,\\text{N}$. Plausibel: zwischen $|F_1|+|F_2|=300$ (parallel) und $|F_1-F_2|=100$ (antiparallel).
+
+**Typischer Fehler:** Beträge direkt addieren ($200+100=300$) ohne Zerlegung — würde Parallelität voraussetzen.`,
+          [
+            'Schritt 1: Komponenten via $\\cos\\alpha$ ausrechnen.',
+            'Schritt 2: $x$-Komponenten addieren.',
+            '$200\\cos 60°+100\\cos 0°$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['resultierende', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler hat $\\vec F_1=(3,\\,0)\\,\\text{N}$ und $\\vec F_2=(0,\\,4)\\,\\text{N}$ und rechnet $|\\vec R|=|\\vec F_1|+|\\vec F_2|=3+4=7\\,\\text{N}$. Welcher Wert ist korrekt — und warum?',
+          [
+            '$|\\vec R|=5\\,\\text{N}$ — der Schüler hat Beträge addiert. Korrekt: erst Komponenten addieren ($\\vec R=(3,4)$), dann Pythagoras: $\\sqrt{9+16}=5$.',
+            '$|\\vec R|=7\\,\\text{N}$ — der Schüler hat richtig gerechnet, Beträge addieren funktioniert immer.',
+            '$|\\vec R|=12\\,\\text{N}$ — Beträge müssen multipliziert werden.',
+            '$|\\vec R|=3{,}5\\,\\text{N}$ — der Schüler hätte den Mittelwert bilden müssen.',
+          ],
+          0,
+          `**Ansatz:** Vektoraddition arbeitet **komponentenweise**, nicht über Beträge. Beträge addieren überschätzt $|\\vec R|$ außer bei Parallelität.
+
+**Rechnung:** $\\vec R=\\vec F_1+\\vec F_2=(3+0,\\,0+4)=(3,4)\\,\\text{N}$. $|\\vec R|=\\sqrt{3^2+4^2}=\\sqrt{25}=5\\,\\text{N}$.
+
+**Probe:** $\\vec F_1$ und $\\vec F_2$ stehen senkrecht aufeinander → klassisches $3$-$4$-$5$-Dreieck. Bei senkrechten Vektoren ist $|\\vec R|<|\\vec F_1|+|\\vec F_2|$ (Dreiecksungleichung), hier $5<7$ ✓.
+
+**Typischer Fehler:** Skalare Addition mit Vektor-Addition verwechseln. Skalar: $3+4=7$; Vektor: erst Komponenten addieren, dann Betrag bilden — $\\sqrt{9+16}=5$.`,
+          [
+            'Wie addiert man Vektoren mathematisch korrekt?',
+            'Schritt 1: $\\vec R=(R_x,R_y)$. Schritt 2: $|\\vec R|$ via Pythagoras.',
+            'Bei senkrechten Kräften gilt das $3$-$4$-$5$-Tripel.',
+          ],
+          {
+            1: 'Beträge zu addieren entspricht Parallelität ($\\cos\\varphi=1$). Bei senkrechten Kräften ist $|\\vec R|=\\sqrt{|\\vec F_1|^2+|\\vec F_2|^2}$, nicht die Summe.',
+            2: '$3\\cdot 4=12$ ist eine Multiplikation, keine Vektor-Addition. Vektoren werden komponentenweise addiert.',
+            3: 'Mittelwert ist keine vektorielle Operation. Korrekt: Komponenten addieren → Betrag.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['resultierende'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Drei Kräfte: $\\vec F_1$ mit $|F_1|=100\\,\\text{N}$ unter $0°$, $\\vec F_2$ mit $|F_2|=50\\,\\text{N}$ unter $90°$, $\\vec F_3$ mit $|F_3|=50\\,\\text{N}$ unter $180°$. Berechne $R_x$ in N.',
+          50, 0, 'N',
+          `**Ansatz:** Pro Kraft Komponenten ausrechnen, dann $x$-Komponenten summieren.
+
+**Rechnung:** $F_{1x}=100\\cos 0°=100$. $F_{2x}=50\\cos 90°=0$. $F_{3x}=50\\cos 180°=-50$. $R_x=100+0-50=50\\,\\text{N}$.
+
+**Probe:** $R_y=0+50+0=50\\,\\text{N}$. $\\vec R=(50,50)$, $|\\vec R|=\\sqrt{5000}\\approx 70{,}7\\,\\text{N}$. Plausibel: drei Kräfte teilweise gegenläufig.
+
+**Typischer Fehler:** Kraft 3 mit positivem Vorzeichen einsetzen — bei $\\alpha=180°$ ist $\\cos 180°=-1$, also negativer Beitrag.`,
+          [
+            'Pro Kraft: $F\\cos\\alpha$ für $x$-Komponente.',
+            'Standardwerte: $\\cos 0°=1$, $\\cos 90°=0$, $\\cos 180°=-1$.',
+            'Vorzeichen mitnehmen — der dritte Beitrag ist negativ.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['resultierende', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Gleichgewicht =====
+    2: [
+      tag(
+        tf(
+          '[PRÜFUNG] Ein Kraftsystem ist genau dann im Gleichgewicht, wenn $\\sum F_x=0$ **und** $\\sum F_y=0$ (in 2D) gleichzeitig erfüllt sind.',
+          true,
+          `**Ansatz:** Gleichgewicht $\\iff$ Resultierende $=\\vec 0\\iff$ alle Komponenten der Resultierenden sind null.
+
+**Rechnung:** $\\vec R=\\sum\\vec F_i=\\vec 0\\iff R_x=0\\wedge R_y=0$ (in 2D); analog mit $R_z=0$ in 3D. **Jede** Achse muss erfüllt sein, **beide** Bedingungen gleichzeitig.
+
+**Probe:** Wenn nur $\\sum F_x=0$ gilt, kann der Körper noch in $y$-Richtung beschleunigen — kein Gleichgewicht. Erst wenn beide null sind, bleibt er in Ruhe (statisches Gleichgewicht).
+
+**Typischer Fehler:** „**Oder**" statt „**und**" lesen. Eine einzige Achse reicht nicht — alle Achsen müssen gleich null sein.`,
+          [
+            'Welche Bedingung garantiert, dass keine Beschleunigung auftritt?',
+            'Pro Achse separat prüfen.',
+            'Logik: alle Bedingungen gleichzeitig (UND), nicht mindestens eine (ODER).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['gleichgewicht'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Last $G=100\\,\\text{N}$ hängt symmetrisch an zwei Seilen, die beide unter $30°$ zur Horizontalen aufgespannt sind. Welche Spannung $T$ herrscht in jedem Seil (in N)?',
+          100, 0, 'N',
+          `**Ansatz:** Symmetrie ausnutzen: $T_1=T_2=T$. Gleichgewicht in $y$-Richtung aufstellen, da $\\sum F_x=0$ wegen Symmetrie automatisch erfüllt ist.
+
+**Rechnung:** Beide Seile ziehen den Aufhängepunkt mit Komponenten $T\\sin 30°$ nach oben (jeweils). $\\sum F_y=2T\\sin 30°-G=0\\Rightarrow 2T\\cdot 0{,}5=100\\Rightarrow T=100\\,\\text{N}$.
+
+**Probe:** Beide Seile zusammen tragen $2T\\sin 30°=2\\cdot 100\\cdot 0{,}5=100\\,\\text{N}=G$ ✓. Außerdem: bei flacherem Winkel müsste $T$ größer sein — bei $30°$ ist $T=G$, was bei dieser Geometrie plausibel ist.
+
+**Typischer Fehler:** $\\cos$ statt $\\sin$ einsetzen — bei Winkel zur Horizontalen liefert $\\sin$ den **vertikalen** Anteil, der das Gewicht trägt.`,
+          [
+            'Symmetrie: beide Seilspannungen gleich.',
+            'Gleichgewicht in $y$: vertikale Anteile heben Gewicht auf.',
+            '$2T\\sin 30°=G$, also $T=G/(2\\sin 30°)=G$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['gleichgewicht', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler prüft das Gleichgewicht eines Kraftsystems nur per $\\sum F_x=0$ und schließt: „System ist im Gleichgewicht." Was ist der Fehler?',
+          [
+            'Eine Achse reicht nicht — Gleichgewicht erfordert $\\sum F_x=0$ **und** $\\sum F_y=0$ (und in 3D auch $\\sum F_z=0$). Ohne $y$-Check könnte der Körper vertikal beschleunigen.',
+            'Der Schüler hat richtig — wenn $\\sum F_x=0$, ist das System automatisch im Gleichgewicht.',
+            'Der Schüler hätte zusätzlich nur $\\sum F_y=0$ prüfen müssen, falls er gerade keine $y$-Komponenten hat.',
+            'Der Schüler hätte den Betrag der Resultierenden $|\\vec R|=0$ prüfen müssen — die Komponentenform ist nicht aussagekräftig.',
+          ],
+          0,
+          `**Ansatz:** Gleichgewicht ist eine **Mehr-Achsen-Bedingung**. Nur eine Achse reicht nicht.
+
+**Rechnung:** Beispiel: Last $G=100\\,\\text{N}$ nach unten + horizontale Kräfte $\\vec F_1=(10,0),\\vec F_2=(-10,0)$. $\\sum F_x=0$ ✓, aber $\\sum F_y=-100\\ne 0$ → die Last fällt herunter. Kein Gleichgewicht.
+
+**Probe:** Statisches Gleichgewicht im 2D verlangt **zwei** unabhängige skalare Bedingungen ($x$ und $y$). Bei freier Drehung kommt zusätzlich $\\sum M=0$ (Momentensatz).
+
+**Typischer Fehler:** Den Begriff „Gleichgewicht" auf eine Bedingung reduzieren. Tatsächlich prüft man systematisch alle Achsen — fehlt eine, kann der Körper in dieser Richtung beschleunigen.`,
+          [
+            'Wie viele unabhängige Gleichungen verlangt 2D-Gleichgewicht?',
+            'Welche Achsen sind unabhängig?',
+            'Probe: gibt es eine Achse, in der eine Resultierende noch wirkt?',
+          ],
+          {
+            1: '$\\sum F_x=0$ allein lässt vertikale Beschleunigung zu — ein freier Fall ist möglich, also kein Gleichgewicht.',
+            2: '„Falls keine $y$-Komponenten" reicht nicht — zur Sicherheit muss man **immer** beide Achsen prüfen, auch wenn man auf den ersten Blick keine $y$-Kräfte sieht.',
+            3: '$|\\vec R|=0$ ist eine korrekte Formulierung, aber **äquivalent** zu „$R_x=0\\wedge R_y=0$". Die Komponentenform ist genauso aussagekräftig — der Schüler hat aber nur eine Achse geprüft.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['gleichgewicht'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Last $G=200\\,\\text{N}$ hängt an zwei Seilen: Seil 1 zieht unter $60°$ zur Horizontalen nach links-oben, Seil 2 unter $30°$ zur Horizontalen nach rechts-oben. Berechne die Seilspannung $T_2$ in N.',
+          100, 0, 'N',
+          `**Ansatz:** Zwei Gleichgewichts-Gleichungen für zwei Unbekannte ($T_1,T_2$). Komponenten exakt aufstellen.
+
+**Rechnung:** $\\sum F_x=0$: $-T_1\\cos 60°+T_2\\cos 30°=0\\Rightarrow T_1=T_2\\cdot\\dfrac{\\cos 30°}{\\cos 60°}=T_2\\cdot\\sqrt 3\\approx 1{,}732\\,T_2$. $\\sum F_y=0$: $T_1\\sin 60°+T_2\\sin 30°-200=0$. Einsetzen: $\\sqrt 3 T_2\\cdot\\frac{\\sqrt 3}{2}+T_2\\cdot\\frac{1}{2}=200\\Rightarrow\\frac{3}{2}T_2+\\frac{1}{2}T_2=2T_2=200\\Rightarrow T_2=100\\,\\text{N}$.
+
+**Probe:** $T_1=\\sqrt 3\\cdot 100\\approx 173{,}2\\,\\text{N}$. $\\sum F_y=173{,}2\\cdot 0{,}866+100\\cdot 0{,}5=150+50=200$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei Seil 1 vergessen — wenn das Seil nach links-oben zieht, ist die $x$-Komponente negativ. Sonst wären beide $x$-Anteile positiv und es gäbe kein Gleichgewicht.`,
+          [
+            'Zwei Seile = zwei Unbekannte. Zwei Gleichungen aus Gleichgewicht.',
+            'Pro Achse: $\\sum F_x=0$ und $\\sum F_y=0$.',
+            'Aus $\\sum F_x$ folgt $T_1$ in Abhängigkeit von $T_2$, dann $\\sum F_y$ einsetzen.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['gleichgewicht', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Einheitsvektor (technisch) =====
+    3: [
+      tag(
+        tf(
+          '[PRÜFUNG] Ein Einheitsvektor $\\hat e$ ist dimensionslos und hat per Definition Länge $|\\hat e|=1$ — er beschreibt nur die Richtung, nicht den Betrag.',
+          true,
+          `**Ansatz:** Definitionseigenschaften: Länge $=1$ und Richtung wie der Ausgangsvektor. Einheitenfrei.
+
+**Rechnung:** Aus $\\hat e=\\vec a/|\\vec a|$: Im Zähler steht ein Vektor mit Einheit (z. B. N), im Nenner derselbe Vektor mit derselben Einheit — die Einheiten kürzen sich. Ergebnis ist dimensionslos.
+
+**Probe:** Beispiel $\\vec F=(30,40)\\,\\text{N}$, $|\\vec F|=50\\,\\text{N}$. $\\hat e=(30/50,40/50)=(0{,}6;\\,0{,}8)$ — keine Einheit, Länge $1$.
+
+**Typischer Fehler:** Einheitsvektoren mit Einheit ($\\text{N}$ o. ä.) versehen — falsch, Einheit kürzt sich beim Normieren.`,
+          [
+            'Was bedeutet „Einheits"-Vektor?',
+            'Konstruktion: Vektor durch eigenen Betrag — Einheiten heben sich auf.',
+            'Test: $|\\hat e|$ muss $1$ ergeben (ohne Einheit).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Berechne die $x$-Komponente des Einheitsvektors zu $\\vec a=(3,\\,4)$.',
+          0.6, 0.001, '',
+          `**Ansatz:** $\\hat e=\\vec a/|\\vec a|$ — auf jede Komponente einzeln anwenden.
+
+**Rechnung:** $|\\vec a|=\\sqrt{9+16}=5$. $\\hat e=(3/5,\\,4/5)=(0{,}6;\\,0{,}8)$. $x$-Komponente: $\\mathbf{0{,}6}$.
+
+**Probe:** $|\\hat e|=\\sqrt{0{,}36+0{,}64}=\\sqrt 1=1$ ✓. Klassisches $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** Durch eine Komponente ($a_x=3$) statt durch den Betrag $|\\vec a|=5$ teilen — das gibt $1$ statt $0{,}6$.`,
+          [
+            'Schritt 1: $|\\vec a|$ via Pythagoras.',
+            'Schritt 2: $\\vec a/|\\vec a|$ komponentenweise.',
+            'Hier $3$-$4$-$5$-Tripel: $|\\vec a|=5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler bildet den Einheitsvektor zu $\\vec a=(3,\\,4)$ als $\\hat e=(3/3,\\,4/4)=(1,\\,1)$. Welche Antwort enthüllt den Fehler?',
+          [
+            'Längencheck: $|(1,1)|=\\sqrt 2\\approx 1{,}41\\ne 1$ — also kein Einheitsvektor. Korrekt: $\\vec a$ durch den **Betrag** $|\\vec a|=5$ teilen, nicht durch eine einzelne Komponente. $\\hat e=(0{,}6;\\,0{,}8)$.',
+            'Die Rechnung ist richtig — bei Vektoren wird jede Komponente durch sich selbst geteilt.',
+            'Das Ergebnis $(1,1)$ ist tatsächlich der Einheitsvektor von $(3,4)$.',
+            'Der Fehler liegt im Vorzeichen — korrekt wäre $(-1,-1)$.',
+          ],
+          0,
+          `**Ansatz:** Längen-Test ist die einfachste Diagnose: $|\\hat e|$ muss exakt $1$ sein.
+
+**Rechnung:** $\\hat e=(1,1)$ hätte Länge $\\sqrt{1+1}=\\sqrt 2\\approx 1{,}414$ — nicht $1$. Korrekt: $|\\vec a|=5$, $\\hat e=(3/5,4/5)=(0{,}6;\\,0{,}8)$. Längencheck: $\\sqrt{0{,}36+0{,}64}=1$ ✓.
+
+**Probe:** Methodische Diagnose: „durch Komponente teilen" liefert ein Tupel mit Komponenten zwischen $0$ und $1$, **aber** ohne Längen-Garantie. Nur „durch Betrag teilen" garantiert Länge $1$.
+
+**Typischer Fehler:** Operationen auf Vektoren komponentenweise mit Operationen auf Skalaren verwechseln. Beim Normieren ist es **eine** Skalarzahl ($|\\vec a|$), durch die geteilt wird, nicht jeweils die eigene Komponente.`,
+          [
+            'Was muss ein Einheitsvektor erfüllen?',
+            'Längen-Test: $|\\hat e|=1$.',
+            'Welche Operation garantiert Länge $1$?',
+          ],
+          {
+            1: 'Komponente durch sich selbst zu teilen liefert immer $1$ (bei nicht-null Komponente) — das gibt keinen Bezug zur Vektorlänge.',
+            2: '$(1,1)$ hat Länge $\\sqrt 2$, nicht $1$ — also kein Einheitsvektor.',
+            3: 'Vorzeichen-Wechsel ändert Richtung, nicht Länge. $(-1,-1)$ hätte ebenfalls Länge $\\sqrt 2\\ne 1$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Berechne die $y$-Komponente des Einheitsvektors zu $\\vec a=(2,\\,-1,\\,2)$ (3D). Runde auf 3 Nachkommastellen.',
+          -0.333, 0.005, '',
+          `**Ansatz:** $\\hat e=\\vec a/|\\vec a|$ — auch in 3D unverändert.
+
+**Rechnung:** $|\\vec a|=\\sqrt{4+1+4}=\\sqrt 9=3$. $\\hat e=(2/3,\\,-1/3,\\,2/3)\\approx(0{,}667;\\,-0{,}333;\\,0{,}667)$. $y$-Komponente: $\\mathbf{-1/3\\approx -0{,}333}$.
+
+**Probe:** $|\\hat e|=\\sqrt{4/9+1/9+4/9}=\\sqrt{9/9}=1$ ✓. Vorzeichen-Plausibilität: $a_y=-1<0$, also $\\hat e_y<0$ — passt.
+
+**Typischer Fehler:** Vorzeichen verlieren — $|\\vec a|$ ist immer positiv, aber Komponenten dürfen negativ sein. $\\hat e_y=-1/3$, nicht $1/3$.`,
+          [
+            'Auch in 3D: $\\hat e=\\vec a/|\\vec a|$.',
+            '$|\\vec a|$ via 3D-Pythagoras: $\\sqrt{a_x^2+a_y^2+a_z^2}$.',
+            'Hier $|\\vec a|=3$, also $\\hat e_y=-1/3$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 4 — Betrag und Richtung der Resultierenden =====
+    4: [
+      tag(
+        tf(
+          '[PRÜFUNG] Der Betrag der Resultierenden in 2D ergibt sich zu $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.',
+          true,
+          `**Ansatz:** Betrag = Pythagoras auf die Komponenten — gilt für jeden Vektor in 2D, also auch für die Resultierende.
+
+**Rechnung:** Standard-Betragsformel angewendet auf $\\vec R=(R_x,R_y)$: $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.
+
+**Probe:** Beispiel $\\vec R=(3,4)$: $|\\vec R|=\\sqrt{9+16}=5$ — klassisches $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** $|\\vec R|=R_x+R_y$ rechnen (Manhattan-Norm) — das ist nicht der euklidische Betrag.`,
+          [
+            'Welche Formel gibt die Länge eines Vektors?',
+            'Pythagoras auf die Komponenten.',
+            'Für die Resultierende identisch wie für jeden anderen Vektor.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Resultierende beträgt $\\vec R=(3,\\,4)\\,\\text{N}$. Wie groß ist $|\\vec R|$?',
+          ['$5\\,\\text{N}$', '$7\\,\\text{N}$', '$25\\,\\text{N}$', '$12\\,\\text{N}$'],
+          0,
+          `**Ansatz:** $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.
+
+**Rechnung:** $|\\vec R|=\\sqrt{9+16}=\\sqrt{25}=5\\,\\text{N}$.
+
+**Probe:** $3$-$4$-$5$-Tripel — klassisch. ✓
+
+**Typischer Fehler:** Komponenten direkt addieren ($3+4=7$) — Manhattan-Norm, nicht euklidisch. Oder Wurzel vergessen ($\\sqrt{25}=5$, nicht $25$).`,
+          [
+            'Drei Schritte: quadrieren, summieren, Wurzel ziehen.',
+            'Standardtripel: $3$-$4$-?',
+            '$\\sqrt{9+16}=\\sqrt{25}$.',
+          ],
+          {
+            1: 'Komponenten direkt zu addieren ($3+4=7$) ist **Manhattan-Norm**, nicht euklidischer Betrag. Pythagoras verlangt erst quadrieren, dann summieren.',
+            2: '$25$ ist $|\\vec R|^2$ — die Wurzel am Ende wurde vergessen. $\\sqrt{25}=5$.',
+            3: '$3\\cdot 4=12$ ist eine Multiplikation, keine Längenformel. Pythagoras verwendet Quadrate und Wurzel.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Zwei senkrechte Kräfte: $\\vec F_1=(8,\\,0)\\,\\text{N}$ und $\\vec F_2=(0,\\,6)\\,\\text{N}$. Berechne den Betrag der Resultierenden $|\\vec R|$ in N.',
+          10, 0, 'N',
+          `**Ansatz:** Erst Resultierende, dann Betrag.
+
+**Rechnung:** $\\vec R=(8+0,\\,0+6)=(8,6)$. $|\\vec R|=\\sqrt{64+36}=\\sqrt{100}=10\\,\\text{N}$.
+
+**Probe:** Senkrechte Kräfte → $|\\vec R|^2=|\\vec F_1|^2+|\\vec F_2|^2=64+36=100$ ✓. Außerdem $6$-$8$-$10$ ist verdoppeltes $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** Beträge direkt addieren ($8+6=14$) — gilt nur bei Parallelität.`,
+          [
+            'Schritt 1: $\\vec R$ komponentenweise.',
+            'Schritt 2: Pythagoras auf $\\vec R$.',
+            'Bei senkrechten Kräften: $|\\vec R|=\\sqrt{|\\vec F_1|^2+|\\vec F_2|^2}$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['r-betrag-richtung', 'resultierende'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler berechnet die Richtung von $\\vec R=(-3,\\,4)$ als $\\alpha=\\arctan(4/(-3))\\approx -53°$ (zur $x$-Achse). Was ist der Fehler?',
+          [
+            'Bei negativem $R_x$ liefert $\\arctan$ einen Winkel im Q4 statt Q2. Korrekt: $\\alpha=180°-53°=127°$. Standardlösung: $\\operatorname{atan2}(R_y,R_x)$ verwenden, das den Quadranten korrekt behandelt.',
+            'Die Rechnung ist korrekt — $\\arctan(R_y/R_x)$ liefert immer den richtigen Winkel.',
+            'Korrekt wäre $\\alpha=53°$, weil der Betrag des Winkels zählt.',
+            '$\\arctan$ liefert nur Werte in $[0°,\\,90°]$ — der Schüler hätte den Wert positiv übernehmen müssen.',
+          ],
+          0,
+          `**Ansatz:** $\\arctan$ hat **Wertebereich** $(-90°,\\,90°)$ — das umfasst nur Q1 (positiv) und Q4 (negativ). Bei Q2/Q3 muss man $\\pm 180°$ addieren.
+
+**Rechnung:** $\\vec R=(-3,4)$ liegt im **Q2** ($x<0,y>0$). $\\arctan(4/(-3))=\\arctan(-1{,}333)\\approx -53°$ — das ist Q4. Korrektur: $\\alpha=-53°+180°=127°$. Das ist der Winkel zur $+x$-Achse, gemessen gegen den Uhrzeigersinn.
+
+**Probe:** Anschaulich: $\\vec R$ zeigt nach links-oben, also liegt der Winkel zwischen $90°$ und $180°$. $127°$ passt, $-53°$ (Q4, rechts-unten) nicht.
+
+**Typischer Fehler:** Den Quadrant nicht prüfen und $\\arctan$-Output blind übernehmen. Standard-Werkzeug: $\\operatorname{atan2}(R_y,R_x)$ — das liefert Winkel im vollen Bereich $(-180°,\\,180°]$.`,
+          [
+            'Wertebereich von $\\arctan$ — welche Quadranten deckt es ab?',
+            'Bei $R_x<0$ ist Korrektur nötig.',
+            'Plausibilität: Skizze zeichnen, Quadrant ablesen.',
+          ],
+          {
+            1: '$\\arctan$ allein deckt nur Q1/Q4 ab. Bei $R_x<0$ landet man im Q4-Wert, obwohl der Vektor im Q2 oder Q3 liegt.',
+            2: 'Der Betrag des Winkels reicht nicht — die **Richtung** entscheidet, ob es links oder rechts ist. $-53°$ und $+53°$ zeigen zu unterschiedlichen Stellen.',
+            3: '$\\arctan$ liefert Werte in $(-90°,\\,90°)$ — also kann der Output negativ sein. Die Aussage „nur $[0°,\\,90°]$" ist falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Drei Kräfte: $|F_1|=10\\,\\text{N}$ unter $0°$, $|F_2|=12\\,\\text{N}$ unter $90°$, $|F_3|=5\\,\\text{N}$ unter $180°$. Berechne den Betrag der Resultierenden $|\\vec R|$ in N.',
+          13, 0, 'N',
+          `**Ansatz:** Pro Kraft Komponenten ausrechnen → komponentenweise summieren → Betrag.
+
+**Rechnung:** $F_{1x}=10,F_{1y}=0$. $F_{2x}=0,F_{2y}=12$. $F_{3x}=-5,F_{3y}=0$. $\\vec R=(10+0-5,\\,0+12+0)=(5,12)$. $|\\vec R|=\\sqrt{25+144}=\\sqrt{169}=13\\,\\text{N}$.
+
+**Probe:** $5$-$12$-$13$ ist klassisches pythagoreisches Tripel ($25+144=169$). ✓
+
+**Typischer Fehler:** Vorzeichen bei Kraft 3 vergessen ($\\cos 180°=-1$, also $F_{3x}=-5$, nicht $+5$). Würde $\\vec R=(15,12)$ und $|\\vec R|\\approx 19{,}2$ liefern.`,
+          [
+            'Drei Schritte: Komponenten — $\\vec R$ — Betrag.',
+            'Standardwinkel: $\\cos 0°=1,\\cos 90°=0,\\cos 180°=-1$.',
+            'Pythagoreisches Tripel: $5$-$12$-?',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['r-betrag-richtung', 'resultierende', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 5 — Plausibilitäts-Check =====
+    5: [
+      tag(
+        tf(
+          '[PRÜFUNG] Wenn eine Kraft im 3. Quadranten liegt (Skizze: Pfeil nach links-unten), sind $F_x$ und $F_y$ beide negativ.',
+          true,
+          `**Ansatz:** Quadranten-Schema: Q1 $(+,+)$, Q2 $(-,+)$, Q3 $(-,-)$, Q4 $(+,-)$.
+
+**Rechnung:** Q3 $\\Rightarrow x<0,y<0$. Daher $F_x<0,F_y<0$.
+
+**Probe:** Beispiel $\\vec F=(-30,-40)\\,\\text{N}$ liegt im Q3 (Pfeil zeigt nach links-unten). $|\\vec F|=50\\,\\text{N}$, beide Komponenten negativ.
+
+**Typischer Fehler:** Quadranten verwechseln (z. B. Q3 und Q4). Faustregel: Vorzeichen von $x$ entscheidet links/rechts, Vorzeichen von $y$ entscheidet oben/unten.`,
+          [
+            'Quadranten-Schema in $(x,y)$-Vorzeichen.',
+            'Q3 = links unten = beide negativ.',
+            'Skizze zeichnen und Vorzeichen ablesen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft zeigt in der Skizze nach **rechts-unten**. Welche Vorzeichen-Kombination der Komponenten ist plausibel?',
+          ['$F_x>0,\\,F_y<0$', '$F_x<0,\\,F_y>0$', '$F_x>0,\\,F_y>0$', '$F_x<0,\\,F_y<0$'],
+          0,
+          `**Ansatz:** Skizzen-Richtung in Quadrant übersetzen. Rechts $\\to x>0$, unten $\\to y<0$. Das ist Q4.
+
+**Rechnung:** Q4 hat Vorzeichen-Paar $(+,-)$ — $F_x>0$, $F_y<0$.
+
+**Probe:** Beispiel $\\vec F=(40,-30)\\,\\text{N}$ — Pfeil zeigt nach rechts (positiver $x$) und unten (negativer $y$). Passt zur Skizze.
+
+**Typischer Fehler:** „Unten" mit „links" verwechseln und das Vorzeichen falschen Achse zuordnen.`,
+          [
+            'Quadranten-Schema durchdenken.',
+            'Rechts → $x$-Vorzeichen?',
+            'Unten → $y$-Vorzeichen?',
+          ],
+          {
+            1: 'Q2 ($-,+$): links-oben. Hier ist die Kraft aber nach rechts-unten gerichtet.',
+            2: 'Q1 ($+,+$): rechts-oben. Wir suchen nach rechts-**unten**.',
+            3: 'Q3 ($-,-$): links-unten. Wir suchen rechts-unten — $x$ ist dort positiv.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft $F=50\\,\\text{N}$ wirkt unter $\\alpha=135°$ zur $x$-Achse. Welche Vorzeichen haben die Komponenten?',
+          [
+            '$F_x<0,\\,F_y>0$ — Q2, denn $\\cos 135°<0$ und $\\sin 135°>0$.',
+            '$F_x>0,\\,F_y<0$ — Q4.',
+            '$F_x>0,\\,F_y>0$ — Q1.',
+            '$F_x<0,\\,F_y<0$ — Q3.',
+          ],
+          0,
+          `**Ansatz:** Winkel $135°$ liegt zwischen $90°$ und $180°$ → Q2.
+
+**Rechnung:** $F_x=50\\cos 135°=50\\cdot(-\\sqrt 2/2)\\approx -35{,}36<0$. $F_y=50\\sin 135°=50\\cdot(\\sqrt 2/2)\\approx 35{,}36>0$. Q2: $(-,+)$.
+
+**Probe:** Quadranten-Skizze — Pfeil zur Stelle $(-35,35)$ zeigt nach links-oben, passt zu Q2.
+
+**Typischer Fehler:** Vorzeichen aus dem Standardwinkel $45°$ ableiten ohne Beachtung des Quadranten — $\\cos 45°>0$, aber $\\cos 135°<0$ wegen Q2.`,
+          [
+            'Welcher Quadrant deckt den Bereich $90°<\\alpha<180°$ ab?',
+            'Vorzeichen von $\\cos$ und $\\sin$ in Q2 nachschlagen.',
+            'Q2: $\\cos<0,\\,\\sin>0$.',
+          ],
+          {
+            1: 'Q4 wäre $-90°<\\alpha<0°$ — also nicht $135°$.',
+            2: 'Q1 ist $0°<\\alpha<90°$ — $135°$ ist außerhalb.',
+            3: 'Q3 wäre $180°<\\alpha<270°$ (oder negativ $-180°$ bis $-90°$) — $135°$ ist im oberen Halbraum, also $\\sin>0$.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['plausi-vorzeichen', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler hat eine Kraft skizziert, die nach links-oben zeigt, und schreibt $F_x=+50\\,\\text{N}$. Was sollte ihn stutzig machen?',
+          [
+            'Eine Kraft nach links-oben muss $F_x<0$ haben (Q2). Positives $F_x$ widerspricht der Skizze — wahrscheinlich wurde der Winkel falsch gemessen oder das Vorzeichen vergessen.',
+            'Die Skizze ist Geschmackssache — Vorzeichen können willkürlich gewählt werden.',
+            'Solange $|F_x|=50$ stimmt, ist das Vorzeichen egal.',
+            'Die Skizze muss falsch sein, weil $F_x$ immer positiv ist.',
+          ],
+          0,
+          `**Ansatz:** Plausibilitäts-Check zwischen Skizze und Rechenergebnis ist Pflicht.
+
+**Rechnung:** Links-oben = Q2 = $(-,+)$. $F_x>0$ widerspricht dem direkt. Mögliche Ursachen: (1) Winkel zur Vertikalen statt zur Horizontalen gemessen; (2) Vorzeichen bei der Komponentenzerlegung vergessen ($F_x=F\\cos\\alpha$ — bei $\\alpha\\in(90°,180°)$ ist $\\cos\\alpha<0$); (3) Skizze falsch interpretiert.
+
+**Probe:** Bei jeder Kraftaufgabe nach der Rechnung die Vorzeichen mit der Skizze vergleichen — passt das Vorzeichen-Quartett zum Quadranten? Wenn nicht: Fehler aufspüren, **bevor** man weiterrechnet.
+
+**Typischer Fehler:** Skizze und Rechnung als getrennte Welten behandeln. Tatsächlich ist die Skizze die wichtigste Plausibilitäts-Kontrolle.`,
+          [
+            'Was sagt die Skizze über die Vorzeichen aus?',
+            'Q2 hat welches Vorzeichen-Paar?',
+            'Wenn Skizze und Rechnung sich widersprechen: Fehler suchen.',
+          ],
+          {
+            1: 'Vorzeichen sind nicht „Geschmackssache" — sie kodieren Richtungsinformation.',
+            2: 'Vorzeichen ist im Maschinenbau **wesentlich** — falsches Vorzeichen kippt die ganze Folgerechnung (Resultierende, Drehmoment, Arbeit).',
+            3: '$F_x$ kann sehr wohl negativ sein — bei jeder Kraft, die nach links wirkt.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        sorting(
+          '[PRÜFUNG] Bringe die Schritte einer typischen Kraftsystem-Aufgabe (Resultierende mit Plausibilitätscheck) in die richtige Reihenfolge.',
+          [
+            'Skizze des Kraftsystems mit Koordinatensystem zeichnen — Winkel und Wirkungslinien eintragen.',
+            'Pro Kraft Komponenten via $F_x=F\\cos\\alpha,\\,F_y=F\\sin\\alpha$ zerlegen.',
+            'Komponenten achsenweise addieren: $R_x=\\sum F_{ix},\\,R_y=\\sum F_{iy}$.',
+            'Vorzeichen der Komponenten mit der Skizze vergleichen (Plausibilitäts-Check).',
+            'Falls gefragt: Betrag $|\\vec R|=\\sqrt{R_x^2+R_y^2}$ und Richtung $\\alpha=\\arctan(R_y/R_x)$ (Quadrant beachten).',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Standard-Vorgehen für jede Kraftaufgabe — fünf strukturierte Schritte.
+
+**Rechnung:** (1) Skizze klärt Winkel und Vorzeichen-Konventionen. (2) Zerlegung bringt jede Kraft in Komponentenform. (3) Vektoraddition als komponentenweise Summe. (4) Plausibilität prüft Vorzeichen anhand der Skizze. (5) Endform Betrag/Richtung berechnen, falls gefragt.
+
+**Probe:** Die Reihenfolge ist nicht beliebig — Schritt 4 (Plausibilität) muss **nach** der Rechnung stehen, sonst hat man nichts zu checken. Schritt 5 setzt korrekte Komponenten voraus.
+
+**Typischer Fehler:** Plausibilitätscheck weglassen oder erst am Ende. Empfehlung: nach jedem Zwischenresultat kurz prüfen.`,
+          [
+            'Skizze zuerst — sonst hat man keinen Bezug.',
+            'Komponentenrechnung gehört in die Mitte.',
+            'Vorzeichen-Check nach der Rechnung, vor dem Endresultat.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['plausi-vorzeichen', 'resultierende'] },
+      ),
+    ],
+  },
 }
