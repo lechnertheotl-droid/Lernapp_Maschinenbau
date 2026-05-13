@@ -132,17 +132,11 @@ export const exercises_u2 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Quadrant aus Vorzeichen bestimmen, Referenzwinkel aus Beträgen.
 
-**Schritt 1 — Quadrant:** $x = -\\dfrac{\\sqrt{2}}{2} < 0$, $y = +\\dfrac{\\sqrt{2}}{2} > 0$. Das ist der **2. Quadrant** ($90° < \\alpha < 180°$).
+**Rechnung:** Quadrant: $x = -\\tfrac{\\sqrt{2}}{2} < 0$ und $y = +\\tfrac{\\sqrt{2}}{2} > 0$ → 2. Quadrant ($90° < \\alpha < 180°$). Referenzwinkel: $|x| = |y| = \\tfrac{\\sqrt{2}}{2}$ → $\\beta = 45°$ (weil $\\cos 45° = \\sin 45° = \\tfrac{\\sqrt{2}}{2}$). Gesamt im 2. Quadrant: $\\alpha = 180° - \\beta = 180° - 45° = 135°$.
 
-**Schritt 2 — Referenzwinkel:** $|x| = |y| = \\dfrac{\\sqrt{2}}{2}$. Das entspricht $45°$ (weil $\\cos(45°) = \\sin(45°) = \\dfrac{\\sqrt{2}}{2}$).
+**Probe:** $\\cos 135° = -\\tfrac{\\sqrt{2}}{2}$ ✓, $\\sin 135° = +\\tfrac{\\sqrt{2}}{2}$ ✓. Punkt liegt links-oben auf der Winkelhalbierenden des 2. Quadranten.
 
-**Schritt 3 — Gesamt:** Im 2. Quadrant gilt $\\alpha = 180° - 45° = 135°$.
-
-**Am Einheitskreis heißt das:** Der Punkt liegt links-oben, auf der Winkelhalbierenden des 2. Quadranten.
-
-**Probe:** $\\cos(135°) = -\\dfrac{\\sqrt{2}}{2}$ ✓, $\\sin(135°) = \\dfrac{\\sqrt{2}}{2}$ ✓.
-
-**Typischer Fehler:** $45°$ wählen, weil $|x| = |y|$ — aber das Vorzeichen von $x$ wird ignoriert. Immer zuerst den Quadranten prüfen.`,
+**Typischer Fehler:** $45°$ wählen, weil $|x| = |y|$ — aber das Vorzeichen von $x$ wird ignoriert. Immer zuerst den Quadranten prüfen, dann den Referenzwinkel aus den Beträgen ableiten.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: Punkt mit $x < 0$, $y > 0$ — welcher Quadrant?',
       '$|x| = |y| = \\dfrac{\\sqrt{2}}{2}$ → Referenzwinkel $45°$.',
@@ -188,13 +182,11 @@ export const exercises_u2 = {
     question: '$\\sin(-\\alpha) = $?',
     options: ['$\\sin(\\alpha)$', '$-\\sin(\\alpha)$', '$\\cos(\\alpha)$', '$-\\cos(\\alpha)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Symmetrie des Sinus am Einheitskreis.
+    explanation: `**Ansatz:** Symmetrie des Sinus am Einheitskreis. $\\sin$ ist die $y$-Koordinate; bei Spiegelung an der $x$-Achse kippt $y$ das Vorzeichen.
 
-**Regel:** $\\sin$ ist eine **ungerade** Funktion: $\\sin(-\\alpha) = -\\sin(\\alpha)$.
+**Rechnung:** $\\sin$ ist eine **ungerade** Funktion, also $\\sin(-\\alpha) = -\\sin(\\alpha)$. Geometrisch: $-\\alpha$ entspricht einer Drehung im Uhrzeigersinn — Punkt $P(\\alpha) = (x, y)$ wird zu $P(-\\alpha) = (x, -y)$; die $y$-Koordinate $\\sin$ wechselt das Vorzeichen, die $x$-Koordinate $\\cos$ bleibt.
 
-**Am Einheitskreis heißt das:** Der Winkel $-\\alpha$ entspricht einer Drehung im *Uhrzeigersinn*. Der Punkt liegt gespiegelt an der x-Achse: x bleibt, y wechselt das Vorzeichen. Da $\\sin$ die y-Koordinate ist, ändert sich das Vorzeichen.
-
-**Probe:** $\\sin(-30°) = -\\sin(30°) = -\\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
+**Probe:** $\\sin(-30°) = -\\sin(30°) = -\\tfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt: $-0{,}5$ ✓.
 
 **Typischer Fehler:** $\\sin(-\\alpha) = \\sin(\\alpha)$ setzen — das ist die Regel für $\\cos$ (gerade Funktion), nicht für $\\sin$.`,
     hints: [
@@ -213,20 +205,13 @@ export const exercises_u2 = {
     question: '[PRÜFUNG] $\\cos(-\\alpha) = $?',
     options: ['$-\\cos(\\alpha)$', '$\\cos(\\alpha)$', '$\\sin(\\alpha)$', '$-\\sin(\\alpha)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Symmetrie des Kosinus.
+    explanation: `**Ansatz:** Symmetrie des Kosinus. $\\cos$ ist die $x$-Koordinate; bei Spiegelung an der $x$-Achse bleibt $x$ unverändert.
 
-**Regel:** $\\cos$ ist eine **gerade** Funktion: $\\cos(-\\alpha) = \\cos(\\alpha)$.
+**Rechnung:** $\\cos$ ist eine **gerade** Funktion, also $\\cos(-\\alpha) = \\cos(\\alpha)$. Geometrisch: $-\\alpha$ spiegelt den Punkt $P(\\alpha) = (x, y)$ an der $x$-Achse zu $P(-\\alpha) = (x, -y)$. Die $x$-Koordinate $\\cos$ ändert sich nicht, nur die $y$-Koordinate $\\sin$ kippt. Merke: $\\sin(-\\alpha) = -\\sin\\alpha$ (ungerade), $\\cos(-\\alpha) = +\\cos\\alpha$ (gerade), $\\tan(-\\alpha) = -\\tan\\alpha$ (ungerade, weil $\\sin$ ungerade und $\\cos$ gerade).
 
-**Am Einheitskreis heißt das:** Der negative Winkel spiegelt den Punkt an der x-Achse. Die x-Koordinate bleibt unverändert (nur y kippt). Da $\\cos$ die x-Koordinate ist, ändert sie sich nicht.
+**Probe:** $\\cos(-60°) = \\cos(60°) = \\tfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt: $0{,}5$ ✓.
 
-**Probe:** $\\cos(-60°) = \\cos(60°) = \\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
-
-**Merke:**
-- $\\sin(-\\alpha) = -\\sin(\\alpha)$ (ungerade)
-- $\\cos(-\\alpha) = +\\cos(\\alpha)$ (gerade)
-- $\\tan(-\\alpha) = -\\tan(\\alpha)$ (ungerade, da $\\sin$ ungerade und $\\cos$ gerade)
-
-**Typischer Fehler:** $-\\cos(\\alpha)$ wählen — das ist die Formel für $\\cos(180° - \\alpha)$, nicht für $\\cos(-\\alpha)$.`,
+**Typischer Fehler:** $-\\cos(\\alpha)$ wählen — das ist die Formel für $\\cos(180° - \\alpha)$ (Spiegelung an der $y$-Achse), nicht für $\\cos(-\\alpha)$ (Spiegelung an der $x$-Achse).`,
     hints: [
       'Skizze: Spiegelung an der x-Achse. Wie ändert sich die x-Koordinate?',
       '$\\cos$ ist eine gerade Funktion.',
@@ -245,15 +230,13 @@ export const exercises_u2 = {
     question: 'Was beschreibt $\\tan(\\alpha)$ geometrisch am Einheitskreis?',
     options: ['Den Radius', 'Die x-Koordinate', 'Das Verhältnis $y/x$ (= $\\sin/\\cos$)', 'Die Bogenlänge'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Definition von $\\tan$ als Quotient.
+    explanation: `**Ansatz:** Definition von $\\tan$ als Quotient — geometrisch die Steigung der Ursprungsgerade zum Punkt auf dem Einheitskreis.
 
-**Regel:** $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$ am Einheitskreis.
+**Rechnung:** $\\tan(\\alpha) = \\tfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\tfrac{y}{x}$ am Einheitskreis. Geometrisch: Steigung $m = \\tfrac{\\Delta y}{\\Delta x} = \\tfrac{y - 0}{x - 0} = \\tfrac{y}{x}$ der Geraden vom Ursprung zu $P = (\\cos\\alpha, \\sin\\alpha)$. Alternative Sicht: Tangente an den Einheitskreis bei $(1, 0)$ geschnitten mit dem verlängerten Ortsvektor — die Höhe dieses Schnittpunkts ist $\\tan(\\alpha)$ (Namensgeber).
 
-**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P = (\\cos\\alpha, \\sin\\alpha)$. Steigung = $\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{y - 0}{x - 0} = \\dfrac{y}{x}$.
+**Probe:** Bei $\\alpha = 45°$: $y/x = (\\tfrac{\\sqrt{2}}{2})/(\\tfrac{\\sqrt{2}}{2}) = 1 = \\tan 45°$ ✓.
 
-**Alternative Anschauung:** Zeichne die Tangente an den Einheitskreis bei $(1, 0)$. Schneide sie mit dem verlängerten Ortsvektor — die Höhe dieses Schnittpunkts ist $\\tan(\\alpha)$. Daher der Name.
-
-**Probe:** Bei $\\alpha = 45°$: $y/x = \\dfrac{\\sqrt{2}/2}{\\sqrt{2}/2} = 1 = \\tan(45°)$ ✓.`,
+**Typischer Fehler:** $\\tan$ mit einer einzelnen Koordinate ($\\sin$, $\\cos$) oder der Bogenlänge verwechseln — $\\tan$ ist immer ein Quotient $y/x$.`,
     hints: [
       'Formel: $\\tan(\\alpha) = \\dfrac{?}{?}$.',
       '$\\tan = \\sin/\\cos$ — und $\\sin$, $\\cos$ sind welche Koordinaten?',
@@ -270,15 +253,13 @@ export const exercises_u2 = {
     question: 'Warum ist $\\tan(90°)$ nicht definiert?',
     options: ['Weil $\\sin(90°) = 0$', 'Weil $\\cos(90°) = 0$ (Division durch 0)', 'Weil $90°$ zu groß ist', 'Weil $\\tan$ nur bis $45°$ gilt'],
     correctIndex: 1,
-    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Nenner kontrollieren.
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Nenner kontrollieren. Bei $\\cos\\alpha = 0$ entsteht eine Polstelle.
 
-**Rechnung:** Bei $\\alpha = 90°$: $\\sin(90°) = 1$, $\\cos(90°) = 0$. Also $\\tan(90°) = \\dfrac{1}{0}$ — Division durch Null, undefiniert.
+**Rechnung:** Bei $\\alpha = 90°$: $\\sin 90° = 1$, $\\cos 90° = 0$. Also $\\tan 90° = \\tfrac{1}{0}$ — Division durch Null, undefiniert. Geometrisch: Der Punkt liegt bei $(0, 1)$, die Gerade vom Ursprung dorthin ist senkrecht und hat keine endliche Steigung. Weitere Polstellen: $\\alpha = 90° + k \\cdot 180°$ für $k \\in \\mathbb{Z}$, also $90°, 270°, 450°, \\ldots$
 
-**Am Einheitskreis heißt das:** Der Punkt liegt bei $(0, 1)$. Die Gerade vom Ursprung dorthin ist *senkrecht* — sie hat keine endliche Steigung. Daher wächst $\\tan(\\alpha)$ für $\\alpha \\to 90°$ gegen $+\\infty$ (Polstelle).
+**Probe:** $\\sin 90° = 1 \\neq 0$ — der Zähler ist also nicht das Problem. Nur $\\cos 90° = 0$ macht den Quotienten undefiniert. Test der Polstellen-Regel: $\\cos 270° = 0$ ✓, $\\cos 450° = \\cos 90° = 0$ ✓.
 
-**Weitere Polstellen:** $\\tan(\\alpha)$ ist undefiniert bei $\\alpha = 90° + k \\cdot 180°$ für $k \\in \\mathbb{Z}$, also bei $90°, 270°, 450°, \\ldots$.
-
-**Typischer Fehler:** "$\\sin(90°) = 0$" — falsch, es ist $\\sin(90°) = 1$.`,
+**Typischer Fehler:** „$\\sin(90°) = 0$" — falsch, es ist $\\sin(90°) = 1$. Das Problem liegt am Nenner, nicht am Zähler.`,
     hints: [
       'Welche Formel? $\\tan = \\sin/\\cos$. Welche Werte bei $90°$?',
       'Division durch $0$ ist nicht definiert — welcher Wert ist $0$?',
@@ -295,21 +276,13 @@ export const exercises_u2 = {
     question: '[PRÜFUNG] $\\tan(\\alpha)$ ist positiv, wenn:',
     options: ['$\\sin$ und $\\cos$ beide positiv (1. Quadrant) oder beide negativ (3. Quadrant)', 'Nur im 1. Quadrant', '$\\sin$ positiv und $\\cos$ negativ', 'Immer'],
     correctIndex: 0,
-    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Vorzeichenregel für Quotienten.
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Vorzeichenregel für Quotienten anwenden.
 
-**Regel:** $\\dfrac{+}{+} = +$ und $\\dfrac{-}{-} = +$. Also ist $\\tan > 0$, wenn $\\sin$ und $\\cos$ **gleiche Vorzeichen** haben.
+**Rechnung:** $\\tfrac{+}{+} = +$ und $\\tfrac{-}{-} = +$ — also ist $\\tan > 0$, wenn $\\sin$ und $\\cos$ gleiche Vorzeichen haben. Quadranten: Q1 ($x > 0, y > 0$) → $\\tan > 0$. Q2 ($x < 0, y > 0$) → $\\tan < 0$. Q3 ($x < 0, y < 0$) → $\\tan > 0$. Q4 ($x > 0, y < 0$) → $\\tan < 0$. ASTC-Merkhilfe: Im 3. Quadrant ist nur **T**angens positiv ("Take").
 
-**Am Einheitskreis heißt das:**
-- 1. Quadrant: $x > 0$, $y > 0$ → $\\tan > 0$
-- 2. Quadrant: $x < 0$, $y > 0$ → $\\tan < 0$
-- 3. Quadrant: $x < 0$, $y < 0$ → $\\tan > 0$
-- 4. Quadrant: $x > 0$, $y < 0$ → $\\tan < 0$
+**Probe:** $\\tan 200° = \\tan(180° + 20°) = \\tan 20° > 0$ ✓ (3. Quadrant). $\\tan 300° = \\tan(-60°) = -\\tan 60° < 0$ ✓ (4. Quadrant).
 
-**ASTC-Merkhilfe:** Im 3. Quadrant ist nur $\\tan$ positiv ("**T**ake").
-
-**Probe:** $\\tan(200°) = \\tan(180° + 20°) = \\tan(20°) > 0$ ✓ (3. Quadrant).
-
-**Typischer Fehler:** Nur den 1. Quadrant zu sehen — $\\tan$ hat Periode $180°$, daher Positivität auch im 3. Quadrant.`,
+**Typischer Fehler:** Nur den 1. Quadrant als „positiv-Region" sehen — $\\tan$ hat Periode $180°$, daher Positivität auch im 3. Quadrant.`,
     hints: [
       'Formel: $\\tan = \\sin/\\cos$. Wann ist der Bruch positiv?',
       'Zwei Fälle: beide Zahlen positiv ODER beide negativ.',
@@ -586,12 +559,20 @@ Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** �
 $$P = (\\cos(\\alpha),\\; \\sin(\\alpha))$$
 
 Das bedeutet:
-- **$\\cos(\\alpha) = $ x-Koordinate** von $P$
-- **$\\sin(\\alpha) = $ y-Koordinate** von $P$
+- **$\\cos(\\alpha) = $ x-Koordinate** von $P$ (horizontal)
+- **$\\sin(\\alpha) = $ y-Koordinate** von $P$ (vertikal)
 
-Diese Definition gilt für **alle reellen Winkel** — nicht nur $0°$–$90°$.
+Diese Definition gilt für **alle reellen Winkel** — auch für $\\alpha < 0$ oder $\\alpha > 360°$.
 
-**Am Einheitskreis heißt das:** Willst du $\\sin$/$\\cos$ eines beliebigen Winkels bestimmen, zeichne den Punkt auf dem Kreis und lies die Koordinaten ab. Das ist die geometrische Definition.`,
+| Regel | Formel | Beispiel |
+|---|---|---|
+| Koordinaten-Definition | $P=(\\cos\\alpha,\\sin\\alpha)$ | $\\alpha=60°$: $P=(\\tfrac{1}{2},\\tfrac{\\sqrt 3}{2})$ |
+| Wertebereich (folgt aus $r=1$) | $-1\\le\\cos\\alpha\\le 1$, $-1\\le\\sin\\alpha\\le 1$ | $\\cos\\alpha=2$ hat KEINE reelle Lösung |
+| Pythagoras am Einheitskreis | $\\cos^{2}\\alpha+\\sin^{2}\\alpha=1$ | Folgt aus $x^{2}+y^{2}=r^{2}=1$ |
+| Winkel aus Koordinaten | Quadrant aus $(\\operatorname{sgn} x,\\operatorname{sgn} y)$, Referenzwinkel $\\beta=\\arccos(|x|)$ | $(-\\tfrac{\\sqrt 2}{2},\\tfrac{\\sqrt 2}{2})$: 2. Q, $\\beta=45°$ → $\\alpha=180°-45°=135°$ |
+| Quadrantenformel | 1. Q: $\\beta$; 2. Q: $180°-\\beta$; 3. Q: $180°+\\beta$; 4. Q: $360°-\\beta$ | $(-\\tfrac{1}{2},-\\tfrac{\\sqrt 3}{2})$: 3. Q, $\\beta=60°$ → $\\alpha=240°$ |
+
+**Am Einheitskreis heißt das:** Willst du $\\sin$/$\\cos$ eines beliebigen Winkels bestimmen, zeichne den Punkt auf dem Kreis und lies die Koordinaten ab. Umgekehrt: Hast du den Punkt $(x,y)$, bestimme zuerst den Quadranten aus den Vorzeichen, dann den Referenzwinkel aus den Beträgen.`,
       },
       {
         id: 'trig-2-2-s2', type: 'visualization', title: 'Koordinaten ablesen',
@@ -690,20 +671,22 @@ Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln er
       },
       {
         id: 'trig-2-3-s2', type: 'explanation-formal', title: 'Symmetrieformeln',
-        content: `**Spiegelung an der x-Achse** (negativer Winkel):
-$$\\sin(-\\alpha) = -\\sin(\\alpha) \\quad \\text{(ungerade Funktion)}$$
-$$\\cos(-\\alpha) = \\cos(\\alpha) \\quad \\text{(gerade Funktion)}$$
+        content: `| Regel | Formel | Beispiel |
+|---|---|---|
+| Periodizität ($k \\in \\mathbb{Z}$) | $\\sin(\\alpha + k\\cdot 360°) = \\sin\\alpha$, $\\cos(\\alpha + k\\cdot 360°) = \\cos\\alpha$ | $\\sin 390° = \\sin 30° = \\tfrac{1}{2}$ |
+| Spiegelung an $x$-Achse ($\\sin$ ungerade) | $\\sin(-\\alpha) = -\\sin\\alpha$ | $\\sin(-30°) = -\\tfrac{1}{2}$ |
+| Spiegelung an $x$-Achse ($\\cos$ gerade) | $\\cos(-\\alpha) = \\cos\\alpha$ | $\\cos(-30°) = \\tfrac{\\sqrt{3}}{2}$ |
+| Spiegelung an $y$-Achse (Supplement) | $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$ | $\\cos 150° = -\\cos 30° = -\\tfrac{\\sqrt{3}}{2}$ |
+| Punktspiegelung am Ursprung | $\\sin(180° + \\alpha) = -\\sin\\alpha$, $\\cos(180° + \\alpha) = -\\cos\\alpha$ | $\\sin 210° = -\\sin 30° = -\\tfrac{1}{2}$ |
+| Spiegelung an $y=x$ (Komplement) | $\\sin(90° - \\alpha) = \\cos\\alpha$, $\\cos(90° - \\alpha) = \\sin\\alpha$ | $\\sin 80° = \\cos 10° \\approx 0{,}985$ |
+| Tangens (Folgerung) | $\\tan(-\\alpha) = -\\tan\\alpha$ (ungerade) | $\\tan(-45°) = -1$ |
 
-**Spiegelung an der y-Achse** (Supplement):
-$$\\sin(180° - \\alpha) = \\sin(\\alpha)$$
-$$\\cos(180° - \\alpha) = -\\cos(\\alpha)$$
-
-**Punktspiegelung am Ursprung:**
-$$\\sin(180° + \\alpha) = -\\sin(\\alpha)$$
-$$\\cos(180° + \\alpha) = -\\cos(\\alpha)$$
-
-**Spiegelung an der Winkelhalbierenden $y = x$** (Komplementwinkel):
-$$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\\alpha)$$`,
+**Geometrische Deutung:** Jede Spiegelsymmetrie des Einheitskreises ergibt eine Rechenformel — durch passende Wahl der Symmetrie reduziert man jeden Winkel auf einen Wert im 1. Quadranten ($0°$–$90°$).`,
+      },
+      {
+        id: 'trig-2-3-s2b', type: 'visualization', title: 'Periode und Symmetrie am Sinus-Graphen',
+        visualizationId: 'sin-wave-explorer',
+        params: { initialAmplitude: 1, initialFrequency: 1, initialPhase: 0 },
       },
       { id: 'trig-2-3-s3', type: 'exercise', title: 'Aufgabe 1 — Periodizität', exerciseRef: 'ex-trig-2-3-a' },
       { id: 'trig-2-3-s4', type: 'exercise', title: 'Aufgabe 2 — sin negativer Winkel', exerciseRef: 'ex-trig-2-3-b' },
@@ -786,13 +769,21 @@ $$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\
     steps: [
       {
         id: 'trig-2-4-s1', type: 'explanation-formal', title: 'tan als Quotient',
-        content: `$$\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$$
+        content: `| Regel | Formel | Beispiel |
+|---|---|---|
+| Definition | $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{y}{x}$ | $\\tan 45° = \\tfrac{\\sin 45°}{\\cos 45°} = 1$ |
+| Polstellen | $\\tan\\alpha$ undefiniert bei $\\alpha = 90° + k \\cdot 180°$, $k \\in \\mathbb{Z}$ | $\\tan 90°, \\tan 270°, \\tan 450°, \\ldots$ |
+| Periode | $\\tan(\\alpha + 180°) = \\tan\\alpha$ — Periode ist $180°$ (nicht $360°$!) | $\\tan 200° = \\tan 20°$ |
+| ASTC-Vorzeichen | $\\tan > 0$ in Q1, Q3 · $\\tan < 0$ in Q2, Q4 | $\\tan 210° > 0$ (Q3); $\\tan 150° < 0$ (Q2) |
+| Ungerade Funktion | $\\tan(-\\alpha) = -\\tan\\alpha$ | $\\tan(-60°) = -\\sqrt{3}$ |
+| Wertebereich | $\\tan\\colon \\mathbb{R} \\setminus \\{90° + k \\cdot 180°\\} \\to \\mathbb{R}$ (unbeschränkt) | $\\tan\\alpha = 100$ hat reelle Lösung bei $\\alpha \\approx 89{,}43°$ |
 
-**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P(\\cos\\alpha, \\sin\\alpha)$. Die Steigung der Ursprungsgerade ist $m = \\dfrac{y}{x}$.
-
-**Wichtig:** $\\tan$ ist **nicht definiert**, wenn $\\cos(\\alpha) = 0$, also bei $\\alpha = 90°, 270°, \\ldots$. Dort gibt es senkrechte Asymptoten — die Gerade ist senkrecht und hat keine endliche Steigung.
-
-**Periode:** Der Tangens hat Periode $180°$ (nicht $360°$!), weil die Steigung einer Geraden sich nach einer halben Drehung wiederholt: die Gerade zeigt zwar in die andere Richtung, die Steigung bleibt.`,
+**Geometrische Deutung:** $\\tan(\\alpha)$ ist die Steigung der Geraden vom Ursprung zum Punkt $P = (\\cos\\alpha, \\sin\\alpha)$. Bei Polstellen ist die Gerade senkrecht (Steigung undefiniert). Die Steigung wiederholt sich nach einer halben Drehung — daher Periode $180°$.`,
+      },
+      {
+        id: 'trig-2-4-s1b', type: 'visualization', title: 'tan als Steigung der Ursprungsgerade',
+        visualizationId: 'trig-explorer',
+        params: { initialAngle: 30, showTangent: true },
       },
       { id: 'trig-2-4-s2', type: 'exercise', title: 'Aufgabe 1 — tan geometrisch', exerciseRef: 'ex-trig-2-4-a' },
       { id: 'trig-2-4-s3', type: 'exercise', title: 'Aufgabe 2 — tan(90°)', exerciseRef: 'ex-trig-2-4-b' },

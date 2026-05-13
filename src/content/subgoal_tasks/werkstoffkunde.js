@@ -2626,4 +2626,857 @@ export const werkstoffkundeSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // werk-2-3 — Fe-C-Diagramm & Wärmebehandlung
+  //   SG 0: fe-c-phasen  · SG 1: eutektoid    · SG 2: haertbarkeit
+  //   SG 3: waermebehandl · SG 4: verguten     · SG 5: abkuehlrate
+  // ─────────────────────────────────────────────────────────────────────────
+  'werk-2-3': {
+    // ───────────── SG 0: Fe-C-Phasen (Ferrit/Austenit/Perlit/Martensit) ─────────────
+    0: [
+      tag(
+        tf(
+          'Ferrit ($\\alpha$-Eisen) hat ein **kubisch raumzentriertes** (krz) Kristallgitter und ist die weiche, zähe Phase, die bei Raumtemperatur stabil ist.',
+          true,
+          `**Ansatz:** Im Fe-C-Diagramm werden Phasen über ihre Kristallstruktur und ihren Stabilitätsbereich definiert.
+
+**Rechnung:** $\\alpha$-Eisen (Ferrit): krz, stabil bei $T < 911\\,°\\text{C}$, löst maximal $\\approx 0{,}02\\,\\%$ C. $\\gamma$-Eisen (Austenit): kfz, stabil bei $911$–$1392\\,°\\text{C}$, löst bis $2{,}06\\,\\%$ C bei $1147\\,°\\text{C}$.
+
+**Probe:** Eigenschaften: Ferrit hat $R_m \\approx 250$–$300\\,\\text{MPa}$, $A \\geq 30\\,\\%$ — typisch für zähe, weiche Phase. ✓
+
+**Typischer Fehler:** Ferrit und Austenit verwechseln. Eselsbrücke: $\\alpha$ wie „**a**lpha = **a**lltäglich / bei Raumtemp", $\\gamma$ wie „**g**lüh-Hitze".`,
+          [
+            'Welche Kristallstruktur hat $\\alpha$-Eisen?',
+            'Krz vs. kfz — was bedeutet das jeweils?',
+            'Ferrit ist die Phase, die wir bei Raumtemperatur normalerweise im Stahl haben.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Welche der folgenden Phasen existiert im Fe-C-System **nur bei hohen Temperaturen** (über $\\approx 723\\,°\\text{C}$) und löst dort viel Kohlenstoff?',
+          [
+            'Austenit ($\\gamma$-Eisen, kfz)',
+            'Ferrit ($\\alpha$-Eisen, krz)',
+            'Perlit (lamellares Ferrit-Zementit)',
+            'Martensit (verzerrtes nadelförmiges Gefüge)',
+          ],
+          0,
+          `**Ansatz:** Austenit hat ein kfz-Gitter mit größeren Lücken (Oktaeder-Lücken) als das krz-Gitter des Ferrits — deshalb löst es deutlich mehr Kohlenstoff.
+
+**Rechnung:** C-Löslichkeit: Austenit max. $2{,}06\\,\\%$ C bei $1147\\,°\\text{C}$. Ferrit max. $\\approx 0{,}02\\,\\%$ C bei $723\\,°\\text{C}$ — also Faktor $\\approx 100$ weniger.
+
+**Probe:** Beim Härten wird der Stahl erst austenitisiert ($> 723\\,°\\text{C}$, oft $\\approx 850\\,°\\text{C}$), damit der Kohlenstoff im kfz-Gitter gelöst werden kann. ✓
+
+**Typischer Fehler:** Perlit oder Martensit als „Hochtemperatur-Phase" annehmen. Beide entstehen erst beim **Abkühlen** aus Austenit.`,
+          [
+            'Welche Phase löst viel Kohlenstoff?',
+            'Welche Phase existiert oberhalb von $\\approx 723\\,°\\text{C}$?',
+            'Kfz-Gitter (Austenit) hat größere Lücken als krz (Ferrit).',
+          ],
+          {
+            1: 'Ferrit existiert bei tiefen Temperaturen (bis $911\\,°\\text{C}$ als $\\alpha$), löst aber kaum Kohlenstoff — nicht die gesuchte Hochtemperatur-Phase.',
+            2: 'Perlit ist eine **lamellare Mischung** aus Ferrit und Zementit, die bei langsamer Abkühlung aus Austenit entsteht — keine eigenständige Hochtemperatur-Phase.',
+            3: 'Martensit entsteht beim **schnellen Abschrecken** aus Austenit — er existiert bei Raumtemperatur, nicht in der Hitze.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Welche der folgenden Gefügebeschreibungen entspricht **Martensit**?',
+          [
+            'Stark verzerrtes, nadel- oder plattenförmiges Gefüge mit zwangsgelöstem Kohlenstoff — sehr hart, spröde',
+            'Lamellare Anordnung von weichem Ferrit und hartem Zementit',
+            'Kubisch raumzentriertes Grundgefüge mit gelöstem Kohlenstoff $\\leq 0{,}02\\,\\%$',
+            'Kubisch flächenzentriertes Hochtemperatur-Gefüge mit gelöstem Kohlenstoff bis $2\\,\\%$',
+          ],
+          0,
+          `**Ansatz:** Martensit entsteht durch eine **diffusionslose** Gitterumklapp-Umwandlung aus Austenit beim schnellen Abschrecken. Der Kohlenstoff bleibt zwangsgelöst und verzerrt das Gitter.
+
+**Rechnung:** Das ursprüngliche kfz-Austenitgitter klappt während des Abschreckens in ein tetragonal verzerrtes krz-Gitter um. Die Nadeln entstehen entlang bestimmter Kristallrichtungen und sind unter dem Mikroskop charakteristisch.
+
+**Probe:** Härte $\\approx 60$–$65\\,\\text{HRC}$ bei eutektoidem C-Gehalt — höchste Härte aller Stahlgefüge. ✓
+
+**Typischer Fehler:** Martensit und Perlit verwechseln, weil beide aus Austenit entstehen. Perlit = Lamellen (langsam), Martensit = Nadeln (schnell).`,
+          [
+            'Wie sieht Martensit unter dem Mikroskop aus?',
+            'Was passiert mit dem Kohlenstoff beim Abschrecken?',
+            'Verzerrtes Gitter → hohe Härte.',
+          ],
+          {
+            1: 'Diese Beschreibung passt zu **Perlit** (lamellares Ferrit-Zementit-Gemisch), nicht zu Martensit.',
+            2: 'Diese Beschreibung passt zu **Ferrit** mit gelöstem Kohlenstoff — die Grundphase, nicht Martensit.',
+            3: 'Diese Beschreibung passt zu **Austenit** (kfz, Hochtemperatur, hohe C-Löslichkeit) — der Ausgangsstoff für Martensit, aber nicht Martensit selbst.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender sagt: „Perlit und Martensit sind dasselbe — beide entstehen beim Abkühlen aus Austenit." Wo liegt der Fehler?',
+          [
+            'Beide entstehen zwar aus Austenit, aber bei **unterschiedlichen Abkühlgeschwindigkeiten**: Perlit bei langsamer Abkühlung (Diffusion → Lamellen), Martensit bei schnellem Abschrecken (diffusionsloser Gitterumklapp → Nadeln). Härte und Eigenschaften sind völlig verschieden.',
+            'Die Aussage ist korrekt — die Begriffe sind synonym.',
+            'Perlit entsteht aus Ferrit, nicht aus Austenit — der Studierende verwechselt die Ausgangsphase.',
+            'Martensit existiert nur in Aluminium-Legierungen, nicht im Fe-C-System.',
+          ],
+          0,
+          `**Ansatz:** Die Abkühlgeschwindigkeit entscheidet, ob Diffusion stattfinden kann oder nicht. Daraus ergeben sich zwei völlig verschiedene Gefüge.
+
+**Rechnung:** Langsame Abkühlung: Kohlenstoff hat Zeit zur Diffusion → bildet Zementit-Lamellen mit Ferrit dazwischen → **Perlit** ($\\approx 20$–$30\\,\\text{HRC}$, weich, zäh). Schnelle Abkühlung: keine Zeit für Diffusion → C bleibt zwangsgelöst → **Martensit** ($\\approx 60\\,\\text{HRC}$, hart, spröde).
+
+**Probe:** TTT-Diagramm zeigt die kritischen Abkühlraten für jedes Gefüge — Perlit-Nase und Martensit-Start ($M_s$) sind getrennte Bereiche. ✓
+
+**Typischer Fehler:** Genau dieser Sprachgebrauch: „Beide kommen aus Austenit, also dasselbe". Die Phase, aus der etwas entsteht, sagt nichts über das Endgefüge.`,
+          [
+            'Worin unterscheiden sich Perlit und Martensit physikalisch?',
+            'Abkühlrate entscheidet zwischen Diffusion und Umklapp.',
+            'Verschiedene Gefüge = verschiedene Eigenschaften.',
+          ],
+          {
+            1: 'Die Begriffe sind alles andere als synonym — es sind zwei völlig unterschiedliche Gefüge mit unterschiedlichen Härten und Anwendungen.',
+            2: 'Perlit entsteht sehr wohl aus Austenit (bei langsamer Abkühlung). Ferrit ist nur ein Bestandteil des Perlits, nicht seine Ausgangsphase.',
+            3: 'Martensit ist eine Standardphase im Fe-C-System — der Begriff stammt sogar aus der Stahlmetallurgie und wurde erst später auf andere Systeme übertragen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        matching(
+          'Ordne jeder Phase im Fe-C-System ihre charakteristische Eigenschaft zu.',
+          [
+            { left: 'Ferrit ($\\alpha$-Eisen)',                    right: 'krz, weich/zäh, kaum C-Löslichkeit ($\\leq 0{,}02\\,\\%$)' },
+            { left: 'Austenit ($\\gamma$-Eisen)',                  right: 'kfz, nur bei hoher Temperatur ($> 723\\,°\\text{C}$), C-Löslichkeit bis $2\\,\\%$' },
+            { left: 'Perlit',                                     right: 'lamellares Gemisch aus Ferrit und Zementit, bei langsamer Abkühlung' },
+            { left: 'Martensit',                                  right: 'nadelförmiges Gefüge mit zwangsgelöstem C, höchste Härte' },
+          ],
+          `**Ansatz:** Jede Phase im Fe-C-System hat eine eindeutige Kombination aus Kristallstruktur, Stabilitätsbereich und Eigenschaft.
+
+**Rechnung:** Ferrit (krz, Raumtemperatur). Austenit (kfz, Hitze). Perlit (Lamellen, langsam). Martensit (Nadeln, schnell). Die vier Beschreibungen sind paarweise eindeutig.
+
+**Probe:** Im Schliffbild eines Baustahls erkennt man bei Raumtemperatur Ferrit (helle Bereiche) + Perlit (lamellar gestreift). Härtetheoretisch bestätigt: Ferrit weich, Martensit hart. ✓
+
+**Typischer Fehler:** Austenit als Raumtemperatur-Phase annehmen — er ist nur bei hoher Temperatur stabil (außer in austenitischen Edelstählen, dort durch Legierung stabilisiert).`,
+          [
+            'Welche Phase hat welche Kristallstruktur (krz/kfz)?',
+            'Welche Phase ist lamellar, welche nadelförmig?',
+            'C-Löslichkeit + Härte als Unterscheidungsmerkmale.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+    ],
+
+    // ───────────── SG 1: Eutektoider Punkt ─────────────
+    1: [
+      tag(
+        tf(
+          'Der eutektoide Punkt im Fe-C-Diagramm liegt bei $\\approx 0{,}83\\,\\%$ C und $723\\,°\\text{C}$ — dort wandelt Austenit beim Abkühlen direkt in **Perlit** um.',
+          true,
+          `**Ansatz:** Eutektoider Punkt: charakteristische C-Konzentration und Temperatur, bei der eine feste Phase (Austenit) direkt in ein lamellares Gemisch zweier anderer fester Phasen (Ferrit + Zementit = Perlit) umwandelt.
+
+**Rechnung:** Reaktion: $\\gamma\\text{-Eisen (Austenit)} \\xrightarrow{723\\,°\\text{C}} \\alpha\\text{-Eisen (Ferrit)} + \\text{Fe}_3\\text{C (Zementit)}$. Das Produkt $\\alpha + \\text{Fe}_3\\text{C}$ ist Perlit.
+
+**Probe:** Stahl mit genau $0{,}83\\,\\%$ C besteht nach langsamer Abkühlung aus $100\\,\\%$ Perlit — keine Voraus- oder Begleitphase. ✓
+
+**Typischer Fehler:** „Eutektoid" und „eutektisch" verwechseln. Eutektisch ist die analoge Umwandlung **aus der Schmelze** (bei $4{,}3\\,\\%$ C / $1147\\,°\\text{C}$ → Ledeburit), eutektoid passiert im Festen.`,
+          [
+            'Was ist der Unterschied zwischen eutektisch und eutektoid?',
+            'Welche Phase wandelt sich am eutektoiden Punkt um?',
+            'Konzentration und Temperatur merken.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welcher Vorgang findet beim Abkühlen eines Stahls mit eutektoidem Kohlenstoffgehalt ($\\approx 0{,}83\\,\\%$ C) am eutektoiden Punkt ($723\\,°\\text{C}$) statt?',
+          [
+            'Austenit wandelt direkt in das lamellare Gemisch Perlit (Ferrit + Zementit) um',
+            'Schmelze erstarrt zu Austenit',
+            'Ferrit wandelt in Austenit um (Phasenumwandlung beim Erwärmen)',
+            'Martensit entsteht durch Diffusion',
+          ],
+          0,
+          `**Ansatz:** Eutektoide Umwandlung im Fest-Zustand: eine Phase zerfällt isothermisch in zwei feste Phasen, die lamellar angeordnet sind.
+
+**Rechnung:** $\\gamma$ (Austenit, $0{,}83\\,\\%$ C) → $\\alpha$ (Ferrit, $\\leq 0{,}02\\,\\%$ C) + Fe$_3$C (Zementit, $6{,}67\\,\\%$ C). Massenbilanz: $0{,}83 = 0{,}02 \\cdot (1-f) + 6{,}67 \\cdot f$ → $f \\approx 12\\,\\%$ Zementit, $88\\,\\%$ Ferrit (im Perlit).
+
+**Probe:** Schliffbild eines eutektoiden Stahls bei Raumtemperatur: ausschließlich Perlit-Lamellen, keine freien Ferrit- oder Zementit-Bereiche. ✓
+
+**Typischer Fehler:** Die Umwandlung beim Schmelzen oder Erwärmen mit der eutektoiden Umwandlung verwechseln.`,
+          [
+            'Was bedeutet eutektoid (nicht eutektisch)?',
+            'Welche Phase ist die Ausgangsphase?',
+            'Lamellares Endgefüge → Perlit.',
+          ],
+          {
+            1: 'Die Erstarrung aus der Schmelze passiert beim **eutektischen** Punkt ($4{,}3\\,\\%$ C, $1147\\,°\\text{C}$), nicht beim eutektoiden.',
+            2: 'Das wäre die Umkehr-Reaktion beim Aufheizen — die Frage beschreibt aber den Abkühlvorgang.',
+            3: 'Martensit entsteht **nicht** durch Diffusion und auch nicht am eutektoiden Punkt, sondern durch diffusionsloses Abschrecken auf Raumtemperatur.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welches Gefüge stellt sich nach **langsamer** Abkühlung eines Stahls mit genau $0{,}83\\,\\%$ C ein?',
+          [
+            'Reiner Perlit ($100\\,\\%$ lamellares Ferrit-Zementit-Gefüge)',
+            'Ferrit mit Perlit-Inseln (untereutektoid)',
+            'Perlit mit Zementit-Netzwerk (übereutektoid)',
+            'Reiner Martensit',
+          ],
+          0,
+          `**Ansatz:** Genau am eutektoiden Punkt wandelt Austenit vollständig in Perlit um — keine Voraus- oder Restphasen.
+
+**Rechnung:** Stahl mit $0{,}83\\,\\%$ C: gesamte $\\gamma$-Menge geht in $\\alpha + \\text{Fe}_3\\text{C}$ über. Da der C-Gehalt exakt eutektoid ist, fehlt der „Überschuss" sowohl an Ferrit als auch an Zementit, der bei untereutektoiden bzw. übereutektoiden Stählen zuerst ausgeschieden würde.
+
+**Probe:** Schliffbild zeigt $100\\,\\%$ feinlamellaren Perlit, keine freien Ferrit-Bereiche, kein Korngrenzen-Zementit. ✓
+
+**Typischer Fehler:** Voraus- oder Begleit-Phasen erwarten, obwohl der C-Gehalt exakt eutektoid ist.`,
+          [
+            'Was bedeutet „genau $0{,}83\\,\\%$ C"?',
+            'Reaktion ohne Vorausscheidungen?',
+            'Massenbilanz: keine Restphase, alles Perlit.',
+          ],
+          {
+            1: 'Ferrit-Inseln entstehen bei **unter**eutektoidem Stahl ($< 0{,}83\\,\\%$ C): erst Ferrit scheidet aus, dann der Rest als Perlit.',
+            2: 'Zementit-Netzwerk entsteht bei **über**eutektoidem Stahl ($> 0{,}83\\,\\%$ C): erst Sekundärzementit scheidet auf den Korngrenzen aus.',
+            3: 'Reiner Martensit entsteht nur beim **schnellen Abschrecken** — bei langsamer Abkühlung gibt es keine martensitische Umwandlung.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender schreibt: „Der eutektische Punkt liegt bei $0{,}83\\,\\%$ C und $723\\,°\\text{C}$." Wo liegt der Fehler?',
+          [
+            'Verwechslung der Begriffe: $0{,}83\\,\\%$ C / $723\\,°\\text{C}$ ist der **eutektoide** Punkt (Festkörperumwandlung). Der **eutektische** Punkt liegt bei $4{,}3\\,\\%$ C / $1147\\,°\\text{C}$ und beschreibt die Erstarrung aus der Schmelze (Ledeburit-Bildung).',
+            'Die Werte sind korrekt — eutektisch und eutektoid sind synonym.',
+            'Der Punkt liegt eigentlich bei $0{,}02\\,\\%$ C, nicht $0{,}83\\,\\%$.',
+            'Die Temperatur muss in Kelvin angegeben werden, sonst ist die Aussage falsch.',
+          ],
+          0,
+          `**Ansatz:** „Eutektisch" und „eutektoid" bezeichnen analoge, aber **verschiedene** Umwandlungen: eutektisch = aus Schmelze, eutektoid = im Festkörper.
+
+**Rechnung:** Eutektischer Punkt im Fe-C-Diagramm: $4{,}3\\,\\%$ C bei $1147\\,°\\text{C}$ — Schmelze erstarrt zu Austenit + Zementit (= Ledeburit). Eutektoider Punkt: $0{,}83\\,\\%$ C bei $723\\,°\\text{C}$ — Austenit zerfällt in Ferrit + Zementit (= Perlit).
+
+**Probe:** Bei einem Stahl ($< 2{,}06\\,\\%$ C) gibt es **nur** die eutektoide Umwandlung — die eutektische findet erst bei Gusseisen-C-Gehalten statt. ✓
+
+**Typischer Fehler:** Genau die Verwechslung dieser Endungen, weil sie ähnlich klingen.`,
+          [
+            'Worin unterscheiden sich eutektisch und eutektoid sprachlich?',
+            'Welche Phasenumwandlung gehört zu welchem Begriff?',
+            'Sind die Werte $0{,}83\\,\\%$ / $723\\,°\\text{C}$ überhaupt richtig — und für welche Umwandlung?',
+          ],
+          {
+            1: 'Die Begriffe sind nicht synonym — sie bezeichnen analoge Umwandlungen in unterschiedlichen Zuständen (Schmelze vs. Festkörper).',
+            2: '$0{,}83\\,\\%$ C ist der korrekte eutektoide C-Gehalt — das ist nicht der Fehler.',
+            3: 'Die Einheit „°C" ist in der Werkstoffkunde Standard — Kelvin wäre unüblich und nicht der zentrale Fehler.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welches Gefüge ist bei einem **untereutektoiden** Stahl (z. B. $0{,}45\\,\\%$ C) nach langsamer Abkühlung dominant?',
+          [
+            'Voraus-Ferrit + Perlit (Perlit-Inseln zwischen Ferrit-Körnern)',
+            'Reiner Perlit ohne Voraus-Ferrit',
+            'Voraus-Zementit + Perlit',
+            'Reiner Martensit',
+          ],
+          0,
+          `**Ansatz:** Untereutektoid ($< 0{,}83\\,\\%$ C): beim Abkühlen scheidet zuerst Voraus-Ferrit aus, der Rest-Austenit erreicht beim Abkühlen den eutektoiden Punkt und wandelt dann komplett in Perlit um.
+
+**Rechnung:** Hebelregel: $0{,}45\\,\\%$ C, Ferrit hat $0{,}02\\,\\%$ C, Perlit hat $0{,}83\\,\\%$ C. Perlit-Anteil $\\approx (0{,}45-0{,}02)/(0{,}83-0{,}02) \\approx 53\\,\\%$, Ferrit-Anteil $\\approx 47\\,\\%$.
+
+**Probe:** Schliffbild von C45 nach Normalglühen: deutliche Mischung aus weißen Ferrit-Körnern und lamellaren Perlit-Bereichen. ✓
+
+**Typischer Fehler:** Auch bei $0{,}45\\,\\%$ C reines Perlit erwarten — gilt nur bei genau $0{,}83\\,\\%$ C.`,
+          [
+            'Untereutektoid: weniger C als $0{,}83\\,\\%$ — was passiert beim Abkühlen zuerst?',
+            'Hebelregel-Anwendung: Ferrit-Anteil + Perlit-Anteil.',
+            'Endgefüge enthält BEIDES: Ferrit + Perlit.',
+          ],
+          {
+            1: 'Reiner Perlit entsteht nur am eutektoiden Punkt ($0{,}83\\,\\%$ C) — $0{,}45\\,\\%$ ist deutlich darunter.',
+            2: 'Voraus-Zementit entsteht bei **übereutektoidem** Stahl ($> 0{,}83\\,\\%$ C) — hier ist der C-Gehalt zu niedrig.',
+            3: 'Martensit entsteht beim schnellen Abschrecken, nicht bei langsamer Abkühlung.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['eutektoid'] },
+      ),
+    ],
+
+    // ───────────── SG 2: Härtbarkeit ─────────────
+    2: [
+      tag(
+        tf(
+          'Stähle lassen sich durch Abschrecken nur dann sinnvoll zu Martensit härten, wenn ihr Kohlenstoffgehalt im Bereich $\\approx 0{,}3$–$0{,}8\\,\\%$ liegt — darunter zu wenig C für Martensit-Bildung, darüber wird die Probe zu spröde.',
+          true,
+          `**Ansatz:** Martensit-Bildung erfordert genügend zwangsgelösten Kohlenstoff im Gitter, um die nötige Gitterverzerrung (= Härtungseffekt) zu erzeugen. Zu viel C macht den Stahl spröde und rissempfindlich.
+
+**Rechnung:** Bei $< 0{,}3\\,\\%$ C: Martensit-Härte gerade einmal $\\approx 40\\,\\text{HRC}$ — kaum besser als Vergütungsstähle bei Raumtemperatur. Bei $> 0{,}8\\,\\%$ C: $> 65\\,\\text{HRC}$, aber sehr spröde und rissanfällig beim Abschrecken.
+
+**Probe:** Klassische Vergütungsstähle haben $0{,}3$–$0{,}5\\,\\%$ C (C45, 42CrMo4). Werkzeugstähle gehen bis $\\approx 1\\,\\%$ C (C75, C100W2). Darüber meist Gusseisen-Bereich. ✓
+
+**Typischer Fehler:** Reines Eisen ($\\approx 0\\,\\%$ C) härten wollen — ohne Kohlenstoff entsteht beim Abschrecken nur etwas anderes Ferrit, kein Martensit.`,
+          [
+            'Was braucht es für Martensit-Bildung?',
+            'Welche Werkstoffe sind im Bereich $0{,}3$–$0{,}8\\,\\%$ C?',
+            'Zu wenig C = kein Härte-Effekt; zu viel C = spröde.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Baustahl S235 hat einen Kohlenstoffgehalt von ca. $0{,}17\\,\\%$ C. Lässt sich dieser Stahl durch Abschrecken sinnvoll härten?',
+          [
+            'Nein — $0{,}17\\,\\%$ C ist zu wenig für nennenswerte Martensit-Härtung. Erst ab $\\approx 0{,}3\\,\\%$ C wird Martensit nutzbar hart.',
+            'Ja — jeder Stahl ist härtbar, der C-Gehalt spielt keine Rolle.',
+            'Ja — gerade weiche Stähle nehmen die Härtung besonders gut auf.',
+            'Nein — Baustahl ist generell nicht härtbar, weil er kein Eisen enthält.',
+          ],
+          0,
+          `**Ansatz:** Martensit-Härte hängt direkt vom zwangsgelösten Kohlenstoff ab. Unter $0{,}3\\,\\%$ C ist die Härte zu gering, um eine sinnvolle Verbesserung gegenüber dem unbehandelten Zustand zu erzielen.
+
+**Rechnung:** Bei $0{,}17\\,\\%$ C theoretisch erreichbare Martensit-Härte: $\\approx 35\\,\\text{HRC}$. Dafür den Stahl auf $> 900\\,°\\text{C}$ aufheizen und schnell abschrecken (verzugsanfällig, teuer) — der geringe Härtegewinn rechtfertigt den Aufwand nicht.
+
+**Probe:** S235 wird in der Praxis nicht durchgehärtet, sondern als zähes Konstruktionsmaterial genutzt — bei Bedarf an höheren Festigkeiten wechselt man auf Vergütungsstähle (C45, 42CrMo4). ✓
+
+**Typischer Fehler:** Die Anwesenheit von Eisen automatisch mit Härtbarkeit gleichsetzen.`,
+          [
+            'Welchen Bereich des C-Gehalts braucht es zur Härtbarkeit?',
+            'Liegt $0{,}17\\,\\%$ in diesem Bereich?',
+            'Was passiert mit der Martensit-Härte unter $0{,}3\\,\\%$ C?',
+          ],
+          {
+            1: 'Genau das ist der Fehler — der C-Gehalt ist entscheidend. Ohne genug C kein Martensit-Effekt.',
+            2: 'Genau das Gegenteil: zu weiche Stähle (zu wenig C) lassen sich nicht effektiv härten.',
+            3: 'Baustahl enthält selbstverständlich Eisen — das ist sogar der Hauptbestandteil. Der Fehler liegt im C-Gehalt, nicht im Eisen.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Stahl mit $1{,}2\\,\\%$ C wird gehärtet. Welches Problem tritt typischerweise auf?',
+          [
+            'Hohe Härte ($> 65\\,\\text{HRC}$), aber sehr spröde und rissanfällig — Abschrecken kann Härterisse erzeugen.',
+            'Der Stahl wird sehr weich, weil zu viel Kohlenstoff die Härtung verhindert.',
+            'Der Stahl wandelt sich gar nicht um — keine Härtung möglich.',
+            'Der Stahl schmilzt beim Aufheizen, weil $1{,}2\\,\\%$ C den Schmelzpunkt drastisch senkt.',
+          ],
+          0,
+          `**Ansatz:** Bei sehr hohem C-Gehalt (übereutektoid) erreicht der Martensit zwar maximale Härte, aber das Gitter ist so verzerrt, dass die Probe rissempfindlich wird.
+
+**Rechnung:** $1{,}2\\,\\%$ C → Martensit-Härte um $65$–$67\\,\\text{HRC}$. Gleichzeitig: hohes Spannungsniveau beim Abschrecken → Härterisse. In der Praxis: Werkzeugstähle mit so hohem C werden in Öl statt Wasser abgeschreckt (sanftere Abschreckung).
+
+**Probe:** Werkzeugstähle C100, C105 haben $1\\,\\%$–$1{,}1\\,\\%$ C — werden mit Sondervorkehrungen gehärtet (kontrolliertes Anlassen direkt im Anschluss). ✓
+
+**Typischer Fehler:** Annahme „mehr C = mehr Härte ohne Nebenwirkung". Über $0{,}8\\,\\%$ steigt zwar die Härte weiter, aber die Praxis-Sprödigkeit nimmt überproportional zu.`,
+          [
+            'Was passiert mit der Sprödigkeit bei steigendem C-Gehalt?',
+            'Welche Stähle haben $\\approx 1\\,\\%$ C?',
+            'Härterisse als Folge von hoher Sprödigkeit + Eigenspannungen.',
+          ],
+          {
+            1: '$1{,}2\\,\\%$ C macht den Stahl beim Härten **härter**, nicht weicher — das Gegenteil wäre falsch.',
+            2: 'Die Umwandlung findet sehr wohl statt — sogar besonders ausgeprägt. Das Problem ist die Sprödigkeit, nicht das Ausbleiben der Härtung.',
+            3: '$1{,}2\\,\\%$ C senkt zwar den Schmelzpunkt etwas (auf $\\approx 1450\\,°\\text{C}$), aber bei der Härtetemperatur ($\\approx 800\\,°\\text{C}$) ist der Stahl weit von der Schmelze entfernt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Lehrling versucht, ein reines Eisen-Blech ($\\approx 0\\,\\%$ C) durch Aufheizen und Abschrecken in Wasser zu härten. Das Ergebnis ist enttäuschend weich. Wo liegt der Hauptfehler?',
+          [
+            'Ohne Kohlenstoff entsteht beim Abschrecken kein Martensit — die nötige Gitterverzerrung fehlt. Reines Eisen ist nicht durch Wärmebehandlung härtbar.',
+            'Die Wassertemperatur war zu hoch — bei korrektem Eiswasser wäre Martensit entstanden.',
+            'Reines Eisen ist generell härter als jeder Stahl — die Messung muss falsch sein.',
+            'Vor dem Härten muss das Eisen mit Stickstoff aufgekohlt werden.',
+          ],
+          0,
+          `**Ansatz:** Martensit ist eine vom Kohlenstoff erzwungene Gitterverzerrung. Ohne C → keine Verzerrung → keine Härtung durch Abschrecken.
+
+**Rechnung:** Beim Abkühlen wandelt reines Eisen lediglich vom kfz-Austenit-Gitter (Hochtemperatur) zurück ins krz-Ferrit-Gitter (Raumtemperatur) — ohne Verzerrung. Das Ergebnis ist normales weiches Eisen.
+
+**Probe:** Härte von reinem $\\alpha$-Eisen: $\\approx 80$–$100\\,\\text{HV}$, unabhängig von Abkühlrate. ✓
+
+**Typischer Fehler:** Die Härtung als rein temperaturgesteuerten Effekt sehen — sie ist in Wirklichkeit ein chemisch-strukturelles Phänomen, das Kohlenstoff voraussetzt.`,
+          [
+            'Was ist die Voraussetzung für Martensit-Bildung?',
+            'Reines Eisen — hat es genug C?',
+            'Härtung = mehr als nur „schnell abkühlen".',
+          ],
+          {
+            1: 'Die Wassertemperatur ist nicht das Hauptproblem — selbst in flüssigem Stickstoff würde reines Eisen nicht härten.',
+            2: 'Reines Eisen ist **weicher** als die meisten Stähle, nicht härter. Stahl-Festigkeit kommt gerade vom Kohlenstoff.',
+            3: 'Tatsächlich wird im Einsatzhärten Kohlenstoff (nicht Stickstoff) eingebracht. Aber: Aufkohlen + Härten wäre die Lösung — der Lehrling hat es jedoch noch nicht getan.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Für eine **Druckfeder** (Federstahl) wird hohe Streckgrenze und ausreichende Zähigkeit benötigt. Welcher C-Gehalt ist typischerweise sinnvoll?',
+          [
+            'Etwa $0{,}55$–$0{,}65\\,\\%$ C (z. B. C60, 60SiCr7) — gut härtbar und nach Vergütung sehr federelastisch',
+            'Etwa $0{,}05\\,\\%$ C (Tiefziehstahl) — weil weich = elastisch',
+            'Etwa $2\\,\\%$ C — möglichst viel C für höchste Festigkeit',
+            'C-Gehalt ist für Federstähle bedeutungslos',
+          ],
+          0,
+          `**Ansatz:** Federstähle brauchen hohe Streckgrenze (elastisches Verhalten weit hoch ausgedehnt) und ausreichende Zähigkeit. Beides erreicht man im mittleren bis oberen C-Bereich der Härtbarkeit nach Vergütung.
+
+**Rechnung:** Typische Federstähle: C55, C60, C75, 51CrV4, 60SiCr7. C-Gehalte zwischen $0{,}55$ und $0{,}75\\,\\%$. Nach Vergütung (Härten + mittleres Anlassen bei $\\approx 400\\,°\\text{C}$) entsteht angelassener Martensit mit $R_e \\approx 1200$–$1500\\,\\text{MPa}$.
+
+**Probe:** Werkstoff-Datenblatt 60SiCr7: $0{,}55$–$0{,}65\\,\\%$ C, $R_m \\approx 1700\\,\\text{MPa}$, ausreichende Bruchdehnung. ✓
+
+**Typischer Fehler:** Federn als „möglichst weich" oder „möglichst hart" auslegen. Federelastizität braucht hohe Streckgrenze — also den oberen härtbaren C-Bereich.`,
+          [
+            'Welche Streckgrenze brauchen Federn?',
+            'Tiefziehstahl ist zu weich, Werkzeugstahl zu spröde.',
+            'Optimum: oberer Bereich des härtbaren C-Fensters.',
+          ],
+          {
+            1: 'Tiefziehstahl hat zwar gute Verformbarkeit, aber viel zu niedrige Streckgrenze — der würde sich plastisch verbiegen statt federn.',
+            2: '$2\\,\\%$ C liegt im Gusseisen-Bereich — solche Werkstoffe sind weder kalt umformbar noch ausreichend zäh für Federn.',
+            3: 'Genau das Gegenteil — der C-Gehalt steuert die Härtbarkeit und damit die erreichbare Streckgrenze.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+    ],
+
+    // ───────────── SG 3: Wärmebehandlungen (Glühen/Härten/Vergüten) ─────────────
+    3: [
+      tag(
+        tf(
+          'Glühen, Härten und Vergüten sind drei zentrale Wärmebehandlungen für Stahl: Glühen stellt ein Gleichgewichts-Gefüge ein, Härten erzeugt Martensit, Vergüten kombiniert Härten mit Anlassen.',
+          true,
+          `**Ansatz:** Wärmebehandlungen werden über drei Parameter charakterisiert: Glüh-/Härtetemperatur, Haltezeit, Abkühlung.
+
+**Rechnung:** Glühen (langsame Abkühlung im Ofen) → Diffusion → Gleichgewichts-Gefüge (Ferrit + Perlit). Härten (Abschrecken in Wasser/Öl) → kein Gleichgewicht → Martensit. Vergüten (Härten + Anlassen bei $450$–$650\\,°\\text{C}$) → angelassener Martensit mit guter Festigkeits-Zähigkeits-Kombination.
+
+**Probe:** DIN EN 10052 listet alle drei als Standard-Verfahren der Stahl-Wärmebehandlung. ✓
+
+**Typischer Fehler:** Vergüten und Härten gleichsetzen. Vergüten ist Härten **plus** ein zweiter Schritt (Anlassen) — das macht den Unterschied zwischen sprödem und gebrauchsfähigem Bauteil.`,
+          [
+            'Welche drei Standardverfahren gibt es?',
+            'Was unterscheidet jedes Verfahren in der Abkühlung?',
+            'Vergüten = Härten + ...',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Was bezeichnet man im Stahlbau als „Vergüten"?',
+          [
+            'Härten (Austenitisieren + Abschrecken) gefolgt von Anlassen bei $450$–$650\\,°\\text{C}$',
+            'Reines Glühen bei $\\approx 900\\,°\\text{C}$ mit anschließender Luftabkühlung',
+            'Nur Abschrecken in Wasser ohne weitere Behandlung',
+            'Aufkohlen der Oberfläche mit anschließender Wärmebehandlung',
+          ],
+          0,
+          `**Ansatz:** Vergüten ist eine zweistufige Wärmebehandlung: zuerst Härten (Martensit erzeugen), dann Anlassen (Martensit „abbauen", damit nicht spröde).
+
+**Rechnung:** Härten: Stahl auf $> A_3$ erwärmen ($\\approx 850\\,°\\text{C}$), in Öl oder Wasser abschrecken → Martensit. Anlassen: bei $450$–$650\\,°\\text{C}$ ($1$–$2\\,\\text{h}$) → angelassener Martensit mit Karbid-Ausscheidungen. Endgefüge: hohe Festigkeit + gute Zähigkeit.
+
+**Probe:** 42CrMo4 vergütet: $R_m \\approx 1000\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$. Werkstoff der Wahl für Wellen, Pleuel, Zahnräder. ✓
+
+**Typischer Fehler:** „Vergüten = Härten" — ohne den zweiten Schritt (Anlassen) ist der Stahl spröde und nicht gebrauchsfähig.`,
+          [
+            'Aus welchen zwei Schritten besteht Vergüten?',
+            'Welcher Schritt sorgt für Härte, welcher für Zähigkeit?',
+            'Anlasstemperatur $\\approx 450$–$650\\,°\\text{C}$.',
+          ],
+          {
+            1: 'Glühen ist Gleichgewichts-Behandlung und erzeugt KEIN Martensit-Vorgängergefüge — daher nicht Vergüten.',
+            2: 'Nur Abschrecken ist Härten, nicht Vergüten — Vergüten enthält zusätzlich das Anlassen.',
+            3: 'Das Aufkohlen ist Einsatzhärten (separate Wärmebehandlung), nicht Vergüten.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Welche Wärmebehandlung wird durchgeführt, um einen verfestigten Stahl wieder gut **zerspanbar** und weich zu machen?',
+          [
+            'Weichglühen bei $\\approx 700\\,°\\text{C}$ mit sehr langsamer Ofen-Abkühlung',
+            'Härten in Wasser bei Raumtemperatur',
+            'Anlassen bei $200\\,°\\text{C}$ direkt nach dem Härten',
+            'Nitrieren der Oberfläche bei $\\approx 500\\,°\\text{C}$',
+          ],
+          0,
+          `**Ansatz:** „Weich" = niedrige Härte → schlecht zerspanbar nur, wenn zu hart. Weichglühen (auch GKZ-Glühen: globulares Zementit-Glühen) gibt minimale Härte und optimale Zerspanbarkeit.
+
+**Rechnung:** Weichglühen: $700\\,°\\text{C}$ knapp unter $A_1$, mehrere Stunden Haltezeit, dann sehr langsam abkühlen ($\\Delta T \\leq 20\\,\\text{K/h}$). Die Zementit-Lamellen im Perlit kugeln zu globularen Karbiden ein → maximal weiches, gut bearbeitbares Gefüge.
+
+**Probe:** Werkzeugstähle (C100W2, X220CrMoV12-1) werden im Halbzeug-Lieferzustand weichgeglüht — sonst nicht zerspanbar. ✓
+
+**Typischer Fehler:** Härten als „Vorbereitung zur Zerspanung" wählen — genau das Gegenteil! Härten macht den Stahl schlecht zerspanbar.`,
+          [
+            'Ziel: weich + gut zerspanbar.',
+            'Welche Behandlung gibt minimale Härte?',
+            'Sehr langsame Abkühlung im Ofen = Weichglühen.',
+          ],
+          {
+            1: 'Härten erzeugt **Martensit** — sehr hart, fast nicht zerspanbar. Das Gegenteil der Anforderung.',
+            2: 'Niedriges Anlassen ($200\\,°\\text{C}$) lässt den Martensit weitgehend bestehen — der Stahl bleibt hart.',
+            3: 'Nitrieren härtet die Oberfläche zusätzlich — verschärft das Zerspanproblem.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Ein Auszubildender sagt: „Vergüten und Härten sind dasselbe — beide Verfahren erzeugen einen harten Stahl." Wo liegt der Fehler?',
+          [
+            'Härten endet **vor** dem Anlassen — das Ergebnis ist ein spröder, rissempfindlicher Martensit. Vergüten ist Härten **plus** Anlassen und liefert einen Stahl mit hoher Festigkeit **und** Zähigkeit. Die beiden sind nicht synonym.',
+            'Härten und Vergüten sind tatsächlich Synonyme — die Aussage ist korrekt.',
+            'Vergüten erzeugt einen weichen Stahl, Härten einen harten — der Auszubildende hat es genau umgekehrt.',
+            'Härten gibt es nur bei Aluminium, Vergüten nur bei Stahl.',
+          ],
+          0,
+          `**Ansatz:** Vergüten = Härten + Anlassen. Härten allein liefert spröden Martensit, der in fast keinem Bauteil verwendbar ist.
+
+**Rechnung:** Nach Härten von C45: HV $\\approx 700$, sehr spröde, kaum Zähigkeit. Nach Vergüten von C45: HV $\\approx 280$, $R_m \\approx 800\\,\\text{MPa}$, $A \\approx 18\\,\\%$ — ein vollwertiger Konstruktionsstahl.
+
+**Probe:** In der Praxis wird Härten ohne Anlassen so gut wie nie verwendet — sofort danach wird angelassen, um Sprödbruch zu vermeiden. ✓
+
+**Typischer Fehler:** Die Wörter „Härten" und „Vergüten" austauschbar verwenden — das führt zu falschen Werkstoffauslegungen und gegebenenfalls zu Härterissen.`,
+          [
+            'Was passiert beim Anlassen?',
+            'Wie unterscheiden sich die End-Eigenschaften?',
+            'Härten allein = spröde; Vergüten = brauchbar.',
+          ],
+          {
+            1: 'Die Begriffe sind eben **nicht** synonym — Härten ohne Anlassen ist in der Praxis kaum nutzbar.',
+            2: 'Vergüteter Stahl ist nicht weich, sondern hat hohe Festigkeit — durch das Anlassen wird die Sprödigkeit reduziert, nicht die Festigkeit.',
+            3: 'Beide Wärmebehandlungen werden bei Stahl Standard verwendet — die Aussage ist sachlich falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        matching(
+          'Ordne jeder Wärmebehandlung das passende Ziel/Ergebnis zu.',
+          [
+            { left: 'Normalglühen',  right: 'feinkörniges Ferrit-Perlit, gleichmäßige Eigenschaften' },
+            { left: 'Weichglühen',   right: 'globulare Karbide, minimale Härte, gute Zerspanbarkeit' },
+            { left: 'Härten',        right: 'Martensit — sehr hart, aber spröde, ohne Anlassen kaum nutzbar' },
+            { left: 'Vergüten',      right: 'angelassener Martensit — Kombination aus hoher Festigkeit und ausreichender Zähigkeit' },
+          ],
+          `**Ansatz:** Jede Wärmebehandlung zielt auf ein spezifisches Endgefüge mit definierten Eigenschaften.
+
+**Rechnung:** Normalglühen: $30\\,\\text{K}$ über $A_3$, Luftabkühlung → fein-Ferrit-Perlit. Weichglühen: knapp unter $A_1$, sehr langsam → globulare Karbide. Härten: Abschrecken → Martensit. Vergüten: Härten + Anlassen → angelassener Martensit.
+
+**Probe:** Praxis-Anwendung: Normalglühen für homogene Halbzeug-Eigenschaften, Weichglühen vor Zerspanung, Vergüten für tragende Bauteile (Wellen, Pleuel). Jedes Ziel ist eindeutig einem Verfahren zugeordnet. ✓
+
+**Typischer Fehler:** Wärmebehandlungen austauschbar einsetzen — jede hat ihren spezifischen Anwendungsbereich.`,
+          [
+            'Welche Behandlung ist Gleichgewichts-Behandlung, welche Nicht-Gleichgewicht?',
+            'Welche braucht zwingend einen zweiten Schritt (Anlassen)?',
+            'Weichglühen ↔ Zerspanbarkeit; Vergüten ↔ Festigkeit+Zähigkeit.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+    ],
+
+    // ───────────── SG 4: Vergüten (angelassener Martensit) ─────────────
+    4: [
+      tag(
+        tf(
+          'Vergüten kombiniert Härten und Anlassen, um einen Stahl mit gleichzeitig hoher Festigkeit ($R_m \\geq 700\\,\\text{MPa}$) **und** brauchbarer Zähigkeit zu erzeugen — typisches Beispiel 42CrMo4.',
+          true,
+          `**Ansatz:** Beim Anlassen scheiden sich aus dem zwangsgelösten Martensit Karbide aus (Fe$_3$C-Nanopartikel). Das reduziert die Gitterverzerrung → Sprödigkeit sinkt, aber die Festigkeit bleibt hoch durch die Karbid-Verstärkung.
+
+**Rechnung:** 42CrMo4 vergütet: $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$. Reiner Martensit hätte $R_m \\approx 1500\\,\\text{MPa}$, aber $A \\approx 0$ und $KV < 5\\,\\text{J}$ — nicht nutzbar.
+
+**Probe:** Standardanwendung für Wellen, Pleuel, Zahnräder, Schrauben hoher Festigkeitsklasse. ✓
+
+**Typischer Fehler:** „Vergüten = weniger fest als Härten" pauschal sagen. Stimmt — aber dafür viel zäher. Es ist ein Optimum.`,
+          [
+            'Was passiert physikalisch beim Anlassen?',
+            'Welcher Stahl ist das Lehrbuchbeispiel?',
+            'Warum nicht einfach nur härten?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Für ein Bauteil wird gleichzeitig hohe Streckgrenze ($\\geq 700\\,\\text{MPa}$) und gute Zähigkeit ($KV \\geq 27\\,\\text{J}$) gefordert. Welche Wärmebehandlung ist die richtige Wahl?',
+          [
+            'Vergüten (Härten + Anlassen bei $450$–$650\\,°\\text{C}$) eines geeigneten Vergütungsstahls (z. B. 42CrMo4)',
+            'Reines Härten ohne Anlassen — gibt maximale Festigkeit',
+            'Weichglühen — gibt maximale Zähigkeit',
+            'Normalglühen eines Baustahls (z. B. S235)',
+          ],
+          0,
+          `**Ansatz:** Die Anforderung „hohe Festigkeit + gute Zähigkeit" passt genau zur Definition von Vergüten.
+
+**Rechnung:** Vergüten ergibt Stähle mit $R_m = 800$–$1100\\,\\text{MPa}$ und $KV \\geq 30\\,\\text{J}$ — beide Anforderungen klar erfüllt. Reines Härten gibt zwar $R_m \\approx 1500\\,\\text{MPa}$, aber $KV < 5\\,\\text{J}$ — Zähigkeit nicht erfüllt.
+
+**Probe:** Industriestandard: 42CrMo4 für Wellen, 30CrNiMo8 für hochbeanspruchte Pleuel. Beide vergütet. ✓
+
+**Typischer Fehler:** „Mehr ist besser" — bei reiner Festigkeit das Härten wählen, dabei die Zähigkeit aus den Augen verlieren.`,
+          [
+            'Welche Behandlung kombiniert Festigkeit UND Zähigkeit?',
+            'Reines Härten allein reicht NICHT (zu spröde).',
+            'Vergütungsstahl als Werkstoff der Wahl.',
+          ],
+          {
+            1: 'Reines Härten gibt sehr hohe Festigkeit, aber kaum Zähigkeit — eine der beiden Anforderungen ist verletzt.',
+            2: 'Weichglühen gibt maximale Zähigkeit, aber kaum Festigkeit (typisch $R_m \\approx 500\\,\\text{MPa}$ bei C45 weichgeglüht).',
+            3: 'S235 erreicht nach Normalglühen nur $R_m \\approx 360$–$510\\,\\text{MPa}$ — die Festigkeitsanforderung wird nicht erfüllt.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Eine Welle aus 42CrMo4 wird vergütet (Anlasstemperatur $\\approx 580\\,°\\text{C}$). Welcher $R_m$-Wert ist typisch zu erwarten?',
+          [
+            'Etwa $1000\\,\\text{MPa}$',
+            'Etwa $300\\,\\text{MPa}$',
+            'Etwa $1800\\,\\text{MPa}$',
+            'Etwa $50\\,\\text{MPa}$',
+          ],
+          0,
+          `**Ansatz:** Vergüteter 42CrMo4 hat einen typischen $R_m$-Bereich von $900$–$1100\\,\\text{MPa}$, abhängig von Anlasstemperatur. Höhere Anlasstemperatur → niedrigere Festigkeit, aber höhere Zähigkeit.
+
+**Rechnung:** Bei $580\\,°\\text{C}$ Anlassen (Mittelbereich): klassische Vergütung mit $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$.
+
+**Probe:** DIN EN 10083-3 listet für 42CrMo4+QT (vergütet) im Querschnitt $\\leq 16\\,\\text{mm}$: $R_m = 1100$–$1300\\,\\text{MPa}$. Bei größeren Querschnitten etwas niedriger. ✓
+
+**Typischer Fehler:** Falsche Größenordnung erwarten — Baustahl-Wert ($\\approx 360\\,\\text{MPa}$) oder Werkzeugstahl-Wert ($> 1500\\,\\text{MPa}$).`,
+          [
+            'Welche Größenordnung hat ein klassischer Vergütungsstahl?',
+            '$\\approx 1000\\,\\text{MPa}$ ist Standardbereich.',
+            'Tabellenwert nachschauen.',
+          ],
+          {
+            1: '$300\\,\\text{MPa}$ wäre Baustahl-Niveau — ein vergüteter 42CrMo4 hat deutlich höhere Festigkeit.',
+            2: '$1800\\,\\text{MPa}$ wäre Werkzeugstahl im niedrig angelassenen Zustand — zu hoch für klassisches Vergüten bei $580\\,°\\text{C}$.',
+            3: '$50\\,\\text{MPa}$ ist eine sinnlose Größenordnung — selbst Aluminium hat höhere Zugfestigkeit.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Ein Werkstattmeister beschreibt das Vorgehen: „Wir härten den Stahl bei $850\\,°\\text{C}$ in Öl ab — fertig vergütet." Wo liegt der Fehler?',
+          [
+            'Vergüten besteht aus **zwei** Schritten: Härten **plus** anschließendes Anlassen (bei $450$–$650\\,°\\text{C}$). Ohne Anlassen ist der Stahl nur „gehärtet", noch nicht vergütet — und damit spröde und rissempfindlich.',
+            'Die Härtetemperatur $850\\,°\\text{C}$ ist zu niedrig — für Vergüten braucht es $1200\\,°\\text{C}$.',
+            'Öl ist das falsche Abschreckmedium — beim Vergüten muss Wasser verwendet werden.',
+            'Vergüten gibt es nur bei austenitischen Stählen, nicht bei 42CrMo4.',
+          ],
+          0,
+          `**Ansatz:** Vergüten ist als zweistufige Behandlung definiert. Härten allein produziert spröden Martensit, der nicht gebrauchsfähig ist.
+
+**Rechnung:** Praxis-Ablauf 42CrMo4 vergüten: 1) Austenitisieren $850\\,°\\text{C}$, halten, in Öl abschrecken → Martensit, $R_m \\approx 1500\\,\\text{MPa}$, $A < 1\\,\\%$. 2) Anlassen bei $580\\,°\\text{C}$, $1$–$2\\,\\text{h}$ → angelassener Martensit, $R_m \\approx 1000\\,\\text{MPa}$, $A \\approx 12\\,\\%$.
+
+**Probe:** In der Werkstoffnorm wird der Zustand explizit als „+QT" (quenched and tempered) gekennzeichnet — Härten **und** Anlassen sind Bestandteil. ✓
+
+**Typischer Fehler:** „Härten" und „Vergüten" austauschbar verwenden — wie hier beschrieben.`,
+          [
+            'Aus welchen Schritten besteht Vergüten?',
+            'Ist Härten allein bereits Vergüten?',
+            'Anlassen ist Pflicht beim Vergüten.',
+          ],
+          {
+            1: '$850\\,°\\text{C}$ ist eine korrekte Austenitisierungstemperatur — der Fehler liegt nicht hier.',
+            2: 'Öl ist beim Vergüten von 42CrMo4 sogar das **bevorzugte** Abschreckmedium (Wasser wäre zu brutal und würde Härterisse erzeugen).',
+            3: '42CrMo4 ist gerade DER klassische Vergütungsstahl — die Behauptung „nur bei austenitischen Stählen" ist falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Welcher Stahl ist für eine hochbelastete **Kurbelwelle** im Verbrennungsmotor typischerweise die richtige Wahl?',
+          [
+            'Vergüteter 42CrMo4 ($+$QT)',
+            'Weichgeglühter Baustahl S235JR',
+            'Gehärteter (aber nicht angelassener) Werkzeugstahl C100',
+            'Reines $\\alpha$-Eisen',
+          ],
+          0,
+          `**Ansatz:** Kurbelwellen erleben hohe Wechselbelastungen (Druck, Biege, Torsion). Sie brauchen hohe Streckgrenze + Zähigkeit + Dauerfestigkeit.
+
+**Rechnung:** Vergüteter 42CrMo4: $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$, gute Dauerfestigkeit. Perfekt für Kurbelwellen.
+
+**Probe:** Industriestandard: PKW-Kurbelwellen aus 42CrMo4 oder 30CrNiMo8, vergütet. ✓
+
+**Typischer Fehler:** Weichen Baustahl oder unangelassenen Werkzeugstahl wählen — beide versagen unter Wechsellast.`,
+          [
+            'Welche Eigenschaften braucht eine Kurbelwelle?',
+            'Welche Wärmebehandlung liefert genau diese Kombination?',
+            'Vergüteter Stahl ist die Standardwahl.',
+          ],
+          {
+            1: 'S235JR ist zu weich ($R_e \\approx 235\\,\\text{MPa}$) und hält die Wechselbelastung einer Kurbelwelle nicht aus.',
+            2: 'Gehärteter, nicht angelassener Werkzeugstahl ist extrem spröde — bei Wechsellast bricht er nach wenigen Lastwechseln.',
+            3: 'Reines Eisen ist viel zu weich für tragende, dauerbelastete Bauteile — weniger als $200\\,\\text{MPa}$ Festigkeit.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['verguten'] },
+      ),
+    ],
+
+    // ───────────── SG 5: Abkühlrate ─────────────
+    5: [
+      tag(
+        tf(
+          'Bei **langsamer** Abkühlung aus Austenit hat der Kohlenstoff Zeit zur Diffusion und es entsteht **Perlit**; bei **schnellem** Abschrecken bleibt die Diffusion aus und es entsteht **Martensit**.',
+          true,
+          `**Ansatz:** Diffusion ist temperatur- und zeitabhängig. Schnelle Abkühlung „friert" den Atomzustand ein.
+
+**Rechnung:** Kritische Abkühlrate für Martensit-Bildung hängt vom Stahl ab: einfache Kohlenstoffstähle brauchen $> 100\\,\\text{K/s}$ (Wasserabschrecken), legierte Stähle (z. B. 42CrMo4) deutlich weniger ($\\approx 1$–$10\\,\\text{K/s}$, Öl reicht).
+
+**Probe:** TTT-Diagramm: Perlit-Nase rechts (langsam), Martensit-Start $M_s$ ganz unten (alle Abkühlraten, die unterhalb der Nase vorbeigehen). ✓
+
+**Typischer Fehler:** Annahme, dass jeder Stahl bei jeder Abkühlrate Martensit bildet — tatsächlich ist die kritische Abkühlrate werkstoffabhängig.`,
+          [
+            'Was braucht der Kohlenstoff für Diffusion?',
+            'Was passiert bei zu wenig Zeit?',
+            'Schnell = diffusionslos = Martensit.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Welches Abschreckmedium liefert die **schnellste** Abkühlung und damit die stärkste Martensit-Härtung?',
+          [
+            'Salzlösung (Solwasser) oder Eiswasser',
+            'Öl bei Raumtemperatur',
+            'Ruhende Luft',
+            'Sehr langsame Abkühlung im Ofen',
+          ],
+          0,
+          `**Ansatz:** Abkühlraten unterscheiden sich nach Medium um Größenordnungen. Salzlösung > Wasser > Öl > Luft > Ofen.
+
+**Rechnung:** Typische Abkühlraten ($800 \\to 500\\,°\\text{C}$): Solwasser $\\approx 300\\,\\text{K/s}$, Wasser $\\approx 200\\,\\text{K/s}$, Öl $\\approx 50\\,\\text{K/s}$, Luft $\\approx 1\\,\\text{K/s}$, Ofen $\\approx 0{,}01\\,\\text{K/s}$. Salzlösung ist das schärfste industriell genutzte Abschreckmedium.
+
+**Probe:** Werkzeugstähle hoher Härte werden in Wasser/Sole abgeschreckt; legierte Stähle (geringere kritische Abkühlrate) in Öl. ✓
+
+**Typischer Fehler:** „Wasser ist das schnellste Medium" — Sole ist noch schneller, weil das Salz die Dampffilm-Phase unterdrückt.`,
+          [
+            'Welches Medium hat die höchste Wärmeleitfähigkeit + niedrigste Verdampfungsverluste?',
+            'Größenordnungen vergleichen: $\\text{K/s}$.',
+            'Sole > Wasser > Öl > Luft.',
+          ],
+          {
+            1: 'Öl ist langsamer als Wasser/Sole — wird daher für legierte Stähle (geringere kritische Abkühlrate) verwendet.',
+            2: 'Luft ist sehr langsam ($\\approx 1\\,\\text{K/s}$) — gibt Ferrit-Perlit, kein Martensit.',
+            3: 'Ofen-Abkühlung ist die langsamste Variante und produziert nahezu Gleichgewichts-Gefüge (Glühen), kein Martensit.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Ein Stahl wird **langsam an der Luft** abgekühlt (ca. $1\\,\\text{K/s}$). Welches Endgefüge ist zu erwarten?',
+          [
+            'Ferrit-Perlit-Gemisch (bei untereutektoidem Stahl) — Diffusion ausreichend für Gleichgewichts-Gefüge',
+            'Reiner Martensit — Luft kühlt schnell genug für Martensit-Bildung',
+            'Bainit — Luftabkühlung trifft genau den Bainit-Bereich',
+            'Austenit bleibt bei Raumtemperatur stabil',
+          ],
+          0,
+          `**Ansatz:** Luftabkühlung ist bei unlegierten Stählen **langsam** genug für vollständige Diffusion — also Gleichgewichts-Gefüge.
+
+**Rechnung:** Bei $1\\,\\text{K/s}$ hat der C zwischen $\\approx 700$ und $500\\,°\\text{C}$ etwa $200\\,\\text{s}$ Zeit zur Diffusion. Das reicht reichlich für die Bildung von Ferrit + Perlit-Lamellen.
+
+**Probe:** Normalglühen eines Baustahls: Luftabkühlung → feinkörniges Ferrit-Perlit-Gefüge. ✓
+
+**Typischer Fehler:** Luftabkühlung als „schnell" einstufen — sie ist im Vergleich zu Wasser/Öl extrem langsam.`,
+          [
+            'Wie schnell ist Luftabkühlung wirklich?',
+            'Reicht die Zeit für Diffusion?',
+            'Vergleiche mit kritischer Abkühlrate.',
+          ],
+          {
+            1: 'Martensit braucht hohe Abkühlraten ($> 50\\,\\text{K/s}$ bei unlegiertem Stahl) — Luft ist zu langsam.',
+            2: 'Bainit entsteht bei isothermischer Umwandlung im Bereich $\\approx 300$–$500\\,°\\text{C}$ — Luftabkühlung passiert diesen Bereich nicht isotherm, sondern durchläuft ihn schnell und gelangt in den Ferrit-Perlit-Bereich.',
+            3: 'Austenit ist bei Raumtemperatur nur in austenitischen Edelstählen (durch Legierung) stabil — bei normalem Baustahl wandelt er sich um.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Ein Lehrling schreckt einen großen Werkzeugstahl-Block ($C100W$ mit $\\approx 1\\,\\%$ C) in Wasser ab und das Bauteil bekommt Härterisse. Was war der Fehler?',
+          [
+            'Hochlegierte/hochkohlige Stähle sollten in **Öl** (sanftere Abkühlung) abgeschreckt werden — Wasser ist zu brutal und erzeugt zu hohe Eigenspannungen, die Härterisse auslösen.',
+            'Wasser ist viel zu langsam — der Stahl hätte in Eiswasser abgeschreckt werden müssen.',
+            'Der Stahl wurde gar nicht abgeschreckt — er erhitzte sich nur an der Oberfläche.',
+            'Wasser löst Kohlenstoff aus dem Stahl und macht ihn weich.',
+          ],
+          0,
+          `**Ansatz:** Hohe Abkühlrate erzeugt hohe thermische Eigenspannungen. Werkzeugstähle mit hohem C-Gehalt sind besonders rissempfindlich, daher Öl als sanfteres Medium.
+
+**Rechnung:** Wasser: $\\approx 200\\,\\text{K/s}$ → starke Eigenspannungen + maximaler Härte-Effekt → Rissrisiko. Öl: $\\approx 50\\,\\text{K/s}$ → reicht für Martensit, aber niedrigere Spannungen.
+
+**Probe:** Werkstoffdatenblätter zu Werkzeugstählen empfehlen explizit das Abschreckmedium (oft Öl) für die jeweilige Sorte. ✓
+
+**Typischer Fehler:** „Mehr Härte = mehr Wasser" anwenden, ohne die Sprödigkeit/Rissanfälligkeit zu beachten.`,
+          [
+            'Welches Medium ist sanfter, welches schärfer?',
+            'Hoher C-Gehalt + hohe Abschreckrate = Risse.',
+            'Öl als Standard für hochlegierte/hochkohlige Stähle.',
+          ],
+          {
+            1: 'Wasser ist sehr schnell — der Stahl wurde sehr wohl abgeschreckt. Eiswasser hätte das Problem nur verschärft.',
+            2: 'Härterisse zeigen, dass die Abkühlung gewirkt hat — sonst gäbe es keine Spannungen, die Risse erzeugen.',
+            3: 'Wasser löst keinen Kohlenstoff aus Stahl — das ist physikalisch falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Wie entsteht **Bainit** als Gefüge zwischen Perlit (langsam) und Martensit (schnell)?',
+          [
+            'Durch **isothermische Umwandlung** bei mittlerer Temperatur ($\\approx 300$–$500\\,°\\text{C}$): die Probe wird aus Austenit auf diese Temperatur abgeschreckt und dort gehalten, bis die Umwandlung abgeschlossen ist.',
+            'Durch sehr langsame Abkühlung im Ofen (gibt nur Perlit).',
+            'Durch noch schnelleres Abschrecken als bei Martensit (gibt es nicht — Martensit ist bereits das schnellste Gefüge).',
+            'Durch Aufheizen von Perlit auf $500\\,°\\text{C}$.',
+          ],
+          0,
+          `**Ansatz:** Bainit ist ein nicht-lamellares Zwischengefüge, das durch isothermische Haltebehandlung im mittleren Temperaturbereich entsteht.
+
+**Rechnung:** Praxis: Stahl von Austenitisierungstemperatur ($> 723\\,°\\text{C}$) auf $\\approx 350\\,°\\text{C}$ abgeschreckt, dort halten bis Umwandlung beendet (Minuten bis Stunden), dann luftabkühlen. Endgefüge: Bainit ($45$–$55\\,\\text{HRC}$, sehr zäh).
+
+**Probe:** „Austempering" ist der industrielle Begriff für diese Behandlung — wird z. B. für Federn und schmiedbares Gusseisen genutzt. ✓
+
+**Typischer Fehler:** Bainit als reines „Mittelding zwischen Perlit und Martensit" beschreiben, ohne den isothermischen Haltebehandlungs-Charakter zu erwähnen.`,
+          [
+            'Was unterscheidet Bainit von Perlit und Martensit prozesstechnisch?',
+            'Isothermisch heißt: bei konstanter Temperatur halten.',
+            'Mittlerer Temperaturbereich, nicht beim Abschrecken.',
+          ],
+          {
+            1: 'Sehr langsame Abkühlung ergibt Perlit, nicht Bainit. Bainit braucht die isothermische Haltephase.',
+            2: 'Es gibt durchaus extrem schnelle Abschreckungen (Sole), aber Martensit ist das diffusionslose Endprodukt — schneller geht nicht für ein anderes Gefüge.',
+            3: 'Aufheizen von Perlit auf $500\\,°\\text{C}$ ergibt globularisierten Perlit / Karbide — nicht Bainit. Bainit muss aus Austenit isothermisch umwandeln.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+    ],
+  },
 }

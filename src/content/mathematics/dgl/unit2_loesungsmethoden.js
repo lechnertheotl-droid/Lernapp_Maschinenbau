@@ -11,7 +11,13 @@ export const exercises_dgl_u2 = {
       'Die Störfunktion $q(x)$',
     ],
     correctIndex: 1,
-    explanation: 'Die Idee: Man nimmt die homogene Lösung $y_h = Ce^{...}$ und ersetzt die Konstante $C$ durch eine **Funktion** $C(x)$. Dann bestimmt man $C(x)$ so, dass die inhomogene DGL erfüllt wird.',
+    explanation: `**Ansatz:** Der Name *Variation der Konstanten* sagt es wörtlich: die Konstante $C$ der homogenen Lösung wird zur unbekannten Funktion $C(x)$ — sie *variiert*.
+
+**Rechnung:** Aus $y_h = C\\,e^{-P(x)}$ wird der inhomogene Ansatz $y = C(x)\\,e^{-P(x)}$. Einsetzen in die DGL liefert eine Bestimmungs­gleichung für $C\'(x)$, die per Integration gelöst wird.
+
+**Probe:** Bei reiner Umbenennung $C \\to D$ erfüllt $y$ weiterhin nur die *homogene* DGL. Erst durch die $x$-Abhängigkeit kann der Ansatz die rechte Seite $q(x)$ ausgleichen.
+
+**Typischer Fehler:** $C$ einfach umbenennen oder gleich $0$ setzen — beides ist keine Variation. Auch $C \\to q(x)$ ist falsch, weil $q$ die *gegebene* Stör­funktion ist, nicht die gesuchte.`,
     hints: [
       'Was bedeutet "Variation der Konstanten" wörtlich?',
       'Die Konstante $C$ wird "variiert" — sie wird zur Funktion $C(x)$.',
@@ -33,7 +39,13 @@ export const exercises_dgl_u2 = {
       '$C(x) = \\int q(x)\\,dx$',
     ],
     correctIndex: 0,
-    explanation: 'Einsetzen von $y = C(x) e^{-P(x)}$ in die DGL und Vereinfachen ergibt $C\'(x) = q(x) \\cdot e^{P(x)}$. Integration liefert $C(x) = \\int q(x) e^{P(x)}\\,dx$.',
+    explanation: `**Ansatz:** Den VdK-Ansatz $y = C(x)\\,e^{-P(x)}$ in die DGL einsetzen, Produktregel anwenden — die Terme mit $C(x)$ heben sich auf, übrig bleibt eine Gleichung für $C\'(x)$.
+
+**Rechnung:** $y\' = C\'(x)\\,e^{-P(x)} - C(x)\\,p(x)\\,e^{-P(x)}$. Einsetzen in $y\' + p\\,y$: $C\'\\,e^{-P} - C\\,p\\,e^{-P} + p\\,C\\,e^{-P} = C\'\\,e^{-P} = q(x)$. Mit $e^{+P}$ multiplizieren: $C\'(x) = q(x)\\,e^{P(x)}$.
+
+**Probe:** Beispiel $y\' + y = e^x$: $p=1, P=x, q=e^x$. $C\'(x) = e^x \\cdot e^x = e^{2x}$ → $C(x) = e^{2x}/2 + \\tilde C$. Damit $y = (e^{2x}/2 + \\tilde C)\\,e^{-x} = e^x/2 + \\tilde C\\,e^{-x}$ — passt zur erwarteten Form.
+
+**Typischer Fehler:** Vorzeichen im Exponenten umkehren ($e^{-P}$ statt $e^{+P}$ rechts) — Folge: Faktor $e^{-P}$ kürzt sich nicht heraus. Oder den Faktor $e^{P}$ ganz vergessen ($C(x)=\\int q\\,dx$).`,
     hints: [
       'Setze den Ansatz $y = C(x) e^{-P(x)}$ in die DGL ein.',
       'Produktregel: $y\' = C\'(x) e^{-P(x)} - C(x) p(x) e^{-P(x)}$.',
@@ -55,7 +67,13 @@ export const exercises_dgl_u2 = {
       '$y = Ce^x + 2e^{2x}$',
     ],
     correctIndex: 0,
-    explanation: 'Homogene Lösung: $y_h = Ce^x$. Ansatz: $y = C(x)e^x$. Einsetzen: $C\'(x)e^x = e^{2x} \\Rightarrow C\'(x) = e^x \\Rightarrow C(x) = e^x + \\tilde{C}$. Also $y = (\\tilde{C} + e^x)e^x = \\tilde{C}e^x + e^{2x}$.',
+    explanation: `**Ansatz:** Homogene Lösung bestimmen, VdK-Ansatz $y = C(x)\\,y_h$ einsetzen, $C\'(x)$ berechnen und integrieren.
+
+**Rechnung:** $y\' - y = 0 \\Rightarrow y_h = C\\,e^{x}$. Ansatz $y = C(x)\\,e^{x}$. Produktregel: $y\' = C\'\\,e^x + C\\,e^x$. Einsetzen: $C\'\\,e^x + C\\,e^x - C\\,e^x = C\'\\,e^x = e^{2x}$ → $C\'(x) = e^{x}$ → $C(x) = e^{x} + \\tilde C$. Damit $y = (e^x + \\tilde C)\\,e^x = e^{2x} + \\tilde C\\,e^x$.
+
+**Probe:** Partikulärer Anteil $y_p = e^{2x}$: $y_p\' - y_p = 2e^{2x} - e^{2x} = e^{2x}$ ✓. Homogener Anteil $y_h = \\tilde C\\,e^x$: $y_h\' - y_h = \\tilde C\\,e^x - \\tilde C\\,e^x = 0$ ✓.
+
+**Typischer Fehler:** Den partikulären Vorfaktor mit dem Vorfaktor des Standardansatzes $A\\,e^{2x}$ verwechseln — bei $y\'+y=e^{2x}$ wäre $A = 1/3$, bei $y\'-y=e^{2x}$ aber $A=1$. Oder Vorzeichen in $y_h$ ($e^{-x}$ statt $e^{+x}$).`,
     hints: [
       'Erst homogene Lösung: $y_h = Ce^x$ aus $y\' - y = 0$.',
       'Ansatz $y = C(x) e^x$, einsetzen: $C\'(x) e^x = e^{2x}$, also $C\'(x) = e^x$.',
@@ -77,11 +95,17 @@ export const exercises_dgl_u2 = {
       '$y_p = \\frac{1}{2}(\\sin x + \\cos x)$',
     ],
     correctIndex: 0,
-    explanation: 'Mit Variation der Konstanten oder dem Ansatz $y_p = A\\sin x + B\\cos x$: Einsetzen ergibt $A = \\frac{1}{2}$, $B = -\\frac{1}{2}$. Also $y_p = \\frac{1}{2}(\\sin x - \\cos x)$.',
+    explanation: `**Ansatz:** Bei trigonometrischer Störfunktion: Ansatz mit *beiden* Trig-Funktionen $y_p = A\\sin x + B\\cos x$, weil die Ableitung sin↔cos mischt.
+
+**Rechnung:** $y_p\' = A\\cos x - B\\sin x$. $y_p\' + y_p = (A\\cos x - B\\sin x) + (A\\sin x + B\\cos x) = (A+B)\\cos x + (A-B)\\sin x \\stackrel{!}{=} \\sin x$. Koeffizienten­vergleich: $A+B = 0$ (cos), $A-B = 1$ (sin) → $A = 1/2$, $B = -1/2$. Damit $y_p = \\tfrac{1}{2}\\sin x - \\tfrac{1}{2}\\cos x = \\tfrac{1}{2}(\\sin x - \\cos x)$.
+
+**Probe:** $y_p\' = \\tfrac{1}{2}\\cos x + \\tfrac{1}{2}\\sin x$. $y_p\' + y_p = (\\tfrac{1}{2}\\cos x + \\tfrac{1}{2}\\sin x) + (\\tfrac{1}{2}\\sin x - \\tfrac{1}{2}\\cos x) = \\sin x$ ✓.
+
+**Typischer Fehler:** Nur eine der beiden Trig-Funktionen ansetzen — die Ableitung mischt sin↔cos, also braucht es *beide* Funktionen im Ansatz. Oder Vorzeichen im Koeffizienten­vergleich verwechseln.`,
     hints: [
       'Bei trigonometrischer Störfunktion: Ansatz $y_p = A \\sin x + B \\cos x$.',
       'Einsetzen in $y\' + y = \\sin x$ liefert $A \\cos x - B \\sin x + A \\sin x + B \\cos x = \\sin x$.',
-      'Koeffizientenvergleich: $A - B = 0$ (für $\\sin$) und $A + B = 1$ (für $\\cos$? — sortiert nach $\\sin$/$\\cos$): $A = 1/2$, $B = -1/2$.',
+      'Koeffizientenvergleich: $\\sin x$-Anteil $A - B = 1$, $\\cos x$-Anteil $A + B = 0$ → $A = 1/2$, $B = -1/2$.',
     ],
     wrongAnswerExplanations: {
       1: 'Vorfaktor $\\tfrac{1}{2}$ vergessen. Ansatz $y_p = A\\sin x + B\\cos x$: $y_p\' + y_p = (A+B)\\cos x + (A-B)\\sin x = \\sin x$. Also $A+B=0$, $A-B=1$: $A=\\tfrac{1}{2}$, $B=-\\tfrac{1}{2}$. Ohne Faktor $\\tfrac{1}{2}$ gäbe das $2\\sin x$, nicht $\\sin x$.',
@@ -344,7 +368,20 @@ $$y = \\left(\\int q(x) e^{P(x)}\\,dx + \\tilde{C}\\right) \\cdot e^{-P(x)}$$
 
 Das liefert die **allgemeine Lösung** (homogener + partikulärer Anteil).
 
-**Vorteil** gegenüber dem integrierenden Faktor: Funktioniert auch für DGL 2. Ordnung (mit der Wronski-Determinante) und für DGL-Systeme.`,
+**Vorteil** gegenüber dem integrierenden Faktor: Funktioniert auch für DGL 2. Ordnung (mit der Wronski-Determinante) und für DGL-Systeme.
+
+**Alternative — Stör­ansatz-Tabelle** (für $y\' + p\\,y = q(x)$ bei einfachen $q$, *kein* Resonanzfall):
+
+| Stör­funktion $q(x)$ | Ansatz $y_p$ | Anmerkung |
+|---|---|---|
+| $A_0\\,e^{\\alpha x}$ | $A\\,e^{\\alpha x}$ | $\\alpha$ keine Wurzel der char. Gleichung |
+| $P_n(x)$ (Polynom Grad $n$) | $A_n x^n + \\ldots + A_1 x + A_0$ | *vollständiges* Polynom Grad $n$ |
+| $a\\cos(\\omega x) + b\\sin(\\omega x)$ | $A\\cos(\\omega x) + B\\sin(\\omega x)$ | immer *beide* Trig-Funktionen |
+| Konstante $c$ | $A$ (Konstante) | Spezialfall Polynom Grad 0 |
+
+**Resonanz-Fall:** Ist die Stör­funktion bereits Lösung der homogenen DGL (z. B. $q = e^{\\alpha x}$ mit $\\alpha$ = Wurzel der char. Gleichung), wird der Ansatz mit $x$ multipliziert:
+$$y_p = A\\,x\\,e^{\\alpha x}$$
+Bei DGL 2. Ordnung mit Doppelwurzel: Faktor $x^2$.`,
       },
       { id: 'dgl-2-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-2-1-a' },
       { id: 'dgl-2-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-2-1-b' },
