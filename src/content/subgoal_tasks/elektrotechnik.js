@@ -1726,4 +1726,637 @@ export const elektrotechnikSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // et-2-1 — Wechselstromgrundlagen und Impedanz  (5 subGoals)
+  // 25 Matrix-Aufgaben (5 × 5: Sub-Goal × Stage), Typen rotieren je Sub-Goal.
+  // Konzepte: wechselspann · effektiv · impedanzen · z-frequenz · phasenversch.
+  // Prerequisites (aus et-1-1): ohm.
+  // ───────────────────────────────────────────────────────────────────────
+  'et-2-1': {
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [0] Wechselspannung $u(t) = \hat u \sin(\omega t + \varphi)$, $\omega = 2\pi f$
+    // ═════════════════════════════════════════════════════════════════════
+    0: [
+      // Zeile 1: recognize · true-false · uses=[wechselspann]
+      tf(
+        'Die Kreisfrequenz $\\omega$ einer Sinusspannung mit Frequenz $f$ berechnet sich als $\\omega = 2\\pi\\,f$.',
+        true,
+        `**Ansatz:** Eine Periode entspricht im Argument der Sinusfunktion einer Drehung um $2\\pi$ rad. Pro Sekunde gibt es $f$ Perioden.
+
+**Rechnung:** $\\omega = \\dfrac{2\\pi}{T} = 2\\pi\\,f$. Die Einheit: $[\\omega] = \\text{rad/s}$.
+
+**Probe:** Bei $f = 50\\,\\text{Hz}$ → $\\omega = 100\\pi \\approx 314\\,\\text{rad/s}$, bei $f = 1\\,\\text{Hz}$ → $\\omega = 2\\pi \\approx 6{,}28\\,\\text{rad/s}$.
+
+**Typischer Fehler:** $\\omega = f$ direkt gleichgesetzt — der Faktor $2\\pi$ ist die Brücke zwischen Frequenz (Umläufe pro Sekunde) und Kreisfrequenz (rad pro Sekunde).`,
+        [
+          'Wie viele Bogenmaß entspricht eine volle Schwingungsperiode?',
+          'Pro Sekunde finden $f$ Perioden statt.',
+          '$\\omega$ und $f$ unterscheiden sich um den Faktor $2\\pi$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['wechselspann'] },
+      ),
+
+      // Zeile 2: apply-guided · multiple-choice · uses=[wechselspann]
+      mc(
+        'Welche Kreisfrequenz $\\omega$ in rad/s hat eine Wechselspannung mit der Frequenz $f = 50\\,\\text{Hz}$?',
+        ['$\\approx 314\\,\\text{rad/s}$', '$50\\,\\text{rad/s}$', '$25\\,\\text{rad/s}$', '$\\approx 628\\,\\text{rad/s}$'],
+        0,
+        `**Ansatz:** $\\omega = 2\\pi\\,f$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16\\,\\text{rad/s}$.
+
+**Probe:** Bei einer Periode dauert ein voller Umlauf $T = 2\\pi/\\omega = 2\\pi/(100\\pi) = 0{,}02\\,\\text{s} = 20\\,\\text{ms}$, was $1/50\\,\\text{Hz}$ entspricht ✓.
+
+**Typischer Fehler:** Faktor $2\\pi$ vergessen ($\\omega = 50$) oder doppelt eingesetzt ($\\omega = 4\\pi f$).`,
+        [
+          'Welche Formel verbindet $\\omega$ und $f$?',
+          '$\\omega = 2\\pi f$.',
+          '$2\\pi \\approx 6{,}28$, mal $50$.',
+        ],
+        {
+          1: '$\\omega = f$ angesetzt — Faktor $2\\pi$ vergessen. $\\omega$ und $f$ haben unterschiedliche Einheiten (rad/s vs. Hz).',
+          2: '$f/2 = 25$ — willkürliche Halbierung, hat keine physikalische Grundlage.',
+          3: '$4\\pi f = 628$ — Faktor $2\\pi$ doppelt eingesetzt. Es ist $2\\pi f$, nicht $4\\pi f$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['wechselspann'] },
+      ),
+
+      // Zeile 3: apply-independent · number-input · uses=[wechselspann]
+      ni(
+        'Eine Wechselspannung wird beschrieben durch $u(t) = 10\\,\\text{V}\\cdot\\sin(2\\pi\\cdot 100\\,\\text{Hz}\\cdot t)$. Welche Frequenz $f$ in Hz hat sie?',
+        100, 0.5, 'Hz',
+        `**Ansatz:** Vergleich mit der Standardform $u(t) = \\hat u\\sin(2\\pi f\\,t + \\varphi)$ — der Koeffizient von $t$ im Argument ist $2\\pi f$.
+
+**Rechnung:** Im gegebenen Ausdruck ist der Koeffizient $2\\pi\\cdot 100$, daraus $f = 100\\,\\text{Hz}$.
+
+**Probe:** Die Kreisfrequenz wäre $\\omega = 2\\pi\\cdot 100 \\approx 628\\,\\text{rad/s}$, Periodendauer $T = 1/100 = 0{,}01\\,\\text{s} = 10\\,\\text{ms}$.
+
+**Typischer Fehler:** $f = 2\\pi\\cdot 100 \\approx 628$ angegeben — die Kreisfrequenz $\\omega$ mit der Frequenz $f$ verwechselt.`,
+        [
+          'In welcher Form steht eine Sinus-Wechselspannung allgemein?',
+          'Vergleiche das Argument mit $2\\pi f\\cdot t$.',
+          'Lies $f$ direkt aus dem Argument ab.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['wechselspann'] },
+      ),
+
+      // Zeile 4: error-analysis · multiple-choice · uses=[wechselspann]
+      mc(
+        'Ein Lerner liest bei $u(t) = 230\\cdot\\sin(314\\,t)\\,\\text{V}$ ab: "Die Frequenz beträgt $f = 314\\,\\text{Hz}$." Welcher Fehler liegt vor?',
+        [
+          '$314$ ist die Kreisfrequenz $\\omega$ in rad/s, nicht die Frequenz. Es gilt $f = \\omega/(2\\pi) \\approx 50\\,\\text{Hz}$.',
+          'Die Amplitude $\\hat u$ wurde mit der Frequenz verwechselt.',
+          'Der Phasenwinkel $\\varphi = 0$ wurde nicht berücksichtigt.',
+          '$f$ und $\\omega$ sind dasselbe — beide Werte sind korrekt.',
+        ],
+        0,
+        `**Ansatz:** Standardform: $u(t) = \\hat u\\sin(\\omega t + \\varphi)$. Der Koeffizient von $t$ ist $\\omega$, nicht $f$.
+
+**Rechnung:** $\\omega = 314\\,\\text{rad/s}$, also $f = \\omega/(2\\pi) = 314/6{,}28 \\approx 50\\,\\text{Hz}$. Der Lerner hat $\\omega$ direkt als $f$ gelesen.
+
+**Probe:** Diese Spannung ist eine typische Netzspannung: $230\\,\\text{V}$ Scheitelwert (eigentlich Effektivwert in der Aufgabe vermutlich, aber im Term steht $\\hat u$), $50\\,\\text{Hz}$ — passt zum europäischen Netz.
+
+**Typischer Fehler:** Kreisfrequenz und Frequenz nicht unterschieden — der Faktor $2\\pi$ wird übersehen, weil beide Größen "Frequenz" genannt werden.`,
+        [
+          'Schreibe die Standardform $u(t) = \\hat u\\sin(\\omega t + \\varphi)$ darüber.',
+          'Welcher Faktor steht vor dem $t$?',
+          'Wie kommt man von $\\omega$ zu $f$?',
+        ],
+        {
+          1: '$\\hat u = 230$ steht vor dem Sinus, $314$ steht im Argument — diese sind nicht verwechselt worden.',
+          2: 'Im Argument $314\\cdot t$ ist keine Phase explizit gesetzt — $\\varphi = 0$ ist konsistent mit dem Ausdruck.',
+          3: '$f$ und $\\omega$ sind unterschiedliche Größen mit unterschiedlichen Einheiten (Hz vs. rad/s); sie unterscheiden sich um $2\\pi$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['wechselspann'] },
+      ),
+
+      // Zeile 5: transfer · number-input · uses=[wechselspann]
+      ni(
+        'Eine Sinus-Wechselspannung hat eine Periodendauer $T = 20\\,\\text{ms}$. Welche Kreisfrequenz $\\omega$ in rad/s hat sie?',
+        314.16, 0.5, 'rad/s',
+        `**Ansatz:** Direkt $\\omega = 2\\pi/T$, oder über den Umweg $f = 1/T$ und $\\omega = 2\\pi f$.
+
+**Rechnung:** $T = 0{,}02\\,\\text{s}$, also $\\omega = 2\\pi/0{,}02 = 100\\pi \\approx 314{,}16\\,\\text{rad/s}$.
+
+**Probe:** $f = 1/T = 50\\,\\text{Hz}$ — typische Netzfrequenz. $\\omega = 2\\pi f = 100\\pi$ ✓.
+
+**Typischer Fehler:** $\\omega = 2\\pi T = 0{,}126\\,\\text{rad/s}$ — $T$ statt $1/T$ eingesetzt; vergessen, dass $\\omega$ Bogenmaß PRO Zeit ist.`,
+        [
+          'Zwei Wege: direkt $\\omega = 2\\pi/T$ oder Umweg $f = 1/T$.',
+          'Zeit erst von ms in s umrechnen: $T = 0{,}02\\,\\text{s}$.',
+          '$2\\pi/0{,}02 = 100\\pi \\approx 314$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['wechselspann'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [1] Effektivwert $U = \hat u / \sqrt 2$ (concept: effektiv)
+    // ═════════════════════════════════════════════════════════════════════
+    1: [
+      // Zeile 6: recognize · true-false · uses=[effektiv]
+      tf(
+        'Für eine reine Sinusspannung gilt $U_\\text{eff} = \\hat u/\\sqrt 2 \\approx 0{,}707\\,\\hat u$.',
+        true,
+        `**Ansatz:** Definition über die Leistungsäquivalenz: $U_\\text{eff}$ ist der Gleichspannungswert, der dieselbe mittlere Wirkleistung am ohmschen Widerstand liefern würde.
+
+**Rechnung:** $U_\\text{eff}^{2} = \\frac{1}{T}\\int_0^T \\hat u^{2}\\sin^{2}(\\omega t)\\,dt = \\hat u^{2}/2 \\Rightarrow U_\\text{eff} = \\hat u/\\sqrt 2$.
+
+**Probe:** $1/\\sqrt 2 = \\sqrt 2/2 \\approx 0{,}7071$ ✓.
+
+**Typischer Fehler:** Faktor $\\sqrt 2$ in die falsche Richtung ($U_\\text{eff} = \\hat u\\cdot\\sqrt 2$) — gilt nur umgekehrt vom Effektivwert auf den Scheitelwert.`,
+        [
+          'Wie ist der Effektivwert definiert?',
+          'Was ist das mittlere Quadrat eines Sinussignals?',
+          '$\\sqrt{1/2} = 1/\\sqrt 2 \\approx 0{,}707$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['effektiv'] },
+      ),
+
+      // Zeile 7: apply-guided · multiple-choice · uses=[effektiv]
+      mc(
+        'Welcher Scheitelwert $\\hat u$ gehört zu einem Effektivwert $U = 230\\,\\text{V}$ (Netzspannung in Europa)?',
+        ['$\\approx 325\\,\\text{V}$', '$\\approx 163\\,\\text{V}$', '$230\\,\\text{V}$', '$460\\,\\text{V}$'],
+        0,
+        `**Ansatz:** Umkehrung der Definitionsformel: $\\hat u = U\\cdot\\sqrt 2$.
+
+**Rechnung:** $\\hat u = 230 \\cdot \\sqrt 2 \\approx 230 \\cdot 1{,}414 = 325{,}3\\,\\text{V}$.
+
+**Probe:** Rückwärts $U = \\hat u/\\sqrt 2 = 325{,}3/1{,}414 \\approx 230\\,\\text{V}$ ✓.
+
+**Typischer Fehler:** Faktor $\\sqrt 2$ in die falsche Richtung ($230/\\sqrt 2 \\approx 163$) — würde einen Scheitelwert KLEINER als den Effektivwert ergeben, was unphysikalisch ist.`,
+        [
+          'Was ist größer — Scheitel- oder Effektivwert?',
+          'Stelle $U = \\hat u/\\sqrt 2$ nach $\\hat u$ um.',
+          '$230 \\cdot 1{,}414 \\approx 325$.',
+        ],
+        {
+          1: '$230/\\sqrt 2 \\approx 163$ — Faktor $\\sqrt 2$ falsch herum. Der Scheitelwert ist immer GRÖSSER als der Effektivwert (Sinus erreicht im Maximum mehr als den RMS-Wert).',
+          2: '$\\hat u = U$ angenommen — gilt nur bei Gleichspannung. Bei Sinus unterscheiden sich beide um $\\sqrt 2$.',
+          3: '$2\\cdot U = 460$ — der Faktor zwischen Scheitelwert und Effektivwert ist $\\sqrt 2 \\approx 1{,}414$, nicht $2$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['effektiv'] },
+      ),
+
+      // Zeile 8: apply-independent · number-input · uses=[effektiv]
+      ni(
+        'Eine Sinus-Wechselspannung hat den Scheitelwert $\\hat u = 10\\,\\text{V}$. Welcher Effektivwert $U$ in Volt liegt vor?',
+        7.07, 0.02, 'V',
+        `**Ansatz:** $U = \\hat u/\\sqrt 2$.
+
+**Rechnung:** $U = 10/\\sqrt 2 = 10/1{,}414 \\approx 7{,}07\\,\\text{V}$. Exakter: $10\\cdot\\sqrt 2/2 = 5\\sqrt 2 \\approx 7{,}0711$.
+
+**Probe:** Rückwärts $\\hat u = 7{,}07 \\cdot \\sqrt 2 = 7{,}07 \\cdot 1{,}414 \\approx 10{,}0\\,\\text{V}$ ✓.
+
+**Typischer Fehler:** $\\hat u\\cdot\\sqrt 2 = 14{,}14$ angegeben — Bruch umgekehrt; das wäre die Umrechnung vom Effektiv- zum Scheitelwert.`,
+        [
+          '$U = \\hat u/\\sqrt 2$.',
+          '$\\sqrt 2 \\approx 1{,}414$.',
+          '$10 / 1{,}414 = 7{,}07$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['effektiv'] },
+      ),
+
+      // Zeile 9: error-analysis · multiple-choice · uses=[effektiv]
+      mc(
+        'Ein Lerner schreibt: "Der Effektivwert ist $U_\\text{eff} = \\hat u\\cdot\\sqrt 2$." Bei $\\hat u = 100\\,\\text{V}$ gibt er $U_\\text{eff} \\approx 141\\,\\text{V}$ an. Welcher Fehler liegt vor?',
+        [
+          'Faktor $\\sqrt 2$ in die falsche Richtung — korrekt $U_\\text{eff} = \\hat u/\\sqrt 2 \\approx 70{,}7\\,\\text{V}$. Der Effektivwert ist immer kleiner als der Scheitelwert.',
+          'Die Formel $U_\\text{eff} = \\hat u/\\sqrt 2$ gilt nur für Rechteck-Signale.',
+          'Die Wurzel $\\sqrt 2$ muss durch $\\sqrt 3$ ersetzt werden.',
+          'Effektivwert und Scheitelwert sind tatsächlich identisch.',
+        ],
+        0,
+        `**Ansatz:** Definition $U_\\text{eff} = \\hat u/\\sqrt 2$ — der Effektivwert ist um den Faktor $\\sqrt 2$ KLEINER als der Scheitelwert.
+
+**Rechnung:** Korrekt: $U_\\text{eff} = 100/\\sqrt 2 \\approx 70{,}71\\,\\text{V}$. Lerner-Wert $141\\,\\text{V}$ ist exakt der Scheitelwert, der zu $U_\\text{eff} = 100\\,\\text{V}$ gehören würde.
+
+**Probe:** Plausibilität: $U_\\text{eff} > \\hat u$ würde bedeuten, der zeitliche Mittelwert der quadrierten Spannung wäre größer als der Spitzenwert — unmöglich.
+
+**Typischer Fehler:** Die Beziehung $\\hat u = U_\\text{eff}\\cdot\\sqrt 2$ (vom Eff- zum Scheitelwert) wird mit der Umkehrung verwechselt.`,
+        [
+          'In welche Richtung geht der Faktor $\\sqrt 2$ — vom Effektiv- zum Scheitelwert oder umgekehrt?',
+          'Welcher der beiden Werte ist größer?',
+          'Plausibilitätscheck: kann $U_\\text{eff}$ größer als $\\hat u$ sein?',
+        ],
+        {
+          1: 'Die Formel gilt gerade für Sinussignale. Rechteck-Signale haben $U_\\text{eff} = \\hat u$ (kein Wurzel-Faktor).',
+          2: '$\\sqrt 3$ tritt bei verketteten Drehstromspannungen auf, nicht bei der Effektivwert-Definition eines einzelnen Sinus.',
+          3: 'Effektiv- und Scheitelwert sind nur bei DC identisch; bei Sinus unterscheiden sie sich um den Faktor $\\sqrt 2$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['effektiv'] },
+      ),
+
+      // Zeile 10: transfer · number-input · uses=[effektiv]
+      ni(
+        'Ein Heizgerät soll eine mittlere Wirkleistung $P = 1000\\,\\text{W}$ an einem ohmschen Widerstand $R = 53\\,\\Omega$ erzeugen. Welcher Scheitelwert $\\hat u$ der Sinus-Wechselspannung in Volt ist dafür nötig?',
+        325.7, 1, 'V',
+        `**Ansatz:** Zwei Schritte: erst Effektivwert aus $P = U_\\text{eff}^{2}/R$, dann Scheitelwert über $\\hat u = U_\\text{eff}\\cdot\\sqrt 2$.
+
+**Rechnung:** $U_\\text{eff} = \\sqrt{P\\cdot R} = \\sqrt{1000\\cdot 53} = \\sqrt{53000} \\approx 230{,}22\\,\\text{V}$. Dann $\\hat u = 230{,}22\\cdot\\sqrt 2 \\approx 325{,}66\\,\\text{V}$.
+
+**Probe:** Wirkleistung-Check: $U_\\text{eff}^{2}/R = 230{,}22^{2}/53 = 53000/53 = 1000\\,\\text{W}$ ✓ (das ist die definierende Eigenschaft des Effektivwerts).
+
+**Typischer Fehler:** Direkt $P = \\hat u^{2}/R$ angesetzt (ohne Effektivwert-Schritt) — würde $\\hat u = \\sqrt{1000\\cdot 53} = 230\\,\\text{V}$ liefern, fehlt der Faktor $\\sqrt 2$.`,
+        [
+          'An einem ohmschen Widerstand gilt $P = U_\\text{eff}^{2}/R$ (Wirkleistung mit Effektivwert).',
+          'Stelle nach $U_\\text{eff}$ um: $U_\\text{eff} = \\sqrt{P\\cdot R}$.',
+          'Vom Effektivwert auf den Scheitelwert: $\\hat u = U_\\text{eff}\\cdot\\sqrt 2$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['effektiv'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [2] Impedanzen $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
+    // ═════════════════════════════════════════════════════════════════════
+    2: [
+      // Zeile 11: recognize · true-false · uses=[impedanzen]
+      tf(
+        'Der Impedanzbetrag eines idealen Kondensators ist $|Z_C| = 1/(\\omega C)$.',
+        true,
+        `**Ansatz:** Definition $Z_C = 1/(j\\omega C)$, daraus folgt der Betrag durch $|1/(j\\omega C)| = 1/|j\\omega C| = 1/(\\omega C)$.
+
+**Rechnung:** $|j| = 1$, also $|j\\omega C| = \\omega C$, also $|Z_C| = 1/(\\omega C)$.
+
+**Probe:** Einheiten-Check: $[1/(\\text{rad/s}\\cdot\\text{F})] = [\\text{s}/\\text{F}] = [\\Omega]$ ✓.
+
+**Typischer Fehler:** $|Z_C| = \\omega C$ angenommen — das wäre die Spulen-Formel; Kondensator hat den Kehrwert.`,
+        [
+          'Was ist der Betrag einer komplexen Zahl $a + jb$?',
+          '$|j\\omega C| = \\omega C$ (denn $|j| = 1$).',
+          'Bilde das Reziproke.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['impedanzen'] },
+      ),
+
+      // Zeile 12: apply-guided · multiple-choice · uses=[impedanzen]
+      mc(
+        'Ein Kondensator $C = 1\\,\\mu\\text{F}$ wird mit der Kreisfrequenz $\\omega = 1000\\,\\text{rad/s}$ betrieben. Wie groß ist der Impedanzbetrag $|Z_C|$?',
+        ['$1000\\,\\Omega$', '$1\\,\\mu\\Omega$', '$10^{-3}\\,\\Omega$', '$1000\\,\\text{Hz}$'],
+        0,
+        `**Ansatz:** $|Z_C| = 1/(\\omega C)$.
+
+**Rechnung:** $C = 10^{-6}\\,\\text{F}$, $\\omega C = 1000 \\cdot 10^{-6} = 10^{-3}$. Kehrwert: $|Z_C| = 1/10^{-3} = 1000\\,\\Omega = 1\\,\\text{k}\\Omega$.
+
+**Probe:** Rückwärts $\\omega C = 1/|Z_C| = 1/1000 = 10^{-3}$ ✓.
+
+**Typischer Fehler:** Direkt $\\omega C = 10^{-3}\\,\\Omega$ als Impedanz angegeben — Kehrwert vergessen.`,
+        [
+          'Was ist die Impedanz-Formel für einen Kondensator?',
+          'Erst $\\omega C$ ausrechnen, dann Kehrwert nehmen.',
+          '$1000\\cdot 10^{-6} = 10^{-3}$ — Kehrwert $= 1000$.',
+        ],
+        {
+          1: '$1\\,\\mu\\Omega = 10^{-6}\\,\\Omega$ — das wäre nur der Zahlenwert von $C$ als Impedanz interpretiert; ohne Berücksichtigung von $\\omega$.',
+          2: '$10^{-3}\\,\\Omega$ ist genau $\\omega C$ — du hast vergessen, am Ende den Kehrwert zu nehmen.',
+          3: 'Hz ist die Einheit der Frequenz, nicht der Impedanz. Impedanz wird in Ohm angegeben.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['impedanzen'] },
+      ),
+
+      // Zeile 13: apply-independent · number-input · uses=[impedanzen]
+      ni(
+        'Eine Spule $L = 200\\,\\text{mH}$ wird mit Kreisfrequenz $\\omega = 100\\,\\text{rad/s}$ betrieben. Wie groß ist der Impedanzbetrag $|Z_L|$ in Ohm?',
+        20, 0.05, 'Ω',
+        `**Ansatz:** $|Z_L| = \\omega L$.
+
+**Rechnung:** $L = 200\\,\\text{mH} = 0{,}2\\,\\text{H}$. $|Z_L| = 100 \\cdot 0{,}2 = 20\\,\\Omega$.
+
+**Probe:** Einheiten-Check: $[\\text{rad/s}\\cdot\\text{H}] = [\\text{s}^{-1}\\cdot\\text{V}\\cdot\\text{s}/\\text{A}] = [\\text{V}/\\text{A}] = [\\Omega]$ ✓.
+
+**Typischer Fehler:** $L$ in mH belassen ($100\\cdot 200 = 20000\\,\\Omega$) — Faktor $1000$ zu groß.`,
+        [
+          '$L$ in SI: $1\\,\\text{mH} = 10^{-3}\\,\\text{H}$.',
+          '$|Z_L| = \\omega L$ — ohne Faktor $2\\pi$, weil $\\omega$ schon Kreisfrequenz ist.',
+          '$100\\cdot 0{,}2 = 20$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['impedanzen'] },
+      ),
+
+      // Zeile 14: error-analysis · multiple-choice · uses=[impedanzen]
+      mc(
+        'Bei $C = 1\\,\\mu\\text{F}$ und $\\omega = 314\\,\\text{rad/s}$ berechnet ein Lerner $|Z_C| = \\omega\\,C = 314\\cdot 10^{-6}\\,\\Omega \\approx 3{,}14\\cdot 10^{-4}\\,\\Omega$. Welcher Fehler liegt vor?',
+        [
+          'Spulen- und Kondensator-Formel verwechselt: $|Z_C| = 1/(\\omega C)$, nicht $\\omega C$. Korrekt: $\\approx 3185\\,\\Omega$.',
+          '$\\omega$ wurde nicht aus $f$ berechnet.',
+          'Die Einheiten von $C$ wurden falsch umgerechnet (μF → F).',
+          'Die Formel $|Z| = U/I$ ist hier nicht anwendbar.',
+        ],
+        0,
+        `**Ansatz:** Die Formeln $|Z_L| = \\omega L$ und $|Z_C| = 1/(\\omega C)$ sind Kehrwerte voneinander — leicht zu verwechseln.
+
+**Rechnung:** Korrekt: $\\omega C = 314\\cdot 10^{-6} = 3{,}14\\cdot 10^{-4}$, also $|Z_C| = 1/(3{,}14\\cdot 10^{-4}) \\approx 3185\\,\\Omega$. Lerner-Wert $3{,}14\\cdot 10^{-4}\\,\\Omega$ ist exakt $\\omega C$ — Kehrwert vergessen.
+
+**Probe:** Plausibilität: Kondensator-Impedanz bei Netzfrequenz ist typischerweise in der Größenordnung $\\text{k}\\Omega$, nicht $\\mu\\Omega$.
+
+**Typischer Fehler:** Anschauliche Merkregel "Kondensator blockiert DC" → "$|Z|$ groß bei niedriger Frequenz" wird falsch herum interpretiert.`,
+        [
+          'Welche Bauteil-Formel hat das $\\omega$ im Nenner?',
+          'Vergleiche $\\omega C$ und $1/(\\omega C)$.',
+          'Plausibilität: ist $\\mu\\Omega$ ein realistischer Impedanzwert?',
+        ],
+        {
+          1: '$\\omega = 314$ ist bereits in rad/s und passt zu $f = 50\\,\\text{Hz}$ — die Berechnung von $\\omega$ ist hier nicht das Problem.',
+          2: 'Der Lerner schreibt $10^{-6}\\,\\text{F}$ — die Umrechnung von μF auf F ist korrekt. Der Fehler liegt in der Formel.',
+          3: '$|Z| = U/I$ ist die allgemeine Definition; sie gilt sehr wohl. Hier wurde aber die Bauteilformel falsch angesetzt.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['impedanzen'] },
+      ),
+
+      // Zeile 15: transfer · matching · uses=[impedanzen]
+      matching(
+        'Ordne jedem Bauelement die zugehörige Impedanz $Z$ (komplexer Ausdruck) zu.',
+        [
+          { left: 'Ohmscher Widerstand $R$',                       right: '$Z = R$' },
+          { left: 'Ideale Spule $L$',                              right: '$Z = j\\omega L$' },
+          { left: 'Idealer Kondensator $C$',                       right: '$Z = 1/(j\\omega C)$' },
+          { left: 'Reihenschaltung aus $R$ und $L$',               right: '$Z = R + j\\omega L$' },
+        ],
+        `**Ansatz:** Reelle Teile = ohmsche Anteile, imaginäre Teile = blindwirkende Anteile (Spule $+j$, Kondensator $-j$).
+
+**Rechnung:**
+- $R$: rein reell.
+- Spule: $Z_L = j\\omega L$, rein imaginär positiv.
+- Kondensator: $Z_C = 1/(j\\omega C) = -j/(\\omega C)$, rein imaginär negativ.
+- Reihenschaltung: Addition der Impedanzen $Z_R + Z_L = R + j\\omega L$.
+
+**Probe:** Beträge: $|Z_R| = R$, $|Z_L| = \\omega L$, $|Z_C| = 1/(\\omega C)$, $|Z| = \\sqrt{R^{2} + (\\omega L)^{2}}$ — alle vier verschieden.
+
+**Typischer Fehler:** Spulen-Imaginärteil mit negativem Vorzeichen ($-j\\omega L$) — gilt nur für Kondensator.`,
+        [
+          'Welche Bauteile sind rein reell, welche rein imaginär?',
+          'Spule: $+j$, Kondensator: $-j$ (wegen $1/j = -j$).',
+          'Bei Reihenschaltung addieren sich Impedanzen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['impedanzen'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [3] Frequenzverhalten $|Z_L| \propto f$, $|Z_C| \propto 1/f$
+    // ═════════════════════════════════════════════════════════════════════
+    3: [
+      // Zeile 16: recognize · true-false · uses=[z-frequenz]
+      tf(
+        'Mit steigender Frequenz nimmt der Impedanzbetrag einer Spule zu, während der eines Kondensators abnimmt.',
+        true,
+        `**Ansatz:** Direkter Blick auf die Formeln: $|Z_L| = \\omega L$ wächst linear mit $\\omega$ (und damit mit $f$), $|Z_C| = 1/(\\omega C)$ fällt mit $1/\\omega$.
+
+**Rechnung:** Verdoppelt man $f$: $|Z_L|$ wird $2\\times$, $|Z_C|$ wird $0{,}5\\times$.
+
+**Probe:** Grenzfälle: bei $f \\to \\infty$ ist die Spule "offener Schalter" ($|Z_L| \\to \\infty$), der Kondensator "Kurzschluss" ($|Z_C| \\to 0$). Bei DC ($f = 0$) genau umgekehrt.
+
+**Typischer Fehler:** Verhalten der beiden Bauteile vertauscht — passiert oft, weil "Induktivität" und "Kapazität" intuitiv ähnlich klingen.`,
+        [
+          'Wie hängt $|Z_L|$ von $\\omega$ ab?',
+          'Wie hängt $|Z_C|$ von $\\omega$ ab?',
+          'Was passiert bei sehr hohen Frequenzen?',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['z-frequenz'] },
+      ),
+
+      // Zeile 17: apply-guided · multiple-choice · uses=[z-frequenz]
+      mc(
+        'Wenn man an einer idealen Spule die Frequenz verdoppelt, wie ändert sich der Impedanzbetrag $|Z_L|$?',
+        [
+          'Verdoppelt sich (gleicher Faktor wie die Frequenz).',
+          'Halbiert sich.',
+          'Bleibt unverändert.',
+          'Vervierfacht sich.',
+        ],
+        0,
+        `**Ansatz:** $|Z_L| = \\omega L = 2\\pi f L$ — linear in $f$.
+
+**Rechnung:** $|Z_L|(2f)/|Z_L|(f) = 2\\pi(2f)L/(2\\pi f L) = 2$.
+
+**Probe:** Konkret: bei $f = 50\\,\\text{Hz}$, $L = 0{,}1\\,\\text{H}$ ist $|Z_L| \\approx 31{,}4\\,\\Omega$; bei $f = 100\\,\\text{Hz}$ ist $|Z_L| \\approx 62{,}8\\,\\Omega$ — verdoppelt ✓.
+
+**Typischer Fehler:** Verhalten des Kondensators ($|Z_C|$ halbiert sich) für die Spule übernommen.`,
+        [
+          'Welche Formel hat $|Z_L|$?',
+          'Wie geht $f$ in die Formel ein — linear oder quadratisch?',
+          'Verdopplung von $f$ entspricht Verdopplung von $\\omega$.',
+        ],
+        {
+          1: 'Halbierung gilt für den Kondensator ($|Z_C| \\propto 1/f$), nicht für die Spule.',
+          2: 'Konstanter Impedanzbetrag (frequenzunabhängig) gilt nur für den ohmschen Widerstand.',
+          3: 'Vervierfachung würde quadratische Abhängigkeit $|Z| \\propto f^{2}$ bedeuten — das ist bei keinem Grundbauteil der Fall.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['z-frequenz'] },
+      ),
+
+      // Zeile 18: apply-independent · number-input · uses=[z-frequenz]
+      ni(
+        'Ein Kondensator hat bei $f_1 = 50\\,\\text{Hz}$ einen Impedanzbetrag $|Z_C| = 200\\,\\Omega$. Welchen Impedanzbetrag $|Z_C|$ in Ohm hat er bei $f_2 = 200\\,\\text{Hz}$?',
+        50, 0.5, 'Ω',
+        `**Ansatz:** $|Z_C| \\propto 1/f$, also $|Z_C|(f_2)/|Z_C|(f_1) = f_1/f_2$.
+
+**Rechnung:** $|Z_C|(200) = |Z_C|(50)\\cdot 50/200 = 200 \\cdot 1/4 = 50\\,\\Omega$.
+
+**Probe:** $|Z_C|(50) \\cdot |Z_C|(200) \\cdot$ ... — einfacher: vierfache Frequenz → Viertel der Impedanz, $200/4 = 50$ ✓.
+
+**Typischer Fehler:** $|Z_C|(200) = 200 \\cdot 4 = 800$ — Verhalten wie Spule angenommen (Impedanz wächst mit $f$).`,
+        [
+          'Wie hängt $|Z_C|$ von $f$ ab?',
+          'Verhältnis $|Z(f_2)|/|Z(f_1)| = f_1/f_2$ (inverse Proportionalität).',
+          'Vierfache Frequenz → Viertel der Impedanz.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['z-frequenz'] },
+      ),
+
+      // Zeile 19: error-analysis · multiple-choice · uses=[z-frequenz]
+      mc(
+        'Ein Lerner behauptet: "Bei sehr hoher Frequenz wirkt ein idealer Kondensator wie ein Isolator (unendlich hohe Impedanz)." Welcher Fehler liegt vor?',
+        [
+          'Verhalten umgekehrt: bei hoher Frequenz wirkt der Kondensator wie ein Kurzschluss ($|Z_C| \\to 0$). Isolator (offener Schalter) ist er bei DC.',
+          'Die Aussage stimmt, ist aber nur eine Näherung.',
+          'Frequenz beeinflusst Kondensatoren nicht.',
+          'Ideale Kondensatoren gibt es nicht — die Frage ist falsch gestellt.',
+        ],
+        0,
+        `**Ansatz:** $|Z_C| = 1/(\\omega C)$ — Grenzwertbetrachtung.
+
+**Rechnung:** $\\omega \\to \\infty \\Rightarrow |Z_C| \\to 0$ (Kurzschluss). $\\omega = 0$ (DC) $\\Rightarrow |Z_C| \\to \\infty$ (Isolator). Der Lerner hat die beiden Grenzfälle vertauscht.
+
+**Probe:** Beispiel HF-Schaltung: Koppelkondensator wird so gewählt, dass er bei der Signalfrequenz $|Z_C| \\ll R$ erfüllt — damit das Signal "durchgeht". Kondensator ist also bei hoher Frequenz durchlässig.
+
+**Typischer Fehler:** Spulen- und Kondensator-Grenzverhalten vertauscht. Spule blockiert bei HF, Kondensator blockiert bei DC.`,
+        [
+          'Welches Grenzverhalten hat $|Z_C|$ für $\\omega \\to \\infty$?',
+          'Vergleiche DC ($\\omega = 0$) und HF ($\\omega \\to \\infty$).',
+          'Welches Bauteil blockiert bei DC?',
+        ],
+        {
+          1: 'Es ist keine Näherung — die Aussage ist exakt umgekehrt. Bei HF ist der Kondensator Kurzschluss, nicht Isolator.',
+          2: 'Frequenz beeinflusst den Kondensator sehr stark — $|Z_C| \\propto 1/f$.',
+          3: 'Ideale Kondensatoren sind ein gültiges Modell. Die Frage testet das Grenzverhalten dieses Modells.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['z-frequenz'] },
+      ),
+
+      // Zeile 20: transfer · number-input · uses=[z-frequenz]
+      ni(
+        'Bei welcher Frequenz $f$ in Hz hat eine Spule mit $L = 10\\,\\text{mH}$ den Impedanzbetrag $|Z_L| = 100\\,\\Omega$?',
+        1591.55, 1, 'Hz',
+        `**Ansatz:** $|Z_L| = \\omega L = 2\\pi f L$ nach $f$ umstellen.
+
+**Rechnung:** $f = |Z_L|/(2\\pi L) = 100/(2\\pi\\cdot 0{,}01) = 100/0{,}0628 \\approx 1591{,}55\\,\\text{Hz}$.
+
+**Probe:** Rückwärts $\\omega L = 2\\pi\\cdot 1591{,}55\\cdot 0{,}01 \\approx 100\\,\\Omega$ ✓.
+
+**Typischer Fehler:** Faktor $2\\pi$ vergessen ($f = 100/0{,}01 = 10000$) — würde Kreisfrequenz statt Frequenz liefern.`,
+        [
+          'Stelle $|Z_L| = 2\\pi f L$ nach $f$ um.',
+          '$L = 10\\,\\text{mH} = 0{,}01\\,\\text{H}$.',
+          '$100/(2\\pi\\cdot 0{,}01) \\approx 1592$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['z-frequenz'] },
+      ),
+    ],
+
+    // ═════════════════════════════════════════════════════════════════════
+    // [4] Phasenverschiebung Spule/Kondensator (concept: phasenversch)
+    // ═════════════════════════════════════════════════════════════════════
+    4: [
+      // Zeile 21: recognize · true-false · uses=[phasenversch]
+      tf(
+        'An einer idealen Spule eilt der Strom der Spannung um $90°$ NACH (die Spannung liegt zeitlich vor dem Strom).',
+        true,
+        `**Ansatz:** Aus $u_L = L\\,di/dt$ folgt: wenn $i(t) = \\hat i\\sin(\\omega t)$, dann $u_L = \\omega L\\hat i\\cos(\\omega t) = \\omega L\\hat i\\sin(\\omega t + 90°)$.
+
+**Rechnung:** Phasendifferenz $\\varphi_u - \\varphi_i = +90°$: die Spannung "läuft voraus", der Strom "läuft nach".
+
+**Probe:** Bei DC ($\\omega = 0$) verschwindet die Phase — $u_L = 0$, weil $di/dt = 0$. Im Wechsel "wartet" der Strom auf den Spannungs-Aufbau.
+
+**Typischer Fehler:** Vorzeichen vertauscht (Strom eilt voraus statt nach) — typisches Kondensator-Verhalten irrtümlich auf Spule angewendet.`,
+        [
+          'Wodurch wird die Spannung an einer Spule erzeugt?',
+          '$u_L = L\\,di/dt$ — was bedeutet das für Phasenverschiebung?',
+          'Sinus und Kosinus sind um $90°$ verschoben.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['phasenversch'] },
+      ),
+
+      // Zeile 22: apply-guided · multiple-choice · uses=[phasenversch]
+      mc(
+        'Welche Phasenverschiebung herrscht zwischen Strom und Spannung an einem idealen Kondensator?',
+        [
+          'Der Strom eilt der Spannung um $90°$ VORAUS.',
+          'Der Strom eilt der Spannung um $90°$ NACH.',
+          'Strom und Spannung sind in Phase.',
+          'Der Strom eilt der Spannung um $180°$ voraus.',
+        ],
+        0,
+        `**Ansatz:** Aus $i_C = C\\,du/dt$ folgt: wenn $u(t) = \\hat u\\sin(\\omega t)$, dann $i_C = \\omega C\\hat u\\cos(\\omega t) = \\omega C\\hat u\\sin(\\omega t + 90°)$.
+
+**Rechnung:** Der Strom ist die Ableitung der Spannung (mal $C$) — und die Ableitung von $\\sin$ ist $\\cos = \\sin(\\cdot + 90°)$. Strom eilt voraus.
+
+**Probe:** Anschauung: Eine plötzliche Spannungsänderung erfordert einen großen Stromstoß ($i = C\\,du/dt$). Die Spannung am Kondensator kann sich erst aufbauen, nachdem der Strom geflossen ist — der Strom kommt zuerst.
+
+**Typischer Fehler:** Spule und Kondensator vertauscht — Merkregel "CIVIL" (im **C** eilt **I** der **V** voraus; im **L** eilt **V** dem **I** voraus).`,
+        [
+          'Wie hängt der Strom durch einen Kondensator mit der Spannung zusammen?',
+          '$i_C = C\\,du/dt$ — was passiert mit der Phase, wenn man ableitet?',
+          'Ableitung von $\\sin$ ist $\\cos$ — das ist $\\sin(\\cdot + 90°)$.',
+        ],
+        {
+          1: 'Verhalten der Spule auf den Kondensator übertragen — die beiden Bauteile sind genau zueinander dual.',
+          2: 'In Phase gilt nur für ohmsche Widerstände.',
+          3: '$180°$ tritt nicht bei einzelnen Bauteilen, sondern z. B. bei Resonanz-Wechseln in Schwingkreisen auf.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['phasenversch'] },
+      ),
+
+      // Zeile 23: apply-independent · multiple-choice · uses=[phasenversch]
+      mc(
+        'An welchem der folgenden idealen Bauelemente sind Strom und Spannung exakt in Phase?',
+        [
+          'Ohmscher Widerstand $R$',
+          'Ideale Spule $L$',
+          'Idealer Kondensator $C$',
+          'Reihenschaltung aus $L$ und $C$ (allgemeiner Fall)',
+        ],
+        0,
+        `**Ansatz:** "In Phase" heißt $\\varphi_u = \\varphi_i$, also $\\varphi_u - \\varphi_i = 0°$.
+
+**Rechnung:** Bei einem rein ohmschen Widerstand gilt $u = R\\cdot i$ — keine zeitliche Verschiebung, beide Größen folgen demselben Sinus. Spule: $+90°$, Kondensator: $-90°$.
+
+**Probe:** Komplexe Schreibweise: $Z_R = R$ ist rein reell — der "Phasenwinkel" der Impedanz ist null, also auch zwischen $U$ und $I$.
+
+**Typischer Fehler:** "Spule und Kondensator gleichen sich aus, also in Phase" — gilt nur bei exakter Resonanz mit $\\omega L = 1/(\\omega C)$.`,
+        [
+          'Welcher Bauteil-Impedanz hat keinen Imaginärteil?',
+          'Phasenwinkel des Bauteils $=$ Phasenverschiebung zwischen $U$ und $I$.',
+          '$Z_R = R$ ist rein reell.',
+        ],
+        {
+          1: 'Spule: Spannung eilt Strom um $90°$ voraus — nicht in Phase.',
+          2: 'Kondensator: Strom eilt Spannung um $90°$ voraus — nicht in Phase.',
+          3: 'Allgemein liefert die LC-Reihenschaltung $\\pm 90°$ Phasenverschiebung — nur bei genau einer Resonanzfrequenz wäre die effektive Impedanz null, aber das ist ein Spezialfall.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['phasenversch'] },
+      ),
+
+      // Zeile 24: error-analysis · multiple-choice · uses=[phasenversch]
+      mc(
+        'Ein Lerner sagt: "An einer idealen Spule eilt der STROM der Spannung um $90°$ VORAUS." Welcher Fehler liegt vor?',
+        [
+          'Spule und Kondensator vertauscht — an der Spule eilt der Strom $90°$ NACH (Spannung voraus); $90°$ Vorlauf des Stroms ist Kondensator-Verhalten.',
+          'Die Phasenverschiebung beträgt nur $45°$, nicht $90°$.',
+          'Spule und Kondensator verhalten sich identisch.',
+          'An idealen Bauelementen gibt es keine Phasenverschiebung.',
+        ],
+        0,
+        `**Ansatz:** Spule: $u_L = L\\,di/dt$ — die Spannung ist die Ableitung des Stroms, läuft also $90°$ voraus.
+
+**Rechnung:** Mit $i(t) = \\hat i\\sin(\\omega t)$: $u_L(t) = \\omega L\\hat i\\sin(\\omega t + 90°)$. Spannung läuft voraus, Strom hinkt nach.
+
+**Probe:** Mnemotechnik "CIVIL" — im **C** eilt **I** der **V** voraus; im **L** eilt **V** dem **I** voraus.
+
+**Typischer Fehler:** Die beiden Bauteile haben spiegelbildliches Verhalten — Verwechslung tritt häufig auf, wenn man nur den absoluten Wert ($90°$) merkt, nicht aber das Vorzeichen.`,
+        [
+          'Welches Bauteil-Element nimmt der Ableitung von $i$ entspricht — Spule oder Kondensator?',
+          'Spule: $u = L\\,di/dt$. Kondensator: $i = C\\,du/dt$.',
+          'Merkregel "CIVIL" hilft bei der Richtung.',
+        ],
+        {
+          1: '$45°$ tritt bei einer Reihenschaltung mit $R = \\omega L$ auf — nicht an einer reinen Spule.',
+          2: 'Spule und Kondensator sind zueinander dual — sie verhalten sich gerade entgegengesetzt, nicht identisch.',
+          3: 'An idealer Spule und idealem Kondensator gibt es sehr wohl Phasenverschiebung ($\\pm 90°$). Nur am Widerstand ist die Phase null.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['phasenversch'] },
+      ),
+
+      // Zeile 25: transfer · matching · uses=[phasenversch]
+      matching(
+        'Ordne jedem Bauelement bzw. jeder Schaltung das passende Phasenverhalten zwischen $U$ und $I$ zu.',
+        [
+          { left: 'Ohmscher Widerstand $R$',                            right: '$\\varphi = 0°$ (Strom und Spannung in Phase)' },
+          { left: 'Ideale Spule $L$',                                   right: 'Strom eilt der Spannung um $90°$ NACH' },
+          { left: 'Idealer Kondensator $C$',                            right: 'Strom eilt der Spannung um $90°$ VORAUS' },
+          { left: 'Reihenschaltung $R$ und $L$ mit $\\omega L = R$',    right: 'Strom eilt der Spannung um $45°$ NACH' },
+        ],
+        `**Ansatz:** Phasenverhalten direkt aus dem Imaginärteil der Impedanz. $\\tan\\varphi = \\text{Im}(Z)/\\text{Re}(Z)$.
+
+**Rechnung:**
+- $R$: $Z = R$, $\\varphi = 0°$.
+- Spule: $Z = j\\omega L$, $\\varphi = +90°$ → Strom $90°$ nach.
+- Kondensator: $Z = -j/(\\omega C)$, $\\varphi = -90°$ → Strom $90°$ voraus.
+- $R$+$L$ mit $\\omega L = R$: $Z = R + jR$, $\\tan\\varphi = 1 \\Rightarrow \\varphi = +45°$ → Strom $45°$ nach.
+
+**Probe:** Verlauf von $\\varphi$ mit zunehmendem $\\omega L/R$: $0° \\to 45° \\to 90°$ — der Übergang zwischen rein ohmsch und rein induktiv ✓.
+
+**Typischer Fehler:** Vorzeichen verwechselt; oder Phasenverhalten der Reihenschaltung mit "Mittelwert" verwechselt (es ist tatsächlich der Arkustangens, nicht der Mittelwert).`,
+        [
+          'Phasenwinkel der Impedanz = Phasenverschiebung $U$ gegenüber $I$.',
+          'Vorzeichen-Konvention: positiv → Strom eilt nach (Spannung voraus).',
+          'Bei Reihenschaltung gilt $\\tan\\varphi = \\omega L/R$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['phasenversch'] },
+      ),
+    ],
+  },
 }
