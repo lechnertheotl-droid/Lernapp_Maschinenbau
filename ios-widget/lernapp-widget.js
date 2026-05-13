@@ -1,11 +1,18 @@
 // Scriptable-Widget für die Lernapp Maschinenbau (TU Wien).
-// Zeigt einen Lern-Reminder auf Home- und Lockscreen. Tap öffnet die deployed PWA.
+// Zeigt einen Lern-Reminder auf Home- und Lockscreen. Tap öffnet die installierte PWA.
 //
 // Installation siehe README.md im selben Ordner.
 
 const APP_URL = 'https://lechnertheotl-droid.github.io/Lernapp_Maschinenbau/'
 const ICON_URL = APP_URL + 'icons/icon-192.png'
 const ICON_CACHE_FILE = 'lernapp-widget-icon.png'
+
+// iOS-Widgets können keine PWA direkt aus einer https-URL öffnen — sie würden
+// in Safari landen. Umweg: das Widget startet einen vom User angelegten
+// Kurzbefehl namens "Lernapp", der die Aktion "App öffnen → Lernapp MB" enthält.
+// Wer den Kurzbefehl anders nennt, passt SHORTCUT_NAME hier an.
+const SHORTCUT_NAME = 'Lernapp'
+const TAP_URL = 'shortcuts://run-shortcut?name=' + encodeURIComponent(SHORTCUT_NAME)
 
 async function loadIcon() {
   const fm = FileManager.local()
@@ -118,7 +125,7 @@ function buildFallback(widget, icon) {
 
 async function run() {
   const widget = new ListWidget()
-  widget.url = APP_URL
+  widget.url = TAP_URL
 
   const icon = await loadIcon()
   const family = config.widgetFamily
