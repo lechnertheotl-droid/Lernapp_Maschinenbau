@@ -1934,4 +1934,1549 @@ export const werkstoffkundeSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // werk-2-2 — Kerbschlagbiegeversuch (Charpy)
+  //   SG 0: charpy         · SG 1: kv-zaeh-sproed
+  //   SG 2: grenzwert-27   · SG 3: uebergangstemp  · SG 4: stahl-j-bez
+  // ─────────────────────────────────────────────────────────────────────────
+  'werk-2-2': {
+    // ───────────── SG 0: Charpy-Versuch & KV-Formel ─────────────
+    0: [
+      tag(
+        tf(
+          'Beim Charpy-Kerbschlagbiegeversuch wird die Kerbschlagarbeit $KV$ aus der Höhendifferenz des Pendels vor und nach dem Bruch berechnet: $KV = m \\cdot g \\cdot (h_0 - h_1)$.',
+          true,
+          `**Ansatz:** Energieerhaltung am Pendel: die potentielle Energie, die das Pendel **verliert**, wurde verwendet, um die Probe zu durchschlagen.
+
+**Rechnung:** Vor dem Schlag: $E_0 = m\\,g\\,h_0$. Nach dem Schlag: $E_1 = m\\,g\\,h_1$. Differenz $\\Delta E = m\\,g\\,(h_0 - h_1) = KV$.
+
+**Probe:** Größenordnungs-Check Baustahl: $m \\approx 20\\,\\text{kg}$, $h_0 - h_1 \\approx 0{,}5\\,\\text{m}$ → $KV \\approx 100\\,\\text{J}$. Passt zu Tabellenwerten. ✓
+
+**Typischer Fehler:** $KV = m\\,g\\,h_0$ (ohne Endhöhe) — das wäre die gesamte Anfangsenergie, nicht der von der Probe aufgenommene Anteil.`,
+          [
+            'Was wird beim Pendel-Schlag energetisch von der Probe „verbraucht"?',
+            'Energieerhaltung: $\\Delta E = E_0 - E_1$.',
+            'Höhendifferenz $h_0 - h_1$ × Gewicht = Bruchenergie.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        mc(
+          'Welche Größen müssen am Charpy-Pendel direkt gemessen werden, um die Kerbschlagarbeit zu bestimmen?',
+          [
+            'Pendelmasse $m$ und Höhendifferenz $h_0 - h_1$ (Anfangs- und Endhöhe)',
+            'Nur die Endhöhe $h_1$',
+            'Die Probendicke und die Erdbeschleunigung $g$',
+            'Die Bruchspannung $\\sigma_B$ der Probe',
+          ],
+          0,
+          `**Ansatz:** Die Formel $KV = m\\,g\\,(h_0 - h_1)$ enthält drei Größen: $m$, $g$ und $h_0 - h_1$. $g$ ist eine Konstante, also müssen $m$ und $h_0 - h_1$ aus dem Versuch kommen.
+
+**Rechnung:** $m$ ist Konstrukteurs-Größe des Pendels (oft auf dem Geräteschild). $h_0$ wird beim Spannen festgelegt, $h_1$ wird nach dem Durchschlagen automatisch abgelesen (Schleppzeiger). Damit ist $KV$ in Joule berechenbar.
+
+**Probe:** Charpy-Maschinen zeigen $KV$ direkt in J — die interne Logik nutzt genau $m\\,g\\,(h_0 - h_1)$. ✓
+
+**Typischer Fehler:** Probendicke als notwendig ansehen — sie geht in die Berechnung nicht ein (nur als normierter Wert in den Vergleichswert KV/Probendicke = $K_c$).`,
+          [
+            'Welche Größen tauchen in der Formel auf?',
+            '$g$ ist eine Naturkonstante, keine Messgröße.',
+            'Probendicke geht NICHT in $KV$ ein.',
+          ],
+          {
+            1: 'Nur $h_1$ reicht nicht aus — ohne $h_0$ kennt man die Höhendifferenz nicht und damit nicht die verbrauchte Energie.',
+            2: 'Probendicke und $g$: $g$ ist eine Konstante, Probendicke geht **nicht** in $KV$ ein. Sie wird höchstens für den normierten Vergleichswert $K_c = KV/A$ verwendet.',
+            3: 'Die Bruchspannung wird nicht gemessen — das wäre ein Zugversuch. Charpy misst Energie, nicht Spannung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        ni(
+          'Ein Charpy-Pendel hat eine Masse $m = 20\\,\\text{kg}$. Anfangshöhe $h_0 = 1{,}5\\,\\text{m}$, Endhöhe nach Bruch $h_1 = 0{,}7\\,\\text{m}$. Berechne die Kerbschlagarbeit $KV$ in Joule (mit $g = 9{,}81\\,\\text{m/s}^2$).',
+          156.96,
+          1,
+          'J',
+          `**Ansatz:** Formel direkt anwenden: $KV = m\\,g\\,(h_0 - h_1)$.
+
+**Rechnung:** $h_0 - h_1 = 1{,}5 - 0{,}7 = 0{,}8\\,\\text{m}$. Damit $KV = 20\\,\\text{kg} \\cdot 9{,}81\\,\\text{m/s}^2 \\cdot 0{,}8\\,\\text{m} = 156{,}96\\,\\text{J} \\approx 157\\,\\text{J}$.
+
+**Probe:** Dimensionscheck $[KV] = \\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{N\\,m} = \\text{J}$. ✓ Größenordnung: $157\\,\\text{J}$ liegt im Bereich von zähem Baustahl bei Raumtemperatur — plausibel.
+
+**Typischer Fehler:** $h_0$ und $h_1$ verwechseln (Endhöhe größer als Anfangshöhe annehmen, negative Energie) oder $g$ vergessen.`,
+          [
+            'Formel $KV = m\\,g\\,(h_0 - h_1)$ — alle drei Faktoren multiplizieren.',
+            'Höhendifferenz zuerst ausrechnen: $1{,}5 - 0{,}7 = 0{,}8$.',
+            '$20 \\cdot 9{,}81 \\cdot 0{,}8$ einsetzen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender setzt in die Formel ein: $m = 20\\,\\text{kg}$, $h_0 = 1{,}5\\,\\text{m}$, $h_1 = 0{,}7\\,\\text{m}$, **vergisst aber den Faktor $g$**. Er erhält $KV = 20 \\cdot 0{,}8 = 16\\,\\text{J}$. Wo liegt der Fehler?',
+          [
+            'Faktor $g = 9{,}81\\,\\text{m/s}^2$ fehlt — korrekt: $KV = 20 \\cdot 9{,}81 \\cdot 0{,}8 \\approx 157\\,\\text{J}$.',
+            'Höhendifferenz $h_0 - h_1$ wurde falsch ausgerechnet — korrekt ist $0{,}8\\,\\text{m}$.',
+            '$h_0$ und $h_1$ wurden vertauscht — das Vorzeichen wäre falsch.',
+            'Die Pendelmasse muss in Newton angegeben werden, nicht in Kilogramm.',
+          ],
+          0,
+          `**Ansatz:** Die Formel $KV = m\\,g\\,(h_0 - h_1)$ verbindet Energie mit Masse × Beschleunigung × Höhe. Ohne $g$ stimmt die Dimension nicht — $\\text{kg}\\cdot\\text{m} = $ kein Joule.
+
+**Rechnung:** Korrekt: $20 \\cdot 9{,}81 \\cdot 0{,}8 = 156{,}96\\,\\text{J} \\approx 157\\,\\text{J}$. Ohne $g$: $16\\,\\text{kg\\,m}$ — keine sinnvolle Einheit, etwa um Faktor $\\approx 10$ zu klein.
+
+**Probe:** Dimensionscheck: $[m\\,g\\,h] = \\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{J}$. ✓ Ohne $g$: $[m\\,h] = \\text{kg\\,m}$ ≠ $\\text{J}$.
+
+**Typischer Fehler:** Genau dieses Vergessen der Erdbeschleunigung. Mnemonik: „$E_\\text{pot} = m\\,g\\,h$, niemals nur $m\\,h$".`,
+          [
+            'Welche Konstante steht zwischen Masse und Höhe in der Lageenergie?',
+            'Dimensionscheck $\\text{kg}\\cdot\\text{m} \\neq \\text{J}$.',
+            '$g = 9{,}81\\,\\text{m/s}^2$ ist immer dabei.',
+          ],
+          {
+            1: '$0{,}8\\,\\text{m}$ ist korrekt — der Fehler liegt nicht in der Höhendifferenz.',
+            2: 'Bei Vertauschung wäre das Vorzeichen negativ ($-16$), nicht der Betrag falsch.',
+            3: 'Die Masse wird in der Formel in Kilogramm verwendet, kombiniert mit $g$ ergibt sich Newton. Die Einheit ist richtig — der Fehler liegt im fehlenden $g$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        ni(
+          'Eine Charpy-Messung ergibt $KV = 98{,}1\\,\\text{J}$ mit $m = 20\\,\\text{kg}$ und $h_0 = 1{,}2\\,\\text{m}$. Berechne die Endhöhe $h_1$ in Meter ($g = 9{,}81\\,\\text{m/s}^2$).',
+          0.7,
+          0.02,
+          'm',
+          `**Ansatz:** Formel nach $h_1$ umstellen. $KV = m\\,g\\,(h_0 - h_1) \\Rightarrow h_0 - h_1 = KV/(m\\,g) \\Rightarrow h_1 = h_0 - KV/(m\\,g)$.
+
+**Rechnung:** $m\\,g = 20 \\cdot 9{,}81 = 196{,}2\\,\\text{N}$. $KV/(m\\,g) = 98{,}1/196{,}2 = 0{,}5\\,\\text{m}$. Damit $h_1 = 1{,}2 - 0{,}5 = 0{,}7\\,\\text{m}$.
+
+**Probe:** Rückrechnung: $KV = 20 \\cdot 9{,}81 \\cdot (1{,}2 - 0{,}7) = 20 \\cdot 9{,}81 \\cdot 0{,}5 = 98{,}1\\,\\text{J}$ ✓.
+
+**Typischer Fehler:** $h_1 = h_0 + KV/(m\\,g)$ — das Vorzeichen verkehrt; das Pendel verliert nach dem Schlag Höhe, nicht umgekehrt.`,
+          [
+            'Stelle die KV-Formel nach $h_1$ um.',
+            'Zuerst $h_0 - h_1 = KV/(m\\,g)$ ausrechnen.',
+            'Dann $h_1 = h_0 - \\text{(Höhendifferenz)}$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['charpy'] },
+      ),
+    ],
+
+    // ───────────── SG 1: KV ↔ zäh/spröde (kv-zaeh-sproed) ─────────────
+    1: [
+      tag(
+        tf(
+          'Ein hoher Wert der Kerbschlagarbeit $KV$ deutet auf zähes Bruchverhalten hin, ein niedriger Wert auf sprödes.',
+          true,
+          `**Ansatz:** $KV$ misst die Energie, die verbraucht wird, um die Probe zu zerbrechen. Zähe Werkstoffe verformen sich plastisch und absorbieren viel Energie; spröde brechen schlagartig mit minimalem Energieverbrauch.
+
+**Rechnung:** Tabellenwerte (Raumtemperatur): Baustahl S235 zäh $\\approx 100\\,\\text{J}$, Grauguss spröde $\\approx 4\\,\\text{J}$ — Faktor $\\approx 25$.
+
+**Probe:** Bruchfläche zäher Proben: matt, faserig, eingeschnürt. Bruchfläche spröder Proben: glatt, kristallin, glänzend. ✓
+
+**Typischer Fehler:** Hohe $KV$ als „hohe Festigkeit" interpretieren. $KV$ misst nur die Zähigkeit, nicht die Festigkeit $R_m$.`,
+          [
+            'Was kostet mehr Energie — zäher oder spröder Bruch?',
+            'Plastische Verformung absorbiert Energie.',
+            'Hoher $KV$-Wert = viel Bruchenergie = zäh.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Welcher der folgenden Werkstoffe hat bei Raumtemperatur typischerweise den höchsten $KV$-Wert?',
+          [
+            'Vergütungsstahl 42CrMo4 ($\\approx 80\\,\\text{J}$)',
+            'Grauguss GG-25 ($\\approx 4\\,\\text{J}$)',
+            'Hartmetall ($< 5\\,\\text{J}$)',
+            'Al$_2$O$_3$-Keramik ($\\approx 1\\,\\text{J}$)',
+          ],
+          0,
+          `**Ansatz:** Werkstoffe mit duktilem Metall-Gefüge (Stähle, Kupfer, Aluminium) haben hohe $KV$. Spröde Werkstoffe (Gusseisen mit Graphitlamellen, Hartmetalle, Keramik) haben sehr niedrige $KV$.
+
+**Rechnung:** 42CrMo4 vergütet: typisch $80\\,\\text{J}$ — zäh durch angelassenen Martensit + Karbide. GG-25: Graphitlamellen wirken als innere Kerben → spröde, $\\approx 4\\,\\text{J}$. Hartmetall, Keramik: nahezu keine plastische Verformung.
+
+**Probe:** DIN EN 10083 (Vergütungsstähle) listet $KV \\geq 27\\,\\text{J}$ als Mindestwert; reale 42CrMo4-Proben erreichen oft $50$–$100\\,\\text{J}$. ✓
+
+**Typischer Fehler:** Härte mit Zähigkeit verwechseln — Hartmetall ist sehr hart ($\\approx 1500\\,\\text{HV}$), aber spröde (niedrige $KV$).`,
+          [
+            'Welche Werkstoffklasse verhält sich zäh, welche spröde?',
+            'Stähle haben deutlich höhere $KV$-Werte als Keramik oder Gusseisen.',
+            'Vergütung erhöht die Zähigkeit gegenüber rein gehärtetem Stahl.',
+          ],
+          {
+            1: 'Grauguss ist ein klassisches sprödes Material — die Graphitlamellen wirken als innere Kerben und reduzieren $KV$ drastisch.',
+            2: 'Hartmetall ist sehr hart, aber extrem spröde — typische $KV$-Werte unter $5\\,\\text{J}$.',
+            3: 'Keramik ist der spröde Werkstoff par excellence — nahezu keine plastische Verformung, kleinste $KV$-Werte.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Eine Charpy-Messung an einer unbekannten Probe ergibt $KV = 5\\,\\text{J}$. Wie ist das Bruchverhalten einzuschätzen?',
+          [
+            'Spröder Bruch — die Probe brach mit kaum Energieaufnahme. Werkstoff sprödbruchgefährdet.',
+            'Zäher Bruch — der Werkstoff hat viel Energie aufgenommen.',
+            'Mittelmäßiges Verhalten — typisch für unlegierten Baustahl bei Raumtemperatur.',
+            'Die Probe war nicht ausreichend gekerbt — Messwert nicht aussagekräftig.',
+          ],
+          0,
+          `**Ansatz:** $KV$-Werte einordnen: $< 10\\,\\text{J}$ deutet auf sprödes Verhalten hin, $> 50\\,\\text{J}$ auf zähes.
+
+**Rechnung:** $5\\,\\text{J} \\ll 27\\,\\text{J}$ (Stahlbau-Grenzwert) → sprödbruchgefährdet. Typische Werkstoffe in diesem Bereich: Grauguss, gehärteter Werkzeugstahl bei niedriger Anlasstemperatur, spröde Kunststoffe.
+
+**Probe:** Bruchflächenuntersuchung erwartet: glatte, glänzende Bruchfläche, kein Einschnüren der Probe, kristalline Struktur sichtbar. ✓
+
+**Typischer Fehler:** $5\\,\\text{J}$ als ausreichend ansehen — der Grenzwert für Stahlbau-Anwendungen ist mehr als das Fünffache.`,
+          [
+            'Vergleiche mit dem 27-J-Grenzwert aus dem Stahlbau.',
+            '$5\\,\\text{J}$ ist deutlich darunter — was bedeutet das?',
+            'Wenige Joule = wenig Bruchenergie = spröde.',
+          ],
+          {
+            1: '$5\\,\\text{J}$ ist ein typischer Spröde-Wert; ein zäher Bruch hätte $> 50\\,\\text{J}$.',
+            2: 'Unlegierter Baustahl S235 hat bei Raumtemperatur typisch $> 60\\,\\text{J}$ — nicht $5\\,\\text{J}$.',
+            3: 'Charpy-Proben sind normiert gekerbt (DIN EN ISO 148-1). Der Wert ist aussagekräftig, sofern die Probe normgerecht war.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Eine Studentin schließt aus $KV = 120\\,\\text{J}$: „Dieser Werkstoff hat eine höhere Zugfestigkeit $R_m$ als ein Werkstoff mit $KV = 60\\,\\text{J}$." Wo liegt der Fehler?',
+          [
+            'Kerbschlagarbeit und Zugfestigkeit sind **unabhängige** Kennwerte — ein zäher Werkstoff kann sogar niedrigere $R_m$ haben als ein spröder. $KV$ misst Zähigkeit, nicht Festigkeit.',
+            '$KV$ ist immer kleiner als $R_m$ — die Werte sind nicht vergleichbar.',
+            '$KV$ und $R_m$ sind dieselbe Größe in anderen Einheiten.',
+            'Höhere $KV$ bedeutet automatisch höhere Streckgrenze $R_e$.',
+          ],
+          0,
+          `**Ansatz:** Charpy misst Bruchenergie, Zugversuch misst maximale Spannung — zwei voneinander unabhängige Werkstoffeigenschaften.
+
+**Rechnung:** Gegenbeispiel: Vergütungsstahl 42CrMo4 hat $R_m \\approx 1000\\,\\text{MPa}$ und $KV \\approx 80\\,\\text{J}$. Spröder Gusseisen GG-25 hat $R_m \\approx 250\\,\\text{MPa}$, aber $KV \\approx 4\\,\\text{J}$. Andererseits hat reines Aluminium niedrige $R_m$ und gleichzeitig moderates $KV$.
+
+**Probe:** Werkstoffdatenblatt: $R_m$, $R_e$ und $KV$ werden getrennt ausgewiesen — eindeutig unabhängige Kennwerte. ✓
+
+**Typischer Fehler:** „Mehr Zähigkeit = mehr Festigkeit" als Daumenregel verallgemeinern. Stimmt nur in begrenztem Maße innerhalb einer Werkstoffklasse.`,
+          [
+            'Welche Werkstoffeigenschaft misst Charpy, welche misst der Zugversuch?',
+            'Können zwei unabhängige Größen direkt aufeinander geschlossen werden?',
+            'Beispiel: spröder Vergleichsstoff vs. zähes weiches Metall.',
+          ],
+          {
+            1: 'Die Werte können nicht direkt verglichen werden, aber das liegt an der Bedeutung, nicht an der Größenordnung. Ein zäher Werkstoff kann höhere oder niedrigere $R_m$ haben.',
+            2: '$KV$ in Joule und $R_m$ in MPa sind völlig verschiedene physikalische Größen — keine Einheitenkonversion möglich.',
+            3: 'Streckgrenze $R_e$ und $KV$ sind ebenfalls unabhängig — ein zäher Stahl muss nicht automatisch eine hohe Streckgrenze haben.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        matching(
+          'Ordne den $KV$-Wertebereich dem typischen Werkstoff zu (alle Werte bei Raumtemperatur).',
+          [
+            { left: 'Grauguss GG-25 (Graphitlamellen wirken als Kerben)',     right: '$\\approx 4\\,\\text{J}$' },
+            { left: 'Baustahl S235 bei $+20\\,°\\text{C}$ (zäh)',               right: '$\\approx 100\\,\\text{J}$' },
+            { left: 'Baustahl S235 bei $-40\\,°\\text{C}$ (sprödbruch)',         right: '$\\approx 10\\,\\text{J}$' },
+            { left: 'Vergüteter 42CrMo4',                                       right: '$\\approx 50\\,\\text{J}$' },
+          ],
+          `**Ansatz:** $KV$-Werte hängen stark von Werkstoff UND Temperatur ab. Spröde Werkstoffe (Grauguss) haben unter $10\\,\\text{J}$, zähe Stähle bei Raumtemperatur $50$–$200\\,\\text{J}$. Tieftemperatur drückt selbst zähe Stähle in den spröden Bereich.
+
+**Rechnung:** GG-25: $\\approx 4\\,\\text{J}$ (Graphitlamellen-Effekt). S235 bei RT: $\\approx 100\\,\\text{J}$ (sehr zäh). S235 bei $-40\\,°\\text{C}$: Sprödbruchgefahr, deutlicher Abfall auf $\\approx 10\\,\\text{J}$. 42CrMo4: dazwischen, hohe Festigkeit + brauchbare Zähigkeit.
+
+**Probe:** Werte aus DIN-Tabellen und Werkstoffdatenblättern entnommen. Reihenfolge $4 < 10 < 50 < 100\\,\\text{J}$ ist eindeutig — keine Mehrdeutigkeit. ✓
+
+**Typischer Fehler:** Werkstoffe ohne Temperaturangabe vergleichen. Der gleiche S235 hat bei RT und bei $-40\\,°\\text{C}$ völlig unterschiedliche $KV$-Werte.`,
+          [
+            'Vier verschiedene Größenordnungen: $4 / 10 / 50 / 100\\,\\text{J}$.',
+            'Spröde Werkstoffe ganz unten, zäher Baustahl ganz oben.',
+            'Temperatur beeinflusst das Verhalten — gleiche Sorte, andere Temp = anderes $KV$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+    ],
+
+    // ───────────── SG 2: 27-J-Grenzwert (grenzwert-27) ─────────────
+    2: [
+      tag(
+        tf(
+          'Im Stahlbau gilt $KV \\geq 27\\,\\text{J}$ bei Einsatztemperatur als Untergrenze für sprödbruchsichere Konstruktionen.',
+          true,
+          `**Ansatz:** Der Grenzwert ist in DIN EN 1993 (Eurocode 3) und in den Werkstoffnormen für Baustähle festgelegt. Er trennt zähes von sprödem Versagensverhalten.
+
+**Rechnung:** Stähle mit $KV < 27\\,\\text{J}$ können bei stoßartiger Belastung schlagartig versagen, ohne dass sich vorher Verformung zeigt — gefährlich bei Brücken, Behältern, Kränen.
+
+**Probe:** Stahlsorten-Bezeichnungen (z. B. S235**J2**, S355**K2**) referenzieren genau diesen Wert: J = $27\\,\\text{J}$ bei zugehöriger Prüftemperatur. ✓
+
+**Typischer Fehler:** $27\\,\\text{J}$ als Universal-Grenzwert ohne Temperaturbezug verwenden. Der Grenzwert gilt **bei Einsatztemperatur**.`,
+          [
+            'Welcher Wert wird in Stahlnormen als Untergrenze festgelegt?',
+            'Auf welche Temperatur bezieht sich der Wert?',
+            '$J0$, $J2$, $K2$ — was bedeutet das „J"?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Welcher der folgenden Werkstoffe erfüllt die $27\\,\\text{J}$-Anforderung für eine Stahlbau-Konstruktion bei Einsatztemperatur **nicht**?',
+          [
+            'Werkstoff A mit $KV = 15\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff B mit $KV = 35\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff C mit $KV = 50\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff D mit $KV = 100\\,\\text{J}$ bei Einsatztemperatur',
+          ],
+          0,
+          `**Ansatz:** Grenzwert $KV \\geq 27\\,\\text{J}$ vergleichen. Werkstoffe oberhalb sind in Ordnung, darunter nicht.
+
+**Rechnung:** A: $15 < 27$ → erfüllt **nicht**. B, C, D: alle $\\geq 27$, alle erfüllt.
+
+**Probe:** Werkstoff A würde im Stahlbau abgelehnt; eine Vergütung oder ein anderer Stahl wäre nötig. ✓
+
+**Typischer Fehler:** „Werkstoff B mit nur $35\\,\\text{J}$ ist zu knapp" — solange der Wert über $27\\,\\text{J}$ liegt, ist die Anforderung formal erfüllt.`,
+          [
+            'Liste alle Werte und vergleiche mit dem Grenzwert $27\\,\\text{J}$.',
+            'Genau einer der vier Werte ist kleiner.',
+            'Werkstoff A liegt unterhalb des Grenzwerts.',
+          ],
+          {
+            1: '$35\\,\\text{J} > 27\\,\\text{J}$ — die Anforderung ist erfüllt, auch wenn die Reserve klein ist.',
+            2: '$50\\,\\text{J} > 27\\,\\text{J}$ — gute Reserve, anforderungskonform.',
+            3: '$100\\,\\text{J} > 27\\,\\text{J}$ — deutlich über dem Grenzwert, sicher.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Eine Werkstoffprüfung ergibt für einen Baustahl bei der vorgesehenen Einsatztemperatur $KV = 27\\,\\text{J}$ exakt. Wie ist das Ergebnis im Sinne der Stahlbau-Norm zu bewerten?',
+          [
+            'Anforderung gerade erfüllt — der Stahl ist **formal** zulässig, jedoch ohne Sicherheitsreserve. In der Praxis wird oft ein höherer Wert verlangt.',
+            'Anforderung nicht erfüllt — der Grenzwert muss überschritten werden.',
+            'Anforderung deutlich übererfüllt — sehr gut zäher Werkstoff.',
+            'Wert nicht aussagekräftig — Charpy-Tests müssen immer drei Proben mitteln.',
+          ],
+          0,
+          `**Ansatz:** Der Norm-Grenzwert ist $KV \\geq 27\\,\\text{J}$ — mit Gleichheitszeichen gerade erfüllt.
+
+**Rechnung:** $KV = 27\\,\\text{J}$ erfüllt die Bedingung $KV \\geq 27\\,\\text{J}$. Allerdings besteht keine Sicherheitsreserve gegen Streuung — in der Praxis verlangt man oft Stahlsorten, die $30$–$50\\,\\text{J}$ erreichen.
+
+**Probe:** In Stahlnormen ist der J-Wert als Mindestwert definiert; eine Charpy-Probe darf exakt diesen Wert erreichen — sie muss ihn nicht überschreiten. ✓
+
+**Typischer Fehler:** „$\\geq$" als „$>$" interpretieren. In Normen schließt das Gleichheitszeichen mit ein.`,
+          [
+            'Was bedeutet $\\geq$ in einer Norm-Anforderung?',
+            'Charpy-Tests werden in der Regel als Mittelwert von 3 Proben angegeben.',
+            'Sicherheitsreserve vs. formale Erfüllung.',
+          ],
+          {
+            1: 'Das $\\geq$-Zeichen schließt den Gleichheitsfall ein — der Stahl ist formal zulässig.',
+            2: '$27\\,\\text{J}$ entspricht exakt dem Grenzwert — von „deutlich übererfüllt" kann keine Rede sein.',
+            3: 'Ja, üblich sind 3 Proben mit Mittelwertbildung — aber das macht den Wert nicht „nicht aussagekräftig", sondern erst belastbar.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Ein Konstrukteur dokumentiert: „Werkstoff X bestanden — $KV = 27\\,\\text{kg}$." Welcher Fehler liegt vor?',
+          [
+            'Falsche Einheit: Kerbschlagarbeit hat die Einheit **Joule** (J), nicht Kilogramm — die Aussage ist physikalisch unsinnig.',
+            'Der Werkstoff hat nicht bestanden — $27\\,\\text{kg}$ liegt unter dem Grenzwert.',
+            '$27$ Kilogramm entsprechen $27 \\cdot 9{,}81 \\approx 265\\,\\text{J}$ — der Werkstoff hat sehr gut bestanden.',
+            'Die Werkstoffbezeichnung „X" ist nicht zulässig — es müsste eine Werkstoffnummer angegeben werden.',
+          ],
+          0,
+          `**Ansatz:** Kerbschlagarbeit ist eine Energiegröße — Einheit Joule. „Kilogramm" ist eine Massen-Einheit, dimensionsfremd.
+
+**Rechnung:** $KV$ entsteht aus $m\\,g\\,(h_0 - h_1)$ — Einheit $\\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{N\\,m} = \\text{J}$. Die Angabe in Kilogramm ist sachlich falsch.
+
+**Probe:** Norm-Notation in DIN-Datenblättern: $KV$ wird ausschließlich in Joule angegeben. ✓
+
+**Typischer Fehler:** Verwechslung mit alter Einheit „kpm" (Kilopondmeter) — historisch genutzt, aber heute durch Joule ersetzt. Auch dabei wird **nicht** „kg" geschrieben.`,
+          [
+            'Welche physikalische Größe wird bei Charpy gemessen?',
+            'Welche Einheit hat eine Energiegröße im SI-System?',
+            'Joule = $\\text{N\\,m}$, niemals Kilogramm.',
+          ],
+          {
+            1: 'Der Vergleich ist falsch begründet — die Einheit ist gar nicht vergleichbar, weil $\\text{kg}$ keine Energieeinheit ist.',
+            2: 'Es gibt keine direkte Umrechnung „Kilogramm in Joule" für Kerbschlagarbeit — die Einheit ist schlicht falsch.',
+            3: 'Werkstoffbezeichnungen sind hier nicht das Problem — der Hauptfehler ist die Einheit.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Für eine geschweißte Brückenkonstruktion wird im Winter eine Einsatztemperatur von $-20\\,°\\text{C}$ angenommen. Welcher Stahl ist sprödbruchsicher auszuwählen?',
+          [
+            'Ein Stahl mit garantierter Kerbschlagarbeit $KV \\geq 27\\,\\text{J}$ **bei $-20\\,°\\text{C}$** (z. B. S355J2)',
+            'Ein beliebiger S235 — die Norm gilt für jeden Stahl gleich',
+            'Ein Stahl mit $KV \\geq 27\\,\\text{J}$ bei Raumtemperatur reicht aus',
+            'Ein gehärteter Werkzeugstahl — höhere Härte = besser sprödbruchsicher',
+          ],
+          0,
+          `**Ansatz:** Der Grenzwert $KV \\geq 27\\,\\text{J}$ muss **bei Einsatztemperatur** erfüllt sein, nicht bei Raumtemperatur. Stähle werden mit J-Index (Prüftemperatur) gekennzeichnet.
+
+**Rechnung:** S355J2: $J = 27\\,\\text{J}$ bei $-20\\,°\\text{C}$ garantiert. Für eine Brücke bei $-20\\,°\\text{C}$ ist das die richtige Wahl. Ein S235JR (Raumtemperatur-Prüfung) erfüllt die Anforderung bei $-20\\,°\\text{C}$ **nicht** automatisch — er kann unter die Übergangstemperatur fallen.
+
+**Probe:** Eurocode 3 (DIN EN 1993-1-10) gibt verbindliche Auswahlregeln für sprödbruchsichere Stähle in Abhängigkeit von Bauteildicke, Belastungsart und tiefster Einsatztemperatur. ✓
+
+**Typischer Fehler:** Stahlsorten ohne J-Index für Tieftemperatur einsetzen.`,
+          [
+            'Bei welcher Temperatur wurde der Stahl geprüft?',
+            'J2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$.',
+            'Härte und Sprödbruchsicherheit haben nichts miteinander zu tun.',
+          ],
+          {
+            1: 'S235 ohne J-Index (= JR, Raumtemperatur) ist für $-20\\,°\\text{C}$ **nicht** ausgelegt.',
+            2: 'Der Grenzwert muss bei der **tatsächlichen** Einsatztemperatur erfüllt sein — bei $-20\\,°\\text{C}$ und nicht bei $+20\\,°\\text{C}$.',
+            3: 'Gehärtete Werkzeugstähle sind in der Regel **sprödbruchgefährdet** ($KV \\ll 27\\,\\text{J}$) und damit für Stahlbau ungeeignet.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+    ],
+
+    // ───────────── SG 3: Übergangstemperatur (uebergangstemp) ─────────────
+    3: [
+      tag(
+        tf(
+          'Unterhalb der Übergangstemperatur $T_\\ddot{U}$ fällt die Kerbschlagarbeit eines krz-Stahls (ferritisch-perlitisch) deutlich ab — der Werkstoff verhält sich zunehmend spröde.',
+          true,
+          `**Ansatz:** Bei krz-Metallen (z. B. unlegierter Baustahl) hängt die Versetzungsmobilität stark von der Temperatur ab. Unterhalb einer kritischen Temperatur reicht die thermische Aktivierung nicht mehr, die Probe bricht spröde.
+
+**Rechnung:** Die typische Charpy-Kurve $KV(T)$ zeigt drei Bereiche: Hochlage (zäh, $KV \\approx 100$–$200\\,\\text{J}$), Übergangsbereich (Steilabfall), Tieflage (spröde, $KV < 20\\,\\text{J}$). Der Übergang liegt bei vielen Baustählen zwischen $-50\\,°\\text{C}$ und $0\\,°\\text{C}$.
+
+**Probe:** Spektakulärer Praxisfall: Titanic-Stahl wies bei den niedrigen Atlantikwassertemperaturen bereits unter die Übergangstemperatur — Sprödbruch trug zum Untergang bei. ✓
+
+**Typischer Fehler:** Übergangstemperatur bei austenitischen Edelstählen (kfz) erwarten — die zeigen keinen ausgeprägten Steilabfall und bleiben auch bei sehr tiefen Temperaturen zäh.`,
+          [
+            'Wie hängt die Versetzungsbewegung in krz-Metallen von der Temperatur ab?',
+            'Was passiert mit $KV$, wenn man die Probe abkühlt?',
+            'Krz vs. kfz: nur krz zeigt diesen Effekt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Wie ist die Übergangstemperatur $T_\\ddot{U}$ definiert?',
+          [
+            'Temperatur, bei der die Kerbschlagarbeit von „zäh" auf „spröde" umschlägt (oft fixiert als $KV = 27\\,\\text{J}$- oder $50\\,\\%$-Bruchflächen-Kriterium)',
+            'Temperatur, bei der der Werkstoff schmilzt',
+            'Temperatur, bei der der Stahl aus Ferrit in Austenit umwandelt ($\\approx 723\\,°\\text{C}$)',
+            'Raumtemperatur ($20\\,°\\text{C}$) als Norm-Prüftemperatur',
+          ],
+          0,
+          `**Ansatz:** Es gibt mehrere Kriterien zur Definition von $T_\\ddot{U}$: das $KV$-Energie-Kriterium ($T_{27\\text{J}}$) und das Bruchflächen-Kriterium ($50\\,\\%$ kristalline Bruchfläche, FATT). In der Praxis dominiert die $27\\,\\text{J}$-Definition für Stahlbau.
+
+**Rechnung:** Im $KV(T)$-Diagramm: Steilabfallkurve. $T_\\ddot{U}$ wird dort abgelesen, wo $KV = 27\\,\\text{J}$ (oder $50\\,\\%$ Faseranteil) erreicht wird. Für S235 typisch um $-20\\,°\\text{C}$ bis $0\\,°\\text{C}$.
+
+**Probe:** Werkstoff-Datenblätter geben oft den $27\\,\\text{J}$-Wert für mehrere Temperaturen an — daraus kann $T_\\ddot{U}$ abgelesen werden. ✓
+
+**Typischer Fehler:** Übergangstemperatur mit Phasenumwandlungstemperatur verwechseln (z. B. $A_1 = 723\\,°\\text{C}$ im Fe-C-Diagramm).`,
+          [
+            'Was wechselt am Übergang — Aggregatzustand, Phase oder Bruchverhalten?',
+            'Energiebasiert oder bruchflächenbasiert — beides sind Definitionsvarianten.',
+            'Der $27\\,\\text{J}$-Wert ist das übliche Kriterium.',
+          ],
+          {
+            1: 'Schmelzpunkt von Stahl liegt bei $\\approx 1500\\,°\\text{C}$ — das hat mit der Charpy-Übergangstemperatur nichts zu tun.',
+            2: '$A_1 = 723\\,°\\text{C}$ ist die Phasenumwandlung Ferrit/Perlit → Austenit (Fe-C-Diagramm) — eine völlig andere Größe.',
+            3: 'Raumtemperatur ist nur eine Norm-Prüftemperatur (JR-Stähle), aber nicht die Definition der Übergangstemperatur.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Ein Baustahl S235 hat $T_\\ddot{U} = -10\\,°\\text{C}$ (definiert über $KV = 27\\,\\text{J}$). Bei welcher Betriebstemperatur ist Sprödbruch nicht mehr ausgeschlossen?',
+          [
+            'Bei $-30\\,°\\text{C}$ — deutlich unterhalb $T_\\ddot{U}$, Sprödbruchgefahr.',
+            'Bei $+20\\,°\\text{C}$ — Raumtemperatur, der Stahl ist sicher zäh.',
+            'Bei $+50\\,°\\text{C}$ — oberhalb $T_\\ddot{U}$ ist der Stahl sicher zäh.',
+            'Bei $0\\,°\\text{C}$ — nahe $T_\\ddot{U}$, jedoch oberhalb, also noch sicher.',
+          ],
+          0,
+          `**Ansatz:** Sprödbruch droht **unterhalb** der Übergangstemperatur. Vergleich Betriebstemperatur ↔ $T_\\ddot{U}$.
+
+**Rechnung:** $T_\\ddot{U} = -10\\,°\\text{C}$. Bei $-30\\,°\\text{C}$ ist $T < T_\\ddot{U}$ → spröder Bereich → Gefahr. Bei $+20\\,°\\text{C}$ und $+50\\,°\\text{C}$ ist $T > T_\\ddot{U}$ → zäher Bereich.
+
+**Probe:** In Norm-Datenblättern wird auch für $-10\\,°\\text{C}$ und kälter eine zusätzliche Sicherheits-Marge gefordert ($\\Delta T \\geq 10\\,\\text{K}$). $-30\\,°\\text{C}$ liegt $20\\,\\text{K}$ unter $T_\\ddot{U}$ — klare Gefährdung. ✓
+
+**Typischer Fehler:** $0\\,°\\text{C}$ als „nahe an $T_\\ddot{U}$, daher kritisch" einstufen. Tatsächlich ist es noch oberhalb $T_\\ddot{U}$ (formaler Sicherheitsbereich), wenn auch mit knapper Reserve.`,
+          [
+            'Vergleiche Betriebstemperatur mit $T_\\ddot{U}$.',
+            'Unterhalb $T_\\ddot{U}$ ist Sprödbruch wahrscheinlich.',
+            'Welche der Temperaturen ist die einzige unter $-10\\,°\\text{C}$?',
+          ],
+          {
+            1: '$+20\\,°\\text{C}$ ist deutlich oberhalb $-10\\,°\\text{C}$ — der Stahl ist im zähen Bereich, kein Sprödbruch zu erwarten.',
+            2: '$+50\\,°\\text{C}$ ist noch weiter oberhalb $T_\\ddot{U}$ — sehr sicher im zähen Bereich.',
+            3: '$0\\,°\\text{C}$ liegt oberhalb $-10\\,°\\text{C}$ → noch im zähen Bereich. In der Praxis empfiehlt sich allerdings eine $\\Delta T$-Reserve.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender erklärt: „Die Übergangstemperatur ist die Temperatur, bei der ein Stahl schmilzt." Wo liegt der Fehler?',
+          [
+            'Schmelztemperatur ($\\approx 1500\\,°\\text{C}$ bei Stahl) und Charpy-Übergangstemperatur ($\\approx 0\\,°\\text{C}$ bei Baustahl) sind völlig verschiedene Konzepte. $T_\\ddot{U}$ beschreibt den Wechsel zäh ↔ spröde, kein Aggregatzustand.',
+            'Die Übergangstemperatur ist eigentlich die Glühtemperatur bei der Wärmebehandlung.',
+            'Die Übergangstemperatur ist die Eutektische Temperatur des Fe-C-Diagramms.',
+            'Die Aussage ist korrekt — Schmelz- und Übergangstemperatur sind synonym.',
+          ],
+          0,
+          `**Ansatz:** Bei der Charpy-Übergangstemperatur bleibt der Werkstoff fest — nur das Bruchverhalten wechselt von zäh zu spröde. Schmelzen ist ein Phasenübergang fest → flüssig bei deutlich höherer Temperatur.
+
+**Rechnung:** Stahl schmilzt bei $\\approx 1500\\,°\\text{C}$. Die Charpy-$T_\\ddot{U}$ vieler Baustähle liegt zwischen $-50\\,°\\text{C}$ und $+20\\,°\\text{C}$ — Differenz $\\geq 1450\\,\\text{K}$.
+
+**Probe:** Beim Charpy-Versuch bei $-20\\,°\\text{C}$ ist der Stahl natürlich fest — er bricht nur spröder als bei höheren Temperaturen. ✓
+
+**Typischer Fehler:** Den Begriff „Übergang" zu schnell mit Schmelzen oder Phasenumwandlung verbinden, ohne den Kontext zu prüfen.`,
+          [
+            'Was passiert bei der Charpy-Übergangstemperatur physikalisch?',
+            'Verhältnis $T_\\ddot{U}$ zur Schmelztemperatur in Größenordnung?',
+            'Schmelz- und Sprödbruch-Übergang haben ganz andere Größenordnungen.',
+          ],
+          {
+            1: 'Glühtemperaturen liegen je nach Verfahren bei $500$–$900\\,°\\text{C}$ — das ist eine andere Wärmebehandlung, keine Charpy-Größe.',
+            2: 'Die eutektoide Temperatur des Fe-C-Systems ist $723\\,°\\text{C}$ — auch eine Phasen-Umwandlung, nicht die Charpy-Übergangstemperatur.',
+            3: 'Beide Konzepte sind völlig verschieden — sie haben nicht einmal die gleiche Größenordnung.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Welche Werkstoffklasse zeigt **keine** ausgeprägte Übergangstemperatur und bleibt auch bei sehr tiefen Temperaturen zäh?',
+          [
+            'Austenitische Edelstähle (kfz-Gefüge, z. B. X5CrNi18-10)',
+            'Unlegierte Baustähle (krz-Gefüge, z. B. S235)',
+            'Vergütungsstähle (z. B. 42CrMo4)',
+            'Grauguss mit Graphitlamellen',
+          ],
+          0,
+          `**Ansatz:** Krz-Gefüge zeigt einen ausgeprägten Übergang zäh→spröde, kfz-Gefüge nicht. Austenitische Edelstähle sind kfz und behalten ihre Zähigkeit auch bei Kryo-Temperaturen.
+
+**Rechnung:** Tieftemperatur-Anwendungen (LNG-Tanks bei $-160\\,°\\text{C}$, Wasserstoff-Tanks bei $-253\\,°\\text{C}$) werden daher aus austenitischen Stählen gefertigt — Baustähle würden dort sprödbruch-versagen.
+
+**Probe:** $KV$-Diagramme von X5CrNi18-10: $KV$ bleibt von $+100\\,°\\text{C}$ bis $-200\\,°\\text{C}$ nahezu konstant bei $> 100\\,\\text{J}$. ✓
+
+**Typischer Fehler:** „Edelstahl ist immer besser" als Pauschalaussage. Hier geht es um die Kristallstruktur (kfz vs. krz), nicht um die Legierungsbezeichnung.`,
+          [
+            'Welche Kristallstruktur haben austenitische Edelstähle?',
+            'Welche Struktur zeigt den Steilabfall im $KV(T)$-Diagramm?',
+            'Tieftemperatur-Anwendungen: welcher Werkstoff?',
+          ],
+          {
+            1: 'Unlegierte Baustähle sind krz und zeigen genau den ausgeprägten Übergang — sie sind das Lehrbuchbeispiel.',
+            2: 'Vergütungsstähle sind ebenfalls krz-basiert und haben eine Übergangstemperatur (oft besser als unlegiert, aber existent).',
+            3: 'Grauguss ist von vornherein spröde (durch Graphitlamellen) — er hat keine Hochlage, also nicht „bleibt zäh".',
+          },
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+    ],
+
+    // ───────────── SG 4: J0/J2/K2-Stahlbezeichnungen (stahl-j-bez) ─────────────
+    4: [
+      tag(
+        tf(
+          'Die Buchstaben-Ziffer-Kombination im Stahlnamen (z. B. S235**JR**, S355**J0**, S275**J2**, S460**K2**) gibt die Prüftemperatur an, bei der die normierte Kerbschlagarbeit gemessen wird.',
+          true,
+          `**Ansatz:** In DIN EN 10025 sind diese Zusätze normiert. Das Suffix codiert die **Prüftemperatur** für den Mindest-Kerbschlagwert (typisch $27\\,\\text{J}$): R = $+20\\,°\\text{C}$, 0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$ (bei höherfesten Sorten).
+
+**Rechnung:** Beispiele: S235**JR**: $KV \\geq 27\\,\\text{J}$ bei $+20\\,°\\text{C}$. S355**J2**: $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. S460**K2**: Mindest-$KV$ bei $-40\\,°\\text{C}$.
+
+**Probe:** Norm-Liste DIN EN 10025-2: Tabellen-Zuordnung Bezeichnung ↔ Mindestwert ↔ Prüftemperatur. ✓
+
+**Typischer Fehler:** „J" als „Joule" oder „Justierung" interpretieren. Der Buchstabe steht für die Mindestkerbschlagarbeit-**Klasse**, nicht für die Einheit.`,
+          [
+            'Welche Information codieren der Buchstabe und die Ziffer im Stahlnamen?',
+            'Mindestwert vs. Prüftemperatur — welche Komponente codiert was?',
+            'JR = Raumtemperatur, K2 = sehr kalt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Was bedeutet das Suffix „J2" in der Stahlbezeichnung S355J2?',
+          [
+            'Kerbschlagarbeit $\\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$ garantiert',
+            'Kerbschlagarbeit $= 2\\,\\text{Joule}$ (extrem spröde)',
+            'Streckgrenze $R_e = 355\\,\\text{MPa} \\cdot 2 = 710\\,\\text{MPa}$',
+            'Walzklasse 2 nach DIN — keine Kerbschlag-Angabe',
+          ],
+          0,
+          `**Ansatz:** Code-Schlüssel DIN EN 10025: J = $27\\,\\text{J}$ Mindestwert, Ziffer = Prüftemperatur (0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, 3 = $-30\\,°\\text{C}$).
+
+**Rechnung:** „J2" → $J = 27\\,\\text{J}$ Mindestwert, „2" → Prüftemperatur $-20\\,°\\text{C}$. S355J2 ist also ein Baustahl mit $R_e \\geq 355\\,\\text{MPa}$ und $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$.
+
+**Probe:** Datenblatt S355J2 (DIN EN 10025-2): exakt diese Werte. ✓
+
+**Typischer Fehler:** „J2" als „2 Joule" lesen — das wäre sprödebruchgefährdet und sinnlos schwach.`,
+          [
+            'J = ... Mindestkerbschlagarbeit (welcher Wert?).',
+            'Ziffer = Prüftemperatur.',
+            'Tabelle JR / J0 / J2 = $+20 / 0 / -20\\,°\\text{C}$.',
+          ],
+          {
+            1: '$2\\,\\text{J}$ wäre sprödebruchgefährdet — kein Baustahl würde mit so niedrigem Wert ausgeliefert.',
+            2: 'S355 → $R_e = 355\\,\\text{MPa}$ unabhängig vom Suffix. Die Ziffer codiert keine Festigkeit.',
+            3: 'Die Walzklasse wird in DIN EN 10025 nicht über das J-Suffix bezeichnet — sie ist eine andere Größe.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Für ein Bauteil mit Einsatztemperatur $-10\\,°\\text{C}$ wird Stahl S275J2 gewählt. Ist die Auswahl im Hinblick auf Sprödbruchsicherheit zulässig?',
+          [
+            'Ja — J2 garantiert $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$, also auch bei $-10\\,°\\text{C}$ erfüllt.',
+            'Nein — J2 gilt nur für Raumtemperatur und ist für $-10\\,°\\text{C}$ unzulässig.',
+            'Nein — bei $-10\\,°\\text{C}$ braucht es zwingend K2-Stahl.',
+            'Unklar — ohne Charpy-Test bei genau $-10\\,°\\text{C}$ ist keine Aussage möglich.',
+          ],
+          0,
+          `**Ansatz:** Ein Stahl mit zugesicherter Kerbschlagarbeit bei einer **niedrigeren** Prüftemperatur ist bei einer **höheren** Einsatztemperatur erst recht zulässig — die Zähigkeit nimmt mit steigender Temperatur zu.
+
+**Rechnung:** S275J2 → $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. Einsatztemperatur $-10\\,°\\text{C}$ liegt $10\\,\\text{K}$ oberhalb der Prüftemperatur → $KV$ ist dort **noch höher**, also sicher über $27\\,\\text{J}$.
+
+**Probe:** Charpy-Hochlage liegt oberhalb der Übergangstemperatur — je wärmer, desto zäher. $KV(-10\\,°\\text{C}) > KV(-20\\,°\\text{C}) \\geq 27\\,\\text{J}$. ✓
+
+**Typischer Fehler:** „Die Prüftemperatur muss exakt mit der Einsatztemperatur übereinstimmen" — falsch. Eine niedrigere Prüftemperatur deckt höhere Einsatztemperaturen automatisch ab.`,
+          [
+            'Was passiert mit $KV$, wenn man die Probe erwärmt?',
+            'Niedrigere Prüftemperatur = stärkere Anforderung = strenger.',
+            'Wenn bei $-20\\,°\\text{C}$ erfüllt, dann erst recht bei $-10\\,°\\text{C}$.',
+          ],
+          {
+            1: 'J2 wird bei $-20\\,°\\text{C}$ geprüft (nicht Raumtemperatur) — das ist gerade der Vorteil dieser Sorte.',
+            2: 'K2 wäre für Einsatztemperaturen bis $-40\\,°\\text{C}$ erforderlich — bei $-10\\,°\\text{C}$ ist J2 ausreichend.',
+            3: 'Norm-Garantie bei $-20\\,°\\text{C}$ deckt höhere Temperaturen ab — kein Charpy-Test bei $-10\\,°\\text{C}$ nötig.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Ein Konstrukteur schreibt: „Stahl S235J2 mit $KV = 2\\,\\text{J}$". Welcher Fehler liegt vor?',
+          [
+            'Verwechslung: „J2" ist eine **Norm-Bezeichnung** (Prüftemperatur), kein Messwert — der zugesicherte $KV$-Wert für J2 ist $\\geq 27\\,\\text{J}$.',
+            'Die Bezeichnung ist konsistent — J2 bedeutet tatsächlich $2\\,\\text{J}$ Kerbschlagarbeit.',
+            'Stahl S235J2 existiert nicht — nur S235JR und S235J0 sind genormt.',
+            '$KV = 2\\,\\text{J}$ ist korrekt für S235 bei $-20\\,°\\text{C}$.',
+          ],
+          0,
+          `**Ansatz:** „J2" in der Stahlbezeichnung steht für eine zugesicherte Mindest-Kerbschlagarbeit (J $= 27\\,\\text{J}$) bei der zugehörigen Prüftemperatur (2 = $-20\\,°\\text{C}$).
+
+**Rechnung:** S235J2: $R_e \\geq 235\\,\\text{MPa}$, $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. Der Wert „$2\\,\\text{J}$" wäre weniger als $1/13$ des garantierten Werts — physikalisch nicht möglich für einen normgerechten J2-Stahl.
+
+**Probe:** Norm DIN EN 10025-2 weist S235J2 explizit aus. Die Norm ist die einzige verlässliche Quelle für die Bedeutung des Suffix. ✓
+
+**Typischer Fehler:** Buchstaben-Ziffer-Code als Einheit oder Messwert lesen.`,
+          [
+            'Was bedeutet „J" in der Stahlbezeichnung?',
+            'Was bedeutet „2" daneben?',
+            'Norm vs. Messwert — was ist hier vermischt?',
+          ],
+          {
+            1: '„J2" und „$2\\,\\text{J}$" sind völlig verschiedene Konzepte — die Bezeichnung ist nicht konsistent.',
+            2: 'S235J2 ist sehr wohl normiert — DIN EN 10025-2 listet diese Sorte explizit auf.',
+            3: 'S235 bei $-20\\,°\\text{C}$ ohne J-Index hätte einen unbestimmten Wert; der J2-Stahl muss aber $\\geq 27\\,\\text{J}$ erreichen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        matching(
+          'Ordne der Bezeichnung im Stahlnamen die zugehörige Prüftemperatur für die Kerbschlagarbeit $\\geq 27\\,\\text{J}$ zu.',
+          [
+            { left: 'JR (z. B. S235JR)',  right: '$+20\\,°\\text{C}$ (Raumtemperatur)' },
+            { left: 'J0 (z. B. S275J0)',  right: '$0\\,°\\text{C}$' },
+            { left: 'J2 (z. B. S355J2)',  right: '$-20\\,°\\text{C}$' },
+            { left: 'K2 (z. B. S460K2)',  right: '$-40\\,°\\text{C}$ (Tieftemperatur-Variante höherfester Stähle)' },
+          ],
+          `**Ansatz:** Norm-Schlüssel DIN EN 10025: das Suffix codiert die Prüftemperatur. R = $+20\\,°\\text{C}$ (Raumtemperatur), 0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$.
+
+**Rechnung:** Beispiele: S235JR → $KV \\geq 27\\,\\text{J}$ bei $+20\\,°\\text{C}$. S275J0 → bei $0\\,°\\text{C}$. S355J2 → bei $-20\\,°\\text{C}$. S460K2 → bei $-40\\,°\\text{C}$.
+
+**Probe:** Reihenfolge der Bezeichnungen entspricht zunehmender Anforderung an die Tieftemperatur-Zähigkeit (JR < J0 < J2 < K2). Jede Prüftemperatur ist eindeutig genau einer Bezeichnung zugeordnet. ✓
+
+**Typischer Fehler:** Die Ziffer „2" als „$-2\\,°\\text{C}$" lesen. Tatsächlich codiert „2" die Prüftemperatur $-20\\,°\\text{C}$.`,
+          [
+            'Welche Ziffer steht für welche Temperatur?',
+            'Welche Buchstaben gibt es und was bedeuten sie?',
+            'JR = Raumtemperatur, je höher die Ziffer (0/2/3), desto tiefer die Prüftemperatur.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // werk-2-3 — Fe-C-Diagramm & Wärmebehandlung
+  //   SG 0: fe-c-phasen  · SG 1: eutektoid    · SG 2: haertbarkeit
+  //   SG 3: waermebehandl · SG 4: verguten     · SG 5: abkuehlrate
+  // ─────────────────────────────────────────────────────────────────────────
+  'werk-2-3': {
+    // ───────────── SG 0: Fe-C-Phasen (Ferrit/Austenit/Perlit/Martensit) ─────────────
+    0: [
+      tag(
+        tf(
+          'Ferrit ($\\alpha$-Eisen) hat ein **kubisch raumzentriertes** (krz) Kristallgitter und ist die weiche, zähe Phase, die bei Raumtemperatur stabil ist.',
+          true,
+          `**Ansatz:** Im Fe-C-Diagramm werden Phasen über ihre Kristallstruktur und ihren Stabilitätsbereich definiert.
+
+**Rechnung:** $\\alpha$-Eisen (Ferrit): krz, stabil bei $T < 911\\,°\\text{C}$, löst maximal $\\approx 0{,}02\\,\\%$ C. $\\gamma$-Eisen (Austenit): kfz, stabil bei $911$–$1392\\,°\\text{C}$, löst bis $2{,}06\\,\\%$ C bei $1147\\,°\\text{C}$.
+
+**Probe:** Eigenschaften: Ferrit hat $R_m \\approx 250$–$300\\,\\text{MPa}$, $A \\geq 30\\,\\%$ — typisch für zähe, weiche Phase. ✓
+
+**Typischer Fehler:** Ferrit und Austenit verwechseln. Eselsbrücke: $\\alpha$ wie „**a**lpha = **a**lltäglich / bei Raumtemp", $\\gamma$ wie „**g**lüh-Hitze".`,
+          [
+            'Welche Kristallstruktur hat $\\alpha$-Eisen?',
+            'Krz vs. kfz — was bedeutet das jeweils?',
+            'Ferrit ist die Phase, die wir bei Raumtemperatur normalerweise im Stahl haben.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Welche der folgenden Phasen existiert im Fe-C-System **nur bei hohen Temperaturen** (über $\\approx 723\\,°\\text{C}$) und löst dort viel Kohlenstoff?',
+          [
+            'Austenit ($\\gamma$-Eisen, kfz)',
+            'Ferrit ($\\alpha$-Eisen, krz)',
+            'Perlit (lamellares Ferrit-Zementit)',
+            'Martensit (verzerrtes nadelförmiges Gefüge)',
+          ],
+          0,
+          `**Ansatz:** Austenit hat ein kfz-Gitter mit größeren Lücken (Oktaeder-Lücken) als das krz-Gitter des Ferrits — deshalb löst es deutlich mehr Kohlenstoff.
+
+**Rechnung:** C-Löslichkeit: Austenit max. $2{,}06\\,\\%$ C bei $1147\\,°\\text{C}$. Ferrit max. $\\approx 0{,}02\\,\\%$ C bei $723\\,°\\text{C}$ — also Faktor $\\approx 100$ weniger.
+
+**Probe:** Beim Härten wird der Stahl erst austenitisiert ($> 723\\,°\\text{C}$, oft $\\approx 850\\,°\\text{C}$), damit der Kohlenstoff im kfz-Gitter gelöst werden kann. ✓
+
+**Typischer Fehler:** Perlit oder Martensit als „Hochtemperatur-Phase" annehmen. Beide entstehen erst beim **Abkühlen** aus Austenit.`,
+          [
+            'Welche Phase löst viel Kohlenstoff?',
+            'Welche Phase existiert oberhalb von $\\approx 723\\,°\\text{C}$?',
+            'Kfz-Gitter (Austenit) hat größere Lücken als krz (Ferrit).',
+          ],
+          {
+            1: 'Ferrit existiert bei tiefen Temperaturen (bis $911\\,°\\text{C}$ als $\\alpha$), löst aber kaum Kohlenstoff — nicht die gesuchte Hochtemperatur-Phase.',
+            2: 'Perlit ist eine **lamellare Mischung** aus Ferrit und Zementit, die bei langsamer Abkühlung aus Austenit entsteht — keine eigenständige Hochtemperatur-Phase.',
+            3: 'Martensit entsteht beim **schnellen Abschrecken** aus Austenit — er existiert bei Raumtemperatur, nicht in der Hitze.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Welche der folgenden Gefügebeschreibungen entspricht **Martensit**?',
+          [
+            'Stark verzerrtes, nadel- oder plattenförmiges Gefüge mit zwangsgelöstem Kohlenstoff — sehr hart, spröde',
+            'Lamellare Anordnung von weichem Ferrit und hartem Zementit',
+            'Kubisch raumzentriertes Grundgefüge mit gelöstem Kohlenstoff $\\leq 0{,}02\\,\\%$',
+            'Kubisch flächenzentriertes Hochtemperatur-Gefüge mit gelöstem Kohlenstoff bis $2\\,\\%$',
+          ],
+          0,
+          `**Ansatz:** Martensit entsteht durch eine **diffusionslose** Gitterumklapp-Umwandlung aus Austenit beim schnellen Abschrecken. Der Kohlenstoff bleibt zwangsgelöst und verzerrt das Gitter.
+
+**Rechnung:** Das ursprüngliche kfz-Austenitgitter klappt während des Abschreckens in ein tetragonal verzerrtes krz-Gitter um. Die Nadeln entstehen entlang bestimmter Kristallrichtungen und sind unter dem Mikroskop charakteristisch.
+
+**Probe:** Härte $\\approx 60$–$65\\,\\text{HRC}$ bei eutektoidem C-Gehalt — höchste Härte aller Stahlgefüge. ✓
+
+**Typischer Fehler:** Martensit und Perlit verwechseln, weil beide aus Austenit entstehen. Perlit = Lamellen (langsam), Martensit = Nadeln (schnell).`,
+          [
+            'Wie sieht Martensit unter dem Mikroskop aus?',
+            'Was passiert mit dem Kohlenstoff beim Abschrecken?',
+            'Verzerrtes Gitter → hohe Härte.',
+          ],
+          {
+            1: 'Diese Beschreibung passt zu **Perlit** (lamellares Ferrit-Zementit-Gemisch), nicht zu Martensit.',
+            2: 'Diese Beschreibung passt zu **Ferrit** mit gelöstem Kohlenstoff — die Grundphase, nicht Martensit.',
+            3: 'Diese Beschreibung passt zu **Austenit** (kfz, Hochtemperatur, hohe C-Löslichkeit) — der Ausgangsstoff für Martensit, aber nicht Martensit selbst.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender sagt: „Perlit und Martensit sind dasselbe — beide entstehen beim Abkühlen aus Austenit." Wo liegt der Fehler?',
+          [
+            'Beide entstehen zwar aus Austenit, aber bei **unterschiedlichen Abkühlgeschwindigkeiten**: Perlit bei langsamer Abkühlung (Diffusion → Lamellen), Martensit bei schnellem Abschrecken (diffusionsloser Gitterumklapp → Nadeln). Härte und Eigenschaften sind völlig verschieden.',
+            'Die Aussage ist korrekt — die Begriffe sind synonym.',
+            'Perlit entsteht aus Ferrit, nicht aus Austenit — der Studierende verwechselt die Ausgangsphase.',
+            'Martensit existiert nur in Aluminium-Legierungen, nicht im Fe-C-System.',
+          ],
+          0,
+          `**Ansatz:** Die Abkühlgeschwindigkeit entscheidet, ob Diffusion stattfinden kann oder nicht. Daraus ergeben sich zwei völlig verschiedene Gefüge.
+
+**Rechnung:** Langsame Abkühlung: Kohlenstoff hat Zeit zur Diffusion → bildet Zementit-Lamellen mit Ferrit dazwischen → **Perlit** ($\\approx 20$–$30\\,\\text{HRC}$, weich, zäh). Schnelle Abkühlung: keine Zeit für Diffusion → C bleibt zwangsgelöst → **Martensit** ($\\approx 60\\,\\text{HRC}$, hart, spröde).
+
+**Probe:** TTT-Diagramm zeigt die kritischen Abkühlraten für jedes Gefüge — Perlit-Nase und Martensit-Start ($M_s$) sind getrennte Bereiche. ✓
+
+**Typischer Fehler:** Genau dieser Sprachgebrauch: „Beide kommen aus Austenit, also dasselbe". Die Phase, aus der etwas entsteht, sagt nichts über das Endgefüge.`,
+          [
+            'Worin unterscheiden sich Perlit und Martensit physikalisch?',
+            'Abkühlrate entscheidet zwischen Diffusion und Umklapp.',
+            'Verschiedene Gefüge = verschiedene Eigenschaften.',
+          ],
+          {
+            1: 'Die Begriffe sind alles andere als synonym — es sind zwei völlig unterschiedliche Gefüge mit unterschiedlichen Härten und Anwendungen.',
+            2: 'Perlit entsteht sehr wohl aus Austenit (bei langsamer Abkühlung). Ferrit ist nur ein Bestandteil des Perlits, nicht seine Ausgangsphase.',
+            3: 'Martensit ist eine Standardphase im Fe-C-System — der Begriff stammt sogar aus der Stahlmetallurgie und wurde erst später auf andere Systeme übertragen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+      tag(
+        matching(
+          'Ordne jeder Phase im Fe-C-System ihre charakteristische Eigenschaft zu.',
+          [
+            { left: 'Ferrit ($\\alpha$-Eisen)',                    right: 'krz, weich/zäh, kaum C-Löslichkeit ($\\leq 0{,}02\\,\\%$)' },
+            { left: 'Austenit ($\\gamma$-Eisen)',                  right: 'kfz, nur bei hoher Temperatur ($> 723\\,°\\text{C}$), C-Löslichkeit bis $2\\,\\%$' },
+            { left: 'Perlit',                                     right: 'lamellares Gemisch aus Ferrit und Zementit, bei langsamer Abkühlung' },
+            { left: 'Martensit',                                  right: 'nadelförmiges Gefüge mit zwangsgelöstem C, höchste Härte' },
+          ],
+          `**Ansatz:** Jede Phase im Fe-C-System hat eine eindeutige Kombination aus Kristallstruktur, Stabilitätsbereich und Eigenschaft.
+
+**Rechnung:** Ferrit (krz, Raumtemperatur). Austenit (kfz, Hitze). Perlit (Lamellen, langsam). Martensit (Nadeln, schnell). Die vier Beschreibungen sind paarweise eindeutig.
+
+**Probe:** Im Schliffbild eines Baustahls erkennt man bei Raumtemperatur Ferrit (helle Bereiche) + Perlit (lamellar gestreift). Härtetheoretisch bestätigt: Ferrit weich, Martensit hart. ✓
+
+**Typischer Fehler:** Austenit als Raumtemperatur-Phase annehmen — er ist nur bei hoher Temperatur stabil (außer in austenitischen Edelstählen, dort durch Legierung stabilisiert).`,
+          [
+            'Welche Phase hat welche Kristallstruktur (krz/kfz)?',
+            'Welche Phase ist lamellar, welche nadelförmig?',
+            'C-Löslichkeit + Härte als Unterscheidungsmerkmale.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['fe-c-phasen'] },
+      ),
+    ],
+
+    // ───────────── SG 1: Eutektoider Punkt ─────────────
+    1: [
+      tag(
+        tf(
+          'Der eutektoide Punkt im Fe-C-Diagramm liegt bei $\\approx 0{,}83\\,\\%$ C und $723\\,°\\text{C}$ — dort wandelt Austenit beim Abkühlen direkt in **Perlit** um.',
+          true,
+          `**Ansatz:** Eutektoider Punkt: charakteristische C-Konzentration und Temperatur, bei der eine feste Phase (Austenit) direkt in ein lamellares Gemisch zweier anderer fester Phasen (Ferrit + Zementit = Perlit) umwandelt.
+
+**Rechnung:** Reaktion: $\\gamma\\text{-Eisen (Austenit)} \\xrightarrow{723\\,°\\text{C}} \\alpha\\text{-Eisen (Ferrit)} + \\text{Fe}_3\\text{C (Zementit)}$. Das Produkt $\\alpha + \\text{Fe}_3\\text{C}$ ist Perlit.
+
+**Probe:** Stahl mit genau $0{,}83\\,\\%$ C besteht nach langsamer Abkühlung aus $100\\,\\%$ Perlit — keine Voraus- oder Begleitphase. ✓
+
+**Typischer Fehler:** „Eutektoid" und „eutektisch" verwechseln. Eutektisch ist die analoge Umwandlung **aus der Schmelze** (bei $4{,}3\\,\\%$ C / $1147\\,°\\text{C}$ → Ledeburit), eutektoid passiert im Festen.`,
+          [
+            'Was ist der Unterschied zwischen eutektisch und eutektoid?',
+            'Welche Phase wandelt sich am eutektoiden Punkt um?',
+            'Konzentration und Temperatur merken.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welcher Vorgang findet beim Abkühlen eines Stahls mit eutektoidem Kohlenstoffgehalt ($\\approx 0{,}83\\,\\%$ C) am eutektoiden Punkt ($723\\,°\\text{C}$) statt?',
+          [
+            'Austenit wandelt direkt in das lamellare Gemisch Perlit (Ferrit + Zementit) um',
+            'Schmelze erstarrt zu Austenit',
+            'Ferrit wandelt in Austenit um (Phasenumwandlung beim Erwärmen)',
+            'Martensit entsteht durch Diffusion',
+          ],
+          0,
+          `**Ansatz:** Eutektoide Umwandlung im Fest-Zustand: eine Phase zerfällt isothermisch in zwei feste Phasen, die lamellar angeordnet sind.
+
+**Rechnung:** $\\gamma$ (Austenit, $0{,}83\\,\\%$ C) → $\\alpha$ (Ferrit, $\\leq 0{,}02\\,\\%$ C) + Fe$_3$C (Zementit, $6{,}67\\,\\%$ C). Massenbilanz: $0{,}83 = 0{,}02 \\cdot (1-f) + 6{,}67 \\cdot f$ → $f \\approx 12\\,\\%$ Zementit, $88\\,\\%$ Ferrit (im Perlit).
+
+**Probe:** Schliffbild eines eutektoiden Stahls bei Raumtemperatur: ausschließlich Perlit-Lamellen, keine freien Ferrit- oder Zementit-Bereiche. ✓
+
+**Typischer Fehler:** Die Umwandlung beim Schmelzen oder Erwärmen mit der eutektoiden Umwandlung verwechseln.`,
+          [
+            'Was bedeutet eutektoid (nicht eutektisch)?',
+            'Welche Phase ist die Ausgangsphase?',
+            'Lamellares Endgefüge → Perlit.',
+          ],
+          {
+            1: 'Die Erstarrung aus der Schmelze passiert beim **eutektischen** Punkt ($4{,}3\\,\\%$ C, $1147\\,°\\text{C}$), nicht beim eutektoiden.',
+            2: 'Das wäre die Umkehr-Reaktion beim Aufheizen — die Frage beschreibt aber den Abkühlvorgang.',
+            3: 'Martensit entsteht **nicht** durch Diffusion und auch nicht am eutektoiden Punkt, sondern durch diffusionsloses Abschrecken auf Raumtemperatur.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welches Gefüge stellt sich nach **langsamer** Abkühlung eines Stahls mit genau $0{,}83\\,\\%$ C ein?',
+          [
+            'Reiner Perlit ($100\\,\\%$ lamellares Ferrit-Zementit-Gefüge)',
+            'Ferrit mit Perlit-Inseln (untereutektoid)',
+            'Perlit mit Zementit-Netzwerk (übereutektoid)',
+            'Reiner Martensit',
+          ],
+          0,
+          `**Ansatz:** Genau am eutektoiden Punkt wandelt Austenit vollständig in Perlit um — keine Voraus- oder Restphasen.
+
+**Rechnung:** Stahl mit $0{,}83\\,\\%$ C: gesamte $\\gamma$-Menge geht in $\\alpha + \\text{Fe}_3\\text{C}$ über. Da der C-Gehalt exakt eutektoid ist, fehlt der „Überschuss" sowohl an Ferrit als auch an Zementit, der bei untereutektoiden bzw. übereutektoiden Stählen zuerst ausgeschieden würde.
+
+**Probe:** Schliffbild zeigt $100\\,\\%$ feinlamellaren Perlit, keine freien Ferrit-Bereiche, kein Korngrenzen-Zementit. ✓
+
+**Typischer Fehler:** Voraus- oder Begleit-Phasen erwarten, obwohl der C-Gehalt exakt eutektoid ist.`,
+          [
+            'Was bedeutet „genau $0{,}83\\,\\%$ C"?',
+            'Reaktion ohne Vorausscheidungen?',
+            'Massenbilanz: keine Restphase, alles Perlit.',
+          ],
+          {
+            1: 'Ferrit-Inseln entstehen bei **unter**eutektoidem Stahl ($< 0{,}83\\,\\%$ C): erst Ferrit scheidet aus, dann der Rest als Perlit.',
+            2: 'Zementit-Netzwerk entsteht bei **über**eutektoidem Stahl ($> 0{,}83\\,\\%$ C): erst Sekundärzementit scheidet auf den Korngrenzen aus.',
+            3: 'Reiner Martensit entsteht nur beim **schnellen Abschrecken** — bei langsamer Abkühlung gibt es keine martensitische Umwandlung.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender schreibt: „Der eutektische Punkt liegt bei $0{,}83\\,\\%$ C und $723\\,°\\text{C}$." Wo liegt der Fehler?',
+          [
+            'Verwechslung der Begriffe: $0{,}83\\,\\%$ C / $723\\,°\\text{C}$ ist der **eutektoide** Punkt (Festkörperumwandlung). Der **eutektische** Punkt liegt bei $4{,}3\\,\\%$ C / $1147\\,°\\text{C}$ und beschreibt die Erstarrung aus der Schmelze (Ledeburit-Bildung).',
+            'Die Werte sind korrekt — eutektisch und eutektoid sind synonym.',
+            'Der Punkt liegt eigentlich bei $0{,}02\\,\\%$ C, nicht $0{,}83\\,\\%$.',
+            'Die Temperatur muss in Kelvin angegeben werden, sonst ist die Aussage falsch.',
+          ],
+          0,
+          `**Ansatz:** „Eutektisch" und „eutektoid" bezeichnen analoge, aber **verschiedene** Umwandlungen: eutektisch = aus Schmelze, eutektoid = im Festkörper.
+
+**Rechnung:** Eutektischer Punkt im Fe-C-Diagramm: $4{,}3\\,\\%$ C bei $1147\\,°\\text{C}$ — Schmelze erstarrt zu Austenit + Zementit (= Ledeburit). Eutektoider Punkt: $0{,}83\\,\\%$ C bei $723\\,°\\text{C}$ — Austenit zerfällt in Ferrit + Zementit (= Perlit).
+
+**Probe:** Bei einem Stahl ($< 2{,}06\\,\\%$ C) gibt es **nur** die eutektoide Umwandlung — die eutektische findet erst bei Gusseisen-C-Gehalten statt. ✓
+
+**Typischer Fehler:** Genau die Verwechslung dieser Endungen, weil sie ähnlich klingen.`,
+          [
+            'Worin unterscheiden sich eutektisch und eutektoid sprachlich?',
+            'Welche Phasenumwandlung gehört zu welchem Begriff?',
+            'Sind die Werte $0{,}83\\,\\%$ / $723\\,°\\text{C}$ überhaupt richtig — und für welche Umwandlung?',
+          ],
+          {
+            1: 'Die Begriffe sind nicht synonym — sie bezeichnen analoge Umwandlungen in unterschiedlichen Zuständen (Schmelze vs. Festkörper).',
+            2: '$0{,}83\\,\\%$ C ist der korrekte eutektoide C-Gehalt — das ist nicht der Fehler.',
+            3: 'Die Einheit „°C" ist in der Werkstoffkunde Standard — Kelvin wäre unüblich und nicht der zentrale Fehler.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['eutektoid'] },
+      ),
+      tag(
+        mc(
+          'Welches Gefüge ist bei einem **untereutektoiden** Stahl (z. B. $0{,}45\\,\\%$ C) nach langsamer Abkühlung dominant?',
+          [
+            'Voraus-Ferrit + Perlit (Perlit-Inseln zwischen Ferrit-Körnern)',
+            'Reiner Perlit ohne Voraus-Ferrit',
+            'Voraus-Zementit + Perlit',
+            'Reiner Martensit',
+          ],
+          0,
+          `**Ansatz:** Untereutektoid ($< 0{,}83\\,\\%$ C): beim Abkühlen scheidet zuerst Voraus-Ferrit aus, der Rest-Austenit erreicht beim Abkühlen den eutektoiden Punkt und wandelt dann komplett in Perlit um.
+
+**Rechnung:** Hebelregel: $0{,}45\\,\\%$ C, Ferrit hat $0{,}02\\,\\%$ C, Perlit hat $0{,}83\\,\\%$ C. Perlit-Anteil $\\approx (0{,}45-0{,}02)/(0{,}83-0{,}02) \\approx 53\\,\\%$, Ferrit-Anteil $\\approx 47\\,\\%$.
+
+**Probe:** Schliffbild von C45 nach Normalglühen: deutliche Mischung aus weißen Ferrit-Körnern und lamellaren Perlit-Bereichen. ✓
+
+**Typischer Fehler:** Auch bei $0{,}45\\,\\%$ C reines Perlit erwarten — gilt nur bei genau $0{,}83\\,\\%$ C.`,
+          [
+            'Untereutektoid: weniger C als $0{,}83\\,\\%$ — was passiert beim Abkühlen zuerst?',
+            'Hebelregel-Anwendung: Ferrit-Anteil + Perlit-Anteil.',
+            'Endgefüge enthält BEIDES: Ferrit + Perlit.',
+          ],
+          {
+            1: 'Reiner Perlit entsteht nur am eutektoiden Punkt ($0{,}83\\,\\%$ C) — $0{,}45\\,\\%$ ist deutlich darunter.',
+            2: 'Voraus-Zementit entsteht bei **übereutektoidem** Stahl ($> 0{,}83\\,\\%$ C) — hier ist der C-Gehalt zu niedrig.',
+            3: 'Martensit entsteht beim schnellen Abschrecken, nicht bei langsamer Abkühlung.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['eutektoid'] },
+      ),
+    ],
+
+    // ───────────── SG 2: Härtbarkeit ─────────────
+    2: [
+      tag(
+        tf(
+          'Stähle lassen sich durch Abschrecken nur dann sinnvoll zu Martensit härten, wenn ihr Kohlenstoffgehalt im Bereich $\\approx 0{,}3$–$0{,}8\\,\\%$ liegt — darunter zu wenig C für Martensit-Bildung, darüber wird die Probe zu spröde.',
+          true,
+          `**Ansatz:** Martensit-Bildung erfordert genügend zwangsgelösten Kohlenstoff im Gitter, um die nötige Gitterverzerrung (= Härtungseffekt) zu erzeugen. Zu viel C macht den Stahl spröde und rissempfindlich.
+
+**Rechnung:** Bei $< 0{,}3\\,\\%$ C: Martensit-Härte gerade einmal $\\approx 40\\,\\text{HRC}$ — kaum besser als Vergütungsstähle bei Raumtemperatur. Bei $> 0{,}8\\,\\%$ C: $> 65\\,\\text{HRC}$, aber sehr spröde und rissanfällig beim Abschrecken.
+
+**Probe:** Klassische Vergütungsstähle haben $0{,}3$–$0{,}5\\,\\%$ C (C45, 42CrMo4). Werkzeugstähle gehen bis $\\approx 1\\,\\%$ C (C75, C100W2). Darüber meist Gusseisen-Bereich. ✓
+
+**Typischer Fehler:** Reines Eisen ($\\approx 0\\,\\%$ C) härten wollen — ohne Kohlenstoff entsteht beim Abschrecken nur etwas anderes Ferrit, kein Martensit.`,
+          [
+            'Was braucht es für Martensit-Bildung?',
+            'Welche Werkstoffe sind im Bereich $0{,}3$–$0{,}8\\,\\%$ C?',
+            'Zu wenig C = kein Härte-Effekt; zu viel C = spröde.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Baustahl S235 hat einen Kohlenstoffgehalt von ca. $0{,}17\\,\\%$ C. Lässt sich dieser Stahl durch Abschrecken sinnvoll härten?',
+          [
+            'Nein — $0{,}17\\,\\%$ C ist zu wenig für nennenswerte Martensit-Härtung. Erst ab $\\approx 0{,}3\\,\\%$ C wird Martensit nutzbar hart.',
+            'Ja — jeder Stahl ist härtbar, der C-Gehalt spielt keine Rolle.',
+            'Ja — gerade weiche Stähle nehmen die Härtung besonders gut auf.',
+            'Nein — Baustahl ist generell nicht härtbar, weil er kein Eisen enthält.',
+          ],
+          0,
+          `**Ansatz:** Martensit-Härte hängt direkt vom zwangsgelösten Kohlenstoff ab. Unter $0{,}3\\,\\%$ C ist die Härte zu gering, um eine sinnvolle Verbesserung gegenüber dem unbehandelten Zustand zu erzielen.
+
+**Rechnung:** Bei $0{,}17\\,\\%$ C theoretisch erreichbare Martensit-Härte: $\\approx 35\\,\\text{HRC}$. Dafür den Stahl auf $> 900\\,°\\text{C}$ aufheizen und schnell abschrecken (verzugsanfällig, teuer) — der geringe Härtegewinn rechtfertigt den Aufwand nicht.
+
+**Probe:** S235 wird in der Praxis nicht durchgehärtet, sondern als zähes Konstruktionsmaterial genutzt — bei Bedarf an höheren Festigkeiten wechselt man auf Vergütungsstähle (C45, 42CrMo4). ✓
+
+**Typischer Fehler:** Die Anwesenheit von Eisen automatisch mit Härtbarkeit gleichsetzen.`,
+          [
+            'Welchen Bereich des C-Gehalts braucht es zur Härtbarkeit?',
+            'Liegt $0{,}17\\,\\%$ in diesem Bereich?',
+            'Was passiert mit der Martensit-Härte unter $0{,}3\\,\\%$ C?',
+          ],
+          {
+            1: 'Genau das ist der Fehler — der C-Gehalt ist entscheidend. Ohne genug C kein Martensit-Effekt.',
+            2: 'Genau das Gegenteil: zu weiche Stähle (zu wenig C) lassen sich nicht effektiv härten.',
+            3: 'Baustahl enthält selbstverständlich Eisen — das ist sogar der Hauptbestandteil. Der Fehler liegt im C-Gehalt, nicht im Eisen.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Stahl mit $1{,}2\\,\\%$ C wird gehärtet. Welches Problem tritt typischerweise auf?',
+          [
+            'Hohe Härte ($> 65\\,\\text{HRC}$), aber sehr spröde und rissanfällig — Abschrecken kann Härterisse erzeugen.',
+            'Der Stahl wird sehr weich, weil zu viel Kohlenstoff die Härtung verhindert.',
+            'Der Stahl wandelt sich gar nicht um — keine Härtung möglich.',
+            'Der Stahl schmilzt beim Aufheizen, weil $1{,}2\\,\\%$ C den Schmelzpunkt drastisch senkt.',
+          ],
+          0,
+          `**Ansatz:** Bei sehr hohem C-Gehalt (übereutektoid) erreicht der Martensit zwar maximale Härte, aber das Gitter ist so verzerrt, dass die Probe rissempfindlich wird.
+
+**Rechnung:** $1{,}2\\,\\%$ C → Martensit-Härte um $65$–$67\\,\\text{HRC}$. Gleichzeitig: hohes Spannungsniveau beim Abschrecken → Härterisse. In der Praxis: Werkzeugstähle mit so hohem C werden in Öl statt Wasser abgeschreckt (sanftere Abschreckung).
+
+**Probe:** Werkzeugstähle C100, C105 haben $1\\,\\%$–$1{,}1\\,\\%$ C — werden mit Sondervorkehrungen gehärtet (kontrolliertes Anlassen direkt im Anschluss). ✓
+
+**Typischer Fehler:** Annahme „mehr C = mehr Härte ohne Nebenwirkung". Über $0{,}8\\,\\%$ steigt zwar die Härte weiter, aber die Praxis-Sprödigkeit nimmt überproportional zu.`,
+          [
+            'Was passiert mit der Sprödigkeit bei steigendem C-Gehalt?',
+            'Welche Stähle haben $\\approx 1\\,\\%$ C?',
+            'Härterisse als Folge von hoher Sprödigkeit + Eigenspannungen.',
+          ],
+          {
+            1: '$1{,}2\\,\\%$ C macht den Stahl beim Härten **härter**, nicht weicher — das Gegenteil wäre falsch.',
+            2: 'Die Umwandlung findet sehr wohl statt — sogar besonders ausgeprägt. Das Problem ist die Sprödigkeit, nicht das Ausbleiben der Härtung.',
+            3: '$1{,}2\\,\\%$ C senkt zwar den Schmelzpunkt etwas (auf $\\approx 1450\\,°\\text{C}$), aber bei der Härtetemperatur ($\\approx 800\\,°\\text{C}$) ist der Stahl weit von der Schmelze entfernt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Ein Lehrling versucht, ein reines Eisen-Blech ($\\approx 0\\,\\%$ C) durch Aufheizen und Abschrecken in Wasser zu härten. Das Ergebnis ist enttäuschend weich. Wo liegt der Hauptfehler?',
+          [
+            'Ohne Kohlenstoff entsteht beim Abschrecken kein Martensit — die nötige Gitterverzerrung fehlt. Reines Eisen ist nicht durch Wärmebehandlung härtbar.',
+            'Die Wassertemperatur war zu hoch — bei korrektem Eiswasser wäre Martensit entstanden.',
+            'Reines Eisen ist generell härter als jeder Stahl — die Messung muss falsch sein.',
+            'Vor dem Härten muss das Eisen mit Stickstoff aufgekohlt werden.',
+          ],
+          0,
+          `**Ansatz:** Martensit ist eine vom Kohlenstoff erzwungene Gitterverzerrung. Ohne C → keine Verzerrung → keine Härtung durch Abschrecken.
+
+**Rechnung:** Beim Abkühlen wandelt reines Eisen lediglich vom kfz-Austenit-Gitter (Hochtemperatur) zurück ins krz-Ferrit-Gitter (Raumtemperatur) — ohne Verzerrung. Das Ergebnis ist normales weiches Eisen.
+
+**Probe:** Härte von reinem $\\alpha$-Eisen: $\\approx 80$–$100\\,\\text{HV}$, unabhängig von Abkühlrate. ✓
+
+**Typischer Fehler:** Die Härtung als rein temperaturgesteuerten Effekt sehen — sie ist in Wirklichkeit ein chemisch-strukturelles Phänomen, das Kohlenstoff voraussetzt.`,
+          [
+            'Was ist die Voraussetzung für Martensit-Bildung?',
+            'Reines Eisen — hat es genug C?',
+            'Härtung = mehr als nur „schnell abkühlen".',
+          ],
+          {
+            1: 'Die Wassertemperatur ist nicht das Hauptproblem — selbst in flüssigem Stickstoff würde reines Eisen nicht härten.',
+            2: 'Reines Eisen ist **weicher** als die meisten Stähle, nicht härter. Stahl-Festigkeit kommt gerade vom Kohlenstoff.',
+            3: 'Tatsächlich wird im Einsatzhärten Kohlenstoff (nicht Stickstoff) eingebracht. Aber: Aufkohlen + Härten wäre die Lösung — der Lehrling hat es jedoch noch nicht getan.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+      tag(
+        mc(
+          'Für eine **Druckfeder** (Federstahl) wird hohe Streckgrenze und ausreichende Zähigkeit benötigt. Welcher C-Gehalt ist typischerweise sinnvoll?',
+          [
+            'Etwa $0{,}55$–$0{,}65\\,\\%$ C (z. B. C60, 60SiCr7) — gut härtbar und nach Vergütung sehr federelastisch',
+            'Etwa $0{,}05\\,\\%$ C (Tiefziehstahl) — weil weich = elastisch',
+            'Etwa $2\\,\\%$ C — möglichst viel C für höchste Festigkeit',
+            'C-Gehalt ist für Federstähle bedeutungslos',
+          ],
+          0,
+          `**Ansatz:** Federstähle brauchen hohe Streckgrenze (elastisches Verhalten weit hoch ausgedehnt) und ausreichende Zähigkeit. Beides erreicht man im mittleren bis oberen C-Bereich der Härtbarkeit nach Vergütung.
+
+**Rechnung:** Typische Federstähle: C55, C60, C75, 51CrV4, 60SiCr7. C-Gehalte zwischen $0{,}55$ und $0{,}75\\,\\%$. Nach Vergütung (Härten + mittleres Anlassen bei $\\approx 400\\,°\\text{C}$) entsteht angelassener Martensit mit $R_e \\approx 1200$–$1500\\,\\text{MPa}$.
+
+**Probe:** Werkstoff-Datenblatt 60SiCr7: $0{,}55$–$0{,}65\\,\\%$ C, $R_m \\approx 1700\\,\\text{MPa}$, ausreichende Bruchdehnung. ✓
+
+**Typischer Fehler:** Federn als „möglichst weich" oder „möglichst hart" auslegen. Federelastizität braucht hohe Streckgrenze — also den oberen härtbaren C-Bereich.`,
+          [
+            'Welche Streckgrenze brauchen Federn?',
+            'Tiefziehstahl ist zu weich, Werkzeugstahl zu spröde.',
+            'Optimum: oberer Bereich des härtbaren C-Fensters.',
+          ],
+          {
+            1: 'Tiefziehstahl hat zwar gute Verformbarkeit, aber viel zu niedrige Streckgrenze — der würde sich plastisch verbiegen statt federn.',
+            2: '$2\\,\\%$ C liegt im Gusseisen-Bereich — solche Werkstoffe sind weder kalt umformbar noch ausreichend zäh für Federn.',
+            3: 'Genau das Gegenteil — der C-Gehalt steuert die Härtbarkeit und damit die erreichbare Streckgrenze.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['haertbarkeit'] },
+      ),
+    ],
+
+    // ───────────── SG 3: Wärmebehandlungen (Glühen/Härten/Vergüten) ─────────────
+    3: [
+      tag(
+        tf(
+          'Glühen, Härten und Vergüten sind drei zentrale Wärmebehandlungen für Stahl: Glühen stellt ein Gleichgewichts-Gefüge ein, Härten erzeugt Martensit, Vergüten kombiniert Härten mit Anlassen.',
+          true,
+          `**Ansatz:** Wärmebehandlungen werden über drei Parameter charakterisiert: Glüh-/Härtetemperatur, Haltezeit, Abkühlung.
+
+**Rechnung:** Glühen (langsame Abkühlung im Ofen) → Diffusion → Gleichgewichts-Gefüge (Ferrit + Perlit). Härten (Abschrecken in Wasser/Öl) → kein Gleichgewicht → Martensit. Vergüten (Härten + Anlassen bei $450$–$650\\,°\\text{C}$) → angelassener Martensit mit guter Festigkeits-Zähigkeits-Kombination.
+
+**Probe:** DIN EN 10052 listet alle drei als Standard-Verfahren der Stahl-Wärmebehandlung. ✓
+
+**Typischer Fehler:** Vergüten und Härten gleichsetzen. Vergüten ist Härten **plus** ein zweiter Schritt (Anlassen) — das macht den Unterschied zwischen sprödem und gebrauchsfähigem Bauteil.`,
+          [
+            'Welche drei Standardverfahren gibt es?',
+            'Was unterscheidet jedes Verfahren in der Abkühlung?',
+            'Vergüten = Härten + ...',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Was bezeichnet man im Stahlbau als „Vergüten"?',
+          [
+            'Härten (Austenitisieren + Abschrecken) gefolgt von Anlassen bei $450$–$650\\,°\\text{C}$',
+            'Reines Glühen bei $\\approx 900\\,°\\text{C}$ mit anschließender Luftabkühlung',
+            'Nur Abschrecken in Wasser ohne weitere Behandlung',
+            'Aufkohlen der Oberfläche mit anschließender Wärmebehandlung',
+          ],
+          0,
+          `**Ansatz:** Vergüten ist eine zweistufige Wärmebehandlung: zuerst Härten (Martensit erzeugen), dann Anlassen (Martensit „abbauen", damit nicht spröde).
+
+**Rechnung:** Härten: Stahl auf $> A_3$ erwärmen ($\\approx 850\\,°\\text{C}$), in Öl oder Wasser abschrecken → Martensit. Anlassen: bei $450$–$650\\,°\\text{C}$ ($1$–$2\\,\\text{h}$) → angelassener Martensit mit Karbid-Ausscheidungen. Endgefüge: hohe Festigkeit + gute Zähigkeit.
+
+**Probe:** 42CrMo4 vergütet: $R_m \\approx 1000\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$. Werkstoff der Wahl für Wellen, Pleuel, Zahnräder. ✓
+
+**Typischer Fehler:** „Vergüten = Härten" — ohne den zweiten Schritt (Anlassen) ist der Stahl spröde und nicht gebrauchsfähig.`,
+          [
+            'Aus welchen zwei Schritten besteht Vergüten?',
+            'Welcher Schritt sorgt für Härte, welcher für Zähigkeit?',
+            'Anlasstemperatur $\\approx 450$–$650\\,°\\text{C}$.',
+          ],
+          {
+            1: 'Glühen ist Gleichgewichts-Behandlung und erzeugt KEIN Martensit-Vorgängergefüge — daher nicht Vergüten.',
+            2: 'Nur Abschrecken ist Härten, nicht Vergüten — Vergüten enthält zusätzlich das Anlassen.',
+            3: 'Das Aufkohlen ist Einsatzhärten (separate Wärmebehandlung), nicht Vergüten.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Welche Wärmebehandlung wird durchgeführt, um einen verfestigten Stahl wieder gut **zerspanbar** und weich zu machen?',
+          [
+            'Weichglühen bei $\\approx 700\\,°\\text{C}$ mit sehr langsamer Ofen-Abkühlung',
+            'Härten in Wasser bei Raumtemperatur',
+            'Anlassen bei $200\\,°\\text{C}$ direkt nach dem Härten',
+            'Nitrieren der Oberfläche bei $\\approx 500\\,°\\text{C}$',
+          ],
+          0,
+          `**Ansatz:** „Weich" = niedrige Härte → schlecht zerspanbar nur, wenn zu hart. Weichglühen (auch GKZ-Glühen: globulares Zementit-Glühen) gibt minimale Härte und optimale Zerspanbarkeit.
+
+**Rechnung:** Weichglühen: $700\\,°\\text{C}$ knapp unter $A_1$, mehrere Stunden Haltezeit, dann sehr langsam abkühlen ($\\Delta T \\leq 20\\,\\text{K/h}$). Die Zementit-Lamellen im Perlit kugeln zu globularen Karbiden ein → maximal weiches, gut bearbeitbares Gefüge.
+
+**Probe:** Werkzeugstähle (C100W2, X220CrMoV12-1) werden im Halbzeug-Lieferzustand weichgeglüht — sonst nicht zerspanbar. ✓
+
+**Typischer Fehler:** Härten als „Vorbereitung zur Zerspanung" wählen — genau das Gegenteil! Härten macht den Stahl schlecht zerspanbar.`,
+          [
+            'Ziel: weich + gut zerspanbar.',
+            'Welche Behandlung gibt minimale Härte?',
+            'Sehr langsame Abkühlung im Ofen = Weichglühen.',
+          ],
+          {
+            1: 'Härten erzeugt **Martensit** — sehr hart, fast nicht zerspanbar. Das Gegenteil der Anforderung.',
+            2: 'Niedriges Anlassen ($200\\,°\\text{C}$) lässt den Martensit weitgehend bestehen — der Stahl bleibt hart.',
+            3: 'Nitrieren härtet die Oberfläche zusätzlich — verschärft das Zerspanproblem.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        mc(
+          'Ein Auszubildender sagt: „Vergüten und Härten sind dasselbe — beide Verfahren erzeugen einen harten Stahl." Wo liegt der Fehler?',
+          [
+            'Härten endet **vor** dem Anlassen — das Ergebnis ist ein spröder, rissempfindlicher Martensit. Vergüten ist Härten **plus** Anlassen und liefert einen Stahl mit hoher Festigkeit **und** Zähigkeit. Die beiden sind nicht synonym.',
+            'Härten und Vergüten sind tatsächlich Synonyme — die Aussage ist korrekt.',
+            'Vergüten erzeugt einen weichen Stahl, Härten einen harten — der Auszubildende hat es genau umgekehrt.',
+            'Härten gibt es nur bei Aluminium, Vergüten nur bei Stahl.',
+          ],
+          0,
+          `**Ansatz:** Vergüten = Härten + Anlassen. Härten allein liefert spröden Martensit, der in fast keinem Bauteil verwendbar ist.
+
+**Rechnung:** Nach Härten von C45: HV $\\approx 700$, sehr spröde, kaum Zähigkeit. Nach Vergüten von C45: HV $\\approx 280$, $R_m \\approx 800\\,\\text{MPa}$, $A \\approx 18\\,\\%$ — ein vollwertiger Konstruktionsstahl.
+
+**Probe:** In der Praxis wird Härten ohne Anlassen so gut wie nie verwendet — sofort danach wird angelassen, um Sprödbruch zu vermeiden. ✓
+
+**Typischer Fehler:** Die Wörter „Härten" und „Vergüten" austauschbar verwenden — das führt zu falschen Werkstoffauslegungen und gegebenenfalls zu Härterissen.`,
+          [
+            'Was passiert beim Anlassen?',
+            'Wie unterscheiden sich die End-Eigenschaften?',
+            'Härten allein = spröde; Vergüten = brauchbar.',
+          ],
+          {
+            1: 'Die Begriffe sind eben **nicht** synonym — Härten ohne Anlassen ist in der Praxis kaum nutzbar.',
+            2: 'Vergüteter Stahl ist nicht weich, sondern hat hohe Festigkeit — durch das Anlassen wird die Sprödigkeit reduziert, nicht die Festigkeit.',
+            3: 'Beide Wärmebehandlungen werden bei Stahl Standard verwendet — die Aussage ist sachlich falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+      tag(
+        matching(
+          'Ordne jeder Wärmebehandlung das passende Ziel/Ergebnis zu.',
+          [
+            { left: 'Normalglühen',  right: 'feinkörniges Ferrit-Perlit, gleichmäßige Eigenschaften' },
+            { left: 'Weichglühen',   right: 'globulare Karbide, minimale Härte, gute Zerspanbarkeit' },
+            { left: 'Härten',        right: 'Martensit — sehr hart, aber spröde, ohne Anlassen kaum nutzbar' },
+            { left: 'Vergüten',      right: 'angelassener Martensit — Kombination aus hoher Festigkeit und ausreichender Zähigkeit' },
+          ],
+          `**Ansatz:** Jede Wärmebehandlung zielt auf ein spezifisches Endgefüge mit definierten Eigenschaften.
+
+**Rechnung:** Normalglühen: $30\\,\\text{K}$ über $A_3$, Luftabkühlung → fein-Ferrit-Perlit. Weichglühen: knapp unter $A_1$, sehr langsam → globulare Karbide. Härten: Abschrecken → Martensit. Vergüten: Härten + Anlassen → angelassener Martensit.
+
+**Probe:** Praxis-Anwendung: Normalglühen für homogene Halbzeug-Eigenschaften, Weichglühen vor Zerspanung, Vergüten für tragende Bauteile (Wellen, Pleuel). Jedes Ziel ist eindeutig einem Verfahren zugeordnet. ✓
+
+**Typischer Fehler:** Wärmebehandlungen austauschbar einsetzen — jede hat ihren spezifischen Anwendungsbereich.`,
+          [
+            'Welche Behandlung ist Gleichgewichts-Behandlung, welche Nicht-Gleichgewicht?',
+            'Welche braucht zwingend einen zweiten Schritt (Anlassen)?',
+            'Weichglühen ↔ Zerspanbarkeit; Vergüten ↔ Festigkeit+Zähigkeit.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['waermebehandl'] },
+      ),
+    ],
+
+    // ───────────── SG 4: Vergüten (angelassener Martensit) ─────────────
+    4: [
+      tag(
+        tf(
+          'Vergüten kombiniert Härten und Anlassen, um einen Stahl mit gleichzeitig hoher Festigkeit ($R_m \\geq 700\\,\\text{MPa}$) **und** brauchbarer Zähigkeit zu erzeugen — typisches Beispiel 42CrMo4.',
+          true,
+          `**Ansatz:** Beim Anlassen scheiden sich aus dem zwangsgelösten Martensit Karbide aus (Fe$_3$C-Nanopartikel). Das reduziert die Gitterverzerrung → Sprödigkeit sinkt, aber die Festigkeit bleibt hoch durch die Karbid-Verstärkung.
+
+**Rechnung:** 42CrMo4 vergütet: $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$. Reiner Martensit hätte $R_m \\approx 1500\\,\\text{MPa}$, aber $A \\approx 0$ und $KV < 5\\,\\text{J}$ — nicht nutzbar.
+
+**Probe:** Standardanwendung für Wellen, Pleuel, Zahnräder, Schrauben hoher Festigkeitsklasse. ✓
+
+**Typischer Fehler:** „Vergüten = weniger fest als Härten" pauschal sagen. Stimmt — aber dafür viel zäher. Es ist ein Optimum.`,
+          [
+            'Was passiert physikalisch beim Anlassen?',
+            'Welcher Stahl ist das Lehrbuchbeispiel?',
+            'Warum nicht einfach nur härten?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Für ein Bauteil wird gleichzeitig hohe Streckgrenze ($\\geq 700\\,\\text{MPa}$) und gute Zähigkeit ($KV \\geq 27\\,\\text{J}$) gefordert. Welche Wärmebehandlung ist die richtige Wahl?',
+          [
+            'Vergüten (Härten + Anlassen bei $450$–$650\\,°\\text{C}$) eines geeigneten Vergütungsstahls (z. B. 42CrMo4)',
+            'Reines Härten ohne Anlassen — gibt maximale Festigkeit',
+            'Weichglühen — gibt maximale Zähigkeit',
+            'Normalglühen eines Baustahls (z. B. S235)',
+          ],
+          0,
+          `**Ansatz:** Die Anforderung „hohe Festigkeit + gute Zähigkeit" passt genau zur Definition von Vergüten.
+
+**Rechnung:** Vergüten ergibt Stähle mit $R_m = 800$–$1100\\,\\text{MPa}$ und $KV \\geq 30\\,\\text{J}$ — beide Anforderungen klar erfüllt. Reines Härten gibt zwar $R_m \\approx 1500\\,\\text{MPa}$, aber $KV < 5\\,\\text{J}$ — Zähigkeit nicht erfüllt.
+
+**Probe:** Industriestandard: 42CrMo4 für Wellen, 30CrNiMo8 für hochbeanspruchte Pleuel. Beide vergütet. ✓
+
+**Typischer Fehler:** „Mehr ist besser" — bei reiner Festigkeit das Härten wählen, dabei die Zähigkeit aus den Augen verlieren.`,
+          [
+            'Welche Behandlung kombiniert Festigkeit UND Zähigkeit?',
+            'Reines Härten allein reicht NICHT (zu spröde).',
+            'Vergütungsstahl als Werkstoff der Wahl.',
+          ],
+          {
+            1: 'Reines Härten gibt sehr hohe Festigkeit, aber kaum Zähigkeit — eine der beiden Anforderungen ist verletzt.',
+            2: 'Weichglühen gibt maximale Zähigkeit, aber kaum Festigkeit (typisch $R_m \\approx 500\\,\\text{MPa}$ bei C45 weichgeglüht).',
+            3: 'S235 erreicht nach Normalglühen nur $R_m \\approx 360$–$510\\,\\text{MPa}$ — die Festigkeitsanforderung wird nicht erfüllt.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Eine Welle aus 42CrMo4 wird vergütet (Anlasstemperatur $\\approx 580\\,°\\text{C}$). Welcher $R_m$-Wert ist typisch zu erwarten?',
+          [
+            'Etwa $1000\\,\\text{MPa}$',
+            'Etwa $300\\,\\text{MPa}$',
+            'Etwa $1800\\,\\text{MPa}$',
+            'Etwa $50\\,\\text{MPa}$',
+          ],
+          0,
+          `**Ansatz:** Vergüteter 42CrMo4 hat einen typischen $R_m$-Bereich von $900$–$1100\\,\\text{MPa}$, abhängig von Anlasstemperatur. Höhere Anlasstemperatur → niedrigere Festigkeit, aber höhere Zähigkeit.
+
+**Rechnung:** Bei $580\\,°\\text{C}$ Anlassen (Mittelbereich): klassische Vergütung mit $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$.
+
+**Probe:** DIN EN 10083-3 listet für 42CrMo4+QT (vergütet) im Querschnitt $\\leq 16\\,\\text{mm}$: $R_m = 1100$–$1300\\,\\text{MPa}$. Bei größeren Querschnitten etwas niedriger. ✓
+
+**Typischer Fehler:** Falsche Größenordnung erwarten — Baustahl-Wert ($\\approx 360\\,\\text{MPa}$) oder Werkzeugstahl-Wert ($> 1500\\,\\text{MPa}$).`,
+          [
+            'Welche Größenordnung hat ein klassischer Vergütungsstahl?',
+            '$\\approx 1000\\,\\text{MPa}$ ist Standardbereich.',
+            'Tabellenwert nachschauen.',
+          ],
+          {
+            1: '$300\\,\\text{MPa}$ wäre Baustahl-Niveau — ein vergüteter 42CrMo4 hat deutlich höhere Festigkeit.',
+            2: '$1800\\,\\text{MPa}$ wäre Werkzeugstahl im niedrig angelassenen Zustand — zu hoch für klassisches Vergüten bei $580\\,°\\text{C}$.',
+            3: '$50\\,\\text{MPa}$ ist eine sinnlose Größenordnung — selbst Aluminium hat höhere Zugfestigkeit.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Ein Werkstattmeister beschreibt das Vorgehen: „Wir härten den Stahl bei $850\\,°\\text{C}$ in Öl ab — fertig vergütet." Wo liegt der Fehler?',
+          [
+            'Vergüten besteht aus **zwei** Schritten: Härten **plus** anschließendes Anlassen (bei $450$–$650\\,°\\text{C}$). Ohne Anlassen ist der Stahl nur „gehärtet", noch nicht vergütet — und damit spröde und rissempfindlich.',
+            'Die Härtetemperatur $850\\,°\\text{C}$ ist zu niedrig — für Vergüten braucht es $1200\\,°\\text{C}$.',
+            'Öl ist das falsche Abschreckmedium — beim Vergüten muss Wasser verwendet werden.',
+            'Vergüten gibt es nur bei austenitischen Stählen, nicht bei 42CrMo4.',
+          ],
+          0,
+          `**Ansatz:** Vergüten ist als zweistufige Behandlung definiert. Härten allein produziert spröden Martensit, der nicht gebrauchsfähig ist.
+
+**Rechnung:** Praxis-Ablauf 42CrMo4 vergüten: 1) Austenitisieren $850\\,°\\text{C}$, halten, in Öl abschrecken → Martensit, $R_m \\approx 1500\\,\\text{MPa}$, $A < 1\\,\\%$. 2) Anlassen bei $580\\,°\\text{C}$, $1$–$2\\,\\text{h}$ → angelassener Martensit, $R_m \\approx 1000\\,\\text{MPa}$, $A \\approx 12\\,\\%$.
+
+**Probe:** In der Werkstoffnorm wird der Zustand explizit als „+QT" (quenched and tempered) gekennzeichnet — Härten **und** Anlassen sind Bestandteil. ✓
+
+**Typischer Fehler:** „Härten" und „Vergüten" austauschbar verwenden — wie hier beschrieben.`,
+          [
+            'Aus welchen Schritten besteht Vergüten?',
+            'Ist Härten allein bereits Vergüten?',
+            'Anlassen ist Pflicht beim Vergüten.',
+          ],
+          {
+            1: '$850\\,°\\text{C}$ ist eine korrekte Austenitisierungstemperatur — der Fehler liegt nicht hier.',
+            2: 'Öl ist beim Vergüten von 42CrMo4 sogar das **bevorzugte** Abschreckmedium (Wasser wäre zu brutal und würde Härterisse erzeugen).',
+            3: '42CrMo4 ist gerade DER klassische Vergütungsstahl — die Behauptung „nur bei austenitischen Stählen" ist falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['verguten'] },
+      ),
+      tag(
+        mc(
+          'Welcher Stahl ist für eine hochbelastete **Kurbelwelle** im Verbrennungsmotor typischerweise die richtige Wahl?',
+          [
+            'Vergüteter 42CrMo4 ($+$QT)',
+            'Weichgeglühter Baustahl S235JR',
+            'Gehärteter (aber nicht angelassener) Werkzeugstahl C100',
+            'Reines $\\alpha$-Eisen',
+          ],
+          0,
+          `**Ansatz:** Kurbelwellen erleben hohe Wechselbelastungen (Druck, Biege, Torsion). Sie brauchen hohe Streckgrenze + Zähigkeit + Dauerfestigkeit.
+
+**Rechnung:** Vergüteter 42CrMo4: $R_m \\approx 1000\\,\\text{MPa}$, $R_e \\approx 800\\,\\text{MPa}$, $A \\approx 12\\,\\%$, $KV \\approx 50\\,\\text{J}$, gute Dauerfestigkeit. Perfekt für Kurbelwellen.
+
+**Probe:** Industriestandard: PKW-Kurbelwellen aus 42CrMo4 oder 30CrNiMo8, vergütet. ✓
+
+**Typischer Fehler:** Weichen Baustahl oder unangelassenen Werkzeugstahl wählen — beide versagen unter Wechsellast.`,
+          [
+            'Welche Eigenschaften braucht eine Kurbelwelle?',
+            'Welche Wärmebehandlung liefert genau diese Kombination?',
+            'Vergüteter Stahl ist die Standardwahl.',
+          ],
+          {
+            1: 'S235JR ist zu weich ($R_e \\approx 235\\,\\text{MPa}$) und hält die Wechselbelastung einer Kurbelwelle nicht aus.',
+            2: 'Gehärteter, nicht angelassener Werkzeugstahl ist extrem spröde — bei Wechsellast bricht er nach wenigen Lastwechseln.',
+            3: 'Reines Eisen ist viel zu weich für tragende, dauerbelastete Bauteile — weniger als $200\\,\\text{MPa}$ Festigkeit.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['verguten'] },
+      ),
+    ],
+
+    // ───────────── SG 5: Abkühlrate ─────────────
+    5: [
+      tag(
+        tf(
+          'Bei **langsamer** Abkühlung aus Austenit hat der Kohlenstoff Zeit zur Diffusion und es entsteht **Perlit**; bei **schnellem** Abschrecken bleibt die Diffusion aus und es entsteht **Martensit**.',
+          true,
+          `**Ansatz:** Diffusion ist temperatur- und zeitabhängig. Schnelle Abkühlung „friert" den Atomzustand ein.
+
+**Rechnung:** Kritische Abkühlrate für Martensit-Bildung hängt vom Stahl ab: einfache Kohlenstoffstähle brauchen $> 100\\,\\text{K/s}$ (Wasserabschrecken), legierte Stähle (z. B. 42CrMo4) deutlich weniger ($\\approx 1$–$10\\,\\text{K/s}$, Öl reicht).
+
+**Probe:** TTT-Diagramm: Perlit-Nase rechts (langsam), Martensit-Start $M_s$ ganz unten (alle Abkühlraten, die unterhalb der Nase vorbeigehen). ✓
+
+**Typischer Fehler:** Annahme, dass jeder Stahl bei jeder Abkühlrate Martensit bildet — tatsächlich ist die kritische Abkühlrate werkstoffabhängig.`,
+          [
+            'Was braucht der Kohlenstoff für Diffusion?',
+            'Was passiert bei zu wenig Zeit?',
+            'Schnell = diffusionslos = Martensit.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Welches Abschreckmedium liefert die **schnellste** Abkühlung und damit die stärkste Martensit-Härtung?',
+          [
+            'Salzlösung (Solwasser) oder Eiswasser',
+            'Öl bei Raumtemperatur',
+            'Ruhende Luft',
+            'Sehr langsame Abkühlung im Ofen',
+          ],
+          0,
+          `**Ansatz:** Abkühlraten unterscheiden sich nach Medium um Größenordnungen. Salzlösung > Wasser > Öl > Luft > Ofen.
+
+**Rechnung:** Typische Abkühlraten ($800 \\to 500\\,°\\text{C}$): Solwasser $\\approx 300\\,\\text{K/s}$, Wasser $\\approx 200\\,\\text{K/s}$, Öl $\\approx 50\\,\\text{K/s}$, Luft $\\approx 1\\,\\text{K/s}$, Ofen $\\approx 0{,}01\\,\\text{K/s}$. Salzlösung ist das schärfste industriell genutzte Abschreckmedium.
+
+**Probe:** Werkzeugstähle hoher Härte werden in Wasser/Sole abgeschreckt; legierte Stähle (geringere kritische Abkühlrate) in Öl. ✓
+
+**Typischer Fehler:** „Wasser ist das schnellste Medium" — Sole ist noch schneller, weil das Salz die Dampffilm-Phase unterdrückt.`,
+          [
+            'Welches Medium hat die höchste Wärmeleitfähigkeit + niedrigste Verdampfungsverluste?',
+            'Größenordnungen vergleichen: $\\text{K/s}$.',
+            'Sole > Wasser > Öl > Luft.',
+          ],
+          {
+            1: 'Öl ist langsamer als Wasser/Sole — wird daher für legierte Stähle (geringere kritische Abkühlrate) verwendet.',
+            2: 'Luft ist sehr langsam ($\\approx 1\\,\\text{K/s}$) — gibt Ferrit-Perlit, kein Martensit.',
+            3: 'Ofen-Abkühlung ist die langsamste Variante und produziert nahezu Gleichgewichts-Gefüge (Glühen), kein Martensit.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Ein Stahl wird **langsam an der Luft** abgekühlt (ca. $1\\,\\text{K/s}$). Welches Endgefüge ist zu erwarten?',
+          [
+            'Ferrit-Perlit-Gemisch (bei untereutektoidem Stahl) — Diffusion ausreichend für Gleichgewichts-Gefüge',
+            'Reiner Martensit — Luft kühlt schnell genug für Martensit-Bildung',
+            'Bainit — Luftabkühlung trifft genau den Bainit-Bereich',
+            'Austenit bleibt bei Raumtemperatur stabil',
+          ],
+          0,
+          `**Ansatz:** Luftabkühlung ist bei unlegierten Stählen **langsam** genug für vollständige Diffusion — also Gleichgewichts-Gefüge.
+
+**Rechnung:** Bei $1\\,\\text{K/s}$ hat der C zwischen $\\approx 700$ und $500\\,°\\text{C}$ etwa $200\\,\\text{s}$ Zeit zur Diffusion. Das reicht reichlich für die Bildung von Ferrit + Perlit-Lamellen.
+
+**Probe:** Normalglühen eines Baustahls: Luftabkühlung → feinkörniges Ferrit-Perlit-Gefüge. ✓
+
+**Typischer Fehler:** Luftabkühlung als „schnell" einstufen — sie ist im Vergleich zu Wasser/Öl extrem langsam.`,
+          [
+            'Wie schnell ist Luftabkühlung wirklich?',
+            'Reicht die Zeit für Diffusion?',
+            'Vergleiche mit kritischer Abkühlrate.',
+          ],
+          {
+            1: 'Martensit braucht hohe Abkühlraten ($> 50\\,\\text{K/s}$ bei unlegiertem Stahl) — Luft ist zu langsam.',
+            2: 'Bainit entsteht bei isothermischer Umwandlung im Bereich $\\approx 300$–$500\\,°\\text{C}$ — Luftabkühlung passiert diesen Bereich nicht isotherm, sondern durchläuft ihn schnell und gelangt in den Ferrit-Perlit-Bereich.',
+            3: 'Austenit ist bei Raumtemperatur nur in austenitischen Edelstählen (durch Legierung) stabil — bei normalem Baustahl wandelt er sich um.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Ein Lehrling schreckt einen großen Werkzeugstahl-Block ($C100W$ mit $\\approx 1\\,\\%$ C) in Wasser ab und das Bauteil bekommt Härterisse. Was war der Fehler?',
+          [
+            'Hochlegierte/hochkohlige Stähle sollten in **Öl** (sanftere Abkühlung) abgeschreckt werden — Wasser ist zu brutal und erzeugt zu hohe Eigenspannungen, die Härterisse auslösen.',
+            'Wasser ist viel zu langsam — der Stahl hätte in Eiswasser abgeschreckt werden müssen.',
+            'Der Stahl wurde gar nicht abgeschreckt — er erhitzte sich nur an der Oberfläche.',
+            'Wasser löst Kohlenstoff aus dem Stahl und macht ihn weich.',
+          ],
+          0,
+          `**Ansatz:** Hohe Abkühlrate erzeugt hohe thermische Eigenspannungen. Werkzeugstähle mit hohem C-Gehalt sind besonders rissempfindlich, daher Öl als sanfteres Medium.
+
+**Rechnung:** Wasser: $\\approx 200\\,\\text{K/s}$ → starke Eigenspannungen + maximaler Härte-Effekt → Rissrisiko. Öl: $\\approx 50\\,\\text{K/s}$ → reicht für Martensit, aber niedrigere Spannungen.
+
+**Probe:** Werkstoffdatenblätter zu Werkzeugstählen empfehlen explizit das Abschreckmedium (oft Öl) für die jeweilige Sorte. ✓
+
+**Typischer Fehler:** „Mehr Härte = mehr Wasser" anwenden, ohne die Sprödigkeit/Rissanfälligkeit zu beachten.`,
+          [
+            'Welches Medium ist sanfter, welches schärfer?',
+            'Hoher C-Gehalt + hohe Abschreckrate = Risse.',
+            'Öl als Standard für hochlegierte/hochkohlige Stähle.',
+          ],
+          {
+            1: 'Wasser ist sehr schnell — der Stahl wurde sehr wohl abgeschreckt. Eiswasser hätte das Problem nur verschärft.',
+            2: 'Härterisse zeigen, dass die Abkühlung gewirkt hat — sonst gäbe es keine Spannungen, die Risse erzeugen.',
+            3: 'Wasser löst keinen Kohlenstoff aus Stahl — das ist physikalisch falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+      tag(
+        mc(
+          'Wie entsteht **Bainit** als Gefüge zwischen Perlit (langsam) und Martensit (schnell)?',
+          [
+            'Durch **isothermische Umwandlung** bei mittlerer Temperatur ($\\approx 300$–$500\\,°\\text{C}$): die Probe wird aus Austenit auf diese Temperatur abgeschreckt und dort gehalten, bis die Umwandlung abgeschlossen ist.',
+            'Durch sehr langsame Abkühlung im Ofen (gibt nur Perlit).',
+            'Durch noch schnelleres Abschrecken als bei Martensit (gibt es nicht — Martensit ist bereits das schnellste Gefüge).',
+            'Durch Aufheizen von Perlit auf $500\\,°\\text{C}$.',
+          ],
+          0,
+          `**Ansatz:** Bainit ist ein nicht-lamellares Zwischengefüge, das durch isothermische Haltebehandlung im mittleren Temperaturbereich entsteht.
+
+**Rechnung:** Praxis: Stahl von Austenitisierungstemperatur ($> 723\\,°\\text{C}$) auf $\\approx 350\\,°\\text{C}$ abgeschreckt, dort halten bis Umwandlung beendet (Minuten bis Stunden), dann luftabkühlen. Endgefüge: Bainit ($45$–$55\\,\\text{HRC}$, sehr zäh).
+
+**Probe:** „Austempering" ist der industrielle Begriff für diese Behandlung — wird z. B. für Federn und schmiedbares Gusseisen genutzt. ✓
+
+**Typischer Fehler:** Bainit als reines „Mittelding zwischen Perlit und Martensit" beschreiben, ohne den isothermischen Haltebehandlungs-Charakter zu erwähnen.`,
+          [
+            'Was unterscheidet Bainit von Perlit und Martensit prozesstechnisch?',
+            'Isothermisch heißt: bei konstanter Temperatur halten.',
+            'Mittlerer Temperaturbereich, nicht beim Abschrecken.',
+          ],
+          {
+            1: 'Sehr langsame Abkühlung ergibt Perlit, nicht Bainit. Bainit braucht die isothermische Haltephase.',
+            2: 'Es gibt durchaus extrem schnelle Abschreckungen (Sole), aber Martensit ist das diffusionslose Endprodukt — schneller geht nicht für ein anderes Gefüge.',
+            3: 'Aufheizen von Perlit auf $500\\,°\\text{C}$ ergibt globularisierten Perlit / Karbide — nicht Bainit. Bainit muss aus Austenit isothermisch umwandeln.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['abkuehlrate'] },
+      ),
+    ],
+  },
 }

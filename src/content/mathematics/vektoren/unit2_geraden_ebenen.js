@@ -12,21 +12,19 @@ export const exercises_vek_u2 = {
       '$a x + b y = c$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Eine Gerade ist ein 1D-Objekt im Raum — sie hat *eine* Richtung.
+    explanation: `**Ansatz:** Eine Gerade ist ein 1D-Objekt im Raum — sie hat *eine* Richtung, also genau einen freien Parameter.
 
-**Formel:** $\\vec{r} = \\vec{p} + t \\cdot \\vec{v}$ mit Stützpunkt $\\vec{p}$, Richtungsvektor $\\vec{v}$ und Parameter $t \\in \\mathbb{R}$.
+**Rechnung:** Parameterform: $\\vec{r} = \\vec{p} + t \\cdot \\vec{v}$ mit Stützpunkt $\\vec{p}$, Richtungsvektor $\\vec{v}$ und Parameter $t \\in \\mathbb{R}$. Konkret für $\\vec{p}=(1,2)$, $\\vec{v}=(3,4)$ ergibt $t=0\\to(1,2)$, $t=1\\to(4,6)$, $t=-1\\to(-2,-2)$ — eine ganze Gerade.
 
-**Probe:** Für $t = 0$ ist $\\vec{r} = \\vec{p}$ (Stützpunkt selbst). Für $t = 1$ ist $\\vec{r} = \\vec{p} + \\vec{v}$ (ein Schritt in Richtung $\\vec{v}$). ✓
+**Probe:** Für $t=0$ ist $\\vec{r}=\\vec{p}$ (Stützpunkt selbst); für $t=1$ ist $\\vec{r}=\\vec{p}+\\vec{v}$ (ein Schritt in Richtung $\\vec{v}$). Ein freier Parameter $\\Rightarrow$ 1D-Objekt $\\Rightarrow$ Gerade. ✓
 
-**Typischer Fehler:**
-- Option B mit *zwei* Richtungsvektoren beschreibt eine **Ebene**, nicht eine Gerade.
-- Option C ist die **Normalenform einer Ebene**.
-- Option D ist die Koordinatenform einer Ebene (in 2D: Gerade, in 3D: Ebene).`,
+**Typischer Fehler:** Die Form $\\vec r=\\vec p+s\\vec u+t\\vec v$ (zwei Parameter) als Gerade verwechseln — das ist die Parameterform einer **Ebene** (2D). Eine Gerade hat nur **einen** Parameter.`,
     hints: [
       'Wie viele Freiheitsgrade hat eine Gerade? Genau einer — also ein Parameter.',
       'Eine Gerade braucht einen Punkt (Stützpunkt) und genau eine Richtung.',
       'Unterscheide: 1 Richtung $\\to$ Gerade, 2 Richtungen $\\to$ Ebene.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['g-paramform'] },
     wrongAnswerExplanations: {
       1: 'Das ist die Parameterform einer *Ebene* mit zwei Parametern $s, t$ und zwei Richtungsvektoren — also ein 2D-Objekt. Eine Gerade hat nur einen Freiheitsgrad: $\\vec{r} = \\vec{p} + t\\vec{v}$.',
       2: 'Das ist die Normalenform einer *Ebene* (Skalarprodukt gleich Konstante) — beschreibt alle Punkte, deren Projektion auf $\\vec{n}$ gleich $d$ ist. Eine Gerade in Parameterform: $\\vec{r} = \\vec{p} + t\\vec{v}$.',
@@ -40,17 +38,17 @@ export const exercises_vek_u2 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Setze einen Wert für $t$ ein und rechne die drei Komponenten aus. Ein Punkt liegt auf $g$, wenn es *ein* $t$ gibt, das ihn liefert.
 
-**Rechnung für $t = 1$:**
-$$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).$$
+**Rechnung:** Für $t=1$: $\\vec{r}=(1,2,3)+1\\cdot(2,0,1)=(1+2,\\,2+0,\\,3+1)=(3,2,4)$. Also liegt $(3,2,4)$ auf $g$.
 
-**Gegenprobe für Option B $(2, 0, 1)$:** Das ist der *Richtungsvektor* $\\vec{v}$, nicht ein Punkt auf $g$. Um diesen Punkt zu erhalten, müsste $\\vec{p} + t\\vec{v} = (2,0,1)$ gelten — also $1+2t = 2$, $2 = 0$ (Widerspruch). Nicht auf $g$.
+**Probe:** Rückrechnung — $\\vec{r}=(3,2,4)\\stackrel{?}{=}(1,2,3)+t(2,0,1)$ → $1+2t=3\\Rightarrow t=1$; $2+0=2$ ✓; $3+t=4\\Rightarrow t=1$ ✓. Alle drei Komponenten liefern dasselbe $t=1$. ✓
 
-**Typischer Fehler:** Den Richtungsvektor $\\vec{v} = (2, 0, 1)$ mit einem Punkt auf der Geraden verwechseln. $\\vec{v}$ beschreibt die *Richtung*, nicht eine Position.`,
+**Typischer Fehler:** Den Richtungsvektor $\\vec{v}=(2,0,1)$ mit einem Punkt auf der Geraden verwechseln. $\\vec{v}$ beschreibt die **Richtung**, nicht eine Position — ein Punkt auf $g$ ist immer $\\vec p+t\\vec v$ für ein konkretes $t$.`,
     hints: [
       'Teste jede Option: gibt es ein $t$, das den Punkt liefert?',
       'Setze $t = 1$: $(1+2, 2+0, 3+1) = ?$',
       'Richtungsvektor $\\vec{v} = (2,0,1)$ ist *kein* Punkt auf der Geraden.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['g-punkttest', 'g-paramform'] },
     wrongAnswerExplanations: {
       1: 'Das ist der *Richtungsvektor* $\\vec{v} = (2, 0, 1)$ selbst — nicht ein Punkt auf $g$. Für einen Punkt auf $g$ müsste $\\vec{p} + t\\vec{v} = (2,0,1)$ lösbar sein: aus $1 + 2t = 2$ folgt $t = 1/2$, aber dann $2 + 0 = 2 \\neq 0$. Widerspruch.',
       2: 'Prüfung: $\\vec{p} + t\\vec{v} = (1+2t,\\; 2,\\; 3+t) \\stackrel{!}{=} (1, 2, 1)$. Aus $1+2t = 1$ folgt $t = 0$, aber dann $z = 3 \\neq 1$. Widerspruch — liegt nicht auf $g$.',
@@ -69,13 +67,11 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
     correctIndex: 2,
     explanation: `**Ansatz:** Parallelitätstest für Geraden: Ist $\\vec{v}_2 = k \\cdot \\vec{v}_1$ für ein $k \\in \\mathbb{R}$?
 
-**Rechnung:** $\\vec{v}_2 = (2, 4, 6) = 2 \\cdot (1, 2, 3) = 2 \\cdot \\vec{v}_1$. Ja — Faktor $k = 2$ passt für alle drei Komponenten. Also sind $\\vec{v}_1$ und $\\vec{v}_2$ **linear abhängig**.
+**Rechnung:** $\\vec{v}_2=(2,4,6)=2\\cdot(1,2,3)=2\\vec{v}_1$. Faktor $k=2$ passt für **alle drei** Komponenten — also sind die Richtungsvektoren linear abhängig, die Geraden sind parallel (oder identisch).
 
-**Schlussfolgerung:** Die Geraden sind **parallel**. Sie sind identisch, falls zusätzlich ein Punkt gemeinsam ist — sonst parallel und verschieden.
+**Probe:** Mit Kreuzprodukt — $\\vec{v}_1\\times\\vec{v}_2=(2\\cdot 6-3\\cdot 4,\\,3\\cdot 2-1\\cdot 6,\\,1\\cdot 4-2\\cdot 2)=(0,0,0)$ bestätigt Parallelität. ✓ Identität müsste zusätzlich per Stützpunkt-Test geprüft werden.
 
-**Probe Kreuzprodukt:** $\\vec{v}_1 \\times \\vec{v}_2 = \\vec{0}$ bestätigt Parallelität. Test: $(2 \\cdot 6 - 3 \\cdot 4,\\; 3 \\cdot 2 - 1 \\cdot 6,\\; 1 \\cdot 4 - 2 \\cdot 2) = (0, 0, 0)$. ✓
-
-**Typischer Fehler:** "Senkrecht" wäre $\\vec{v}_1 \\cdot \\vec{v}_2 = 0$. Hier: $1 \\cdot 2 + 2 \\cdot 4 + 3 \\cdot 6 = 28 \\neq 0$ — also nicht senkrecht. "Windschief" ist ausgeschlossen, solange die Richtungsvektoren parallel sind.`,
+**Typischer Fehler:** „Senkrecht" wäre $\\vec{v}_1\\cdot\\vec{v}_2=0$. Hier: $1\\cdot 2+2\\cdot 4+3\\cdot 6=28\\ne 0$ — also nicht senkrecht. „Windschief" ist ausgeschlossen, solange die Richtungsvektoren parallel sind.`,
     hints: [
       'Was ist das Kriterium für parallele Geraden? Parallele Richtungsvektoren.',
       'Prüfe: Gibt es $k$ mit $\\vec{v}_2 = k \\cdot \\vec{v}_1$?',
@@ -86,28 +82,20 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
       1: 'Windschief erfordert ebenfalls *nicht-parallele* Richtungsvektoren. Da hier $\\vec{v}_2 = 2\\vec{v}_1$ gilt, sind die Richtungen parallel — also kann die Lage nur parallel oder identisch sein.',
       3: 'Senkrecht würde $\\vec{v}_1 \\cdot \\vec{v}_2 = 0$ verlangen. Hier ist $\\vec{v}_1 \\cdot \\vec{v}_2 = 1\\cdot 2 + 2\\cdot 4 + 3\\cdot 6 = 28 \\neq 0$. Die Richtungen sind nicht senkrecht, sondern parallel ($\\vec{v}_2 = 2\\vec{v}_1$).',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['g-parallel'] },
   },
   'ex-vek-2-1-mastery': {
     id: 'ex-vek-2-1-mastery', lessonId: 'vek-2-1', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Zwei Geraden im Raum sind weder parallel noch schneiden sie sich. Wie nennt man diese Lage?',
     options: ['Identisch', 'Orthogonal', 'Windschief', 'Kollinear'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Systematische Fallunterscheidung für zwei Geraden im 3D-Raum.
+    explanation: `**Ansatz:** Systematische Fallunterscheidung für zwei Geraden im 3D-Raum — vier mögliche Lagen.
 
-**Vollständige Klassifikation:**
+**Rechnung:** Klassifikationstabelle: (i) parallele Richtungen + gemeinsamer Punkt → identisch; (ii) parallele Richtungen + kein gemeinsamer Punkt → parallel (verschieden); (iii) nicht-parallele Richtungen + Schnittpunkt → schneidend; (iv) nicht-parallele Richtungen + kein Schnittpunkt → **windschief**. Aufgabe sagt: nicht parallel, kein Schnittpunkt → Fall (iv) → windschief.
 
-| Richtungsvektoren | Schnittpunkt | Lage |
-|-------------------|--------------|------|
-| parallel | (beliebig) + gemeinsamer Punkt | identisch |
-| parallel | kein gemeinsamer Punkt | parallel (verschieden) |
-| nicht parallel | einen gemeinsamen Punkt | schneidend |
-| nicht parallel | keinen gemeinsamen Punkt | **windschief** |
+**Probe:** Anschaulich — zwei nicht-parallele Geraden im Raum, die einander „ausweichen" (z. B. eine entlang der $x$-Achse, eine entlang der $y$-Achse aber bei $z=1$ verschoben) — sie liegen in unterschiedlichen, nicht parallelen Ebenen.
 
-**Kernaussage:** **Windschief** gibt es nur in 3D (im Raum). In der Ebene (2D) gilt: zwei nicht-parallele Geraden schneiden sich *immer*.
-
-**Typischer Fehler:**
-- "Orthogonal" = senkrecht (Spezialfall von schneidend) — sagt nichts über Parallelität/Schnittpunkt-Existenz aus.
-- "Kollinear" = auf einer Linie liegend = identische Gerade.`,
+**Typischer Fehler:** „Orthogonal" = senkrecht ist ein **Spezialfall von schneidend**, sagt aber nichts über die Existenz eines Schnittpunkts aus. „Kollinear" bedeutet „auf einer gemeinsamen Geraden" (also identisch) und setzt Parallelität voraus — hier ausgeschlossen.`,
     hints: [
       'In 2D gibt es nur zwei Fälle: parallel oder schneidend. In 3D kommt ein dritter dazu.',
       'Wie heißt der 3D-Fall, der in 2D unmöglich ist?',
@@ -118,6 +106,7 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
       1: 'Orthogonal ist ein Spezialfall von *schneidend* (mit rechtem Winkel). Das schließt "weder parallel noch schneidend" aber gerade aus. Richtige Antwort für diesen Fall: windschief.',
       3: 'Kollinear bedeutet "auf einer gemeinsamen Geraden liegend" — also identisch. Das würde Parallelität voraussetzen. Gefragt ist aber der Fall ohne Parallelität und ohne Schnittpunkt, und der heißt windschief.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 5, uses: ['g-windschief', 'g-lagefall'] },
   },
 
   // ── Lesson 2: Ebenengleichung ──
@@ -673,8 +662,19 @@ $$\\vec{r} = \\vec{p} + t \\cdot \\vec{v}$$
 **Punkt auf Gerade?** Setze das gesuchte $(x, y, z)$ gleich $\\vec{p} + t \\vec{v}$ und prüfe, ob es ein $t$ gibt, das *alle drei* Komponenten gleichzeitig erfüllt.`,
       },
       {
-        id: 'vek-2-1-s2', type: 'explanation-formal', title: 'Lage zweier Geraden — Strategie',
-        content: `Zwei Geraden $g_1$ und $g_2$ im Raum können genau eine von vier Lagen haben. Gehe **in dieser Reihenfolge** vor:
+        id: 'vek-2-1-s2', type: 'explanation-formal', title: 'Geradengleichungen — Formelübersicht und Strategie',
+        content: `**Formelübersicht für Geraden in Parameterform:**
+
+| Konzept | Formel | Beispiel / Anwendung |
+|---------|--------|----------------------|
+| Parameterform | $\\vec{r}=\\vec{p}+t\\vec{v}$, $t\\in\\mathbb{R}$ | $\\vec{r}=(1,2,3)+t(2,0,1)$ — Stützpunkt $(1,2,3)$, Richtung $(2,0,1)$ |
+| Punkt-Test | $Q=\\vec{p}+t\\vec{v}$ mit **gleichem** $t$ in allen Komponenten | $Q=(3,2,4)$ auf $g$? $t=1$ aus $x$, $y$, $z$ identisch → ja |
+| Parallel-Test | $\\vec{v}_2=k\\vec{v}_1$ oder $\\vec{v}_1\\times\\vec{v}_2=\\vec{0}$ | $\\vec{v}_1=(1,2,3),\\vec{v}_2=(2,4,6)\\Rightarrow k=2$ → parallel |
+| Identität | parallel **und** $\\vec{p}_1$ liegt auf $g_2$ | sonst: parallel verschieden |
+| Schnittpunkt | $\\vec{p}_1+t\\vec{v}_1=\\vec{p}_2+s\\vec{v}_2$ — LGS lösen | 3 Gleichungen, 2 Unbekannte |
+| Windschief | weder parallel noch Schnittpunkt — **nur 3D** | in 2D unmöglich |
+
+**Strategie — Lage zweier Geraden klassifizieren:** Gehe **in dieser Reihenfolge** vor:
 
 **Schritt 1 — Parallelitätstest:** Ist $\\vec{v}_2 = k \\cdot \\vec{v}_1$ für ein $k \\in \\mathbb{R}$? Alternativ: $\\vec{v}_1 \\times \\vec{v}_2 = \\vec{0}$.
 

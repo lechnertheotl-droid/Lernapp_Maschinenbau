@@ -2631,4 +2631,690 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 2-1: Geradengleichung
+  // SG0: Parameterform · SG1: Punkt-Test · SG2: 4 Lagefälle · SG3: Parallel/Identisch
+  // SG4: Schnittpunkt · SG5: Windschief
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-2-1': {
+    // ===== Sub-Goal 0 — Parameterform / Stützpunkt / Richtungsvektor =====
+    0: [
+      tag(
+        tf(
+          'Für $t=0$ liefert die Geradengleichung $\\vec{r}=\\vec{p}+t\\vec{v}$ den Stützpunkt $\\vec{p}$ — der Stützpunkt liegt also immer auf der Geraden.',
+          true,
+          `**Ansatz:** Einsetzen $t=0$ in die Parameterform.
+
+**Rechnung:** $\\vec{r}(0)=\\vec{p}+0\\cdot\\vec{v}=\\vec{p}$. Der Stützpunkt $\\vec{p}$ ist somit der spezielle Punkt der Geraden, der bei $t=0$ angenommen wird.
+
+**Probe:** Beispiel $g:\\vec{r}=(2,3,1)+t(1,0,2)$. Für $t=0$: $\\vec{r}=(2,3,1)=\\vec{p}$ ✓. Liegt offensichtlich auf $g$.
+
+**Typischer Fehler:** Glauben, $\\vec p$ wäre nur ein Hilfspunkt außerhalb der Geraden — er ist tatsächlich **der** Bezugspunkt **auf** der Geraden.`,
+          [
+            'Was passiert bei $t=0$? Der Term $t\\vec{v}$ verschwindet.',
+            '$\\vec{r}(0)=\\vec{p}$ — der Stützpunkt selbst.',
+            'Stützpunkt = $t=0$-Punkt der Parameterform.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['g-paramform', 'g-stuetz'] },
+      ),
+
+      tag(
+        mc(
+          'Welche Gleichung beschreibt die Gerade durch den Punkt $P=(2,1,3)$ in Richtung $\\vec{v}=(1,0,2)$?',
+          [
+            '$\\vec{r}=(2,1,3)+t(1,0,2)$',
+            '$\\vec{r}=(1,0,2)+t(2,1,3)$',
+            '$\\vec{r}=(2,1,3)+s(1,0,2)+t(0,1,0)$',
+            '$\\vec{r}=(3,1,5)+t(1,0,2)$',
+          ],
+          0,
+          `**Ansatz:** Parameterform $\\vec{r}=\\vec{p}+t\\vec{v}$ — Stützpunkt zuerst, dann Richtungsvektor mal Parameter.
+
+**Rechnung:** Mit $\\vec{p}=(2,1,3)$ und $\\vec{v}=(1,0,2)$ ergibt sich direkt $\\vec{r}=(2,1,3)+t(1,0,2)$.
+
+**Probe:** $t=0$ → $(2,1,3)=P$ ✓. $t=1$ → $(3,1,5)$ (weiterer Punkt). Beide Punkte liegen auf der Geraden, beide Richtungen.
+
+**Typischer Fehler:** Stützpunkt und Richtung vertauschen — beide sind Vektoren der gleichen Dimension, aber haben unterschiedliche Rollen. Faustregel: das, was bei $t=0$ herauskommt, ist der Stützpunkt.`,
+          [
+            'Form: $\\vec{r}=$ Stützpunkt $+ t \\cdot$ Richtung.',
+            '$P$ ist der Stützpunkt, $\\vec{v}$ die Richtung.',
+            'Probe mit $t=0$: Ergibt sich $P$?',
+          ],
+          {
+            1: 'Stützpunkt und Richtung sind vertauscht. Bei $t=0$ käme $(1,0,2)$ heraus — nicht $P=(2,1,3)$.',
+            2: 'Das ist die Parameterform einer **Ebene** mit zwei Parametern $s,t$. Eine Gerade hat nur einen Parameter.',
+            3: '$(3,1,5)$ ist ein **anderer** Punkt auf derselben Geraden (für $t=1$ aus der korrekten Form), kein Stützpunkt für $P$. Beide Formen beschreiben dieselbe Gerade, aber $P=(2,1,3)$ ist Bezugspunkt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['g-paramform', 'g-richt'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler vergleicht $g_1:\\vec{r}=(0,0,0)+t(1,2,3)$ und $g_2:\\vec{r}=(0,0,0)+s(2,4,6)$ und sagt: „Verschiedene Richtungsvektoren — also verschiedene Geraden." Was ist der Fehler?',
+          [
+            'Ein Vielfaches des Richtungsvektors beschreibt **dieselbe** Gerade. $\\vec{v}_2=2\\vec{v}_1$ und gleicher Stützpunkt → $g_1=g_2$ (identisch).',
+            'Der Schüler hat richtig — verschiedene Richtungsvektoren bedeuten verschiedene Geraden.',
+            'Die Geraden sind parallel, aber nicht identisch.',
+            'Die Geraden sind windschief.',
+          ],
+          0,
+          `**Ansatz:** Geraden sind durch **Punktmenge** definiert — nicht durch eine bestimmte Schreibweise. Vielfache des Richtungsvektors ändern nur die Parametrisierung, nicht die Gerade.
+
+**Rechnung:** $g_1$ enthält Punkte $(t,2t,3t)$ für $t\\in\\mathbb{R}$. $g_2$ enthält Punkte $(2s,4s,6s)=(s'\\cdot 1,s'\\cdot 2,s'\\cdot 3)$ mit $s'=2s$ — exakt dieselbe Menge. Substitution $s=t/2$ macht beide Gleichungen identisch.
+
+**Probe:** Punkt $(1,2,3)$ auf $g_1$ für $t=1$ ✓. Auch auf $g_2$? $1=2s$ → $s=0{,}5$, $2=4\\cdot 0{,}5$ ✓, $3=6\\cdot 0{,}5$ ✓. ✓ Derselbe Punkt erfüllt beide → identische Gerade.
+
+**Typischer Fehler:** Den Richtungsvektor als „Identität" der Geraden lesen. Tatsächlich ist die Gerade durch ihre Punkte definiert — die Wahl von $\\vec{v}$ ist nicht eindeutig (jede Skalierung erlaubt).`,
+          [
+            'Was definiert eine Gerade — ihre Punkte oder ihre Schreibweise?',
+            'Wenn $\\vec{v}_2=k\\vec{v}_1$, dann ist $\\{\\vec{p}+t\\vec{v}_1\\}=\\{\\vec{p}+t\\vec{v}_2\\}$.',
+            'Probe: Liefert $g_2$ dieselben Punkte wie $g_1$, nur mit anderer Parametrisierung?',
+          ],
+          {
+            1: 'Verschiedene Richtungsvektoren können sehr wohl dieselbe Gerade beschreiben — solange sie Vielfache voneinander sind.',
+            2: 'Parallel-verschieden würde verlangen, dass die Stützpunkte nicht auf der jeweils anderen Geraden liegen. Hier ist der Stützpunkt $(0,0,0)$ identisch — also identische, nicht parallel-verschiedene Geraden.',
+            3: 'Windschief verlangt nicht-parallele Richtungen. Hier sind die Richtungen aber parallel.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['g-richt'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jedem Element der Geradengleichung $\\vec{r}=(2,3,1)+t(1,0,2)$ seine Rolle zu.',
+          [
+            { left: '$(2,3,1)$', right: 'Stützpunkt — fester Bezugspunkt auf der Geraden' },
+            { left: '$(1,0,2)$', right: 'Richtungsvektor — gibt die Bewegungsrichtung an' },
+            { left: '$t$', right: 'Parameter — durchläuft alle reellen Zahlen $\\mathbb{R}$' },
+            { left: '$\\vec{r}$', right: 'Ortsvektor zu einem Punkt auf der Geraden' },
+          ],
+          `**Ansatz:** Vier Bestandteile der Parameterform — jeder hat eine eindeutige Rolle.
+
+**Rechnung:** $(2,3,1)$ tritt für $t=0$ als $\\vec{r}$ auf → Stützpunkt. $(1,0,2)$ wird mit $t$ skaliert → Richtungsvektor. $t$ ist die Variable → Parameter. $\\vec{r}$ ist das Ergebnis links → Ortsvektor zu einem konkreten Geradenpunkt.
+
+**Probe:** Konkret: $t=2$ liefert $\\vec{r}=(2,3,1)+2(1,0,2)=(4,3,5)$. Stützpunkt war $(2,3,1)$, Richtung $(1,0,2)$, der konkrete Punkt $\\vec{r}=(4,3,5)$. Alle Rollen klar.
+
+**Typischer Fehler:** Stützpunkt und Richtung verwechseln. Eselsbrücke: der **Stützpunkt** stützt (wie ein Pfeiler), die **Richtung** zeigt (wie ein Wegweiser).`,
+          [
+            'Welche Elemente tauchen in der Form $\\vec{r}=\\vec{p}+t\\vec{v}$ auf?',
+            'Bei $t=0$ verbleibt nur ein Term — das ist der Stützpunkt.',
+            'Der Vektor, der mit $t$ multipliziert wird, ist die Richtung.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['g-paramform', 'g-stuetz', 'g-richt'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Punkt-Test =====
+    1: [
+      tag(
+        tf(
+          'Ein Punkt $Q$ liegt genau dann auf der Geraden $\\vec{r}=\\vec{p}+t\\vec{v}$, wenn das Gleichungssystem $Q=\\vec{p}+t\\vec{v}$ in **allen** Komponenten **dasselbe** $t$ liefert.',
+          true,
+          `**Ansatz:** Geradenpunkt = Stützpunkt + ein konkretes Vielfaches des Richtungsvektors. Ein einziger Parameterwert muss alle Achsen erfüllen.
+
+**Rechnung:** Aus jeder Komponente $Q_i=p_i+t v_i$ folgt $t=(Q_i-p_i)/v_i$ (für $v_i\\ne 0$). Wenn alle drei Berechnungen denselben Wert liefern, liegt $Q$ auf $g$ — sonst nicht.
+
+**Probe:** Beispiel $g:\\vec{r}=(1,2,3)+t(2,1,2)$, $Q=(5,4,7)$. $t$ aus $x$: $t=(5-1)/2=2$. Aus $y$: $t=(4-2)/1=2$. Aus $z$: $t=(7-3)/2=2$. Alle gleich → $Q$ liegt auf $g$.
+
+**Typischer Fehler:** Nur eine Komponente prüfen und sofort schließen — das übersieht den Fall, dass die anderen Komponenten widersprechen.`,
+          [
+            'Warum reichen 2 von 3 Komponenten nicht?',
+            'Ein konsistenter Parameterwert über alle Achsen.',
+            'Methode: $t$ aus jeder Komponente ableiten, vergleichen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['g-punkttest'] },
+      ),
+
+      tag(
+        ni(
+          'Gegeben ist die Gerade $g:\\vec{r}=(1,2,3)+t(2,1,2)$. Der Punkt $Q=(5,4,7)$ liegt auf $g$. Welcher Wert von $t$ liefert $Q$?',
+          2, 0, '',
+          `**Ansatz:** $t$ aus einer Komponente ablesen, dann mit den anderen verifizieren.
+
+**Rechnung:** Aus $x$: $1+2t=5 \\Rightarrow t=2$. Probe: $y=2+1\\cdot 2=4$ ✓. $z=3+2\\cdot 2=7$ ✓. Alle Komponenten liefern dasselbe $t=2$, also liegt $Q$ tatsächlich auf $g$, und $t=2$ ist der gesuchte Parameter.
+
+**Probe:** $\\vec{p}+2\\vec{v}=(1+4,\\,2+2,\\,3+4)=(5,4,7)=Q$ ✓.
+
+**Typischer Fehler:** $t$ aus der falschen Achse berechnen (z. B. mit $v_y=0$ — hier kein Problem, aber generell). Oder Vorzeichen falsch übernehmen.`,
+          [
+            'Wähle eine Komponente mit $v_i\\ne 0$.',
+            'Stelle nach $t$ um: $t=(Q_i-p_i)/v_i$.',
+            'Verifiziere durch Einsetzen in die anderen Komponenten.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['g-punkttest'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler prüft, ob $Q=(5,99,99)$ auf $g:\\vec{r}=(1,2,3)+t(2,1,2)$ liegt. Aus der $x$-Komponente bekommt er $t=2$ und schließt: „Q liegt auf $g$." Was ist der Fehler?',
+          [
+            'Der Punkt-Test verlangt **dasselbe** $t$ in **allen** Komponenten. Hier liefert $y$: $2+t=99\\Rightarrow t=97$ — Widerspruch zu $t=2$. Also liegt $Q$ **nicht** auf $g$.',
+            'Der Schüler hat richtig — die $x$-Komponente reicht aus.',
+            'Die $y$- und $z$-Komponente sind irrelevant, solange $x$ stimmt.',
+            'Der Schüler müsste zusätzlich den Betrag $|\\vec{v}|$ prüfen.',
+          ],
+          0,
+          `**Ansatz:** Geradenpunkt → ein einziger Parameter $t$ erfüllt **alle** Komponentengleichungen gleichzeitig.
+
+**Rechnung:** Aus $x=5$: $t=2$. Aus $y=99$: $2+1\\cdot t=99\\Rightarrow t=97$. Zwei verschiedene Werte für denselben Parameter → Widerspruch → $Q$ liegt nicht auf $g$.
+
+**Probe:** $\\vec p+2\\vec v=(5,4,7)\\ne Q=(5,99,99)$ — bestätigt schon ohne LGS, dass die anderen Komponenten nicht passen.
+
+**Typischer Fehler:** Nur die erste passende Komponente prüfen und dann abbrechen. In 3D müssen **alle drei** Achsen denselben Parameter liefern; jede einzelne reicht nicht aus.`,
+          [
+            'Wie viele Komponenten hat ein 3D-Punkt?',
+            'Müssen alle Komponenten denselben Parameter liefern?',
+            'Probe: rechne $t$ aus $y$ und $z$ separat aus.',
+          ],
+          {
+            1: 'Die $x$-Komponente allein reicht in **3D** nicht aus — sie bestimmt nur eine Bedingung, aber drei sind nötig.',
+            2: 'Doch — alle drei Komponenten müssen denselben Parameter liefern. Sonst liegt der Punkt nicht auf der Geraden.',
+            3: 'Der Betrag $|\\vec{v}|$ ist für den Punkt-Test irrelevant; entscheidend ist der **Parameter $t$**, der über alle Komponenten konsistent sein muss.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['g-punkttest'] },
+      ),
+
+      tag(
+        mc(
+          'Welcher der folgenden Punkte liegt auf der Geraden $g:\\vec{r}=(0,0,0)+t(1,2,3)$?',
+          ['$(2,4,6)$', '$(1,2,4)$', '$(3,2,1)$', '$(1,1,1)$'],
+          0,
+          `**Ansatz:** Pro Kandidat: $t$ aus $x$ ableiten, dann $y$ und $z$ verifizieren.
+
+**Rechnung:** $(2,4,6)$: aus $x$ $t=2$; $y=2\\cdot 2=4$ ✓; $z=3\\cdot 2=6$ ✓. Punkt liegt auf $g$. $(1,2,4)$: $t=1$; $y=2$ ✓; $z=3\\ne 4$ ✗. $(3,2,1)$: $t=3$; $y=6\\ne 2$ ✗. $(1,1,1)$: $t=1$; $y=2\\ne 1$ ✗.
+
+**Probe:** $(2,4,6)$ ist exakt $2\\vec{v}$ — bestätigt Lage auf der Geraden ($\\vec{r}(2)=2(1,2,3)=(2,4,6)$ ✓).
+
+**Typischer Fehler:** Nur eine Achse prüfen und vorschnell wählen. $(3,2,1)$ enthält die richtigen Zahlen, aber in falscher Reihenfolge — passt nicht.`,
+          [
+            'Strategie: $t$ aus der ersten Komponente bestimmen, dann verifizieren.',
+            'Bei $\\vec{p}=\\vec{0}$ ist $Q=t\\vec{v}$ direkt — also $Q/t=\\vec{v}$.',
+            'Welches Vielfaches von $(1,2,3)$ erscheint in den Optionen?',
+          ],
+          {
+            1: '$t=1$ aus $x=1$; aber $z=3\\cdot 1=3$, nicht $4$ — Widerspruch.',
+            2: '$t=3$ aus $x=3$; aber $y=2\\cdot 3=6$, nicht $2$ — Widerspruch.',
+            3: '$t=1$ aus $x=1$; aber $y=2\\cdot 1=2$, nicht $1$ — Widerspruch.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['g-punkttest', 'g-paramform'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — 4 Lagefälle =====
+    2: [
+      tag(
+        tf(
+          'Zwei Geraden im 3D-Raum nehmen genau eine von vier möglichen Lagen ein: identisch, parallel (verschieden), schneidend oder windschief.',
+          true,
+          `**Ansatz:** Vollständige Klassifikation nach (a) Parallelität der Richtungsvektoren und (b) Existenz eines gemeinsamen Punkts.
+
+**Rechnung:** (i) parallel + gemeinsamer Punkt → identisch; (ii) parallel + kein Punkt → parallel verschieden; (iii) nicht-parallel + Schnittpunkt → schneidend; (iv) nicht-parallel + kein Schnittpunkt → windschief. Genau **vier** disjunkte Fälle.
+
+**Probe:** Beispiel jede Klasse: $g_1=g_2$ identisch · $g_1\\parallel g_2$ aber unterschiedliche Stützpunkte → parallel · zwei Achsen ($x$- und $y$-Achse) → schneidend in $(0,0,0)$ · $x$-Achse und um $z=1$ verschobene $y$-Achse → windschief.
+
+**Typischer Fehler:** Identisch mit „schneidend in allen Punkten" verwechseln — identisch ist ein **eigener** Fall der Klassifikation.`,
+          [
+            'Wie viele Möglichkeiten gibt es bei zwei Geraden?',
+            'Klassifikation läuft über zwei Achsen: Parallelität und Schnittpunkt.',
+            'In 2D sind es nur drei Fälle — windschief gibt es dort nicht.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['g-lagefall'] },
+      ),
+
+      tag(
+        mc(
+          'Wie liegen die beiden Geraden $g_1:\\vec{r}=(0,0,0)+t(1,1,0)$ und $g_2:\\vec{r}=(1,0,0)+s(0,1,0)$ zueinander?',
+          ['Schneidend in $(1,1,0)$', 'Parallel verschieden', 'Identisch', 'Windschief'],
+          0,
+          `**Ansatz:** Schritt 1 — Parallelitätstest. Schritt 2 — Schnittpunkt-Test.
+
+**Rechnung:** $\\vec{v}_1=(1,1,0),\\vec{v}_2=(0,1,0)$. Nicht-Vielfache → nicht parallel. Setze $g_1=g_2$: $(t,t,0)=(1,s,0)$ → $t=1, s=1, 0=0$ ✓. Lösbar → schneidend bei $(1,1,0)$.
+
+**Probe:** $g_1(1)=(1,1,0)$ und $g_2(1)=(1,1,0)$ — beide liefern denselben Punkt für $t=s=1$. ✓
+
+**Typischer Fehler:** Voreilig „windschief" wählen, weil 3D — aber nicht-parallel und ein Schnittpunkt vorhanden → schneidend.`,
+          [
+            'Erst Parallelität prüfen.',
+            'Dann LGS aus Komponenten gleichsetzen.',
+            'Hier: $\\vec{v}_1$ und $\\vec{v}_2$ sind keine Vielfachen voneinander.',
+          ],
+          {
+            1: 'Parallel würde verlangen, dass $\\vec{v}_2=k\\vec{v}_1$. Hier sind sie aber linear unabhängig.',
+            2: 'Identisch verlangt **parallel** zusätzlich zum gemeinsamen Punkt. Hier sind die Richtungen nicht parallel.',
+            3: 'Windschief verlangt **kein** Schnittpunkt. Hier existiert aber einer bei $(1,1,0)$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['g-lagefall'] },
+      ),
+
+      tag(
+        mc(
+          'Klassifiziere die Lage von $g_1:\\vec{r}=(0,0,0)+t(1,1,0)$ und $g_2:\\vec{r}=(2,3,0)+s(1,1,0)$.',
+          ['Parallel verschieden', 'Identisch', 'Schneidend', 'Windschief'],
+          0,
+          `**Ansatz:** Parallelitäts- und Identitäts-Test.
+
+**Rechnung:** $\\vec{v}_1=\\vec{v}_2=(1,1,0)$ → parallel. Liegt $(2,3,0)$ auf $g_1$? Aus $x$: $t=2$. Aus $y$: $t=3$. Widerspruch → kein gemeinsamer Punkt → **parallel verschieden**.
+
+**Probe:** $g_1(2)=(2,2,0)\\ne(2,3,0)$ ✓ bestätigt nicht-identisch. Beide Geraden verlaufen in derselben Richtung $(1,1,0)$, aber durch verschiedene Punkte.
+
+**Typischer Fehler:** Aus „parallele Richtung" direkt auf „identisch" schließen, ohne Stützpunkt-Test.`,
+          [
+            'Richtungsvektoren identisch — also parallel.',
+            'Aber identisch oder verschieden? Stützpunkt-Test entscheidet.',
+            'Liegt $(2,3,0)$ auf $g_1$?',
+          ],
+          {
+            1: 'Identisch verlangt einen gemeinsamen Punkt — hier ist $(2,3,0)$ aber nicht auf $g_1$.',
+            2: 'Schneidend verlangt **nicht-parallele** Richtungen. Hier sind die Richtungen aber identisch (parallel).',
+            3: 'Windschief verlangt ebenfalls nicht-parallele Richtungen — hier nicht erfüllt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['g-lagefall'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler stellt fest: „Zwei Geraden haben parallele Richtungsvektoren — also schneiden sie sich entlang einer ganzen Linie." Welcher Fehler steckt darin?',
+          [
+            'Parallele Richtungen schließen einen einzelnen Schnittpunkt aus. Die Geraden sind **entweder identisch** (alle Punkte gemeinsam) **oder parallel verschieden** (kein Punkt gemeinsam) — niemals „schneidend entlang einer Linie".',
+            'Der Schüler hat richtig — parallele Richtungen erzeugen unendlich viele Schnittpunkte.',
+            'Parallele Richtungen erzeugen genau einen Schnittpunkt.',
+            'Parallele Richtungen bedeuten, dass die Geraden windschief sind.',
+          ],
+          0,
+          `**Ansatz:** Begriffe sauber trennen — „schneidend" bedeutet **genau ein** Schnittpunkt, „identisch" bedeutet **alle Punkte gemeinsam**.
+
+**Rechnung:** Parallele Richtungen ($\\vec{v}_2=k\\vec{v}_1$) → zwei Fälle: (a) Stützpunkt liegt auf der anderen Geraden → **identisch** (alle Punkte gemeinsam, aber das ist nicht „schneidend"); (b) Stützpunkt nicht auf der anderen → **parallel verschieden** (kein Punkt gemeinsam).
+
+**Probe:** Klassifikationstabelle nochmal: drei Möglichkeiten bei parallelen Richtungen reduzieren sich auf zwei Fälle (identisch / parallel verschieden). „Schneidend entlang Linie" ist kein Fall der Lagefallliste.
+
+**Typischer Fehler:** Den Spezialfall „identische Geraden" als „schneidende mit unendlich vielen Schnittpunkten" missdeuten. Sprachlich getrennt: schneidend = ein Punkt, identisch = alle Punkte.`,
+          [
+            'Definition „schneidend" — genau ein Schnittpunkt.',
+            'Was passiert bei parallelen Richtungen?',
+            'Zwei Fälle: identisch oder parallel verschieden.',
+          ],
+          {
+            1: '„Schneidend" ist per Definition **genau ein** Schnittpunkt — nicht unendlich viele. Bei „unendlich vielen" wäre der Begriff **identisch**.',
+            2: 'Bei parallelen Richtungen gibt es entweder keinen oder alle Punkte gemeinsam — niemals genau einen Schnittpunkt.',
+            3: 'Windschief verlangt **nicht-parallele** Richtungen. Bei parallel ist windschief ausgeschlossen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['g-lagefall'] },
+      ),
+
+      tag(
+        sorting(
+          'Bringe die Schritte zur Klassifikation der Lage zweier Geraden in die richtige Reihenfolge.',
+          [
+            'Richtungsvektoren $\\vec{v}_1$ und $\\vec{v}_2$ auf Parallelität prüfen ($\\vec{v}_2=k\\vec{v}_1$?).',
+            'Bei Parallelität: Stützpunkt $\\vec{p}_1$ auf $g_2$ testen → identisch oder parallel verschieden.',
+            'Bei nicht-Parallelität: LGS $\\vec{p}_1+t\\vec{v}_1=\\vec{p}_2+s\\vec{v}_2$ aufstellen.',
+            'LGS lösen — lösbar → schneidend (Schnittpunkt aus $t$ oder $s$ ausrechnen); unlösbar → windschief.',
+            'Ergebnis dokumentieren und mit der Aufgabenstellung abgleichen.',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Klassifikation ist ein Entscheidungsbaum — erst Parallelität (binäre Frage), dann je nach Ergebnis die zweite Frage.
+
+**Rechnung:** (1) Parallelitätstest entscheidet die Verzweigung. (2/3) Je nach Ergebnis geht es weiter zum Identitäts- bzw. Schnittpunkt-Test. (4) Aus dem LGS-Ergebnis ergibt sich die letzte Klassifikation. (5) Abschluss mit Dokumentation/Abgleich.
+
+**Probe:** Die Reihenfolge ist nicht beliebig — Schritt 3 setzt nicht-Parallelität voraus (Ausgang von Schritt 1); Schritt 4 setzt voraus, dass das LGS aufgestellt wurde.
+
+**Typischer Fehler:** LGS direkt aufstellen, ohne Parallelität zu prüfen — funktioniert zwar, aber wenn die Richtungen parallel sind, ergibt das LGS keine eindeutige Lösung (und die richtige Klassifikation wird verschleiert).`,
+          [
+            'Erst Parallelität — sie verzweigt die Klassifikation.',
+            'Stützpunkt-Test nur bei Parallelität nötig.',
+            'LGS nur bei Nicht-Parallelität sinnvoll.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['g-lagefall'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Parallel & identisch =====
+    3: [
+      tag(
+        tf(
+          'Die Richtungsvektoren $\\vec{v}_1=(2,4)$ und $\\vec{v}_2=(1,2)$ sind parallel — es gilt $\\vec{v}_1=2\\vec{v}_2$.',
+          true,
+          `**Ansatz:** Parallel = Vielfache voneinander. Faktor finden: $\\vec{v}_1=k\\vec{v}_2$?
+
+**Rechnung:** $\\vec{v}_1=(2,4),\\vec{v}_2=(1,2)$. $k=2$: $2\\cdot(1,2)=(2,4)=\\vec{v}_1$ ✓. Beide Komponenten passen mit demselben $k$ → linear abhängig → parallel.
+
+**Probe:** Alternativ Kreuzprodukt-Test (in 2D = Determinante): $v_{1x}v_{2y}-v_{1y}v_{2x}=2\\cdot 2-4\\cdot 1=0$ → parallel. ✓
+
+**Typischer Fehler:** Glauben, parallele Richtungen müssten identisch sein — sie können auch Vielfache mit beliebigem Faktor (auch negativ) sein.`,
+          [
+            'Test: Existiert $k\\in\\mathbb{R}$ mit $\\vec{v}_1=k\\vec{v}_2$?',
+            'Hier: $k=2$ funktioniert für beide Komponenten.',
+            'Kreuzprodukt (in 2D Determinante) als Test.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['g-parallel'] },
+      ),
+
+      tag(
+        mc(
+          'Gegeben: $g_1:\\vec{r}=(1,2,3)+t(2,4,6)$ und $g_2:\\vec{r}=(2,4,6)+s(1,2,3)$. Sind die Geraden identisch oder nur parallel?',
+          ['Identisch', 'Parallel verschieden', 'Schneidend', 'Windschief'],
+          0,
+          `**Ansatz:** Erst Parallelitätstest, dann (falls parallel) Stützpunkt-Test.
+
+**Rechnung:** $\\vec{v}_1=(2,4,6)=2(1,2,3)=2\\vec{v}_2$ → parallel. Liegt $\\vec{p}_2=(2,4,6)$ auf $g_1$? Aus $x$: $1+2t=2\\Rightarrow t=0{,}5$. Aus $y$: $2+4\\cdot 0{,}5=4$ ✓. Aus $z$: $3+6\\cdot 0{,}5=6$ ✓. Alle Komponenten erfüllt → $\\vec{p}_2$ liegt auf $g_1$ → **identisch**.
+
+**Probe:** Auch der Stützpunkt $\\vec p_1=(1,2,3)$ auf $g_2$? Aus $x$: $2+s=1\\Rightarrow s=-1$. $y$: $4+2\\cdot(-1)=2$ ✓. $z$: $6+3\\cdot(-1)=3$ ✓. Auch ja — beide Stützpunkte liegen auf der jeweils anderen Geraden. Identisch bestätigt.
+
+**Typischer Fehler:** Annahme „verschiedene Stützpunkt-Schreibweisen → verschiedene Geraden". Tatsächlich gilt: identische Geraden lassen sich durch beliebig viele verschiedene Parametrisierungen darstellen.`,
+          [
+            'Parallelitätstest erst.',
+            'Dann Stützpunkt-Test — liegt $\\vec{p}_2$ auf $g_1$?',
+            'Wenn ja → identisch; wenn nein → parallel verschieden.',
+          ],
+          {
+            1: 'Parallel verschieden würde verlangen, dass die Stützpunkte **nicht** auf der jeweils anderen Geraden liegen. Hier passt aber alles — also identisch.',
+            2: 'Schneidend verlangt nicht-parallele Richtungen — hier sind die Richtungen aber parallel ($\\vec{v}_1=2\\vec{v}_2$).',
+            3: 'Windschief ebenfalls nicht-parallel — hier ausgeschlossen.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['g-parallel', 'g-identisch'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler stellt fest, dass $\\vec{v}_2=3\\vec{v}_1$ (parallele Richtungen) und schließt sofort: „Die Geraden sind identisch." Welcher Test fehlt?',
+          [
+            'Identität verlangt zusätzlich, dass ein Stützpunkt der einen Geraden auf der anderen liegt. Sonst sind die Geraden parallel **verschieden** — Punkt-Test ist unverzichtbar.',
+            'Der Schüler hat richtig — parallele Richtungen bedeuten automatisch identisch.',
+            'Der Schüler muss zusätzlich das Skalarprodukt der Richtungsvektoren prüfen.',
+            'Der Schüler muss prüfen, ob die Stützpunkte gleich sind.',
+          ],
+          0,
+          `**Ansatz:** Identität = parallel **und** gemeinsamer Punkt. Parallel allein lässt zwei Fälle offen: identisch oder parallel verschieden.
+
+**Rechnung:** Beispiel $g_1:\\vec r=(0,0,0)+t(1,1,1)$ und $g_2:\\vec r=(5,0,0)+s(3,3,3)$. Richtungen $(3,3,3)=3(1,1,1)$ — parallel ✓. Stützpunkt $(5,0,0)$ auf $g_1$? Aus $x$: $t=5$; aus $y$: $t=0$ — Widerspruch → nicht identisch, sondern **parallel verschieden**. Trotz paralleler Richtungen.
+
+**Probe:** Drei Geraden mit Richtung $(1,1,1)$ durch verschiedene Stützpunkte verlaufen alle parallel zueinander — nur eine davon enthält den Ursprung. Sie sind eine Schar paralleler, aber **verschiedener** Geraden.
+
+**Typischer Fehler:** Den Identitätsbegriff allein auf Parallelität reduzieren. Tatsächlich braucht es **zwei Bedingungen**: parallel **und** gemeinsamer Punkt.`,
+          [
+            'Welche zwei Bedingungen müssen gleichzeitig gelten?',
+            'Beispiel: Schienen einer Bahnstrecke — parallel, aber nicht identisch.',
+            'Stützpunkt-Test ist unverzichtbar.',
+          ],
+          {
+            1: 'Parallel bedeutet nur „gleiche Richtung". Identität verlangt zusätzlich einen gemeinsamen Punkt.',
+            2: 'Das Skalarprodukt $\\vec{v}_1\\cdot\\vec{v}_2$ misst den Winkel — bei parallelen Vektoren ist es $\\pm|\\vec{v}_1||\\vec{v}_2|$, sagt aber nichts über Identität aus.',
+            3: 'Gleiche Stützpunkte sind ein **hinreichender**, aber nicht **notwendiger** Test — verschiedene Stützpunkt-Schreibweisen können dieselbe Gerade darstellen (siehe Aufgabe 18).',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['g-identisch'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jeder Bedingung das resultierende Lagefall-Ergebnis zu.',
+          [
+            { left: '$\\vec{v}_2=k\\vec{v}_1$ und $\\vec{p}_2$ liegt auf $g_1$', right: 'Identisch (alle Punkte gemeinsam)' },
+            { left: '$\\vec{v}_2=k\\vec{v}_1$ und $\\vec{p}_2$ liegt nicht auf $g_1$', right: 'Parallel verschieden (kein Punkt gemeinsam)' },
+            { left: '$\\vec{v}_1\\times\\vec{v}_2\\ne\\vec{0}$ und Schnitt-LGS lösbar', right: 'Schneidend (genau ein gemeinsamer Punkt)' },
+            { left: '$\\vec{v}_1\\times\\vec{v}_2\\ne\\vec{0}$ und Schnitt-LGS unlösbar', right: 'Windschief (kein Punkt gemeinsam, nur 3D)' },
+          ],
+          `**Ansatz:** Klassifikationstabelle aus zwei orthogonalen Tests — Parallelität (Richtungen) und Punkt-Gemeinsamkeit (Stützpunkt/LGS).
+
+**Rechnung:** Vier mögliche Kombinationen aus zwei binären Tests ergeben genau die vier Lagefälle. Identisch und windschief sind die „extremen" Diagonalfälle (alle vs. keine Punkte), parallel und schneidend die „mittleren".
+
+**Probe:** Beispiele in der Reihenfolge: $g_1=g_2$ identisch · Bahnschienen parallel · zwei Achsen ($x$ und $y$) schneidend · $x$-Achse + verschobene $y$-Achse windschief.
+
+**Typischer Fehler:** „Parallel" und „identisch" als denselben Fall behandeln — sie sind durch den Stützpunkt-Test getrennt.`,
+          [
+            'Zwei binäre Tests: parallel? und gemeinsamer Punkt?',
+            'Vier Kombinationen → vier Lagefälle.',
+            'Windschief ist 3D-exklusiv.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['g-parallel', 'g-identisch'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 4 — Schnittpunkt =====
+    4: [
+      tag(
+        tf(
+          'Den Schnittpunkt zweier nicht-paralleler Geraden findet man, indem man $\\vec{p}_1+t\\vec{v}_1=\\vec{p}_2+s\\vec{v}_2$ setzt und das LGS für $t$ und $s$ löst.',
+          true,
+          `**Ansatz:** Schnittpunkt = gemeinsamer Punkt → derselbe Ortsvektor links und rechts.
+
+**Rechnung:** $\\vec{p}_1+t\\vec{v}_1=\\vec{p}_2+s\\vec{v}_2$. In 3D ergeben sich 3 Gleichungen mit 2 Unbekannten ($t,s$) — überbestimmt. Ist es lösbar, gibt es einen Schnittpunkt; ist es widersprüchlich, sind die Geraden windschief.
+
+**Probe:** Beispiel — $g_1:\\vec r=(0,0)+t(1,1)$, $g_2:\\vec r=(2,0)+s(0,1)$. Gleichsetzen: $t=2$, $t=s$. Lösung $t=2,s=2$, Schnittpunkt $(2,2)$. ✓
+
+**Typischer Fehler:** Das LGS mit drei Unbekannten aufstellen wollen — es sind nur **zwei** ($t$ und $s$). Die drei Gleichungen kommen aus den drei Komponenten.`,
+          [
+            'Gleichsetzen erzwingt einen gemeinsamen Punkt.',
+            'In 3D: 3 Gleichungen, 2 Unbekannte.',
+            'Lösbar → schneidend; unlösbar → windschief.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['g-schnittpunkt'] },
+      ),
+
+      tag(
+        mc(
+          'Berechne den Schnittpunkt von $g_1:\\vec{r}=(0,0)+t(1,1)$ und $g_2:\\vec{r}=(2,0)+s(0,1)$.',
+          ['$(2,2)$', '$(0,0)$', '$(1,1)$', '$(2,0)$'],
+          0,
+          `**Ansatz:** Gleichsetzen und LGS lösen.
+
+**Rechnung:** $(t,t)=(2,s)$ → $t=2$ und $t=s\\Rightarrow s=2$. Schnittpunkt einsetzen: $g_1(2)=(2,2)$ oder $g_2(2)=(2,2)$. ✓
+
+**Probe:** $g_1(2)=(0,0)+2(1,1)=(2,2)$ ✓. $g_2(2)=(2,0)+2(0,1)=(2,2)$ ✓. Beide Geraden liefern denselben Punkt — der Schnittpunkt.
+
+**Typischer Fehler:** Einen Stützpunkt fälschlich als Schnittpunkt angeben — Stützpunkte sind nur Bezugspunkte, der Schnittpunkt entsteht aus der gemeinsamen Lösung.`,
+          [
+            'Gleichsetzen: $(t,t)$ und $(2,s)$ → zwei Gleichungen.',
+            'Aus $x$: $t=2$. Aus $y$: $t=s$.',
+            'Einsetzen in eine Gerade → Schnittpunkt.',
+          ],
+          {
+            1: '$(0,0)$ ist der Stützpunkt von $g_1$ — er liegt zwar auf $g_1$, aber prüfe: auf $g_2$? $(0,0)=(2,0)+s(0,1)\\Rightarrow 0=2$ Widerspruch. Nicht auf $g_2$, also kein Schnittpunkt.',
+            2: '$(1,1)$ liegt auf $g_1$ für $t=1$; aber auf $g_2$? $(1,1)=(2,0)+s(0,1)\\Rightarrow 1=2$ Widerspruch.',
+            3: '$(2,0)$ ist der Stützpunkt von $g_2$; auf $g_1$? $(2,0)=t(1,1)\\Rightarrow t=2$ aus $x$ und $t=0$ aus $y$ Widerspruch.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['g-schnittpunkt'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $x$-Koordinate des Schnittpunkts von $g_1:\\vec{r}=(0,0,0)+t(1,1,0)$ und $g_2:\\vec{r}=(4,0,0)+s(-1,1,0)$.',
+          2, 0, '',
+          `**Ansatz:** Gleichsetzen, LGS lösen, Schnittpunkt einsetzen.
+
+**Rechnung:** $g_1=(t,t,0)$, $g_2=(4-s,s,0)$. Gleichsetzen: $t=4-s$, $t=s$, $0=0$. Aus $t=s$ und $t=4-s$: $s=4-s\\Rightarrow s=2,t=2$. Schnittpunkt $g_1(2)=(2,2,0)$. $x$-Koordinate: $\\mathbf{2}$.
+
+**Probe:** $g_2(2)=(4-2,2,0)=(2,2,0)$ ✓. Beide Geraden treffen sich bei $(2,2,0)$.
+
+**Typischer Fehler:** Bei $\\vec{v}_2=(-1,1,0)$ das Minuszeichen verlieren — würde $t+s=4$ statt $t=4-s$ ergeben und falsche Werte liefern.`,
+          [
+            'LGS aus drei Gleichungen (eine pro Achse) für zwei Unbekannte.',
+            '$z$-Gleichung $0=0$ ist trivial — bleiben zwei für $t,s$.',
+            'Aus $t=4-s$ und $t=s$ folgt $s=2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['g-schnittpunkt'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler stellt das Schnittpunkt-LGS als $\\vec{p}_1+t\\vec{v}_1=\\vec{p}_2-s\\vec{v}_2$ an (Minus statt Plus) und wundert sich über widersprüchliche Lösungen. Was ist der Fehler?',
+          [
+            'Schnittpunkt-Bedingung verlangt $g_1(t)=g_2(s)$ — also $\\vec{p}_2+s\\vec{v}_2$ (Plus). Mit dem Minuszeichen testet man Punkte auf einer anderen Parametrisierung — die Komponentengleichungen werden falsch aufgestellt.',
+            'Das Vorzeichen ist egal, beide Formen liefern dasselbe Ergebnis.',
+            'Mit Minus ist die Rechnung effizienter; widersprüchliche Lösungen sind hier normal.',
+            'Der Fehler liegt nicht beim Minus, sondern beim Parameter $t$.',
+          ],
+          0,
+          `**Ansatz:** Schnittpunkt-Gleichung muss exakt die Geraden-Definitionen verwenden — keine Vorzeichenänderung beim Richtungsvektor.
+
+**Rechnung:** $g_2(s)=\\vec{p}_2+s\\vec{v}_2$ — Plus per Definition. Schreibt man $\\vec{p}_2-s\\vec{v}_2$, beschreibt man die Gerade mit umgekehrtem Richtungsvektor. Konkret: $g_1=(t,t)$, $g_2=(2,s)$, korrekt $t=2,s=2$, Schnittpunkt $(2,2)$. Mit Minus: $t=2$, $-s=2\\Rightarrow s=-2$, „Schnittpunkt" $g_2(-2)=(2,-2)\\ne(2,2)$. Falsch.
+
+**Probe:** Sobald das Vorzeichen umgedreht wird, ist der gefundene Punkt nicht mehr auf $g_2$ — Verifikation per Punkt-Test entlarvt das.
+
+**Typischer Fehler:** Vorzeichen-Fehler beim Aufstellen des LGS — gehört zu den häufigsten Fehlerquellen bei Schnittpunkt-Berechnungen.`,
+          [
+            'Wie ist $g_2(s)$ per Definition?',
+            'Vergleiche: schreibt man $\\vec{p}_2+s\\vec{v}_2$ oder $\\vec{p}_2-s\\vec{v}_2$?',
+            'Bei Vorzeichenänderung: andere Parametrisierung → falsche Komponentengleichungen.',
+          ],
+          {
+            1: 'Vorzeichen ist nicht egal — es ändert die Komponentengleichungen und damit das LGS.',
+            2: 'Widersprüchliche Lösungen sind ein Warnsignal, nicht „normal" — sie deuten auf einen Aufstellfehler hin.',
+            3: 'Der Parameter $t$ steht korrekt mit Plus; der Fehler liegt im Vorzeichen bei $s$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['g-schnittpunkt'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $z$-Koordinate des Schnittpunkts von $g_1:\\vec{r}=(0,1,0)+t(1,0,1)$ und $g_2:\\vec{r}=(2,1,2)+s(0,0,-1)$.',
+          2, 0, '',
+          `**Ansatz:** Gleichsetzen, LGS in 3 Gleichungen lösen.
+
+**Rechnung:** $g_1=(t,1,t)$, $g_2=(2,1,2-s)$. Gleichsetzen: $t=2$, $1=1$ (trivial), $t=2-s$. Aus $t=2$ und $t=2-s$: $2=2-s\\Rightarrow s=0$. Schnittpunkt $g_1(2)=(2,1,2)$. $z$-Koordinate: $\\mathbf{2}$.
+
+**Probe:** $g_2(0)=(2,1,2-0)=(2,1,2)$ ✓. Beide Geraden treffen sich bei $(2,1,2)$.
+
+**Typischer Fehler:** Bei $\\vec{v}_2=(0,0,-1)$ das Minus verlieren und $t=2+s$ statt $t=2-s$ rechnen — würde zu falscher $s$-Lösung führen.`,
+          [
+            'Drei Komponentengleichungen aufstellen.',
+            'Die mittlere Gleichung $1=1$ liefert keine neue Info.',
+            'Aus den verbleibenden $t=2$ und $t=2-s$ folgt $s=0$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['g-schnittpunkt', 'g-paramform'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 5 — Windschief =====
+    5: [
+      tag(
+        tf(
+          'Windschiefe Geraden gibt es ausschließlich im 3D-Raum — in der Ebene (2D) sind nicht-parallele Geraden immer schneidend.',
+          true,
+          `**Ansatz:** In 2D liegen alle Geraden in derselben Ebene. Nicht-parallele Geraden müssen sich daher zwangsläufig schneiden.
+
+**Rechnung:** 2D-Fall: zwei Geraden $g_1,g_2$ in der $xy$-Ebene mit nicht-parallelen Richtungen. Gleichsetzen ergibt **zwei** Komponentengleichungen (kein $z$-Anteil) für zwei Unbekannte ($t,s$) — eindeutig lösbar, da das LGS regulär ist. → Schnittpunkt existiert.
+
+**Probe:** Beispiel 3D: $g_1:\\vec r=(0,0,0)+t(1,0,0)$ ($x$-Achse), $g_2:\\vec r=(0,0,1)+s(0,1,0)$ (verschobene $y$-Achse). Nicht parallel, aber $g_1=(t,0,0)$ vs. $g_2=(0,s,1)$: $z$-Komponente $0\\ne 1$ → kein Schnittpunkt → windschief. Geht nur in 3D, weil die Verschiebung in $z$-Richtung den Unterschied macht.
+
+**Typischer Fehler:** Annehmen, „nicht-parallel" sei gleichbedeutend mit „schneidend" — gilt nur in 2D, nicht in 3D.`,
+          [
+            'In welchen Dimensionen liegen 2D-Geraden?',
+            'Können sich 2D-Geraden „verfehlen"? Nein — sie liegen in derselben Ebene.',
+            'Windschief ist ein 3D-Phänomen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['g-windschief'] },
+      ),
+
+      tag(
+        mc(
+          'Sind die Geraden $g_1:\\vec{r}=(0,0,0)+t(1,0,0)$ und $g_2:\\vec{r}=(0,0,1)+s(0,1,0)$ windschief?',
+          [
+            'Ja, windschief — Richtungen nicht parallel, aber kein Schnittpunkt wegen $z$-Komponente.',
+            'Nein, parallel.',
+            'Nein, schneidend in $(0,0,0)$.',
+            'Nein, identisch.',
+          ],
+          0,
+          `**Ansatz:** Schritt 1 — Parallelität. Schritt 2 — Schnittpunkt-LGS.
+
+**Rechnung:** $\\vec{v}_1=(1,0,0),\\vec{v}_2=(0,1,0)$ — nicht parallel. LGS: $g_1=(t,0,0)$, $g_2=(0,s,1)$. Gleichsetzen: $t=0$, $0=s$, $0=1$. Letzte Gleichung widersprüchlich → kein Schnittpunkt → **windschief**.
+
+**Probe:** Anschaulich — $g_1$ ist die $x$-Achse (in der $z=0$-Ebene), $g_2$ ist die nach $z=1$ verschobene $y$-Achse. Beide liegen in unterschiedlichen $z$-Ebenen und können sich nicht treffen.
+
+**Typischer Fehler:** Nur die ersten beiden Komponenten lösen und auf den Schnittpunkt $(0,0,?)$ schließen — die $z$-Komponente $0\\ne 1$ widerlegt das aber.`,
+          [
+            'Parallelitätstest ergibt: nicht parallel.',
+            'LGS aufstellen: Widerspruch in $z$.',
+            'Nicht-parallel + kein Schnittpunkt → windschief.',
+          ],
+          {
+            1: 'Parallel würde verlangen $\\vec{v}_2=k\\vec{v}_1$ — hier $(0,1,0)\\ne k(1,0,0)$.',
+            2: 'Schneidend in $(0,0,0)$? $(0,0,0)$ liegt auf $g_1$ (für $t=0$), aber **nicht** auf $g_2$: $(0,0,1)+s(0,1,0)=(0,0,0)\\Rightarrow 0=1$ Widerspruch.',
+            3: 'Identisch verlangt parallele Richtungen — hier nicht erfüllt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['g-windschief'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler behauptet: „Zwei nicht-parallele Geraden in der $xy$-Ebene (2D) sind windschief, weil sie verschiedene Richtungen haben." Was ist der Fehler?',
+          [
+            'Windschief gibt es **nur in 3D**. In 2D liegen nicht-parallele Geraden in derselben Ebene und schneiden sich immer in genau einem Punkt.',
+            'Der Schüler hat richtig — verschiedene Richtungen bedeuten in jeder Dimension „windschief".',
+            'Verschiedene Richtungen bedeuten „parallel"; windschief verlangt parallele Richtungen.',
+            'In 2D heißt der Fall „windschief" stattdessen „antiparallel".',
+          ],
+          0,
+          `**Ansatz:** Definition von windschief beachten — sie verlangt nicht nur „nicht parallel", sondern auch „kein Schnittpunkt" — was in 2D unmöglich ist.
+
+**Rechnung:** In 2D sind alle Geraden in derselben Ebene. Sind zwei Geraden nicht parallel, ergibt das Schnittpunkt-LGS in 2D **zwei** Gleichungen (eine pro Achse) für zwei Unbekannte $t,s$ — und ist regulär. Die Cramersche Regel liefert immer eine Lösung → Schnittpunkt existiert.
+
+**Probe:** Beispiel $g_1:\\vec r=(0,0)+t(1,0)$ und $g_2:\\vec r=(0,1)+s(0,-1)$. Richtungen $(1,0)$ und $(0,-1)$ — nicht parallel. Schnittpunkt: aus $t=0, 0=1-s\\Rightarrow s=1$. Schnittpunkt $(0,0)$. ✓ Selbst „extreme" 2D-Konfigurationen schneiden sich.
+
+**Typischer Fehler:** Den Begriff windschief auf 2D übertragen — eine reine 3D-Eigenschaft.`,
+          [
+            'In welchen Dimensionen tritt windschief auf?',
+            'Lassen sich 2D-Geraden „verfehlen", wenn sie nicht parallel sind?',
+            'In 2D: parallel oder schneidend — keine dritte Option.',
+          ],
+          {
+            1: 'In 2D können sich Geraden nicht ausweichen — sie liegen in derselben Ebene. „Verschiedene Richtungen → windschief" gilt nicht.',
+            2: 'Verschiedene Richtungen bedeuten **nicht** parallel. Windschief verlangt nicht-parallele Richtungen — aber zusätzlich kein Schnittpunkt.',
+            3: '„Antiparallel" bedeutet $\\vec{v}_2=-k\\vec{v}_1$ mit $k>0$ — ein Spezialfall von parallel (in Gegenrichtung), nicht „windschief".',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['g-windschief'] },
+      ),
+
+      tag(
+        mc(
+          'Klassifiziere die Lage von $g_1:\\vec{r}=(1,0,0)+t(0,1,0)$ und $g_2:\\vec{r}=(0,1,5)+s(1,0,0)$.',
+          ['Windschief', 'Schneidend', 'Parallel verschieden', 'Identisch'],
+          0,
+          `**Ansatz:** Parallelität + Schnittpunkt-LGS.
+
+**Rechnung:** $\\vec{v}_1=(0,1,0),\\vec{v}_2=(1,0,0)$ — nicht parallel (keine Vielfachen). LGS: $g_1=(1,t,0)$, $g_2=(s,1,5)$. Gleichsetzen: $1=s$, $t=1$, $0=5$. Letzte Gleichung widersprüchlich → kein Schnittpunkt → **windschief**.
+
+**Probe:** Anschaulich: $g_1$ liegt in der $z=0$-Ebene parallel zur $y$-Achse, $g_2$ in der $z=5$-Ebene parallel zur $x$-Achse. Verschiedene $z$-Ebenen, nicht-parallele Richtungen → können sich nie treffen.
+
+**Typischer Fehler:** Die $z$-Komponente unterschätzen und „schneidend in $(1,1,?)$" wählen — der $z$-Widerspruch ($0\\ne 5$) entscheidet die Klassifikation.`,
+          [
+            'Richtungsvektoren: parallel? Nein.',
+            'LGS aufstellen, $z$-Komponente prüfen.',
+            'Widersprüchliches LGS bei nicht-parallelen Richtungen → windschief.',
+          ],
+          {
+            1: 'Schneidend würde verlangen, dass das LGS lösbar ist. Hier widerspricht die $z$-Gleichung ($0=5$).',
+            2: 'Parallel verschieden verlangt parallele Richtungen — hier nicht erfüllt.',
+            3: 'Identisch ebenfalls parallel + gemeinsamer Punkt — beides verletzt.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['g-windschief', 'g-lagefall'] },
+      ),
+    ],
+  },
 }
