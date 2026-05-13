@@ -1031,15 +1031,59 @@ r = np.arange(0, 2*np.pi, 0.01)   # wie range, aber für floats
 | \`a @ b\` | \`a * b\` | Matrixmultiplikation |
 | \`a * b\` | \`a .* b\` | Elementweise Multiplikation |
 
-**Achtung:** In Python ist \`*\` elementweise und \`@\` die Matrixmultiplikation. In Matlab ist es genau umgekehrt!`,
+**Achtung:** In Python ist \`*\` elementweise und \`@\` die Matrixmultiplikation. In Matlab ist es genau umgekehrt!
+
+**Vektorisierung — der Performance-Trick:**
+
+Schleife (langsam):
+\`\`\`python
+y = np.zeros(1000)
+for i in range(1000):
+    y[i] = x[i] ** 2 + 1
+\`\`\`
+
+Vektorisiert (10–100× schneller):
+\`\`\`python
+y = x ** 2 + 1
+\`\`\`
+
+Faustregel: Ist eine Operation in NumPy als Operator (\`+\`, \`-\`, \`*\`, \`/\`, \`**\`) oder als universelle Funktion (\`np.sin\`, \`np.exp\`, \`np.sqrt\`) ausdrückbar, dann immer ohne Schleife schreiben. Die Berechnung läuft dann in optimiertem C-Code statt im Python-Interpreter.
+
+**Broadcasting — Arrays unterschiedlicher Shape:**
+
+NumPy erweitert die kleinere Shape automatisch, wenn beide Dimensionen entweder GLEICH oder GLEICH 1 sind. Beispiele:
+
+| Shape A | Shape B | Ergebnis-Shape | Beispiel |
+|---|---|---|---|
+| $(3, 4)$ | scalar | $(3, 4)$ | \`A + 5\` |
+| $(3, 4)$ | $(4,)$ | $(3, 4)$ | Zeile auf jede Zeile addieren |
+| $(3, 1)$ | $(1, 4)$ | $(3, 4)$ | Spalte $+$ Zeile → Matrix |
+| $(3,)$ | $(2,)$ | **ValueError** | Dimensionen passen nicht |
+
+Beispiel — Spalten-Mittelwert abziehen:
+\`\`\`python
+X = np.random.rand(100, 3)        # 100 Messungen × 3 Werte
+X_zentriert = X - X.mean(axis=0)  # X.mean(axis=0) hat Shape (3,) → broadcastet auf (100, 3)
+\`\`\``,
           exercises: [
             {
               type: 'multiple-choice',
               question: 'Welcher Befehl erzeugt eine 3×3 Einheitsmatrix in NumPy?',
               options: ['np.ones((3,3))', 'np.eye(3)', 'np.identity((3,3))', 'np.unit(3)'],
               correctIndex: 1,
-              explanation: '`np.eye(3)` erzeugt die 3×3 Einheitsmatrix (1 auf Diagonale, 0 sonst).',
-              hints: ['eye = I = Identitätsmatrix'],
+              explanation: `**Ansatz:** Die Einheitsmatrix $I$ hat $1$ auf der Hauptdiagonale, $0$ überall sonst — NumPy nennt sie \`eye\` (englisch "I").
+
+**Rechnung:** \`np.eye(3)\` $\\to \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$. \`np.identity(3)\` macht das Gleiche (mit Skalar-Argument, nicht Tupel).
+
+**Probe:** \`>>> import numpy as np; np.eye(3)\` → \`array([[1., 0., 0.], [0., 1., 0.], [0., 0., 1.]])\` ✓. Eigenschaft: \`A @ I == A\` für jede quadratische Matrix $A$.
+
+**Typischer Fehler:** \`np.ones((3,3))\` mit \`np.eye(3)\` verwechseln — beides sind Standard-Konstruktoren, aber \`ones\` füllt KOMPLETT mit 1, nicht nur die Diagonale.`,
+              hints: [
+                'Welcher NumPy-Befehl entspricht dem Symbol $I$?',
+                'Wo stehen die 1, wo die 0?',
+                '\`np.eye(n)\` — "eye" = "I" = Identity.',
+              ],
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['np-create'] },
               wrongAnswerExplanations: {
                 "0": '`np.ones((3,3))` erzeugt eine $3 \\times 3$-Matrix, die ueberall den Wert $1$ hat — nicht nur auf der Diagonale. Die Einheitsmatrix hat dagegen $1$ auf der Hauptdiagonale und $0$ sonst.',
                 "2": '`np.identity(3)` waere zwar korrekt, aber hier steht `np.identity((3,3))` mit einem Tupel. Die Funktion erwartet nur eine Zahl (die Groesse), weil die Einheitsmatrix immer quadratisch ist. Mit Tupel gibt es einen Fehler.',
@@ -1050,16 +1094,40 @@ r = np.arange(0, 2*np.pi, 0.01)   # wie range, aber für floats
               type: 'true-false',
               statement: 'In NumPy führt `A * B` eine Matrixmultiplikation durch.',
               correct: false,
-              explanation: '`A * B` ist elementweise! Für Matrixmultiplikation: `A @ B` oder `np.dot(A, B)`.',
-              hints: ['Was bedeutet `*` vs `@` in NumPy?'],
+              explanation: `**Ansatz:** NumPy macht \`*\` IMMER elementweise (Hadamard-Produkt), unabhängig von der Dimension. Für die Matrixmultiplikation gibt es einen eigenen Operator: \`@\` (Python 3.5+) oder \`np.matmul\`/\`np.dot\`.
+
+**Rechnung:** Für \`A = [[1, 2], [3, 4]]\` und \`B = [[2, 2], [2, 2]]\`:
+- \`A * B\` (elementweise): $\\begin{pmatrix} 1\\cdot 2 & 2\\cdot 2 \\\\ 3\\cdot 2 & 4\\cdot 2 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 \\\\ 6 & 8 \\end{pmatrix}$
+- \`A @ B\` (Matrixmult.): $\\begin{pmatrix} 6 & 6 \\\\ 14 & 14 \\end{pmatrix}$
+
+**Probe:** \`>>> A = np.array([[1,2],[3,4]]); B = np.full((2,2), 2)\\n>>> A * B\` → \`[[2, 4], [6, 8]]\` (elementweise) ✓.
+
+**Typischer Fehler:** Matlab-Reflex — in Matlab ist \`A*B\` Matrixmult. und \`A.*B\` elementweise. In NumPy ist es genau umgekehrt: \`*\` elementweise, \`@\` Matrix.`,
+              hints: [
+                'Was bedeutet \`*\` zwischen zwei NumPy-Arrays?',
+                'Welcher Operator macht in NumPy Matrixmult.?',
+                '\`*\` elementweise · \`@\` Matrix.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 1, uses: ['np-element'] },
             },
             {
               type: 'multiple-choice',
               question: 'Was ist das Matlab-Äquivalent zu `np.linspace(0, 2*np.pi, 100)`?',
               options: ['arange(0, 2*pi, 100)', 'linspace(0, 2*pi, 100)', 'range(0, 2*pi, 100)', '0:0.01:2*pi'],
               correctIndex: 1,
-              explanation: '`linspace` funktioniert in beiden Sprachen gleich — Startpunkt, Endpunkt, Anzahl Punkte.',
-              hints: ['Diese Funktion heißt in beiden Sprachen gleich.'],
+              explanation: `**Ansatz:** \`linspace(start, stop, n)\` heißt in BEIDEN Sprachen gleich — startet bei \`start\`, endet bei \`stop\` (INKLUSIV), liefert genau \`n\` gleichverteilte Punkte.
+
+**Rechnung:** Python \`np.linspace(0, 2*np.pi, 100)\` → 100 Punkte von $0$ bis $2\\pi$ inklusiv mit Schritt $\\frac{2\\pi}{99} \\approx 0{,}0635$. Matlab \`linspace(0, 2*pi, 100)\` macht exakt dasselbe.
+
+**Probe:** Beide Sprachen: \`linspace(0, 1, 3)\` → \`[0, 0.5, 1]\` (3 Punkte) ✓. Schrittweite = \`(stop-start)/(n-1)\`.
+
+**Typischer Fehler:** \`arange\` in Matlab erwarten (existiert nicht). Oder \`linspace\` mit der Schrittweite verwechseln — die dritte Zahl bei \`linspace\` ist die ANZAHL Punkte, nicht der Schritt.`,
+              hints: [
+                'Welche Funktion ist sprachübergreifend gleich?',
+                'Was bedeutet das dritte Argument von \`linspace\`?',
+                '\`linspace(start, stop, n)\` — n Punkte inklusiv.',
+              ],
+              pedagogy: { stage: 'transfer', subGoal: 0, uses: ['np-create'] },
               wrongAnswerExplanations: {
                 "0": 'In Matlab existiert `arange` gar nicht — das ist eine NumPy-spezifische Funktion. Zudem waere bei `arange` das dritte Argument die Schrittweite, nicht die Anzahl Punkte.',
                 "2": '`range` gibt es in Matlab nicht als Vektorerzeuger. Matlab nutzt entweder `linspace(start, stop, n)` oder die Colon-Syntax `start:schritt:stop`.',
