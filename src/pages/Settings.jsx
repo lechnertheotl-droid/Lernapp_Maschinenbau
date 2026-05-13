@@ -6,6 +6,7 @@ import { ACTIONS } from '@/context/appReducer'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { exportStateAsJson, parseImportedState } from '@/utils/storage'
 
 export function Settings() {
   const state = useAppState()
@@ -17,6 +18,11 @@ export function Settings() {
   const [savedHint, setSavedHint] = useState(false)
   const [showReset, setShowReset] = useState(false)
 
+  const [exportMsg, setExportMsg] = useState('')
+  const [showImport, setShowImport] = useState(false)
+  const [importText, setImportText] = useState('')
+  const [importErr, setImportErr] = useState('')
+
   const canSave = name.trim().length > 0 && name.trim() !== state.user?.name
 
   const handleSaveName = () => {
@@ -25,6 +31,63 @@ export function Settings() {
     dispatch({ type: ACTIONS.SET_USER, name: trimmed })
     setSavedHint(true)
     setTimeout(() => setSavedHint(false), 1800)
+  }
+
+  const handleExport = async () => {
+    try {
+      const json = exportStateAsJson()
+      let clipboardOk = false
+      try {
+        await navigator.clipboard.writeText(json)
+        clipboardOk = true
+      } catch {
+        // ignore — Download bleibt als Fallback
+      }
+      const blob = new Blob([json], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `lernapp-stand-${new Date().toISOString().slice(0, 10)}.json`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+      setExportMsg(clipboardOk ? '✓ In Zwischenablage kopiert + Datei heruntergeladen' : '✓ Datei heruntergeladen')
+      setTimeout(() => setExportMsg(''), 3000)
+    } catch (e) {
+      setExportMsg('✗ ' + (e instanceof Error ? e.message : 'Export fehlgeschlagen'))
+      setTimeout(() => setExportMsg(''), 3500)
+    }
+  }
+
+  const handleImportFile = async (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      const text = await file.text()
+      setImportText(text)
+      setImportErr('')
+    } catch {
+      setImportErr('Datei konnte nicht gelesen werden.')
+    }
+  }
+
+  const handleImportConfirm = () => {
+    try {
+      const parsed = parseImportedState(importText)
+      dispatch({ type: ACTIONS.LOAD_STATE, payload: parsed })
+      setShowImport(false)
+      setImportText('')
+      setImportErr('')
+      navigate('/')
+    } catch (e) {
+      setImportErr(e instanceof Error ? e.message : 'Import fehlgeschlagen')
+    }
+  }
+
+  const closeImport = () => {
+    setShowImport(false)
+    setImportErr('')
   }
 
   return (
@@ -78,6 +141,20 @@ export function Settings() {
       {/* Belohnungen & Effekte */}
       <GameplaySettings />
 
+      {/* Datensicherung */}
+      <section className="bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-3">
+        <h2 className="font-mono text-xs font-black text-ink uppercase tracking-widest">Datensicherung</h2>
+        <p className="text-ink-soft text-sm">
+          Sichere deinen kompletten Stand als JSON — z.B. vor dem Umstieg von der Safari-Version auf die als PWA installierte App.
+          Beim Import wird der aktuelle Stand vollständig ersetzt.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button onClick={handleExport}>Stand exportieren</Button>
+          <Button variant="secondary" onClick={() => setShowImport(true)}>Stand importieren…</Button>
+        </div>
+        {exportMsg && <span className="font-mono text-xs text-ink-soft" aria-live="polite">{exportMsg}</span>}
+      </section>
+
       {/* Danger zone */}
       <section className="bg-white border-2 border-red-700 rounded-retro shadow-hard-red p-4 flex flex-col gap-3">
         <h2 className="font-mono text-xs font-black text-red-700 uppercase tracking-widest">Fortschritt zurücksetzen</h2>
@@ -86,6 +163,48 @@ export function Settings() {
           <Button variant="danger" onClick={() => setShowReset(true)}>Alles zurücksetzen…</Button>
         </div>
       </section>
+
+      <Modal
+        isOpen={showImport}
+        onClose={closeImport}
+        title="Stand importieren"
+      >
+        <div className="flex flex-col gap-3">
+          <p className="text-surface-600 text-sm leading-relaxed">
+            Den JSON-Text aus der Zwischenablage einfügen oder eine zuvor exportierte Datei wählen.
+            Der aktuelle Stand wird vollständig ersetzt.
+          </p>
+          <textarea
+            value={importText}
+            onChange={(e) => setImportText(e.target.value)}
+            placeholder='JSON hier einfügen…'
+            rows={6}
+            className="w-full px-3 py-2 border-2 border-ink rounded-retro bg-paper shadow-hard-sm font-mono text-xs focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+          <label className="text-xs text-ink-soft font-mono">
+            …oder Datei wählen:
+            <input
+              type="file"
+              accept="application/json,.json"
+              onChange={handleImportFile}
+              className="block mt-1 text-xs"
+            />
+          </label>
+          {importErr && <p className="text-red-700 text-sm font-mono" role="alert">{importErr}</p>}
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="danger" fullWidth size="lg"
+              onClick={handleImportConfirm}
+              disabled={!importText.trim()}
+            >
+              Importieren (überschreibt aktuellen Stand)
+            </Button>
+            <Button variant="secondary" fullWidth size="lg" onClick={closeImport}>
+              Abbrechen
+            </Button>
+          </div>
+        </div>
+      </Modal>
 
       <Modal
         isOpen={showReset}
