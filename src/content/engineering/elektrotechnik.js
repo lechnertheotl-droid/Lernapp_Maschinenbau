@@ -577,46 +577,97 @@ Im Leiter wird elektrische Energie in Wärme umgesetzt. Der Effekt skaliert **qu
           },
           content: String.raw`## Wechselstromgrundlagen und Impedanz
 
-### Wechselspannung
+### Sinusförmige Wechselspannung
 
-$$u(t) = \hat{u} \cdot \sin(\omega t + \varphi), \quad \omega = 2\pi f$$
+Eine harmonische Wechselspannung wird durch drei Größen beschrieben:
 
-**Effektivwert:** $U = \hat{u}/\sqrt{2}$
+$$u(t) = \hat{u} \cdot \sin(\omega t + \varphi), \qquad \omega = 2\pi f = \frac{2\pi}{T}$$
+
+| Größe | Symbol | Einheit |
+|-------|--------|---------|
+| Scheitelwert (Amplitude) | $\hat u$ | V |
+| Kreisfrequenz | $\omega$ | rad/s |
+| Frequenz | $f$ | Hz $= 1/\text{s}$ |
+| Periodendauer | $T = 1/f$ | s |
+| Phasenwinkel | $\varphi$ | rad oder ° |
+
+**Merke:** $\omega$ ist NICHT $f$ — der Faktor $2\pi$ steckt immer dazwischen. Bei $f = 50\,\text{Hz}$ ist $\omega = 2\pi\cdot 50 \approx 314\,\text{rad/s}$.
+
+### Effektivwert (RMS-Wert für Sinus)
+
+$$U = \frac{\hat{u}}{\sqrt{2}} \approx 0{,}707\,\hat{u}$$
+
+Der Effektivwert eines Sinussignals ist der Gleichspannungswert, der an einem ohmschen Widerstand die **gleiche Wirkleistung** liefern würde. Beispiel: Schuko-Steckdose $U = 230\,\text{V}$ (Effektivwert), Scheitelwert $\hat u = 230\cdot\sqrt 2 \approx 325\,\text{V}$.
 
 ### Impedanz (komplexer Widerstand)
 
-| Bauelement | Impedanz | Betrag |
-|-----------|----------|--------|
-| Ohmscher Widerstand | $Z_R = R$ | $R$ |
-| Kondensator | $Z_C = \frac{1}{j\omega C}$ | $\frac{1}{\omega C}$ |
-| Spule | $Z_L = j\omega L$ | $\omega L$ |
+| Bauelement | Impedanz $Z$ | Betrag $|Z|$ |
+|-----------|--------------|--------------|
+| Ohmscher Widerstand $R$ | $Z_R = R$ | $R$ |
+| Spule $L$ | $Z_L = j\omega L$ | $\omega L$ |
+| Kondensator $C$ | $Z_C = \dfrac{1}{j\omega C} = -\dfrac{j}{\omega C}$ | $\dfrac{1}{\omega C}$ |
 
-Der **Betrag** der Impedanz gibt das Verhältnis $|Z| = U/I$ an.
+Der Betrag gibt das Verhältnis der Effektivwerte an: $|Z| = U/I$.
+
+### Frequenzverhalten
+
+$$|Z_L| = \omega L \propto f \quad\text{(steigend)}, \qquad |Z_C| = \frac{1}{\omega C} \propto \frac{1}{f} \quad\text{(fallend)}$$
+
+Konsequenz: Bei sehr hoher Frequenz wirkt eine Spule wie ein **offener Schalter** ($|Z_L|\to\infty$) und ein Kondensator wie ein **Kurzschluss** ($|Z_C|\to 0$). Bei DC ($\omega = 0$) genau umgekehrt: Spule ist Kurzschluss, Kondensator ist Isolator.
+
+### Phasenverschiebung zwischen $U$ und $I$
+
+| Bauelement | Phase $\varphi_U - \varphi_I$ | Anschauung |
+|-----------|-------------------------------|------------|
+| Ohmscher Widerstand | $0°$ | $u$ und $i$ in Phase |
+| Spule | $+90°$ | Strom eilt der Spannung **nach** |
+| Kondensator | $-90°$ | Strom eilt der Spannung **voraus** |
+
+**Merkregel "CIVIL"**: bei einem Kondensator (**C**) eilt der Strom **I** der Spannung **V** voraus; bei einer Spule (**L**) eilt **V** dem Strom **I** voraus.
 `,
+          visualization: {
+            visualizationId: 'sin-wave-explorer',
+            title: 'Wechselspannung $u(t) = \\hat u \\sin(\\omega t + \\varphi)$ erkunden',
+            params: { initialAmplitude: 1, initialFrequency: 1, initialPhase: 0 },
+          },
           exercises: [
             {
               type: 'number-input',
               question: 'Ein Kondensator $C = 10\\,\\mu\\text{F}$ wird mit $f = 50\\,\\text{Hz}$ betrieben. Wie groß ist der Impedanzbetrag $|Z_C|$ in Ohm?',
               correctValue: 318,
               tolerance: 5,
-              unit: 'Ohm',
-              explanation: '$|Z_C| = \\frac{1}{\\omega C} = \\frac{1}{2\\pi \\cdot 50 \\cdot 10^{-5}} \\approx 318\\,\\Omega$',
+              unit: 'Ω',
+              explanation: `**Ansatz:** Betrag der Kondensator-Impedanz: $|Z_C| = 1/(\\omega C)$. Zuerst $\\omega = 2\\pi f$ ausrechnen, dann einsetzen.
+
+**Rechnung:** $\\omega = 2\\pi\\cdot 50 \\approx 314{,}16\\,\\text{rad/s}$. $|Z_C| = 1/(314{,}16 \\cdot 10\\cdot 10^{-6}) = 1/(3{,}142\\cdot 10^{-3}) \\approx 318{,}3\\,\\Omega$.
+
+**Probe:** Dimensionscheck: $[1/(\\text{rad/s}\\cdot\\text{F})] = [\\text{s/F}] = [\\Omega]$ ✓ (denn $1\\,\\text{F} = 1\\,\\text{s}/\\Omega$).
+
+**Typischer Fehler:** Kehrwert vergessen ($|Z_C| = \\omega C = 3{,}14\\cdot 10^{-3}\\,\\Omega$) — entspricht der Spulen- statt Kondensator-Formel.`,
               hints: [
-                '$Z_C = 1/(j\\omega C)$',
-                '$|Z_C| = 1/(\\omega C)$',
-                '$\\omega = 2\\pi \\cdot 50 \\approx 314\\,\\text{rad/s}$',
+                '$Z_C = 1/(j\\omega C)$, der Betrag ist $|Z_C| = 1/(\\omega C)$.',
+                'Erst $\\omega = 2\\pi f$ ausrechnen.',
+                '$10\\,\\mu\\text{F} = 10^{-5}\\,\\text{F}$, also $1/(314 \\cdot 10^{-5}) \\approx 318$.',
               ],
+              pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['impedanzen'] },
             },
             {
               type: 'true-false',
-              statement: 'Der Effektivwert einer Sinusspannung beträgt $\\hat{u}/\\sqrt{2}$.',
+              statement: 'Der Effektivwert einer sinusförmigen Wechselspannung beträgt $\\hat{u}/\\sqrt{2}$.',
               correct: true,
-              explanation: 'Für reine Sinussignale gilt $U_\\text{eff} = \\hat{u}/\\sqrt{2} \\approx 0{,}707\\,\\hat{u}$.',
+              explanation: `**Ansatz:** Effektivwert ist definiert über die Leistungsäquivalenz: $U_\\text{eff}$ ist die Gleichspannung, die dieselbe Wirkleistung $P = U_\\text{eff}^{2}/R$ erzeugt.
+
+**Rechnung:** Für einen reinen Sinus $u(t) = \\hat u\\sin(\\omega t)$ ergibt das Integral $U_\\text{eff}^{2} = \\frac{1}{T}\\int_0^T u(t)^2\\,dt = \\hat u^{2}/2$, also $U_\\text{eff} = \\hat u/\\sqrt{2}$.
+
+**Probe:** Netzspannung: $U_\\text{eff} = 230\\,\\text{V}$, $\\hat u = 230\\cdot\\sqrt 2 \\approx 325\\,\\text{V}$ ✓.
+
+**Typischer Fehler:** Faktor $\\sqrt 2$ in die falsche Richtung ($U_\\text{eff} = \\hat u\\cdot\\sqrt 2$) — gilt nur, wenn man vom Effektivwert auf den Scheitelwert kommen will.`,
               hints: [
-                '$U_\\text{eff} = \\hat{u}/\\sqrt{2}$',
-                'Für Sinus-Signale gilt diese Beziehung',
-                '$\\sqrt{2} \\approx 1{,}414$',
+                'Wozu dient der Effektivwert?',
+                'Mittelwert von $\\sin^{2}$ über eine Periode ist $1/2$.',
+                'Wurzel davon: $1/\\sqrt 2 \\approx 0{,}707$.',
               ],
+              pedagogy: { stage: 'recognize', subGoal: 1, uses: ['effektiv'] },
             },
             {
               type: 'multiple-choice',
@@ -624,21 +675,28 @@ Der **Betrag** der Impedanz gibt das Verhältnis $|Z| = U/I$ an.
               options: [
                 '$\\approx 31{,}4\\,\\Omega$',
                 '$\\approx 5\\,\\Omega$',
-                '$\\approx 100\\,\\Omega$',
+                '$\\approx 0{,}0318\\,\\Omega$',
                 '$\\approx 314\\,\\Omega$',
               ],
               correctIndex: 0,
-              explanation: '$|Z_L| = \\omega L = 2\\pi \\cdot 50 \\cdot 0{,}1 = 10\\pi \\approx 31{,}4\\,\\Omega$',
+              explanation: `**Ansatz:** Betrag der Spulen-Impedanz: $|Z_L| = \\omega L$ mit $\\omega = 2\\pi f$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16\\,\\text{rad/s}$. $|Z_L| = 314{,}16 \\cdot 0{,}1 = 31{,}4\\,\\Omega$.
+
+**Probe:** Bei doppelter Frequenz $f = 100\\,\\text{Hz}$ wäre $|Z_L| \\approx 62{,}8\\,\\Omega$ — Verdopplung passt zur linearen $f$-Abhängigkeit ✓.
+
+**Typischer Fehler:** Faktor $2\\pi$ vergessen ($f\\cdot L = 5$) oder Spulen- mit Kondensatorformel verwechselt ($1/(\\omega L) = 0{,}0318$).`,
               hints: [
-                '$Z_L = j\\omega L$',
-                '$|Z_L| = \\omega L$',
-                '$\\omega = 2\\pi \\cdot 50 \\approx 314 \\Rightarrow 314 \\cdot 0{,}1 = 31{,}4$',
+                '$Z_L = j\\omega L$, der Betrag ist $|Z_L| = \\omega L$.',
+                '$\\omega = 2\\pi f$ — Faktor $2\\pi$ nicht vergessen.',
+                '$314 \\cdot 0{,}1 = 31{,}4$.',
               ],
               wrongAnswerExplanations: {
-                1: '5 Ω entsteht, wenn $|Z_L| = f \\cdot L = 50 \\cdot 0{,}1$ gerechnet wird. Falsch — der Faktor $2\\pi$ fehlt: $|Z_L| = \\omega L = 2\\pi f L$.',
-                2: '100 Ω wäre $f \\cdot L \\cdot 20$ oder $\\omega^2 \\cdot L \\cdot 0{,}5$ — unklar, aber nicht korrekt. $|Z_L| = 2\\pi \\cdot 50 \\cdot 0{,}1 \\approx 31{,}4$ Ω.',
-                3: '314 Ω entsteht, wenn nur $\\omega \\approx 314$ rad/s hingeschrieben und $L = 0{,}1$ vergessen wird (d.h. mit $L = 1$ gerechnet). Korrekt: $\\omega \\cdot L = 314 \\cdot 0{,}1 = 31{,}4$ Ω.',
+                1: '$5\\,\\Omega = f\\cdot L = 50\\cdot 0{,}1$ — der Faktor $2\\pi$ in $\\omega = 2\\pi f$ wurde vergessen.',
+                2: '$0{,}0318\\,\\Omega = 1/(\\omega L)$ — Spulen- mit Kondensator-Formel verwechselt. Spule: $\\omega L$, Kondensator: $1/(\\omega C)$.',
+                3: '$314\\,\\Omega = \\omega$ in rad/s — als Impedanz hingeschrieben, also $L = 0{,}1$ vergessen einzubeziehen (entspricht Rechnung mit $L = 1\\,\\text{H}$).',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['impedanzen'] },
             },
           ],
         },
