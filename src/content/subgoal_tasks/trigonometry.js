@@ -3291,6 +3291,52 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['cos-x-sin-y'] },
       ),
+      // ── Bonus-Aufgaben (Deepening) ───────────────────────────────────────
+      ni(
+        'Berechne die $x$-Koordinate des Punkts auf dem Einheitskreis bei $\\alpha = 150°$. (3 NK)',
+        -0.866, 0.005, '',
+        `**Ansatz:** $x$-Koordinate $= \\cos 150°$. $150°$ liegt im 2. Quadranten → Vorzeichen negativ; Referenzwinkel $30°$.
+
+**Rechnung:** $\\cos 150° = \\cos(180° - 30°) = -\\cos 30° = -\\tfrac{\\sqrt{3}}{2} \\approx -0{,}866$.
+
+**Probe:** $\\sin 150° = +\\tfrac{1}{2}$, also $\\cos^{2} + \\sin^{2} = \\tfrac{3}{4} + \\tfrac{1}{4} = 1$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen und $+\\tfrac{\\sqrt{3}}{2}$ angeben — im 2. Quadranten ist $\\cos$ negativ.`,
+        [
+          'Welche Achse? $x = \\cos$.',
+          'Welcher Quadrant ist $150°$? Welches Vorzeichen hat $\\cos$ dort?',
+          'Referenzwinkel $30°$ → $\\cos 30° = \\tfrac{\\sqrt{3}}{2}$, mit korrektem Vorzeichen.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['cos-x-sin-y'] },
+      ),
+      mc(
+        'Welche Koordinaten hat der Punkt auf dem Einheitskreis bei $\\alpha = 210°$?',
+        [
+          '$\\left(-\\tfrac{\\sqrt{3}}{2},\\ -\\tfrac{1}{2}\\right)$',
+          '$\\left(\\tfrac{\\sqrt{3}}{2},\\ -\\tfrac{1}{2}\\right)$',
+          '$\\left(-\\tfrac{\\sqrt{3}}{2},\\ \\tfrac{1}{2}\\right)$',
+          '$\\left(-\\tfrac{1}{2},\\ -\\tfrac{\\sqrt{3}}{2}\\right)$',
+        ],
+        0,
+        `**Ansatz:** $P = (\\cos 210°, \\sin 210°)$. $210° = 180° + 30°$ → 3. Quadrant, Referenzwinkel $30°$, beide Vorzeichen negativ.
+
+**Rechnung:** $\\cos 210° = -\\cos 30° = -\\tfrac{\\sqrt{3}}{2}$. $\\sin 210° = -\\sin 30° = -\\tfrac{1}{2}$.
+
+**Probe:** $\\left(-\\tfrac{\\sqrt{3}}{2}\\right)^{2} + \\left(-\\tfrac{1}{2}\\right)^{2} = \\tfrac{3}{4} + \\tfrac{1}{4} = 1$ ✓.
+
+**Typischer Fehler:** Im 3. Quadranten nur ein Vorzeichen umdrehen oder $\\cos$/$\\sin$ vertauschen ($30°$-Werte: $\\cos$ groß, $\\sin$ klein).`,
+        [
+          '$P = (\\cos\\alpha, \\sin\\alpha)$ — Reihenfolge beachten.',
+          'In welchem Quadranten liegt $210°$? Welche Vorzeichen?',
+          'Referenzwinkel ist $30°$; $\\cos 30° = \\tfrac{\\sqrt 3}{2}$, $\\sin 30° = \\tfrac{1}{2}$.',
+        ],
+        {
+          1: '$x$-Vorzeichen vergessen: Im 3. Quadranten ist $\\cos < 0$. $\\left(\\tfrac{\\sqrt{3}}{2}, -\\tfrac{1}{2}\\right)$ liegt bei $330°$ (4. Quadrant).',
+          2: '$y$-Vorzeichen vergessen: $\\left(-\\tfrac{\\sqrt{3}}{2}, +\\tfrac{1}{2}\\right)$ liegt bei $150°$ (2. Quadrant), nicht bei $210°$.',
+          3: '$\\cos$ und $\\sin$ vertauscht. $30°$-Grundwerte: $\\cos 30° = \\tfrac{\\sqrt{3}}{2}$ (größer), $\\sin 30° = \\tfrac{1}{2}$ — nicht umgekehrt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['cos-x-sin-y'] },
+      ),
     ],
 
     // ── [1] Definition gilt für ALLE reellen Winkel ───────────────────────
@@ -3396,6 +3442,47 @@ export const trigonometrySubGoalTasks = {
           '$\\sin 0° = ?$',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['koord-universell'] },
+      ),
+      // ── Bonus-Aufgaben (Deepening) ───────────────────────────────────────
+      ni(
+        'Berechne $\\cos(450°)$. (2 NK)',
+        0, 0.01, '',
+        `**Ansatz:** $450°$ liegt außerhalb $[0°, 360°)$. Periodizität nutzen: $\\cos(\\alpha + 360°) = \\cos\\alpha$.
+
+**Rechnung:** $450° = 360° + 90°$ → $\\cos 450° = \\cos 90° = 0$.
+
+**Probe:** Am Einheitskreis: nach einer vollen Umdrehung steht der Zeiger wieder bei $0°$, $90°$ weiter zeigt er senkrecht nach oben → Punkt $(0, 1)$ → $x = 0$ ✓.
+
+**Typischer Fehler:** $\\cos 450°$ als „Fehlermeldung" oder $\\cos(450°) = \\cos 450°$ stehenlassen — Definition gilt für ALLE reellen Winkel, also reduzieren.`,
+        [
+          'Definition gilt für alle reellen Winkel — reduziere modulo $360°$.',
+          '$450° - 360° = 90°$.',
+          '$\\cos 90° = ?$ (Achsenpunkt).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['koord-universell'] },
+      ),
+      mc(
+        'Welcher Punkt liegt am Einheitskreis bei $\\alpha = -90°$?',
+        ['$(0, -1)$', '$(0, 1)$', '$(-1, 0)$', '$(1, 0)$'],
+        0,
+        `**Ansatz:** Negative Winkel = Drehung im Uhrzeigersinn. $-90°$ entspricht einer Vierteldrehung „rückwärts" → Punkt unterhalb des Startpunkts.
+
+**Rechnung:** $-90° \\equiv 270°$ (modulo $360°$). $P(270°) = (\\cos 270°, \\sin 270°) = (0, -1)$.
+
+**Probe:** $\\cos$ ist gerade: $\\cos(-90°) = \\cos 90° = 0$ ✓. $\\sin$ ist ungerade: $\\sin(-90°) = -\\sin 90° = -1$ ✓.
+
+**Typischer Fehler:** Annehmen, negative Winkel seien nicht erlaubt; oder $-90°$ wie $+90°$ behandeln (Punkt oben statt unten).`,
+        [
+          'Negative Winkel drehen im Uhrzeigersinn.',
+          '$-90°$ entspricht welcher positiven Winkel-Position?',
+          'Punkt unterhalb des Mittelpunkts auf der $y$-Achse.',
+        ],
+        {
+          1: 'Das ist $\\alpha = +90°$ (Drehung gegen den Uhrzeigersinn). $-90°$ dreht im Uhrzeigersinn → Punkt liegt unten.',
+          2: 'Das ist $\\alpha = 180°$. Bei $-90°$ ist erst eine Vierteldrehung im Uhrzeigersinn geschehen, nicht eine halbe Drehung.',
+          3: 'Das ist der Startpunkt $\\alpha = 0°$. Bei $-90°$ ist die Position bereits gedreht.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['koord-universell'] },
       ),
     ],
 
@@ -3514,6 +3601,52 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 2, uses: ['koord-zu-winkel'] },
       ),
+      // ── Bonus-Aufgaben (Deepening) ───────────────────────────────────────
+      ni(
+        'Ein Punkt auf dem Einheitskreis hat $(x, y) = \\left(\\tfrac{\\sqrt{3}}{2},\\ -\\tfrac{1}{2}\\right)$. Gib den Winkel in Grad an (Bereich $[0°, 360°)$).',
+        330, 0, '°',
+        `**Ansatz:** Vorzeichen → Quadrant; Beträge → Referenzwinkel; Quadrantenformel anwenden.
+
+**Rechnung:** $x > 0$ und $y < 0$ → 4. Quadrant. Beträge: $|\\cos| = \\tfrac{\\sqrt{3}}{2}$, $|\\sin| = \\tfrac{1}{2}$ → Referenzwinkel $\\beta = 30°$. Im 4. Quadrant: $\\alpha = 360° - \\beta = 360° - 30° = 330°$.
+
+**Probe:** $\\cos 330° = \\cos(-30°) = \\cos 30° = \\tfrac{\\sqrt{3}}{2}$ ✓. $\\sin 330° = -\\sin 30° = -\\tfrac{1}{2}$ ✓.
+
+**Typischer Fehler:** $30°$ angeben (Quadrant ignoriert) oder $210°$ (falsche Quadrantenformel: 3. statt 4. Quadrant).`,
+        [
+          'Vorzeichen-Muster $(+, -)$ legt den Quadranten fest.',
+          'Beträge $\\tfrac{\\sqrt{3}}{2}$ und $\\tfrac{1}{2}$ → Referenzwinkel?',
+          'Im 4. Quadrant: $\\alpha = 360° - $ Referenzwinkel.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['koord-zu-winkel'] },
+      ),
+      mc(
+        'Aus welcher Information lässt sich der Winkel $\\alpha \\in [0°, 360°)$ EINDEUTIG bestimmen?',
+        [
+          'Aus dem vollständigen Koordinatenpaar $(x, y)$ mit $x^{2} + y^{2} = 1$.',
+          'Allein aus dem Wert $\\cos\\alpha$ (ohne $\\sin\\alpha$).',
+          'Allein aus dem Wert $\\sin\\alpha$ (ohne $\\cos\\alpha$).',
+          'Nur aus dem Quadranten (ohne Beträge).',
+        ],
+        0,
+        `**Ansatz:** Eindeutigkeit prüfen — wann gibt eine Größe genau einen Winkel in $[0°, 360°)$?
+
+**Rechnung:** Nur $(x, y)$ legt den Punkt — und damit den Winkel — eindeutig fest. Beispiele für Mehrdeutigkeit: $\\cos\\alpha = \\tfrac{1}{2}$ → $\\alpha = 60°$ ODER $300°$; $\\sin\\alpha = \\tfrac{1}{2}$ → $\\alpha = 30°$ ODER $150°$; „2. Quadrant" allein → unendlich viele Winkel in $(90°, 180°)$.
+
+**Probe:** Aus $(x, y)$ bestimmt das Vorzeichen den Quadranten und der Betrag den Referenzwinkel — beides zusammen ergibt genau einen Winkel.
+
+**Typischer Fehler:** $\\arccos(\\cos\\alpha)$ liefert nur Werte in $[0°, 180°]$ — Winkel im 3./4. Quadranten gehen verloren, wenn man nur $\\cos$ kennt.`,
+        [
+          'Genügt eine Komponente, oder braucht es beide?',
+          'Beispiel: $\\cos\\alpha = \\tfrac{1}{2}$ — wie viele Winkel in $[0°, 360°)$ erfüllen das?',
+          '$x$ legt zwei mögliche Quadranten (1./4. oder 2./3.) fest, $y$ wählt einen aus.',
+        ],
+        {
+          1: '$\\cos\\alpha$ allein ist mehrdeutig: $\\cos 60° = \\cos 300° = \\tfrac{1}{2}$ — zwei Winkel pro $\\cos$-Wert (außer bei $\\pm 1$).',
+          2: '$\\sin\\alpha$ allein ist mehrdeutig: $\\sin 30° = \\sin 150° = \\tfrac{1}{2}$ — zwei Winkel pro $\\sin$-Wert (außer bei $\\pm 1$).',
+          3: 'Ein Quadrant umfasst einen ganzen Winkelbereich von $90°$. Ohne konkrete Koordinaten ist der Winkel innerhalb des Quadranten nicht bestimmt.',
+        },
+        { stage: 'recognize', subGoal: 2, uses: ['koord-zu-winkel'] },
+      ),
     ],
 
     // ── [3] Eselsbrücke: c-osinus → x, s-inus → y ─────────────────────────
@@ -3564,25 +3697,30 @@ export const trigonometrySubGoalTasks = {
         { stage: 'apply-guided', subGoal: 3, uses: ['eselsbruecke-xy'] },
       ),
       mc(
-        'Angenommen du nutzt die Eselsbrücke "C → x, S → y". Du siehst einen Punkt $(0, 0{,}5)$ auf dem Einheitskreis — warte, der Punkt kann nicht drauf sein ($0 + 0{,}25 = 0{,}25 \\neq 1$). Richtig: $(0, 1)$. Welcher Wert ist $\\sin$?',
-        ['$1$', '$0$', '$0{,}5$', 'nicht bestimmbar'],
-        0,
-        `**Ansatz:** $\\sin = y$-Koordinate.
-
-**Rechnung:** $y = 1$, also $\\sin = 1$.
-
-**Probe:** $\\alpha = 90°$ passt: $\\sin 90° = 1$ ✓.
-
-**Typischer Fehler:** $\\sin$ mit $\\cos$ verwechseln.`,
+        'Ein Punkt auf dem Einheitskreis hat Koordinaten $(0{,}6;\\ 0{,}8)$. Mit der Eselsbrücke „c → x, s → y" — welche Aussage ist korrekt?',
         [
-          '$\\sin = y$.',
-          '$y = 1$.',
-          'Ergebnis.',
+          '$\\cos\\alpha = 0{,}6$ und $\\sin\\alpha = 0{,}8$.',
+          '$\\cos\\alpha = 0{,}8$ und $\\sin\\alpha = 0{,}6$.',
+          '$\\cos\\alpha = 0{,}6$ und $\\sin\\alpha = 0{,}6$.',
+          '$\\tan\\alpha = 0{,}6$ und $\\cos\\alpha = 0{,}8$.',
+        ],
+        0,
+        `**Ansatz:** Eselsbrücke „c → x, s → y" direkt anwenden: erste Koordinate ist $\\cos$, zweite ist $\\sin$.
+
+**Rechnung:** Aus $(x, y) = (0{,}6;\\ 0{,}8)$ folgt $\\cos\\alpha = x = 0{,}6$ und $\\sin\\alpha = y = 0{,}8$.
+
+**Probe:** $\\cos^{2}\\alpha + \\sin^{2}\\alpha = 0{,}36 + 0{,}64 = 1$ ✓ (Punkt liegt tatsächlich auf dem Einheitskreis).
+
+**Typischer Fehler:** „c → y, s → x" benutzen (Eselsbrücke vertauscht) oder das größere Vorzeichen automatisch dem Kosinus zuweisen.`,
+        [
+          'Welche Achse gehört zu $\\cos$, welche zu $\\sin$?',
+          '$\\cos$ greift die erste Koordinate $x$ ab, $\\sin$ die zweite $y$.',
+          'Reihenfolge im Tupel $(x, y) = (\\cos\\alpha, \\sin\\alpha)$.',
         ],
         {
-          1: '$0$ ist $\\cos$ (nicht $\\sin$).',
-          2: '$0{,}5$ ist nicht Koordinate des gegebenen Punkts.',
-          3: 'Mit Eselsbrücke sehr wohl bestimmbar.',
+          1: 'Eselsbrücke vertauscht („s → x, c → y"). Korrekt ist „c → x, s → y": die erste Tupel-Stelle ist $\\cos$.',
+          2: 'Beide gleich? Nur bei $\\alpha = 45°$ mit Wert $\\tfrac{\\sqrt 2}{2} \\approx 0{,}707$ — passt nicht zu $(0{,}6;\\ 0{,}8)$.',
+          3: '$\\tan\\alpha = y/x = 0{,}8/0{,}6 \\approx 1{,}33$, nicht $0{,}6$. Außerdem ist $\\cos\\alpha = x = 0{,}6$, nicht $0{,}8$.',
         },
         { stage: 'apply-independent', subGoal: 3, uses: ['eselsbruecke-xy'] },
       ),
@@ -3747,6 +3885,47 @@ export const trigonometrySubGoalTasks = {
           'Und dann Periodizität $360°$.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['wertebereich-sincos'] },
+      ),
+      // ── Bonus-Aufgaben (Deepening) ───────────────────────────────────────
+      ni(
+        'Welchen Maximalwert nimmt der Ausdruck $3\\sin\\alpha + 2$ für $\\alpha \\in \\mathbb{R}$ an?',
+        5, 0, '',
+        `**Ansatz:** Maximum von $3\\sin\\alpha + 2$ wird angenommen, wenn $\\sin\\alpha$ maximal ist.
+
+**Rechnung:** $\\sin\\alpha \\in [-1, 1]$ → $\\max\\sin\\alpha = 1$ (bei $\\alpha = 90°$). Einsetzen: $3 \\cdot 1 + 2 = 5$.
+
+**Probe:** Bei $\\alpha = 90°$: $3\\sin 90° + 2 = 3 \\cdot 1 + 2 = 5$ ✓. Minimum bei $\\alpha = 270°$: $3(-1) + 2 = -1$.
+
+**Typischer Fehler:** Den Faktor $3$ vergessen und nur $1 + 2 = 3$ angeben; oder das $+2$ vergessen.`,
+        [
+          'Wann wird der Ausdruck maximal? Wenn $\\sin\\alpha$ maximal ist.',
+          'Maximum von $\\sin\\alpha$? — folgt aus dem Wertebereich.',
+          'Einsetzen: $3 \\cdot 1 + 2 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['wertebereich-sincos'] },
+      ),
+      mc(
+        'Was ist der Wertebereich von $|\\cos\\alpha|$ für $\\alpha \\in \\mathbb{R}$?',
+        ['$[0,\\ 1]$', '$[-1,\\ 1]$', '$[-1,\\ 0]$', '$(0,\\ 1]$ (offen bei $0$)'],
+        0,
+        `**Ansatz:** Betrag macht alle negativen Werte positiv. Wertebereich von $\\cos\\alpha$ kennen und Betrag anwenden.
+
+**Rechnung:** $\\cos\\alpha \\in [-1, 1]$. Betrag: $|\\cos\\alpha|$ nimmt Werte $|{-1}| = 1$ (bei $\\alpha = 180°$), $|0| = 0$ (bei $\\alpha = 90°$) und $|1| = 1$ (bei $\\alpha = 0°$) an. Wertebereich: $[0, 1]$.
+
+**Probe:** Sowohl $0$ (bei $\\alpha = 90°$) als auch $1$ (bei $\\alpha = 0°$) werden erreicht → geschlossenes Intervall.
+
+**Typischer Fehler:** Den Betrag vergessen und $[-1, 1]$ angeben; oder vermuten, dass $0$ nicht erreicht wird (übersehen, dass $\\cos 90° = 0$).`,
+        [
+          'Wertebereich von $\\cos\\alpha$ ohne Betrag?',
+          'Was macht der Betrag mit negativen Werten?',
+          'Werden $0$ und $1$ tatsächlich angenommen?',
+        ],
+        {
+          1: '$[-1, 1]$ ist $\\cos\\alpha$ OHNE Betrag. Der Betrag entfernt alle negativen Werte.',
+          2: '$[-1, 0]$ wäre der Wertebereich nur im 2./3. Quadranten ohne Betrag. Mit Betrag werden alle Werte positiv.',
+          3: 'Bei $\\alpha = 90°$ ist $\\cos 90° = 0$, also $|\\cos 90°| = 0$ — der Wert $0$ wird sehr wohl angenommen. Intervall ist geschlossen bei $0$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['wertebereich-sincos'] },
       ),
     ],
   },

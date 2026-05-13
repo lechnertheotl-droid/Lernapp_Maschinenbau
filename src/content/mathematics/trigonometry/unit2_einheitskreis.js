@@ -132,17 +132,11 @@ export const exercises_u2 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Quadrant aus Vorzeichen bestimmen, Referenzwinkel aus Beträgen.
 
-**Schritt 1 — Quadrant:** $x = -\\dfrac{\\sqrt{2}}{2} < 0$, $y = +\\dfrac{\\sqrt{2}}{2} > 0$. Das ist der **2. Quadrant** ($90° < \\alpha < 180°$).
+**Rechnung:** Quadrant: $x = -\\tfrac{\\sqrt{2}}{2} < 0$ und $y = +\\tfrac{\\sqrt{2}}{2} > 0$ → 2. Quadrant ($90° < \\alpha < 180°$). Referenzwinkel: $|x| = |y| = \\tfrac{\\sqrt{2}}{2}$ → $\\beta = 45°$ (weil $\\cos 45° = \\sin 45° = \\tfrac{\\sqrt{2}}{2}$). Gesamt im 2. Quadrant: $\\alpha = 180° - \\beta = 180° - 45° = 135°$.
 
-**Schritt 2 — Referenzwinkel:** $|x| = |y| = \\dfrac{\\sqrt{2}}{2}$. Das entspricht $45°$ (weil $\\cos(45°) = \\sin(45°) = \\dfrac{\\sqrt{2}}{2}$).
+**Probe:** $\\cos 135° = -\\tfrac{\\sqrt{2}}{2}$ ✓, $\\sin 135° = +\\tfrac{\\sqrt{2}}{2}$ ✓. Punkt liegt links-oben auf der Winkelhalbierenden des 2. Quadranten.
 
-**Schritt 3 — Gesamt:** Im 2. Quadrant gilt $\\alpha = 180° - 45° = 135°$.
-
-**Am Einheitskreis heißt das:** Der Punkt liegt links-oben, auf der Winkelhalbierenden des 2. Quadranten.
-
-**Probe:** $\\cos(135°) = -\\dfrac{\\sqrt{2}}{2}$ ✓, $\\sin(135°) = \\dfrac{\\sqrt{2}}{2}$ ✓.
-
-**Typischer Fehler:** $45°$ wählen, weil $|x| = |y|$ — aber das Vorzeichen von $x$ wird ignoriert. Immer zuerst den Quadranten prüfen.`,
+**Typischer Fehler:** $45°$ wählen, weil $|x| = |y|$ — aber das Vorzeichen von $x$ wird ignoriert. Immer zuerst den Quadranten prüfen, dann den Referenzwinkel aus den Beträgen ableiten.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: Punkt mit $x < 0$, $y > 0$ — welcher Quadrant?',
       '$|x| = |y| = \\dfrac{\\sqrt{2}}{2}$ → Referenzwinkel $45°$.',
@@ -586,12 +580,20 @@ Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** �
 $$P = (\\cos(\\alpha),\\; \\sin(\\alpha))$$
 
 Das bedeutet:
-- **$\\cos(\\alpha) = $ x-Koordinate** von $P$
-- **$\\sin(\\alpha) = $ y-Koordinate** von $P$
+- **$\\cos(\\alpha) = $ x-Koordinate** von $P$ (horizontal)
+- **$\\sin(\\alpha) = $ y-Koordinate** von $P$ (vertikal)
 
-Diese Definition gilt für **alle reellen Winkel** — nicht nur $0°$–$90°$.
+Diese Definition gilt für **alle reellen Winkel** — auch für $\\alpha < 0$ oder $\\alpha > 360°$.
 
-**Am Einheitskreis heißt das:** Willst du $\\sin$/$\\cos$ eines beliebigen Winkels bestimmen, zeichne den Punkt auf dem Kreis und lies die Koordinaten ab. Das ist die geometrische Definition.`,
+| Regel | Formel | Beispiel |
+|---|---|---|
+| Koordinaten-Definition | $P=(\\cos\\alpha,\\sin\\alpha)$ | $\\alpha=60°$: $P=(\\tfrac{1}{2},\\tfrac{\\sqrt 3}{2})$ |
+| Wertebereich (folgt aus $r=1$) | $-1\\le\\cos\\alpha\\le 1$, $-1\\le\\sin\\alpha\\le 1$ | $\\cos\\alpha=2$ hat KEINE reelle Lösung |
+| Pythagoras am Einheitskreis | $\\cos^{2}\\alpha+\\sin^{2}\\alpha=1$ | Folgt aus $x^{2}+y^{2}=r^{2}=1$ |
+| Winkel aus Koordinaten | Quadrant aus $(\\operatorname{sgn} x,\\operatorname{sgn} y)$, Referenzwinkel $\\beta=\\arccos(|x|)$ | $(-\\tfrac{\\sqrt 2}{2},\\tfrac{\\sqrt 2}{2})$: 2. Q, $\\beta=45°$ → $\\alpha=180°-45°=135°$ |
+| Quadrantenformel | 1. Q: $\\beta$; 2. Q: $180°-\\beta$; 3. Q: $180°+\\beta$; 4. Q: $360°-\\beta$ | $(-\\tfrac{1}{2},-\\tfrac{\\sqrt 3}{2})$: 3. Q, $\\beta=60°$ → $\\alpha=240°$ |
+
+**Am Einheitskreis heißt das:** Willst du $\\sin$/$\\cos$ eines beliebigen Winkels bestimmen, zeichne den Punkt auf dem Kreis und lies die Koordinaten ab. Umgekehrt: Hast du den Punkt $(x,y)$, bestimme zuerst den Quadranten aus den Vorzeichen, dann den Referenzwinkel aus den Beträgen.`,
       },
       {
         id: 'trig-2-2-s2', type: 'visualization', title: 'Koordinaten ablesen',

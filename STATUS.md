@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3405 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2643 (78 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1584 / 1584 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 3413 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2652 (78 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1588 / 1588 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 396 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -199,9 +199,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **438** (Lesson-Path: 66 · Goal-Tasks: 372)
-- 4-Block: 422/438 (96 %) 🟡
-- MC-wAE: 222/222 (100 %) ✅
+- Aufgaben: **446** (Lesson-Path: 66 · Goal-Tasks: 380)
+- 4-Block: 431/446 (97 %) 🟡
+- MC-wAE: 226/226 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
@@ -250,7 +250,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 33 | 15/9/5/3/1 | 33/33 | 15/15 | ✅ | — |
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 21 | 10/5/4/1/1 | 21/21 | 10/10 | ✅ | — |
 | `trig-2-1` Der Einheitskreis | 4 | 4/4 | 33 | 15/8/6/3/1 | 33/33 | 15/15 | ✅ | — |
-| `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 28 | 16/4/5/3/0 | 27/28 | 16/16 | ✅ | +1 4B |
+| `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 36 | 20/8/5/3/0 | 36/36 | 20/20 | ✅ | — |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 33 | 15/8/6/4/0 | 31/33 | 15/15 | ✅ | +2 4B |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 33 | 19/3/6/5/0 | 30/33 | 19/19 | ✅ | +3 4B |
 | `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 33 | 18/6/4/4/1 | 31/33 | 18/18 | ✅ | +2 4B |
@@ -9512,7 +9512,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 49 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 48 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10049,58 +10049,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
-#### `trig-2-2` · sin und cos als Koordinaten
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-2-1` → `einheitskreis-def`, `punkt-parametrisierung`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `cos-x-sin-y` — Konvention: $\cos\alpha = x$-Koord., $\sin\alpha = y$-Koord. (SG 0)
-  2. `koord-universell` — Definition gilt für ALLE reellen Winkel (positiv, negativ, $>360°$) ⇐ `cos-x-sin-y` (SG 1)
-  3. `koord-zu-winkel` — Winkel aus $(x, y)$-Koordinaten via Vorzeichen + Referenzwinkel ⇐ `cos-x-sin-y` (SG 2)
-  4. `eselsbruecke-xy` — Merkregel: c-Osinus = $x$-Achse, $s$-Inus = $y$-Achse (SG 3)
-  5. `wertebereich-sincos` — Wertebereich $[-1, +1]$ folgt direkt aus $r = 1$ ⇐ `cos-x-sin-y` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `cos-x-sin-y` · **5/5+** — $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
-  - ✅ [1] _hoch_ · Konzepte: `koord-universell` · **5/5+** — Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
-  - ✅ [2] _hoch_ · Konzepte: `koord-zu-winkel` · **5/5+** — Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
-  - ✅ [3] _niedrig_ · Konzepte: `eselsbruecke-xy` · **5/5+** — Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)
-  - ✅ [4] _mittel_ · Konzepte: `wertebereich-sincos` · **5/5+** — Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `cos-x-sin-y` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `cos-x-sin-y` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `cos-x-sin-y` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `cos-x-sin-y` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `cos-x-sin-y` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `koord-universell` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `koord-universell` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `koord-universell` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `koord-universell` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | number-input     | `koord-universell` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `koord-zu-winkel` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `koord-zu-winkel` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | matching         | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `wertebereich-sincos` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | true-false       | `wertebereich-sincos` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
