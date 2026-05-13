@@ -2735,6 +2735,781 @@ Korrekt: partielle Integration mit $u = x$, $v' = \\cos x$ (also $u' = 1$, $v = 
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // int-2-1 — Substitution  (6 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'int-2-1': {
+
+    // ── [0] Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$ ──
+    0: [
+      // Matrix-Zeile 1: SG 0 · recognize · true-false · uses=[subst-formel]
+      tf(
+        'Die Substitutionsregel $\\int f(g(x)) \\cdot g\'(x)\\,dx = \\int f(u)\\,du$ (mit $u = g(x)$) ist die Umkehrung der Kettenregel der Ableitung.',
+        true,
+        `**Ansatz:** Kettenregel der Ableitung lautet $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$. "Rückwärts gelesen" (also integriert) ergibt sich die Substitutionsregel.
+
+**Rechnung:** Sei $F$ Stammfunktion von $f$. Kettenregel auf $F(g(x))$: $\\dfrac{d}{dx} F(g(x)) = F'(g(x)) \\cdot g'(x) = f(g(x)) \\cdot g'(x)$. Damit ist $F(g(x))$ Stammfunktion von $f(g(x)) \\cdot g'(x)$, und $\\int f(g(x)) g'(x)\\,dx = F(g(x)) + C = \\int f(u)\\,du$ mit $u = g(x)$.
+
+**Probe:** Beispiel $\\int 2x \\cdot e^{x^{2}}\\,dx$: $u = x^{2}$, $du = 2x\\,dx$, also $\\int e^{u}\\,du = e^{u} + C = e^{x^{2}} + C$. Probe: $(e^{x^{2}})' = e^{x^{2}} \\cdot 2x$ ✓.
+
+**Typischer Fehler:** Substitution als zufällige "Vereinfachung" missverstehen — sie ist ein systematischer Mechanismus aus der Kettenregel.`,
+        [
+          'Was passiert, wenn man die Kettenregel rückwärts liest?',
+          '$[f(g(x))]\' = f\'(g(x)) g\'(x)$ — Integration dieser Gleichung liefert?',
+          'Verbinde: Substitution = Kettenregel der Integration.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['subst-formel'] },
+      ),
+
+      // Matrix-Zeile 3: SG 0 · apply-independent · number-input · uses=[subst-formel]
+      ni(
+        'Berechne $\\int 3x^{2} \\cdot e^{x^{3}}\\,dx$ und gib den Wert der Stammfunktion bei $x = 1$ an (mit $C = 0$, auf 3 Nachkommastellen).',
+        2.718,
+        0.01,
+        '',
+        `**Ansatz:** Substitution $u = x^{3}$, denn $g'(x) = 3x^{2}$ taucht genau als Faktor im Integrand auf.
+
+**Rechnung:** $u = x^{3} \\Rightarrow du = 3x^{2}\\,dx$. Integral wird $\\int e^{u}\\,du = e^{u} + C = e^{x^{3}} + C$. Bei $x = 1$: $e^{1} = e \\approx 2{,}718$.
+
+**Probe:** $(e^{x^{3}})' = e^{x^{3}} \\cdot 3x^{2}$ ✓.
+
+**Typischer Fehler:** Den Faktor $3x^{2}$ als separat behandeln — er ist genau das $du$, also bereits "verbraucht" durch die Substitution.`,
+        [
+          'Setze $u = x^{3}$. Was ist $du$?',
+          '$du = 3x^{2}\\,dx$ — passt genau zum Faktor vor $e^{x^{3}}$.',
+          'Integral wird $\\int e^{u}\\,du = e^{u} + C = e^{x^{3}} + C$, bei $x=1$: $e^{1}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['subst-formel'] },
+      ),
+
+      // Matrix-Zeile 4: SG 0 · error-analysis · multiple-choice · uses=[subst-formel] ($dx$ statt $du$)
+      mc(
+        'Markus berechnet $\\int 2x \\cdot e^{x^{2}}\\,dx$ mit $u = x^{2}$ und schreibt: $\\int e^{u} \\cdot 2x\\,dx$. Wo liegt der Fehler?',
+        [
+          'Nach der Substitution muss IMMER auch $dx$ durch $du$ ersetzt werden: aus $u = x^{2}$ folgt $du = 2x\\,dx$, also wird $2x\\,dx = du$. Korrekt: $\\int e^{u}\\,du = e^{u} + C = e^{x^{2}} + C$. Markus mischt $u$ und $x$ in einem Integral — mathematisch nicht definiert.',
+          'Markus hat richtig — $u$ und $2x\\,dx$ stehen gleichberechtigt nebeneinander.',
+          'Markus hätte $u = 2x$ wählen müssen, dann passt $du = 2\\,dx$.',
+          'Die Substitution ist ungeeignet für $e^{x^{2}}$ — partielle Integration wäre besser.',
+        ],
+        0,
+        `**Ansatz:** Substitution heißt: VOLLSTÄNDIG von $x$ auf $u$ wechseln — der Integrand UND $dx$ müssen umgeschrieben werden.
+
+**Rechnung:** Mit $u = x^{2}$: $du = 2x\\,dx$. Im Integrand ist genau $2x\\,dx$ vorhanden, also wird das durch $du$ ersetzt. Resultierendes Integral: $\\int e^{u}\\,du = e^{u} + C = e^{x^{2}} + C$.
+
+**Probe:** $(e^{x^{2}})' = 2x \\cdot e^{x^{2}}$ ✓.
+
+**Typischer Fehler:** Die $u$-Substitution für $g(x)$ machen, aber $g'(x) dx$ als $dx$ stehen lassen — das mischt Variablen, die Substitution greift nicht.`,
+        [
+          'Bei Substitution: was muss alles in $u$ umgeschrieben werden?',
+          'Nicht nur die innere Funktion — auch $dx$ wird zu $du$.',
+          'Aus $u = x^{2}$ folgt $du = 2x\\,dx$ — also wird der ganze Faktor $2x\\,dx$ zu $du$.',
+        ],
+        {
+          1: 'Mathematisch nicht zulässig: ein Integral mit zwei verschiedenen Integrationsvariablen ($u$ und $x$) ist undefiniert. Nach Substitution gilt: alles auf $u$ umgeschrieben.',
+          2: 'Mit $u = 2x$ wäre $du = 2\\,dx$, also $dx = du/2$. Aber der Integrand $e^{x^{2}}$ wird dann $e^{(u/2)^{2}} = e^{u^{2}/4}$ — keine elementare Stammfunktion. $u = x^{2}$ ist die richtige Wahl.',
+          3: 'Doch — die Substitution $u = x^{2}$ ist hier perfekt, weil $g\'(x) = 2x$ exakt als Faktor da steht. Partielle Integration wäre umständlich und nicht nötig.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['subst-formel'] },
+      ),
+
+      // Matrix-Zeile 5: SG 0 · transfer · number-input · uses=[subst-formel]
+      ni(
+        'Berechne $\\int \\dfrac{x}{\\sqrt{x^{2} + 1}}\\,dx$ und gib den Wert der Stammfunktion bei $x = \\sqrt{3}$ an (mit $C = 0$).',
+        2,
+        0,
+        '',
+        `**Ansatz:** Substitution $u = x^{2} + 1$, da $du = 2x\\,dx$ proportional zum Zähler $x\\,dx$ ist.
+
+**Rechnung:** $u = x^{2} + 1$, $du = 2x\\,dx$, also $x\\,dx = \\dfrac{du}{2}$. Integral: $\\int \\dfrac{1}{\\sqrt{u}} \\cdot \\dfrac{du}{2} = \\dfrac{1}{2} \\int u^{-1/2}\\,du = \\dfrac{1}{2} \\cdot 2 u^{1/2} + C = \\sqrt{u} + C = \\sqrt{x^{2} + 1} + C$. Bei $x = \\sqrt{3}$: $\\sqrt{3 + 1} = 2$.
+
+**Probe:** $(\\sqrt{x^{2}+1})' = \\dfrac{2x}{2\\sqrt{x^{2}+1}} = \\dfrac{x}{\\sqrt{x^{2}+1}}$ ✓.
+
+**Typischer Fehler:** Den Faktor $1/2$ aus $x\\,dx = du/2$ vergessen — gibt das doppelte Ergebnis.`,
+        [
+          'Substitution: $u = x^{2} + 1$, $du = 2x\\,dx$, also $x\\,dx = du/2$.',
+          'Integral: $\\dfrac{1}{2} \\int u^{-1/2}\\,du = \\sqrt{u}$.',
+          'Bei $x = \\sqrt{3}$: $\\sqrt{(\\sqrt{3})^{2} + 1} = \\sqrt{4} = 2$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['subst-formel'] },
+      ),
+
+      // Bonus (Mengen-Regel + Variation zu Z2, das LP-b deckt): SG 0 · apply-guided · multiple-choice
+      mc(
+        'Berechne $\\int 4x^{3} \\cdot \\sin(x^{4})\\,dx$.',
+        [
+          '$-\\cos(x^{4}) + C$',
+          '$\\cos(x^{4}) + C$',
+          '$-\\sin(x^{4}) + C$',
+          '$\\dfrac{x^{4} \\cdot (-\\cos(x^{4}))}{4} + C$',
+        ],
+        0,
+        `**Ansatz:** Substitution $u = x^{4}$, denn $g'(x) = 4x^{3}$ passt genau.
+
+**Rechnung:** $u = x^{4}$, $du = 4x^{3}\\,dx$. Integral: $\\int \\sin(u)\\,du = -\\cos(u) + C = -\\cos(x^{4}) + C$.
+
+**Probe:** $(-\\cos(x^{4}))' = \\sin(x^{4}) \\cdot 4x^{3}$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — $\\int \\sin\\,du = -\\cos$ (mit Minus).`,
+        [
+          'Setze $u = x^{4}$. Was ist $du$?',
+          '$du = 4x^{3}\\,dx$ — passt zum Faktor $4x^{3}$.',
+          'Vergiss das Minus bei $\\int \\sin = -\\cos$ nicht.',
+        ],
+        {
+          1: 'Vorzeichen vergessen: $\\int \\sin\\,du = -\\cos + C$ (mit Minus, denn $(\\cos)\' = -\\sin$). Probe der falschen Antwort: $(\\cos(x^{4}))\' = -\\sin(x^{4}) \\cdot 4x^{3} \\neq +4x^{3}\\sin(x^{4})$.',
+          2: 'Du hast den Integrand $\\sin$ mit der Stammfunktion verwechselt — $\\int \\sin = -\\cos$, nicht $-\\sin$. Probe: $(-\\sin(x^{4}))\' = -\\cos(x^{4}) \\cdot 4x^{3} \\neq 4x^{3}\\sin(x^{4})$.',
+          3: 'Du hast die Stammfunktion künstlich mit $\\dfrac{x^{4}}{4}$ multipliziert — die Substitution absorbiert den Faktor $4x^{3}$ bereits vollständig in $du$. Korrekt: $-\\cos(x^{4}) + C$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['subst-formel'] },
+      ),
+    ],
+
+    // ── [1] Substitution wählen: $g'(x)$ als Faktor erkennen ──────────────
+    1: [
+      // Matrix-Zeile 6: SG 1 · recognize · true-false · uses=[subst-erkennen]
+      tf(
+        'Die Substitution $u = g(x)$ ist sinnvoll, wenn neben $g(x)$ auch dessen Ableitung $g\'(x)$ (eventuell bis auf einen konstanten Faktor) als Faktor im Integrand vorkommt.',
+        true,
+        `**Ansatz:** Faustregel zur Substitutionswahl — Substitution greift, wenn das Integral der Form $\\int f(g(x)) \\cdot g'(x)\\,dx$ entspricht.
+
+**Rechnung:** Beispiel passt: $\\int 2x \\cdot \\cos(x^{2})\\,dx$ mit $g(x) = x^{2}$, $g'(x) = 2x$ — Faktor $2x$ ist da. Beispiel passt bis auf Konstante: $\\int x \\cdot \\sin(x^{2})\\,dx$ mit $g(x) = x^{2}$, $g'(x) = 2x$ — Faktor $x$ ist da, fehlt nur $2$ als konstanter Faktor (korrigierbar mit $1/2$).
+
+**Probe:** Beispiel passt NICHT: $\\int \\sin(x^{2})\\,dx$ — kein Faktor $x$, keine direkte Substitution möglich. Hier braucht es andere Techniken (in der Praxis: hat keine elementare Stammfunktion).
+
+**Typischer Fehler:** Substitution erzwingen, wenn $g'(x)$ gar nicht als Faktor da ist — funktioniert nicht.`,
+        [
+          'Was muss neben $g(x)$ im Integrand vorkommen, damit die Substitution greift?',
+          '$g\'(x)$ als Faktor — exakt oder bis auf konstante Vorfaktor.',
+          'Beispiel: $\\int x \\cdot e^{x^{2}}\\,dx$ — sehe ich $g\' = 2x$ "bis auf Konstante"?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['subst-erkennen'] },
+      ),
+
+      // Matrix-Zeile 8: SG 1 · apply-independent · multiple-choice · uses=[subst-erkennen]
+      mc(
+        'Bei welchem der folgenden Integrale ist die Substitution $u = x^{2} + 1$ besonders günstig?',
+        [
+          '$\\int 2x \\cdot (x^{2} + 1)^{3}\\,dx$',
+          '$\\int (x^{2} + 1)^{3}\\,dx$',
+          '$\\int x^{3} \\cdot (x^{2} + 1)\\,dx$',
+          '$\\int \\dfrac{1}{x^{2} + 1}\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Substitution greift, wenn $g'(x) = 2x$ als Faktor im Integrand vorkommt.
+
+**Rechnung:** Im ersten Integral ist genau $2x \\cdot (\\ldots)^{3}$ — die Form $g'(x) \\cdot f(g(x))$. Mit $u = x^{2} + 1$, $du = 2x\\,dx$: $\\int u^{3}\\,du = \\dfrac{u^{4}}{4} + C = \\dfrac{(x^{2}+1)^{4}}{4} + C$.
+
+**Probe:** $\\left(\\dfrac{(x^{2}+1)^{4}}{4}\\right)' = \\dfrac{4(x^{2}+1)^{3} \\cdot 2x}{4} = 2x(x^{2}+1)^{3}$ ✓.
+
+**Typischer Fehler:** Glauben, jede Funktion mit $x^{2} + 1$ darin sei für diese Substitution geeignet — der $2x$-Faktor ist entscheidend.`,
+        [
+          'Welche Form hat das Integral, das die Substitution braucht?',
+          '$\\int f(g(x)) \\cdot g\'(x)\\,dx$ — ist $g\'(x) = 2x$ im Integrand?',
+          'Schau jede Option an: gibt es einen Faktor $2x$ (oder etwas Proportionales)?',
+        ],
+        {
+          1: 'Hier fehlt der Faktor $2x$ — ohne ihn lässt sich die Substitution $u = x^{2}+1$ nicht direkt anwenden. Das Integral $\\int (x^{2}+1)^{3}\\,dx$ muss anders gelöst werden (Klammern ausmultiplizieren).',
+          2: 'Hier ist $x^{3}$ statt $2x$ als Faktor — Substitution $u = x^{2}+1$ klappt nicht ohne weiteres. Stattdessen: ausmultiplizieren oder andere Technik.',
+          3: 'Das ist $\\int \\dfrac{1}{x^{2}+1}\\,dx = \\arctan x + C$ — ein STANDARDFALL, der die Substitution $u = x^{2}+1$ nicht erfordert (würde sogar in eine Sackgasse führen).',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['subst-erkennen'] },
+      ),
+
+      // Matrix-Zeile 9: SG 1 · error-analysis · multiple-choice · uses=[subst-erkennen]
+      mc(
+        'Lisa möchte $\\int x \\cdot \\sin(x^{2})\\,dx$ mit $u = x^{2}$ substituieren. Sie sagt: „$du = 2x\\,dx$, aber im Integral steht nur $x$, also passt es nicht." Wo liegt der Fehler in Lisas Reasoning?',
+        [
+          'Auch wenn $x\\,dx$ statt $2x\\,dx$ im Integrand steht, lässt sich der Faktor $2$ über eine Konstante korrigieren: aus $du = 2x\\,dx$ folgt $x\\,dx = \\dfrac{du}{2}$. Die Substitution funktioniert mit zusätzlichem Faktor $1/2$. Ergebnis: $-\\dfrac{\\cos(x^{2})}{2} + C$.',
+          'Lisa hat richtig — die Substitution funktioniert nur, wenn der Faktor exakt passt.',
+          'Lisa hätte $u = x$ wählen müssen, dann passt $du = dx$ exakt.',
+          'Lisa hätte partielle Integration verwenden müssen — Substitution ist hier nicht möglich.',
+        ],
+        0,
+        `**Ansatz:** Substitution funktioniert auch, wenn $g'(x)$ nur BIS AUF EINE KONSTANTE als Faktor im Integrand vorkommt — der konstante Faktor wird einfach vor das Integral gezogen.
+
+**Rechnung:** Mit $u = x^{2}$: $du = 2x\\,dx \\Rightarrow x\\,dx = \\dfrac{du}{2}$. Integral: $\\int \\sin(u) \\cdot \\dfrac{du}{2} = \\dfrac{1}{2} \\int \\sin(u)\\,du = -\\dfrac{\\cos(u)}{2} + C = -\\dfrac{\\cos(x^{2})}{2} + C$.
+
+**Probe:** $\\left(-\\dfrac{\\cos(x^{2})}{2}\\right)' = \\dfrac{\\sin(x^{2}) \\cdot 2x}{2} = x\\sin(x^{2})$ ✓.
+
+**Typischer Fehler:** Substitution aufgeben, weil "der Faktor nicht exakt passt" — konstante Differenz ist immer korrigierbar.`,
+        [
+          'Lässt sich der fehlende Faktor $2$ irgendwie kompensieren?',
+          'Faktor-Regel: konstanter Faktor darf vor das Integral.',
+          '$x\\,dx = du/2$ — die $1/2$ wandert vor das Integral.',
+        ],
+        {
+          1: 'Substitution funktioniert auch bei konstantem Skalierungsfaktor — er wird einfach vorgezogen. Lisa hat den Faktor $1/2$-Trick übersehen.',
+          2: 'Mit $u = x$ wäre $du = dx$, aber dann ist der Integrand $x \\cdot \\sin(x^{2}) = u \\cdot \\sin(u^{2})$ — die Substitution macht hier nichts einfacher.',
+          3: 'Partielle Integration wäre umständlich für dieses Integral. Die Substitution $u = x^{2}$ ist die natürliche und elegante Wahl.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['subst-erkennen'] },
+      ),
+
+      // Matrix-Zeile 10: SG 1 · transfer · matching · uses=[subst-erkennen, subst-formel]
+      matching(
+        'Welche Substitution $u = g(x)$ ist für jedes Integral am natürlichsten?',
+        [
+          { left: '$\\int 2x \\cdot e^{x^{2}}\\,dx$',                 right: '$u = x^{2}$' },
+          { left: '$\\int \\cos(5x)\\,dx$',                            right: '$u = 5x$' },
+          { left: '$\\int \\dfrac{1}{x \\ln(x)}\\,dx$',                right: '$u = \\ln(x)$' },
+          { left: '$\\int 3x^{2} \\sqrt{x^{3} + 1}\\,dx$',             right: '$u = x^{3} + 1$' },
+        ],
+        `**Ansatz:** Substitution suchen, deren Ableitung als Faktor im Integrand vorkommt.
+
+**Rechnung:**
+- $\\int 2x e^{x^{2}}\\,dx$: $u = x^{2}$, $du = 2x\\,dx$ — perfekt.
+- $\\int \\cos(5x)\\,dx$: $u = 5x$ (lineare Substitution), $du = 5\\,dx$, $dx = du/5$.
+- $\\int \\dfrac{1}{x \\ln(x)}\\,dx$: $u = \\ln(x)$, $du = \\dfrac{1}{x}\\,dx$ — Faktor $1/x$ passt zum $dx/x$.
+- $\\int 3x^{2} \\sqrt{x^{3}+1}\\,dx$: $u = x^{3} + 1$, $du = 3x^{2}\\,dx$ — perfekt.
+
+**Probe:** Jede Substitution führt zu einem viel einfacheren Integral in $u$.
+
+**Typischer Fehler:** Den falschen "inneren Ausdruck" wählen — z. B. $u = x \\ln(x)$ statt $u = \\ln(x)$ bei der dritten.`,
+        [
+          'Welcher Faktor im Integrand sieht aus wie die Ableitung eines inneren Ausdrucks?',
+          'Für $\\int 1/(x \\ln x)\\,dx$: was hat die Ableitung $1/x$?',
+          'Lineare Argumente wie $\\cos(5x)$ verlangen lineare Substitution $u = 5x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['subst-erkennen', 'subst-formel'] },
+      ),
+
+      // Bonus SG 1 — mc Variation
+      mc(
+        'Für welches der folgenden Integrale ist die Substitution $u = \\cos(x)$ die natürliche Wahl?',
+        [
+          '$\\int \\sin(x) \\cdot e^{\\cos(x)}\\,dx$',
+          '$\\int \\cos^{2}(x)\\,dx$',
+          '$\\int x \\cdot \\cos(x)\\,dx$',
+          '$\\int \\tan(x)\\,dx$',
+        ],
+        0,
+        `**Ansatz:** Substitution $u = \\cos(x)$ greift, wenn $\\sin(x)$ (bis auf Vorzeichen) als Faktor da steht — denn $du = -\\sin(x)\\,dx$.
+
+**Rechnung:** Im ersten Integral steht $\\sin(x) \\cdot e^{\\cos(x)}$. Mit $u = \\cos(x)$, $du = -\\sin(x)\\,dx$, also $\\sin(x)\\,dx = -du$: $\\int e^{u} \\cdot (-du) = -e^{u} + C = -e^{\\cos(x)} + C$.
+
+**Probe:** $(-e^{\\cos x})' = -e^{\\cos x} \\cdot (-\\sin x) = \\sin(x) \\cdot e^{\\cos(x)}$ ✓.
+
+**Typischer Fehler:** Bei $\\int \\tan x\\,dx$ würde $u = \\cos x$ auch funktionieren ($\\tan x = \\sin x/\\cos x$ → $u = \\cos x$, $du = -\\sin x\\,dx$ → $\\int -du/u = -\\ln|u| = -\\ln|\\cos x|$) — aber das ist eher log-Ableitung als die "natürliche" Wahl.`,
+        [
+          'Was ist die Ableitung von $\\cos(x)$?',
+          '$du = -\\sin(x)\\,dx$ — wo taucht $\\sin(x)$ als Faktor auf?',
+          'Erstes Integral: $\\sin(x) e^{\\cos(x)}$ — $u = \\cos(x)$ passt perfekt.',
+        ],
+        {
+          1: '$\\cos^{2}(x)$ enthält keinen $\\sin$-Faktor — die Substitution $u = \\cos(x)$ würde nicht greifen. Stattdessen: Doppelwinkel-Identität $\\cos^{2} x = (1 + \\cos 2x)/2$.',
+          2: 'Bei $\\int x \\cos x\\,dx$ ist es ein PRODUKT zweier x-abhängiger Funktionen — partielle Integration wäre der natürliche Weg, nicht Substitution.',
+          3: '$\\tan x = \\sin x/\\cos x$ — die Substitution $u = \\cos x$ liefert hier zwar das Ergebnis $-\\ln|\\cos x|$, aber sie ist nicht die "natürliche" Wahl; das ist eher eine Anwendung der logarithmischen Ableitung.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['subst-erkennen'] },
+      ),
+    ],
+
+    // ── [2] Grenzen mit substituieren bei bestimmtem Integral ──────────────
+    2: [
+      // Matrix-Zeile 11: SG 2 · recognize · true-false · uses=[subst-grenzen]
+      tf(
+        'Bei einem bestimmten Integral muss man nach der Substitution $u = g(x)$ auch die Grenzen mit substituieren: aus $x = a$ wird $u = g(a)$, aus $x = b$ wird $u = g(b)$.',
+        true,
+        `**Ansatz:** Wenn man die Variable wechselt, müssen auch die Grenzen in der neuen Variable ausgedrückt werden — sonst stimmt das Integral nicht.
+
+**Rechnung:** Hauptsatz: $\\int_{a}^{b} f(g(x)) g'(x)\\,dx = [F(g(x))]_{a}^{b} = F(g(b)) - F(g(a)) = \\int_{g(a)}^{g(b)} f(u)\\,du$. Die NEUEN Grenzen sind $g(a)$ und $g(b)$, nicht $a$ und $b$.
+
+**Probe:** Beispiel $\\int_{0}^{1} 2x e^{x^{2}}\\,dx$: $u = x^{2}$, neue Grenzen $g(0) = 0, g(1) = 1$. $\\int_{0}^{1} e^{u}\\,du = e - 1 \\approx 1{,}718$. ✓
+
+**Typischer Fehler:** Die alten $x$-Grenzen mit der neuen $u$-Variable verwenden — das ist eine andere Funktion und liefert ein falsches Ergebnis.`,
+        [
+          'Wechsel der Variablen erfordert Wechsel der Grenzen?',
+          'Aus $x = a$ wird $u = g(a)$.',
+          'Alternative: Rücksubstitution am Ende, dann $x$-Grenzen behalten.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['subst-grenzen'] },
+      ),
+
+      // Matrix-Zeile 12: SG 2 · apply-guided · multiple-choice · uses=[subst-grenzen]
+      mc(
+        'Bei $\\int_{0}^{1} 2x \\cdot e^{x^{2}}\\,dx$ mit Substitution $u = x^{2}$: was sind die neuen Grenzen für $u$?',
+        [
+          '$u$ läuft von $0$ bis $1$',
+          '$u$ läuft von $0$ bis $2$',
+          '$u$ läuft von $1$ bis $0$',
+          '$u$ läuft von $0$ bis $x^{2}$',
+        ],
+        0,
+        `**Ansatz:** Neue Grenzen über $g(a) = g(0)$ und $g(b) = g(1)$ berechnen.
+
+**Rechnung:** $g(x) = x^{2}$. Untere: $g(0) = 0^{2} = 0$. Obere: $g(1) = 1^{2} = 1$. Also läuft $u$ von $0$ bis $1$.
+
+**Probe:** $\\int_{0}^{1} e^{u}\\,du = e - 1 \\approx 1{,}718$ — passt zum direkten Hauptsatz $[e^{x^{2}}]_{0}^{1} = e - 1$. ✓
+
+**Typischer Fehler:** Die alten $x$-Grenzen $0$ und $1$ direkt für $u$ übernehmen — nur weil $g(0) = 0$ und $g(1) = 1$ hier zufällig gleich sind, klappt es; bei anderen Grenzen ($x = 2 \\to u = 4$) wäre der Unterschied sichtbar.`,
+        [
+          'Setze die $x$-Grenzen in $g(x) = x^{2}$ ein.',
+          'Untere: $g(0) = ?$. Obere: $g(1) = ?$.',
+          'Hier zufällig $0 \\to 0$ und $1 \\to 1$ — bei größeren Grenzen anders!',
+        ],
+        {
+          1: 'Du hast die obere Grenze mit dem Faktor $2$ aus $du = 2x\\,dx$ vermischt — die Grenzen kommen aber aus der Substitution $u = g(x) = x^{2}$ (nicht $g\'$). $g(1) = 1$, nicht $2$.',
+          2: 'Du hast die Reihenfolge der Grenzen vertauscht. Substitution: untere $x = 0 \\to u = 0$, obere $x = 1 \\to u = 1$ — also läuft $u$ AUFSTEIGEND von $0$ bis $1$, nicht umgekehrt.',
+          3: '$x^{2}$ ist eine Funktion in $x$, keine Konstante — sie kann nicht als Grenze stehen. Die Substitution erfordert Auswertung an konkreten $x$-Werten: $g(0) = 0$, $g(1) = 1$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['subst-grenzen'] },
+      ),
+
+      // Matrix-Zeile 13: SG 2 · apply-independent · number-input · uses=[subst-grenzen]
+      ni(
+        'Berechne $\\int_{0}^{1} 2x \\cdot e^{x^{2}}\\,dx$ exakt (auf 3 Nachkommastellen).',
+        1.718,
+        0.01,
+        '',
+        `**Ansatz:** Substitution $u = x^{2}$, Grenzen mit substituieren.
+
+**Rechnung:** $u = x^{2}$, $du = 2x\\,dx$. Grenzen: $x = 0 \\to u = 0$; $x = 1 \\to u = 1$. Integral: $\\int_{0}^{1} e^{u}\\,du = e^{1} - e^{0} = e - 1 \\approx 1{,}718$.
+
+**Probe:** Direkt mit Stammfunktion in $x$: $[e^{x^{2}}]_{0}^{1} = e - 1$ ✓. Beide Methoden liefern dasselbe.
+
+**Typischer Fehler:** Grenzen vergessen umzurechnen — würde fälschlich $\\int_{0}^{1} e^{u}\\,du$ mit unklarer Interpretation der Grenzen liefern. Hier numerisch zufällig gleich, weil $g(0) = 0$ und $g(1) = 1$ — bei anderen Grenzen wäre der Fehler sichtbar.`,
+        [
+          'Substitution $u = x^{2}$, $du = 2x\\,dx$.',
+          'Neue Grenzen: $g(0) = 0$, $g(1) = 1$.',
+          'Integral: $\\int_{0}^{1} e^{u}\\,du = e - 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['subst-grenzen'] },
+      ),
+
+      // Matrix-Zeile 14: SG 2 · error-analysis · multiple-choice · uses=[subst-grenzen]
+      mc(
+        'Tom berechnet $\\int_{0}^{2} 2x \\cdot e^{x^{2}}\\,dx$ mit $u = x^{2}$ und schreibt: „$\\int_{0}^{2} e^{u}\\,du = e^{2} - e^{0} = e^{2} - 1 \\approx 6{,}39$." Wo liegt der Fehler?',
+        [
+          'Tom hat die Grenzen NICHT mit substituiert. Mit $u = x^{2}$ werden die Grenzen $x = 0 \\to u = 0$ und $x = 2 \\to u = 4$. Korrekt: $\\int_{0}^{4} e^{u}\\,du = e^{4} - 1 \\approx 53{,}6$.',
+          'Tom hat richtig gerechnet — die Grenzen bleiben bei der Substitution immer unverändert.',
+          'Tom hat die Substitution falsch angesetzt — korrekt wäre $u = e^{x^{2}}$.',
+          'Tom hätte am Ende noch das $du$ durch $dx$ zurück ersetzen müssen.',
+        ],
+        0,
+        `**Ansatz:** Bei vollständiger Substitution müssen Integrand, $dx$ UND Grenzen umgerechnet werden — Tom hat die alten $x$-Grenzen mit der neuen $u$-Variable verwendet.
+
+**Rechnung:** Mit $u = x^{2}$ werden Grenzen: $x = 0 \\to u = 0$; $x = 2 \\to u = 4$. Korrekt: $\\int_{0}^{4} e^{u}\\,du = [e^{u}]_{0}^{4} = e^{4} - 1 \\approx 53{,}6$.
+
+**Probe:** Direkt in $x$: $[e^{x^{2}}]_{0}^{2} = e^{4} - 1 \\approx 53{,}6$ ✓ — passt zur korrekten Substitution.
+
+**Typischer Fehler:** Die alten $x$-Grenzen für die neue $u$-Variable verwenden — bei Substitutionen mit nicht-trivialer Abbildung wie $g(x) = x^{2}$ wird der Fehler dramatisch.`,
+        [
+          'Müssen die Grenzen bei Substitution mitgerechnet werden?',
+          'Berechne $g(0)$ und $g(2)$ — was sind die neuen $u$-Grenzen?',
+          'Vergleiche $e^{2} - 1$ vs $e^{4} - 1$ — beides ist möglich?',
+        ],
+        {
+          1: 'Falsch — Grenzen MÜSSEN umgerechnet werden, sobald die Integrationsvariable wechselt. Sonst liest man das Integral als "$\\int$ in der falschen Variable", was mathematisch sinnlos ist.',
+          2: '$u = e^{x^{2}}$ wäre eine viel kompliziertere Substitution: $du = e^{x^{2}} \\cdot 2x\\,dx$. Toms Wahl $u = x^{2}$ ist korrekt — der Fehler liegt nur bei den Grenzen.',
+          3: 'Rück-Ersetzen ist EINE Möglichkeit (in $x$ ausdrücken, dann $x$-Grenzen einsetzen). Wer in $u$ bleibt, MUSS die $u$-Grenzen verwenden. Tom hat die Mischvariante gewählt — das geht nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['subst-grenzen'] },
+      ),
+
+      // Matrix-Zeile 15: SG 2 · transfer · number-input · uses=[subst-grenzen]
+      ni(
+        'Berechne $\\int_{1}^{3} \\dfrac{2x}{x^{2} + 1}\\,dx$ exakt (auf 3 Nachkommastellen).',
+        1.609,
+        0.01,
+        '',
+        `**Ansatz:** Substitution $u = x^{2} + 1$ ($du = 2x\\,dx$ steht direkt im Integrand), Grenzen mitführen.
+
+**Rechnung:** $u = x^{2} + 1$, $du = 2x\\,dx$. Grenzen: $x = 1 \\to u = 2$; $x = 3 \\to u = 10$. Integral: $\\int_{2}^{10} \\dfrac{1}{u}\\,du = \\ln(10) - \\ln(2) = \\ln(5) \\approx 1{,}609$.
+
+**Probe:** Direkt: $[\\ln(x^{2}+1)]_{1}^{3} = \\ln(10) - \\ln(2) = \\ln(5)$ ✓.
+
+**Typischer Fehler:** Logarithmen mit $\\log$ statt $\\ln$ verwechseln — bei Substitution mit $\\int 1/u\\,du$ ist das Ergebnis IMMER der natürliche Logarithmus $\\ln$.`,
+        [
+          'Substitution $u = x^{2}+1$, $du = 2x\\,dx$ passt zum Integranden.',
+          'Neue Grenzen: $g(1) = 2$, $g(3) = 10$.',
+          'Integral: $\\int_{2}^{10} 1/u\\,du = \\ln(10/2) = \\ln 5 \\approx 1{,}609$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['subst-grenzen'] },
+      ),
+    ],
+
+    // ── [3] Lineare Substitution $u = ax + b$ ─────────────────────────────
+    3: [
+      // Matrix-Zeile 16: SG 3 · recognize · true-false · uses=[subst-linear]
+      tf(
+        'Bei der linearen Substitution $u = ax + b$ gilt $du = a\\,dx$, also $dx = du/a$ — ein zusätzlicher Faktor $1/a$ muss vor das Integral gezogen werden.',
+        true,
+        `**Ansatz:** Direkte Anwendung der Substitutionsformel mit $g(x) = ax + b$, $g'(x) = a$.
+
+**Rechnung:** $u = ax + b \\Rightarrow du = a\\,dx \\Rightarrow dx = \\dfrac{du}{a}$. Damit wird $\\int f(ax + b)\\,dx = \\int f(u) \\cdot \\dfrac{du}{a} = \\dfrac{1}{a} \\int f(u)\\,du$.
+
+**Probe:** Beispiel $\\int \\cos(3x)\\,dx$: $u = 3x$, $du = 3\\,dx$, $\\int \\cos(u) \\cdot du/3 = \\dfrac{\\sin(u)}{3} + C = \\dfrac{\\sin(3x)}{3} + C$. Probe: $\\left(\\dfrac{\\sin(3x)}{3}\\right)' = \\cos(3x)$ ✓.
+
+**Typischer Fehler:** Den Faktor $1/a$ vergessen — sehr häufig in Prüfungen.`,
+        [
+          'Was ist die Ableitung von $u = ax + b$?',
+          '$du/dx = a$ — und wie löst man nach $dx$ auf?',
+          '$dx = du/a$ — der $1/a$ muss vor das Integral.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['subst-linear'] },
+      ),
+
+      // Matrix-Zeile 18: SG 3 · apply-independent · number-input · uses=[subst-linear]
+      ni(
+        'Berechne $\\int \\sin(4x)\\,dx = -\\dfrac{\\cos(4x)}{a} + C$. Bestimme den Wert von $a$.',
+        4,
+        0,
+        '',
+        `**Ansatz:** Lineare Substitution $u = 4x$.
+
+**Rechnung:** $u = 4x$, $du = 4\\,dx$, $dx = du/4$. $\\int \\sin(u) \\cdot \\dfrac{du}{4} = -\\dfrac{\\cos(u)}{4} + C = -\\dfrac{\\cos(4x)}{4} + C$. Also $a = 4$.
+
+**Probe:** $\\left(-\\dfrac{\\cos(4x)}{4}\\right)' = \\dfrac{\\sin(4x) \\cdot 4}{4} = \\sin(4x)$ ✓.
+
+**Typischer Fehler:** Den Faktor $1/4$ vergessen — Ergebnis ohne wäre $-\\cos(4x) + C$, was die Ableitung $4\\sin(4x) \\neq \\sin(4x)$ ergäbe.`,
+        [
+          'Lineare Substitution $u = 4x$.',
+          '$du = 4\\,dx \\Rightarrow dx = du/4$.',
+          '$\\int \\sin\\,du = -\\cos$, mit Faktor $1/4$: $a = 4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['subst-linear'] },
+      ),
+
+      // Matrix-Zeile 19: SG 3 · error-analysis · multiple-choice · uses=[subst-linear] (Faktor 1/a vergessen)
+      mc(
+        'Eva berechnet $\\int e^{2x}\\,dx$ und schreibt: $e^{2x} + C$. Wo liegt der Fehler?',
+        [
+          'Eva hat den Faktor $1/2$ aus der linearen Substitution vergessen. Mit $u = 2x$, $du = 2\\,dx$, $dx = du/2$: $\\int e^{u} \\cdot du/2 = e^{u}/2 + C = \\dfrac{e^{2x}}{2} + C$. Probe: $\\left(\\dfrac{e^{2x}}{2}\\right)\' = e^{2x}$ ✓.',
+          'Eva hat richtig — $\\int e^{2x}\\,dx = e^{2x} + C$.',
+          'Eva hätte $u = e^{2x}$ substituieren müssen.',
+          'Bei linearer Substitution gibt es keinen Korrekturfaktor.',
+        ],
+        0,
+        `**Ansatz:** Probe — Evas $e^{2x}$ ableiten und prüfen, ob $e^{2x}$ herauskommt.
+
+**Rechnung:** $(e^{2x})' = e^{2x} \\cdot 2 = 2 e^{2x} \\neq e^{2x}$. Also keine Stammfunktion. Korrekt: $\\dfrac{e^{2x}}{2}$, denn $\\left(\\dfrac{e^{2x}}{2}\\right)' = e^{2x}$ ✓.
+
+**Probe:** Klassischer Fehler bei linearer Substitution — der Faktor $1/a$ wird oft "vergessen", weil $e^{x}$ scheinbar so simpel ist.
+
+**Typischer Fehler:** Lineare Substitution erkennen, aber den Faktor $1/a$ nicht anwenden — eines der häufigsten Versehen in Prüfungen.`,
+        [
+          'Mache die Probe: leite Evas $e^{2x}$ ab.',
+          'Erhältst du $e^{2x}$ zurück? Falls nein: wo fehlt der Faktor?',
+          'Lineare Substitution $u = 2x$: $dx = du/2$, also Faktor $1/2$.',
+        ],
+        {
+          1: 'Probe widerlegt: $(e^{2x})\' = 2 e^{2x}$, nicht $e^{2x}$. Der Faktor $1/2$ fehlt.',
+          2: '$u = e^{2x}$ würde $du = 2 e^{2x} dx$ ergeben — eine ganz andere Substitution, die das ursprüngliche Integral noch komplizierter macht. $u = 2x$ ist die korrekte Wahl.',
+          3: 'Doch — der Faktor $1/a$ ist genau das Wesen der linearen Substitution. Ohne ihn stimmt die Probe nicht: $(e^{2x})\' = 2 e^{2x} \\neq e^{2x}$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['subst-linear'] },
+      ),
+
+      // Matrix-Zeile 20: SG 3 · transfer · number-input · uses=[subst-linear]
+      ni(
+        'Berechne $\\int_{0}^{\\pi/4} \\sin(2x)\\,dx$ exakt.',
+        0.5,
+        0.001,
+        '',
+        `**Ansatz:** Lineare Substitution $u = 2x$ + Grenzen mit substituieren.
+
+**Rechnung:** $u = 2x$, $du = 2\\,dx$, $dx = du/2$. Grenzen: $x = 0 \\to u = 0$; $x = \\pi/4 \\to u = \\pi/2$. $\\int_{0}^{\\pi/2} \\sin(u) \\cdot \\dfrac{du}{2} = \\dfrac{1}{2}[-\\cos(u)]_{0}^{\\pi/2} = \\dfrac{1}{2}(-0 - (-1)) = \\dfrac{1}{2}$.
+
+**Probe:** Direkt: $\\left[-\\dfrac{\\cos(2x)}{2}\\right]_{0}^{\\pi/4} = -\\dfrac{\\cos(\\pi/2)}{2} + \\dfrac{\\cos(0)}{2} = 0 + \\dfrac{1}{2} = \\dfrac{1}{2}$ ✓.
+
+**Typischer Fehler:** Grenzen NICHT umrechnen ($\\int_{0}^{\\pi/4} \\sin(u)\\,du/2$ liefert dann falsche Antwort) ODER Faktor $1/2$ vergessen.`,
+        [
+          'Substitution $u = 2x$: Grenzen $0 \\to 0$, $\\pi/4 \\to \\pi/2$.',
+          '$\\int_{0}^{\\pi/2} \\sin(u)/2\\,du = (1/2)[-\\cos(u)]_{0}^{\\pi/2}$.',
+          '$(-\\cos(\\pi/2) - (-\\cos 0))/2 = (0 + 1)/2 = 0{,}5$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['subst-linear'] },
+      ),
+
+      // Bonus SG 3 — ni Variation
+      ni(
+        'Berechne $\\int (5x - 3)^{4}\\,dx = \\dfrac{(5x - 3)^{5}}{a} + C$. Bestimme $a$.',
+        25,
+        0,
+        '',
+        `**Ansatz:** Lineare Substitution $u = 5x - 3$.
+
+**Rechnung:** $u = 5x - 3$, $du = 5\\,dx$, $dx = du/5$. $\\int u^{4} \\cdot du/5 = \\dfrac{u^{5}}{25} + C = \\dfrac{(5x-3)^{5}}{25} + C$. Also $a = 25$.
+
+**Probe:** $\\left(\\dfrac{(5x-3)^{5}}{25}\\right)' = \\dfrac{5(5x-3)^{4} \\cdot 5}{25} = (5x-3)^{4}$ ✓.
+
+**Typischer Fehler:** $a = 5$ angeben (nur den Faktor $1/5$ aus der linearen Substitution berücksichtigen) statt $a = 25$ (beide Faktoren $5$: einmal aus Potenzregel $5+1=5$ und einmal aus $dx = du/5$).`,
+        [
+          'Substitution $u = 5x - 3$, $du = 5\\,dx$.',
+          'Potenzregel: $\\int u^{4}\\,du = u^{5}/5$.',
+          'Mal $1/5$ aus $dx = du/5$ ergibt $u^{5}/25$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['subst-linear'] },
+      ),
+    ],
+
+    // ── [4] Trigonometrische Substitution ─────────────────────────────────
+    4: [
+      // Matrix-Zeile 21: SG 4 · recognize · true-false · uses=[subst-trig]
+      tf(
+        'Für Integranden mit $\\sqrt{1 - x^{2}}$ ist die trigonometrische Substitution $x = \\sin(u)$ üblich (mit $dx = \\cos(u)\\,du$); für $\\dfrac{1}{1 + x^{2}}$ ist $x = \\tan(u)$ natürlich (mit $dx = \\sec^{2}(u)\\,du$).',
+        true,
+        `**Ansatz:** Trigonometrische Identitäten nutzen, um Wurzeln oder rationale Ausdrücke zu vereinfachen.
+
+**Rechnung:** Bei $\\sqrt{1 - x^{2}}$: mit $x = \\sin u$ wird $\\sqrt{1 - \\sin^{2} u} = \\sqrt{\\cos^{2} u} = \\cos u$ — Wurzel verschwindet. Bei $1 + x^{2}$: mit $x = \\tan u$ wird $1 + \\tan^{2} u = \\sec^{2} u$ — Vereinfachung.
+
+**Probe:** $\\int \\dfrac{1}{1+x^{2}}\\,dx$ mit $x = \\tan u$: $dx = \\sec^{2} u\\,du$, $1+x^{2} = \\sec^{2} u$. $\\int \\dfrac{\\sec^{2} u}{\\sec^{2} u}\\,du = \\int du = u = \\arctan x + C$ ✓.
+
+**Typischer Fehler:** Substitution falsch herum anwenden — z. B. $u = 1 - x^{2}$ bei $\\sqrt{1 - x^{2}}$ (klappt nicht ohne weiteren Faktor).`,
+        [
+          'Trig-Identität: $1 - \\sin^{2} u = ?$',
+          '$\\cos^{2} u$ — daher $\\sqrt{1 - \\sin^{2} u} = \\cos u$ (für $u \\in [-\\pi/2, \\pi/2]$).',
+          'Analog: $1 + \\tan^{2} u = \\sec^{2} u$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['subst-trig'] },
+      ),
+
+      // Matrix-Zeile 22: SG 4 · apply-guided · multiple-choice · uses=[subst-trig]
+      mc(
+        'Welche Substitution ist für $\\int \\dfrac{1}{1 + x^{2}}\\,dx$ am natürlichsten (trigonometrische Substitution)?',
+        [
+          '$x = \\tan(u)$',
+          '$u = 1 + x^{2}$',
+          '$x = \\sin(u)$',
+          '$x = \\cos(u)$',
+        ],
+        0,
+        `**Ansatz:** Trig-Identität $1 + \\tan^{2} u = \\sec^{2} u$ erkennen.
+
+**Rechnung:** Mit $x = \\tan u$: $dx = \\sec^{2} u\\,du$, $1 + x^{2} = \\sec^{2} u$. Integral wird $\\int \\dfrac{\\sec^{2} u}{\\sec^{2} u}\\,du = \\int 1\\,du = u + C = \\arctan(x) + C$.
+
+**Probe:** $(\\arctan x)' = \\dfrac{1}{1 + x^{2}}$ ✓.
+
+**Typischer Fehler:** $u = 1 + x^{2}$ wählen — gibt $du = 2x\\,dx$, aber im Integrand steht nicht $2x$, sondern $1$. Die Substitution endet in einer Sackgasse.`,
+        [
+          'Welche Trig-Identität greift bei $1 + x^{2}$?',
+          '$1 + \\tan^{2} u = \\sec^{2} u$ — Vereinfachung.',
+          'Mit $x = \\tan u$ wird der Nenner $\\sec^{2} u$, was sich gegen $dx = \\sec^{2} u\\,du$ kürzt.',
+        ],
+        {
+          1: '$u = 1 + x^{2}$ gibt $du = 2x\\,dx$, aber im Integrand fehlt der Faktor $2x$. Die Substitution scheitert direkt.',
+          2: '$x = \\sin u$ ergibt $1 + \\sin^{2} u$ — keine bekannte Identität, kein Vereinfachungsschritt. Diese Substitution funktioniert hier nicht.',
+          3: '$x = \\cos u$ würde $dx = -\\sin u\\,du$ und $1 + \\cos^{2} u$ — auch keine bekannte Vereinfachung. $x = \\tan u$ ist die kanonische Wahl.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['subst-trig'] },
+      ),
+
+      // Matrix-Zeile 23: SG 4 · apply-independent · number-input · uses=[subst-trig]
+      ni(
+        'Berechne $\\int_{0}^{1} \\dfrac{1}{1 + x^{2}}\\,dx$ exakt (auf 3 Nachkommastellen).',
+        0.785,
+        0.01,
+        '',
+        `**Ansatz:** Standardform: $\\int \\dfrac{1}{1+x^{2}}\\,dx = \\arctan(x) + C$ (über trig. Substitution oder bekannte Stammfunktion).
+
+**Rechnung:** $F(x) = \\arctan(x)$. $\\int_{0}^{1} \\dfrac{1}{1+x^{2}}\\,dx = \\arctan(1) - \\arctan(0) = \\dfrac{\\pi}{4} - 0 = \\dfrac{\\pi}{4} \\approx 0{,}785$.
+
+**Probe:** $\\tan(\\pi/4) = 1$ ✓, also $\\arctan(1) = \\pi/4$.
+
+**Typischer Fehler:** $\\arctan(1)$ in Grad ($45°$) statt im Bogenmaß ($\\pi/4 \\approx 0{,}785$) angeben.`,
+        [
+          'Stammfunktion: $\\arctan(x)$.',
+          '$\\arctan(1) = \\pi/4$, $\\arctan(0) = 0$.',
+          '$\\pi/4 \\approx 0{,}785$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['subst-trig'] },
+      ),
+
+      // Matrix-Zeile 24: SG 4 · error-analysis · multiple-choice · uses=[subst-trig]
+      mc(
+        'Anna versucht $\\int \\sqrt{1 - x^{2}}\\,dx$ mit der Substitution $u = 1 - x^{2}$, $du = -2x\\,dx$ zu lösen, scheitert aber. Warum funktioniert ihre Substitution nicht und welche wäre besser?',
+        [
+          'Die Substitution $u = 1 - x^{2}$ scheitert, weil im Integrand kein Faktor $-2x$ (Ableitung von $1 - x^{2}$) vorkommt. Besser: trigonometrische Substitution $x = \\sin(u)$, dann $\\sqrt{1 - x^{2}} = \\cos(u)$ und $dx = \\cos(u)\\,du$.',
+          'Anna hat richtig — die Substitution $u = 1 - x^{2}$ funktioniert immer, sie hat nur einen Rechenfehler.',
+          'Anna hätte $u = x^{2} - 1$ verwenden müssen — dann ist die Wurzel definiert.',
+          'Sie sollte partielle Integration verwenden, weil Wurzel-Integrale immer so gelöst werden.',
+        ],
+        0,
+        `**Ansatz:** Eine Substitution braucht den passenden Faktor — Annas Wahl scheitert genau daran.
+
+**Rechnung:** Mit $u = 1 - x^{2}$: $du = -2x\\,dx$. Aber im Integrand steht nur $\\sqrt{1-x^{2}}$, kein Faktor $x$. Es bleibt ein $x$ übrig, das nicht durch $u$ ausdrückbar ist (außer durch $x = \\pm\\sqrt{1-u}$ — verkompliziert die Sache).
+
+Trigonometrische Substitution: $x = \\sin u$, $dx = \\cos u\\,du$, $\\sqrt{1 - x^{2}} = \\cos u$. Integral: $\\int \\cos u \\cdot \\cos u\\,du = \\int \\cos^{2} u\\,du = \\dfrac{u}{2} + \\dfrac{\\sin 2u}{4} + C = \\dfrac{\\arcsin x}{2} + \\dfrac{x\\sqrt{1-x^{2}}}{2} + C$.
+
+**Probe:** Direkter Trick — die Funktion $\\sqrt{1-x^{2}}$ beschreibt einen Halbkreis. Trig. Substitution macht die Geometrie sichtbar.
+
+**Typischer Fehler:** Auf "innere Funktion" $1 - x^{2}$ fixieren, ohne den Ableitungsfaktor zu prüfen.`,
+        [
+          'Welcher Faktor müsste im Integrand sein, damit $u = 1-x^{2}$ funktioniert?',
+          'Hilft die Substitution $u = 1 - x^{2}$ ohne Faktor $-2x$? Probiere es!',
+          'Trig-Substitution $x = \\sin u$: was wird aus $\\sqrt{1-x^{2}}$?',
+        ],
+        {
+          1: 'Falsch — der Fehler ist konzeptuell, nicht rechnerisch. Annas Substitution greift nicht, weil $g\'(x) = -2x$ nicht im Integrand vorkommt.',
+          2: 'Mit $u = x^{2} - 1$ wäre $\\sqrt{u}$ für $|x| > 1$ definiert, aber das ändert das Problem nicht — der Ableitungsfaktor fehlt weiterhin.',
+          3: 'Partielle Integration ist für Wurzel-Integrale NICHT die Standardmethode. Für $\\sqrt{1-x^{2}}$ ist trigonometrische Substitution der elegante Weg.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['subst-trig'] },
+      ),
+
+      // Matrix-Zeile 25: SG 4 · transfer · multiple-choice · uses=[subst-trig]
+      mc(
+        'Berechne $\\int \\dfrac{1}{\\sqrt{1 - x^{2}}}\\,dx$ mit der Substitution $x = \\sin(u)$.',
+        [
+          '$\\arcsin(x) + C$',
+          '$\\arccos(x) + C$',
+          '$\\arctan(x) + C$',
+          '$\\ln(1 - x^{2}) + C$',
+        ],
+        0,
+        `**Ansatz:** Trig. Substitution $x = \\sin u$, $dx = \\cos u\\,du$, $\\sqrt{1 - x^{2}} = \\cos u$.
+
+**Rechnung:** $\\int \\dfrac{1}{\\sqrt{1 - x^{2}}}\\,dx = \\int \\dfrac{1}{\\cos u} \\cdot \\cos u\\,du = \\int 1\\,du = u + C = \\arcsin(x) + C$.
+
+**Probe:** $(\\arcsin x)' = \\dfrac{1}{\\sqrt{1 - x^{2}}}$ ✓.
+
+**Typischer Fehler:** $\\arccos$ statt $\\arcsin$ — die unterscheiden sich nur um eine Konstante ($\\arccos x = \\pi/2 - \\arcsin x$), aber die kanonische Form ist $\\arcsin$.`,
+        [
+          'Mit $x = \\sin u$: was wird aus $\\sqrt{1 - x^{2}}$?',
+          'Wurzel verschwindet zu $\\cos u$ — und $dx = \\cos u\\,du$.',
+          'Integral wird $\\int 1\\,du = u = \\arcsin x$.',
+        ],
+        {
+          1: 'Probe: $(\\arccos x)\' = -\\dfrac{1}{\\sqrt{1-x^{2}}}$ (mit Minus!), aber das Integral ist $+\\dfrac{1}{\\sqrt{1-x^{2}}}$ (ohne Minus). $\\arccos x$ und $\\arcsin x$ unterscheiden sich um $\\pi/2$ (Konstante), aber Vorzeichen unterscheidet sie.',
+          2: '$\\arctan$ ist Stammfunktion von $\\dfrac{1}{1+x^{2}}$, NICHT von $\\dfrac{1}{\\sqrt{1-x^{2}}}$. Probe widerlegt: $(\\arctan x)\' = \\dfrac{1}{1+x^{2}}$.',
+          3: 'Probe: $(\\ln(1-x^{2}))\' = \\dfrac{-2x}{1-x^{2}} \\neq \\dfrac{1}{\\sqrt{1-x^{2}}}$. Funktional ganz anderes Ergebnis.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['subst-trig'] },
+      ),
+    ],
+
+    // ── [5] Logarithmische Ableitung: $\int f'/f\,dx = \ln|f| + C$ ─────────
+    5: [
+      // Matrix-Zeile 26: SG 5 · recognize · true-false · uses=[log-ableitung]
+      tf(
+        'Wenn der Integrand die Form $\\dfrac{f\'(x)}{f(x)}$ hat (Ableitung des Nenners genau im Zähler), dann ist die Stammfunktion $\\ln\\lvert f(x)\\rvert + C$.',
+        true,
+        `**Ansatz:** Spezialfall der Substitution mit $u = f(x)$ — die "logarithmische Ableitung".
+
+**Rechnung:** $u = f(x) \\Rightarrow du = f'(x)\\,dx$. Integral $\\int \\dfrac{f'(x)}{f(x)}\\,dx = \\int \\dfrac{du}{u} = \\ln\\lvert u\\rvert + C = \\ln\\lvert f(x)\\rvert + C$.
+
+**Probe:** Beispiel $\\int \\dfrac{2x}{x^{2}+1}\\,dx = \\ln(x^{2}+1) + C$ (Betrag entfällt, da $x^{2}+1 > 0$). Probe: $(\\ln(x^{2}+1))' = \\dfrac{2x}{x^{2}+1}$ ✓.
+
+**Typischer Fehler:** Form $\\dfrac{1}{f(x)}$ (ohne Ableitung im Zähler) mit dem Standardfall verwechseln — $\\int \\dfrac{1}{x^{2}+1}\\,dx = \\arctan x$, nicht $\\ln$.`,
+        [
+          'Was passiert mit Substitution $u = f(x)$ bei Form $f\'(x)/f(x)$?',
+          '$du = f\'(x)\\,dx$ — passt perfekt zum Zähler.',
+          'Integral wird $\\int du/u = \\ln|u| = \\ln|f(x)|$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['log-ableitung'] },
+      ),
+
+      // Matrix-Zeile 27: SG 5 · apply-guided · multiple-choice · uses=[log-ableitung]
+      mc(
+        'Berechne $\\int \\dfrac{2x}{x^{2} + 1}\\,dx$.',
+        [
+          '$\\ln(x^{2} + 1) + C$',
+          '$\\ln\\lvert 2x\\rvert + C$',
+          '$\\dfrac{2}{2x} + C$',
+          '$\\arctan(x) + C$',
+        ],
+        0,
+        `**Ansatz:** Form $\\dfrac{f'(x)}{f(x)}$ mit $f(x) = x^{2}+1$, $f'(x) = 2x$ — logarithmische Ableitung.
+
+**Rechnung:** $\\int \\dfrac{2x}{x^{2}+1}\\,dx = \\ln\\lvert x^{2}+1\\rvert + C = \\ln(x^{2}+1) + C$ (Betrag entfällt, $x^{2}+1 > 0$).
+
+**Probe:** $(\\ln(x^{2}+1))' = \\dfrac{2x}{x^{2}+1}$ ✓.
+
+**Typischer Fehler:** $\\arctan(x)$ angeben — das wäre Stammfunktion von $\\dfrac{1}{1+x^{2}}$, aber hier steht $\\dfrac{2x}{x^{2}+1}$ (Zähler $2x$, nicht $1$).`,
+        [
+          'Welche Form hat der Integrand? Erkenne $f\'/f$.',
+          '$f(x) = x^{2}+1$, $f\'(x) = 2x$ — passt perfekt.',
+          'Stammfunktion: $\\ln|f(x)| = \\ln(x^{2}+1)$.',
+        ],
+        {
+          1: '$\\ln|2x| = \\ln 2 + \\ln|x|$ wäre Stammfunktion von $1/x$, nicht von $2x/(x^{2}+1)$. Probe widerlegt: $(\\ln|2x|)\' = 1/x \\neq 2x/(x^{2}+1)$.',
+          2: '$\\dfrac{2}{2x} = \\dfrac{1}{x}$ — du hast den Integrand mit der Stammfunktion verwechselt. Korrekt: integrieren liefert $\\ln$.',
+          3: '$\\arctan$ ist Stammfunktion von $\\dfrac{1}{1+x^{2}}$ (mit Zähler $1$, nicht $2x$). Hier ist der Zähler genau $f\'(x) = 2x$, also Standardform der log. Ableitung: $\\ln(x^{2}+1)$.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['log-ableitung'] },
+      ),
+
+      // Matrix-Zeile 28: SG 5 · apply-independent · number-input · uses=[log-ableitung]
+      ni(
+        'Berechne $\\int_{0}^{1} \\dfrac{4x}{x^{2} + 3}\\,dx$ exakt (auf 3 Nachkommastellen).',
+        0.575,
+        0.01,
+        '',
+        `**Ansatz:** Form $\\dfrac{2 \\cdot f'(x)}{f(x)}$ mit $f(x) = x^{2} + 3$, $f'(x) = 2x$. Der Faktor $2$ kommt vor das Integral.
+
+**Rechnung:** $\\int \\dfrac{4x}{x^{2}+3}\\,dx = 2 \\int \\dfrac{2x}{x^{2}+3}\\,dx = 2 \\ln(x^{2}+3) + C$. Bestimmtes Integral: $[2\\ln(x^{2}+3)]_{0}^{1} = 2\\ln(4) - 2\\ln(3) = 2\\ln(4/3) \\approx 2 \\cdot 0{,}2877 \\approx 0{,}575$.
+
+**Probe:** $(2\\ln(x^{2}+3))' = 2 \\cdot \\dfrac{2x}{x^{2}+3} = \\dfrac{4x}{x^{2}+3}$ ✓.
+
+**Typischer Fehler:** Den Vorfaktor $2$ vergessen — würde nur $\\ln(4/3) \\approx 0{,}287$ liefern.`,
+        [
+          'Zähler $4x$, Nenner $x^{2}+3$. Ableitung des Nenners ist $2x$ — Faktor $2$ "fehlt" doppelt.',
+          'Stammfunktion: $2 \\ln(x^{2}+3)$ (Faktor $2$ aus $4x = 2 \\cdot 2x$).',
+          '$2(\\ln 4 - \\ln 3) = 2 \\ln(4/3) \\approx 0{,}575$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['log-ableitung'] },
+      ),
+
+      // Matrix-Zeile 29: SG 5 · error-analysis · multiple-choice · uses=[log-ableitung]
+      mc(
+        'Tim berechnet $\\int \\dfrac{1}{x^{2} + 1}\\,dx = \\ln\\lvert x^{2} + 1\\rvert + C$. Wo liegt der Fehler?',
+        [
+          'Die log-Ableitungs-Form verlangt $\\dfrac{f\'(x)}{f(x)}$ — also Ableitung des Nenners im Zähler. Hier ist $f(x) = x^{2}+1$, $f\'(x) = 2x$, aber im Zähler steht $1$, nicht $2x$. Korrekt: $\\int \\dfrac{1}{x^{2}+1}\\,dx = \\arctan(x) + C$.',
+          'Tim hat richtig — $\\int \\dfrac{1}{f(x)}\\,dx = \\ln\\lvert f(x)\\rvert + C$ gilt für jedes $f$.',
+          '$x^{2}+1 > 0$, also entfällt der Betrag — aber sonst stimmt\'s.',
+          'Tim hätte zuerst die Substitution $u = x^{2}+1$ verwenden müssen.',
+        ],
+        0,
+        `**Ansatz:** Die log-Ableitungs-Form $\\dfrac{f'(x)}{f(x)}$ verlangt EXAKT die Ableitung im Zähler — nicht jeden Bruch $\\dfrac{1}{f}$.
+
+**Rechnung:** Probe an Tims Antwort: $(\\ln(x^{2}+1))' = \\dfrac{2x}{x^{2}+1} \\neq \\dfrac{1}{x^{2}+1}$. Tims Stammfunktion ist falsch. Korrekt: $\\int \\dfrac{1}{x^{2}+1}\\,dx = \\arctan(x) + C$ (Standardformel, kein log).
+
+**Probe:** $(\\arctan x)' = \\dfrac{1}{x^{2}+1}$ ✓.
+
+**Typischer Fehler:** $\\dfrac{1}{f(x)}$ und $\\dfrac{f'(x)}{f(x)}$ verwechseln — beide haben einen Bruch, aber unterschiedliche Stammfunktionen ($\\arctan$ vs. $\\ln$).`,
+        [
+          'Mache die Probe: leite Tims $\\ln(x^{2}+1)$ ab.',
+          'Erhältst du $\\dfrac{1}{x^{2}+1}$ oder $\\dfrac{2x}{x^{2}+1}$?',
+          'Welche Form passt für $\\dfrac{1}{1+x^{2}}$ — log oder arctan?',
+        ],
+        {
+          1: 'Falsch — $\\int 1/f\\,dx = \\ln|f|$ gilt NICHT für jedes $f$, sondern nur in der speziellen Form $f\'/f$. Hier steht $1$, nicht $f\' = 2x$.',
+          2: 'Der Betrag ist gar nicht das Hauptproblem — Tims Stammfunktion ist auch ohne Betrag falsch. Probe: $(\\ln(x^{2}+1))\' = 2x/(x^{2}+1) \\neq 1/(x^{2}+1)$.',
+          3: 'Mit $u = x^{2}+1$ wäre $du = 2x\\,dx$, aber im Integrand fehlt der Faktor $2x$. Die Substitution greift nicht. $\\int 1/(1+x^{2})\\,dx = \\arctan x$ ist die Standardformel.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['log-ableitung'] },
+      ),
+
+      // Matrix-Zeile 30: SG 5 · transfer · matching · uses=[log-ableitung]
+      matching(
+        'Ordne jedem Integral seine Stammfunktion zu (jeweils ohne $+C$).',
+        [
+          { left: '$\\int \\dfrac{1}{x}\\,dx$',                       right: '$\\ln\\lvert x\\rvert$' },
+          { left: '$\\int \\dfrac{\\cos(x)}{\\sin(x)}\\,dx$',           right: '$\\ln\\lvert \\sin(x)\\rvert$' },
+          { left: '$\\int \\dfrac{2x}{x^{2} + 5}\\,dx$',               right: '$\\ln(x^{2} + 5)$' },
+          { left: '$\\int \\dfrac{e^{x}}{e^{x} + 1}\\,dx$',             right: '$\\ln(e^{x} + 1)$' },
+        ],
+        `**Ansatz:** Jeweils Form $f'(x)/f(x)$ erkennen und Stammfunktion $\\ln|f(x)|$ schreiben.
+
+**Rechnung:**
+- $\\int 1/x\\,dx$: $f(x) = x$, $f'(x) = 1$ — Standardfall.
+- $\\int \\cos x/\\sin x\\,dx$: $f(x) = \\sin x$, $f'(x) = \\cos x$.
+- $\\int 2x/(x^{2}+5)\\,dx$: $f(x) = x^{2}+5$, $f'(x) = 2x$. Betrag entfällt da $x^{2}+5 > 0$.
+- $\\int e^{x}/(e^{x}+1)\\,dx$: $f(x) = e^{x}+1$, $f'(x) = e^{x}$. Betrag entfällt da $e^{x}+1 > 0$.
+
+**Probe:** Jede Stammfunktion ableiten und mit dem Integranden vergleichen — alle vier Identitäten gelten.
+
+**Typischer Fehler:** Bei der zweiten Zeile $\\ln|\\cos x|$ schreiben (verwechselt $f$ und $f\'$) — korrekt ist $\\ln|\\sin x|$, denn $\\sin$ steht im Nenner.`,
+        [
+          'Suche $f$ im Nenner und prüfe, ob der Zähler genau $f\'$ ist.',
+          'Stammfunktion ist dann $\\ln|f|$.',
+          'Beim Betrag: wenn $f > 0$ überall, kannst du ihn weglassen.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['log-ableitung'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // int-3-4 — Bogenlänge & Durchschnittswert  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'int-3-4': {

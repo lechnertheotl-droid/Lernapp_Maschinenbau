@@ -29,6 +29,7 @@ export const exercises_int_u2 = {
       '2': 'Partielle Integration ist eine eigene, andere Technik (Umkehrung der Produktregel). Die Substitutionsmethode beginnt mit der Wahl $u = g(x)$ — typischerweise eines inneren Ausdrucks, dessen Ableitung als Faktor im Integrand vorkommt.',
       '3': 'Partialbruchzerlegung ist eine dritte, unabhängige Technik (nur für rationale Funktionen). Die Substitutionsmethode beginnt mit $u = g(x)$ und $du = g\'(x)\\,dx$ — Umkehrung der Kettenregel.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['subst-erkennen'] },
   },
   'ex-int-2-1-b': {
     id: 'ex-int-2-1-b', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -55,6 +56,7 @@ export const exercises_int_u2 = {
       '2': 'Du hast den Faktor $2$ aus $du = 2x\\,dx$ als zusätzlichen Vorfaktor vor das Ergebnis gezogen — er ist aber bereits aufgebraucht, weil $2x\\,dx$ genau $du$ ersetzt. Richtig: $\\int 2x\\,e^{x^{2}}\\,dx = \\int e^{u}\\,du = e^{x^{2}} + C$ (ohne Faktor $2$).',
       '3': 'Du hast zusätzlich durch $2$ geteilt — aber $du = 2x\\,dx$ stimmt ohne Umstellen genau mit dem $2x\\,dx$ im Integrand überein. Es gibt keinen Korrekturfaktor: $\\int 2x\\,e^{x^{2}}\\,dx = \\int e^{u}\\,du = e^{x^{2}} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['subst-formel'] },
   },
   'ex-int-2-1-c': {
     id: 'ex-int-2-1-c', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -80,6 +82,7 @@ export const exercises_int_u2 = {
       '2': 'Du hast mit $3$ multipliziert statt durch $3$ zu teilen — Vorzeichen/Richtung vertauscht. Aus $du = 3\\,dx$ folgt $dx = du/3$, also wird ein Faktor $\\dfrac{1}{3}$ vor das Integral gezogen: $\\int \\cos(3x)\\,dx = \\dfrac{\\sin(3x)}{3} + C$.',
       '3': 'Du hast ein Minuszeichen erfunden, das hier nicht vorkommt. $\\int \\cos\\,du = +\\sin$ (ohne Minus). Mit dem Faktor $\\dfrac{1}{3}$ aus der linearen Substitution: $\\int \\cos(3x)\\,dx = +\\dfrac{\\sin(3x)}{3} + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['subst-linear'] },
   },
   'ex-int-2-1-d': {
     id: 'ex-int-2-1-d', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -106,6 +109,7 @@ export const exercises_int_u2 = {
       '2': 'Du hast die Produktregel rückwärts erfunden — Integration eines Produkts ist nicht das Produkt der Integrale. Die Substitution $u = x^{2}+1$ absorbiert den $x$-Faktor: $\\int u^{4} \\cdot \\dfrac{du}{2} = \\dfrac{u^{5}}{10} + C$.',
       '3': 'Du hast sowohl den Faktor $\\dfrac{1}{2}$ aus $x\\,dx = du/2$ als auch den Teilen-durch-$5$-Schritt aus der Potenzregel vergessen. Korrekt: $\\int u^{4}\\,du = \\dfrac{u^{5}}{5}$, mal $\\dfrac{1}{2}$ ergibt $\\dfrac{u^{5}}{10}$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['subst-erkennen', 'subst-formel'] },
   },
   'ex-int-2-1-mastery': {
     id: 'ex-int-2-1-mastery', lessonId: 'int-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -114,13 +118,11 @@ export const exercises_int_u2 = {
     correctIndex: 3,
     explanation: `**Ansatz:** Zwei mögliche Substitutionen — beide führen zu einem Ergebnis, das sich nur um eine Konstante unterscheidet.
 
-**Rechnung 1:** $u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx$: $\\int u\\,du = \\dfrac{u^{2}}{2} + C = \\dfrac{\\sin^{2}(x)}{2} + C$.
+**Rechnung:** Variante 1 mit $u = \\sin(x) \\Rightarrow du = \\cos(x)\\,dx$: $\\int u\\,du = \\dfrac{u^{2}}{2} + C = \\dfrac{\\sin^{2}(x)}{2} + C$. Variante 2 mit $u = \\cos(x) \\Rightarrow du = -\\sin(x)\\,dx$: $-\\int u\\,du = -\\dfrac{u^{2}}{2} + C = -\\dfrac{\\cos^{2}(x)}{2} + C$.
 
-**Rechnung 2:** $u = \\cos(x) \\Rightarrow du = -\\sin(x)\\,dx$: $-\\int u\\,du = -\\dfrac{u^{2}}{2} + C = -\\dfrac{\\cos^{2}(x)}{2} + C$.
+**Probe:** Sind beide Ergebnisse äquivalent? $\\dfrac{\\sin^{2}(x)}{2} = \\dfrac{1 - \\cos^{2}(x)}{2} = \\dfrac{1}{2} - \\dfrac{\\cos^{2}(x)}{2}$ — beide unterscheiden sich nur um die Konstante $\\dfrac{1}{2}$, die im $C$ aufgeht. ✓
 
-**Probe — beide äquivalent?** $\\dfrac{\\sin^{2}(x)}{2} = \\dfrac{1 - \\cos^{2}(x)}{2} = \\dfrac{1}{2} - \\dfrac{\\cos^{2}(x)}{2}$. Beide Ergebnisse unterscheiden sich nur um $\\dfrac{1}{2}$ — steckt im $C$!
-
-**Typischer Fehler:** Denken, nur eine Substitution sei "die richtige" — beide sind gültig.`,
+**Typischer Fehler:** Denken, nur eine Substitution sei "die richtige" — beide sind gültig und liefern Stammfunktionen aus derselben Familie.`,
     hints: [
       'Es gibt zwei mögliche Substitutionen: $u = \\sin(x)$ oder $u = \\cos(x)$.',
       'Mit $u = \\sin(x)$: $du = \\cos(x)\\,dx$, Integral wird $\\int u\\,du$.',
@@ -131,6 +133,7 @@ export const exercises_int_u2 = {
       '1': 'Die Antwort ist rechnerisch richtig ($u = \\cos(x)$-Substitution, $du = -\\sin(x)\\,dx$), aber unvollständig: Auch Option A ($u = \\sin(x)$) ist korrekt. Wegen $\\sin^{2}(x) = 1 - \\cos^{2}(x)$ unterscheiden sich die Ergebnisse nur um $\\dfrac{1}{2}$ — beide gültig.',
       '2': 'Du hast den Integrand unverändert stehen gelassen — Integration eines Produkts ist aber nicht das Produkt selbst. Mit $u = \\sin(x)$, $du = \\cos(x)\\,dx$ wird das Integral $\\int u\\,du = \\dfrac{\\sin^{2}(x)}{2} + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['subst-formel'] },
   },
 
   // ── Lesson 2: Partielle Integration ───────────────────────────────────────
@@ -654,7 +657,20 @@ $$\\int f(g(x)) \\cdot g'(x)\\,dx \\;\\overset{u=g(x)}{=}\\; \\int f(u)\\,du$$
 4. $= e^{u} + C$
 5. $= e^{x^{2}} + C$
 
-**Tipp:** Die Substitution funktioniert am besten, wenn die Ableitung des gewählten $u$ bereits als Faktor im Integral vorkommt (eventuell bis auf eine Konstante).`,
+**Tipp:** Die Substitution funktioniert am besten, wenn die Ableitung des gewählten $u$ bereits als Faktor im Integral vorkommt (eventuell bis auf eine Konstante).
+
+**Wichtige Substitutionsmuster:**
+
+| Muster | Substitution | Beispiel |
+|---|---|---|
+| Lineare Substitution | $u = ax + b$, $du = a\\,dx$ | $\\int \\cos(3x)\\,dx = \\dfrac{\\sin(3x)}{3} + C$ |
+| Innere Funktion mit Ableitung | $u = g(x)$, falls $g'(x)$ als Faktor da | $\\int 2x \\cdot e^{x^{2}}\\,dx = e^{x^{2}} + C$ |
+| Logarithmische Ableitung | $u = f(x)$ bei Bruch $\\dfrac{f'(x)}{f(x)}$ | $\\int \\dfrac{f'(x)}{f(x)}\\,dx = \\ln\\lvert f(x)\\rvert + C$ |
+| Trig. Substitution: $\\sqrt{1-x^{2}}$ | $x = \\sin u$, $dx = \\cos u\\,du$ | $\\int \\sqrt{1 - x^{2}}\\,dx$ |
+| Trig. Substitution: $1 + x^{2}$ | $x = \\tan u$, $dx = \\sec^{2} u\\,du$ | $\\int \\dfrac{1}{1 + x^{2}}\\,dx = \\arctan x + C$ |
+| Bestimmtes Integral | Grenzen mit substituieren: $x = a \\to u = g(a)$ | $\\int_{0}^{1} 2x\\,e^{x^{2}}\\,dx \\to \\int_{0}^{1} e^{u}\\,du = e - 1$ |
+
+**Faustregel:** Bei $\\int \\dfrac{f'(x)}{f(x)}\\,dx$ ist die Substitution $u = f(x)$ Standard — Ergebnis $\\ln\\lvert f(x)\\rvert + C$ (logarithmische Ableitung). Beispiel: $\\int \\dfrac{2x}{x^{2} + 1}\\,dx = \\ln(x^{2} + 1) + C$.`,
       },
       { id: 'int-2-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-int-2-1-a' },
       { id: 'int-2-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-int-2-1-b' },
