@@ -421,20 +421,19 @@ export const exercises_vek_u1 = {
       'Immer den Nullvektor',
     ],
     correctIndex: 1,
-    explanation: `**Ansatz:** Merke den Unterschied zwischen Skalarprodukt und Kreuzprodukt.
+    explanation: `**Ansatz:** Skalarprodukt vs. Kreuzprodukt: Ergebnistyp und Lage zum Ausgangsvektor unterscheiden.
 
-**Definition:** Das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ ist ein **Vektor** (nur in 3D definiert), der **senkrecht** auf beiden Ausgangsvektoren steht. Richtung nach Rechte-Hand-Regel.
+**Rechnung:** Das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ liefert per Definition (nur in 3D) einen **Vektor**, der **senkrecht** auf beiden Ausgangsvektoren steht. Richtung nach Rechte-Hand-Regel. Anwendung: Normalvektor einer Ebene aus zwei Spannvektoren.
 
-**Test:** $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$ und $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = 0$ — das Kreuzprodukt ist orthogonal zu beiden.
+**Probe:** Test über Skalarprodukt: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$ und $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=0$ — beide null bestätigen die Orthogonalität zu $\\vec{a}$ und $\\vec{b}$.
 
-**Anwendung:** Damit bekommt man den **Normalvektor** einer Ebene, die von $\\vec{a}$ und $\\vec{b}$ aufgespannt wird.
-
-**Typischer Fehler:** "Eine Zahl" wäre das Skalarprodukt — Dimensionsverwechslung!`,
+**Typischer Fehler:** „Eine Zahl" wäre das **Skalarprodukt** $\\vec{a}\\cdot\\vec{b}$ — Dimensionsverwechslung. Skalarprodukt liefert Skalar, Kreuzprodukt liefert Vektor.`,
     hints: [
       'Kreuzprodukt oder Skalarprodukt? Kreuzprodukt liefert einen Vektor, Skalarprodukt eine Zahl.',
       'Steht das Ergebnis parallel zu den Ausgangsvektoren oder senkrecht dazu?',
       'Anwendung: Normalvektor der aufgespannten Ebene.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['kp-vektor', 'kp-orthog'] },
     wrongAnswerExplanations: {
       0: 'Eine Zahl liefert das *Skalarprodukt* $\\vec{a} \\cdot \\vec{b}$ — Dimensionsverwechslung. Das Kreuzprodukt liefert dagegen einen Vektor senkrecht zu beiden Ausgangsvektoren.',
       2: 'Das Kreuzprodukt steht per Konstruktion senkrecht auf beiden Vektoren, also auch senkrecht zu $\\vec{a}$ — nicht parallel. Prüfbar: $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$.',
@@ -450,18 +449,15 @@ export const exercises_vek_u1 = {
 
 **Rechnung:** Wenn $\\vec{a} \\parallel \\vec{b}$, dann $\\varphi = 0°$ → $\\sin(0°) = 0$ → $|\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot 0 = 0$.
 
-**Geometrisch:** Das Kreuzprodukt-Betrag ist die Fläche des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms. Parallele Vektoren spannen kein Parallelogramm auf → Fläche $= 0$. ✓
+**Probe:** Geometrisch — der Betrag des Kreuzprodukts ist die Fläche des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms. Parallele Vektoren spannen kein Parallelogramm auf → Fläche $= 0$. ✓ Außerdem: Spickzettel — $\\vec{a}\\cdot\\vec{b}=0\\iff\\vec{a}\\perp\\vec{b}$ (Skalarprodukt = senkrecht-Test); $\\vec{a}\\times\\vec{b}=\\vec{0}\\iff\\vec{a}\\parallel\\vec{b}$ (Kreuzprodukt = parallel-Test).
 
-**Merkregel:**
-- $\\vec{a} \\cdot \\vec{b} = 0 \\;\\Leftrightarrow\\; \\vec{a} \\perp \\vec{b}$ (senkrecht)
-- $\\vec{a} \\times \\vec{b} = \\vec{0} \\;\\Leftrightarrow\\; \\vec{a} \\parallel \\vec{b}$ (parallel)
-
-**Typischer Fehler:** $|\\vec{a}| \\cdot |\\vec{b}|$ wäre das Maximum — das tritt bei $\\varphi = 90°$ auf, nicht bei Parallelität.`,
+**Typischer Fehler:** $|\\vec{a}| \\cdot |\\vec{b}|$ wäre das **Maximum** — das tritt bei $\\varphi = 90°$ auf ($\\sin 90°=1$), nicht bei Parallelität.`,
     hints: [
       'In die Formel einsetzen: $\\varphi = 0°$, weil die Vektoren parallel sind.',
       '$\\sin(0°) = 0$.',
       'Geometrisch: Parallele Vektoren spannen keine Fläche auf.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['kp-parallel', 'kp-betrag'] },
     wrongAnswerExplanations: {
       0: '$|\\vec{a}| \\cdot |\\vec{b}|$ ist das *Maximum* von $|\\vec{a} \\times \\vec{b}|$ — erreicht bei $\\sin\\varphi = 1$, also $\\varphi = 90°$ (Orthogonalität). Bei Parallelität ist $\\sin(0°) = 0$, also $|\\vec{a} \\times \\vec{b}| = 0$.',
       1: '$1$ ist keine plausible Länge — das Ergebnis hängt von den Beträgen ab. Bei $\\vec{a} \\parallel \\vec{b}$ ist $\\sin\\varphi = 0$ und daher $|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}| \\cdot 0 = 0$.',
@@ -484,24 +480,19 @@ export const exercises_vek_u1 = {
     question: '[PRÜFUNG] Das Kreuzprodukt der Einheitsvektoren $\\hat{e}_1 \\times \\hat{e}_2$ (x- und y-Richtung) ergibt:',
     options: ['$\\hat{e}_1$', '$-\\hat{e}_3$', '$\\hat{e}_3$', '$\\vec{0}$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Standardregel für die Einheitsvektoren eines Rechtssystems — Rechte-Hand-Regel oder zyklische Regel.
+    explanation: `**Ansatz:** Standardregel für die Einheitsvektoren eines Rechtssystems — Rechte-Hand-Regel oder zyklische Regel anwenden.
 
-**Zyklische Regel:**
-$$\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3, \\quad \\hat{e}_2 \\times \\hat{e}_3 = \\hat{e}_1, \\quad \\hat{e}_3 \\times \\hat{e}_1 = \\hat{e}_2$$
+**Rechnung:** Zyklisch $1\\to 2\\to 3\\to 1$: $\\hat{e}_1\\times\\hat{e}_2=\\hat{e}_3$, $\\hat{e}_2\\times\\hat{e}_3=\\hat{e}_1$, $\\hat{e}_3\\times\\hat{e}_1=\\hat{e}_2$. Werden Indizes *entgegen* der zyklischen Reihenfolge gewählt, kommt das Negative heraus ($\\hat{e}_2\\times\\hat{e}_1=-\\hat{e}_3$). Hier: $\\hat{e}_1\\times\\hat{e}_2=\\hat{e}_3$ — zyklisch, also positiv.
 
-Werden die Indizes *entgegen* der zyklischen Reihenfolge gewählt, erhält man das Negative: $\\hat{e}_2 \\times \\hat{e}_1 = -\\hat{e}_3$.
+**Probe:** Komponentenformel mit $\\hat{e}_1=(1,0,0)$ und $\\hat{e}_2=(0,1,0)$: $\\hat{e}_1\\times\\hat{e}_2=(0\\cdot 0-0\\cdot 1,\\;0\\cdot 0-1\\cdot 0,\\;1\\cdot 1-0\\cdot 0)=(0,0,1)=\\hat{e}_3$. ✓ Rechte-Hand-Regel-Check: Zeigefinger $x$, Mittelfinger $y$, Daumen zeigt in $+z$ — passt.
 
-**Rechnung mit der Komponentenformel:** $\\hat{e}_1 = (1,0,0)$, $\\hat{e}_2 = (0,1,0)$.
-$\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\cdot 0,\\; 1 \\cdot 1 - 0 \\cdot 0) = (0, 0, 1) = \\hat{e}_3$. ✓
-
-**Rechte-Hand-Regel:** Zeigefinger $\\to \\hat{e}_1$ (x), Mittelfinger $\\to \\hat{e}_2$ (y), Daumen $\\to \\hat{e}_3$ (z).
-
-**Typischer Fehler:** $-\\hat{e}_3$ ergibt sich bei vertauschter Reihenfolge $\\hat{e}_2 \\times \\hat{e}_1$ — das Kreuzprodukt ist *antikommutativ*.`,
+**Typischer Fehler:** $-\\hat{e}_3$ ergibt sich bei vertauschter Reihenfolge $\\hat{e}_2\\times\\hat{e}_1$ — das Kreuzprodukt ist **antikommutativ**: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$.`,
     hints: [
       'Rechte-Hand-Regel: Zeigefinger x, Mittelfinger y, Daumen zeigt in welche Richtung?',
       'Zyklisch: $1 \\to 2 \\to 3 \\to 1$. Passt $\\hat{e}_1 \\times \\hat{e}_2$ zur zyklischen Reihenfolge?',
       'Bei zyklischer Reihenfolge positives Ergebnis: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['kp-komp', 'kp-rh-regel'] },
     wrongAnswerExplanations: {
       0: '$\\hat{e}_1$ wäre parallel zu einem der Ausgangsvektoren — das widerspricht der Kreuzprodukt-Eigenschaft, senkrecht zu beiden zu stehen. Zyklische Regel: $\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3$.',
       1: '$-\\hat{e}_3$ ergibt sich bei *vertauschter* Reihenfolge $\\hat{e}_2 \\times \\hat{e}_1$ — hier aber ist $\\hat{e}_1$ zuerst, also zyklisch und positiv: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',
@@ -531,6 +522,7 @@ $\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\c
       '$R_x = F_{1x} + F_{2x} + F_{3x}$, $R_y = F_{1y} + F_{2y} + F_{3y}$.',
       'Achte auf die Vorzeichen: $10 + 0 + (-3)$ und $0 + 5 + (-2)$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['resultierende', 'kraft-zerlegung'] },
     wrongAnswerExplanations: {
       1: 'Du hast bei $R_y$ das Minuszeichen von $F_{3y} = -2$ ignoriert: $0 + 5 - (-2) = 7$ statt $0 + 5 + (-2) = 3$. Richtig: $R_y = 3$, also $\\vec{R} = (7, 3)\\,\\text{N}$.',
       2: 'Du hast die *Beträge* addiert: $10 + 0 + 3 = 13$ und $0 + 5 + 2 = 7$. Das verliert die Richtungsinformation. Bei Vektoraddition werden Komponenten mit Vorzeichen addiert: $10 + 0 + (-3) = 7$ und $0 + 5 + (-2) = 3$.',
@@ -565,16 +557,15 @@ $\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\c
 **Rechnung:**
 $$-F_1 \\sin 30° + F_2 \\sin 45° = 0 \\;\\Leftrightarrow\\; F_1 \\sin 30° = F_2 \\sin 45°.$$
 
-**Probe (Plausibilität):** Seil 1 zieht nach links-oben, Seil 2 zieht nach rechts-oben. Damit die Masse nicht seitlich wegschwingt, müssen sich die **horizontalen** Komponenten gegenseitig aufheben. Genau das sagt die Gleichung aus.
+**Probe:** Plausibilitäts-Check — Seil 1 zieht nach links-oben, Seil 2 zieht nach rechts-oben. Damit die Masse nicht seitlich wegschwingt, müssen sich die **horizontalen** Komponenten gegenseitig aufheben. Genau das sagt die Gleichung aus.
 
-**Typischer Fehler:**
-- Antwort B nimmt die y-Komponenten ($\\cos$) — das wäre $\\sum F_y = 0$, eine *andere* Gleichung (betrifft Gewichtskraft).
-- Antwort D vergisst das Minuszeichen bei $\\vec{F}_1$ — dann wäre die Gleichung falsch.`,
+**Typischer Fehler:** Statt $\\sin$ (horizontale Komponenten) die $\\cos$-Anteile gleichgesetzt — das wäre $\\sum F_y = 0$, eine andere Gleichung (betrifft Gewichtskraft, nicht horizontales Gleichgewicht). Oder das Minuszeichen bei $\\vec{F}_1$ vergessen.`,
     hints: [
       'Aus welcher Bedingung? $\\sum F_x = 0$ — nur die x-Komponenten.',
       'Schreibe die Summe auf: $-F_1 \\sin 30° + F_2 \\sin 45° = 0$.',
       'Forme um nach $F_1 \\sin 30° = F_2 \\sin 45°$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['gleichgewicht'] },
     wrongAnswerExplanations: {
       1: 'Das wäre die $y$-Gleichgewichtsbedingung $\\sum F_y = 0$ (mit den $\\cos$-Anteilen) — sie betrifft Auflage gegen Gewichtskraft, nicht die horizontale Balance. Für $\\sum F_x = 0$ gelten die $\\sin$-Komponenten: $F_1 \\sin 30° = F_2 \\sin 45°$.',
       2: '$F_1 = F_2$ gilt nur bei symmetrischer Aufhängung (gleiche Winkel). Hier sind die Winkel aber $30°$ und $45°$ — daraus folgt $F_1 \\sin 30° = F_2 \\sin 45°$, und wegen $\\sin 30° < \\sin 45°$ ist $F_1 \\neq F_2$.',
@@ -591,22 +582,19 @@ $$-F_1 \\sin 30° + F_2 \\sin 45° = 0 \\;\\Leftrightarrow\\; F_1 \\sin 30° = F
       'Betrag beliebig;\u00a0 $\\hat{e} = \\vec{a} - |\\vec{a}|$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Ein **Einheitsvektor** hat per Definition die Länge 1 und zeigt in dieselbe Richtung wie der Ausgangsvektor.
+    explanation: `**Ansatz:** Ein **Einheitsvektor** hat per Definition die Länge 1 und zeigt in dieselbe Richtung wie der Ausgangsvektor — die Konstruktion ist Normierung durch den Betrag.
 
-**Formel:** $\\hat{e} = \\dfrac{\\vec{a}}{|\\vec{a}|}$ (Normieren = durch den eigenen Betrag dividieren).
+**Rechnung:** $\\hat{e}=\\dfrac{\\vec{a}}{|\\vec{a}|}$. Beispiel $\\vec{a}=(3,4)$, $|\\vec{a}|=5$ → $\\hat{e}=(3/5,\\,4/5)=(0{,}6;\\,0{,}8)$.
 
-**Probe:** $|\\hat{e}| = \\left|\\dfrac{\\vec{a}}{|\\vec{a}|}\\right| = \\dfrac{|\\vec{a}|}{|\\vec{a}|} = 1$. ✓
+**Probe:** Längencheck $|\\hat{e}|=\\left|\\dfrac{\\vec{a}}{|\\vec{a}|}\\right|=\\dfrac{|\\vec{a}|}{|\\vec{a}|}=1$. ✓ Numerisch: $\\sqrt{(3/5)^2+(4/5)^2}=\\sqrt{9/25+16/25}=\\sqrt{1}=1$ ✓.
 
-**Beispiel:** $\\vec{a} = (3, 4)$, $|\\vec{a}| = 5$. $\\hat{e} = \\left(\\tfrac{3}{5}, \\tfrac{4}{5}\\right)$. Prüfen: $|\\hat{e}| = \\sqrt{(3/5)^{2} + (4/5)^{2}} = \\sqrt{9/25 + 16/25} = \\sqrt{1} = 1$. ✓
-
-**Typischer Fehler:**
-- Antwort C ($|\\vec{a}| \\cdot \\vec{a}$): *Multiplikation* statt Division — streckt den Vektor, normiert ihn nicht.
-- Antwort D: Dimensionsfehler — man kann nicht Vektor minus Skalar rechnen.`,
+**Typischer Fehler:** Multiplikation statt Division ($|\\vec{a}|\\cdot\\vec{a}$) — das **streckt** den Vektor um Faktor $|\\vec{a}|$ statt zu normieren. Oder Vektor minus Skalar ($\\vec{a}-|\\vec{a}|$) — Dimensionsfehler.`,
     hints: [
       'Was bedeutet "Einheit"? Länge genau 1.',
       'Wie macht man aus einem Vektor der Länge $L$ einen Vektor der Länge $1$? Durch $L$ teilen.',
       'Formel: $\\hat{e} = \\vec{a} / |\\vec{a}|$.',
     ],
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['einheits-tech'] },
     wrongAnswerExplanations: {
       1: 'Der Einheitsvektor hat per Definition Länge $1$, nicht $0$ — ein Vektor mit Länge $0$ wäre der Nullvektor. Außerdem ist $\\vec{a} \\cdot |\\vec{a}|$ keine gültige Operation (Skalar mit Punktprodukt — hier meint man wohl Skalarmultiplikation, aber die *streckt* statt zu normieren).',
       2: 'Betrag $= 1$ stimmt, aber die Formel ist falsch: $|\\vec{a}| \\cdot \\vec{a}$ *multipliziert* statt *dividiert* — das streckt den Vektor. Richtig: $\\hat{e} = \\vec{a} / |\\vec{a}|$, weil man einen Vektor der Länge $L$ durch $L$ teilt, um Länge $1$ zu bekommen.',
@@ -1185,6 +1173,28 @@ Für eine Richtung ohne Länge: $\\hat{e} = \\dfrac{\\vec{a}}{|\\vec{a}|}$.
           ],
           showGrid: true, showSum: true,
         },
+      },
+      {
+        id: 'vek-1-4-s2b', type: 'explanation-formal', title: 'Formelübersicht — Kräfte als Vektoren',
+        content: `**Alle Standard-Werkzeuge dieser Lektion auf einen Blick.** Die Formeln gelten in 2D; in 3D ergänzen sich $z$-Komponenten analog.
+
+| Konzept | Formel | Beispiel |
+|---------|--------|----------|
+| Kraft als Vektor | $\\vec{F}=(F_x,\\,F_y)$, Einheit Newton | $\\vec{F}=(50,\\,30)\\,\\text{N}$ |
+| Komponentenzerlegung (Winkel $\\alpha$ zur $x$-Achse) | $F_x=F\\cos\\alpha,\\;F_y=F\\sin\\alpha$ | $F=100\\,\\text{N},\\,\\alpha=60°\\Rightarrow(F_x,F_y)=(50,\\,86{,}6)$ |
+| Resultierende | $\\vec{R}=\\sum_i\\vec{F}_i$, komponentenweise | $\\vec{F}_1=(3,0),\\vec{F}_2=(0,4)\\Rightarrow\\vec{R}=(3,4)$ |
+| Betrag der Resultierenden | $|\\vec{R}|=\\sqrt{R_x^2+R_y^2}$ | $\\vec{R}=(3,4)\\Rightarrow|\\vec{R}|=5$ |
+| Richtungswinkel | $\\tan\\alpha=R_y/R_x$ (Quadrant beachten!) | $\\vec{R}=(3,4)\\Rightarrow\\alpha=\\arctan(4/3)\\approx 53{,}1°$ |
+| Gleichgewicht | $\\sum F_x=0\\,\\wedge\\,\\sum F_y=0\\,\\wedge\\,\\sum F_z=0$ | je Achse eine Gleichung |
+| Einheitsvektor | $\\hat{e}=\\dfrac{\\vec{a}}{|\\vec{a}|}$, $|\\hat{e}|=1$ | $\\vec{a}=(3,4)\\Rightarrow\\hat{e}=(0{,}6;\\,0{,}8)$ |
+
+**Plausibilitäts-Checkliste am Ende jeder Aufgabe:**
+- Vorzeichen der Komponenten passen zur Skizze (Q1: $+,+$; Q2: $-,+$; Q3: $-,-$; Q4: $+,-$).
+- Einheit konsistent (überall N, m, °).
+- $|\\vec{R}|\\le\\sum|\\vec{F}_i|$ (Dreiecksungleichung — Grenzfall: alle parallel).
+- Bei Gleichgewicht: jede Achse separat gleich null.
+
+**Quadranten-Falle bei $\\arctan$:** $\\arctan$ liefert nur Werte in $(-90°,\\,90°)$. Bei negativem $R_x$ muss man $180°$ addieren, sonst landet man im falschen Quadranten. Standardlösung: $\\operatorname{atan2}(R_y,R_x)$ verwenden.`,
       },
       { id: 'vek-1-4-s3', type: 'exercise', title: 'Aufgabe 1 — Resultierende (Prüfung)', exerciseRef: 'ex-vek-1-4-a' },
       { id: 'vek-1-4-s4', type: 'exercise', title: 'Aufgabe 2 — Gleichgewicht (Prüfung)', exerciseRef: 'ex-vek-1-4-b' },

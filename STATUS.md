@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-08 · `npm run status`_
+_auto-generiert · 2026-05-13 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2954 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2152 (73 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1334 / 1334 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 307 / 1134 (27 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3274 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2501 (76 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1511 / 1511 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 369 / 1134 (33 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **114** (Lesson-Path: 54 · Goal-Tasks: 60)
-- 4-Block: 82/114 (72 %) 🟡
-- MC-wAE: 58/58 (100 %) ✅
-- Sub-Goals: 11/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **161** (Lesson-Path: 54 · Goal-Tasks: 107)
+- 4-Block: 134/161 (83 %) 🟡
+- MC-wAE: 75/75 (100 %) ✅
+- Sub-Goals: 21/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -315,8 +315,8 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-1-0` Koordinaten, Punkte & Pfeile (Einstieg) | 3 | 3/3 | 23 | 10/4/6/2/1 | 23/23 | 10/10 | ✅ | — |
 | `vek-1-1` Vektoren — Grundbegriffe | 4 | 4/4 | 25 | 9/8/5/2/1 | 25/25 | 9/9 | ✅ | — |
 | `vek-1-2` Skalarprodukt | 4 | 4/4 | 26 | 10/10/5/1/0 | 26/26 | 10/10 | ✅ | — |
-| `vek-1-3` Kreuzprodukt | 4 | 0/4 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +4 Goal, +3 4B |
-| `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 0/6 | 3 | 3/0/0/0/0 | 1/3 | 3/3 | ✅ | +6 Goal, +2 4B |
+| `vek-1-3` Kreuzprodukt | 4 | 4/4 | 23 | 10/5/6/2/0 | 23/23 | 10/10 | ✅ | — |
+| `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 6/6 | 30 | 13/10/6/0/1 | 30/30 | 13/13 | ✅ | — |
 | `vek-2-1` Geradengleichung | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
 | `vek-2-2` Ebenengleichung | 6 | 0/6 | 5 | 4/0/1/0/0 | 2/5 | 4/4 | ✅ | +6 Goal, +3 4B |
 | `vek-2-3` Abstände und Schnitte | 6 | 0/6 | 5 | 2/3/0/0/0 | 3/5 | 2/2 | ✅ | +6 Goal, +2 4B |
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **155** (Lesson-Path: 94 · Goal-Tasks: 61)
-- 4-Block: 113/155 (73 %) 🟡
-- MC-wAE: 78/78 (100 %) ✅
-- Sub-Goals: 12/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **220** (Lesson-Path: 94 · Goal-Tasks: 126)
+- 4-Block: 181/220 (82 %) 🟡
+- MC-wAE: 113/113 (100 %) ✅
+- Sub-Goals: 25/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -449,9 +449,9 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `int-1-1` Stammfunktion — das Umkehren der Ableitung | 3 | 3/3 | 21 | 14/1/3/2/1 | 21/21 | 14/14 | ✅ | — |
 | `int-1-2` Grundintegrale | 4 | 4/4 | 26 | 12/7/4/3/0 | 26/26 | 12/12 | ✅ | — |
-| `int-1-3` Summenregel & Faktorregel | 4 | 0/4 | 5 | 4/1/0/0/0 | 5/5 | 4/4 | ✅ | +4 Goal |
-| `int-1-4` Das bestimmte Integral | 4 | 0/4 | 5 | 1/4/0/0/0 | 3/5 | 1/1 | ✅ | +4 Goal, +2 4B |
-| `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 0/5 | 4 | 3/1/0/0/0 | 3/4 | 3/3 | ✅ | +5 Goal, +1 4B |
+| `int-1-3` Summenregel & Faktorregel | 4 | 4/4 | 25 | 15/3/4/2/1 | 25/25 | 15/15 | ✅ | — |
+| `int-1-4` Das bestimmte Integral | 4 | 4/4 | 25 | 12/8/4/1/0 | 25/25 | 12/12 | ✅ | — |
+| `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 5/5 | 29 | 16/7/5/1/0 | 29/29 | 16/16 | ✅ | — |
 | `int-2-1` Substitution | 6 | 0/6 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +6 Goal, +1 4B |
 | `int-2-2` Partielle Integration | 5 | 0/5 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +5 Goal, +1 4B |
 | `int-2-3` Partialbruchzerlegung | 6 | 0/6 | 4 | 3/1/0/0/0 | 4/4 | 3/3 | ✅ | +6 Goal |
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **231** (Lesson-Path: 61 · Goal-Tasks: 170)
-- 4-Block: 203/231 (88 %) 🟡
-- MC-wAE: 109/109 (100 %) ✅
-- Sub-Goals: 34/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **291** (Lesson-Path: 61 · Goal-Tasks: 230)
+- 4-Block: 272/291 (93 %) 🟡
+- MC-wAE: 138/138 (100 %) ✅
+- Sub-Goals: 46/57 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -576,8 +576,8 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `dgl-1-1` Was ist eine Differentialgleichung? | 5 | 5/5 | 29 | 19/0/6/4/0 | 29/29 | 19/19 | ✅ | — |
 | `dgl-1-2` Trennung der Variablen | 5 | 5/5 | 29 | 17/5/5/1/1 | 29/29 | 17/17 | ✅ | — |
-| `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 0/6 | 5 | 4/1/0/0/0 | 0/5 | 4/4 | ✅ | +6 Goal, +5 4B |
-| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 0/6 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +6 Goal, +4 4B |
+| `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 6/6 | 35 | 18/9/6/1/1 | 35/35 | 18/18 | ✅ | — |
+| `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 6/6 | 34 | 19/7/6/2/0 | 34/34 | 19/19 | ✅ | — |
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +5 Goal, +4 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 6/6 | 33 | 14/7/7/3/2 | 33/33 | 14/14 | ✅ | — |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 4 | 3/0/0/1/0 | 0/4 | 3/3 | ✅ | +6 Goal, +4 4B |
@@ -1165,10 +1165,10 @@ _Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. 
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 6
-- Aufgaben: **33** (Lesson-Path: 8 · Goal-Tasks: 25)
-- 4-Block: 31/33 (94 %) 🟡
-- MC-wAE: 21/21 (100 %) ✅
-- Sub-Goals: 5/30 Goal-Tasks verknüpft 🔴
+- Aufgaben: **78** (Lesson-Path: 8 · Goal-Tasks: 70)
+- 4-Block: 77/78 (99 %) 🟡
+- MC-wAE: 51/51 (100 %) ✅
+- Sub-Goals: 14/30 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.**
@@ -1207,8 +1207,8 @@ _Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klau
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `werk-1-1` Spannungs-Dehnungs-Diagramm | 5 | 5/5 | 26 | 15/5/5/1/0 | 26/26 | 15/15 | ✅ | — |
-| `werk-1-2` Werkstoffgruppen | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
-| `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 0/4 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +4 Goal |
+| `werk-1-2` Werkstoffgruppen | 5 | 5/5 | 26 | 18/1/5/2/0 | 26/26 | 18/18 | ✅ | — |
+| `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 4/4 | 21 | 14/2/4/1/0 | 21/21 | 14/14 | ✅ | — |
 | `werk-2-2` Kerbschlagbiegeversuch | 5 | 0/5 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +5 Goal |
 | `werk-2-3` Fe-C-Diagramm & Wärmebehandlung | 6 | 0/6 | 3 | 2/1/0/0/0 | 3/3 | 2/2 | ✅ | +6 Goal |
 | `werk-pruefung-1` Prüfung: Werkstoffwahl & Kennwerte | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
@@ -1389,10 +1389,10 @@ _Automatisierung, Robotik, Prozesstechnik leben von sauberer Regelung. Stabilit�
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 13
-- Aufgaben: **70** (Lesson-Path: 46 · Goal-Tasks: 24)
-- 4-Block: 27/70 (39 %) 🔴
-- MC-wAE: 38/38 (100 %) ✅
-- Sub-Goals: 4/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **173** (Lesson-Path: 46 · Goal-Tasks: 127)
+- 4-Block: 141/173 (82 %) 🟡
+- MC-wAE: 104/104 (100 %) ✅
+- Sub-Goals: 22/62 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Python und Matlab für ingenieurmäßiges Rechnen: Arrays, Schleifen, Plot, LGS, numerische Integration.**
@@ -1432,10 +1432,10 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `py-1-1` Variablen & Datentypen | 4 | 4/4 | 27 | 18/0/7/2/0 | 27/27 | 18/18 | ✅ | — |
-| `py-1-2` Operatoren & Ausdrücke | 5 | 0/5 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
-| `py-1-3` Listen & Arrays | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
-| `py-1-4` Kontrollstrukturen | 4 | 0/4 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +4 Goal, +3 4B |
-| `py-1-5` Funktionen definieren | 5 | 0/5 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +5 Goal, +3 4B |
+| `py-1-2` Operatoren & Ausdrücke | 5 | 5/5 | 33 | 18/6/8/1/0 | 32/33 | 18/18 | ✅ | +1 4B |
+| `py-1-3` Listen & Arrays | 4 | 4/4 | 27 | 16/4/6/1/0 | 27/27 | 16/16 | ✅ | — |
+| `py-1-4` Kontrollstrukturen | 4 | 4/4 | 27 | 17/2/8/0/0 | 27/27 | 17/17 | ✅ | — |
+| `py-1-5` Funktionen definieren | 5 | 5/5 | 28 | 21/0/6/1/0 | 28/28 | 21/21 | ✅ | — |
 | `py-2-1` NumPy Grundlagen | 5 | 0/5 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +5 Goal, +3 4B |
 | `py-2-2` Matplotlib — Daten visualisieren | 5 | 0/5 | 3 | 1/0/1/0/1 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
 | `py-2-3` Gleichungen lösen & Optimierung | 5 | 0/5 | 3 | 2/0/1/0/0 | 0/3 | 2/2 | ✅ | +5 Goal, +3 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 113 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 103 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1546,104 +1546,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `werk-1-2` · Werkstoffgruppen
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `werk-1-1` → `e-modul`, `re-rm`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `metalle` — Metalle: zäh, gut umformbar, gut wärmeleitend — tragend (SG 0)
-  2. `keramik` — Keramik: hart, hitzebeständig, spröde — nicht auf Zug (SG 1)
-  3. `kunststoffe` — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul (SG 2)
-  4. `verbunde` — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ (SG 3)
-  5. `leichtbau` — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl) (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `metalle` · **0/5+** — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
-  - 🔴 [1] _hoch_ · Konzepte: `keramik` · **0/5+** — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
-  - 🔴 [2] _mittel_ · Konzepte: `kunststoffe` · **0/5+** — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
-  - 🔴 [3] _mittel_ · Konzepte: `verbunde` · **0/5+** — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
-  - 🔴 [4] _mittel_ · Konzepte: `leichtbau` · **0/5+** — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `metalle` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `metalle` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `keramik` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `kunststoffe` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `verbunde` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `leichtbau` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `leichtbau` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `leichtbau` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `leichtbau` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `leichtbau` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-werk-1-2-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-
-#### `werk-2-1` · Härteprüfung (HV, HB, HRC)
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `werk-1-1` → `re-rm`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `vickers-brinell` — Vickers (HV) Diamantpyramide universell; Brinell (HB) Kugel für weichere (SG 0)
-  2. `rockwell` — Rockwell (HRC): direkt ablesbar, schnellste Methode in der Fertigung (SG 1)
-  3. `haerte-rm` — Faustformel Stahl: $R_m\approx 3{,}5\cdot HV$ in MPa ⇐ `vickers-brinell` (SG 2)
-  4. `pruefkraft` — Prüfkraft und Probendicke abstimmen — sonst Untergrund verfälscht (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `vickers-brinell` · **0/5+** — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
-  - 🔴 [1] _hoch_ · Konzepte: `rockwell` · **0/5+** — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
-  - 🔴 [2] _mittel_ · Konzepte: `haerte-rm` · **0/5+** — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
-  - 🔴 [3] _mittel_ · Konzepte: `pruefkraft` · **0/5+** — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `vickers-brinell` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `rockwell` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-2-2` · Kerbschlagbiegeversuch
 
@@ -1976,119 +1878,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
-#### `vek-1-3` · Kreuzprodukt
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-2` → `sp-komp`, `sp-orthogonal`
-  - `vek-1-1` → `betrag`, `add-komp`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `kp-vektor` — $\vec a\times\vec b$ liefert einen Vektor (3D), nicht eine Zahl (SG 0)
-  2. `kp-3d-only` — Nur in 3D definiert ⇐ `kp-vektor` (SG 3)
-  3. `kp-komp` — Komponentenformel: $(a_y b_z-a_z b_y,\;a_z b_x-a_x b_z,\;a_x b_y-a_y b_x)$ ⇐ `kp-3d-only` (SG 3)
-  4. `kp-orthog` — Ergebnis $\perp\vec a$ und $\perp\vec b$ ⇐ `kp-vektor` (SG 0)
-  5. `kp-betrag` — $|\vec a\times\vec b|=|\vec a||\vec b|\sin\varphi$ = Parallelogrammfläche ⇐ `kp-vektor` (SG 1)
-  6. `kp-rh-regel` — Rechte-Hand-Regel: Zeigefinger $\vec a$, Mittel $\vec b$, Daumen Ergebnis ⇐ `kp-orthog` (SG 2)
-  7. `kp-antikomm` — $\vec a\times\vec b=-(\vec b\times\vec a)$ — antikommutativ ⇐ `kp-komp` (SG 2)
-  8. `kp-parallel` — Parallelitätstest: $\vec a\times\vec b=\vec 0\iff\vec a\parallel\vec b$ ⇐ `kp-betrag` (SG 2)
-  9. `kp-vs-sp` — Skalar- vs. Kreuzprodukt: Zahl vs. Vektor; Winkel vs. Senkrechte ⇐ `kp-vektor` (SG 0)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `kp-vektor`, `kp-orthog`, `kp-vs-sp` · **0/5+** — Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
-  - 🔴 [1] _hoch_ · Konzepte: `kp-betrag` · **0/5+** — Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
-  - 🔴 [2] _hoch_ · Konzepte: `kp-rh-regel`, `kp-antikomm`, `kp-parallel` · **0/5+** — Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
-  - 🔴 [3] _mittel_ · Konzepte: `kp-3d-only`, `kp-komp` · **0/5+** — Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kp-vektor`, `kp-vs-sp` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kp-vektor`, `kp-orthog` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `kp-orthog` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `kp-vs-sp` | 1 | 0 | 🔴 | Distraktor: Skalar- mit Kreuzprodukt verwechselt |
-|  5 | 0 | transfer           | matching         | `kp-vs-sp`, `kp-orthog` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kp-betrag` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kp-betrag` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `kp-betrag` | 1 | 0 | 🔴 | Parallelogrammfläche |
-|  9 | 1 | error-analysis     | multiple-choice  | `kp-betrag` | 1 | 0 | 🔴 | Distraktor: cos statt sin |
-| 10 | 1 | transfer           | number-input     | `kp-betrag`, `kp-komp` | 1 | 0 | 🔴 | Dreiecksfläche = ½ |a×b| |
-| 11 | 2 | recognize          | true-false       | `kp-antikomm` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kp-rh-regel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `kp-parallel`, `kp-betrag` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `kp-antikomm` | 1 | 0 | 🔴 | Distraktor: kommutativ angenommen |
-| 15 | 2 | transfer           | matching         | `kp-rh-regel`, `kp-antikomm` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `kp-3d-only` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `kp-komp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `kp-komp` | 1 | 0 | 🔴 | Resultatkomponente $z$ |
-| 19 | 3 | error-analysis     | multiple-choice  | `kp-komp` | 1 | 0 | 🔴 | Distraktor: Vorzeichen vertauscht |
-| 20 | 3 | transfer           | number-input     | `kp-komp`, `kp-betrag` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-3-a`, `ex-vek-1-3-b`, `ex-vek-1-3-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
-#### `vek-1-4` · Kräfte als Vektoren (Prüfung)
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-1` → `add-komp`, `betrag`, `einheitsvektor`, `skalar-mul`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `kraft-vektor` — Kraft $\vec F$ ist Vektor mit Betrag und Richtung — Einheit Newton (SG 0)
-  2. `kraft-zerlegung` — $F_x=F\cos\alpha,\;F_y=F\sin\alpha$ (Winkel zur $x$-Achse) ⇐ `kraft-vektor` (SG 0)
-  3. `resultierende` — $\vec R=\sum\vec F_i$ komponentenweise ⇐ `kraft-zerlegung` (SG 1)
-  4. `gleichgewicht` — Gleichgewicht $\sum F_x=0\wedge\sum F_y=0\wedge\sum F_z=0$ ⇐ `resultierende` (SG 2)
-  5. `r-betrag-richtung` — $|\vec R|=\sqrt{R_x^2+R_y^2}$, $\tan\alpha=R_y/R_x$ ⇐ `resultierende` (SG 4)
-  6. `einheits-tech` — Einheitsvektor $\hat e=\vec a/|\vec a|$ — dimensionslos, Länge 1 (SG 3)
-  7. `plausi-vorzeichen` — Vorzeichen-Check: passt Resultate zur Skizze? ⇐ `kraft-zerlegung` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `kraft-vektor`, `kraft-zerlegung` · **0/5+** — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
-  - 🔴 [1] _hoch_ · Konzepte: `resultierende` · **0/5+** — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
-  - 🔴 [2] _hoch_ · Konzepte: `gleichgewicht` · **0/5+** — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
-  - 🔴 [3] _hoch_ · Konzepte: `einheits-tech` · **0/5+** — Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
-  - 🔴 [4] _hoch_ · Konzepte: `r-betrag-richtung` · **0/5+** — Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
-  - 🔴 [5] _mittel_ · Konzepte: `plausi-vorzeichen` · **0/5+** — Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `kraft-zerlegung` | 1 | 0 | 🔴 | sin/cos vertauscht |
-|  5 | 0 | transfer           | number-input     | `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  6 | 1 | recognize          | true-false       | `resultierende` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `resultierende` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] 3 Kräfte |
-| 11 | 2 | recognize          | true-false       | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 0 | 🔴 | Unbekannte Seilkraft |
-| 14 | 2 | error-analysis     | multiple-choice  | `gleichgewicht` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 16 | 3 | recognize          | true-false       | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `einheits-tech` | 1 | 0 | 🔴 | Länge ≠ 1 als Ergebnis-Falle |
-| 20 | 3 | transfer           | number-input     | `einheits-tech` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `r-betrag-richtung` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `r-betrag-richtung` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `r-betrag-richtung`, `resultierende` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `r-betrag-richtung` | 1 | 0 | 🔴 | Quadrant beim arctan |
-| 25 | 4 | transfer           | number-input     | `r-betrag-richtung`, `resultierende`, `kraft-zerlegung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 26 | 5 | recognize          | true-false       | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `plausi-vorzeichen`, `kraft-zerlegung` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `plausi-vorzeichen` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | sorting          | `plausi-vorzeichen`, `resultierende` | 1 | 0 | 🔴 | Lösungsstrategie ordnen |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
@@ -3937,202 +3726,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
-#### `py-1-2` · Operatoren & Ausdrücke
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `py-1-1` → `dyn-typing`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `div-op` — `/` Float, `//` Integer, `%` Modulo (SG 0)
-  2. `pot-op` — Python `**`, Matlab `^` bzw. `.^` elementweise (SG 1)
-  3. `log-op` — Logik Python `and/or/not`, Matlab `&&/||/~` (SG 2)
-  4. `float-cmp` — Float-Vergleich `abs(a-b)<1e-9` statt `==` (SG 3)
-  5. `bool-int` — `bool` ist Subtyp von `int`: `0==False`, `1==True` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `div-op` · **0/5+** — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
-  - 🔴 [1] _hoch_ · Konzepte: `pot-op` · **0/5+** — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
-  - 🔴 [2] _hoch_ · Konzepte: `log-op` · **0/5+** — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
-  - 🔴 [3] _hoch_ · Konzepte: `float-cmp` · **0/5+** — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
-  - 🔴 [4] _niedrig_ · Konzepte: `bool-int` · **0/5+** — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `div-op` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `div-op` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pot-op` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pot-op` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `log-op` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `log-op` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `float-cmp` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `bool-int` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
-#### `py-1-3` · Listen & Arrays
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `index-base` — Python 0-basiert, Matlab 1-basiert (SG 0)
-  2. `slicing` — Slicing `liste[a:b]` — rechte Grenze exklusiv ⇐ `index-base` (SG 1)
-  3. `numpy-vec` — NumPy-Arrays vektorisiert (elementweise + − * /) (SG 2)
-  4. `dtype-mix` — Liste: gemischte Typen; NumPy: ein dtype ⇐ `numpy-vec` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `index-base` · **0/5+** — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
-  - 🔴 [1] _hoch_ · Konzepte: `slicing` · **0/5+** — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
-  - 🔴 [2] _hoch_ · Konzepte: `numpy-vec` · **0/5+** — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
-  - 🔴 [3] _mittel_ · Konzepte: `dtype-mix` · **0/5+** — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `index-base` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `slicing` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `dtype-mix` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
-#### `py-1-4` · Kontrollstrukturen
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `py-1-3` → `index-base`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `einrueckung` — Python: Einrückung statt `end`; Matlab: immer `end` (SG 0)
-  2. `eq-vs-assign` — `==` Vergleich, `=` Zuweisung (SG 1)
-  3. `for-range` — `for i in range(n)` 0..n−1 / Matlab `for i=1:n` 1..n (SG 2)
-  4. `while-abbruch` — While: Abbruchbedingung Pflicht (Endlos-Loop verhindern) (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `einrueckung` · **0/5+** — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
-  - 🔴 [1] _hoch_ · Konzepte: `eq-vs-assign` · **0/5+** — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
-  - 🔴 [2] _hoch_ · Konzepte: `for-range` · **0/5+** — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
-  - 🔴 [3] _mittel_ · Konzepte: `while-abbruch` · **0/5+** — While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `einrueckung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `eq-vs-assign` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `for-range` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `for-range` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `while-abbruch` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-4-a`, `ex-py-1-4-b`, `ex-py-1-4-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
-#### `py-1-5` · Funktionen definieren
-
-- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `def-syntax` — Python `def name(param):`, Matlab `function y = name(x)` (SG 0)
-  2. `rueckgabe` — Python `return`, Matlab Zuweisung an Output-Variable ⇐ `def-syntax` (SG 1)
-  3. `default-par` — Default-Parameter `def f(x, y=0):` ⇐ `def-syntax` (SG 2)
-  4. `lambda` — Lambda `sqr = lambda x: x**2` (SG 3)
-  5. `doc-str` — Docstring (Python) / Header-Kommentar (Matlab) (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `def-syntax` · **0/5+** — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
-  - 🔴 [1] _hoch_ · Konzepte: `rueckgabe` · **0/5+** — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
-  - 🔴 [2] _hoch_ · Konzepte: `default-par` · **0/5+** — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
-  - 🔴 [3] _mittel_ · Konzepte: `lambda` · **0/5+** — Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
-  - 🔴 [4] _mittel_ · Konzepte: `doc-str` · **0/5+** — Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `def-syntax` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `rueckgabe` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `default-par` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `lambda` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `doc-str` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `doc-str` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-5': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-py-1-5-a`, `ex-py-1-5-b`, `ex-py-1-5-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-
 #### `py-2-1` · NumPy Grundlagen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
@@ -4984,60 +4577,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
-#### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`
-  - `int-1-4` → `hauptsatz-12`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `hauptsatz-1` — Teil 1: $F(x)=\int_a^x f(t)dt$ ist differenzierbar mit $F'(x)=f(x)$ (SG 0)
-  2. `hauptsatz-2` — Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ für jede Stammfunktion $F$ (SG 1)
-  3. `hs-stetig-vorau` — Voraussetzung: $f$ stetig auf $[a,b]$ ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 2)
-  4. `leibniz-regel` — Leibniz-Regel: $\frac{d}{dx}\int_{a(x)}^{b(x)}f(t)dt=f(b)b'-f(a)a'$ ⇐ `hauptsatz-1` (SG 3)
-  5. `umkehr-op` — Folgerung: Integration und Differentiation sind Umkehroperationen ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-1` · **0/5+** — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `hauptsatz-2` · **0/5+** — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
-  - 🔴 [2] _hoch_ · Konzepte: `hs-stetig-vorau` · **0/5+** — Voraussetzung: $f$ stetig auf $[a,b]$
-  - 🔴 [3] _mittel_ · Konzepte: `leibniz-regel` · **0/5+** — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
-  - 🔴 [4] _hoch_ · Konzepte: `umkehr-op` · **0/5+** — Folgerung: Integration und Differentiation sind Umkehroperationen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `umkehr-op` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-5': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
 #### `int-2-3` · Partialbruchzerlegung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
@@ -5205,66 +4744,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-ordnung`, `dgl-linear`, `dgl-homogen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `char-gleichung` — Ansatz $y=e^{\lambda x}$ → char. Gleichung $a\lambda^2+b\lambda+c=0$ (SG 0)
-  2. `fall-d-pos` — D>0 (zwei reelle Wurzeln): $y=C_1 e^{\lambda_1 x}+C_2 e^{\lambda_2 x}$ ⇐ `char-gleichung` (SG 1)
-  3. `fall-d-null` — D=0 (Doppelwurzel): $y=(C_1+C_2 x)e^{\lambda x}$ ⇐ `char-gleichung` (SG 2)
-  4. `fall-d-neg` — D<0 (komplex $\alpha\pm i\beta$): $y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$ ⇐ `char-gleichung` (SG 3)
-  5. `daempfung` — Dämpfung: $\alpha<0$ abklingend, $\alpha=0$ ungedämpft, $\alpha>0$ instabil ⇐ `fall-d-neg` (SG 4)
-  6. `feder-masse` — Feder-Masse: $m\ddot x+d\dot x+kx=0$, $\omega_0=\sqrt{k/m}$ ⇐ `fall-d-neg` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `char-gleichung` · **0/5+** — Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
-  - 🔴 [1] _hoch_ · Konzepte: `fall-d-pos` · **0/5+** — D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
-  - 🔴 [2] _hoch_ · Konzepte: `fall-d-null` · **0/5+** — D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
-  - 🔴 [3] _hoch_ · Konzepte: `fall-d-neg` · **0/5+** — D < 0 (komplex $\alpha \pm i\beta$): $y = e^{\alpha x}(C_1 \cos\beta x + C_2 \sin\beta x)$ — Schwingung!
-  - 🔴 [4] _hoch_ · Konzepte: `daempfung` · **0/5+** — Dämpfung: $\alpha < 0$ abklingend, $\alpha = 0$ ungedämpft, $\alpha > 0$ instabil
-  - 🔴 [5] _hoch_ · Konzepte: `feder-masse` · **0/5+** — Feder-Masse: $m\ddot x + d\dot x + kx = 0$ — Eigenfrequenz $\omega_0 = \sqrt{k/m}$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `char-gleichung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `fall-d-pos`, `char-gleichung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `fall-d-pos` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 | Doppelwurzel-Faktor $x$ vergessen |
-| 15 | 2 | transfer           | multiple-choice  | `fall-d-null` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `daempfung` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `daempfung` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `daempfung`, `fall-d-neg` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `feder-masse` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `feder-masse` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `feder-masse` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `dgl-2-1` · Variation der Konstanten
 
@@ -7683,7 +7162,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 29 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 26 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -8264,99 +7743,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
-#### `int-1-3` · Summenregel & Faktorregel
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`, `plus-c`
-  - `int-1-2` → `int-pot-regel`, `int-summe`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `sum-regel-int` — Summenregel: $\int(f+g)dx=\int f\,dx+\int g\,dx$ (SG 0)
-  2. `faktor-regel-int` — Faktorregel: $\int c\,f(x)dx=c\int f(x)dx$ (SG 1)
-  3. `kein-prod-regel` — $\int f\cdot g\,dx\neq(\int f)(\int g)$ — partielle Integration nötig (SG 2)
-  4. `plus-c-konsequent` — $+C$ bei unbestimmten Integralen konsequent mitschreiben (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `sum-regel-int` · **0/5+** — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
-  - 🔴 [1] _hoch_ · Konzepte: `faktor-regel-int` · **0/5+** — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
-  - 🔴 [2] _hoch_ · Konzepte: `kein-prod-regel` · **0/5+** — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
-  - 🔴 [3] _mittel_ · Konzepte: `plus-c-konsequent` · **0/5+** — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `faktor-regel-int` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 | $x$ als Konstante behandelt |
-| 10 | 1 | transfer           | matching         | `faktor-regel-int`, `sum-regel-int` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `int-1-4` · Das bestimmte Integral
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-1` → `stammfunktion`
-  - `int-1-2` → `int-pot-regel`, `int-exp-trig`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `hauptsatz-12` — Hauptsatz Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ mit beliebiger Stammfunktion $F$ (SG 0)
-  2. `geom-flaeche` — Geometrisch: Fläche zwischen Kurve und x-Achse — unterhalb negativ ⇐ `hauptsatz-12` (SG 1)
-  3. `grenzen-tausch` — Vertauschen der Grenzen dreht Vorzeichen: $\int_a^b=-\int_b^a$ ⇐ `hauptsatz-12` (SG 2)
-  4. `c-faellt-weg` — Bei bestimmtem Integral kürzt sich $C$ heraus ⇐ `hauptsatz-12` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-12` · **0/5+** — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
-  - 🔴 [1] _hoch_ · Konzepte: `geom-flaeche` · **0/5+** — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
-  - 🔴 [2] _mittel_ · Konzepte: `grenzen-tausch` · **0/5+** — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
-  - 🔴 [3] _mittel_ · Konzepte: `c-faellt-weg` · **0/5+** — Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `geom-flaeche` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `geom-flaeche`, `hauptsatz-12` | 1 | 0 | 🔴 | Vorzeichen |
-|  9 | 1 | error-analysis     | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 | Negative Fläche als Wert akzeptiert |
-| 10 | 1 | transfer           | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `grenzen-tausch` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `c-faellt-weg`, `hauptsatz-12` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
 #### `int-2-1` · Substitution
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
@@ -8532,67 +7918,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `dgl-1-3` · Lineare DGL 1. Ordnung
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`, `awp`
-  - `dgl-1-2` → `tdv-trennen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `lin1-standardform` — Standardform: $y'+p(x)y=q(x)$ (SG 0)
-  2. `lin1-mu` — Integrierender Faktor $\mu(x)=e^{\int p(x)dx}$ ⇐ `lin1-standardform` (SG 1)
-  3. `lin1-formel` — Lösungsformel $y=(1/\mu)[\int\mu\cdot q\,dx+C]$ ⇐ `lin1-mu` (SG 2)
-  4. `lin1-vdk` — Alternative: Variation der Konstanten (homogen + partikulär) ⇐ `lin1-standardform` (SG 3)
-  5. `lin1-yh` — Homogene Lösung $y_h=Ce^{-\int p\,dx}$ ⇐ `lin1-standardform` (SG 4)
-  6. `lin1-rc` — Anwendung RC-Kreis: $\dot U+U/RC=U_0/RC$ ⇐ `lin1-formel` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `lin1-standardform` · **0/5+** — Standardform: $y' + p(x) y = q(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `lin1-mu` · **0/5+** — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
-  - 🔴 [2] _hoch_ · Konzepte: `lin1-formel` · **0/5+** — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
-  - 🔴 [3] _hoch_ · Konzepte: `lin1-vdk` · **0/5+** — Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
-  - 🔴 [4] _hoch_ · Konzepte: `lin1-yh` · **0/5+** — Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
-  - 🔴 [5] _mittel_ · Konzepte: `lin1-rc` · **0/5+** — Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `lin1-standardform` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `lin1-mu` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `lin1-mu` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `lin1-mu` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `lin1-formel` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | sorting          | `lin1-vdk` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `lin1-yh` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `lin1-rc` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `lin1-rc` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `mech-2-3` · Kinematik
 
@@ -9294,7 +8619,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 20 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 21 Lessons
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
@@ -10349,7 +9674,66 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
+#### `vek-1-4` · Kräfte als Vektoren (Prüfung)
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-1` → `add-komp`, `betrag`, `einheitsvektor`, `skalar-mul`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kraft-vektor` — Kraft $\vec F$ ist Vektor mit Betrag und Richtung — Einheit Newton (SG 0)
+  2. `kraft-zerlegung` — $F_x=F\cos\alpha,\;F_y=F\sin\alpha$ (Winkel zur $x$-Achse) ⇐ `kraft-vektor` (SG 0)
+  3. `resultierende` — $\vec R=\sum\vec F_i$ komponentenweise ⇐ `kraft-zerlegung` (SG 1)
+  4. `gleichgewicht` — Gleichgewicht $\sum F_x=0\wedge\sum F_y=0\wedge\sum F_z=0$ ⇐ `resultierende` (SG 2)
+  5. `r-betrag-richtung` — $|\vec R|=\sqrt{R_x^2+R_y^2}$, $\tan\alpha=R_y/R_x$ ⇐ `resultierende` (SG 4)
+  6. `einheits-tech` — Einheitsvektor $\hat e=\vec a/|\vec a|$ — dimensionslos, Länge 1 (SG 3)
+  7. `plausi-vorzeichen` — Vorzeichen-Check: passt Resultate zur Skizze? ⇐ `kraft-zerlegung` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `kraft-vektor`, `kraft-zerlegung` · **5/5+** — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
+  - 🟡 [1] _hoch_ · Konzepte: `resultierende` · **4/5+** — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
+  - 🟡 [2] _hoch_ · Konzepte: `gleichgewicht` · **4/5+** — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
+  - 🟡 [3] _hoch_ · Konzepte: `einheits-tech` · **4/5+** — Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
+  - ✅ [4] _hoch_ · Konzepte: `r-betrag-richtung` · **5/5+** — Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
+  - ✅ [5] _mittel_ · Konzepte: `plausi-vorzeichen` · **5/5+** — Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ | sin/cos vertauscht |
+|  5 | 0 | transfer           | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `resultierende` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `resultierende` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] 3 Kräfte |
+| 11 | 2 | recognize          | true-false       | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 1 | ✅ | Unbekannte Seilkraft |
+| 14 | 2 | error-analysis     | multiple-choice  | `gleichgewicht` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `gleichgewicht`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 16 | 3 | recognize          | true-false       | `einheits-tech` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `einheits-tech` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `einheits-tech` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `einheits-tech` | 1 | 1 | ✅ | Länge ≠ 1 als Ergebnis-Falle |
+| 20 | 3 | transfer           | number-input     | `einheits-tech` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `r-betrag-richtung` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `r-betrag-richtung` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `r-betrag-richtung`, `resultierende` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `r-betrag-richtung` | 1 | 1 | ✅ | Quadrant beim arctan |
+| 25 | 4 | transfer           | number-input     | `r-betrag-richtung`, `resultierende`, `kraft-zerlegung` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 26 | 5 | recognize          | true-false       | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `plausi-vorzeichen`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `plausi-vorzeichen` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | sorting          | `plausi-vorzeichen`, `resultierende` | 1 | 1 | ✅ | Lösungsstrategie ordnen |
+
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-1-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 46 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10390,6 +9774,50 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `werk-2-1` · Härteprüfung (HV, HB, HRC)
+
+- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `vickers-brinell` — Vickers (HV) Diamantpyramide universell; Brinell (HB) Kugel für weichere (SG 0)
+  2. `rockwell` — Rockwell (HRC): direkt ablesbar, schnellste Methode in der Fertigung (SG 1)
+  3. `haerte-rm` — Faustformel Stahl: $R_m\approx 3{,}5\cdot HV$ in MPa ⇐ `vickers-brinell` (SG 2)
+  4. `pruefkraft` — Prüfkraft und Probendicke abstimmen — sonst Untergrund verfälscht (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `vickers-brinell` · **5/5+** — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
+  - ✅ [1] _hoch_ · Konzepte: `rockwell` · **5/5+** — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
+  - ✅ [2] _mittel_ · Konzepte: `haerte-rm` · **5/5+** — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
+  - ✅ [3] _mittel_ · Konzepte: `pruefkraft` · **5/5+** — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `vickers-brinell` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `rockwell` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `rockwell` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `haerte-rm` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haerte-rm` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `haerte-rm` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haerte-rm` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `haerte-rm` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pruefkraft` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `pruefkraft` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `mech-0-1` · SI-Basiseinheiten & Präfixe
 
@@ -10471,6 +9899,51 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+
+#### `int-1-3` · Summenregel & Faktorregel
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`, `plus-c`
+  - `int-1-2` → `int-pot-regel`, `int-summe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sum-regel-int` — Summenregel: $\int(f+g)dx=\int f\,dx+\int g\,dx$ (SG 0)
+  2. `faktor-regel-int` — Faktorregel: $\int c\,f(x)dx=c\int f(x)dx$ (SG 1)
+  3. `kein-prod-regel` — $\int f\cdot g\,dx\neq(\int f)(\int g)$ — partielle Integration nötig (SG 2)
+  4. `plus-c-konsequent` — $+C$ bei unbestimmten Integralen konsequent mitschreiben (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sum-regel-int` · **5/5+** — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
+  - ✅ [1] _hoch_ · Konzepte: `faktor-regel-int` · **5/5+** — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
+  - ✅ [2] _hoch_ · Konzepte: `kein-prod-regel` · **5/5+** — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
+  - ✅ [3] _mittel_ · Konzepte: `plus-c-konsequent` · **5/5+** — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sum-regel-int` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sum-regel-int` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `faktor-regel-int` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `faktor-regel-int` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `faktor-regel-int` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `faktor-regel-int` | 1 | 1 | ✅ | $x$ als Konstante behandelt |
+| 10 | 1 | transfer           | matching         | `faktor-regel-int`, `sum-regel-int` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `kein-prod-regel` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `plus-c-konsequent` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `vek-1-2` · Skalarprodukt
 
@@ -10566,6 +10039,57 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
+#### `werk-1-2` · Werkstoffgruppen
+
+- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `e-modul`, `re-rm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `metalle` — Metalle: zäh, gut umformbar, gut wärmeleitend — tragend (SG 0)
+  2. `keramik` — Keramik: hart, hitzebeständig, spröde — nicht auf Zug (SG 1)
+  3. `kunststoffe` — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul (SG 2)
+  4. `verbunde` — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ (SG 3)
+  5. `leichtbau` — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `metalle` · **5/5+** — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
+  - ✅ [1] _hoch_ · Konzepte: `keramik` · **5/5+** — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
+  - ✅ [2] _mittel_ · Konzepte: `kunststoffe` · **5/5+** — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
+  - ✅ [3] _mittel_ · Konzepte: `verbunde` · **5/5+** — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
+  - ✅ [4] _mittel_ · Konzepte: `leichtbau` · **5/5+** — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `metalle` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `metalle` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `metalle` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `metalle` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `metalle` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `keramik` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `keramik` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `keramik` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `keramik` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `keramik` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `kunststoffe` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kunststoffe` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kunststoffe` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kunststoffe` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `kunststoffe` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `verbunde` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `verbunde` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `verbunde` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `verbunde` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `verbunde` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `leichtbau` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `leichtbau` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `leichtbau` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `leichtbau` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `leichtbau` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+
 #### `py-1-1` · Variablen & Datentypen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
@@ -10606,6 +10130,93 @@ npm run build              # abschließender End-zu-End-Check
 | 20 | 3 | transfer           | matching         | `naming-conv` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `py-1-3` · Listen & Arrays
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `index-base` — Python 0-basiert, Matlab 1-basiert (SG 0)
+  2. `slicing` — Slicing `liste[a:b]` — rechte Grenze exklusiv ⇐ `index-base` (SG 1)
+  3. `numpy-vec` — NumPy-Arrays vektorisiert (elementweise + − * /) (SG 2)
+  4. `dtype-mix` — Liste: gemischte Typen; NumPy: ein dtype ⇐ `numpy-vec` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `index-base` · **6/5+** — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
+  - ✅ [1] _hoch_ · Konzepte: `slicing` · **6/5+** — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
+  - ✅ [2] _hoch_ · Konzepte: `numpy-vec` · **6/5+** — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
+  - ✅ [3] _mittel_ · Konzepte: `dtype-mix` · **6/5+** — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `index-base` | 1 | 2 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `index-base` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `slicing` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `slicing` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `numpy-vec` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `numpy-vec` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `numpy-vec` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `dtype-mix` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dtype-mix` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `dtype-mix` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `py-1-4` · Kontrollstrukturen
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-3` → `index-base`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `einrueckung` — Python: Einrückung statt `end`; Matlab: immer `end` (SG 0)
+  2. `eq-vs-assign` — `==` Vergleich, `=` Zuweisung (SG 1)
+  3. `for-range` — `for i in range(n)` 0..n−1 / Matlab `for i=1:n` 1..n (SG 2)
+  4. `while-abbruch` — While: Abbruchbedingung Pflicht (Endlos-Loop verhindern) (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `einrueckung` · **6/5+** — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
+  - ✅ [1] _hoch_ · Konzepte: `eq-vs-assign` · **6/5+** — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
+  - ✅ [2] _hoch_ · Konzepte: `for-range` · **6/5+** — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
+  - ✅ [3] _mittel_ · Konzepte: `while-abbruch` · **6/5+** — While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `einrueckung` | 1 | 3 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `einrueckung` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `einrueckung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `einrueckung` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `einrueckung` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `eq-vs-assign` | 1 | 2 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `eq-vs-assign` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `eq-vs-assign` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `eq-vs-assign` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `eq-vs-assign` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `for-range` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `for-range` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `for-range` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `for-range` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `for-range` | 1 | 2 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `while-abbruch` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `while-abbruch` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `while-abbruch` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `while-abbruch` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `while-abbruch` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
@@ -10972,6 +10583,108 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+
+#### `py-1-5` · Funktionen definieren
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `def-syntax` — Python `def name(param):`, Matlab `function y = name(x)` (SG 0)
+  2. `rueckgabe` — Python `return`, Matlab Zuweisung an Output-Variable ⇐ `def-syntax` (SG 1)
+  3. `default-par` — Default-Parameter `def f(x, y=0):` ⇐ `def-syntax` (SG 2)
+  4. `lambda` — Lambda `sqr = lambda x: x**2` (SG 3)
+  5. `doc-str` — Docstring (Python) / Header-Kommentar (Matlab) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `def-syntax` · **5/5+** — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
+  - ✅ [1] _hoch_ · Konzepte: `rueckgabe` · **5/5+** — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
+  - ✅ [2] _hoch_ · Konzepte: `default-par` · **5/5+** — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
+  - ✅ [3] _mittel_ · Konzepte: `lambda` · **5/5+** — Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
+  - ✅ [4] _mittel_ · Konzepte: `doc-str` · **5/5+** — Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `def-syntax` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `def-syntax` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `def-syntax` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `def-syntax` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `def-syntax` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `rueckgabe` | 1 | 2 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rueckgabe` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rueckgabe` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rueckgabe` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `rueckgabe` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `default-par` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `default-par` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `default-par` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `default-par` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `default-par` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `lambda` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lambda` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lambda` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lambda` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `lambda` | 1 | 2 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `doc-str` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `doc-str` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `doc-str` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `doc-str` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `doc-str` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-5': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`
+  - `int-1-4` → `hauptsatz-12`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hauptsatz-1` — Teil 1: $F(x)=\int_a^x f(t)dt$ ist differenzierbar mit $F'(x)=f(x)$ (SG 0)
+  2. `hauptsatz-2` — Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ für jede Stammfunktion $F$ (SG 1)
+  3. `hs-stetig-vorau` — Voraussetzung: $f$ stetig auf $[a,b]$ ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 2)
+  4. `leibniz-regel` — Leibniz-Regel: $\frac{d}{dx}\int_{a(x)}^{b(x)}f(t)dt=f(b)b'-f(a)a'$ ⇐ `hauptsatz-1` (SG 3)
+  5. `umkehr-op` — Folgerung: Integration und Differentiation sind Umkehroperationen ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `hauptsatz-1` · **5/5+** — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
+  - ✅ [1] _hoch_ · Konzepte: `hauptsatz-2` · **5/5+** — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
+  - ✅ [2] _hoch_ · Konzepte: `hs-stetig-vorau` · **5/5+** — Voraussetzung: $f$ stetig auf $[a,b]$
+  - ✅ [3] _mittel_ · Konzepte: `leibniz-regel` · **5/5+** — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
+  - ✅ [4] _hoch_ · Konzepte: `umkehr-op` · **5/5+** — Folgerung: Integration und Differentiation sind Umkehroperationen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `hauptsatz-1` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `hauptsatz-1` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `hauptsatz-2` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hauptsatz-2` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `hauptsatz-2` | 1 | 2 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `hs-stetig-vorau` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `leibniz-regel` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `umkehr-op` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-op` | 1 | 2 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `umkehr-op` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-op` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `umkehr-op` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-5': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `dgl-1-1` · Was ist eine Differentialgleichung?
 
@@ -11575,6 +11288,117 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `py-1-2` · Operatoren & Ausdrücke
+
+- **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-1` → `dyn-typing`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `div-op` — `/` Float, `//` Integer, `%` Modulo (SG 0)
+  2. `pot-op` — Python `**`, Matlab `^` bzw. `.^` elementweise (SG 1)
+  3. `log-op` — Logik Python `and/or/not`, Matlab `&&/||/~` (SG 2)
+  4. `float-cmp` — Float-Vergleich `abs(a-b)<1e-9` statt `==` (SG 3)
+  5. `bool-int` — `bool` ist Subtyp von `int`: `0==False`, `1==True` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `div-op` · **6/5+** — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
+  - ✅ [1] _hoch_ · Konzepte: `pot-op` · **6/5+** — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
+  - ✅ [2] _hoch_ · Konzepte: `log-op` · **6/5+** — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
+  - ✅ [3] _hoch_ · Konzepte: `float-cmp` · **6/5+** — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
+  - ✅ [4] _niedrig_ · Konzepte: `bool-int` · **6/5+** — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `div-op` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `div-op` | 1 | 4 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `div-op` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pot-op` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-op` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-op` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-op` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `pot-op` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `log-op` | 1 | 2 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-op` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `log-op` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `float-cmp` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `float-cmp` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `bool-int` | 1 | 2 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | multiple-choice  | `bool-int` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
+- **4-Block-Erklärung fehlt bei:** `ex-py-1-2-goal-sg1-5`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `dgl-1-3` · Lineare DGL 1. Ordnung
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`, `awp`
+  - `dgl-1-2` → `tdv-trennen`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lin1-standardform` — Standardform: $y'+p(x)y=q(x)$ (SG 0)
+  2. `lin1-mu` — Integrierender Faktor $\mu(x)=e^{\int p(x)dx}$ ⇐ `lin1-standardform` (SG 1)
+  3. `lin1-formel` — Lösungsformel $y=(1/\mu)[\int\mu\cdot q\,dx+C]$ ⇐ `lin1-mu` (SG 2)
+  4. `lin1-vdk` — Alternative: Variation der Konstanten (homogen + partikulär) ⇐ `lin1-standardform` (SG 3)
+  5. `lin1-yh` — Homogene Lösung $y_h=Ce^{-\int p\,dx}$ ⇐ `lin1-standardform` (SG 4)
+  6. `lin1-rc` — Anwendung RC-Kreis: $\dot U+U/RC=U_0/RC$ ⇐ `lin1-formel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `lin1-standardform` · **5/5+** — Standardform: $y' + p(x) y = q(x)$
+  - ✅ [1] _hoch_ · Konzepte: `lin1-mu` · **5/5+** — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
+  - ✅ [2] _hoch_ · Konzepte: `lin1-formel` · **5/5+** — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
+  - ✅ [3] _hoch_ · Konzepte: `lin1-vdk` · **5/5+** — Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
+  - ✅ [4] _hoch_ · Konzepte: `lin1-yh` · **5/5+** — Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
+  - ✅ [5] _mittel_ · Konzepte: `lin1-rc` · **5/5+** — Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `lin1-standardform` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `lin1-mu` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `lin1-mu` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `lin1-mu` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `lin1-mu` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `lin1-mu` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `lin1-formel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lin1-formel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `lin1-formel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lin1-formel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `lin1-formel` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | sorting          | `lin1-vdk` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `lin1-yh` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lin1-yh` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `lin1-yh` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lin1-yh` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `lin1-yh` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `lin1-rc` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `lin1-rc` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `lin1-rc` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `lin1-rc` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | number-input     | `lin1-rc` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 

@@ -320,6 +320,7 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       '2': 'Du hast abgeleitet statt integriert: $(3x^{2})\' = 6x$, $(2x)\' = 2$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int (3x^{2} + 2x)\\,dx = x^{3} + x^{2} + C$.',
       '3': 'Rechnerisch ist $\\dfrac{3x^{3}}{3} + \\dfrac{2x^{2}}{2} = x^{3} + x^{2}$ gleich — aber Ergebnisse müssen vereinfacht werden (in Prüfungen Punktabzug). Kürze die Koeffizienten: $\\dfrac{3}{3} = 1$, $\\dfrac{2}{2} = 1$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['sum-regel-int'] },
   },
   'ex-int-1-3-b': {
     id: 'ex-int-1-3-b', lessonId: 'int-1-3', type: 'multiple-choice',
@@ -343,6 +344,7 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       '2': 'Du hast $\\cos$ unverändert gelassen — das wäre, als ob Integration nichts an $\\cos$ ändert. Tatsächlich ist $\\int \\cos(x)\\,dx = \\sin(x)$, mit Faktor: $\\int 5\\cos(x)\\,dx = 5\\sin(x) + C$.',
       '3': 'Du hast den Faktor $5$ ins Argument von $\\sin$ verschoben — aber $5\\cos(x) \\neq \\cos(5x)$. Die $5$ ist konstanter Vorfaktor (Faktorregel): $\\int 5\\cos(x)\\,dx = 5 \\cdot \\int \\cos(x)\\,dx = 5\\sin(x) + C$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['faktor-regel-int'] },
   },
   'ex-int-1-3-c': {
     id: 'ex-int-1-3-c', lessonId: 'int-1-3', type: 'number-input',
@@ -363,6 +365,7 @@ $$F(2) = 2^{4} - 3 \\cdot 2^{2} + 2 = 16 - 12 + 2 = 6.$$
       '$2^{4} = 16$ und $3 \\cdot 2^{2} = 12$.',
       'Dann $16 - 12 + 2$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['sum-regel-int'] },
   },
   'ex-int-1-3-d': {
     id: 'ex-int-1-3-d', lessonId: 'int-1-3', type: 'multiple-choice',
@@ -396,10 +399,11 @@ Zusammen: $e^{x} + 2\\cos(x) + 3x + C$.
       '2': 'Du hast $\\int 3\\,dx$ als $-3x$ gerechnet — aber $\\int 3\\,dx = 3x + C$ (Konstante mal $x$, kein Vorzeichenwechsel). Außerdem scheint das Vorzeichen bei $\\cos$ korrekt zu sein; der Fehler liegt beim letzten Term.',
       '3': 'Du hast $\\int e^{x}\\,dx = xe^{x}$ verwendet — das ist falsch ($xe^{x}$ ist Ergebnis einer partiellen Integration von $x \\cdot e^{x}$). Für $e^{x}$ selbst gilt $\\int e^{x}\\,dx = e^{x}$, also insgesamt $e^{x} + 2\\cos(x) + 3x + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
   },
   'ex-int-1-3-mastery': {
     id: 'ex-int-1-3-mastery', lessonId: 'int-1-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$\\int (6x^{2} - 4x + e^{x})\\,dx = ?$',
+    question: '[PRÜFUNG] $\\int (6x^{2} - 4x + e^{x})\\,dx = ?$',
     options: ['$2x^{3} - 2x^{2} + e^{x} + C$', '$12x - 4 + e^{x} + C$', '$2x^{3} - 4x^{2} + e^{x} + C$', '$6x^{3} - 2x^{2} + e^{x} + C$'],
     correctIndex: 0,
     explanation: `**Ansatz:** Summen- und Faktorregel anwenden, Potenzregel und Grundintegral für $e^{x}$.
@@ -424,6 +428,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Bei $-4x$ hast du nicht korrekt durch den neuen Exponenten $2$ geteilt: $\\int (-4x)\\,dx = -4 \\cdot \\dfrac{x^{2}}{2} = -2x^{2}$ (nicht $-4x^{2}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
       '3': 'Bei $6x^{2}$ hast du nicht durch den neuen Exponenten $3$ geteilt: $\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3} = 2x^{3}$ (nicht $6x^{3}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
     },
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['faktor-regel-int', 'sum-regel-int'] },
   },
 
   // ── Lesson 4: Das bestimmte Integral ──────────────────────────────────────
@@ -439,7 +444,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
 - Stammfunktion: $F(x) = x^{2}$.
 - $F(2) - F(0) = 4 - 0 = 4$.
 
-**Probe (geometrisch):** Der Graph $y = 2x$ bildet mit der $x$-Achse auf $[0, 2]$ ein rechtwinkliges Dreieck mit Grundseite $2$ und Höhe $4$. Fläche $= \\dfrac{2 \\cdot 4}{2} = 4$. ✓
+**Probe:** Geometrisch bildet der Graph $y = 2x$ mit der $x$-Achse auf $[0, 2]$ ein rechtwinkliges Dreieck mit Grundseite $2$ und Höhe $4$. Fläche $= \\dfrac{2 \\cdot 4}{2} = 4$. ✓
 
 **Typischer Fehler:** Konstante $C$ "vergessen einzusetzen" — bei bestimmten Integralen ist $C$ egal (kürzt sich weg).`,
     hints: [
@@ -447,6 +452,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Mit Potenzregel: $\\int 2x\\,dx = x^{2} + C$.',
       'Dann Hauptsatz: $F(2) - F(0)$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['hauptsatz-12'] },
   },
   'ex-int-1-4-b': {
     id: 'ex-int-1-4-b', lessonId: 'int-1-4', type: 'number-input',
@@ -470,6 +476,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '$F(3) = 27/3 = 9$, $F(1) = 1/3$.',
       'Differenz: $9 - 1/3 = 26/3 \\approx 8{,}67$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['hauptsatz-12'] },
   },
   'ex-int-1-4-c': {
     id: 'ex-int-1-4-c', lessonId: 'int-1-4', type: 'multiple-choice',
@@ -498,6 +505,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Der Mittelwert von $f$ auf $[a,b]$ ist $\\dfrac{1}{b-a}\\int_{a}^{b} f(x)\\,dx$ — das Integral wird also noch durch die Intervalllänge geteilt. Das bloße Integral $\\int_{a}^{b} f(x)\\,dx$ ist die Fläche, nicht der Mittelwert.',
       '3': 'Die Kurvenlänge hat eine eigene Formel: $L = \\int_{a}^{b}\\sqrt{1 + (f\'(x))^{2}}\\,dx$ (Bogenlängenintegral). Das reine Integral $\\int_{a}^{b} f(x)\\,dx$ misst dagegen die Fläche unter der Kurve.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['geom-flaeche'] },
   },
   'ex-int-1-4-d': {
     id: 'ex-int-1-4-d', lessonId: 'int-1-4', type: 'number-input',
@@ -513,7 +521,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
 - $F(0) = -\\cos(0) = -1$.
 - $F(\\pi) - F(0) = 1 - (-1) = 2$.
 
-**Probe (geometrisch):** Die Fläche unter einer halben Sinuswelle ist genau $2$. Auffällig: die Fläche ist *nicht* $\\pi$!
+**Probe:** Geometrisch ist die Fläche unter einer halben Sinuswelle $[0, \\pi]$ genau $2$ (kein $\\pi$!). Numerisch: Mittelwert $\\overline{\\sin} = 2/\\pi$, Intervalllänge $\\pi$, Produkt $= 2$. ✓
 
 **Typischer Fehler:** Vorzeichen beim $-\\cos$ falsch behandeln. Klar rechnen: $-\\cos(\\pi) = -(-1) = +1$.`,
     hints: [
@@ -521,6 +529,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '$\\cos(\\pi) = -1$ und $\\cos(0) = 1$.',
       'Dann $-\\cos(\\pi) - (-\\cos(0)) = 1 - (-1) = 2$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['hauptsatz-12'] },
   },
   'ex-int-1-4-mastery': {
     id: 'ex-int-1-4-mastery', lessonId: 'int-1-4', type: 'number-input', isMasteryCheck: true,
@@ -544,6 +553,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Stammfunktion: $F(x) = x^{3} + x$.',
       'Hauptsatz: $F(2) - F(1) = 10 - 2 = 8$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['hauptsatz-12'] },
   },
 
   // ── Lesson 5: Hauptsatz der Differential- und Integralrechnung ────────────
@@ -574,6 +584,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Das ist falsch — Ableitungen können negativ oder null sein (z.B. bei fallenden Funktionen). Der Hauptsatz trifft eine ganz andere Aussage: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$.',
       '3': 'Nicht jedes Integral ist elementar berechenbar — z.B. $\\int e^{-x^{2}}\\,dx$ hat keine elementare Stammfunktion. Der Hauptsatz besagt lediglich die Formel $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, sofern $F$ bekannt ist.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['hauptsatz-2'] },
   },
   'ex-int-1-5-b': {
     id: 'ex-int-1-5-b', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -584,7 +595,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
 
 **Rechnung:** Nach Hauptsatz: $\\dfrac{d}{dx}\\int_{0}^{x} f(t)\\,dt = f(x)$. Hier ist $f(t) = t^{2}$, also $F'(x) = x^{2}$.
 
-**Probe (explizit):** $F(x) = \\dfrac{x^{3}}{3}$, $F'(x) = x^{2}$. ✓
+**Probe:** Explizit ausgerechnet ist $F(x) = \\dfrac{x^{3}}{3}$ (Stammfunktion); ableiten gibt $F'(x) = x^{2}$ — gleiches Ergebnis wie über den Hauptsatz. ✓
 
 **Typischer Fehler:** Option B ist $F(x)$ selbst, nicht $F'(x)$. Option C wäre die Ableitung der falschen Funktion.`,
     hints: [
@@ -597,6 +608,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': '$2x$ wäre $F\'\'(x)$, also die zweite Ableitung: Aus $F(x) = \\frac{x^{3}}{3}$ ergibt $F\'(x) = x^{2}$ und erst $F\'\'(x) = 2x$. Die Frage ist aber nach $F\'$, also $x^{2}$.',
       '3': 'Die Ableitung $F\'(x) = 0$ würde bedeuten, dass $F$ konstant ist — aber $F(x) = \\int_{0}^{x} t^{2}\\,dt = \\frac{x^{3}}{3}$ ist nicht konstant. Nach dem Hauptsatz ist $F\'(x) = f(x) = x^{2}$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['hauptsatz-1'] },
   },
   'ex-int-1-5-c': {
     id: 'ex-int-1-5-c', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -625,6 +637,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       '2': 'Nicht jede Funktion ist integrierbar (z.B. nicht-messbare Funktionen sind es nicht), das folgt nicht aus dem Hauptsatz. Der Hauptsatz liefert nur: Für stetige $f$ gilt $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, und Integration + Differentiation sind Umkehroperationen.',
       '3': 'Gerade das Gegenteil ist richtig: Teil 1 des Hauptsatzes garantiert, dass jede stetige Funktion eine Stammfunktion $F(x) = \\int_{a}^{x} f(t)\\,dt$ besitzt. Kernaussage: Integration und Differentiation sind invers zueinander.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 4, uses: ['umkehr-op'] },
   },
   'ex-int-1-5-mastery': {
     id: 'ex-int-1-5-mastery', lessonId: 'int-1-5', type: 'number-input', isMasteryCheck: true,
@@ -648,6 +661,7 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Stammfunktion: $F(x) = e^{x} + x^{2}$.',
       '$F(1) - F(0) = (e + 1) - 1 = e \\approx 2{,}72$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 1, uses: ['hauptsatz-2'] },
   },
 }
 
@@ -1032,7 +1046,17 @@ $$\\int_{1}^{3} x^{2}\\,dx$$
 3. Untere Grenze einsetzen: $F(1) = \\dfrac{1}{3}$
 4. Differenz bilden: $9 - \\dfrac{1}{3} = \\dfrac{26}{3} \\approx 8{,}67$
 
-**Wichtig:** Wenn $f(x) < 0$ im Intervall $[a,b]$, ist das Integral **negativ** — es misst dann die Fläche mit negativem Vorzeichen.`,
+**Wichtig:** Wenn $f(x) < 0$ im Intervall $[a,b]$, ist das Integral **negativ** — es misst dann die Fläche mit negativem Vorzeichen.
+
+**Weitere Rechenregeln für bestimmte Integrale:**
+
+| Regel | Formel | Bemerkung |
+|---|---|---|
+| Geometrische Deutung ($f \\geq 0$) | $\\int_a^b f(x)\\,dx = $ Fläche zwischen Graph und x-Achse | Fläche immer $\\geq 0$ |
+| Vorzeichen bei $f < 0$ | Integral $< 0$ — Fläche unter x-Achse zählt negativ | Geometrische Fläche ist $\\lvert \\text{Integral} \\rvert$ |
+| Grenzen vertauschen | $\\int_a^b f(x)\\,dx = -\\int_b^a f(x)\\,dx$ | Vorzeichen dreht sich |
+| Gleiche Grenzen | $\\int_a^a f(x)\\,dx = 0$ | Folgt aus Hauptsatz: $F(a) - F(a) = 0$ |
+| Additivität (Zerlegung) | $\\int_a^c f\\,dx = \\int_a^b f\\,dx + \\int_b^c f\\,dx$ | Für $a \\leq b \\leq c$ |`,
       },
       {
         id: 'int-1-4-s3', type: 'visualization', title: 'Fläche unter $f(x) = x^{2}$',
@@ -1151,6 +1175,16 @@ $$\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$$
 **Zusammenfassung:**
 - Integration $\\to$ Ableitung $\\to$ zurück zur Ausgangsfunktion: $\\dfrac{d}{dx}\\int_{a}^{x} f(t)\\,dt = f(x)$
 - Ableitung $\\to$ Integration $\\to$ zurück (bis auf Konstante): $\\int_{a}^{x} f'(t)\\,dt = f(x) - f(a)$
+
+**Leibniz-Regel (Verallgemeinerung von Teil 1 auf variable Grenzen):**
+
+Für $\\Phi(x) = \\int_{a(x)}^{b(x)} f(t)\\,dt$ mit differenzierbaren Grenzen $a(x), b(x)$ gilt:
+
+$$\\frac{d}{dx} \\int_{a(x)}^{b(x)} f(t)\\,dt = f(b(x)) \\cdot b'(x) - f(a(x)) \\cdot a'(x)$$
+
+**Beispiel:** $\\dfrac{d}{dx} \\int_{0}^{x^{2}} \\cos(t)\\,dt = \\cos(x^{2}) \\cdot 2x - \\cos(0) \\cdot 0 = 2x \\cos(x^{2})$.
+
+Der Spezialfall $a(x) = a$ (konstant), $b(x) = x$ ergibt direkt Hauptsatz Teil 1: $\\dfrac{d}{dx} \\int_{a}^{x} f(t)\\,dt = f(x) \\cdot 1 - f(a) \\cdot 0 = f(x)$.
 
 Diesen Satz haben wir bereits in Lektion 4 zum Berechnen bestimmter Integrale benutzt — jetzt kennen wir seine vollständige Formulierung.`,
       },
