@@ -115,17 +115,13 @@ export const exercises_vek_u2 = {
     question: 'Wie viele Richtungsvektoren braucht die Parameterform einer Ebene?',
     options: ['Keinen', 'Einen', 'Zwei', 'Drei'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Eine Ebene ist ein 2D-Objekt — sie hat zwei Freiheitsgrade.
+    explanation: `**Ansatz:** Eine Ebene ist ein 2D-Objekt — sie hat zwei Freiheitsgrade. Jeder Freiheitsgrad braucht einen unabhängigen Richtungsvektor.
 
-**Formel:** $\\vec{r} = \\vec{p} + s \\cdot \\vec{u} + t \\cdot \\vec{v}$ mit $s, t \\in \\mathbb{R}$.
+**Rechnung:** Parameterform $\\vec{r} = \\vec{p} + s \\cdot \\vec{u} + t \\cdot \\vec{v}$ mit $s, t \\in \\mathbb{R}$ und $\\vec{u}, \\vec{v}$ linear unabhängig. Anzahl Richtungen $=$ Dimension der Ebene $= 2$.
 
-Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht parallele) Richtungsvektoren, die in der Ebene liegen.
+**Probe:** Variiere $s, t$ unabhängig — die Punkte überstreichen ein "Blatt Papier" im Raum. Mit nur einem Parameter bekommt man eine Gerade (1D), mit drei wäre der dritte Vektor immer aus den anderen kombinierbar — also redundant.
 
-**Geometrisch:** Eine Ebene ist wie ein Blatt Papier im Raum. Um jeden Punkt auf dem Blatt zu erreichen, brauchst du zwei unabhängige Richtungen (z.B. "rechts" und "oben" auf dem Blatt).
-
-**Typischer Fehler:**
-- *Ein* Richtungsvektor liefert nur eine Gerade (1D).
-- *Drei* Richtungsvektoren sind im 3D-Raum immer linear abhängig — überflüssig.`,
+**Typischer Fehler:** Ein Richtungsvektor liefert nur eine Gerade; drei sind im 3D-Raum stets linear abhängig und damit überflüssig.`,
     hints: [
       'Wie viele Dimensionen hat eine Ebene? Welche Dimension steckt in einem Parameter?',
       'Gerade $\\to$ 1 Richtung. Fläche $\\to$ wie viele?',
@@ -136,6 +132,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       1: 'Ein Richtungsvektor liefert nur eine *Gerade*: $\\vec{r} = \\vec{p} + t\\vec{v}$ (1D). Eine Ebene (2D) braucht zwei linear unabhängige Richtungsvektoren.',
       3: 'Drei Richtungsvektoren sind im 3D-Raum immer linear abhängig — der dritte lässt sich durch die beiden anderen darstellen. Für eine Ebene reichen genau zwei linear unabhängige Richtungen.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['e-paramform'] },
   },
   'ex-vek-2-2-b': {
     id: 'ex-vek-2-2-b', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -149,13 +146,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
     correctIndex: 0,
     explanation: `**Ansatz:** Interpretation des Skalarprodukts: $\\vec{a} \\cdot \\vec{b} = 0 \\;\\Leftrightarrow\\; \\vec{a} \\perp \\vec{b}$.
 
-**Rechnung:** Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ besagt: Der Verbindungsvektor $\\vec{r} - \\vec{p}$ vom Stützpunkt $\\vec{p}$ zum beliebigen Punkt $\\vec{r}$ ist **senkrecht** zum Normalvektor $\\vec{n}$.
+**Rechnung:** Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ besagt: Der Verbindungsvektor $\\vec{r} - \\vec{p}$ vom Stützpunkt $\\vec{p}$ zum beliebigen Punkt $\\vec{r}$ ist **senkrecht** zum Normalvektor $\\vec{n}$. Alle solchen Punkte $\\vec{r}$ bilden eine Ebene durch $\\vec{p}$ senkrecht zu $\\vec{n}$.
 
-**Geometrisch:** Alle Punkte $\\vec{r}$, für die $\\vec{r} - \\vec{p}$ in der zu $\\vec{n}$ senkrechten Ebene liegt, bilden genau diese **Ebene**.
+**Probe:** Setze $\\vec{r} = \\vec{p}$: $\\vec{n} \\cdot \\vec{0} = 0$ ✓ (Stützpunkt liegt in der Ebene). Setze $\\vec{r} = \\vec{p} + \\vec{u}$ mit $\\vec{u} \\perp \\vec{n}$: $\\vec{n} \\cdot \\vec{u} = 0$ ✓ (alle Querrichtungen sind erlaubt — das ist die Ebene).
 
-**Typischer Fehler:**
-- "Nur den Punkt $\\vec{p}$": Gilt zwar auch ($\\vec{0} \\cdot \\vec{n} = 0$), aber es gibt unendlich viele weitere Lösungen.
-- "Parallel zu $\\vec{n}$": Genau das Gegenteil — der Verbindungsvektor steht senkrecht zu $\\vec{n}$, nicht parallel.`,
+**Typischer Fehler:** "Parallel zu $\\vec{n}$" ist genau das Gegenteil — der Verbindungsvektor steht *senkrecht* zu $\\vec{n}$, nicht parallel.`,
     hints: [
       'Welche Bedeutung hat $\\vec{a} \\cdot \\vec{b} = 0$? Orthogonalität.',
       'Der Verbindungsvektor $\\vec{r} - \\vec{p}$ muss senkrecht auf $\\vec{n}$ stehen.',
@@ -166,6 +161,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: '$\\vec{p}$ selbst erfüllt zwar die Gleichung (denn $\\vec{n} \\cdot \\vec{0} = 0$), ist aber nicht die einzige Lösung. Alle Punkte, deren Verbindungsvektor senkrecht zu $\\vec{n}$ steht, erfüllen die Gleichung — das ist eine ganze Ebene.',
       3: 'Eine Gerade in Richtung $\\vec{n}$ wäre $\\vec{r} = \\vec{p} + t\\vec{n}$ — also *parallel* zu $\\vec{n}$. Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ beschreibt dagegen eine Ebene *senkrecht* zu $\\vec{n}$.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['e-normalform', 'e-normal-vektor'] },
   },
   'ex-vek-2-2-c': {
     id: 'ex-vek-2-2-c', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -199,27 +195,25 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: 'Die Koeffizienten vor $x, y, z$ müssen *direkt* der Normalvektor $\\vec{n} = (2, -1, 3)$ sein, nicht $(1, -1, 1)$. Du hast die Zahlen willkürlich auf $1$ reduziert — die Ebene $x - y + z = 5$ hätte einen ganz anderen Normalvektor.',
       3: 'Vorzeichenfehler bei $b$: $n_y = -1$, also Koeffizient $-1 \\cdot y = -y$, nicht $+y$. Außerdem ist $d = \\vec{n} \\cdot \\vec{p} = 5$. Richtige Koordinatenform: $2x - y + 3z = 5$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['e-koordform', 'e-normalform'] },
   },
   'ex-vek-2-2-d': {
     id: 'ex-vek-2-2-d', lessonId: 'vek-2-2', type: 'true-false',
     statement: 'Aus der Parameterform einer Ebene erhält man den Normalvektor durch das Kreuzprodukt der beiden Richtungsvektoren.',
     correct: true,
-    explanation: `**Wahr.** Das ist genau der Zweck des Kreuzprodukts!
+    explanation: `**Ansatz:** Wenn die Ebene $\\vec{r} = \\vec{p} + s \\vec{u} + t \\vec{v}$ lautet, spannen $\\vec{u}$ und $\\vec{v}$ die Ebene auf. Ein Normalvektor steht *senkrecht* auf beiden — genau das liefert das Kreuzprodukt.
 
-**Ansatz:** Wenn die Ebene $\\vec{r} = \\vec{p} + s \\vec{u} + t \\vec{v}$ lautet, spannen $\\vec{u}$ und $\\vec{v}$ die Ebene auf. Ein Normalvektor steht *senkrecht* auf beiden — genau das liefert $\\vec{u} \\times \\vec{v}$.
-
-**Formel:** $\\vec{n} = \\vec{u} \\times \\vec{v}$.
+**Rechnung:** $\\vec{n} = \\vec{u} \\times \\vec{v}$. Diese Konstruktion ist die Standard-Übersetzung von Parameterform $\\to$ Normalenform.
 
 **Probe:** Nach Definition des Kreuzprodukts gilt $\\vec{n} \\cdot \\vec{u} = 0$ und $\\vec{n} \\cdot \\vec{v} = 0$ — der Normalvektor steht senkrecht auf der ganzen Ebene. ✓
 
-**Achtung:** $\\vec{u}$ und $\\vec{v}$ müssen linear unabhängig sein (nicht parallel), sonst wäre $\\vec{u} \\times \\vec{v} = \\vec{0}$ und der "Normalvektor" wäre undefiniert.
-
-**Umgekehrte Richtung — Parameter aus Normalform:** Zwei beliebige Vektoren wählen, die $\\vec{n} \\cdot \\vec{u} = 0$ und $\\vec{n} \\cdot \\vec{v} = 0$ erfüllen.`,
+**Typischer Fehler:** $\\vec{u}$ und $\\vec{v}$ müssen linear unabhängig sein. Sind sie parallel, wird $\\vec{u} \\times \\vec{v} = \\vec{0}$ — kein Normalvektor, und die "Ebene" ist in Wahrheit nur eine Gerade.`,
     hints: [
       'Welche Operation liefert einen Vektor senkrecht zu zwei anderen?',
       'Das Kreuzprodukt $\\vec{u} \\times \\vec{v}$ steht senkrecht auf $\\vec{u}$ und $\\vec{v}$.',
       'Das ist genau die Eigenschaft, die ein Normalvektor braucht.',
     ],
+    pedagogy: { stage: 'recognize', subGoal: 3, uses: ['e-normal-aus-p'] },
   },
   'ex-vek-2-2-mastery': {
     id: 'ex-vek-2-2-mastery', lessonId: 'vek-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -245,6 +239,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: '$(6, 0, 0)$ ist weder aus den Koeffizienten noch aus der Gleichung ablesbar — das sieht nach der rechten Seite $6$ und zwei Nullen aus. Richtig: Koeffizienten vor $x, y, z$ ablesen, also $\\vec{n} = (3, 2, -1)$.',
       3: 'Du hast die Koeffizienten willkürlich auf $1$ reduziert. Der Normalvektor steckt *direkt* in den Koeffizienten $(3, 2, -1)$ vor $x, y, z$ — nicht normiert auf $1$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['e-koordform'] },
   },
 
   // ── Lesson 3: Abstände und Schnitte ──
@@ -821,7 +816,27 @@ Das heißt: Jeder Punkt $\\vec{r}$ auf der Ebene hat einen Verbindungsvektor $\\
 | Parameter $\\to$ Normal | $\\vec{n} = \\vec{u} \\times \\vec{v}$ |
 | Normal $\\to$ Koordinate | $\\vec{n} \\cdot \\vec{r} = \\vec{n} \\cdot \\vec{p}$ ausmultiplizieren |
 | Koordinate $\\to$ Normal | $\\vec{n} = (a, b, c)$ ablesen |
-| Koordinate $\\to$ Parameter | Stützpunkt $\\vec{p}$ wählen, zwei Richtungen $\\vec{u}, \\vec{v}$ mit $\\vec{n} \\cdot \\vec{u} = \\vec{n} \\cdot \\vec{v} = 0$ finden |`,
+| Koordinate $\\to$ Parameter | Stützpunkt $\\vec{p}$ wählen, zwei Richtungen $\\vec{u}, \\vec{v}$ mit $\\vec{n} \\cdot \\vec{u} = \\vec{n} \\cdot \\vec{v} = 0$ finden |
+
+**Ebene durch drei Punkte** $P_1, P_2, P_3$ (nicht-kollinear):
+
+| Schritt | Formel |
+|---------|--------|
+| Spannvektoren | $\\vec{u} = P_2 - P_1,\\;\\vec{v} = P_3 - P_1$ |
+| Normalvektor | $\\vec{n} = \\vec{u} \\times \\vec{v}$ |
+| Koordinatenform | $\\vec{n} \\cdot \\vec{r} = \\vec{n} \\cdot P_1$ |
+
+Sind $\\vec{u},\\vec{v}$ parallel ($\\vec{u} \\times \\vec{v} = \\vec{0}$), liegen die drei Punkte auf einer Geraden — *keine* eindeutige Ebene.
+
+**Hessesche Normalform:**
+
+| Form | Gleichung |
+|------|-----------|
+| Hessesche Normalform | $\\vec{n}_0 \\cdot (\\vec{r} - \\vec{p}) = 0$ mit $|\\vec{n}_0| = 1$ |
+| Normierung | $\\vec{n}_0 = \\dfrac{\\vec{n}}{|\\vec{n}|}$ |
+| Hesse aus Koordinatenform | $\\dfrac{a x + b y + c z - d_0}{\\sqrt{a^2 + b^2 + c^2}} = 0$ |
+
+Der Vorteil: für jeden Punkt $Q$ liefert $|\\vec{n}_0 \\cdot Q - d_0'|$ direkt den Abstand zur Ebene (siehe Lesson 2.3).`,
       },
       { id: 'vek-2-2-s3', type: 'exercise', title: 'Aufgabe 1 — Parameterform einer Ebene', exerciseRef: 'ex-vek-2-2-a' },
       { id: 'vek-2-2-s4', type: 'exercise', title: 'Aufgabe 2 — Bedeutung der Normalenform', exerciseRef: 'ex-vek-2-2-b' },
