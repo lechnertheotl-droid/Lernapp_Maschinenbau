@@ -6,7 +6,7 @@ Ein einfaches Reminder-Widget für iPhone-Home- und Lockscreen, das dich ans Ler
 
 **Tut:**
 - Zeigt App-Icon + "Lerne!" / "Lernapp → Jetzt üben" auf Home- oder Lockscreen
-- Tap öffnet die deployed App: <https://lechnertheotl-droid.github.io/Lernapp_Maschinenbau/>
+- Tap öffnet die **installierte PWA** standalone (nicht im Safari-Tab) — via Kurzbefehl-Umweg, siehe Voraussetzung unten
 - Funktioniert in zwei Größen: **Small** (Homescreen quadratisch) und **Accessory Rectangular** (Lockscreen unter der Uhr)
 
 **Tut nicht:**
@@ -14,8 +14,22 @@ Ein einfaches Reminder-Widget für iPhone-Home- und Lockscreen, das dich ans Ler
 
 ## Voraussetzungen
 
-- iPhone mit iOS 16 oder neuer (für Lockscreen-Widgets)
+- iPhone mit iOS 16.4 oder neuer (Lockscreen-Widgets + Home-Screen-PWA-Support)
 - Die App **Scriptable** aus dem App Store (gratis): <https://apps.apple.com/de/app/scriptable/id1405459188>
+- Die Lernapp einmal von <https://lechnertheotl-droid.github.io/Lernapp_Maschinenbau/> aus Safari per "Teilen → Zum Home-Bildschirm" als PWA installieren
+
+## Voraussetzung: Kurzbefehl "Lernapp" anlegen (einmalig, ~30 Sekunden)
+
+iOS-Widgets können installierte PWAs nicht direkt aus einer https-URL öffnen — sie würden sonst in Safari landen statt in der PWA. Der Workaround: ein Kurzbefehl, den das Widget startet und der seinerseits die App öffnet.
+
+1. App **Kurzbefehle** öffnen → Tab "Kurzbefehle" unten → "+" oben rechts
+2. Oben den Namen antippen → **Lernapp** eingeben (exakt so, ohne Leerzeichen) → mit Enter bestätigen
+3. "+ Aktion hinzufügen" → in der Suche **"App öffnen"** eintippen → Aktion **"App öffnen"** wählen
+4. In der Aktion auf das blaue "App" tippen → in der Liste **Lernapp MB** suchen und auswählen → "Fertig"
+
+Test: in Kurzbefehle den "Lernapp"-Kurzbefehl antippen — die PWA öffnet sich standalone.
+
+> **Falls "Lernapp MB" nicht in der App-Liste auftaucht:** PWA einmal vom Homescreen öffnen und ein paar Sekunden offen lassen, dann den Kurzbefehl-Editor schließen und neu öffnen — iOS registriert Home-Screen-PWAs manchmal verzögert. Falls sie weiterhin fehlt, ersatzweise Aktion **"URLs öffnen"** mit `https://lechnertheotl-droid.github.io/Lernapp_Maschinenbau/` nehmen — öffnet die Seite zumindest in Safari.
 
 ## Installation in 6 Schritten
 
@@ -37,20 +51,20 @@ Fertig. Tap auf das Widget öffnet die App in Safari.
 
 Das Widget ist passiv (du musst hingucken). Wer eine aktive Erinnerung will, kann zusätzlich in unter 1 Minute eine Tages-Automation einrichten:
 
-1. App **Kurzbefehle** (Shortcuts) öffnen → Tab "Automation" → "Persönliche Automation erstellen"
+1. App **Kurzbefehle** öffnen → Tab "Automation" → "Persönliche Automation erstellen"
 2. **"Tageszeit"** wählen → **15:00** → "Weiter"
-3. Aktion hinzufügen: **"URL"** → URL eingeben:
-   `https://lechnertheotl-droid.github.io/Lernapp_Maschinenbau/`
-4. Weitere Aktion hinzufügen: **"URLs öffnen"**
+3. Aktion hinzufügen: in der Suche **"Kurzbefehl ausführen"** eintippen → Aktion wählen
+4. In der Aktion auf "Kurzbefehl" tippen → **Lernapp** auswählen (den oben angelegten)
 5. "Vor dem Ausführen fragen" **deaktivieren** → "Fertig"
 
-Ab jetzt klingelt das iPhone täglich um 15:00 und öffnet direkt die App.
+Ab jetzt klingelt das iPhone täglich um 15:00 und öffnet die PWA standalone. Vorteil dieser Konstruktion: ändern sich App-URL oder Öffnen-Logik, musst du nur den "Lernapp"-Kurzbefehl anpassen — Widget und Automation ziehen automatisch nach.
 
 ## Troubleshooting
 
 - **Icon erscheint nicht:** Script in Scriptable einmal manuell laufen lassen (Play-Button), damit der Icon-Cache initial gefüllt wird. Internet muss beim ersten Lauf verfügbar sein — danach läuft alles offline.
 - **Widget zeigt "Script not found":** Im Edit-Modus des Widgets sicherstellen, dass das Script "Lernapp" heißt und ausgewählt ist.
-- **Tap öffnet nichts:** Im Widget-Edit-Modus "When Interacting" auf "Open URL" lassen und das URL-Feld **leer** lassen — das Script setzt die URL selbst über `widget.url`.
+- **Tap öffnet nichts oder zeigt eine Fehlermeldung:** Der "Lernapp"-Kurzbefehl existiert nicht oder ist anders benannt. Voraussetzungs-Sektion oben durchgehen. Im Widget-Edit-Modus "When Interacting" auf "Open URL" lassen und das URL-Feld **leer** lassen — das Script setzt die URL selbst über `widget.url`.
+- **Tap öffnet Safari statt der PWA:** Der "Lernapp"-Kurzbefehl benutzt "URLs öffnen" statt "App öffnen" (Fallback-Variante). Kurzbefehl bearbeiten und die Aktion auf "App öffnen → Lernapp MB" umstellen.
 - **Lockscreen-Widget sieht farblos aus:** Das ist beabsichtigt. iOS rendert Lockscreen-Widgets immer monochrom; nur die Form/Symbole sind sichtbar.
 
 ## Anpassen
