@@ -41,3 +41,32 @@ export function saveState(state: unknown): SaveStatus {
 export function clearState(): void {
   localStorage.removeItem(STORAGE_KEY)
 }
+
+/**
+ * Liest den aktuellen Storage-Inhalt als pretty-printed JSON-String.
+ * Wirft, wenn nichts gespeichert ist.
+ */
+export function exportStateAsJson(): string {
+  const raw = localStorage.getItem(STORAGE_KEY)
+  if (!raw) throw new Error('Kein Fortschritt zum Sichern vorhanden.')
+  const parsed: unknown = JSON.parse(raw)
+  return JSON.stringify(parsed, null, 2)
+}
+
+/**
+ * Validiert einen importierten JSON-Text und gibt das geparste Objekt zurück.
+ * Erwartet die Top-Level-Struktur eines AppState (Objekt, nicht null/Array).
+ * Wirft mit deutscher Fehlermeldung bei ungültiger Eingabe.
+ */
+export function parseImportedState(text: string): Record<string, unknown> {
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(text.trim())
+  } catch {
+    throw new Error('Eingabe ist kein gültiges JSON.')
+  }
+  if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error('JSON muss ein Objekt sein (kein Array, kein Wert).')
+  }
+  return parsed as Record<string, unknown>
+}

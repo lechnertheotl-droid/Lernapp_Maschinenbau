@@ -1469,4 +1469,1166 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-3: Kreuzprodukt
+  // SG0: Vektor senkrecht zu a,b · SG1: Betrag/Fläche · SG2: RH-Regel + Antikomm + Parallel · SG3: 3D + Komp.formel
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-3': {
+    // ===== Sub-Goal 0 — Kreuzprodukt liefert Vektor senkrecht zu a, b =====
+    0: [
+      tag(
+        tf(
+          'Das Kreuzprodukt $\\vec{a}\\times\\vec{b}$ liefert — wie das Skalarprodukt — eine Zahl (Skalar).',
+          false,
+          `**Ansatz:** Schon der Name verrät es: „Vektor"-Produkt liefert einen Vektor, „Skalar"-Produkt liefert einen Skalar.
+
+**Rechnung:** $\\vec{a}\\times\\vec{b}$ ist per Definition ein **Vektor** in 3D, der senkrecht auf beiden Ausgangsvektoren steht. $\\vec{a}\\cdot\\vec{b}$ hingegen liefert eine **Zahl** (Skalar).
+
+**Probe:** Beispiel $\\vec{a}=(1,0,0),\\vec{b}=(0,1,0)$: $\\vec{a}\\times\\vec{b}=(0,0,1)$ — sichtbar ein Vektor mit drei Komponenten. Skalarprodukt $\\vec{a}\\cdot\\vec{b}=0$ — eine Zahl.
+
+**Typischer Fehler:** Skalar- und Kreuzprodukt namentlich verwechseln. Spickzettel: SP $\\vec{a}\\cdot\\vec{b}\\to$ Zahl; KP $\\vec{a}\\times\\vec{b}\\to$ Vektor (nur 3D).`,
+          [
+            'Hör auf den Namen — „Skalar"-Produkt vs. „Vektor"-Produkt.',
+            'Welcher Operator liefert welchen Ergebnistyp?',
+            'Test mit Standard-Basisvektoren: $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$ — Vektor, nicht Zahl.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kp-vektor', 'kp-vs-sp'] },
+      ),
+
+      tag(
+        mc(
+          'Sei $\\vec{c}=\\vec{a}\\times\\vec{b}$ mit $\\vec{a},\\vec{b}\\ne\\vec{0}$ und nicht parallel. Welche Aussage über $\\vec{c}$ ist **richtig**?',
+          [
+            '$\\vec{c}\\perp\\vec{a}$ **und** $\\vec{c}\\perp\\vec{b}$ — das Kreuzprodukt steht senkrecht auf beiden Ausgangsvektoren.',
+            '$\\vec{c}\\parallel\\vec{a}$ — das Kreuzprodukt zeigt in dieselbe Richtung wie $\\vec{a}$.',
+            '$\\vec{c}\\perp\\vec{a}$, aber $\\vec{c}\\parallel\\vec{b}$ — nur einer der Ausgangsvektoren ist senkrecht.',
+            '$\\vec{c}=\\vec{a}+\\vec{b}$ — das Kreuzprodukt ist die Resultierende der beiden Vektoren.',
+          ],
+          0,
+          `**Ansatz:** Definitions-Eigenschaft des Kreuzprodukts: $\\vec{c}=\\vec{a}\\times\\vec{b}$ steht **senkrecht auf der Ebene**, die von $\\vec{a}$ und $\\vec{b}$ aufgespannt wird — also senkrecht auf beiden.
+
+**Rechnung:** Test über Skalarprodukt: $\\vec{c}\\cdot\\vec{a}=0$ und $\\vec{c}\\cdot\\vec{b}=0$. Beispiel $\\vec{a}=(1,2,0),\\vec{b}=(0,0,3)$: $\\vec{c}=(6,-3,0)$. $\\vec{c}\\cdot\\vec{a}=6-6+0=0$ ✓ und $\\vec{c}\\cdot\\vec{b}=0$ ✓.
+
+**Probe:** Anwendung: aus zwei Spannvektoren einer Ebene erhält man genau so den **Normalvektor** $\\vec{n}=\\vec{a}\\times\\vec{b}$.
+
+**Typischer Fehler:** Nur Senkrechtigkeit zu **einem** der beiden Vektoren glauben. Tatsächlich gilt es **beide** Senkrechtigkeitsbedingungen gleichzeitig.`,
+          [
+            'Welche Lage hat das Kreuzprodukt zur aufgespannten Ebene?',
+            'Senkrecht zur Ebene heißt: senkrecht zu jedem Vektor in der Ebene.',
+            'Probe per SP: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$ und $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=0$.',
+          ],
+          {
+            1: 'Wäre $\\vec{c}\\parallel\\vec{a}$, läge $\\vec{c}$ in der von $\\vec{a},\\vec{b}$ aufgespannten Ebene — nicht senkrecht zu ihr. Per Definition steht das Kreuzprodukt **senkrecht** zu beiden Spannvektoren.',
+            2: 'Asymmetrisch ist falsch: das Kreuzprodukt steht **gleich behandelt** senkrecht zu $\\vec{a}$ und zu $\\vec{b}$. Eine einseitige Senkrechtigkeit gibt es nicht.',
+            3: '$\\vec{a}+\\vec{b}$ ist die **Vektorsumme** (Diagonale im Parallelogramm), nicht das Kreuzprodukt. Außerdem liegt $\\vec{a}+\\vec{b}$ in der Ebene, das Kreuzprodukt steht senkrecht dazu.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kp-orthog'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet $\\vec{a}\\cdot\\vec{b}=5$ für $\\vec{a}=(1,2)$ und $\\vec{b}=(3,1)$ und schreibt: „Damit ist auch $\\vec{a}\\times\\vec{b}=5$." Was ist der Fehler?',
+          [
+            'Skalar- und Kreuzprodukt sind unterschiedliche Operationen mit unterschiedlichen Ergebnistypen. SP liefert Zahl ($5$), KP liefert Vektor — und ist überdies in 2D nicht klassisch definiert.',
+            'Stimmt — beide Produkte liefern denselben Wert, nur das Vorzeichen kann sich unterscheiden.',
+            'Der Fehler liegt im Wert: Das Skalarprodukt müsste eigentlich $7$ ergeben.',
+            'Es gibt keinen Fehler, solange die Vektoren senkrecht zueinander stehen.',
+          ],
+          0,
+          `**Ansatz:** Operationen klar trennen — Ergebnistyp und Definition prüfen.
+
+**Rechnung:** SP $\\vec{a}\\cdot\\vec{b}=1\\cdot 3+2\\cdot 1=5$ — eine **Zahl**. KP $\\vec{a}\\times\\vec{b}$ ist in 2D nicht klassisch definiert (3D-Operator); in 3D-Einbettung $\\vec{a}=(1,2,0),\\vec{b}=(3,1,0)$ ergäbe $\\vec{a}\\times\\vec{b}=(0,0,1\\cdot 1-2\\cdot 3)=(0,0,-5)$ — ein **Vektor**, nicht der Skalar $5$.
+
+**Probe:** Dimensions-Check: Wenn der Schüler „$\\vec{a}\\times\\vec{b}=5$" schreibt, fehlt die Vektor-Notation. Ein Vektor ist niemals einfach $5$ — er hat (in 3D) drei Komponenten.
+
+**Typischer Fehler:** Das gemeinsame Wort „Produkt" verleitet dazu, beide Operationen als gleichwertig zu sehen. Tatsächlich unterscheiden sie sich in **Ergebnistyp** (Skalar vs. Vektor), **Geometrie** (Winkel vs. Senkrechte) und **Dimension** (alle Dimensionen vs. nur 3D).`,
+          [
+            'Welchen Ergebnistyp liefert Skalarprodukt? Kreuzprodukt?',
+            'Eine Zahl wie $5$ kann niemals ein Vektor sein.',
+            'Das klassische Kreuzprodukt verlangt 3D-Vektoren.',
+          ],
+          {
+            1: 'Werte stimmen **nie** automatisch überein — SP ist Skalar, KP ist Vektor. Selbst wenn man beide auf eine Zahl reduziert (Betrag des KP), gilt $|\\vec{a}\\times\\vec{b}|\\ne\\vec{a}\\cdot\\vec{b}$ im Allgemeinen.',
+            2: 'Der SP-Wert $5$ ist korrekt: $1\\cdot 3+2\\cdot 1=5$. Der Fehler liegt **nicht** im Zahlenwert, sondern in der falschen Gleichsetzung mit dem Kreuzprodukt.',
+            3: 'Bei Senkrechten wäre SP $=0$ — nicht $5$. Auch bei Senkrechten unterscheiden sich SP und KP grundlegend (SP $=0$, KP $\\ne\\vec{0}$).',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['kp-vs-sp'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jede Aussage der korrekten Operation oder Eigenschaft zu.',
+          [
+            { left: '$\\vec{a}\\cdot\\vec{b}$ (Skalarprodukt)', right: 'liefert eine Zahl (Skalar)' },
+            { left: '$\\vec{a}\\times\\vec{b}$ (Kreuzprodukt)', right: 'liefert einen Vektor (nur 3D)' },
+            { left: '$\\vec{a}\\cdot\\vec{b}=0$', right: 'bedeutet $\\vec{a}\\perp\\vec{b}$ (Orthogonalität)' },
+            { left: '$\\vec{a}\\times\\vec{b}$ steht senkrecht', right: 'auf $\\vec{a}$ und auf $\\vec{b}$ (orthog. zur Ebene)' },
+          ],
+          `**Ansatz:** Vier Kernaussagen — zwei zu Operation/Ergebnistyp, zwei zur Geometrie.
+
+**Rechnung:** SP gibt Skalar zurück, KP gibt Vektor zurück. SP $=0$ ist die scharfe Senkrechtigkeitsbedingung. KP-Ergebnis liegt automatisch senkrecht zu beiden Spannvektoren.
+
+**Probe:** Gegenprobe — KP $=\\vec{0}$ (Nullvektor) wäre die scharfe Parallelitätsbedingung. Diese ist hier nicht enthalten, gehört aber zum vollständigen Bild.
+
+**Typischer Fehler:** Senkrechtigkeit von SP $=0$ mit KP-Eigenschaft verwechseln. SP-Test: ist der **Wert** null? KP-Eigenschaft: stehen **Ausgangsvektoren** senkrecht zum Ergebnis?`,
+          [
+            'SP und KP unterscheiden sich im Ergebnistyp — schon das ist ein Paar.',
+            'Die zwei „=0"-Bedingungen testen unterschiedliche geometrische Lagen.',
+            'KP-Ergebnis und Spannvektoren stehen orthogonal zueinander.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['kp-vs-sp', 'kp-orthog'] },
+      ),
+
+      tag(
+        tf(
+          'Für beliebige $\\vec{a},\\vec{b}\\in\\mathbb{R}^3$ gilt $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$.',
+          true,
+          `**Ansatz:** Das Kreuzprodukt steht per Definition senkrecht auf $\\vec{a}$ — und Skalarprodukt zwischen senkrechten Vektoren ist null.
+
+**Rechnung:** $(\\vec{a}\\times\\vec{b})\\perp\\vec{a}$ heißt $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=0$. Beispiel $\\vec{a}=(1,2,3),\\vec{b}=(4,5,6)$: $\\vec{a}\\times\\vec{b}=(2\\cdot 6-3\\cdot 5,\\;3\\cdot 4-1\\cdot 6,\\;1\\cdot 5-2\\cdot 4)=(-3,6,-3)$. SP mit $\\vec{a}$: $-3+12-9=0$ ✓.
+
+**Probe:** Analog $(\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=-12+30-18=0$ ✓ — das Kreuzprodukt steht auch senkrecht zu $\\vec{b}$.
+
+**Typischer Fehler:** Die Senkrechtigkeit nur als Daumenregel statt als algebraische Identität verstehen. Sie folgt **direkt** aus der Komponentenformel und gilt unbedingt.`,
+          [
+            'Welche Lage hat $\\vec{a}\\times\\vec{b}$ zu $\\vec{a}$?',
+            'Senkrecht — und Senkrechtigkeit prüft man per Skalarprodukt.',
+            '$\\vec{u}\\perp\\vec{v}\\iff\\vec{u}\\cdot\\vec{v}=0$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kp-orthog', 'kp-vektor'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Betrag = Parallelogramm-Fläche =====
+    1: [
+      tag(
+        tf(
+          'Der Betrag $|\\vec{a}\\times\\vec{b}|$ entspricht dem Flächeninhalt des von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms.',
+          true,
+          `**Ansatz:** Geometrische Bedeutung der Formel $|\\vec{a}\\times\\vec{b}|=|\\vec{a}|\\cdot|\\vec{b}|\\sin\\varphi$.
+
+**Rechnung:** Parallelogramm-Fläche $=$ Grundseite $\\cdot$ Höhe $=|\\vec{a}|\\cdot(|\\vec{b}|\\sin\\varphi)=|\\vec{a}||\\vec{b}|\\sin\\varphi=|\\vec{a}\\times\\vec{b}|$. Die Höhe bekommt man durch Projektion: $\\vec{b}$ um Winkel $\\varphi$ gegen $\\vec{a}$ geneigt, der senkrechte Anteil ist $|\\vec{b}|\\sin\\varphi$.
+
+**Probe:** Spezialfall $\\varphi=90°$: Parallelogramm wird Rechteck, Fläche $=|\\vec{a}||\\vec{b}|\\sin 90°=|\\vec{a}||\\vec{b}|$. ✓ Spezialfall $\\varphi=0°$ (parallel): Fläche $=0$ — kein Parallelogramm.
+
+**Typischer Fehler:** Mit dem Betrag des Skalarprodukts $|\\vec{a}\\cdot\\vec{b}|=|\\vec{a}||\\vec{b}|\\cos\\varphi$ verwechseln — das ist die Projektions-Länge, nicht eine Fläche.`,
+          [
+            'Welche geometrische Größe verbinden $|\\vec{a}|$, $|\\vec{b}|$ und $\\sin\\varphi$?',
+            'Grundseite mal Höhe — das ist die klassische Parallelogramm-Formel.',
+            'Höhe = senkrechte Komponente $=|\\vec{b}|\\sin\\varphi$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Gegeben sind $|\\vec{a}|=4$, $|\\vec{b}|=3$ und der eingeschlossene Winkel $\\varphi=30°$. Wie groß ist $|\\vec{a}\\times\\vec{b}|$?',
+          ['$6$', '$12$', '$10{,}39$', '$0$'],
+          0,
+          `**Ansatz:** Betragsformel: $|\\vec{a}\\times\\vec{b}|=|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\sin\\varphi$.
+
+**Rechnung:** $\\sin 30°=0{,}5$. $|\\vec{a}\\times\\vec{b}|=4\\cdot 3\\cdot 0{,}5=6$.
+
+**Probe:** Plausibel: bei $\\varphi=90°$ wäre $|\\vec{a}\\times\\vec{b}|=12$ (Maximum). $30°<90°$ → kleinerer Wert. $6<12$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen ($\\cos 30°=\\sqrt{3}/2\\approx 0{,}866\\Rightarrow 12\\cdot 0{,}866\\approx 10{,}39$). Oder $\\sin$ vergessen und einfach $|\\vec{a}|\\cdot|\\vec{b}|=12$ rechnen.`,
+          [
+            'Welche Trigo-Funktion gehört zur KP-Betragsformel?',
+            'Standardwinkel: $\\sin 30°=0{,}5$.',
+            'Setz Werte ein: $4\\cdot 3\\cdot 0{,}5$.',
+          ],
+          {
+            1: '$12$ wäre $|\\vec{a}|\\cdot|\\vec{b}|$ ohne Winkelfaktor — das ist das **Maximum** bei $\\varphi=90°$, nicht bei $30°$.',
+            2: '$10{,}39\\approx 12\\cos 30°$ — du hast $\\cos$ statt $\\sin$ benutzt. Skalarprodukt nutzt $\\cos$, **Kreuzprodukt** nutzt $\\sin$.',
+            3: '$0$ wäre nur bei $\\varphi=0°$ oder $180°$ (parallel/antiparallel). $\\sin 30°=0{,}5\\ne 0$, also kein Nullbetrag.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Flächeninhalt des Parallelogramms, das von $\\vec{a}$ mit $|\\vec{a}|=5$ und $\\vec{b}$ mit $|\\vec{b}|=8$ aufgespannt wird, wenn der eingeschlossene Winkel $\\varphi=90°$ beträgt.',
+          40, 0, '',
+          `**Ansatz:** Parallelogramm-Fläche $=|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi$.
+
+**Rechnung:** $\\sin 90°=1$. Fläche $=5\\cdot 8\\cdot 1=40$.
+
+**Probe:** Bei $\\varphi=90°$ degeneriert das Parallelogramm zum **Rechteck** mit Seiten $5$ und $8$ — Fläche $=5\\cdot 8=40$. ✓
+
+**Typischer Fehler:** $\\sin 90°=0$ statt $1$ rechnen ($\\cos 90°=0$ verwechselt). Oder Beträge addieren statt multiplizieren ($5+8=13$).`,
+          [
+            'Was ist $\\sin 90°$?',
+            'Bei rechtem Winkel ist die Fläche maximal $=|\\vec{a}|\\cdot|\\vec{b}|$.',
+            'Hier: $5\\cdot 8\\cdot 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet die Parallelogramm-Fläche als $|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos\\varphi$ statt $\\sin\\varphi$. Bei $|\\vec{a}|=6$, $|\\vec{b}|=4$, $\\varphi=60°$ erhält er Fläche $=12$. Was ist der korrekte Wert — und was ist der Fehler?',
+          [
+            'Korrekt $|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi=6\\cdot 4\\cdot\\sin 60°\\approx 20{,}78$. Der Schüler hat $\\sin$ und $\\cos$ vertauscht — Skalarprodukt nutzt $\\cos$, Kreuzprodukt $\\sin$.',
+            'Der Schüler hat richtig — beide trigonometrischen Funktionen liefern hier dasselbe Ergebnis.',
+            'Korrekt sind beide Wege; $\\sin$ gilt nur in 3D, $\\cos$ funktioniert in 2D.',
+            'Der Fehler liegt nicht in $\\cos/\\sin$, sondern darin, dass die Beträge nicht multipliziert wurden.',
+          ],
+          0,
+          `**Ansatz:** Welche Trigo-Funktion gehört zu welchem Vektor-Produkt? SP $\\to\\cos$, KP $\\to\\sin$.
+
+**Rechnung:** $|\\vec{a}\\times\\vec{b}|=6\\cdot 4\\cdot\\sin 60°=24\\cdot\\frac{\\sqrt{3}}{2}=12\\sqrt{3}\\approx 20{,}78$. Schüler-Wert $|\\vec{a}|\\cdot|\\vec{b}|\\cdot\\cos 60°=24\\cdot 0{,}5=12$ — wäre das Skalarprodukt, nicht der KP-Betrag.
+
+**Probe:** Dimensions-Check: Bei $\\varphi=90°$ liefert die Schüler-Formel mit $\\cos$ den Wert $0$ (kein Parallelogramm), aber tatsächlich ist hier die Fläche maximal! Genau bei $\\varphi=90°$ steht das Parallelogramm „gerade" — die korrekte Formel mit $\\sin$ liefert $|\\vec{a}|\\cdot|\\vec{b}|$, das Maximum.
+
+**Typischer Fehler:** SP- und KP-Formel namentlich vertauschen. Eselsbrücke: **C**os für SP (**C**alculation, Winkel), **S**in für KP (**S**enkrechte, Fläche).`,
+          [
+            'Welche Trigo-Funktion verbindet $|\\vec{a}|, |\\vec{b}|$ mit dem KP-Betrag?',
+            'Standard: $\\sin 60°=\\sqrt 3/2\\approx 0{,}866$.',
+            'Eselsbrücke: SP $\\to\\cos$, KP $\\to\\sin$.',
+          ],
+          {
+            1: '$\\cos 60°=0{,}5$ und $\\sin 60°\\approx 0{,}866$ — die Werte unterscheiden sich deutlich. Die Funktionen sind **nicht** austauschbar.',
+            2: 'Beide Formeln gelten in den jeweiligen Domänen — aber für Parallelogramm-Fläche ist $\\sin$ die richtige, **immer** und unabhängig von der Dimension.',
+            3: 'Beträge wurden korrekt multipliziert ($6\\cdot 4=24$). Der Fehler liegt **ausschließlich** in $\\cos$ statt $\\sin$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne den Flächeninhalt des Dreiecks mit den Spannvektoren $\\vec{a}=(2,0,0)$ und $\\vec{b}=(0,3,0)$. (Hinweis: Dreiecksfläche $=\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|$.)',
+          3, 0, '',
+          `**Ansatz:** Dreieck = halbes Parallelogramm. Erst $\\vec{a}\\times\\vec{b}$ berechnen, dann Betrag halbieren.
+
+**Rechnung:** Komponentenformel: $\\vec{a}\\times\\vec{b}=(0\\cdot 0-0\\cdot 3,\\;0\\cdot 0-2\\cdot 0,\\;2\\cdot 3-0\\cdot 0)=(0,0,6)$. $|\\vec{a}\\times\\vec{b}|=6$. Dreiecksfläche $=6/2=3$.
+
+**Probe:** Anschaulich: $\\vec{a}$ entlang $x$-Achse (Länge 2), $\\vec{b}$ entlang $y$-Achse (Länge 3) — rechtwinkliges Dreieck mit Katheten $2$ und $3$. Fläche $=\\tfrac{1}{2}\\cdot 2\\cdot 3=3$. ✓
+
+**Typischer Fehler:** Die $\\tfrac{1}{2}$ vergessen und die volle Parallelogramm-Fläche $6$ als Dreiecksfläche abliefern. Oder das Kreuzprodukt durch Skalarprodukt ersetzen ($\\vec{a}\\cdot\\vec{b}=0$ liefert keine Fläche).`,
+          [
+            'Beziehung Dreieck $\\leftrightarrow$ Parallelogramm: halbe Fläche.',
+            '$\\vec{a}\\times\\vec{b}$ in Komponenten ausrechnen — bei achsenparallelen Vektoren bleibt nur die $z$-Komponente.',
+            'Dreieck $=\\tfrac{1}{2}\\cdot 6$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['kp-betrag', 'kp-komp'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Antikommutativität, Rechte-Hand-Regel, Parallelitätstest =====
+    2: [
+      tag(
+        tf(
+          'Es gilt $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$ — beim Vertauschen der Reihenfolge dreht sich das Vorzeichen um.',
+          true,
+          `**Ansatz:** Antikommutativität ist eine **Definitionseigenschaft** des Kreuzprodukts.
+
+**Rechnung:** Komponentenformel: $\\vec{a}\\times\\vec{b}=(a_yb_z-a_zb_y,\\;a_zb_x-a_xb_z,\\;a_xb_y-a_yb_x)$. Vertauschung $a\\leftrightarrow b$ kehrt jedes Vorzeichen um (z. B. $a_yb_z-a_zb_y\\to b_ya_z-b_za_y=-(a_yb_z-a_zb_y)$). Also $\\vec{b}\\times\\vec{a}=-(\\vec{a}\\times\\vec{b})$.
+
+**Probe:** Beispiel $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$ vs. $\\hat{e}_y\\times\\hat{e}_x=-\\hat{e}_z$ ✓. Geometrisch: Rechte-Hand-Regel — vertauschte Reihenfolge dreht den Daumen um $180°$.
+
+**Typischer Fehler:** Mit dem Skalarprodukt verwechseln, das **kommutativ** ist ($\\vec{a}\\cdot\\vec{b}=\\vec{b}\\cdot\\vec{a}$). Skalar- und Kreuzprodukt verhalten sich algebraisch unterschiedlich.`,
+          [
+            'Symmetrie-Eigenschaft prüfen: kommutativ oder antikommutativ?',
+            'Welche Operation kehrt das Vorzeichen bei Reihenfolge-Tausch?',
+            'Beispiel: $\\hat{e}_x\\times\\hat{e}_y$ vs. $\\hat{e}_y\\times\\hat{e}_x$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['kp-antikomm'] },
+      ),
+
+      tag(
+        mc(
+          'Per Rechte-Hand-Regel — was ergibt $\\hat{e}_z\\times\\hat{e}_x$?',
+          ['$\\hat{e}_y$', '$-\\hat{e}_y$', '$\\hat{e}_z$', '$\\vec{0}$'],
+          0,
+          `**Ansatz:** Zyklische Reihenfolge $1\\to 2\\to 3\\to 1$ entspricht $x\\to y\\to z\\to x$. Bei zyklischer Reihenfolge: positives Ergebnis.
+
+**Rechnung:** $\\hat{e}_z\\times\\hat{e}_x$ — gehe von $z$ einen Schritt zyklisch weiter zu $x$, das Resultat ist der nächste Schritt: $y$. Also $\\hat{e}_z\\times\\hat{e}_x=\\hat{e}_y$.
+
+**Probe:** Komponentenformel mit $\\hat{e}_z=(0,0,1)$ und $\\hat{e}_x=(1,0,0)$: $\\hat{e}_z\\times\\hat{e}_x=(0\\cdot 0-1\\cdot 0,\\;1\\cdot 1-0\\cdot 0,\\;0\\cdot 0-0\\cdot 1)=(0,1,0)=\\hat{e}_y$ ✓.
+
+**Typischer Fehler:** Antizyklisch lesen ($z\\to x$ als Rückwärts-Sprung) und das negative Vorzeichen dazudenken — das wäre $\\hat{e}_x\\times\\hat{e}_z=-\\hat{e}_y$, aber hier ist $\\hat{e}_z\\times\\hat{e}_x$ in zyklischer Richtung.`,
+          [
+            'Zyklische Reihenfolge: $x\\to y\\to z\\to x\\to\\dots$',
+            '$\\hat{e}_i\\times\\hat{e}_j=\\hat{e}_k$, wenn $(i,j,k)$ zyklisch ist.',
+            '$z\\to x$: zyklisch — also Resultat $y$ mit positivem Vorzeichen.',
+          ],
+          {
+            1: '$-\\hat{e}_y$ ergibt sich bei **antizyklischer** Reihenfolge $\\hat{e}_x\\times\\hat{e}_z$. Hier ist $\\hat{e}_z\\times\\hat{e}_x$ zyklisch — also positives $\\hat{e}_y$.',
+            2: 'Das KP ist senkrecht zu beiden Ausgangsvektoren — kann also nicht parallel zu $\\hat{e}_z$ sein, da $\\hat{e}_z$ einer der Ausgangsvektoren ist.',
+            3: '$\\vec{0}$ tritt nur bei parallelen Vektoren auf. $\\hat{e}_z\\perp\\hat{e}_x$, also $\\sin 90°=1$ und KP ungleich Null.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['kp-rh-regel'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler schreibt: „Da Multiplikation kommutativ ist, gilt $\\vec{a}\\times\\vec{b}=\\vec{b}\\times\\vec{a}$." Was ist der Fehler?',
+          [
+            'Das **Kreuzprodukt** ist nicht kommutativ, sondern **antikommutativ**: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$. Der Vergleich mit gewöhnlicher Zahlen-Multiplikation ist hier nicht zulässig.',
+            'Der Schüler hat richtig — alle Multiplikationen sind kommutativ.',
+            'Kreuzprodukt ist nur in 3D antikommutativ; in 2D wäre es kommutativ.',
+            'Kreuzprodukt ist halb-kommutativ: gleich, aber mit halbiertem Betrag.',
+          ],
+          0,
+          `**Ansatz:** Kommutativität ist eine **algebraische Eigenschaft**, die für unterschiedliche Operationen unterschiedlich ist.
+
+**Rechnung:** Reelle Zahlen: $a\\cdot b=b\\cdot a$ (kommutativ). Skalarprodukt: $\\vec{a}\\cdot\\vec{b}=\\vec{b}\\cdot\\vec{a}$ (kommutativ). Kreuzprodukt: $\\vec{a}\\times\\vec{b}=-(\\vec{b}\\times\\vec{a})$ — **anti**kommutativ.
+
+**Probe:** Beispiel $\\vec{a}=(1,0,0),\\vec{b}=(0,1,0)$: $\\vec{a}\\times\\vec{b}=(0,0,1)$ vs. $\\vec{b}\\times\\vec{a}=(0,0,-1)$ — entgegengesetzt, nicht gleich.
+
+**Typischer Fehler:** Begriffe „Multiplikation" über alle Operationen verallgemeinern. Jede Operation hat ihre eigenen algebraischen Regeln — Kreuzprodukt teilt mit gewöhnlicher Multiplikation den Namen, aber nicht die Kommutativität.`,
+          [
+            'Welche algebraische Eigenschaft hat das Kreuzprodukt bei Reihenfolge-Tausch?',
+            'Antikommutativ heißt: Vorzeichen-Wechsel.',
+            'Test mit konkretem Beispiel: $\\hat{e}_x\\times\\hat{e}_y$ vs. $\\hat{e}_y\\times\\hat{e}_x$.',
+          ],
+          {
+            1: 'Reelle Zahlen sind kommutativ — Kreuzprodukt ist es **nicht**. Gleich heißt: für **alle** Vektoren gleicher Wert. Hier ist es genau umgekehrt.',
+            2: 'Klassisches Kreuzprodukt existiert nur in 3D. Eine kommutative Variante in 2D gibt es nicht — die antikommutative Eigenschaft folgt direkt aus der Komponentenformel.',
+            3: '„Halb-kommutativ" ist keine etablierte Eigenschaft. Antikommutativ ist eine **scharfe** Aussage: Vorzeichenwechsel, nicht Betrags-Halbierung.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['kp-antikomm'] },
+      ),
+
+      tag(
+        matching(
+          'Ordne jedem Kreuzprodukt von Einheitsvektoren das korrekte Resultat zu.',
+          [
+            { left: '$\\hat{e}_x\\times\\hat{e}_y$', right: '$\\hat{e}_z$' },
+            { left: '$\\hat{e}_y\\times\\hat{e}_x$', right: '$-\\hat{e}_z$' },
+            { left: '$\\hat{e}_y\\times\\hat{e}_z$', right: '$\\hat{e}_x$' },
+            { left: '$\\hat{e}_z\\times\\hat{e}_y$', right: '$-\\hat{e}_x$' },
+          ],
+          `**Ansatz:** Zyklische Regel + Antikommutativität.
+
+**Rechnung:** Zyklische Reihenfolge $x\\to y\\to z\\to x$: $\\hat{e}_x\\times\\hat{e}_y=\\hat{e}_z$, $\\hat{e}_y\\times\\hat{e}_z=\\hat{e}_x$, $\\hat{e}_z\\times\\hat{e}_x=\\hat{e}_y$. Vertauschte Reihenfolge → negatives Vorzeichen: $\\hat{e}_y\\times\\hat{e}_x=-\\hat{e}_z$, $\\hat{e}_z\\times\\hat{e}_y=-\\hat{e}_x$.
+
+**Probe:** Komponentenformel-Check: $\\hat{e}_z\\times\\hat{e}_y=(0\\cdot 0-1\\cdot 1,\\;1\\cdot 0-0\\cdot 0,\\;0\\cdot 1-0\\cdot 0)=(-1,0,0)=-\\hat{e}_x$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen bei der antizyklischen Variante — $\\hat{e}_z\\times\\hat{e}_y$ ist $-\\hat{e}_x$, nicht $+\\hat{e}_x$.`,
+          [
+            'Zyklisch $x\\to y\\to z$: positives Vorzeichen.',
+            'Antizyklisch $z\\to y$ oder $y\\to x$: negatives Vorzeichen.',
+            'Antikommutativität: vertauschen $\\to$ Vorzeichen kippen.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['kp-rh-regel', 'kp-antikomm'] },
+      ),
+
+      tag(
+        tf(
+          'Wenn $\\vec{a}\\parallel\\vec{b}$ (parallel oder antiparallel), dann ist $\\vec{a}\\times\\vec{b}=\\vec{0}$.',
+          true,
+          `**Ansatz:** Bei parallelen Vektoren ist $\\varphi=0°$ oder $180°$ — und $\\sin 0°=\\sin 180°=0$.
+
+**Rechnung:** $|\\vec{a}\\times\\vec{b}|=|\\vec{a}||\\vec{b}|\\sin\\varphi=|\\vec{a}||\\vec{b}|\\cdot 0=0$. Ein Vektor mit Betrag null ist der **Nullvektor**.
+
+**Probe:** Beispiel $\\vec{a}=(1,2,3),\\vec{b}=(2,4,6)=2\\vec{a}$: $\\vec{a}\\times\\vec{b}=2(\\vec{a}\\times\\vec{a})=\\vec{0}$ ✓ (jeder Vektor ist parallel zu sich selbst, $\\vec{a}\\times\\vec{a}=\\vec{0}$).
+
+**Typischer Fehler:** Für **antiparallele** Vektoren ($\\varphi=180°$) zweifeln — auch hier ist $\\sin 180°=0$, also $\\vec{a}\\times\\vec{b}=\\vec{0}$ unverändert.`,
+          [
+            'Welcher Wert hat $\\sin\\varphi$ bei parallelen Vektoren?',
+            '$\\sin 0°=\\sin 180°=0$.',
+            'KP-Betrag null $\\Rightarrow$ KP $=\\vec{0}$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['kp-parallel', 'kp-betrag'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — 3D + Komponentenformel =====
+    3: [
+      tag(
+        tf(
+          'Das klassische Kreuzprodukt ist auch in 2D definiert und liefert dort eine Zahl statt eines Vektors.',
+          false,
+          `**Ansatz:** Definition prüfen: Kreuzprodukt verlangt drei Dimensionen.
+
+**Rechnung:** Klassisches KP ist nur in **3D** definiert (gibt es eine Verallgemeinerung in 7D, aber nicht in 2D/4D). In 2D verwendet man Hilfskonstruktionen (z. B. Determinanten-Formel $a_xb_y-a_yb_x$ für die orientierte Fläche), aber das Ergebnis ist eine Pseudo-Größe, kein Vektor.
+
+**Probe:** Komponentenformel verlangt $z$-Komponenten — in 2D fehlen die. Man behilft sich, indem man 2D-Vektoren als 3D mit $z=0$ einbettet: $\\vec{a}=(a_x,a_y,0),\\vec{b}=(b_x,b_y,0)$ → $\\vec{a}\\times\\vec{b}=(0,0,a_xb_y-a_yb_x)$ — dann zeigt das Ergebnis aus der $xy$-Ebene heraus.
+
+**Typischer Fehler:** Die 2D-Determinanten-Form als „2D-Kreuzprodukt" missverstehen. Mathematisch bleibt: KP ist eine 3D-Operation.`,
+          [
+            'In welcher Dimension ist das KP klassisch definiert?',
+            'Komponentenformel braucht $a_x,a_y,a_z$ und $b_x,b_y,b_z$.',
+            'In 2D fehlen die $z$-Komponenten — die KP-Formel funktioniert nicht direkt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['kp-3d-only'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $z$-Komponente von $\\vec{a}\\times\\vec{b}$ mit $\\vec{a}=(1,\\,2,\\,3)$ und $\\vec{b}=(4,\\,5,\\,6)$.',
+          -3, 0, '',
+          `**Ansatz:** $z$-Komponente der KP-Formel: $a_xb_y-a_yb_x$.
+
+**Rechnung:** $a_xb_y-a_yb_x=1\\cdot 5-2\\cdot 4=5-8=-3$.
+
+**Probe:** Vollständig: $\\vec{a}\\times\\vec{b}=(2\\cdot 6-3\\cdot 5,\\;3\\cdot 4-1\\cdot 6,\\;1\\cdot 5-2\\cdot 4)=(-3,6,-3)$. $z$-Komponente $=-3$ ✓. Zusatz-Probe: $(\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=-3+12-9=0$ — senkrecht zu $\\vec{a}$, plausibel.
+
+**Typischer Fehler:** Reihenfolge in der $z$-Formel umdrehen ($a_yb_x-a_xb_y=8-5=3$ statt $-3$) — das wäre das negative Vorzeichen.`,
+          [
+            'Zyklisches Schema: $z$-Komponente nutzt $a_x,b_y,a_y,b_x$.',
+            'Formel: $a_xb_y-a_yb_x$ — zuerst der „zyklisch nächste" Term, dann minus.',
+            'Vorzeichen-Check: bei $\\vec{a}=(1,2,3),\\vec{b}=(4,5,6)$ ist $a_xb_y=5$ und $a_yb_x=8$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kp-komp'] },
+      ),
+
+      tag(
+        mc(
+          'Ein Schüler rechnet die $y$-Komponente von $\\vec{a}\\times\\vec{b}$ als $a_xb_z-a_zb_x$ mit $\\vec{a}=(2,1,3),\\,\\vec{b}=(0,1,2)$ und erhält $4-0=4$. Was ist der korrekte Wert — und was ist der Fehler?',
+          [
+            'Korrekte Formel ist $a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=-4$. Der Schüler hat das Vorzeichen vertauscht — die $y$-Komponente verlangt $a_zb_x$ minus $a_xb_z$, nicht andersherum.',
+            'Der Schüler hat richtig — beide Reihenfolgen liefern dasselbe.',
+            'Der Schüler hat zwar die Reihenfolge vertauscht, aber das Vorzeichen kompensiert sich.',
+            'Die $y$-Komponente verlangt $a_xb_y-a_yb_x$ (wie bei der $z$-Komponente).',
+          ],
+          0,
+          `**Ansatz:** Vorzeichen-Schema in der $y$-Komponente präzise lesen.
+
+**Rechnung:** Korrekt: $(\\vec{a}\\times\\vec{b})_y=a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=0-4=-4$. Schüler-Variante $a_xb_z-a_zb_x=2\\cdot 2-3\\cdot 0=4$ — entgegengesetztes Vorzeichen.
+
+**Probe:** Vollständig: $\\vec{a}\\times\\vec{b}=(1\\cdot 2-3\\cdot 1,\\;3\\cdot 0-2\\cdot 2,\\;2\\cdot 1-1\\cdot 0)=(-1,-4,2)$. SP-Test: $(-1,-4,2)\\cdot\\vec{a}=-2-4+6=0$ ✓ — bestätigt $-4$.
+
+**Typischer Fehler:** Die zyklische Reihenfolge $x\\to y\\to z\\to x$ lokal anwenden. Die $y$-Komponente kommt aus den Indizes $(z,x)$, nicht $(x,z)$ — das verlangt das negative Vorzeichen, wenn man $a$- und $b$-Komponenten richtig zuordnet.`,
+          [
+            'Wie lautet die exakte Formel für die $y$-Komponente?',
+            'Schema: $y$-Komponente entsteht aus $a_z, b_x, a_x, b_z$ — und in einer **bestimmten** Reihenfolge.',
+            'Korrekt: $a_zb_x-a_xb_z$.',
+          ],
+          {
+            1: '$a_xb_z-a_zb_x$ liefert das **Negative** der korrekten $y$-Komponente — die Differenz im Vorzeichen ist nicht egal.',
+            2: 'Das stimmt rechnerisch ($-(-4)=4$, also Vorzeichen-Vertauschung), aber „kompensiert sich" ist falsch — das Endergebnis hat ein anderes Vorzeichen, was bei Anwendung (z. B. Drehmoment-Richtung) wichtig ist.',
+            3: '$a_xb_y-a_yb_x$ ist die $z$-Komponente, nicht die $y$. Jede Komponente nutzt eigene Indizes.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['kp-komp'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne $|\\vec{a}\\times\\vec{b}|$ für $\\vec{a}=(1,\\,0,\\,0)$ und $\\vec{b}=(0,\\,2,\\,0)$.',
+          2, 0, '',
+          `**Ansatz:** Erst Kreuzprodukt komponentenweise, dann Betrag via Pythagoras.
+
+**Rechnung:** $\\vec{a}\\times\\vec{b}=(0\\cdot 0-0\\cdot 2,\\;0\\cdot 0-1\\cdot 0,\\;1\\cdot 2-0\\cdot 0)=(0,0,2)$. Betrag $=\\sqrt{0+0+4}=2$.
+
+**Probe:** Geometrisch — $\\vec{a}$ entlang $x$-Achse (Länge 1), $\\vec{b}$ entlang $y$-Achse (Länge 2), eingeschlossener Winkel $90°$. Parallelogramm $=$ Rechteck mit Seiten $1$ und $2$, Fläche $=2$. ✓
+
+**Typischer Fehler:** Direkt $|\\vec{a}|\\cdot|\\vec{b}|=2$ rechnen — funktioniert hier zufällig, weil $\\sin 90°=1$. Bei beliebigem Winkel wäre die Formel ohne $\\sin$ falsch.`,
+          [
+            'Schritt 1: Komponentenformel anwenden.',
+            'Achsenparallele Vektoren ($\\vec{a}$ in $x$, $\\vec{b}$ in $y$): nur $z$-Komponente bleibt stehen.',
+            'Schritt 2: Betrag des Resultats $=\\sqrt{0^2+0^2+2^2}=2$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['kp-komp', 'kp-betrag'] },
+      ),
+
+      tag(
+        ni(
+          'Berechne die $y$-Komponente von $\\vec{a}\\times\\vec{b}$ mit $\\vec{a}=(2,\\,1,\\,3)$ und $\\vec{b}=(0,\\,1,\\,2)$.',
+          -4, 0, '',
+          `**Ansatz:** $y$-Komponente: $a_zb_x-a_xb_z$.
+
+**Rechnung:** $a_zb_x-a_xb_z=3\\cdot 0-2\\cdot 2=0-4=-4$.
+
+**Probe:** Volles Kreuzprodukt: $\\vec{a}\\times\\vec{b}=(1\\cdot 2-3\\cdot 1,\\;3\\cdot 0-2\\cdot 2,\\;2\\cdot 1-1\\cdot 0)=(-1,-4,2)$. SP $\\vec{a}\\cdot(-1,-4,2)=-2-4+6=0$ ✓ — KP steht senkrecht zu $\\vec{a}$, bestätigt das Ergebnis.
+
+**Typischer Fehler:** Vorzeichen vertauschen ($a_xb_z-a_zb_x=4$ statt $-4$). Die $y$-Komponente hat in der Standard-Komponentenformel die Reihenfolge $(a_z,b_x)$ vor $(a_x,b_z)$.`,
+          [
+            'Schema: $y$-Komponente nutzt $a_z, b_x, a_x, b_z$.',
+            'Formel: $a_zb_x-a_xb_z$ — Reihenfolge **dieser** Indizes.',
+            'Hier: $3\\cdot 0-2\\cdot 2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kp-komp'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 1-4: Kräfte als Vektoren (Prüfungs-Lesson — alle Aufgaben mit [PRÜFUNG])
+  // SG0: Komponenten-Zerlegung · SG1: Resultierende · SG2: Gleichgewicht
+  // SG3: Einheitsvektor · SG4: Betrag/Richtung · SG5: Plausibilitäts-Check
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-1-4': {
+    // ===== Sub-Goal 0 — Kraft-Komponenten-Zerlegung =====
+    0: [
+      tag(
+        tf(
+          '[PRÜFUNG] Bei einer Kraft $F$ unter dem Winkel $\\alpha$ **zur $x$-Achse** gilt $F_x=F\\cos\\alpha$ und $F_y=F\\sin\\alpha$.',
+          true,
+          `**Ansatz:** Standard-Zerlegung: Winkel zur $x$-Achse → $\\cos$ liefert $x$-Anteil, $\\sin$ liefert $y$-Anteil.
+
+**Rechnung:** Geometrisch: ein Pfeil der Länge $F$ unter Winkel $\\alpha$ projiziert auf die $x$-Achse die Strecke $F\\cos\\alpha$, auf die $y$-Achse die Strecke $F\\sin\\alpha$. Beispiel $F=100\\,\\text{N},\\,\\alpha=60°$: $F_x=50\\,\\text{N}$, $F_y\\approx 86{,}6\\,\\text{N}$.
+
+**Probe:** Längencheck — $F_x^2+F_y^2=F^2(\\cos^2\\alpha+\\sin^2\\alpha)=F^2$, also $\\sqrt{F_x^2+F_y^2}=F$ ✓ (Pythagoras).
+
+**Typischer Fehler:** Winkel zur **$y$-Achse** statt zur $x$-Achse genommen — dann sind $\\sin$ und $\\cos$ vertauscht. Immer den Bezugswinkel im Bild prüfen.`,
+          [
+            'Welcher Winkel-Bezug? Hier: Winkel zur $x$-Achse.',
+            'Projektionsregel: $\\cos$ → $x$-Achse, $\\sin$ → $y$-Achse.',
+            'Probe: $F_x^2+F_y^2$ muss $F^2$ ergeben.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft $F=100\\,\\text{N}$ wirkt unter $\\alpha=60°$ zur $x$-Achse. Wie groß ist die $x$-Komponente $F_x$?',
+          ['$50\\,\\text{N}$', '$86{,}6\\,\\text{N}$', '$100\\,\\text{N}$', '$0\\,\\text{N}$'],
+          0,
+          `**Ansatz:** Komponenten-Formel: $F_x=F\\cos\\alpha$.
+
+**Rechnung:** $F_x=100\\cdot\\cos 60°=100\\cdot 0{,}5=50\\,\\text{N}$.
+
+**Probe:** $F_y=100\\cdot\\sin 60°\\approx 86{,}6\\,\\text{N}$. Pythagoras: $\\sqrt{50^2+86{,}6^2}\\approx\\sqrt{2500+7500}=100$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ verwechselt: $100\\sin 60°\\approx 86{,}6$ wäre $F_y$, nicht $F_x$.`,
+          [
+            'Formel für $x$-Komponente: $F\\cos\\alpha$.',
+            'Standardwert: $\\cos 60°=0{,}5$.',
+            '$100\\cdot 0{,}5$.',
+          ],
+          {
+            1: 'Das ist $F_y=F\\sin 60°\\approx 86{,}6$ — du hast $\\sin$ und $\\cos$ vertauscht. Bei Winkel zur $x$-Achse gehört $\\cos$ zu $F_x$.',
+            2: '$100\\,\\text{N}$ wäre der gesamte Kraftbetrag — keine Zerlegung. Bei $\\alpha\\ne 0$ liegt nur ein Teil entlang $x$.',
+            3: '$0\\,\\text{N}$ entstünde bei $\\cos 90°=0$ — die Kraft müsste also senkrecht zur $x$-Achse stehen. Bei $60°$ ist aber $\\cos 60°=0{,}5$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Kraft $F=200\\,\\text{N}$ wirkt unter $\\alpha=30°$ zur $x$-Achse. Berechne die $y$-Komponente $F_y$ in N.',
+          100, 0, 'N',
+          `**Ansatz:** $F_y=F\\sin\\alpha$.
+
+**Rechnung:** $F_y=200\\cdot\\sin 30°=200\\cdot 0{,}5=100\\,\\text{N}$.
+
+**Probe:** $F_x=200\\cos 30°\\approx 173{,}2\\,\\text{N}$. Pythagoras: $\\sqrt{173{,}2^2+100^2}\\approx\\sqrt{30000+10000}=200$ ✓.
+
+**Typischer Fehler:** $\\cos 30°=\\sqrt 3/2\\approx 0{,}866$ statt $\\sin 30°=0{,}5$ einsetzen — gibt $\\approx 173{,}2$ statt $100$.`,
+          [
+            '$F_y$-Formel: $F\\sin\\alpha$.',
+            'Standardwert: $\\sin 30°=0{,}5$.',
+            '$200\\cdot 0{,}5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler rechnet die $x$-Komponente von $F=100\\,\\text{N}$ unter $\\alpha=60°$ als $F_x=F\\sin\\alpha\\approx 86{,}6\\,\\text{N}$. Was ist der Fehler — und welcher Wert ist korrekt?',
+          [
+            '$\\sin$ und $\\cos$ sind vertauscht. Korrekt: $F_x=F\\cos\\alpha=100\\cdot 0{,}5=50\\,\\text{N}$. Der Wert $86{,}6$ wäre $F_y$.',
+            'Die Rechnung ist korrekt — bei Winkel zur $x$-Achse gilt $F_x=F\\sin\\alpha$.',
+            'Sin ist richtig, aber der numerische Wert: $\\sin 60°=0{,}5$, also $F_x=50$.',
+            'Bei $\\alpha=60°$ liefern $\\sin$ und $\\cos$ denselben Wert — der Fehler liegt in der Einheit.',
+          ],
+          0,
+          `**Ansatz:** Zuordnung Trigo-Funktion ↔ Komponente prüfen. Bei Winkel zur $x$-Achse: $\\cos\\to F_x$, $\\sin\\to F_y$.
+
+**Rechnung:** Korrekt: $F_x=100\\cos 60°=50\\,\\text{N}$, $F_y=100\\sin 60°\\approx 86{,}6\\,\\text{N}$. Schüler hat $F_y$ als $F_x$ deklariert.
+
+**Probe:** Anschaulich — bei $\\alpha=60°$ neigt die Kraft sich „eher nach oben" (y-lastig), entsprechend ist $F_y>F_x$. Das passt zu $F_y=86{,}6>F_x=50$.
+
+**Typischer Fehler:** Zwei Verwechslungs-Quellen: (1) Winkel zur $y$-Achse mit Winkel zur $x$-Achse vertauschen, oder (2) blind $\\sin/\\cos$ raten. Eselsbrücke: bei kleinem $\\alpha$ liegt die Kraft fast in $x$-Richtung → $F_x$ groß → braucht $\\cos\\alpha\\approx 1$.`,
+          [
+            'Welche Trigo-Funktion gehört zu welcher Komponente?',
+            'Bei kleinem $\\alpha$ muss $F_x$ fast gleich $F$ sein — welche Funktion ist bei kleinem $\\alpha$ nahe 1?',
+            'Anschaulich-Test: bei $\\alpha=0°$ liegt die Kraft entlang $x$, also $F_x=F$. $\\cos 0°=1$ erfüllt das, $\\sin 0°=0$ nicht.',
+          ],
+          {
+            1: '$F_x=F\\sin\\alpha$ ist falsch — die $\\sin$-Funktion ist die $y$-Achsen-Projektion. Bei Winkel zur $x$-Achse gehört $\\cos$ zu $F_x$.',
+            2: '$\\sin 60°=\\sqrt 3/2\\approx 0{,}866$, **nicht** $0{,}5$. Auch wenn man die Werte vertauscht, ist die Methode falsch (sin gehört zu $F_y$).',
+            3: '$\\sin 60°=0{,}866$ und $\\cos 60°=0{,}5$ — nicht gleich. Bei $\\alpha=45°$ wären $\\sin$ und $\\cos$ gleich, hier nicht.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Kiste wird mit $F=400\\,\\text{N}$ unter einem Winkel von $\\alpha=60°$ über der Horizontalen gezogen. Welche Kraftkomponente $F_x$ wirkt parallel zum Boden (in N)?',
+          200, 0, 'N',
+          `**Ansatz:** Winkel zur Horizontalen $=$ Winkel zur $x$-Achse. $F_x=F\\cos\\alpha$.
+
+**Rechnung:** $F_x=400\\cdot\\cos 60°=400\\cdot 0{,}5=200\\,\\text{N}$.
+
+**Probe:** $F_y=400\\sin 60°\\approx 346{,}4\\,\\text{N}$ (Hebt die Kiste teilweise vom Boden ab). Pythagoras: $\\sqrt{200^2+346{,}4^2}\\approx 400$ ✓.
+
+**Typischer Fehler:** Anwender verwechseln „Kraft $400$ N" mit „horizontale Kraft" — dann reicht keine Zerlegung. Tatsächlich entlasten sich die $x$- und $y$-Anteile durch den Winkel.`,
+          [
+            'Winkel zur Horizontalen behandeln wie Winkel zur $x$-Achse.',
+            'Parallelkraft = $x$-Komponente.',
+            '$400\\cdot 0{,}5$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Resultierende =====
+    1: [
+      tag(
+        tf(
+          '[PRÜFUNG] Die Resultierende mehrerer Kräfte erhält man komponentenweise: $R_x=\\sum F_{ix}$ und $R_y=\\sum F_{iy}$.',
+          true,
+          `**Ansatz:** Vektoraddition wirkt komponentenweise. Resultierende ist die Vektorsumme aller Einzelkräfte.
+
+**Rechnung:** $\\vec R=\\sum_i\\vec F_i\\Rightarrow R_x=F_{1x}+F_{2x}+\\dots,\\;R_y=F_{1y}+F_{2y}+\\dots$. Beispiel $\\vec F_1=(3,0),\\vec F_2=(0,4)$: $R_x=3,R_y=4,\\vec R=(3,4)$.
+
+**Probe:** Geometrisch — Pfeile aneinandersetzen, vom Anfang des ersten zur Spitze des letzten. Algebraisch identisch zur Komponenten-Addition.
+
+**Typischer Fehler:** Beträge addieren ($|\\vec F_1|+|\\vec F_2|+\\dots$) — verliert die Richtungsinformation und überschätzt $|\\vec R|$.`,
+          [
+            'Wie addiert man Vektoren? Achse für Achse.',
+            'Pro Komponente einzeln summieren.',
+            'Beträge addieren ist falsch — Richtung würde verloren gehen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['resultierende'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Zwei Kräfte: $\\vec F_1$ mit $|F_1|=200\\,\\text{N}$ unter $60°$ zur $x$-Achse und $\\vec F_2$ mit $|F_2|=100\\,\\text{N}$ unter $0°$ zur $x$-Achse. Berechne $R_x$ in N.',
+          200, 0, 'N',
+          `**Ansatz:** Erst zerlegen, dann komponentenweise addieren.
+
+**Rechnung:** $F_{1x}=200\\cos 60°=200\\cdot 0{,}5=100\\,\\text{N}$. $F_{2x}=100\\cos 0°=100\\,\\text{N}$. $R_x=100+100=200\\,\\text{N}$.
+
+**Probe:** $F_{1y}=200\\sin 60°\\approx 173{,}2$, $F_{2y}=0$. $R_y\\approx 173{,}2$. Resultierende $\\vec R\\approx(200;\\,173{,}2)$, $|\\vec R|\\approx\\sqrt{40000+30000}\\approx 264{,}6\\,\\text{N}$. Plausibel: zwischen $|F_1|+|F_2|=300$ (parallel) und $|F_1-F_2|=100$ (antiparallel).
+
+**Typischer Fehler:** Beträge direkt addieren ($200+100=300$) ohne Zerlegung — würde Parallelität voraussetzen.`,
+          [
+            'Schritt 1: Komponenten via $\\cos\\alpha$ ausrechnen.',
+            'Schritt 2: $x$-Komponenten addieren.',
+            '$200\\cos 60°+100\\cos 0°$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['resultierende', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler hat $\\vec F_1=(3,\\,0)\\,\\text{N}$ und $\\vec F_2=(0,\\,4)\\,\\text{N}$ und rechnet $|\\vec R|=|\\vec F_1|+|\\vec F_2|=3+4=7\\,\\text{N}$. Welcher Wert ist korrekt — und warum?',
+          [
+            '$|\\vec R|=5\\,\\text{N}$ — der Schüler hat Beträge addiert. Korrekt: erst Komponenten addieren ($\\vec R=(3,4)$), dann Pythagoras: $\\sqrt{9+16}=5$.',
+            '$|\\vec R|=7\\,\\text{N}$ — der Schüler hat richtig gerechnet, Beträge addieren funktioniert immer.',
+            '$|\\vec R|=12\\,\\text{N}$ — Beträge müssen multipliziert werden.',
+            '$|\\vec R|=3{,}5\\,\\text{N}$ — der Schüler hätte den Mittelwert bilden müssen.',
+          ],
+          0,
+          `**Ansatz:** Vektoraddition arbeitet **komponentenweise**, nicht über Beträge. Beträge addieren überschätzt $|\\vec R|$ außer bei Parallelität.
+
+**Rechnung:** $\\vec R=\\vec F_1+\\vec F_2=(3+0,\\,0+4)=(3,4)\\,\\text{N}$. $|\\vec R|=\\sqrt{3^2+4^2}=\\sqrt{25}=5\\,\\text{N}$.
+
+**Probe:** $\\vec F_1$ und $\\vec F_2$ stehen senkrecht aufeinander → klassisches $3$-$4$-$5$-Dreieck. Bei senkrechten Vektoren ist $|\\vec R|<|\\vec F_1|+|\\vec F_2|$ (Dreiecksungleichung), hier $5<7$ ✓.
+
+**Typischer Fehler:** Skalare Addition mit Vektor-Addition verwechseln. Skalar: $3+4=7$; Vektor: erst Komponenten addieren, dann Betrag bilden — $\\sqrt{9+16}=5$.`,
+          [
+            'Wie addiert man Vektoren mathematisch korrekt?',
+            'Schritt 1: $\\vec R=(R_x,R_y)$. Schritt 2: $|\\vec R|$ via Pythagoras.',
+            'Bei senkrechten Kräften gilt das $3$-$4$-$5$-Tripel.',
+          ],
+          {
+            1: 'Beträge zu addieren entspricht Parallelität ($\\cos\\varphi=1$). Bei senkrechten Kräften ist $|\\vec R|=\\sqrt{|\\vec F_1|^2+|\\vec F_2|^2}$, nicht die Summe.',
+            2: '$3\\cdot 4=12$ ist eine Multiplikation, keine Vektor-Addition. Vektoren werden komponentenweise addiert.',
+            3: 'Mittelwert ist keine vektorielle Operation. Korrekt: Komponenten addieren → Betrag.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['resultierende'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Drei Kräfte: $\\vec F_1$ mit $|F_1|=100\\,\\text{N}$ unter $0°$, $\\vec F_2$ mit $|F_2|=50\\,\\text{N}$ unter $90°$, $\\vec F_3$ mit $|F_3|=50\\,\\text{N}$ unter $180°$. Berechne $R_x$ in N.',
+          50, 0, 'N',
+          `**Ansatz:** Pro Kraft Komponenten ausrechnen, dann $x$-Komponenten summieren.
+
+**Rechnung:** $F_{1x}=100\\cos 0°=100$. $F_{2x}=50\\cos 90°=0$. $F_{3x}=50\\cos 180°=-50$. $R_x=100+0-50=50\\,\\text{N}$.
+
+**Probe:** $R_y=0+50+0=50\\,\\text{N}$. $\\vec R=(50,50)$, $|\\vec R|=\\sqrt{5000}\\approx 70{,}7\\,\\text{N}$. Plausibel: drei Kräfte teilweise gegenläufig.
+
+**Typischer Fehler:** Kraft 3 mit positivem Vorzeichen einsetzen — bei $\\alpha=180°$ ist $\\cos 180°=-1$, also negativer Beitrag.`,
+          [
+            'Pro Kraft: $F\\cos\\alpha$ für $x$-Komponente.',
+            'Standardwerte: $\\cos 0°=1$, $\\cos 90°=0$, $\\cos 180°=-1$.',
+            'Vorzeichen mitnehmen — der dritte Beitrag ist negativ.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['resultierende', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Gleichgewicht =====
+    2: [
+      tag(
+        tf(
+          '[PRÜFUNG] Ein Kraftsystem ist genau dann im Gleichgewicht, wenn $\\sum F_x=0$ **und** $\\sum F_y=0$ (in 2D) gleichzeitig erfüllt sind.',
+          true,
+          `**Ansatz:** Gleichgewicht $\\iff$ Resultierende $=\\vec 0\\iff$ alle Komponenten der Resultierenden sind null.
+
+**Rechnung:** $\\vec R=\\sum\\vec F_i=\\vec 0\\iff R_x=0\\wedge R_y=0$ (in 2D); analog mit $R_z=0$ in 3D. **Jede** Achse muss erfüllt sein, **beide** Bedingungen gleichzeitig.
+
+**Probe:** Wenn nur $\\sum F_x=0$ gilt, kann der Körper noch in $y$-Richtung beschleunigen — kein Gleichgewicht. Erst wenn beide null sind, bleibt er in Ruhe (statisches Gleichgewicht).
+
+**Typischer Fehler:** „**Oder**" statt „**und**" lesen. Eine einzige Achse reicht nicht — alle Achsen müssen gleich null sein.`,
+          [
+            'Welche Bedingung garantiert, dass keine Beschleunigung auftritt?',
+            'Pro Achse separat prüfen.',
+            'Logik: alle Bedingungen gleichzeitig (UND), nicht mindestens eine (ODER).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['gleichgewicht'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Last $G=100\\,\\text{N}$ hängt symmetrisch an zwei Seilen, die beide unter $30°$ zur Horizontalen aufgespannt sind. Welche Spannung $T$ herrscht in jedem Seil (in N)?',
+          100, 0, 'N',
+          `**Ansatz:** Symmetrie ausnutzen: $T_1=T_2=T$. Gleichgewicht in $y$-Richtung aufstellen, da $\\sum F_x=0$ wegen Symmetrie automatisch erfüllt ist.
+
+**Rechnung:** Beide Seile ziehen den Aufhängepunkt mit Komponenten $T\\sin 30°$ nach oben (jeweils). $\\sum F_y=2T\\sin 30°-G=0\\Rightarrow 2T\\cdot 0{,}5=100\\Rightarrow T=100\\,\\text{N}$.
+
+**Probe:** Beide Seile zusammen tragen $2T\\sin 30°=2\\cdot 100\\cdot 0{,}5=100\\,\\text{N}=G$ ✓. Außerdem: bei flacherem Winkel müsste $T$ größer sein — bei $30°$ ist $T=G$, was bei dieser Geometrie plausibel ist.
+
+**Typischer Fehler:** $\\cos$ statt $\\sin$ einsetzen — bei Winkel zur Horizontalen liefert $\\sin$ den **vertikalen** Anteil, der das Gewicht trägt.`,
+          [
+            'Symmetrie: beide Seilspannungen gleich.',
+            'Gleichgewicht in $y$: vertikale Anteile heben Gewicht auf.',
+            '$2T\\sin 30°=G$, also $T=G/(2\\sin 30°)=G$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['gleichgewicht', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler prüft das Gleichgewicht eines Kraftsystems nur per $\\sum F_x=0$ und schließt: „System ist im Gleichgewicht." Was ist der Fehler?',
+          [
+            'Eine Achse reicht nicht — Gleichgewicht erfordert $\\sum F_x=0$ **und** $\\sum F_y=0$ (und in 3D auch $\\sum F_z=0$). Ohne $y$-Check könnte der Körper vertikal beschleunigen.',
+            'Der Schüler hat richtig — wenn $\\sum F_x=0$, ist das System automatisch im Gleichgewicht.',
+            'Der Schüler hätte zusätzlich nur $\\sum F_y=0$ prüfen müssen, falls er gerade keine $y$-Komponenten hat.',
+            'Der Schüler hätte den Betrag der Resultierenden $|\\vec R|=0$ prüfen müssen — die Komponentenform ist nicht aussagekräftig.',
+          ],
+          0,
+          `**Ansatz:** Gleichgewicht ist eine **Mehr-Achsen-Bedingung**. Nur eine Achse reicht nicht.
+
+**Rechnung:** Beispiel: Last $G=100\\,\\text{N}$ nach unten + horizontale Kräfte $\\vec F_1=(10,0),\\vec F_2=(-10,0)$. $\\sum F_x=0$ ✓, aber $\\sum F_y=-100\\ne 0$ → die Last fällt herunter. Kein Gleichgewicht.
+
+**Probe:** Statisches Gleichgewicht im 2D verlangt **zwei** unabhängige skalare Bedingungen ($x$ und $y$). Bei freier Drehung kommt zusätzlich $\\sum M=0$ (Momentensatz).
+
+**Typischer Fehler:** Den Begriff „Gleichgewicht" auf eine Bedingung reduzieren. Tatsächlich prüft man systematisch alle Achsen — fehlt eine, kann der Körper in dieser Richtung beschleunigen.`,
+          [
+            'Wie viele unabhängige Gleichungen verlangt 2D-Gleichgewicht?',
+            'Welche Achsen sind unabhängig?',
+            'Probe: gibt es eine Achse, in der eine Resultierende noch wirkt?',
+          ],
+          {
+            1: '$\\sum F_x=0$ allein lässt vertikale Beschleunigung zu — ein freier Fall ist möglich, also kein Gleichgewicht.',
+            2: '„Falls keine $y$-Komponenten" reicht nicht — zur Sicherheit muss man **immer** beide Achsen prüfen, auch wenn man auf den ersten Blick keine $y$-Kräfte sieht.',
+            3: '$|\\vec R|=0$ ist eine korrekte Formulierung, aber **äquivalent** zu „$R_x=0\\wedge R_y=0$". Die Komponentenform ist genauso aussagekräftig — der Schüler hat aber nur eine Achse geprüft.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['gleichgewicht'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Eine Last $G=200\\,\\text{N}$ hängt an zwei Seilen: Seil 1 zieht unter $60°$ zur Horizontalen nach links-oben, Seil 2 unter $30°$ zur Horizontalen nach rechts-oben. Berechne die Seilspannung $T_2$ in N.',
+          100, 0, 'N',
+          `**Ansatz:** Zwei Gleichgewichts-Gleichungen für zwei Unbekannte ($T_1,T_2$). Komponenten exakt aufstellen.
+
+**Rechnung:** $\\sum F_x=0$: $-T_1\\cos 60°+T_2\\cos 30°=0\\Rightarrow T_1=T_2\\cdot\\dfrac{\\cos 30°}{\\cos 60°}=T_2\\cdot\\sqrt 3\\approx 1{,}732\\,T_2$. $\\sum F_y=0$: $T_1\\sin 60°+T_2\\sin 30°-200=0$. Einsetzen: $\\sqrt 3 T_2\\cdot\\frac{\\sqrt 3}{2}+T_2\\cdot\\frac{1}{2}=200\\Rightarrow\\frac{3}{2}T_2+\\frac{1}{2}T_2=2T_2=200\\Rightarrow T_2=100\\,\\text{N}$.
+
+**Probe:** $T_1=\\sqrt 3\\cdot 100\\approx 173{,}2\\,\\text{N}$. $\\sum F_y=173{,}2\\cdot 0{,}866+100\\cdot 0{,}5=150+50=200$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei Seil 1 vergessen — wenn das Seil nach links-oben zieht, ist die $x$-Komponente negativ. Sonst wären beide $x$-Anteile positiv und es gäbe kein Gleichgewicht.`,
+          [
+            'Zwei Seile = zwei Unbekannte. Zwei Gleichungen aus Gleichgewicht.',
+            'Pro Achse: $\\sum F_x=0$ und $\\sum F_y=0$.',
+            'Aus $\\sum F_x$ folgt $T_1$ in Abhängigkeit von $T_2$, dann $\\sum F_y$ einsetzen.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['gleichgewicht', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Einheitsvektor (technisch) =====
+    3: [
+      tag(
+        tf(
+          '[PRÜFUNG] Ein Einheitsvektor $\\hat e$ ist dimensionslos und hat per Definition Länge $|\\hat e|=1$ — er beschreibt nur die Richtung, nicht den Betrag.',
+          true,
+          `**Ansatz:** Definitionseigenschaften: Länge $=1$ und Richtung wie der Ausgangsvektor. Einheitenfrei.
+
+**Rechnung:** Aus $\\hat e=\\vec a/|\\vec a|$: Im Zähler steht ein Vektor mit Einheit (z. B. N), im Nenner derselbe Vektor mit derselben Einheit — die Einheiten kürzen sich. Ergebnis ist dimensionslos.
+
+**Probe:** Beispiel $\\vec F=(30,40)\\,\\text{N}$, $|\\vec F|=50\\,\\text{N}$. $\\hat e=(30/50,40/50)=(0{,}6;\\,0{,}8)$ — keine Einheit, Länge $1$.
+
+**Typischer Fehler:** Einheitsvektoren mit Einheit ($\\text{N}$ o. ä.) versehen — falsch, Einheit kürzt sich beim Normieren.`,
+          [
+            'Was bedeutet „Einheits"-Vektor?',
+            'Konstruktion: Vektor durch eigenen Betrag — Einheiten heben sich auf.',
+            'Test: $|\\hat e|$ muss $1$ ergeben (ohne Einheit).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Berechne die $x$-Komponente des Einheitsvektors zu $\\vec a=(3,\\,4)$.',
+          0.6, 0.001, '',
+          `**Ansatz:** $\\hat e=\\vec a/|\\vec a|$ — auf jede Komponente einzeln anwenden.
+
+**Rechnung:** $|\\vec a|=\\sqrt{9+16}=5$. $\\hat e=(3/5,\\,4/5)=(0{,}6;\\,0{,}8)$. $x$-Komponente: $\\mathbf{0{,}6}$.
+
+**Probe:** $|\\hat e|=\\sqrt{0{,}36+0{,}64}=\\sqrt 1=1$ ✓. Klassisches $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** Durch eine Komponente ($a_x=3$) statt durch den Betrag $|\\vec a|=5$ teilen — das gibt $1$ statt $0{,}6$.`,
+          [
+            'Schritt 1: $|\\vec a|$ via Pythagoras.',
+            'Schritt 2: $\\vec a/|\\vec a|$ komponentenweise.',
+            'Hier $3$-$4$-$5$-Tripel: $|\\vec a|=5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler bildet den Einheitsvektor zu $\\vec a=(3,\\,4)$ als $\\hat e=(3/3,\\,4/4)=(1,\\,1)$. Welche Antwort enthüllt den Fehler?',
+          [
+            'Längencheck: $|(1,1)|=\\sqrt 2\\approx 1{,}41\\ne 1$ — also kein Einheitsvektor. Korrekt: $\\vec a$ durch den **Betrag** $|\\vec a|=5$ teilen, nicht durch eine einzelne Komponente. $\\hat e=(0{,}6;\\,0{,}8)$.',
+            'Die Rechnung ist richtig — bei Vektoren wird jede Komponente durch sich selbst geteilt.',
+            'Das Ergebnis $(1,1)$ ist tatsächlich der Einheitsvektor von $(3,4)$.',
+            'Der Fehler liegt im Vorzeichen — korrekt wäre $(-1,-1)$.',
+          ],
+          0,
+          `**Ansatz:** Längen-Test ist die einfachste Diagnose: $|\\hat e|$ muss exakt $1$ sein.
+
+**Rechnung:** $\\hat e=(1,1)$ hätte Länge $\\sqrt{1+1}=\\sqrt 2\\approx 1{,}414$ — nicht $1$. Korrekt: $|\\vec a|=5$, $\\hat e=(3/5,4/5)=(0{,}6;\\,0{,}8)$. Längencheck: $\\sqrt{0{,}36+0{,}64}=1$ ✓.
+
+**Probe:** Methodische Diagnose: „durch Komponente teilen" liefert ein Tupel mit Komponenten zwischen $0$ und $1$, **aber** ohne Längen-Garantie. Nur „durch Betrag teilen" garantiert Länge $1$.
+
+**Typischer Fehler:** Operationen auf Vektoren komponentenweise mit Operationen auf Skalaren verwechseln. Beim Normieren ist es **eine** Skalarzahl ($|\\vec a|$), durch die geteilt wird, nicht jeweils die eigene Komponente.`,
+          [
+            'Was muss ein Einheitsvektor erfüllen?',
+            'Längen-Test: $|\\hat e|=1$.',
+            'Welche Operation garantiert Länge $1$?',
+          ],
+          {
+            1: 'Komponente durch sich selbst zu teilen liefert immer $1$ (bei nicht-null Komponente) — das gibt keinen Bezug zur Vektorlänge.',
+            2: '$(1,1)$ hat Länge $\\sqrt 2$, nicht $1$ — also kein Einheitsvektor.',
+            3: 'Vorzeichen-Wechsel ändert Richtung, nicht Länge. $(-1,-1)$ hätte ebenfalls Länge $\\sqrt 2\\ne 1$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Berechne die $y$-Komponente des Einheitsvektors zu $\\vec a=(2,\\,-1,\\,2)$ (3D). Runde auf 3 Nachkommastellen.',
+          -0.333, 0.005, '',
+          `**Ansatz:** $\\hat e=\\vec a/|\\vec a|$ — auch in 3D unverändert.
+
+**Rechnung:** $|\\vec a|=\\sqrt{4+1+4}=\\sqrt 9=3$. $\\hat e=(2/3,\\,-1/3,\\,2/3)\\approx(0{,}667;\\,-0{,}333;\\,0{,}667)$. $y$-Komponente: $\\mathbf{-1/3\\approx -0{,}333}$.
+
+**Probe:** $|\\hat e|=\\sqrt{4/9+1/9+4/9}=\\sqrt{9/9}=1$ ✓. Vorzeichen-Plausibilität: $a_y=-1<0$, also $\\hat e_y<0$ — passt.
+
+**Typischer Fehler:** Vorzeichen verlieren — $|\\vec a|$ ist immer positiv, aber Komponenten dürfen negativ sein. $\\hat e_y=-1/3$, nicht $1/3$.`,
+          [
+            'Auch in 3D: $\\hat e=\\vec a/|\\vec a|$.',
+            '$|\\vec a|$ via 3D-Pythagoras: $\\sqrt{a_x^2+a_y^2+a_z^2}$.',
+            'Hier $|\\vec a|=3$, also $\\hat e_y=-1/3$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['einheits-tech'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 4 — Betrag und Richtung der Resultierenden =====
+    4: [
+      tag(
+        tf(
+          '[PRÜFUNG] Der Betrag der Resultierenden in 2D ergibt sich zu $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.',
+          true,
+          `**Ansatz:** Betrag = Pythagoras auf die Komponenten — gilt für jeden Vektor in 2D, also auch für die Resultierende.
+
+**Rechnung:** Standard-Betragsformel angewendet auf $\\vec R=(R_x,R_y)$: $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.
+
+**Probe:** Beispiel $\\vec R=(3,4)$: $|\\vec R|=\\sqrt{9+16}=5$ — klassisches $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** $|\\vec R|=R_x+R_y$ rechnen (Manhattan-Norm) — das ist nicht der euklidische Betrag.`,
+          [
+            'Welche Formel gibt die Länge eines Vektors?',
+            'Pythagoras auf die Komponenten.',
+            'Für die Resultierende identisch wie für jeden anderen Vektor.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Resultierende beträgt $\\vec R=(3,\\,4)\\,\\text{N}$. Wie groß ist $|\\vec R|$?',
+          ['$5\\,\\text{N}$', '$7\\,\\text{N}$', '$25\\,\\text{N}$', '$12\\,\\text{N}$'],
+          0,
+          `**Ansatz:** $|\\vec R|=\\sqrt{R_x^2+R_y^2}$.
+
+**Rechnung:** $|\\vec R|=\\sqrt{9+16}=\\sqrt{25}=5\\,\\text{N}$.
+
+**Probe:** $3$-$4$-$5$-Tripel — klassisch. ✓
+
+**Typischer Fehler:** Komponenten direkt addieren ($3+4=7$) — Manhattan-Norm, nicht euklidisch. Oder Wurzel vergessen ($\\sqrt{25}=5$, nicht $25$).`,
+          [
+            'Drei Schritte: quadrieren, summieren, Wurzel ziehen.',
+            'Standardtripel: $3$-$4$-?',
+            '$\\sqrt{9+16}=\\sqrt{25}$.',
+          ],
+          {
+            1: 'Komponenten direkt zu addieren ($3+4=7$) ist **Manhattan-Norm**, nicht euklidischer Betrag. Pythagoras verlangt erst quadrieren, dann summieren.',
+            2: '$25$ ist $|\\vec R|^2$ — die Wurzel am Ende wurde vergessen. $\\sqrt{25}=5$.',
+            3: '$3\\cdot 4=12$ ist eine Multiplikation, keine Längenformel. Pythagoras verwendet Quadrate und Wurzel.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Zwei senkrechte Kräfte: $\\vec F_1=(8,\\,0)\\,\\text{N}$ und $\\vec F_2=(0,\\,6)\\,\\text{N}$. Berechne den Betrag der Resultierenden $|\\vec R|$ in N.',
+          10, 0, 'N',
+          `**Ansatz:** Erst Resultierende, dann Betrag.
+
+**Rechnung:** $\\vec R=(8+0,\\,0+6)=(8,6)$. $|\\vec R|=\\sqrt{64+36}=\\sqrt{100}=10\\,\\text{N}$.
+
+**Probe:** Senkrechte Kräfte → $|\\vec R|^2=|\\vec F_1|^2+|\\vec F_2|^2=64+36=100$ ✓. Außerdem $6$-$8$-$10$ ist verdoppeltes $3$-$4$-$5$-Tripel.
+
+**Typischer Fehler:** Beträge direkt addieren ($8+6=14$) — gilt nur bei Parallelität.`,
+          [
+            'Schritt 1: $\\vec R$ komponentenweise.',
+            'Schritt 2: Pythagoras auf $\\vec R$.',
+            'Bei senkrechten Kräften: $|\\vec R|=\\sqrt{|\\vec F_1|^2+|\\vec F_2|^2}$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['r-betrag-richtung', 'resultierende'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler berechnet die Richtung von $\\vec R=(-3,\\,4)$ als $\\alpha=\\arctan(4/(-3))\\approx -53°$ (zur $x$-Achse). Was ist der Fehler?',
+          [
+            'Bei negativem $R_x$ liefert $\\arctan$ einen Winkel im Q4 statt Q2. Korrekt: $\\alpha=180°-53°=127°$. Standardlösung: $\\operatorname{atan2}(R_y,R_x)$ verwenden, das den Quadranten korrekt behandelt.',
+            'Die Rechnung ist korrekt — $\\arctan(R_y/R_x)$ liefert immer den richtigen Winkel.',
+            'Korrekt wäre $\\alpha=53°$, weil der Betrag des Winkels zählt.',
+            '$\\arctan$ liefert nur Werte in $[0°,\\,90°]$ — der Schüler hätte den Wert positiv übernehmen müssen.',
+          ],
+          0,
+          `**Ansatz:** $\\arctan$ hat **Wertebereich** $(-90°,\\,90°)$ — das umfasst nur Q1 (positiv) und Q4 (negativ). Bei Q2/Q3 muss man $\\pm 180°$ addieren.
+
+**Rechnung:** $\\vec R=(-3,4)$ liegt im **Q2** ($x<0,y>0$). $\\arctan(4/(-3))=\\arctan(-1{,}333)\\approx -53°$ — das ist Q4. Korrektur: $\\alpha=-53°+180°=127°$. Das ist der Winkel zur $+x$-Achse, gemessen gegen den Uhrzeigersinn.
+
+**Probe:** Anschaulich: $\\vec R$ zeigt nach links-oben, also liegt der Winkel zwischen $90°$ und $180°$. $127°$ passt, $-53°$ (Q4, rechts-unten) nicht.
+
+**Typischer Fehler:** Den Quadrant nicht prüfen und $\\arctan$-Output blind übernehmen. Standard-Werkzeug: $\\operatorname{atan2}(R_y,R_x)$ — das liefert Winkel im vollen Bereich $(-180°,\\,180°]$.`,
+          [
+            'Wertebereich von $\\arctan$ — welche Quadranten deckt es ab?',
+            'Bei $R_x<0$ ist Korrektur nötig.',
+            'Plausibilität: Skizze zeichnen, Quadrant ablesen.',
+          ],
+          {
+            1: '$\\arctan$ allein deckt nur Q1/Q4 ab. Bei $R_x<0$ landet man im Q4-Wert, obwohl der Vektor im Q2 oder Q3 liegt.',
+            2: 'Der Betrag des Winkels reicht nicht — die **Richtung** entscheidet, ob es links oder rechts ist. $-53°$ und $+53°$ zeigen zu unterschiedlichen Stellen.',
+            3: '$\\arctan$ liefert Werte in $(-90°,\\,90°)$ — also kann der Output negativ sein. Die Aussage „nur $[0°,\\,90°]$" ist falsch.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['r-betrag-richtung'] },
+      ),
+
+      tag(
+        ni(
+          '[PRÜFUNG] Drei Kräfte: $|F_1|=10\\,\\text{N}$ unter $0°$, $|F_2|=12\\,\\text{N}$ unter $90°$, $|F_3|=5\\,\\text{N}$ unter $180°$. Berechne den Betrag der Resultierenden $|\\vec R|$ in N.',
+          13, 0, 'N',
+          `**Ansatz:** Pro Kraft Komponenten ausrechnen → komponentenweise summieren → Betrag.
+
+**Rechnung:** $F_{1x}=10,F_{1y}=0$. $F_{2x}=0,F_{2y}=12$. $F_{3x}=-5,F_{3y}=0$. $\\vec R=(10+0-5,\\,0+12+0)=(5,12)$. $|\\vec R|=\\sqrt{25+144}=\\sqrt{169}=13\\,\\text{N}$.
+
+**Probe:** $5$-$12$-$13$ ist klassisches pythagoreisches Tripel ($25+144=169$). ✓
+
+**Typischer Fehler:** Vorzeichen bei Kraft 3 vergessen ($\\cos 180°=-1$, also $F_{3x}=-5$, nicht $+5$). Würde $\\vec R=(15,12)$ und $|\\vec R|\\approx 19{,}2$ liefern.`,
+          [
+            'Drei Schritte: Komponenten — $\\vec R$ — Betrag.',
+            'Standardwinkel: $\\cos 0°=1,\\cos 90°=0,\\cos 180°=-1$.',
+            'Pythagoreisches Tripel: $5$-$12$-?',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['r-betrag-richtung', 'resultierende', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 5 — Plausibilitäts-Check =====
+    5: [
+      tag(
+        tf(
+          '[PRÜFUNG] Wenn eine Kraft im 3. Quadranten liegt (Skizze: Pfeil nach links-unten), sind $F_x$ und $F_y$ beide negativ.',
+          true,
+          `**Ansatz:** Quadranten-Schema: Q1 $(+,+)$, Q2 $(-,+)$, Q3 $(-,-)$, Q4 $(+,-)$.
+
+**Rechnung:** Q3 $\\Rightarrow x<0,y<0$. Daher $F_x<0,F_y<0$.
+
+**Probe:** Beispiel $\\vec F=(-30,-40)\\,\\text{N}$ liegt im Q3 (Pfeil zeigt nach links-unten). $|\\vec F|=50\\,\\text{N}$, beide Komponenten negativ.
+
+**Typischer Fehler:** Quadranten verwechseln (z. B. Q3 und Q4). Faustregel: Vorzeichen von $x$ entscheidet links/rechts, Vorzeichen von $y$ entscheidet oben/unten.`,
+          [
+            'Quadranten-Schema in $(x,y)$-Vorzeichen.',
+            'Q3 = links unten = beide negativ.',
+            'Skizze zeichnen und Vorzeichen ablesen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft zeigt in der Skizze nach **rechts-unten**. Welche Vorzeichen-Kombination der Komponenten ist plausibel?',
+          ['$F_x>0,\\,F_y<0$', '$F_x<0,\\,F_y>0$', '$F_x>0,\\,F_y>0$', '$F_x<0,\\,F_y<0$'],
+          0,
+          `**Ansatz:** Skizzen-Richtung in Quadrant übersetzen. Rechts $\\to x>0$, unten $\\to y<0$. Das ist Q4.
+
+**Rechnung:** Q4 hat Vorzeichen-Paar $(+,-)$ — $F_x>0$, $F_y<0$.
+
+**Probe:** Beispiel $\\vec F=(40,-30)\\,\\text{N}$ — Pfeil zeigt nach rechts (positiver $x$) und unten (negativer $y$). Passt zur Skizze.
+
+**Typischer Fehler:** „Unten" mit „links" verwechseln und das Vorzeichen falschen Achse zuordnen.`,
+          [
+            'Quadranten-Schema durchdenken.',
+            'Rechts → $x$-Vorzeichen?',
+            'Unten → $y$-Vorzeichen?',
+          ],
+          {
+            1: 'Q2 ($-,+$): links-oben. Hier ist die Kraft aber nach rechts-unten gerichtet.',
+            2: 'Q1 ($+,+$): rechts-oben. Wir suchen nach rechts-**unten**.',
+            3: 'Q3 ($-,-$): links-unten. Wir suchen rechts-unten — $x$ ist dort positiv.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Eine Kraft $F=50\\,\\text{N}$ wirkt unter $\\alpha=135°$ zur $x$-Achse. Welche Vorzeichen haben die Komponenten?',
+          [
+            '$F_x<0,\\,F_y>0$ — Q2, denn $\\cos 135°<0$ und $\\sin 135°>0$.',
+            '$F_x>0,\\,F_y<0$ — Q4.',
+            '$F_x>0,\\,F_y>0$ — Q1.',
+            '$F_x<0,\\,F_y<0$ — Q3.',
+          ],
+          0,
+          `**Ansatz:** Winkel $135°$ liegt zwischen $90°$ und $180°$ → Q2.
+
+**Rechnung:** $F_x=50\\cos 135°=50\\cdot(-\\sqrt 2/2)\\approx -35{,}36<0$. $F_y=50\\sin 135°=50\\cdot(\\sqrt 2/2)\\approx 35{,}36>0$. Q2: $(-,+)$.
+
+**Probe:** Quadranten-Skizze — Pfeil zur Stelle $(-35,35)$ zeigt nach links-oben, passt zu Q2.
+
+**Typischer Fehler:** Vorzeichen aus dem Standardwinkel $45°$ ableiten ohne Beachtung des Quadranten — $\\cos 45°>0$, aber $\\cos 135°<0$ wegen Q2.`,
+          [
+            'Welcher Quadrant deckt den Bereich $90°<\\alpha<180°$ ab?',
+            'Vorzeichen von $\\cos$ und $\\sin$ in Q2 nachschlagen.',
+            'Q2: $\\cos<0,\\,\\sin>0$.',
+          ],
+          {
+            1: 'Q4 wäre $-90°<\\alpha<0°$ — also nicht $135°$.',
+            2: 'Q1 ist $0°<\\alpha<90°$ — $135°$ ist außerhalb.',
+            3: 'Q3 wäre $180°<\\alpha<270°$ (oder negativ $-180°$ bis $-90°$) — $135°$ ist im oberen Halbraum, also $\\sin>0$.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['plausi-vorzeichen', 'kraft-zerlegung'] },
+      ),
+
+      tag(
+        mc(
+          '[PRÜFUNG] Ein Schüler hat eine Kraft skizziert, die nach links-oben zeigt, und schreibt $F_x=+50\\,\\text{N}$. Was sollte ihn stutzig machen?',
+          [
+            'Eine Kraft nach links-oben muss $F_x<0$ haben (Q2). Positives $F_x$ widerspricht der Skizze — wahrscheinlich wurde der Winkel falsch gemessen oder das Vorzeichen vergessen.',
+            'Die Skizze ist Geschmackssache — Vorzeichen können willkürlich gewählt werden.',
+            'Solange $|F_x|=50$ stimmt, ist das Vorzeichen egal.',
+            'Die Skizze muss falsch sein, weil $F_x$ immer positiv ist.',
+          ],
+          0,
+          `**Ansatz:** Plausibilitäts-Check zwischen Skizze und Rechenergebnis ist Pflicht.
+
+**Rechnung:** Links-oben = Q2 = $(-,+)$. $F_x>0$ widerspricht dem direkt. Mögliche Ursachen: (1) Winkel zur Vertikalen statt zur Horizontalen gemessen; (2) Vorzeichen bei der Komponentenzerlegung vergessen ($F_x=F\\cos\\alpha$ — bei $\\alpha\\in(90°,180°)$ ist $\\cos\\alpha<0$); (3) Skizze falsch interpretiert.
+
+**Probe:** Bei jeder Kraftaufgabe nach der Rechnung die Vorzeichen mit der Skizze vergleichen — passt das Vorzeichen-Quartett zum Quadranten? Wenn nicht: Fehler aufspüren, **bevor** man weiterrechnet.
+
+**Typischer Fehler:** Skizze und Rechnung als getrennte Welten behandeln. Tatsächlich ist die Skizze die wichtigste Plausibilitäts-Kontrolle.`,
+          [
+            'Was sagt die Skizze über die Vorzeichen aus?',
+            'Q2 hat welches Vorzeichen-Paar?',
+            'Wenn Skizze und Rechnung sich widersprechen: Fehler suchen.',
+          ],
+          {
+            1: 'Vorzeichen sind nicht „Geschmackssache" — sie kodieren Richtungsinformation.',
+            2: 'Vorzeichen ist im Maschinenbau **wesentlich** — falsches Vorzeichen kippt die ganze Folgerechnung (Resultierende, Drehmoment, Arbeit).',
+            3: '$F_x$ kann sehr wohl negativ sein — bei jeder Kraft, die nach links wirkt.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['plausi-vorzeichen'] },
+      ),
+
+      tag(
+        sorting(
+          '[PRÜFUNG] Bringe die Schritte einer typischen Kraftsystem-Aufgabe (Resultierende mit Plausibilitätscheck) in die richtige Reihenfolge.',
+          [
+            'Skizze des Kraftsystems mit Koordinatensystem zeichnen — Winkel und Wirkungslinien eintragen.',
+            'Pro Kraft Komponenten via $F_x=F\\cos\\alpha,\\,F_y=F\\sin\\alpha$ zerlegen.',
+            'Komponenten achsenweise addieren: $R_x=\\sum F_{ix},\\,R_y=\\sum F_{iy}$.',
+            'Vorzeichen der Komponenten mit der Skizze vergleichen (Plausibilitäts-Check).',
+            'Falls gefragt: Betrag $|\\vec R|=\\sqrt{R_x^2+R_y^2}$ und Richtung $\\alpha=\\arctan(R_y/R_x)$ (Quadrant beachten).',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Standard-Vorgehen für jede Kraftaufgabe — fünf strukturierte Schritte.
+
+**Rechnung:** (1) Skizze klärt Winkel und Vorzeichen-Konventionen. (2) Zerlegung bringt jede Kraft in Komponentenform. (3) Vektoraddition als komponentenweise Summe. (4) Plausibilität prüft Vorzeichen anhand der Skizze. (5) Endform Betrag/Richtung berechnen, falls gefragt.
+
+**Probe:** Die Reihenfolge ist nicht beliebig — Schritt 4 (Plausibilität) muss **nach** der Rechnung stehen, sonst hat man nichts zu checken. Schritt 5 setzt korrekte Komponenten voraus.
+
+**Typischer Fehler:** Plausibilitätscheck weglassen oder erst am Ende. Empfehlung: nach jedem Zwischenresultat kurz prüfen.`,
+          [
+            'Skizze zuerst — sonst hat man keinen Bezug.',
+            'Komponentenrechnung gehört in die Mitte.',
+            'Vorzeichen-Check nach der Rechnung, vor dem Endresultat.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['plausi-vorzeichen', 'resultierende'] },
+      ),
+    ],
+  },
 }
