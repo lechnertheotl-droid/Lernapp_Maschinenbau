@@ -3275,4 +3275,654 @@ print(f.__doc__)  # → "Quadrat von x."
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // py-2-1 — NumPy Grundlagen  (5 subGoals)
+  // 25 Aufgaben mit pedagogy-Tags · alle 25 Matrix-Zeilen.
+  // ───────────────────────────────────────────────────────────────────────
+  'py-2-1': {
+    // ── SG 0 — `np-create` — Array-Konstruktoren ────────────────────────
+    0: [
+      // Row 1 · recognize · true-false · uses=[np-create]
+      tf(
+        '`np.linspace(0, 10, 5)` erzeugt **5 gleichverteilte Punkte** zwischen 0 und 10 — beide Endpunkte inklusiv: `[0, 2.5, 5, 7.5, 10]`.',
+        true,
+        `**Ansatz:** \`linspace(start, stop, n)\` ist der Standard-Konstruktor für gleichverteilte Punkte; rechte Grenze IST enthalten, Schrittweite = $(stop - start)/(n - 1)$.
+
+**Rechnung:** Schrittweite $= (10 - 0)/(5 - 1) = 2{,}5$. Werte: $0, 2{,}5, 5{,}0, 7{,}5, 10{,}0$ — fünf Stück.
+
+**Probe:** \`>>> np.linspace(0, 10, 5)\` → \`array([ 0. ,  2.5,  5. ,  7.5, 10. ])\` ✓.
+
+**Typischer Fehler:** Mit \`arange\` verwechseln, wo das dritte Argument die SCHRITTWEITE ist (nicht die Anzahl). Oder rechte Grenze als exklusiv annehmen (gilt für \`arange\`, nicht für \`linspace\`).`,
+        [
+          'Was ist das dritte Argument von \`linspace\`?',
+          'Sind beide Endpunkte enthalten?',
+          'Schrittweite $= (stop - start)/(n - 1)$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['np-create'] },
+      ),
+      // Row 2 · apply-guided · multiple-choice · uses=[np-create]
+      mc(
+        'Welcher Befehl erzeugt eine 4×4-Matrix voller Nullen in NumPy?',
+        ['`np.zeros((4, 4))`', '`np.zeros(4, 4)`', '`np.zero((4, 4))`', '`np.empty(4, 4)`'],
+        0,
+        `**Ansatz:** \`np.zeros\` erzeugt eine Matrix mit allen Einträgen 0. Das Shape-Argument MUSS als TUPEL übergeben werden, wenn es mehr als eine Dimension ist.
+
+**Rechnung:** \`np.zeros((4, 4))\` → 4×4-Matrix mit allen Einträgen $0$. Form: \`(4, 4)\` als Tupel in EINEM Argument.
+
+**Probe:** \`>>> np.zeros((4, 4))\` → \`array([[0., 0., 0., 0.], ...])\` mit Shape \`(4, 4)\` ✓.
+
+**Typischer Fehler:** \`np.zeros(4, 4)\` (zwei separate Argumente) → \`TypeError\`, weil \`zeros\` Shape als Tupel erwartet. Doppelt verklammern: \`((4, 4))\`.`,
+        [
+          'Wie übergibt man die Form an \`zeros\`?',
+          'Tupel oder zwei Argumente?',
+          'Doppelte Klammern: \`zeros((4, 4))\`.',
+        ],
+        {
+          '1': '\`np.zeros(4, 4)\` interpretiert die zweite \`4\` als optionalen \`dtype\`-Parameter — wirft TypeError, weil \`4\` kein gültiger dtype ist.',
+          '2': '\`np.zero\` existiert nicht — heißt \`np.zeros\` (Plural).',
+          '3': '\`np.empty\` erzeugt eine uninitialisierte Matrix (Werte zufällig im Speicher), nicht garantiert Nullen.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['np-create'] },
+      ),
+      // Row 3 · apply-independent · multiple-choice · uses=[np-create]
+      mc(
+        'Wie viele Elemente enthält das Array `np.linspace(0, 1, 11)`?',
+        ['`11`', '`10`', '`12`', '`100`'],
+        0,
+        `**Ansatz:** Bei \`linspace(start, stop, n)\` ist \`n\` direkt die ANZAHL der Punkte — egal ob 1D oder höher.
+
+**Rechnung:** \`np.linspace(0, 1, 11)\` → 11 Punkte. Werte: $0; 0{,}1; 0{,}2; \\ldots; 1{,}0$ — Schrittweite $0{,}1$.
+
+**Probe:** \`>>> len(np.linspace(0, 1, 11))\` → \`11\` ✓. \`>>> np.linspace(0, 1, 11)\` → \`array([0. , 0.1, ..., 1. ])\`.
+
+**Typischer Fehler:** Off-by-one — denken, "11 Schritte" bedeutet 10 Werte. Bei \`linspace\` ist es ANDERS: \`n\` ist direkt die Anzahl, $n - 1$ Schritte.`,
+        [
+          'Bedeutet \`n\` Schritte oder Werte?',
+          'Wie viele Werte sind direkt durch das dritte Argument festgelegt?',
+          '\`linspace(a, b, n)\` → genau $n$ Werte.',
+        ],
+        {
+          '1': '\`10\` wären die SCHRITTE (Intervalle) zwischen den Punkten. Anzahl Werte ist \`n\`, Anzahl Schritte ist \`n - 1\`.',
+          '2': '\`12\` käme bei einem Off-by-one in die andere Richtung — \`n\` ist exakt 11.',
+          '3': '\`100\` wäre der Default für viele andere Funktionen, aber \`linspace\` braucht das dritte Argument explizit.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['np-create'] },
+      ),
+      // Row 4 · error-analysis · multiple-choice · uses=[np-create]
+      mc(
+        'Ein Lerner schreibt `np.arange(0, 10, 2)` und erwartet die Werte 0, 2, 4, 6, 8, 10. Was passiert?',
+        [
+          'Liefert `[0, 2, 4, 6, 8]` — die 10 fehlt, weil `arange` die rechte Grenze EXKLUSIV behandelt. Korrekt: `np.arange(0, 11, 2)` oder `np.linspace(0, 10, 6)`.',
+          'Liefert `[0, 2, 4, 6, 8, 10]` — wie erwartet.',
+          'Wirft `ValueError`.',
+          'Liefert `[2, 4, 6, 8, 10]` — Startwert exklusiv.',
+        ],
+        0,
+        `**Ansatz:** \`np.arange(start, stop, step)\` folgt der Python-\`range\`-Konvention: links inklusiv, rechts EXKLUSIV.
+
+**Rechnung:** \`np.arange(0, 10, 2)\` → $0, 2, 4, 6, 8$ (Index $4$ ist letzter Wert $\\le 10 - 2$ in Schritten von 2 ab 0). Anzahl: $5$ Werte. Soll-Wert $10$ fehlt.
+
+**Probe:** Für $0, 2, \\ldots, 10$ inklusiv: \`np.arange(0, 11, 2)\` → $0, 2, 4, 6, 8, 10$ (6 Werte) ✓. Oder \`np.linspace(0, 10, 6)\`.
+
+**Typischer Fehler:** Matlab-Reflex (\`0:2:10\` ist inklusiv). NumPy/Python sind exklusiv — rechte Grenze um eine Schrittweite erhöhen.`,
+        [
+          'Wie behandelt \`arange\` die rechte Grenze?',
+          'Was muss man tun, um 10 einzuschließen?',
+          'Rechts EXKLUSIV — Stop um eine Schrittweite erhöhen.',
+        ],
+        {
+          '1': '\`arange\` ist rechts EXKLUSIV — die 10 wäre nur dann dabei, wenn $\\text{stop} > 10$.',
+          '2': '\`arange\` mit ganzzahligen Argumenten wirft keinen Error.',
+          '3': 'Startwert ist INKLUSIV bei \`arange\`. Die 0 ist dabei.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['np-create'] },
+      ),
+      // Row 5 · transfer · matching · uses=[np-create]
+      matching(
+        'Ordne den NumPy-Konstruktor seinem Matlab-Äquivalent zu.',
+        [
+          { left: '`np.zeros((3, 3))`', right: '`zeros(3, 3)`' },
+          { left: '`np.ones((2, 4))`', right: '`ones(2, 4)`' },
+          { left: '`np.eye(3)`', right: '`eye(3)`' },
+          { left: '`np.linspace(0, 1, 50)`', right: '`linspace(0, 1, 50)`' },
+        ],
+        `**Ansatz:** Viele NumPy-Konstruktoren haben identische Matlab-Pendants — nur das \`np.\`-Präfix unterscheidet sie.
+
+**Rechnung:** Konventionen:
+- Tupel-Form in Python (\`(3, 3)\`) vs. zwei Argumente in Matlab (\`3, 3\`).
+- \`eye(n)\`: nur ein Argument, quadratische Einheitsmatrix.
+- \`linspace(a, b, n)\`: in beiden Sprachen identisch.
+
+**Probe:** Alle vier liefern identische Inhalte in Python und Matlab — nur die Syntax unterscheidet sich. ✓
+
+**Typischer Fehler:** \`np.eye((3, 3))\` mit Tupel rufen — wirft Error, weil \`eye\` nur eine Zahl erwartet.`,
+        [
+          'Welcher Name ist sprachübergreifend?',
+          'Tupel-Form oder zwei Argumente?',
+          'Konstruktor-Name fast überall gleich.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['np-create'] },
+      ),
+    ],
+
+    // ── SG 1 — `np-element` — Elementweise vs. Matrixmultiplikation ──────
+    1: [
+      // Row 6 · recognize · true-false · uses=[np-element]
+      tf(
+        'In NumPy ist `A * B` zwischen zwei Arrays IMMER elementweise; für Matrixmultiplikation nutzt man `A @ B` (oder `np.matmul`/`np.dot`).',
+        true,
+        `**Ansatz:** NumPy unterscheidet strikt: \`*\` → elementweise (Hadamard-Produkt), \`@\` → Matrixmultiplikation. Anders als Matlab.
+
+**Rechnung:** Für \`A = [[1,2],[3,4]]\`, \`B = [[2,2],[2,2]]\`:
+- \`A * B\` = $\\begin{pmatrix} 2 & 4 \\\\ 6 & 8 \\end{pmatrix}$ (elementweise).
+- \`A @ B\` = $\\begin{pmatrix} 6 & 6 \\\\ 14 & 14 \\end{pmatrix}$ (Matrixmult).
+
+**Probe:** Im Interpreter sind beide Outputs reproduzierbar — \`*\` und \`@\` liefern unterschiedliche Ergebnisse. ✓
+
+**Typischer Fehler:** Matlab-Reflex: \`A * B\` ist dort Matrixmult, \`A .* B\` elementweise. In NumPy umgekehrt — typische stille Bug-Quelle.`,
+        [
+          'Was tut \`*\` zwischen NumPy-Matrizen?',
+          'Welcher Operator macht Matrixmult.?',
+          '\`*\` elementweise · \`@\` Matrix (NumPy).',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['np-element'] },
+      ),
+      // Row 7 · apply-guided · multiple-choice · uses=[np-element]
+      mc(
+        'Gegeben `A = np.array([[1, 2], [3, 4]])` und `B = np.array([[2, 2], [2, 2]])`. Was liefert `A * B`?',
+        ['`[[2, 4], [6, 8]]`', '`[[6, 6], [14, 14]]`', '`[[10, 10], [10, 10]]`', 'Error'],
+        0,
+        `**Ansatz:** \`A * B\` in NumPy ist elementweise: $C_{ij} = A_{ij} \\cdot B_{ij}$.
+
+**Rechnung:** $\\begin{pmatrix} 1\\cdot 2 & 2\\cdot 2 \\\\ 3\\cdot 2 & 4\\cdot 2 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 \\\\ 6 & 8 \\end{pmatrix}$.
+
+**Probe:** \`>>> A * B\` → \`array([[2, 4], [6, 8]])\` ✓. Im Vergleich: \`A @ B\` würde $\\begin{pmatrix} 6 & 6 \\\\ 14 & 14 \\end{pmatrix}$ liefern (Matrix-Mult).
+
+**Typischer Fehler:** \`*\` als Matrix-Mult interpretieren — der typische Bug bei Matlab→Python-Migration.`,
+        [
+          'Wie wirkt \`*\` zwischen zwei NumPy-2D-Arrays?',
+          'Elementweise oder Matrix-Mult?',
+          '$A_{ij} \\cdot B_{ij}$ für jedes Element.',
+        ],
+        {
+          '1': 'Das wäre \`A @ B\` (Matrix-Mult): $1\\cdot 2 + 2\\cdot 2 = 6$ pro Eintrag oben.',
+          '2': '\`[[10, 10], [10, 10]]\` ergäbe keine sinnvolle Operation hier — keine bekannte NumPy-Multiplikation liefert diese Werte.',
+          '3': 'Beide Shapes sind kompatibel \`(2,2)\` × \`(2,2)\` — kein Error.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['np-element'] },
+      ),
+      // Row 8 · apply-independent · multiple-choice · uses=[np-element]
+      mc(
+        'Welche zwei NumPy-Operationen liefern dasselbe Ergebnis wie das Skalarprodukt zweier 1D-Vektoren `a, b`?',
+        [
+          '`np.dot(a, b)` und `a @ b`',
+          '`a * b` und `a + b`',
+          '`np.cross(a, b)` und `a @ b`',
+          '`a * b` und `np.dot(a, b)`',
+        ],
+        0,
+        `**Ansatz:** Skalarprodukt $\\langle a, b \\rangle = \\sum_i a_i b_i$. In NumPy: \`np.dot(a, b)\` (klassisch) oder \`a @ b\` (PEP 465, seit Python 3.5).
+
+**Rechnung:** Für \`a = [1, 2, 3]\`, \`b = [4, 5, 6]\`: $1\\cdot 4 + 2\\cdot 5 + 3\\cdot 6 = 32$. \`np.dot(a, b)\` → \`32\`. \`a @ b\` → \`32\`.
+
+**Probe:** \`>>> np.array([1,2,3]) @ np.array([4,5,6])\` → \`32\` ✓.
+
+**Typischer Fehler:** \`a * b\` (elementweise: \`[4, 10, 18]\`) mit Skalarprodukt verwechseln. Erst SUMMIEREN ergibt das Skalarprodukt: \`np.sum(a*b) == np.dot(a, b)\`.`,
+        [
+          'Was ist die Definition des Skalarprodukts?',
+          'Welche Operatoren produzieren EINE Zahl, kein Array?',
+          'Sowohl \`np.dot\` als auch \`@\` liefern den Skalar.',
+        ],
+        {
+          '1': '\`a * b\` ist elementweise (Array), \`a + b\` ist Addition (Array). Beides keine Skalare.',
+          '2': '\`np.cross\` ist das Kreuzprodukt (Vektor in 3D), nicht das Skalarprodukt.',
+          '3': '\`a * b\` ist elementweise (Array), nicht das Skalarprodukt. Nur \`np.dot\` ist das.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['np-element'] },
+      ),
+      // Row 9 · error-analysis · multiple-choice · uses=[np-element]
+      mc(
+        'Ein Lerner schreibt `C = A * B` für zwei 2×2-NumPy-Matrizen, weil er Matlab gewohnt ist — und wundert sich, warum `C` nicht die Matrixmultiplikation ist. Wo liegt der Fehler?',
+        [
+          '`*` ist in NumPy elementweise (Hadamard-Produkt); für Matrixmultiplikation `@` oder `np.matmul(A, B)` nutzen.',
+          'Die Matrizen müssen die gleiche Shape haben — Matrixmult. geht nur bei 3×3.',
+          '`A * B` funktioniert in NumPy gar nicht.',
+          'Matlab-Operatoren funktionieren in NumPy nicht.',
+        ],
+        0,
+        `**Ansatz:** Operator-Konvention unterscheidet sich genau hier zwischen Matlab und NumPy — der häufigste Migrationsbug.
+
+**Rechnung:** Matlab: \`A*B\` = Matrix, \`A.*B\` = elementweise. NumPy: \`A*B\` = elementweise, \`A@B\` = Matrix. Genau umgekehrt belegt.
+
+**Probe:** Code-Migration prüfen: jedes \`*\` zwischen Matrizen muss zum \`@\` werden. Manchmal will man wirklich elementweise — dann \`*\` lassen.
+
+**Typischer Fehler:** Genau dieser. Der Code läuft (kein TypeError), aber die WERTE sind falsch — stille Bugs.`,
+        [
+          'Was tut \`*\` zwischen NumPy-Matrizen?',
+          'Welcher Operator wäre korrekt?',
+          'Migration: \`A * B\` (Matlab) → \`A @ B\` (NumPy).',
+        ],
+        {
+          '1': 'Matrixmultiplikation funktioniert für jede Shape \`(m, k) × (k, n) → (m, n)\`. Nicht nur 3×3.',
+          '2': '\`A * B\` funktioniert sehr wohl — nur eben elementweise statt als Matrixmult.',
+          '3': 'Operatoren wie \`*\` sind in beiden Sprachen vorhanden, nur mit unterschiedlicher Bedeutung — das ist genau das Problem.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['np-element'] },
+      ),
+      // Row 10 · transfer · multiple-choice · uses=[np-element]
+      mc(
+        'Matlab-Code `C = A * B` zwischen zwei kompatiblen Matrizen. Welcher NumPy-Code macht GENAU DASSELBE?',
+        ['`C = A @ B`', '`C = A * B`', '`C = np.cross(A, B)`', '`C = A + B`'],
+        0,
+        `**Ansatz:** Matlab \`A * B\` (Matrizen) ist Matrixmultiplikation. NumPy-Pendant: \`A @ B\`.
+
+**Rechnung:** Beide rechnen $C_{ij} = \\sum_k A_{ik} B_{kj}$. Identisches Ergebnis, nur anderes Operator-Symbol.
+
+**Probe:** Für \`A = [[1,2],[3,4]]\`, \`B = [[5,6],[7,8]]\`: Matlab \`A*B\` = $[[19, 22], [43, 50]]$. NumPy \`A @ B\` = identisch.
+
+**Typischer Fehler:** Direkten Operator übernehmen — \`A * B\` in NumPy würde elementweise rechnen, also $[[5, 12], [21, 32]]$. Anderer Code, anderes Ergebnis.`,
+        [
+          'Was bedeutet \`*\` in Matlab zwischen Matrizen?',
+          'Welcher NumPy-Operator entspricht dem?',
+          '\`@\` macht Matrixmult.',
+        ],
+        {
+          '1': '\`C = A * B\` in NumPy ist elementweise — anderes Ergebnis als Matlab\'s Matrixmult.',
+          '2': '\`np.cross\` ist das Kreuzprodukt (nur für 3D-Vektoren), nicht Matrixmult.',
+          '3': '\`A + B\` ist Addition, nicht Multiplikation.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['np-element'] },
+      ),
+    ],
+
+    // ── SG 2 — `shape` — Array-Dimensionen ───────────────────────────────
+    2: [
+      // Row 11 · recognize · true-false · uses=[shape]
+      tf(
+        '`a.shape` liefert ein TUPEL mit den Dimensionen eines NumPy-Arrays. Für ein 2D-Array mit 3 Zeilen und 4 Spalten: `(3, 4)`.',
+        true,
+        `**Ansatz:** \`.shape\` ist ein Attribut (kein Methodenaufruf) und gibt immer ein Tupel zurück — auch bei 1D-Arrays: \`(n,)\` mit Komma.
+
+**Rechnung:** \`a = np.zeros((3, 4))\` → \`a.shape\` = \`(3, 4)\`. Erst Zeilen, dann Spalten.
+
+**Probe:** \`>>> np.zeros((3, 4)).shape\` → \`(3, 4)\` ✓. Type: \`tuple\`.
+
+**Typischer Fehler:** \`a.shape\` als Funktion aufrufen (\`a.shape()\` → TypeError). Oder mit \`a.size\` verwechseln (= Gesamtanzahl Elemente, hier $12$).`,
+        [
+          'Was ist der Rückgabewert von \`a.shape\`?',
+          'Ist es ein Tupel oder eine Liste?',
+          'Tupel (Zeilen, Spalten, ...).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['shape'] },
+      ),
+      // Row 12 · apply-guided · multiple-choice · uses=[shape]
+      mc(
+        'Was liefert `np.zeros((3, 5)).shape`?',
+        ['`(3, 5)`', '`(5, 3)`', '`15`', '`[3, 5]`'],
+        0,
+        `**Ansatz:** \`shape\` spiegelt die Argumente von \`np.zeros\` wider — Reihenfolge \`(Zeilen, Spalten)\`.
+
+**Rechnung:** \`np.zeros((3, 5))\` erzeugt 3×5-Matrix. \`.shape\` → \`(3, 5)\` (3 Zeilen, 5 Spalten).
+
+**Probe:** \`>>> a = np.zeros((3, 5))\\n>>> a.shape\` → \`(3, 5)\` ✓. \`>>> a.size\` → \`15\` (Gesamtzahl Einträge).
+
+**Typischer Fehler:** Zeilen und Spalten verwechseln. \`shape\` ist (Zeilen, Spalten) wie in Mathematik ($m \\times n$).`,
+        [
+          'Welche Reihenfolge hat \`shape\` — Zeilen oder Spalten zuerst?',
+          'Identisch mit den \`zeros\`-Argumenten?',
+          'Tupel \`(3, 5)\`.',
+        ],
+        {
+          '1': '\`(5, 3)\` wäre vertauscht — Zeilen kommen zuerst.',
+          '2': '\`15\` ist \`a.size\` (Gesamtanzahl Einträge), nicht die Shape.',
+          '3': '\`shape\` ist ein TUPEL (mit runden Klammern), nicht eine Liste.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['shape'] },
+      ),
+      // Row 13 · apply-independent · multiple-choice · uses=[shape]
+      mc(
+        'Wie viele Elemente hat ein NumPy-Array mit `shape = (4, 5, 2)`?',
+        ['`40`', '`11`', '`9`', 'Error'],
+        0,
+        `**Ansatz:** Gesamtzahl = Produkt aller Dimensionen.
+
+**Rechnung:** $4 \\cdot 5 \\cdot 2 = 40$. Identisch mit \`a.size\` oder \`np.prod(a.shape)\`.
+
+**Probe:** \`>>> np.zeros((4, 5, 2)).size\` → \`40\` ✓.
+
+**Typischer Fehler:** Dimensionen addieren statt multiplizieren ($4 + 5 + 2 = 11$). Oder nur die ersten beiden ($4 \\cdot 5 = 20$).`,
+        [
+          'Wie berechnet man die Gesamtanzahl?',
+          'Produkt oder Summe der Dimensionen?',
+          '$4 \\cdot 5 \\cdot 2 = ?$',
+        ],
+        {
+          '1': '$11 = 4 + 5 + 2$ wäre die SUMME — falsch. Anzahl ist das Produkt.',
+          '2': '$9 = 4 + 5$ wäre noch falscher — nur zwei Dimensionen summiert.',
+          '3': 'Kein Error — gültiges 3D-Array.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['shape'] },
+      ),
+      // Row 14 · error-analysis · multiple-choice · uses=[shape]
+      mc(
+        'Lerner ruft `len(a)` auf einem 2D-Array `a = np.zeros((3, 5))` auf und erwartet die GESAMTzahl der Elemente (15). Was liefert `len(a)` tatsächlich?',
+        [
+          '`3` — `len()` liefert nur die ERSTE Dimension; für Gesamtgröße `a.size` nutzen.',
+          '`5` — letzte Dimension.',
+          '`15` — wie erwartet.',
+          '`TypeError`',
+        ],
+        0,
+        `**Ansatz:** \`len(a)\` ist Python's built-in und liefert für Sequenzen die "Außenlänge". Für ein 2D-Array ist das die Anzahl der Zeilen (= erste Dimension).
+
+**Rechnung:** \`a.shape = (3, 5)\`. \`len(a)\` → erste Dimension = 3. Korrekt: \`a.size\` = 15 (oder \`np.prod(a.shape)\`).
+
+**Probe:** \`>>> len(np.zeros((3, 5)))\` → \`3\` ✓. \`>>> np.zeros((3, 5)).size\` → \`15\` ✓.
+
+**Typischer Fehler:** \`len()\` mit \`size\` verwechseln. \`len\` ist Python (erste Dimension), \`size\` ist NumPy (Gesamtanzahl).`,
+        [
+          'Was tut Python\`s \`len()\` mit einem 2D-Array?',
+          'Welches NumPy-Attribut gibt die Gesamtzahl?',
+          '\`len\` → 1. Dim; \`size\` → alles.',
+        ],
+        {
+          '1': '\`len\` liefert IMMER die erste Dimension (axis 0), nicht die letzte.',
+          '2': 'Für Gesamtzahl braucht es \`a.size\` oder \`np.prod(a.shape)\`. \`len\` liefert nur axis 0.',
+          '3': '\`len()\` funktioniert auf NumPy-Arrays — kein TypeError.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['shape'] },
+      ),
+      // Row 15 · transfer · multiple-choice · uses=[shape]
+      mc(
+        'Was ist das Matlab-Äquivalent zu Python `a.shape`?',
+        ['`size(a)`', '`length(a)`', '`numel(a)`', '`shape(a)`'],
+        0,
+        `**Ansatz:** Matlab-Pendant: \`size(a)\` liefert die Dimensionen.
+
+**Rechnung:** Matlab \`size(a)\` → \`[Zeilen, Spalten]\` (Vektor). Python \`a.shape\` → \`(Zeilen, Spalten)\` (Tupel). Funktionsgleich, nur Datentyp anders.
+
+**Probe:** Matlab \`>> size(zeros(3, 5))\` → \`3   5\`. Python \`>>> np.zeros((3, 5)).shape\` → \`(3, 5)\` ✓.
+
+**Typischer Fehler:** \`length\` mit \`size\` verwechseln. In Matlab gibt \`length\` die LÄNGSTE Dimension, \`numel\` die GESAMTZAHL Elemente — nur \`size\` ist das Pendant zu \`shape\`.`,
+        [
+          'Welche Matlab-Funktion liefert die Dimensionen?',
+          'Nicht \`length\` (längste Dim) oder \`numel\` (Anzahl).',
+          '\`size(a)\` — Dim-Vektor.',
+        ],
+        {
+          '1': '\`length(a)\` liefert in Matlab die LÄNGSTE Dimension, nicht den ganzen Shape-Vektor.',
+          '2': '\`numel(a)\` liefert die Gesamtanzahl Elemente — entspricht Python\'s \`a.size\`, nicht \`a.shape\`.',
+          '3': '\`shape(a)\` als Matlab-Funktion existiert nicht — wäre Confusing Marketing.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['shape'] },
+      ),
+    ],
+
+    // ── SG 3 — `vektorisier` — Vektorisierung statt Schleifen ────────────
+    3: [
+      // Row 16 · recognize · true-false · uses=[vektorisier]
+      tf(
+        'Vektorisierte NumPy-Operationen (z.B. `a + b` für zwei Arrays) sind typischerweise 10–100× schneller als äquivalente Python-Schleifen, weil die Berechnung in C statt im Python-Interpreter läuft.',
+        true,
+        `**Ansatz:** NumPy-Operationen laufen intern in vorkompiliertem C-Code (oft mit SIMD-Instruktionen). Python-Schleifen haben pro Iteration Interpreter-Overhead.
+
+**Rechnung:** Beispiel: Quadrieren eines 1000-elementigen Arrays. \`x**2\` (vektorisiert) ≈ 5 μs. \`for i in range(1000): y[i] = x[i]**2\` ≈ 500 μs. Faktor ~100×.
+
+**Probe:** Mit \`%timeit\` in Jupyter messbar. Für große Arrays steigt der Speedup-Faktor weiter. ✓
+
+**Typischer Fehler:** Aus Java/C kommen und gewohnheitsmäßig Schleifen schreiben. In NumPy: ZUERST nach vektorisierten Operationen suchen.`,
+        [
+          'Warum ist vektorisiertes NumPy schnell?',
+          'Was vermeidet die vektorisierte Form?',
+          'C statt Python-Interpreter → 10–100× schneller.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['vektorisier'] },
+      ),
+      // Row 17 · apply-guided · multiple-choice · uses=[vektorisier]
+      mc(
+        'Welche der folgenden ist die VEKTORISIERTE NumPy-Version von "addiere 1 zu jedem Element des Arrays `a`"?',
+        [
+          '`a + 1`',
+          '`for i in range(len(a)): a[i] = a[i] + 1`',
+          '`[x + 1 for x in a]`',
+          '`a.add(1)`',
+        ],
+        0,
+        `**Ansatz:** Vektorisierung = Operator direkt auf das Array anwenden — NumPy macht den Rest.
+
+**Rechnung:** \`a + 1\` nutzt Broadcasting: der Skalar 1 wird auf jedes Element angewandt. Ergebnis: neues Array mit allen Werten um 1 erhöht.
+
+**Probe:** \`>>> np.array([1, 2, 3]) + 1\` → \`array([2, 3, 4])\` ✓.
+
+**Typischer Fehler:** Schleife schreiben — funktioniert, ist aber 10–100× langsamer. Plus: Schleifen-Variante VERÄNDERT \`a\` in-place; \`a + 1\` erzeugt ein neues Array (anderes Verhalten).`,
+        [
+          'Wie wendet man eine Operation auf ALLE Elemente an?',
+          'Schleife oder Operator?',
+          'Operator direkt: \`a + 1\` (Broadcasting).',
+        ],
+        {
+          '1': 'Funktioniert, aber 10–100× langsamer und in-place. NumPy-typisch wäre \`a + 1\`.',
+          '2': 'List-Comprehension liefert eine Liste, KEIN NumPy-Array. Auch langsamer als \`a + 1\`.',
+          '3': '\`a.add(1)\` existiert nicht als NumPy-Array-Methode. Es gibt \`np.add(a, 1)\`, aber idiomatisch ist \`a + 1\`.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['vektorisier'] },
+      ),
+      // Row 18 · apply-independent · multiple-choice · uses=[vektorisier]
+      mc(
+        'Für `x = np.linspace(0, 1, 100)` willst du den Vektor `y = x² + 1` berechnen. Welche Variante ist AM SCHNELLSTEN und am idiomatischsten?',
+        [
+          '`y = x**2 + 1`',
+          '`y = [x[i]**2 + 1 for i in range(len(x))]`',
+          '`y = []`; `for i in range(len(x)): y.append(x[i]**2 + 1)`',
+          '`y = np.zeros(100)`; `for i in range(100): y[i] = x[i]**2 + 1`',
+        ],
+        0,
+        `**Ansatz:** Direkter vektorisierter Ausdruck nutzt NumPy's C-Backend optimal.
+
+**Rechnung:** \`x**2 + 1\` wirkt elementweise. Für \`x = [0, ..., 1]\`: \`y = [0, ..., 1] + 1 = [1, ..., 2]\` (alle Werte quadriert plus 1).
+
+**Probe:** \`>>> x = np.linspace(0, 1, 100); y = x**2 + 1\` → 100-Element-Array. Performance: ca. 100× schneller als Schleifen-Variante. ✓
+
+**Typischer Fehler:** List-Comprehension liefert eine PYTHON-LISTE, kein NumPy-Array — anschließend nicht weiter vektorisierbar.`,
+        [
+          'Welche Form nutzt NumPy\`s C-Backend?',
+          'Schleife, Comprehension oder Operator?',
+          'Direkter Ausdruck: \`x**2 + 1\`.',
+        ],
+        {
+          '1': 'List-Comprehension ist Python-Schleife im Tarnmantel — kein NumPy-Speed.',
+          '2': '\`append\` in Schleife ist sogar noch langsamer als die Comprehension (Reallokation).',
+          '3': 'Preallocated Schleife ist die langsamste der Schleifen-Varianten — überflüssiger Aufwand.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['vektorisier'] },
+      ),
+      // Row 19 · error-analysis · multiple-choice · uses=[vektorisier]
+      mc(
+        'Ein Lerner berechnet die euklidische Norm eines Vektors `v` mit einer For-Schleife. Welche Aussage ist KORREKT?',
+        [
+          'Vektorisiert wäre `np.linalg.norm(v)` oder `np.sqrt(np.sum(v**2))` — beide deutlich schneller und kürzer.',
+          'For-Schleifen in Python sind schneller als vektorisierte NumPy-Operationen.',
+          'Vektorisierung funktioniert nur für 2D-Arrays.',
+          'Die Norm lässt sich in NumPy nicht berechnen.',
+        ],
+        0,
+        `**Ansatz:** Für Standard-Operationen (Norm, Summe, Mittelwert, ...) gibt es vektorisierte NumPy-Funktionen, die wesentlich schneller und lesbarer sind.
+
+**Rechnung:** Euklidische Norm: $\\|v\\| = \\sqrt{\\sum_i v_i^2}$. NumPy-Implementierung: \`np.linalg.norm(v)\` oder explizit \`np.sqrt(np.sum(v**2))\`.
+
+**Probe:** Für \`v = np.array([3, 4])\`: \`np.linalg.norm(v)\` → \`5.0\` ✓ ($\\sqrt{9+16}=5$).
+
+**Typischer Fehler:** Selber Schleifen schreiben statt Standard-Funktionen nutzen — langsamer UND fehleranfälliger.`,
+        [
+          'Gibt es eine fertige NumPy-Funktion für die Norm?',
+          'Welcher Befehl heißt \`norm\` in NumPy?',
+          '\`np.linalg.norm\` — fertig und schnell.',
+        ],
+        {
+          '1': 'Schleifen in Python sind grundsätzlich LANGSAMER als vektorisiertes NumPy — das ist genau der Punkt.',
+          '2': 'Vektorisierung funktioniert für JEDE Dimension (1D, 2D, 3D, ...). Nicht beschränkt auf 2D.',
+          '3': 'Die Norm gibt es mehrfach: \`np.linalg.norm\`, \`np.sqrt(np.sum(v**2))\`, oder \`(v @ v) ** 0.5\`.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['vektorisier'] },
+      ),
+      // Row 20 · transfer · multiple-choice · uses=[vektorisier]
+      mc(
+        'Übersetze diese Matlab-Vektorisierung nach Python: `y = sin(x).^2 + cos(x).^2;` für einen Vektor `x`. Welche Zeile ist KORREKT?',
+        [
+          '`y = np.sin(x)**2 + np.cos(x)**2`',
+          '`y = sin(x).^2 + cos(x).^2`',
+          '`y = math.sin(x)**2 + math.cos(x)**2`',
+          '`y = [sin(xi)**2 + cos(xi)**2 for xi in x]`',
+        ],
+        0,
+        `**Ansatz:** NumPy hat eigene universelle Funktionen (\`np.sin\`, \`np.cos\`, ...), die elementweise auf Arrays wirken. Die Matlab-\`.^\`-Notation wird in Python zu \`**\` (das in NumPy automatisch elementweise wirkt).
+
+**Rechnung:** Ergebnis ist konstant 1 für alle $x$ (Pythagoras). \`np.sin(x)**2 + np.cos(x)**2\` liefert ein Array, das überall ≈ 1 ist.
+
+**Probe:** \`>>> x = np.linspace(0, 2*np.pi, 100)\\n>>> np.allclose(np.sin(x)**2 + np.cos(x)**2, 1)\` → \`True\` ✓.
+
+**Typischer Fehler:** \`math.sin(x)\` für Arrays nutzen — \`math\` arbeitet nur auf Skalaren, wirft TypeError bei Array-Input. NumPy-Funktionen sind Array-fähig.`,
+        [
+          'Welche Bibliothek liefert array-fähige sin/cos?',
+          'Wie wird Matlab\`s \`.^\` in NumPy?',
+          '\`np.sin\`, \`np.cos\`, \`**\` für Potenz.',
+        ],
+        {
+          '1': 'Matlab-Syntax \`.^\` ist in Python nicht definiert.',
+          '2': '\`math.sin\` arbeitet nur auf SKALAREN — bei Array-Input TypeError.',
+          '3': 'Comprehension funktioniert, ist aber 10–100× langsamer als die vektorisierte Form.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['vektorisier'] },
+      ),
+    ],
+
+    // ── SG 4 — `broadcast` — Broadcasting ───────────────────────────────
+    4: [
+      // Row 21 · recognize · true-false · uses=[broadcast]
+      tf(
+        'Broadcasting in NumPy erlaubt es, Arrays unterschiedlicher Shape zu kombinieren, indem die kleinere Form automatisch auf die größere ausgedehnt wird — z.B. wird ein Skalar `5` zu jedem Element eines Arrays addiert.',
+        true,
+        `**Ansatz:** Broadcasting macht NumPy ausdrucksstark — eine einzige Operation kann Skalar+Array, Vektor+Matrix, Spalte+Zeile etc. abdecken, ohne explizite Schleife oder Reshape.
+
+**Rechnung:** Regel: Dimensionen werden von hinten verglichen; sie sind kompatibel, wenn sie GLEICH oder EINE davon ist 1. Skalar gilt als Shape \`()\` und passt überall.
+
+**Probe:** \`>>> np.array([1, 2, 3]) + 5\` → \`array([6, 7, 8])\` ✓. \`>>> np.zeros((3, 1)) + np.ones((1, 4))\` → Shape \`(3, 4)\` ✓.
+
+**Typischer Fehler:** Glauben, Arrays müssten exakt gleiche Shape haben. Broadcasting macht vieles automatisch — solange die Regel erfüllt ist.`,
+        [
+          'Was ist die Idee hinter Broadcasting?',
+          'Welche Dimensionen sind kompatibel?',
+          'Gleich oder 1 — dann broadcast.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['broadcast'] },
+      ),
+      // Row 22 · apply-guided · multiple-choice · uses=[broadcast]
+      mc(
+        'Welche Shape hat das Ergebnis von `np.zeros((3, 1)) + np.ones((1, 4))`?',
+        ['`(3, 4)`', '`(3, 1)`', '`(1, 4)`', 'ValueError'],
+        0,
+        `**Ansatz:** Beim Broadcasting werden Dimensionen mit Größe 1 auf die andere Dimension EXPANDIERT. \`(3, 1)\` × \`(1, 4)\` ergibt \`(3, 4)\`.
+
+**Rechnung:** Zeile-Spalte-Trick: $(3, 1)$ ist ein Spaltenvektor, $(1, 4)$ ein Zeilenvektor. Broadcasting erzeugt jede Kombination → 3×4-Matrix.
+
+**Probe:** \`>>> (np.zeros((3, 1)) + np.ones((1, 4))).shape\` → \`(3, 4)\` ✓. Ergebnis: 3×4-Matrix voller Einsen.
+
+**Typischer Fehler:** Annehmen, eine der beiden Shapes "gewinnt". Tatsächlich werden BEIDE Dimensionen kombiniert.`,
+        [
+          'Was passiert mit Dimension 1?',
+          'Wie kombiniert NumPy \`(3, 1)\` und \`(1, 4)\`?',
+          'Beide Dimensionen expandieren: \`(3, 4)\`.',
+        ],
+        {
+          '1': '\`(3, 1)\` würde nur gelten, wenn die zweite Dimension nicht expandiert wird — sie ist aber 1 und expandiert zu 4.',
+          '2': '\`(1, 4)\` analog für die erste Dimension.',
+          '3': 'Kein Error — \`(3, 1)\` und \`(1, 4)\` sind kompatibel (jede Dim ist gleich oder 1).',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['broadcast'] },
+      ),
+      // Row 23 · apply-independent · multiple-choice · uses=[broadcast]
+      mc(
+        'Was liefert `np.array([1, 2, 3]) + 10` in NumPy?',
+        ['`array([11, 12, 13])`', '`array([1, 2, 3, 10])`', '`13`', 'ValueError'],
+        0,
+        `**Ansatz:** Skalar + Array ist der einfachste Broadcasting-Fall: der Skalar wird auf jedes Element addiert.
+
+**Rechnung:** $[1, 2, 3] + 10 = [11, 12, 13]$ — elementweise.
+
+**Probe:** \`>>> np.array([1, 2, 3]) + 10\` → \`array([11, 12, 13])\` ✓.
+
+**Typischer Fehler:** Mit Listen-Konkatenation verwechseln: \`[1, 2, 3] + [10]\` (Python-Liste) wäre \`[1, 2, 3, 10]\`. NumPy-Arrays ADDIEREN aber.`,
+        [
+          'Was tut Broadcasting mit einem Skalar?',
+          'Wendet auf JEDES Element an oder fügt hinzu?',
+          '$[1, 2, 3] + 10 = ?$',
+        ],
+        {
+          '1': '\`array([1, 2, 3, 10])\` wäre Listen-Konkatenation (Python-Listen). NumPy ADDIERT.',
+          '2': '\`13\` wäre vielleicht die Summe + 10 ($1 + 2 + 3 + 10 - 3 = 13$?), aber kein gängiger Operator macht das.',
+          '3': 'Kein Error — Skalar + Array ist der Broadcasting-Standardfall.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['broadcast'] },
+      ),
+      // Row 24 · error-analysis · multiple-choice · uses=[broadcast]
+      mc(
+        'Ein Lerner schreibt `np.array([1, 2, 3]) + np.array([1, 2])`. Was passiert?',
+        [
+          '`ValueError: operands could not be broadcast together with shapes (3,) (2,)`.',
+          '`array([2, 4, 4])` (kürzer Vektor wird wiederholt).',
+          '`array([2, 4])` (länge des kürzeren Arrays).',
+          '`array([1, 2, 3, 1, 2])` (Konkatenation).',
+        ],
+        0,
+        `**Ansatz:** Broadcasting-Regel: Dimensionen müssen entweder GLEICH oder EINE davon 1 sein. \`(3,)\` und \`(2,)\` erfüllen weder noch — also Error.
+
+**Rechnung:** Dim 0: $3$ vs. $2$. Nicht gleich, keine ist 1 → ValueError.
+
+**Probe:** \`>>> np.array([1, 2, 3]) + np.array([1, 2])\` → \`ValueError: operands could not be broadcast together with shapes (3,) (2,)\` ✓.
+
+**Typischer Fehler:** Glauben, NumPy fülle kürzere Arrays mit 0 auf oder wiederhole sie — tut es NICHT. Die Broadcasting-Regel ist strikt.`,
+        [
+          'Wann sind Dimensionen broadcasting-kompatibel?',
+          'Sind \`(3,)\` und \`(2,)\` kompatibel?',
+          'Müssen gleich oder 1 sein — hier weder noch.',
+        ],
+        {
+          '1': '\`array([2, 4, 4])\` wäre Wiederholung — NumPy macht das NICHT automatisch (würde \`np.tile\` brauchen).',
+          '2': '\`array([2, 4])\` wäre Beschneidung — auch das macht NumPy nicht.',
+          '3': 'Konkatenation gibt es als \`np.concatenate\`, nicht als \`+\`.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['broadcast'] },
+      ),
+      // Row 25 · transfer · multiple-choice · uses=[broadcast]
+      mc(
+        'Du willst eine 5×3-Matrix erzeugen, in der jede Spalte den Vektor `[1, 2, 3, 4, 5]` enthält (also jede Zeile $i$ besteht aus drei Kopien von $i+1$). Welche Broadcasting-Lösung ist KORREKT?',
+        [
+          '`np.arange(1, 6).reshape(5, 1) + np.zeros((1, 3))`',
+          '`np.arange(1, 6) + np.zeros((5, 3))`',
+          '`np.arange(1, 6) * 3`',
+          '`np.tile([1, 2, 3, 4, 5], 3)`',
+        ],
+        0,
+        `**Ansatz:** Broadcasting funktioniert mit Spaltenvektor \`(5, 1)\` und Zeile \`(1, 3)\` → Ergebnis-Shape \`(5, 3)\`. Über \`.reshape(5, 1)\` erzeugt man den Spaltenvektor.
+
+**Rechnung:** \`np.arange(1, 6)\` → \`[1, 2, 3, 4, 5]\` mit Shape \`(5,)\`. \`.reshape(5, 1)\` → \`[[1], [2], [3], [4], [5]]\` mit Shape \`(5, 1)\`. \`+ np.zeros((1, 3))\` broadcastet zu \`(5, 3)\` → jede Zeile \`[i, i, i]\`.
+
+**Probe:** \`>>> a = np.arange(1, 6).reshape(5, 1) + np.zeros((1, 3))\\n>>> a\` → \`[[1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4], [5, 5, 5]]\` ✓.
+
+**Typischer Fehler:** Den Vektor OHNE reshape addieren — \`(5,) + (5, 3)\` ist nicht kompatibel (letzte Dim $5$ vs. $3$). Reshape zum Spaltenvektor löst das.`,
+        [
+          'Welche Shape braucht der Spaltenvektor?',
+          'Welche Shape ergibt das Broadcasting?',
+          'Reshape \`(5, 1)\` + \`(1, 3)\` → \`(5, 3)\`.',
+        ],
+        {
+          '1': '\`(5,) + (5, 3)\` — NumPy vergleicht letzte Dim: $5 \\neq 3$, keine ist 1 → ValueError.',
+          '2': '\`np.arange(1, 6) * 3\` ist Skalarmultiplikation → \`[3, 6, 9, 12, 15]\`, ein 1D-Array.',
+          '3': '\`np.tile([1,2,3,4,5], 3)\` wiederholt 3× → 1D-Array mit 15 Elementen, nicht 5×3-Matrix.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['broadcast'] },
+      ),
+    ],
+  },
 }
