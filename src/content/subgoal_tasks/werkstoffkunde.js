@@ -1934,4 +1934,696 @@ export const werkstoffkundeSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // werk-2-2 — Kerbschlagbiegeversuch (Charpy)
+  //   SG 0: charpy         · SG 1: kv-zaeh-sproed
+  //   SG 2: grenzwert-27   · SG 3: uebergangstemp  · SG 4: stahl-j-bez
+  // ─────────────────────────────────────────────────────────────────────────
+  'werk-2-2': {
+    // ───────────── SG 0: Charpy-Versuch & KV-Formel ─────────────
+    0: [
+      tag(
+        tf(
+          'Beim Charpy-Kerbschlagbiegeversuch wird die Kerbschlagarbeit $KV$ aus der Höhendifferenz des Pendels vor und nach dem Bruch berechnet: $KV = m \\cdot g \\cdot (h_0 - h_1)$.',
+          true,
+          `**Ansatz:** Energieerhaltung am Pendel: die potentielle Energie, die das Pendel **verliert**, wurde verwendet, um die Probe zu durchschlagen.
+
+**Rechnung:** Vor dem Schlag: $E_0 = m\\,g\\,h_0$. Nach dem Schlag: $E_1 = m\\,g\\,h_1$. Differenz $\\Delta E = m\\,g\\,(h_0 - h_1) = KV$.
+
+**Probe:** Größenordnungs-Check Baustahl: $m \\approx 20\\,\\text{kg}$, $h_0 - h_1 \\approx 0{,}5\\,\\text{m}$ → $KV \\approx 100\\,\\text{J}$. Passt zu Tabellenwerten. ✓
+
+**Typischer Fehler:** $KV = m\\,g\\,h_0$ (ohne Endhöhe) — das wäre die gesamte Anfangsenergie, nicht der von der Probe aufgenommene Anteil.`,
+          [
+            'Was wird beim Pendel-Schlag energetisch von der Probe „verbraucht"?',
+            'Energieerhaltung: $\\Delta E = E_0 - E_1$.',
+            'Höhendifferenz $h_0 - h_1$ × Gewicht = Bruchenergie.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        mc(
+          'Welche Größen müssen am Charpy-Pendel direkt gemessen werden, um die Kerbschlagarbeit zu bestimmen?',
+          [
+            'Pendelmasse $m$ und Höhendifferenz $h_0 - h_1$ (Anfangs- und Endhöhe)',
+            'Nur die Endhöhe $h_1$',
+            'Die Probendicke und die Erdbeschleunigung $g$',
+            'Die Bruchspannung $\\sigma_B$ der Probe',
+          ],
+          0,
+          `**Ansatz:** Die Formel $KV = m\\,g\\,(h_0 - h_1)$ enthält drei Größen: $m$, $g$ und $h_0 - h_1$. $g$ ist eine Konstante, also müssen $m$ und $h_0 - h_1$ aus dem Versuch kommen.
+
+**Rechnung:** $m$ ist Konstrukteurs-Größe des Pendels (oft auf dem Geräteschild). $h_0$ wird beim Spannen festgelegt, $h_1$ wird nach dem Durchschlagen automatisch abgelesen (Schleppzeiger). Damit ist $KV$ in Joule berechenbar.
+
+**Probe:** Charpy-Maschinen zeigen $KV$ direkt in J — die interne Logik nutzt genau $m\\,g\\,(h_0 - h_1)$. ✓
+
+**Typischer Fehler:** Probendicke als notwendig ansehen — sie geht in die Berechnung nicht ein (nur als normierter Wert in den Vergleichswert KV/Probendicke = $K_c$).`,
+          [
+            'Welche Größen tauchen in der Formel auf?',
+            '$g$ ist eine Naturkonstante, keine Messgröße.',
+            'Probendicke geht NICHT in $KV$ ein.',
+          ],
+          {
+            1: 'Nur $h_1$ reicht nicht aus — ohne $h_0$ kennt man die Höhendifferenz nicht und damit nicht die verbrauchte Energie.',
+            2: 'Probendicke und $g$: $g$ ist eine Konstante, Probendicke geht **nicht** in $KV$ ein. Sie wird höchstens für den normierten Vergleichswert $K_c = KV/A$ verwendet.',
+            3: 'Die Bruchspannung wird nicht gemessen — das wäre ein Zugversuch. Charpy misst Energie, nicht Spannung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        ni(
+          'Ein Charpy-Pendel hat eine Masse $m = 20\\,\\text{kg}$. Anfangshöhe $h_0 = 1{,}5\\,\\text{m}$, Endhöhe nach Bruch $h_1 = 0{,}7\\,\\text{m}$. Berechne die Kerbschlagarbeit $KV$ in Joule (mit $g = 9{,}81\\,\\text{m/s}^2$).',
+          156.96,
+          1,
+          'J',
+          `**Ansatz:** Formel direkt anwenden: $KV = m\\,g\\,(h_0 - h_1)$.
+
+**Rechnung:** $h_0 - h_1 = 1{,}5 - 0{,}7 = 0{,}8\\,\\text{m}$. Damit $KV = 20\\,\\text{kg} \\cdot 9{,}81\\,\\text{m/s}^2 \\cdot 0{,}8\\,\\text{m} = 156{,}96\\,\\text{J} \\approx 157\\,\\text{J}$.
+
+**Probe:** Dimensionscheck $[KV] = \\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{N\\,m} = \\text{J}$. ✓ Größenordnung: $157\\,\\text{J}$ liegt im Bereich von zähem Baustahl bei Raumtemperatur — plausibel.
+
+**Typischer Fehler:** $h_0$ und $h_1$ verwechseln (Endhöhe größer als Anfangshöhe annehmen, negative Energie) oder $g$ vergessen.`,
+          [
+            'Formel $KV = m\\,g\\,(h_0 - h_1)$ — alle drei Faktoren multiplizieren.',
+            'Höhendifferenz zuerst ausrechnen: $1{,}5 - 0{,}7 = 0{,}8$.',
+            '$20 \\cdot 9{,}81 \\cdot 0{,}8$ einsetzen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender setzt in die Formel ein: $m = 20\\,\\text{kg}$, $h_0 = 1{,}5\\,\\text{m}$, $h_1 = 0{,}7\\,\\text{m}$, **vergisst aber den Faktor $g$**. Er erhält $KV = 20 \\cdot 0{,}8 = 16\\,\\text{J}$. Wo liegt der Fehler?',
+          [
+            'Faktor $g = 9{,}81\\,\\text{m/s}^2$ fehlt — korrekt: $KV = 20 \\cdot 9{,}81 \\cdot 0{,}8 \\approx 157\\,\\text{J}$.',
+            'Höhendifferenz $h_0 - h_1$ wurde falsch ausgerechnet — korrekt ist $0{,}8\\,\\text{m}$.',
+            '$h_0$ und $h_1$ wurden vertauscht — das Vorzeichen wäre falsch.',
+            'Die Pendelmasse muss in Newton angegeben werden, nicht in Kilogramm.',
+          ],
+          0,
+          `**Ansatz:** Die Formel $KV = m\\,g\\,(h_0 - h_1)$ verbindet Energie mit Masse × Beschleunigung × Höhe. Ohne $g$ stimmt die Dimension nicht — $\\text{kg}\\cdot\\text{m} = $ kein Joule.
+
+**Rechnung:** Korrekt: $20 \\cdot 9{,}81 \\cdot 0{,}8 = 156{,}96\\,\\text{J} \\approx 157\\,\\text{J}$. Ohne $g$: $16\\,\\text{kg\\,m}$ — keine sinnvolle Einheit, etwa um Faktor $\\approx 10$ zu klein.
+
+**Probe:** Dimensionscheck: $[m\\,g\\,h] = \\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{J}$. ✓ Ohne $g$: $[m\\,h] = \\text{kg\\,m}$ ≠ $\\text{J}$.
+
+**Typischer Fehler:** Genau dieses Vergessen der Erdbeschleunigung. Mnemonik: „$E_\\text{pot} = m\\,g\\,h$, niemals nur $m\\,h$".`,
+          [
+            'Welche Konstante steht zwischen Masse und Höhe in der Lageenergie?',
+            'Dimensionscheck $\\text{kg}\\cdot\\text{m} \\neq \\text{J}$.',
+            '$g = 9{,}81\\,\\text{m/s}^2$ ist immer dabei.',
+          ],
+          {
+            1: '$0{,}8\\,\\text{m}$ ist korrekt — der Fehler liegt nicht in der Höhendifferenz.',
+            2: 'Bei Vertauschung wäre das Vorzeichen negativ ($-16$), nicht der Betrag falsch.',
+            3: 'Die Masse wird in der Formel in Kilogramm verwendet, kombiniert mit $g$ ergibt sich Newton. Die Einheit ist richtig — der Fehler liegt im fehlenden $g$.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['charpy'] },
+      ),
+      tag(
+        ni(
+          'Eine Charpy-Messung ergibt $KV = 98{,}1\\,\\text{J}$ mit $m = 20\\,\\text{kg}$ und $h_0 = 1{,}2\\,\\text{m}$. Berechne die Endhöhe $h_1$ in Meter ($g = 9{,}81\\,\\text{m/s}^2$).',
+          0.7,
+          0.02,
+          'm',
+          `**Ansatz:** Formel nach $h_1$ umstellen. $KV = m\\,g\\,(h_0 - h_1) \\Rightarrow h_0 - h_1 = KV/(m\\,g) \\Rightarrow h_1 = h_0 - KV/(m\\,g)$.
+
+**Rechnung:** $m\\,g = 20 \\cdot 9{,}81 = 196{,}2\\,\\text{N}$. $KV/(m\\,g) = 98{,}1/196{,}2 = 0{,}5\\,\\text{m}$. Damit $h_1 = 1{,}2 - 0{,}5 = 0{,}7\\,\\text{m}$.
+
+**Probe:** Rückrechnung: $KV = 20 \\cdot 9{,}81 \\cdot (1{,}2 - 0{,}7) = 20 \\cdot 9{,}81 \\cdot 0{,}5 = 98{,}1\\,\\text{J}$ ✓.
+
+**Typischer Fehler:** $h_1 = h_0 + KV/(m\\,g)$ — das Vorzeichen verkehrt; das Pendel verliert nach dem Schlag Höhe, nicht umgekehrt.`,
+          [
+            'Stelle die KV-Formel nach $h_1$ um.',
+            'Zuerst $h_0 - h_1 = KV/(m\\,g)$ ausrechnen.',
+            'Dann $h_1 = h_0 - \\text{(Höhendifferenz)}$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['charpy'] },
+      ),
+    ],
+
+    // ───────────── SG 1: KV ↔ zäh/spröde (kv-zaeh-sproed) ─────────────
+    1: [
+      tag(
+        tf(
+          'Ein hoher Wert der Kerbschlagarbeit $KV$ deutet auf zähes Bruchverhalten hin, ein niedriger Wert auf sprödes.',
+          true,
+          `**Ansatz:** $KV$ misst die Energie, die verbraucht wird, um die Probe zu zerbrechen. Zähe Werkstoffe verformen sich plastisch und absorbieren viel Energie; spröde brechen schlagartig mit minimalem Energieverbrauch.
+
+**Rechnung:** Tabellenwerte (Raumtemperatur): Baustahl S235 zäh $\\approx 100\\,\\text{J}$, Grauguss spröde $\\approx 4\\,\\text{J}$ — Faktor $\\approx 25$.
+
+**Probe:** Bruchfläche zäher Proben: matt, faserig, eingeschnürt. Bruchfläche spröder Proben: glatt, kristallin, glänzend. ✓
+
+**Typischer Fehler:** Hohe $KV$ als „hohe Festigkeit" interpretieren. $KV$ misst nur die Zähigkeit, nicht die Festigkeit $R_m$.`,
+          [
+            'Was kostet mehr Energie — zäher oder spröder Bruch?',
+            'Plastische Verformung absorbiert Energie.',
+            'Hoher $KV$-Wert = viel Bruchenergie = zäh.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Welcher der folgenden Werkstoffe hat bei Raumtemperatur typischerweise den höchsten $KV$-Wert?',
+          [
+            'Vergütungsstahl 42CrMo4 ($\\approx 80\\,\\text{J}$)',
+            'Grauguss GG-25 ($\\approx 4\\,\\text{J}$)',
+            'Hartmetall ($< 5\\,\\text{J}$)',
+            'Al$_2$O$_3$-Keramik ($\\approx 1\\,\\text{J}$)',
+          ],
+          0,
+          `**Ansatz:** Werkstoffe mit duktilem Metall-Gefüge (Stähle, Kupfer, Aluminium) haben hohe $KV$. Spröde Werkstoffe (Gusseisen mit Graphitlamellen, Hartmetalle, Keramik) haben sehr niedrige $KV$.
+
+**Rechnung:** 42CrMo4 vergütet: typisch $80\\,\\text{J}$ — zäh durch angelassenen Martensit + Karbide. GG-25: Graphitlamellen wirken als innere Kerben → spröde, $\\approx 4\\,\\text{J}$. Hartmetall, Keramik: nahezu keine plastische Verformung.
+
+**Probe:** DIN EN 10083 (Vergütungsstähle) listet $KV \\geq 27\\,\\text{J}$ als Mindestwert; reale 42CrMo4-Proben erreichen oft $50$–$100\\,\\text{J}$. ✓
+
+**Typischer Fehler:** Härte mit Zähigkeit verwechseln — Hartmetall ist sehr hart ($\\approx 1500\\,\\text{HV}$), aber spröde (niedrige $KV$).`,
+          [
+            'Welche Werkstoffklasse verhält sich zäh, welche spröde?',
+            'Stähle haben deutlich höhere $KV$-Werte als Keramik oder Gusseisen.',
+            'Vergütung erhöht die Zähigkeit gegenüber rein gehärtetem Stahl.',
+          ],
+          {
+            1: 'Grauguss ist ein klassisches sprödes Material — die Graphitlamellen wirken als innere Kerben und reduzieren $KV$ drastisch.',
+            2: 'Hartmetall ist sehr hart, aber extrem spröde — typische $KV$-Werte unter $5\\,\\text{J}$.',
+            3: 'Keramik ist der spröde Werkstoff par excellence — nahezu keine plastische Verformung, kleinste $KV$-Werte.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Eine Charpy-Messung an einer unbekannten Probe ergibt $KV = 5\\,\\text{J}$. Wie ist das Bruchverhalten einzuschätzen?',
+          [
+            'Spröder Bruch — die Probe brach mit kaum Energieaufnahme. Werkstoff sprödbruchgefährdet.',
+            'Zäher Bruch — der Werkstoff hat viel Energie aufgenommen.',
+            'Mittelmäßiges Verhalten — typisch für unlegierten Baustahl bei Raumtemperatur.',
+            'Die Probe war nicht ausreichend gekerbt — Messwert nicht aussagekräftig.',
+          ],
+          0,
+          `**Ansatz:** $KV$-Werte einordnen: $< 10\\,\\text{J}$ deutet auf sprödes Verhalten hin, $> 50\\,\\text{J}$ auf zähes.
+
+**Rechnung:** $5\\,\\text{J} \\ll 27\\,\\text{J}$ (Stahlbau-Grenzwert) → sprödbruchgefährdet. Typische Werkstoffe in diesem Bereich: Grauguss, gehärteter Werkzeugstahl bei niedriger Anlasstemperatur, spröde Kunststoffe.
+
+**Probe:** Bruchflächenuntersuchung erwartet: glatte, glänzende Bruchfläche, kein Einschnüren der Probe, kristalline Struktur sichtbar. ✓
+
+**Typischer Fehler:** $5\\,\\text{J}$ als ausreichend ansehen — der Grenzwert für Stahlbau-Anwendungen ist mehr als das Fünffache.`,
+          [
+            'Vergleiche mit dem 27-J-Grenzwert aus dem Stahlbau.',
+            '$5\\,\\text{J}$ ist deutlich darunter — was bedeutet das?',
+            'Wenige Joule = wenig Bruchenergie = spröde.',
+          ],
+          {
+            1: '$5\\,\\text{J}$ ist ein typischer Spröde-Wert; ein zäher Bruch hätte $> 50\\,\\text{J}$.',
+            2: 'Unlegierter Baustahl S235 hat bei Raumtemperatur typisch $> 60\\,\\text{J}$ — nicht $5\\,\\text{J}$.',
+            3: 'Charpy-Proben sind normiert gekerbt (DIN EN ISO 148-1). Der Wert ist aussagekräftig, sofern die Probe normgerecht war.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        mc(
+          'Eine Studentin schließt aus $KV = 120\\,\\text{J}$: „Dieser Werkstoff hat eine höhere Zugfestigkeit $R_m$ als ein Werkstoff mit $KV = 60\\,\\text{J}$." Wo liegt der Fehler?',
+          [
+            'Kerbschlagarbeit und Zugfestigkeit sind **unabhängige** Kennwerte — ein zäher Werkstoff kann sogar niedrigere $R_m$ haben als ein spröder. $KV$ misst Zähigkeit, nicht Festigkeit.',
+            '$KV$ ist immer kleiner als $R_m$ — die Werte sind nicht vergleichbar.',
+            '$KV$ und $R_m$ sind dieselbe Größe in anderen Einheiten.',
+            'Höhere $KV$ bedeutet automatisch höhere Streckgrenze $R_e$.',
+          ],
+          0,
+          `**Ansatz:** Charpy misst Bruchenergie, Zugversuch misst maximale Spannung — zwei voneinander unabhängige Werkstoffeigenschaften.
+
+**Rechnung:** Gegenbeispiel: Vergütungsstahl 42CrMo4 hat $R_m \\approx 1000\\,\\text{MPa}$ und $KV \\approx 80\\,\\text{J}$. Spröder Gusseisen GG-25 hat $R_m \\approx 250\\,\\text{MPa}$, aber $KV \\approx 4\\,\\text{J}$. Andererseits hat reines Aluminium niedrige $R_m$ und gleichzeitig moderates $KV$.
+
+**Probe:** Werkstoffdatenblatt: $R_m$, $R_e$ und $KV$ werden getrennt ausgewiesen — eindeutig unabhängige Kennwerte. ✓
+
+**Typischer Fehler:** „Mehr Zähigkeit = mehr Festigkeit" als Daumenregel verallgemeinern. Stimmt nur in begrenztem Maße innerhalb einer Werkstoffklasse.`,
+          [
+            'Welche Werkstoffeigenschaft misst Charpy, welche misst der Zugversuch?',
+            'Können zwei unabhängige Größen direkt aufeinander geschlossen werden?',
+            'Beispiel: spröder Vergleichsstoff vs. zähes weiches Metall.',
+          ],
+          {
+            1: 'Die Werte können nicht direkt verglichen werden, aber das liegt an der Bedeutung, nicht an der Größenordnung. Ein zäher Werkstoff kann höhere oder niedrigere $R_m$ haben.',
+            2: '$KV$ in Joule und $R_m$ in MPa sind völlig verschiedene physikalische Größen — keine Einheitenkonversion möglich.',
+            3: 'Streckgrenze $R_e$ und $KV$ sind ebenfalls unabhängig — ein zäher Stahl muss nicht automatisch eine hohe Streckgrenze haben.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+      tag(
+        matching(
+          'Ordne den $KV$-Wertebereich dem typischen Werkstoff zu (alle Werte bei Raumtemperatur).',
+          [
+            { left: 'Grauguss GG-25 (Graphitlamellen wirken als Kerben)',     right: '$\\approx 4\\,\\text{J}$' },
+            { left: 'Baustahl S235 bei $+20\\,°\\text{C}$ (zäh)',               right: '$\\approx 100\\,\\text{J}$' },
+            { left: 'Baustahl S235 bei $-40\\,°\\text{C}$ (sprödbruch)',         right: '$\\approx 10\\,\\text{J}$' },
+            { left: 'Vergüteter 42CrMo4',                                       right: '$\\approx 50\\,\\text{J}$' },
+          ],
+          `**Ansatz:** $KV$-Werte hängen stark von Werkstoff UND Temperatur ab. Spröde Werkstoffe (Grauguss) haben unter $10\\,\\text{J}$, zähe Stähle bei Raumtemperatur $50$–$200\\,\\text{J}$. Tieftemperatur drückt selbst zähe Stähle in den spröden Bereich.
+
+**Rechnung:** GG-25: $\\approx 4\\,\\text{J}$ (Graphitlamellen-Effekt). S235 bei RT: $\\approx 100\\,\\text{J}$ (sehr zäh). S235 bei $-40\\,°\\text{C}$: Sprödbruchgefahr, deutlicher Abfall auf $\\approx 10\\,\\text{J}$. 42CrMo4: dazwischen, hohe Festigkeit + brauchbare Zähigkeit.
+
+**Probe:** Werte aus DIN-Tabellen und Werkstoffdatenblättern entnommen. Reihenfolge $4 < 10 < 50 < 100\\,\\text{J}$ ist eindeutig — keine Mehrdeutigkeit. ✓
+
+**Typischer Fehler:** Werkstoffe ohne Temperaturangabe vergleichen. Der gleiche S235 hat bei RT und bei $-40\\,°\\text{C}$ völlig unterschiedliche $KV$-Werte.`,
+          [
+            'Vier verschiedene Größenordnungen: $4 / 10 / 50 / 100\\,\\text{J}$.',
+            'Spröde Werkstoffe ganz unten, zäher Baustahl ganz oben.',
+            'Temperatur beeinflusst das Verhalten — gleiche Sorte, andere Temp = anderes $KV$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['kv-zaeh-sproed'] },
+      ),
+    ],
+
+    // ───────────── SG 2: 27-J-Grenzwert (grenzwert-27) ─────────────
+    2: [
+      tag(
+        tf(
+          'Im Stahlbau gilt $KV \\geq 27\\,\\text{J}$ bei Einsatztemperatur als Untergrenze für sprödbruchsichere Konstruktionen.',
+          true,
+          `**Ansatz:** Der Grenzwert ist in DIN EN 1993 (Eurocode 3) und in den Werkstoffnormen für Baustähle festgelegt. Er trennt zähes von sprödem Versagensverhalten.
+
+**Rechnung:** Stähle mit $KV < 27\\,\\text{J}$ können bei stoßartiger Belastung schlagartig versagen, ohne dass sich vorher Verformung zeigt — gefährlich bei Brücken, Behältern, Kränen.
+
+**Probe:** Stahlsorten-Bezeichnungen (z. B. S235**J2**, S355**K2**) referenzieren genau diesen Wert: J = $27\\,\\text{J}$ bei zugehöriger Prüftemperatur. ✓
+
+**Typischer Fehler:** $27\\,\\text{J}$ als Universal-Grenzwert ohne Temperaturbezug verwenden. Der Grenzwert gilt **bei Einsatztemperatur**.`,
+          [
+            'Welcher Wert wird in Stahlnormen als Untergrenze festgelegt?',
+            'Auf welche Temperatur bezieht sich der Wert?',
+            '$J0$, $J2$, $K2$ — was bedeutet das „J"?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Welcher der folgenden Werkstoffe erfüllt die $27\\,\\text{J}$-Anforderung für eine Stahlbau-Konstruktion bei Einsatztemperatur **nicht**?',
+          [
+            'Werkstoff A mit $KV = 15\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff B mit $KV = 35\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff C mit $KV = 50\\,\\text{J}$ bei Einsatztemperatur',
+            'Werkstoff D mit $KV = 100\\,\\text{J}$ bei Einsatztemperatur',
+          ],
+          0,
+          `**Ansatz:** Grenzwert $KV \\geq 27\\,\\text{J}$ vergleichen. Werkstoffe oberhalb sind in Ordnung, darunter nicht.
+
+**Rechnung:** A: $15 < 27$ → erfüllt **nicht**. B, C, D: alle $\\geq 27$, alle erfüllt.
+
+**Probe:** Werkstoff A würde im Stahlbau abgelehnt; eine Vergütung oder ein anderer Stahl wäre nötig. ✓
+
+**Typischer Fehler:** „Werkstoff B mit nur $35\\,\\text{J}$ ist zu knapp" — solange der Wert über $27\\,\\text{J}$ liegt, ist die Anforderung formal erfüllt.`,
+          [
+            'Liste alle Werte und vergleiche mit dem Grenzwert $27\\,\\text{J}$.',
+            'Genau einer der vier Werte ist kleiner.',
+            'Werkstoff A liegt unterhalb des Grenzwerts.',
+          ],
+          {
+            1: '$35\\,\\text{J} > 27\\,\\text{J}$ — die Anforderung ist erfüllt, auch wenn die Reserve klein ist.',
+            2: '$50\\,\\text{J} > 27\\,\\text{J}$ — gute Reserve, anforderungskonform.',
+            3: '$100\\,\\text{J} > 27\\,\\text{J}$ — deutlich über dem Grenzwert, sicher.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Eine Werkstoffprüfung ergibt für einen Baustahl bei der vorgesehenen Einsatztemperatur $KV = 27\\,\\text{J}$ exakt. Wie ist das Ergebnis im Sinne der Stahlbau-Norm zu bewerten?',
+          [
+            'Anforderung gerade erfüllt — der Stahl ist **formal** zulässig, jedoch ohne Sicherheitsreserve. In der Praxis wird oft ein höherer Wert verlangt.',
+            'Anforderung nicht erfüllt — der Grenzwert muss überschritten werden.',
+            'Anforderung deutlich übererfüllt — sehr gut zäher Werkstoff.',
+            'Wert nicht aussagekräftig — Charpy-Tests müssen immer drei Proben mitteln.',
+          ],
+          0,
+          `**Ansatz:** Der Norm-Grenzwert ist $KV \\geq 27\\,\\text{J}$ — mit Gleichheitszeichen gerade erfüllt.
+
+**Rechnung:** $KV = 27\\,\\text{J}$ erfüllt die Bedingung $KV \\geq 27\\,\\text{J}$. Allerdings besteht keine Sicherheitsreserve gegen Streuung — in der Praxis verlangt man oft Stahlsorten, die $30$–$50\\,\\text{J}$ erreichen.
+
+**Probe:** In Stahlnormen ist der J-Wert als Mindestwert definiert; eine Charpy-Probe darf exakt diesen Wert erreichen — sie muss ihn nicht überschreiten. ✓
+
+**Typischer Fehler:** „$\\geq$" als „$>$" interpretieren. In Normen schließt das Gleichheitszeichen mit ein.`,
+          [
+            'Was bedeutet $\\geq$ in einer Norm-Anforderung?',
+            'Charpy-Tests werden in der Regel als Mittelwert von 3 Proben angegeben.',
+            'Sicherheitsreserve vs. formale Erfüllung.',
+          ],
+          {
+            1: 'Das $\\geq$-Zeichen schließt den Gleichheitsfall ein — der Stahl ist formal zulässig.',
+            2: '$27\\,\\text{J}$ entspricht exakt dem Grenzwert — von „deutlich übererfüllt" kann keine Rede sein.',
+            3: 'Ja, üblich sind 3 Proben mit Mittelwertbildung — aber das macht den Wert nicht „nicht aussagekräftig", sondern erst belastbar.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Ein Konstrukteur dokumentiert: „Werkstoff X bestanden — $KV = 27\\,\\text{kg}$." Welcher Fehler liegt vor?',
+          [
+            'Falsche Einheit: Kerbschlagarbeit hat die Einheit **Joule** (J), nicht Kilogramm — die Aussage ist physikalisch unsinnig.',
+            'Der Werkstoff hat nicht bestanden — $27\\,\\text{kg}$ liegt unter dem Grenzwert.',
+            '$27$ Kilogramm entsprechen $27 \\cdot 9{,}81 \\approx 265\\,\\text{J}$ — der Werkstoff hat sehr gut bestanden.',
+            'Die Werkstoffbezeichnung „X" ist nicht zulässig — es müsste eine Werkstoffnummer angegeben werden.',
+          ],
+          0,
+          `**Ansatz:** Kerbschlagarbeit ist eine Energiegröße — Einheit Joule. „Kilogramm" ist eine Massen-Einheit, dimensionsfremd.
+
+**Rechnung:** $KV$ entsteht aus $m\\,g\\,(h_0 - h_1)$ — Einheit $\\text{kg}\\cdot\\text{m/s}^2\\cdot\\text{m} = \\text{N\\,m} = \\text{J}$. Die Angabe in Kilogramm ist sachlich falsch.
+
+**Probe:** Norm-Notation in DIN-Datenblättern: $KV$ wird ausschließlich in Joule angegeben. ✓
+
+**Typischer Fehler:** Verwechslung mit alter Einheit „kpm" (Kilopondmeter) — historisch genutzt, aber heute durch Joule ersetzt. Auch dabei wird **nicht** „kg" geschrieben.`,
+          [
+            'Welche physikalische Größe wird bei Charpy gemessen?',
+            'Welche Einheit hat eine Energiegröße im SI-System?',
+            'Joule = $\\text{N\\,m}$, niemals Kilogramm.',
+          ],
+          {
+            1: 'Der Vergleich ist falsch begründet — die Einheit ist gar nicht vergleichbar, weil $\\text{kg}$ keine Energieeinheit ist.',
+            2: 'Es gibt keine direkte Umrechnung „Kilogramm in Joule" für Kerbschlagarbeit — die Einheit ist schlicht falsch.',
+            3: 'Werkstoffbezeichnungen sind hier nicht das Problem — der Hauptfehler ist die Einheit.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+      tag(
+        mc(
+          'Für eine geschweißte Brückenkonstruktion wird im Winter eine Einsatztemperatur von $-20\\,°\\text{C}$ angenommen. Welcher Stahl ist sprödbruchsicher auszuwählen?',
+          [
+            'Ein Stahl mit garantierter Kerbschlagarbeit $KV \\geq 27\\,\\text{J}$ **bei $-20\\,°\\text{C}$** (z. B. S355J2)',
+            'Ein beliebiger S235 — die Norm gilt für jeden Stahl gleich',
+            'Ein Stahl mit $KV \\geq 27\\,\\text{J}$ bei Raumtemperatur reicht aus',
+            'Ein gehärteter Werkzeugstahl — höhere Härte = besser sprödbruchsicher',
+          ],
+          0,
+          `**Ansatz:** Der Grenzwert $KV \\geq 27\\,\\text{J}$ muss **bei Einsatztemperatur** erfüllt sein, nicht bei Raumtemperatur. Stähle werden mit J-Index (Prüftemperatur) gekennzeichnet.
+
+**Rechnung:** S355J2: $J = 27\\,\\text{J}$ bei $-20\\,°\\text{C}$ garantiert. Für eine Brücke bei $-20\\,°\\text{C}$ ist das die richtige Wahl. Ein S235JR (Raumtemperatur-Prüfung) erfüllt die Anforderung bei $-20\\,°\\text{C}$ **nicht** automatisch — er kann unter die Übergangstemperatur fallen.
+
+**Probe:** Eurocode 3 (DIN EN 1993-1-10) gibt verbindliche Auswahlregeln für sprödbruchsichere Stähle in Abhängigkeit von Bauteildicke, Belastungsart und tiefster Einsatztemperatur. ✓
+
+**Typischer Fehler:** Stahlsorten ohne J-Index für Tieftemperatur einsetzen.`,
+          [
+            'Bei welcher Temperatur wurde der Stahl geprüft?',
+            'J2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$.',
+            'Härte und Sprödbruchsicherheit haben nichts miteinander zu tun.',
+          ],
+          {
+            1: 'S235 ohne J-Index (= JR, Raumtemperatur) ist für $-20\\,°\\text{C}$ **nicht** ausgelegt.',
+            2: 'Der Grenzwert muss bei der **tatsächlichen** Einsatztemperatur erfüllt sein — bei $-20\\,°\\text{C}$ und nicht bei $+20\\,°\\text{C}$.',
+            3: 'Gehärtete Werkzeugstähle sind in der Regel **sprödbruchgefährdet** ($KV \\ll 27\\,\\text{J}$) und damit für Stahlbau ungeeignet.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['grenzwert-27'] },
+      ),
+    ],
+
+    // ───────────── SG 3: Übergangstemperatur (uebergangstemp) ─────────────
+    3: [
+      tag(
+        tf(
+          'Unterhalb der Übergangstemperatur $T_\\ddot{U}$ fällt die Kerbschlagarbeit eines krz-Stahls (ferritisch-perlitisch) deutlich ab — der Werkstoff verhält sich zunehmend spröde.',
+          true,
+          `**Ansatz:** Bei krz-Metallen (z. B. unlegierter Baustahl) hängt die Versetzungsmobilität stark von der Temperatur ab. Unterhalb einer kritischen Temperatur reicht die thermische Aktivierung nicht mehr, die Probe bricht spröde.
+
+**Rechnung:** Die typische Charpy-Kurve $KV(T)$ zeigt drei Bereiche: Hochlage (zäh, $KV \\approx 100$–$200\\,\\text{J}$), Übergangsbereich (Steilabfall), Tieflage (spröde, $KV < 20\\,\\text{J}$). Der Übergang liegt bei vielen Baustählen zwischen $-50\\,°\\text{C}$ und $0\\,°\\text{C}$.
+
+**Probe:** Spektakulärer Praxisfall: Titanic-Stahl wies bei den niedrigen Atlantikwassertemperaturen bereits unter die Übergangstemperatur — Sprödbruch trug zum Untergang bei. ✓
+
+**Typischer Fehler:** Übergangstemperatur bei austenitischen Edelstählen (kfz) erwarten — die zeigen keinen ausgeprägten Steilabfall und bleiben auch bei sehr tiefen Temperaturen zäh.`,
+          [
+            'Wie hängt die Versetzungsbewegung in krz-Metallen von der Temperatur ab?',
+            'Was passiert mit $KV$, wenn man die Probe abkühlt?',
+            'Krz vs. kfz: nur krz zeigt diesen Effekt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Wie ist die Übergangstemperatur $T_\\ddot{U}$ definiert?',
+          [
+            'Temperatur, bei der die Kerbschlagarbeit von „zäh" auf „spröde" umschlägt (oft fixiert als $KV = 27\\,\\text{J}$- oder $50\\,\\%$-Bruchflächen-Kriterium)',
+            'Temperatur, bei der der Werkstoff schmilzt',
+            'Temperatur, bei der der Stahl aus Ferrit in Austenit umwandelt ($\\approx 723\\,°\\text{C}$)',
+            'Raumtemperatur ($20\\,°\\text{C}$) als Norm-Prüftemperatur',
+          ],
+          0,
+          `**Ansatz:** Es gibt mehrere Kriterien zur Definition von $T_\\ddot{U}$: das $KV$-Energie-Kriterium ($T_{27\\text{J}}$) und das Bruchflächen-Kriterium ($50\\,\\%$ kristalline Bruchfläche, FATT). In der Praxis dominiert die $27\\,\\text{J}$-Definition für Stahlbau.
+
+**Rechnung:** Im $KV(T)$-Diagramm: Steilabfallkurve. $T_\\ddot{U}$ wird dort abgelesen, wo $KV = 27\\,\\text{J}$ (oder $50\\,\\%$ Faseranteil) erreicht wird. Für S235 typisch um $-20\\,°\\text{C}$ bis $0\\,°\\text{C}$.
+
+**Probe:** Werkstoff-Datenblätter geben oft den $27\\,\\text{J}$-Wert für mehrere Temperaturen an — daraus kann $T_\\ddot{U}$ abgelesen werden. ✓
+
+**Typischer Fehler:** Übergangstemperatur mit Phasenumwandlungstemperatur verwechseln (z. B. $A_1 = 723\\,°\\text{C}$ im Fe-C-Diagramm).`,
+          [
+            'Was wechselt am Übergang — Aggregatzustand, Phase oder Bruchverhalten?',
+            'Energiebasiert oder bruchflächenbasiert — beides sind Definitionsvarianten.',
+            'Der $27\\,\\text{J}$-Wert ist das übliche Kriterium.',
+          ],
+          {
+            1: 'Schmelzpunkt von Stahl liegt bei $\\approx 1500\\,°\\text{C}$ — das hat mit der Charpy-Übergangstemperatur nichts zu tun.',
+            2: '$A_1 = 723\\,°\\text{C}$ ist die Phasenumwandlung Ferrit/Perlit → Austenit (Fe-C-Diagramm) — eine völlig andere Größe.',
+            3: 'Raumtemperatur ist nur eine Norm-Prüftemperatur (JR-Stähle), aber nicht die Definition der Übergangstemperatur.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Ein Baustahl S235 hat $T_\\ddot{U} = -10\\,°\\text{C}$ (definiert über $KV = 27\\,\\text{J}$). Bei welcher Betriebstemperatur ist Sprödbruch nicht mehr ausgeschlossen?',
+          [
+            'Bei $-30\\,°\\text{C}$ — deutlich unterhalb $T_\\ddot{U}$, Sprödbruchgefahr.',
+            'Bei $+20\\,°\\text{C}$ — Raumtemperatur, der Stahl ist sicher zäh.',
+            'Bei $+50\\,°\\text{C}$ — oberhalb $T_\\ddot{U}$ ist der Stahl sicher zäh.',
+            'Bei $0\\,°\\text{C}$ — nahe $T_\\ddot{U}$, jedoch oberhalb, also noch sicher.',
+          ],
+          0,
+          `**Ansatz:** Sprödbruch droht **unterhalb** der Übergangstemperatur. Vergleich Betriebstemperatur ↔ $T_\\ddot{U}$.
+
+**Rechnung:** $T_\\ddot{U} = -10\\,°\\text{C}$. Bei $-30\\,°\\text{C}$ ist $T < T_\\ddot{U}$ → spröder Bereich → Gefahr. Bei $+20\\,°\\text{C}$ und $+50\\,°\\text{C}$ ist $T > T_\\ddot{U}$ → zäher Bereich.
+
+**Probe:** In Norm-Datenblättern wird auch für $-10\\,°\\text{C}$ und kälter eine zusätzliche Sicherheits-Marge gefordert ($\\Delta T \\geq 10\\,\\text{K}$). $-30\\,°\\text{C}$ liegt $20\\,\\text{K}$ unter $T_\\ddot{U}$ — klare Gefährdung. ✓
+
+**Typischer Fehler:** $0\\,°\\text{C}$ als „nahe an $T_\\ddot{U}$, daher kritisch" einstufen. Tatsächlich ist es noch oberhalb $T_\\ddot{U}$ (formaler Sicherheitsbereich), wenn auch mit knapper Reserve.`,
+          [
+            'Vergleiche Betriebstemperatur mit $T_\\ddot{U}$.',
+            'Unterhalb $T_\\ddot{U}$ ist Sprödbruch wahrscheinlich.',
+            'Welche der Temperaturen ist die einzige unter $-10\\,°\\text{C}$?',
+          ],
+          {
+            1: '$+20\\,°\\text{C}$ ist deutlich oberhalb $-10\\,°\\text{C}$ — der Stahl ist im zähen Bereich, kein Sprödbruch zu erwarten.',
+            2: '$+50\\,°\\text{C}$ ist noch weiter oberhalb $T_\\ddot{U}$ — sehr sicher im zähen Bereich.',
+            3: '$0\\,°\\text{C}$ liegt oberhalb $-10\\,°\\text{C}$ → noch im zähen Bereich. In der Praxis empfiehlt sich allerdings eine $\\Delta T$-Reserve.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Ein Studierender erklärt: „Die Übergangstemperatur ist die Temperatur, bei der ein Stahl schmilzt." Wo liegt der Fehler?',
+          [
+            'Schmelztemperatur ($\\approx 1500\\,°\\text{C}$ bei Stahl) und Charpy-Übergangstemperatur ($\\approx 0\\,°\\text{C}$ bei Baustahl) sind völlig verschiedene Konzepte. $T_\\ddot{U}$ beschreibt den Wechsel zäh ↔ spröde, kein Aggregatzustand.',
+            'Die Übergangstemperatur ist eigentlich die Glühtemperatur bei der Wärmebehandlung.',
+            'Die Übergangstemperatur ist die Eutektische Temperatur des Fe-C-Diagramms.',
+            'Die Aussage ist korrekt — Schmelz- und Übergangstemperatur sind synonym.',
+          ],
+          0,
+          `**Ansatz:** Bei der Charpy-Übergangstemperatur bleibt der Werkstoff fest — nur das Bruchverhalten wechselt von zäh zu spröde. Schmelzen ist ein Phasenübergang fest → flüssig bei deutlich höherer Temperatur.
+
+**Rechnung:** Stahl schmilzt bei $\\approx 1500\\,°\\text{C}$. Die Charpy-$T_\\ddot{U}$ vieler Baustähle liegt zwischen $-50\\,°\\text{C}$ und $+20\\,°\\text{C}$ — Differenz $\\geq 1450\\,\\text{K}$.
+
+**Probe:** Beim Charpy-Versuch bei $-20\\,°\\text{C}$ ist der Stahl natürlich fest — er bricht nur spröder als bei höheren Temperaturen. ✓
+
+**Typischer Fehler:** Den Begriff „Übergang" zu schnell mit Schmelzen oder Phasenumwandlung verbinden, ohne den Kontext zu prüfen.`,
+          [
+            'Was passiert bei der Charpy-Übergangstemperatur physikalisch?',
+            'Verhältnis $T_\\ddot{U}$ zur Schmelztemperatur in Größenordnung?',
+            'Schmelz- und Sprödbruch-Übergang haben ganz andere Größenordnungen.',
+          ],
+          {
+            1: 'Glühtemperaturen liegen je nach Verfahren bei $500$–$900\\,°\\text{C}$ — das ist eine andere Wärmebehandlung, keine Charpy-Größe.',
+            2: 'Die eutektoide Temperatur des Fe-C-Systems ist $723\\,°\\text{C}$ — auch eine Phasen-Umwandlung, nicht die Charpy-Übergangstemperatur.',
+            3: 'Beide Konzepte sind völlig verschieden — sie haben nicht einmal die gleiche Größenordnung.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+      tag(
+        mc(
+          'Welche Werkstoffklasse zeigt **keine** ausgeprägte Übergangstemperatur und bleibt auch bei sehr tiefen Temperaturen zäh?',
+          [
+            'Austenitische Edelstähle (kfz-Gefüge, z. B. X5CrNi18-10)',
+            'Unlegierte Baustähle (krz-Gefüge, z. B. S235)',
+            'Vergütungsstähle (z. B. 42CrMo4)',
+            'Grauguss mit Graphitlamellen',
+          ],
+          0,
+          `**Ansatz:** Krz-Gefüge zeigt einen ausgeprägten Übergang zäh→spröde, kfz-Gefüge nicht. Austenitische Edelstähle sind kfz und behalten ihre Zähigkeit auch bei Kryo-Temperaturen.
+
+**Rechnung:** Tieftemperatur-Anwendungen (LNG-Tanks bei $-160\\,°\\text{C}$, Wasserstoff-Tanks bei $-253\\,°\\text{C}$) werden daher aus austenitischen Stählen gefertigt — Baustähle würden dort sprödbruch-versagen.
+
+**Probe:** $KV$-Diagramme von X5CrNi18-10: $KV$ bleibt von $+100\\,°\\text{C}$ bis $-200\\,°\\text{C}$ nahezu konstant bei $> 100\\,\\text{J}$. ✓
+
+**Typischer Fehler:** „Edelstahl ist immer besser" als Pauschalaussage. Hier geht es um die Kristallstruktur (kfz vs. krz), nicht um die Legierungsbezeichnung.`,
+          [
+            'Welche Kristallstruktur haben austenitische Edelstähle?',
+            'Welche Struktur zeigt den Steilabfall im $KV(T)$-Diagramm?',
+            'Tieftemperatur-Anwendungen: welcher Werkstoff?',
+          ],
+          {
+            1: 'Unlegierte Baustähle sind krz und zeigen genau den ausgeprägten Übergang — sie sind das Lehrbuchbeispiel.',
+            2: 'Vergütungsstähle sind ebenfalls krz-basiert und haben eine Übergangstemperatur (oft besser als unlegiert, aber existent).',
+            3: 'Grauguss ist von vornherein spröde (durch Graphitlamellen) — er hat keine Hochlage, also nicht „bleibt zäh".',
+          },
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['uebergangstemp'] },
+      ),
+    ],
+
+    // ───────────── SG 4: J0/J2/K2-Stahlbezeichnungen (stahl-j-bez) ─────────────
+    4: [
+      tag(
+        tf(
+          'Die Buchstaben-Ziffer-Kombination im Stahlnamen (z. B. S235**JR**, S355**J0**, S275**J2**, S460**K2**) gibt die Prüftemperatur an, bei der die normierte Kerbschlagarbeit gemessen wird.',
+          true,
+          `**Ansatz:** In DIN EN 10025 sind diese Zusätze normiert. Das Suffix codiert die **Prüftemperatur** für den Mindest-Kerbschlagwert (typisch $27\\,\\text{J}$): R = $+20\\,°\\text{C}$, 0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$ (bei höherfesten Sorten).
+
+**Rechnung:** Beispiele: S235**JR**: $KV \\geq 27\\,\\text{J}$ bei $+20\\,°\\text{C}$. S355**J2**: $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. S460**K2**: Mindest-$KV$ bei $-40\\,°\\text{C}$.
+
+**Probe:** Norm-Liste DIN EN 10025-2: Tabellen-Zuordnung Bezeichnung ↔ Mindestwert ↔ Prüftemperatur. ✓
+
+**Typischer Fehler:** „J" als „Joule" oder „Justierung" interpretieren. Der Buchstabe steht für die Mindestkerbschlagarbeit-**Klasse**, nicht für die Einheit.`,
+          [
+            'Welche Information codieren der Buchstabe und die Ziffer im Stahlnamen?',
+            'Mindestwert vs. Prüftemperatur — welche Komponente codiert was?',
+            'JR = Raumtemperatur, K2 = sehr kalt.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Was bedeutet das Suffix „J2" in der Stahlbezeichnung S355J2?',
+          [
+            'Kerbschlagarbeit $\\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$ garantiert',
+            'Kerbschlagarbeit $= 2\\,\\text{Joule}$ (extrem spröde)',
+            'Streckgrenze $R_e = 355\\,\\text{MPa} \\cdot 2 = 710\\,\\text{MPa}$',
+            'Walzklasse 2 nach DIN — keine Kerbschlag-Angabe',
+          ],
+          0,
+          `**Ansatz:** Code-Schlüssel DIN EN 10025: J = $27\\,\\text{J}$ Mindestwert, Ziffer = Prüftemperatur (0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, 3 = $-30\\,°\\text{C}$).
+
+**Rechnung:** „J2" → $J = 27\\,\\text{J}$ Mindestwert, „2" → Prüftemperatur $-20\\,°\\text{C}$. S355J2 ist also ein Baustahl mit $R_e \\geq 355\\,\\text{MPa}$ und $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$.
+
+**Probe:** Datenblatt S355J2 (DIN EN 10025-2): exakt diese Werte. ✓
+
+**Typischer Fehler:** „J2" als „2 Joule" lesen — das wäre sprödebruchgefährdet und sinnlos schwach.`,
+          [
+            'J = ... Mindestkerbschlagarbeit (welcher Wert?).',
+            'Ziffer = Prüftemperatur.',
+            'Tabelle JR / J0 / J2 = $+20 / 0 / -20\\,°\\text{C}$.',
+          ],
+          {
+            1: '$2\\,\\text{J}$ wäre sprödebruchgefährdet — kein Baustahl würde mit so niedrigem Wert ausgeliefert.',
+            2: 'S355 → $R_e = 355\\,\\text{MPa}$ unabhängig vom Suffix. Die Ziffer codiert keine Festigkeit.',
+            3: 'Die Walzklasse wird in DIN EN 10025 nicht über das J-Suffix bezeichnet — sie ist eine andere Größe.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Für ein Bauteil mit Einsatztemperatur $-10\\,°\\text{C}$ wird Stahl S275J2 gewählt. Ist die Auswahl im Hinblick auf Sprödbruchsicherheit zulässig?',
+          [
+            'Ja — J2 garantiert $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$, also auch bei $-10\\,°\\text{C}$ erfüllt.',
+            'Nein — J2 gilt nur für Raumtemperatur und ist für $-10\\,°\\text{C}$ unzulässig.',
+            'Nein — bei $-10\\,°\\text{C}$ braucht es zwingend K2-Stahl.',
+            'Unklar — ohne Charpy-Test bei genau $-10\\,°\\text{C}$ ist keine Aussage möglich.',
+          ],
+          0,
+          `**Ansatz:** Ein Stahl mit zugesicherter Kerbschlagarbeit bei einer **niedrigeren** Prüftemperatur ist bei einer **höheren** Einsatztemperatur erst recht zulässig — die Zähigkeit nimmt mit steigender Temperatur zu.
+
+**Rechnung:** S275J2 → $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. Einsatztemperatur $-10\\,°\\text{C}$ liegt $10\\,\\text{K}$ oberhalb der Prüftemperatur → $KV$ ist dort **noch höher**, also sicher über $27\\,\\text{J}$.
+
+**Probe:** Charpy-Hochlage liegt oberhalb der Übergangstemperatur — je wärmer, desto zäher. $KV(-10\\,°\\text{C}) > KV(-20\\,°\\text{C}) \\geq 27\\,\\text{J}$. ✓
+
+**Typischer Fehler:** „Die Prüftemperatur muss exakt mit der Einsatztemperatur übereinstimmen" — falsch. Eine niedrigere Prüftemperatur deckt höhere Einsatztemperaturen automatisch ab.`,
+          [
+            'Was passiert mit $KV$, wenn man die Probe erwärmt?',
+            'Niedrigere Prüftemperatur = stärkere Anforderung = strenger.',
+            'Wenn bei $-20\\,°\\text{C}$ erfüllt, dann erst recht bei $-10\\,°\\text{C}$.',
+          ],
+          {
+            1: 'J2 wird bei $-20\\,°\\text{C}$ geprüft (nicht Raumtemperatur) — das ist gerade der Vorteil dieser Sorte.',
+            2: 'K2 wäre für Einsatztemperaturen bis $-40\\,°\\text{C}$ erforderlich — bei $-10\\,°\\text{C}$ ist J2 ausreichend.',
+            3: 'Norm-Garantie bei $-20\\,°\\text{C}$ deckt höhere Temperaturen ab — kein Charpy-Test bei $-10\\,°\\text{C}$ nötig.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        mc(
+          'Ein Konstrukteur schreibt: „Stahl S235J2 mit $KV = 2\\,\\text{J}$". Welcher Fehler liegt vor?',
+          [
+            'Verwechslung: „J2" ist eine **Norm-Bezeichnung** (Prüftemperatur), kein Messwert — der zugesicherte $KV$-Wert für J2 ist $\\geq 27\\,\\text{J}$.',
+            'Die Bezeichnung ist konsistent — J2 bedeutet tatsächlich $2\\,\\text{J}$ Kerbschlagarbeit.',
+            'Stahl S235J2 existiert nicht — nur S235JR und S235J0 sind genormt.',
+            '$KV = 2\\,\\text{J}$ ist korrekt für S235 bei $-20\\,°\\text{C}$.',
+          ],
+          0,
+          `**Ansatz:** „J2" in der Stahlbezeichnung steht für eine zugesicherte Mindest-Kerbschlagarbeit (J $= 27\\,\\text{J}$) bei der zugehörigen Prüftemperatur (2 = $-20\\,°\\text{C}$).
+
+**Rechnung:** S235J2: $R_e \\geq 235\\,\\text{MPa}$, $KV \\geq 27\\,\\text{J}$ bei $-20\\,°\\text{C}$. Der Wert „$2\\,\\text{J}$" wäre weniger als $1/13$ des garantierten Werts — physikalisch nicht möglich für einen normgerechten J2-Stahl.
+
+**Probe:** Norm DIN EN 10025-2 weist S235J2 explizit aus. Die Norm ist die einzige verlässliche Quelle für die Bedeutung des Suffix. ✓
+
+**Typischer Fehler:** Buchstaben-Ziffer-Code als Einheit oder Messwert lesen.`,
+          [
+            'Was bedeutet „J" in der Stahlbezeichnung?',
+            'Was bedeutet „2" daneben?',
+            'Norm vs. Messwert — was ist hier vermischt?',
+          ],
+          {
+            1: '„J2" und „$2\\,\\text{J}$" sind völlig verschiedene Konzepte — die Bezeichnung ist nicht konsistent.',
+            2: 'S235J2 ist sehr wohl normiert — DIN EN 10025-2 listet diese Sorte explizit auf.',
+            3: 'S235 bei $-20\\,°\\text{C}$ ohne J-Index hätte einen unbestimmten Wert; der J2-Stahl muss aber $\\geq 27\\,\\text{J}$ erreichen.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+      tag(
+        matching(
+          'Ordne der Bezeichnung im Stahlnamen die zugehörige Prüftemperatur für die Kerbschlagarbeit $\\geq 27\\,\\text{J}$ zu.',
+          [
+            { left: 'JR (z. B. S235JR)',  right: '$+20\\,°\\text{C}$ (Raumtemperatur)' },
+            { left: 'J0 (z. B. S275J0)',  right: '$0\\,°\\text{C}$' },
+            { left: 'J2 (z. B. S355J2)',  right: '$-20\\,°\\text{C}$' },
+            { left: 'K2 (z. B. S460K2)',  right: '$-40\\,°\\text{C}$ (Tieftemperatur-Variante höherfester Stähle)' },
+          ],
+          `**Ansatz:** Norm-Schlüssel DIN EN 10025: das Suffix codiert die Prüftemperatur. R = $+20\\,°\\text{C}$ (Raumtemperatur), 0 = $0\\,°\\text{C}$, 2 = $-20\\,°\\text{C}$, K2 = $-40\\,°\\text{C}$.
+
+**Rechnung:** Beispiele: S235JR → $KV \\geq 27\\,\\text{J}$ bei $+20\\,°\\text{C}$. S275J0 → bei $0\\,°\\text{C}$. S355J2 → bei $-20\\,°\\text{C}$. S460K2 → bei $-40\\,°\\text{C}$.
+
+**Probe:** Reihenfolge der Bezeichnungen entspricht zunehmender Anforderung an die Tieftemperatur-Zähigkeit (JR < J0 < J2 < K2). Jede Prüftemperatur ist eindeutig genau einer Bezeichnung zugeordnet. ✓
+
+**Typischer Fehler:** Die Ziffer „2" als „$-2\\,°\\text{C}$" lesen. Tatsächlich codiert „2" die Prüftemperatur $-20\\,°\\text{C}$.`,
+          [
+            'Welche Ziffer steht für welche Temperatur?',
+            'Welche Buchstaben gibt es und was bedeuten sie?',
+            'JR = Raumtemperatur, je höher die Ziffer (0/2/3), desto tiefer die Prüftemperatur.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['stahl-j-bez'] },
+      ),
+    ],
+  },
 }
