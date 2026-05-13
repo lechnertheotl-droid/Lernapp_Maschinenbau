@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3413 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2652 (78 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 3419 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2660 (78 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1588 / 1588 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 396 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -199,8 +199,8 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **446** (Lesson-Path: 66 · Goal-Tasks: 380)
-- 4-Block: 431/446 (97 %) 🟡
+- Aufgaben: **452** (Lesson-Path: 66 · Goal-Tasks: 386)
+- 4-Block: 439/452 (97 %) 🟡
 - MC-wAE: 226/226 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
@@ -251,7 +251,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 21 | 10/5/4/1/1 | 21/21 | 10/10 | ✅ | — |
 | `trig-2-1` Der Einheitskreis | 4 | 4/4 | 33 | 15/8/6/3/1 | 33/33 | 15/15 | ✅ | — |
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 36 | 20/8/5/3/0 | 36/36 | 20/20 | ✅ | — |
-| `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 33 | 15/8/6/4/0 | 31/33 | 15/15 | ✅ | +2 4B |
+| `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 39 | 15/12/8/4/0 | 39/39 | 15/15 | ✅ | — |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 33 | 19/3/6/5/0 | 30/33 | 19/19 | ✅ | +3 4B |
 | `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 33 | 18/6/4/4/1 | 31/33 | 18/18 | ✅ | +2 4B |
 | `trig-3-1` Additionstheoreme | 5 | 0/5 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +5 Goal, +3 4B |
@@ -9512,7 +9512,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 48 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 47 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10660,65 +10660,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `trig-2-3` · Symmetrien und Periodizität
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-2-2` → `cos-x-sin-y`, `koord-universell`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `periodizitaet-360` — Periodizität: $\sin(\alpha+360°)=\sin\alpha$, $\cos(\alpha+360°)=\cos\alpha$ (SG 0)
-  2. `sin-ungerade` — $\sin$ ungerade: $\sin(-\alpha)=-\sin\alpha$ (SG 1)
-  3. `cos-gerade` — $\cos$ gerade: $\cos(-\alpha)=\cos\alpha$ (SG 2)
-  4. `supplement-formel` — Supplementformel: $\sin(180°-\alpha)=\sin\alpha$, $\cos(180°-\alpha)=-\cos\alpha$ ⇐ `sin-ungerade`, `cos-gerade` (SG 3)
-  5. `komplement-formel` — Komplementformel: $\sin(90°-\alpha)=\cos\alpha$, $\cos(90°-\alpha)=\sin\alpha$ (SG 4)
-  6. `punktspiegelung` — Punktspiegelung: $\sin(180°+\alpha)=-\sin\alpha$, $\cos(180°+\alpha)=-\cos\alpha$ ⇐ `supplement-formel` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `periodizitaet-360` · **5/5+** — Periodizität: $\sin(\alpha + 360°) = \sin\alpha$, $\cos(\alpha + 360°) = \cos\alpha$ (Periode $2\pi$)
-  - ✅ [1] _hoch_ · Konzepte: `sin-ungerade` · **5/5+** — $\sin$ ungerade: $\sin(-\alpha) = -\sin\alpha$ — Spiegelung an $x$-Achse kippt $y$
-  - ✅ [2] _hoch_ · Konzepte: `cos-gerade` · **5/5+** — $\cos$ gerade: $\cos(-\alpha) = \cos\alpha$ — $x$-Koordinate unverändert
-  - ✅ [3] _mittel_ · Konzepte: `supplement-formel` · **5/5+** — Supplementformel: $\sin(180°-\alpha) = \sin\alpha$, $\cos(180°-\alpha) = -\cos\alpha$
-  - ✅ [4] _mittel_ · Konzepte: `komplement-formel` · **5/5+** — Komplementformel: $\sin(90°-\alpha) = \cos\alpha$, $\cos(90°-\alpha) = \sin\alpha$
-  - ✅ [5] _mittel_ · Konzepte: `punktspiegelung` · **5/5+** — Punktspiegelung: $\sin(180°+\alpha) = -\sin\alpha$, $\cos(180°+\alpha) = -\cos\alpha$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `periodizitaet-360` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `periodizitaet-360` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `periodizitaet-360` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `periodizitaet-360` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `periodizitaet-360` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `sin-ungerade` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `sin-ungerade` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `sin-ungerade` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `sin-ungerade` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | matching         | `sin-ungerade` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `cos-gerade` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `cos-gerade` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `cos-gerade` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `cos-gerade` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `cos-gerade`, `sin-ungerade` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `supplement-formel` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `supplement-formel` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `supplement-formel` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `supplement-formel` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | number-input     | `supplement-formel` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `komplement-formel` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `komplement-formel` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `komplement-formel` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `komplement-formel` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | matching         | `komplement-formel` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `punktspiegelung` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `punktspiegelung` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `punktspiegelung` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `punktspiegelung` | 1 | 1 | ✅ |  |
-| 30 | 5 | transfer           | number-input     | `punktspiegelung` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-2-3-b`, `ex-trig-2-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `trig-2-4` · Tangens im Einheitskreis
 

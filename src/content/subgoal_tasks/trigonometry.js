@@ -3955,25 +3955,25 @@ export const trigonometrySubGoalTasks = {
         { stage: 'recognize', subGoal: 0, uses: ['periodizitaet-360'] },
       ),
       mc(
-        'Welcher Winkel hat denselben Kosinus wie $45°$?',
+        'Welcher Winkel ergibt durch reine Periodizitäts-Addition ($+k \\cdot 360°$, $k \\in \\mathbb{Z}_{>0}$) denselben Sinus- UND Kosinuswert wie $45°$?',
         ['$405°$', '$315°$', '$135°$', '$225°$'],
         0,
-        `**Ansatz:** $\\cos(\\alpha + 360°) = \\cos\\alpha$. Also $\\cos 45° = \\cos(45° + 360°) = \\cos 405°$.
+        `**Ansatz:** Periodizitäts-Formel $\\sin(\\alpha + k \\cdot 360°) = \\sin\\alpha$ und $\\cos(\\alpha + k \\cdot 360°) = \\cos\\alpha$. Beide Werte müssen gleichzeitig übereinstimmen — das fordert $\\alpha + k \\cdot 360° = 45° + k \\cdot 360°$, also $\\alpha = 45°$ modulo $360°$.
 
-**Rechnung:** $405° = 45° + 360°$, gleiche Position am Einheitskreis → gleicher Kosinus.
+**Rechnung:** $405° = 45° + 1 \\cdot 360°$ — gleiche Position am Einheitskreis wie $45°$, also $\\sin 405° = \\sin 45° = \\tfrac{\\sqrt{2}}{2}$ UND $\\cos 405° = \\cos 45° = \\tfrac{\\sqrt{2}}{2}$.
 
-**Probe:** $\\cos 405° = \\cos 45° = \\sqrt{2}/2 \\approx 0{,}707$ ✓.
+**Probe:** $405° - 45° = 360°$ ✓ — exakt eine ganze Umdrehung.
 
-**Typischer Fehler:** $315°$ (= $360° - 45°$) angeben — da gilt auch $\\cos 315° = \\cos 45°$ (gerade Funktion), aber die Frage fragt nach Periodizität, nicht Symmetrie.`,
+**Typischer Fehler:** $315°$ wählen, weil $\\cos 315° = \\cos 45°$ stimmt — aber $\\sin 315° = -\\sin 45° \\neq \\sin 45°$, also nicht „beide Werte gleich".`,
         [
-          'Periodizität: Winkel $+ 360°$.',
-          '$45° + 360° = ?$',
-          'Alle anderen haben anderes Vorzeichen oder anderen Betrag.',
+          'Welche Formel verlangt der Begriff „Periodizität"?',
+          '$\\alpha + k \\cdot 360°$ landet exakt am selben Punkt am Einheitskreis.',
+          '$45° + 1 \\cdot 360° = ?$',
         ],
         {
-          1: '$\\cos 315° = \\cos 45°$ stimmt, aber das ist die $\\cos$-Symmetrie, nicht Periodizität. Die Frage-Option "Periodizität" passt nur zu $405°$.',
-          2: '$\\cos 135° = -\\cos 45°$ — anderes Vorzeichen.',
-          3: '$\\cos 225° = -\\cos 45°$ — anderes Vorzeichen.',
+          1: '$\\cos 315° = \\cos 45°$ stimmt (gerade Funktion), aber $\\sin 315° = -\\sin 45°$ — also nicht beide Werte gleichzeitig.',
+          2: '$\\cos 135° = -\\cos 45°$ und $\\sin 135° = +\\sin 45°$ (Supplement). Sinus stimmt, Kosinus nicht.',
+          3: '$\\cos 225° = -\\cos 45°$ und $\\sin 225° = -\\sin 45°$ (Punktspiegelung). Beide Vorzeichen umgekehrt — nicht gleich.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['periodizitaet-360'] },
       ),
@@ -4043,6 +4043,24 @@ export const trigonometrySubGoalTasks = {
           'Bei großen Winkeln $360°$ abziehen.',
         ],
         { stage: 'transfer', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Reduziere $\\alpha = -750°$ auf einen äquivalenten Winkel im Bereich $[0°, 360°)$.',
+        330, 0, '°',
+        `**Ansatz:** Vielfache von $360°$ addieren, bis das Ergebnis in $[0°, 360°)$ liegt. Periodizität: $\\sin$ und $\\cos$ ändern sich nicht.
+
+**Rechnung:** $-750° + 2 \\cdot 360° = -30°$ (noch negativ). $-750° + 3 \\cdot 360° = -750° + 1080° = 330°$ ✓ — liegt im Zielbereich.
+
+**Probe:** $330° - 3 \\cdot 360° = 330° - 1080° = -750°$ ✓. Am Einheitskreis: $330° = -30°$ — derselbe Punkt.
+
+**Typischer Fehler:** Nur einmal $+360°$ addieren ($-750° + 360° = -390°$, immer noch negativ) oder das Vorzeichen vergessen und $-750° \\to 750° - 2 \\cdot 360° = 30°$ rechnen.`,
+        [
+          'Wie viele $360°$ müssen ADDIERT werden, damit das Ergebnis $\\geq 0$ wird?',
+          'Probier $k = 1, 2, 3$ und prüfe, wann $\\alpha + k \\cdot 360° \\in [0°, 360°)$ liegt.',
+          '$-750° + 3 \\cdot 360° = -750° + 1080° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['periodizitaet-360'] },
       ),
     ],
 
@@ -4155,6 +4173,24 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 1, uses: ['sin-ungerade'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\sin(-150°)$. (3 NK)',
+        -0.5, 0.01, '',
+        `**Ansatz:** $\\sin$ ist ungerade: $\\sin(-\\alpha) = -\\sin\\alpha$ mit $\\alpha = 150°$.
+
+**Rechnung:** $\\sin(-150°) = -\\sin(150°) = -\\sin(30°) = -\\tfrac{1}{2} = -0{,}5$.
+
+**Probe:** Am Einheitskreis: $-150°$ entspricht der Position bei $360° - 150° = 210°$ (3. Quadrant) → $y$-Koordinate negativ → $\\sin < 0$ ✓.
+
+**Typischer Fehler:** Nur $-\\sin 150°$ stehenlassen, ohne $\\sin 150°$ über die Supplementformel auf $\\sin 30° = \\tfrac{1}{2}$ zu reduzieren — oder Vorzeichen vergessen und $+0{,}5$ angeben.`,
+        [
+          'Ungerade Funktion: $\\sin(-\\alpha) = -\\sin\\alpha$.',
+          'Reduziere $\\sin 150°$ auf einen Grundwert (Supplement: $\\sin 150° = \\sin 30°$).',
+          'Vorzeichen kippen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
     ],
 
     // ── [2] cos ist gerade: cos(-α) = cos α ────────────────────────────────
@@ -4266,6 +4302,24 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 2, uses: ['cos-gerade', 'sin-ungerade'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      tf(
+        'Wenn von einem Winkel $\\alpha$ nur $\\cos\\alpha = 0{,}3$ bekannt ist, folgt $\\cos(-\\alpha) = 0{,}3$ — unabhängig davon, in welchem Quadranten $\\alpha$ liegt.',
+        true,
+        `**Ansatz:** Die Eigenschaft „$\\cos$ ist gerade" gilt für JEDEN Winkel — auch wenn der Quadrant unbekannt ist.
+
+**Rechnung:** $\\cos(-\\alpha) = \\cos\\alpha = 0{,}3$ direkt aus der Definitionseigenschaft. Der Quadrant von $\\alpha$ beeinflusst nur, wo der Punkt liegt; bei Spiegelung an der $x$-Achse bleibt $\\cos$ aber konstant.
+
+**Probe:** $\\alpha$ könnte $\\approx 72{,}5°$ (1. Q) oder $\\approx 287{,}5°$ (4. Q) sein — beide haben $\\cos\\alpha = 0{,}3$ und ihre Spiegelbilder $-72{,}5°$ bzw. $-287{,}5°$ ebenfalls $\\cos = 0{,}3$.
+
+**Typischer Fehler:** Die Quadranten-Logik von $\\sin$ (Vorzeichen abhängig vom Quadrant) auf $\\cos$ übertragen — bei $\\cos(-\\alpha)$ ändert sich aber NICHTS, unabhängig vom Quadrant.`,
+        [
+          'Welche Eigenschaft hat $\\cos$ bei Vorzeichenwechsel des Arguments?',
+          'Gerade Funktion → $\\cos(-x) = \\cos(x)$ für alle $x$.',
+          'Quadrant von $\\alpha$ spielt für diese Formel keine Rolle.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['cos-gerade'] },
+      ),
     ],
 
     // ── [3] Supplementformel: sin(180°-α) = sin α, cos(180°-α) = -cos α ────
@@ -4369,6 +4423,24 @@ export const trigonometrySubGoalTasks = {
           'Supplementformel für jeden Summanden.',
           'Sinus: kein Vorzeichenwechsel.',
           'Kosinus: Vorzeichenwechsel.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\sin(180° - 50°) + \\sin(50°)$. Verwende $\\sin 50° \\approx 0{,}766$. (3 NK)',
+        1.532, 0.01, '',
+        `**Ansatz:** Supplementformel für $\\sin$: $\\sin(180° - \\alpha) = \\sin\\alpha$, hier $\\alpha = 50°$.
+
+**Rechnung:** $\\sin(180° - 50°) = \\sin(50°)$, also $\\sin(180° - 50°) + \\sin(50°) = \\sin 50° + \\sin 50° = 2 \\sin 50° = 2 \\cdot 0{,}766 = 1{,}532$.
+
+**Probe:** $180° - 50° = 130°$. Taschenrechner (DEG): $\\sin 130° \\approx 0{,}766$ ✓, also Summe $\\approx 0{,}766 + 0{,}766 = 1{,}532$ ✓.
+
+**Typischer Fehler:** Annehmen $\\sin(180° - 50°) = \\sin 180° - \\sin 50°$ (algebraisches Auseinanderziehen falsch) und $0 - 0{,}766 = -0{,}766$ rechnen — Summe wäre $0$.`,
+        [
+          'Welche Symmetrie greift bei $180° - \\alpha$?',
+          'Supplementformel: $\\sin(180° - \\alpha) = \\sin\\alpha$ (kein Vorzeichenwechsel).',
+          'Beide Summanden sind dann gleich.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['supplement-formel'] },
       ),
@@ -4483,6 +4555,24 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 4, uses: ['komplement-formel'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      tf(
+        'Für jeden reellen Winkel $\\alpha$ gilt $\\sin\\alpha = \\cos(90° - \\alpha)$ — insbesondere auch für $\\alpha > 90°$ oder $\\alpha < 0$.',
+        true,
+        `**Ansatz:** Komplementformel als Identität auf $\\mathbb{R}$ prüfen, nicht nur im rechtwinkligen Dreieck (wo $\\alpha \\in (0°, 90°)$).
+
+**Rechnung:** Die Formel folgt am Einheitskreis aus der Spiegelung an der Geraden $y = x$ — diese Spiegelung ist für alle Winkel definiert, also gilt $\\sin\\alpha = \\cos(90° - \\alpha)$ universell. Beispiel $\\alpha = 120°$: $\\sin 120° = \\tfrac{\\sqrt{3}}{2}$ und $\\cos(90° - 120°) = \\cos(-30°) = \\cos 30° = \\tfrac{\\sqrt{3}}{2}$ ✓. Beispiel $\\alpha = -60°$: $\\sin(-60°) = -\\tfrac{\\sqrt{3}}{2}$ und $\\cos(90° - (-60°)) = \\cos 150° = -\\tfrac{\\sqrt{3}}{2}$ ✓.
+
+**Probe:** Beide Seiten sind als Funktionen von $\\alpha$ stetig und stimmen auf einem Intervall überein → sie stimmen überall überein.
+
+**Typischer Fehler:** Die Formel an die Dreiecks-Herleitung binden und für $\\alpha > 90°$ annehmen, sie gelte nicht — der Einheitskreis erweitert sie aber automatisch.`,
+        [
+          'Wo wurde die Komplementformel hergeleitet — Dreieck oder Einheitskreis?',
+          'Am Einheitskreis ist sie eine Spiegelidentität.',
+          'Spiegelidentitäten gelten für ALLE reellen Winkel.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['komplement-formel'] },
+      ),
     ],
 
     // ── [5] Punktspiegelung: sin(180°+α) = -sin α, cos(180°+α) = -cos α ────
@@ -4588,6 +4678,24 @@ export const trigonometrySubGoalTasks = {
           '$-\\sqrt{2}/2 - \\sqrt{2}/2 = -\\sqrt{2}$.',
         ],
         { stage: 'transfer', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\sin(190°)$. Verwende $\\sin 10° \\approx 0{,}1736$. (3 NK)',
+        -0.174, 0.005, '',
+        `**Ansatz:** $190° = 180° + 10°$ → Punktspiegelung am Ursprung. $\\sin(180° + \\alpha) = -\\sin\\alpha$ mit $\\alpha = 10°$.
+
+**Rechnung:** $\\sin 190° = -\\sin 10° \\approx -0{,}1736 \\approx -0{,}174$.
+
+**Probe:** $190°$ liegt im 3. Quadranten ($180° < 190° < 270°$) → $\\sin < 0$ ✓ (ASTC).
+
+**Typischer Fehler:** Den Referenzwinkel $10°$ richtig erkennen, aber Vorzeichen vergessen und $+0{,}174$ angeben; oder Supplementformel ($180° - \\alpha$) statt Punktspiegelung ($180° + \\alpha$) anwenden, was im 3. Q für $\\sin$ aber ebenfalls negativ wäre — hier passt $10° = 190° - 180°$.`,
+        [
+          'Welche Symmetrie passt zu $180° + \\alpha$?',
+          'Punktspiegelung: $\\sin(180° + \\alpha) = -\\sin\\alpha$.',
+          'Referenzwinkel $\\alpha = 190° - 180° = 10°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['punktspiegelung'] },
       ),
     ],
   },

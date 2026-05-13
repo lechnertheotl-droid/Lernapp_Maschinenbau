@@ -182,13 +182,11 @@ export const exercises_u2 = {
     question: '$\\sin(-\\alpha) = $?',
     options: ['$\\sin(\\alpha)$', '$-\\sin(\\alpha)$', '$\\cos(\\alpha)$', '$-\\cos(\\alpha)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Symmetrie des Sinus am Einheitskreis.
+    explanation: `**Ansatz:** Symmetrie des Sinus am Einheitskreis. $\\sin$ ist die $y$-Koordinate; bei Spiegelung an der $x$-Achse kippt $y$ das Vorzeichen.
 
-**Regel:** $\\sin$ ist eine **ungerade** Funktion: $\\sin(-\\alpha) = -\\sin(\\alpha)$.
+**Rechnung:** $\\sin$ ist eine **ungerade** Funktion, also $\\sin(-\\alpha) = -\\sin(\\alpha)$. Geometrisch: $-\\alpha$ entspricht einer Drehung im Uhrzeigersinn — Punkt $P(\\alpha) = (x, y)$ wird zu $P(-\\alpha) = (x, -y)$; die $y$-Koordinate $\\sin$ wechselt das Vorzeichen, die $x$-Koordinate $\\cos$ bleibt.
 
-**Am Einheitskreis heißt das:** Der Winkel $-\\alpha$ entspricht einer Drehung im *Uhrzeigersinn*. Der Punkt liegt gespiegelt an der x-Achse: x bleibt, y wechselt das Vorzeichen. Da $\\sin$ die y-Koordinate ist, ändert sich das Vorzeichen.
-
-**Probe:** $\\sin(-30°) = -\\sin(30°) = -\\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
+**Probe:** $\\sin(-30°) = -\\sin(30°) = -\\tfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt: $-0{,}5$ ✓.
 
 **Typischer Fehler:** $\\sin(-\\alpha) = \\sin(\\alpha)$ setzen — das ist die Regel für $\\cos$ (gerade Funktion), nicht für $\\sin$.`,
     hints: [
@@ -207,20 +205,13 @@ export const exercises_u2 = {
     question: '[PRÜFUNG] $\\cos(-\\alpha) = $?',
     options: ['$-\\cos(\\alpha)$', '$\\cos(\\alpha)$', '$\\sin(\\alpha)$', '$-\\sin(\\alpha)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Symmetrie des Kosinus.
+    explanation: `**Ansatz:** Symmetrie des Kosinus. $\\cos$ ist die $x$-Koordinate; bei Spiegelung an der $x$-Achse bleibt $x$ unverändert.
 
-**Regel:** $\\cos$ ist eine **gerade** Funktion: $\\cos(-\\alpha) = \\cos(\\alpha)$.
+**Rechnung:** $\\cos$ ist eine **gerade** Funktion, also $\\cos(-\\alpha) = \\cos(\\alpha)$. Geometrisch: $-\\alpha$ spiegelt den Punkt $P(\\alpha) = (x, y)$ an der $x$-Achse zu $P(-\\alpha) = (x, -y)$. Die $x$-Koordinate $\\cos$ ändert sich nicht, nur die $y$-Koordinate $\\sin$ kippt. Merke: $\\sin(-\\alpha) = -\\sin\\alpha$ (ungerade), $\\cos(-\\alpha) = +\\cos\\alpha$ (gerade), $\\tan(-\\alpha) = -\\tan\\alpha$ (ungerade, weil $\\sin$ ungerade und $\\cos$ gerade).
 
-**Am Einheitskreis heißt das:** Der negative Winkel spiegelt den Punkt an der x-Achse. Die x-Koordinate bleibt unverändert (nur y kippt). Da $\\cos$ die x-Koordinate ist, ändert sie sich nicht.
+**Probe:** $\\cos(-60°) = \\cos(60°) = \\tfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt: $0{,}5$ ✓.
 
-**Probe:** $\\cos(-60°) = \\cos(60°) = \\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
-
-**Merke:**
-- $\\sin(-\\alpha) = -\\sin(\\alpha)$ (ungerade)
-- $\\cos(-\\alpha) = +\\cos(\\alpha)$ (gerade)
-- $\\tan(-\\alpha) = -\\tan(\\alpha)$ (ungerade, da $\\sin$ ungerade und $\\cos$ gerade)
-
-**Typischer Fehler:** $-\\cos(\\alpha)$ wählen — das ist die Formel für $\\cos(180° - \\alpha)$, nicht für $\\cos(-\\alpha)$.`,
+**Typischer Fehler:** $-\\cos(\\alpha)$ wählen — das ist die Formel für $\\cos(180° - \\alpha)$ (Spiegelung an der $y$-Achse), nicht für $\\cos(-\\alpha)$ (Spiegelung an der $x$-Achse).`,
     hints: [
       'Skizze: Spiegelung an der x-Achse. Wie ändert sich die x-Koordinate?',
       '$\\cos$ ist eine gerade Funktion.',
@@ -692,20 +683,22 @@ Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln er
       },
       {
         id: 'trig-2-3-s2', type: 'explanation-formal', title: 'Symmetrieformeln',
-        content: `**Spiegelung an der x-Achse** (negativer Winkel):
-$$\\sin(-\\alpha) = -\\sin(\\alpha) \\quad \\text{(ungerade Funktion)}$$
-$$\\cos(-\\alpha) = \\cos(\\alpha) \\quad \\text{(gerade Funktion)}$$
+        content: `| Regel | Formel | Beispiel |
+|---|---|---|
+| Periodizität ($k \\in \\mathbb{Z}$) | $\\sin(\\alpha + k\\cdot 360°) = \\sin\\alpha$, $\\cos(\\alpha + k\\cdot 360°) = \\cos\\alpha$ | $\\sin 390° = \\sin 30° = \\tfrac{1}{2}$ |
+| Spiegelung an $x$-Achse ($\\sin$ ungerade) | $\\sin(-\\alpha) = -\\sin\\alpha$ | $\\sin(-30°) = -\\tfrac{1}{2}$ |
+| Spiegelung an $x$-Achse ($\\cos$ gerade) | $\\cos(-\\alpha) = \\cos\\alpha$ | $\\cos(-30°) = \\tfrac{\\sqrt{3}}{2}$ |
+| Spiegelung an $y$-Achse (Supplement) | $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$ | $\\cos 150° = -\\cos 30° = -\\tfrac{\\sqrt{3}}{2}$ |
+| Punktspiegelung am Ursprung | $\\sin(180° + \\alpha) = -\\sin\\alpha$, $\\cos(180° + \\alpha) = -\\cos\\alpha$ | $\\sin 210° = -\\sin 30° = -\\tfrac{1}{2}$ |
+| Spiegelung an $y=x$ (Komplement) | $\\sin(90° - \\alpha) = \\cos\\alpha$, $\\cos(90° - \\alpha) = \\sin\\alpha$ | $\\sin 80° = \\cos 10° \\approx 0{,}985$ |
+| Tangens (Folgerung) | $\\tan(-\\alpha) = -\\tan\\alpha$ (ungerade) | $\\tan(-45°) = -1$ |
 
-**Spiegelung an der y-Achse** (Supplement):
-$$\\sin(180° - \\alpha) = \\sin(\\alpha)$$
-$$\\cos(180° - \\alpha) = -\\cos(\\alpha)$$
-
-**Punktspiegelung am Ursprung:**
-$$\\sin(180° + \\alpha) = -\\sin(\\alpha)$$
-$$\\cos(180° + \\alpha) = -\\cos(\\alpha)$$
-
-**Spiegelung an der Winkelhalbierenden $y = x$** (Komplementwinkel):
-$$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\\alpha)$$`,
+**Geometrische Deutung:** Jede Spiegelsymmetrie des Einheitskreises ergibt eine Rechenformel — durch passende Wahl der Symmetrie reduziert man jeden Winkel auf einen Wert im 1. Quadranten ($0°$–$90°$).`,
+      },
+      {
+        id: 'trig-2-3-s2b', type: 'visualization', title: 'Periode und Symmetrie am Sinus-Graphen',
+        visualizationId: 'sin-wave-explorer',
+        params: { initialAmplitude: 1, initialFrequency: 1, initialPhase: 0 },
       },
       { id: 'trig-2-3-s3', type: 'exercise', title: 'Aufgabe 1 — Periodizität', exerciseRef: 'ex-trig-2-3-a' },
       { id: 'trig-2-3-s4', type: 'exercise', title: 'Aufgabe 2 — sin negativer Winkel', exerciseRef: 'ex-trig-2-3-b' },
