@@ -363,15 +363,26 @@ const unit2 = makeUnit({
         '**Übergangstemperatur:** Viele Stähle verhalten sich bei warmer Temperatur zäh, werden aber bei Kälte spröde. Unterhalb der **Übergangstemperatur** $T_Ü$ fällt $KV$ stark ab — gefährlich für Kalt-Konstruktionen!',
       formulaTitle: 'Kerbschlagarbeit',
       formulaContent:
-        '**Kerbschlagarbeit:** $KV = m \\cdot g \\cdot (h_0 - h_1)$\n\n' +
+        '**Kerbschlagarbeit (Charpy-Versuch):**\n' +
+        '$$KV = m \\cdot g \\cdot (h_0 - h_1)$$\n' +
         '- $h_0$: Anfangshöhe des Pendels\n' +
         '- $h_1$: Endhöhe nach Bruch\n' +
         '- $KV$ in Joule, wird direkt vom Gerät abgelesen\n\n' +
         '**Typische Werte bei Raumtemperatur:**\n' +
-        '- Baustahl S235J2: > 27 J (zäh)\n' +
-        '- Grauguss: 3–5 J (spröde)\n' +
-        '- Vergütungsstahl: 40–100 J\n\n' +
-        '**Kritischer Grenzwert:** $KV < 27\\,\\text{J}$ gilt im Stahlbau als sprödbruchgefährdet.',
+        '- Baustahl S235J2: $> 27\\,\\text{J}$ (zäh)\n' +
+        '- Grauguss GG-25: $3$–$5\\,\\text{J}$ (spröde)\n' +
+        '- Vergütungsstahl 42CrMo4: $40$–$100\\,\\text{J}$\n' +
+        '- Austenitischer Edelstahl X5CrNi18-10: $> 100\\,\\text{J}$ auch bei $-200\\,°\\text{C}$\n\n' +
+        '**Kritischer Grenzwert (Stahlbau):** $KV \\geq 27\\,\\text{J}$ bei Einsatztemperatur. Werte darunter gelten als sprödbruchgefährdet.\n\n' +
+        '**Übergangstemperatur $T_\\ddot{U}$:** Temperatur, bei der die Charpy-Kurve $KV(T)$ vom zähen Hochlagen- in den spröden Tieflagen-Bereich umschlägt (typische Definition: $T_{27\\,\\text{J}}$ oder $50\\,\\%$ kristalliner Bruchflächenanteil = FATT). Krz-Stähle (S235, Vergütungsstähle) zeigen einen ausgeprägten Steilabfall; kfz-Stähle (austenitische Edelstähle) bleiben über den gesamten Temperaturbereich zäh.\n\n' +
+        '**Stahlbezeichnungs-Suffix (DIN EN 10025):**\n\n' +
+        '| Suffix | Prüftemperatur | Mindest-$KV$ |\n' +
+        '|---|---|---|\n' +
+        '| JR | $+20\\,°\\text{C}$ (Raumtemp.) | $27\\,\\text{J}$ |\n' +
+        '| J0 | $0\\,°\\text{C}$ | $27\\,\\text{J}$ |\n' +
+        '| J2 | $-20\\,°\\text{C}$ | $27\\,\\text{J}$ |\n' +
+        '| K2 | $-40\\,°\\text{C}$ | $27\\,\\text{J}$ (höherfeste Sorten) |\n\n' +
+        'Regel: Ein Stahl mit zugesicherter $KV$ bei einer **tieferen** Prüftemperatur deckt automatisch alle wärmeren Einsatztemperaturen ab.',
       masteryQuestion: 'Eine Baustahlprobe hat bei $-20\\,°\\text{C}$ eine Kerbschlagarbeit von $15\\,\\text{J}$. Was bedeutet das für die Konstruktion?',
       masteryOptions: [
         'Sprödbruchgefahr bei tiefen Temperaturen — der Werkstoff ist ungeeignet',
@@ -388,6 +399,7 @@ const unit2 = makeUnit({
       masteryHints: [
         'Grenzwert für sprödbruchsichere Konstruktionen?',
         '$KV \\geq 27\\,\\text{J}$ ist der kritische Wert im Stahlbau.',
+        'Prüftemperatur beachten: bei $-20\\,°\\text{C}$ braucht es einen J2-Zusatz, sonst Sprödbruchgefahr.',
       ],
       masteryWrongAnswerExplanations: {
         "1": '$15\\,\\text{J}$ liegt klar unter dem kritischen Grenzwert von $27\\,\\text{J}$. "Alles in Ordnung" ignoriert die Norm und unterschätzt die Sprödbruchgefahr. Regel: Stähle im Stahlbau müssen $KV \\geq 27\\,\\text{J}$ bei Einsatztemperatur erreichen.',

@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3274 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2501 (76 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1511 / 1511 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 369 / 1134 (33 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3299 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2526 (77 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1527 / 1527 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 374 / 1134 (33 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1165,10 +1165,10 @@ _Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. 
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 6
-- Aufgaben: **78** (Lesson-Path: 8 · Goal-Tasks: 70)
-- 4-Block: 77/78 (99 %) 🟡
-- MC-wAE: 51/51 (100 %) ✅
-- Sub-Goals: 14/30 Goal-Tasks verknüpft 🔴
+- Aufgaben: **103** (Lesson-Path: 8 · Goal-Tasks: 95)
+- 4-Block: 102/103 (99 %) 🟡
+- MC-wAE: 67/67 (100 %) ✅
+- Sub-Goals: 19/30 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.**
@@ -1209,7 +1209,7 @@ _Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klau
 | `werk-1-1` Spannungs-Dehnungs-Diagramm | 5 | 5/5 | 26 | 15/5/5/1/0 | 26/26 | 15/15 | ✅ | — |
 | `werk-1-2` Werkstoffgruppen | 5 | 5/5 | 26 | 18/1/5/2/0 | 26/26 | 18/18 | ✅ | — |
 | `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 4/4 | 21 | 14/2/4/1/0 | 21/21 | 14/14 | ✅ | — |
-| `werk-2-2` Kerbschlagbiegeversuch | 5 | 0/5 | 1 | 1/0/0/0/0 | 1/1 | 1/1 | ✅ | +5 Goal |
+| `werk-2-2` Kerbschlagbiegeversuch | 5 | 5/5 | 26 | 17/2/5/2/0 | 26/26 | 17/17 | ✅ | — |
 | `werk-2-3` Fe-C-Diagramm & Wärmebehandlung | 6 | 0/6 | 3 | 2/1/0/0/0 | 3/3 | 2/2 | ✅ | +6 Goal |
 | `werk-pruefung-1` Prüfung: Werkstoffwahl & Kennwerte | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
 
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 103 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 102 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -1546,58 +1546,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `werk-2-2` · Kerbschlagbiegeversuch
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `werk-1-1` → `bruchdehnung`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `charpy` — Charpy-Versuch: $KV=mg(h_0-h_1)$ in J (SG 0)
-  2. `kv-zaeh-sproed` — Hohe $KV$ → zäh, niedrige $KV$ → spröde ⇐ `charpy` (SG 1)
-  3. `grenzwert-27` — Stahlbau: $KV\ge 27$ J bei Einsatztemperatur ⇐ `kv-zaeh-sproed` (SG 2)
-  4. `uebergangstemp` — Übergangstemperatur $T_\ddot U$: $KV$-Abfall → Sprödbruchgefahr bei Kälte ⇐ `kv-zaeh-sproed` (SG 3)
-  5. `stahl-j-bez` — Stahlbezeichnungen J0/J2/K2 = Prüftemperatur 0/−20/−40 °C ⇐ `grenzwert-27` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `charpy` · **0/5+** — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
-  - 🔴 [1] _hoch_ · Konzepte: `kv-zaeh-sproed` · **0/5+** — Hohe $KV$ → zäh, niedrige $KV$ → spröde
-  - 🔴 [2] _hoch_ · Konzepte: `grenzwert-27` · **0/5+** — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
-  - 🔴 [3] _hoch_ · Konzepte: `uebergangstemp` · **0/5+** — Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
-  - 🔴 [4] _mittel_ · Konzepte: `stahl-j-bez` · **0/5+** — Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `charpy` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `charpy` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `charpy` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `charpy` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `charpy` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `grenzwert-27` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `uebergangstemp` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `stahl-j-bez` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `stahl-j-bez` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-pruefung-1` · Prüfung: Werkstoffwahl & Kennwerte
 
@@ -9733,7 +9681,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 46 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 47 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10087,6 +10035,57 @@ npm run build              # abschließender End-zu-End-Check
 | 25 | 4 | transfer           | matching         | `leichtbau` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+
+#### `werk-2-2` · Kerbschlagbiegeversuch
+
+- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `bruchdehnung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `charpy` — Charpy-Versuch: $KV=mg(h_0-h_1)$ in J (SG 0)
+  2. `kv-zaeh-sproed` — Hohe $KV$ → zäh, niedrige $KV$ → spröde ⇐ `charpy` (SG 1)
+  3. `grenzwert-27` — Stahlbau: $KV\ge 27$ J bei Einsatztemperatur ⇐ `kv-zaeh-sproed` (SG 2)
+  4. `uebergangstemp` — Übergangstemperatur $T_\ddot U$: $KV$-Abfall → Sprödbruchgefahr bei Kälte ⇐ `kv-zaeh-sproed` (SG 3)
+  5. `stahl-j-bez` — Stahlbezeichnungen J0/J2/K2 = Prüftemperatur 0/−20/−40 °C ⇐ `grenzwert-27` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `charpy` · **5/5+** — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
+  - ✅ [1] _hoch_ · Konzepte: `kv-zaeh-sproed` · **5/5+** — Hohe $KV$ → zäh, niedrige $KV$ → spröde
+  - ✅ [2] _hoch_ · Konzepte: `grenzwert-27` · **5/5+** — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
+  - ✅ [3] _hoch_ · Konzepte: `uebergangstemp` · **5/5+** — Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
+  - ✅ [4] _mittel_ · Konzepte: `stahl-j-bez` · **5/5+** — Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `charpy` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `charpy` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `charpy` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `charpy` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `charpy` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `kv-zaeh-sproed` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kv-zaeh-sproed` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kv-zaeh-sproed` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kv-zaeh-sproed` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `kv-zaeh-sproed` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `grenzwert-27` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `grenzwert-27` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `grenzwert-27` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `grenzwert-27` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `grenzwert-27` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `uebergangstemp` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `uebergangstemp` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `uebergangstemp` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `uebergangstemp` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `uebergangstemp` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `stahl-j-bez` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `stahl-j-bez` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `stahl-j-bez` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `stahl-j-bez` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `stahl-j-bez` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
