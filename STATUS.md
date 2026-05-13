@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3405 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2643 (78 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1584 / 1584 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 396 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3435 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2673 (78 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1606 / 1606 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 402 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1165,10 +1165,10 @@ _Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. 
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 6
-- Aufgaben: **103** (Lesson-Path: 8 · Goal-Tasks: 95)
-- 4-Block: 102/103 (99 %) 🟡
-- MC-wAE: 67/67 (100 %) ✅
-- Sub-Goals: 19/30 Goal-Tasks verknüpft 🟡
+- Aufgaben: **133** (Lesson-Path: 8 · Goal-Tasks: 125)
+- 4-Block: 132/133 (99 %) 🟡
+- MC-wAE: 89/89 (100 %) ✅
+- Sub-Goals: 25/30 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.**
@@ -1210,7 +1210,7 @@ _Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klau
 | `werk-1-2` Werkstoffgruppen | 5 | 5/5 | 26 | 18/1/5/2/0 | 26/26 | 18/18 | ✅ | — |
 | `werk-2-1` Härteprüfung (HV, HB, HRC) | 4 | 4/4 | 21 | 14/2/4/1/0 | 21/21 | 14/14 | ✅ | — |
 | `werk-2-2` Kerbschlagbiegeversuch | 5 | 5/5 | 26 | 17/2/5/2/0 | 26/26 | 17/17 | ✅ | — |
-| `werk-2-3` Fe-C-Diagramm & Wärmebehandlung | 6 | 0/6 | 3 | 2/1/0/0/0 | 3/3 | 2/2 | ✅ | +6 Goal |
+| `werk-2-3` Fe-C-Diagramm & Wärmebehandlung | 6 | 6/6 | 33 | 24/1/6/2/0 | 33/33 | 24/24 | ✅ | — |
 | `werk-pruefung-1` Prüfung: Werkstoffwahl & Kennwerte | 5 | 0/5 | 1 | 1/0/0/0/0 | 0/1 | 1/1 | ✅ | +5 Goal, +1 4B |
 
 <a id="maschinenelemente"></a>
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 99 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 98 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -3561,65 +3561,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-
-#### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
-
-- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `werk-1-1` → `re-rm`, `sicherheit`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `fe-c-phasen` — Phasen: Ferrit (α, krz) weich/zäh; Austenit (γ, kfz); Perlit lamellar; Martensit hart (SG 0)
-  2. `eutektoid` — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit ⇐ `fe-c-phasen` (SG 1)
-  3. `haertbarkeit` — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit) ⇐ `fe-c-phasen` (SG 2)
-  4. `waermebehandl` — Glühen, Härten (abschrecken), Vergüten (Härten + Anlassen) ⇐ `fe-c-phasen` (SG 3)
-  5. `verguten` — Vergüten: hohe Festigkeit + Zähigkeit (z.B. 42CrMo4) ⇐ `waermebehandl` (SG 4)
-  6. `abkuehlrate` — Langsam → Diffusion → Perlit; schnell → diffusionslos → Martensit ⇐ `fe-c-phasen` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `fe-c-phasen` · **0/5+** — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
-  - 🔴 [1] _hoch_ · Konzepte: `eutektoid` · **0/5+** — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
-  - 🔴 [2] _hoch_ · Konzepte: `haertbarkeit` · **0/5+** — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
-  - 🔴 [3] _hoch_ · Konzepte: `waermebehandl` · **0/5+** — Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
-  - 🔴 [4] _hoch_ · Konzepte: `verguten` · **0/5+** — Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
-  - 🔴 [5] _mittel_ · Konzepte: `abkuehlrate` · **0/5+** — Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `fe-c-phasen` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `fe-c-phasen` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `eutektoid` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `haertbarkeit` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `waermebehandl` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `waermebehandl` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `verguten` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `abkuehlrate` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `py-2-2` · Matplotlib — Daten visualisieren
 
@@ -9512,7 +9453,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 49 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11169,6 +11110,64 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
+
+- **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`, `sicherheit`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fe-c-phasen` — Phasen: Ferrit (α, krz) weich/zäh; Austenit (γ, kfz); Perlit lamellar; Martensit hart (SG 0)
+  2. `eutektoid` — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit ⇐ `fe-c-phasen` (SG 1)
+  3. `haertbarkeit` — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit) ⇐ `fe-c-phasen` (SG 2)
+  4. `waermebehandl` — Glühen, Härten (abschrecken), Vergüten (Härten + Anlassen) ⇐ `fe-c-phasen` (SG 3)
+  5. `verguten` — Vergüten: hohe Festigkeit + Zähigkeit (z.B. 42CrMo4) ⇐ `waermebehandl` (SG 4)
+  6. `abkuehlrate` — Langsam → Diffusion → Perlit; schnell → diffusionslos → Martensit ⇐ `fe-c-phasen` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `fe-c-phasen` · **5/5+** — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
+  - ✅ [1] _hoch_ · Konzepte: `eutektoid` · **5/5+** — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
+  - ✅ [2] _hoch_ · Konzepte: `haertbarkeit` · **5/5+** — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
+  - ✅ [3] _hoch_ · Konzepte: `waermebehandl` · **5/5+** — Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
+  - ✅ [4] _hoch_ · Konzepte: `verguten` · **5/5+** — Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
+  - ✅ [5] _mittel_ · Konzepte: `abkuehlrate` · **5/5+** — Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fe-c-phasen` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fe-c-phasen` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fe-c-phasen` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fe-c-phasen` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `fe-c-phasen` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `eutektoid` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `eutektoid` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `eutektoid` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `eutektoid` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `eutektoid` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `haertbarkeit` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haertbarkeit` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `haertbarkeit` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haertbarkeit` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `haertbarkeit` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `waermebehandl` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `waermebehandl` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `waermebehandl` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `waermebehandl` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `waermebehandl` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `verguten` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `verguten` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `verguten` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `verguten` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | multiple-choice  | `verguten` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `abkuehlrate` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `abkuehlrate` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `abkuehlrate` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `abkuehlrate` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | multiple-choice  | `abkuehlrate` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `py-1-2` · Operatoren & Ausdrücke
 
