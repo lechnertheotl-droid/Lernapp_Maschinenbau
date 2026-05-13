@@ -4814,6 +4814,24 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['tan-def'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Ein Punkt auf dem Einheitskreis hat Koordinaten $(x, y) = \\left(\\tfrac{3}{5},\\ -\\tfrac{4}{5}\\right)$. Berechne $\\tan\\alpha$. (3 NK)',
+        -1.333, 0.01, '',
+        `**Ansatz:** $\\tan\\alpha = y/x$ direkt aus den Koordinaten ablesen.
+
+**Rechnung:** $\\tan\\alpha = \\tfrac{-4/5}{3/5} = -\\tfrac{4}{3} \\approx -1{,}333$.
+
+**Probe:** Liegt der Punkt überhaupt auf dem Einheitskreis? $\\left(\\tfrac{3}{5}\\right)^{2} + \\left(-\\tfrac{4}{5}\\right)^{2} = \\tfrac{9}{25} + \\tfrac{16}{25} = 1$ ✓. Quadrant: $x > 0, y < 0$ → Q4 → $\\tan < 0$ ✓ (ASTC).
+
+**Typischer Fehler:** $x/y$ statt $y/x$ rechnen ($\\tan = -3/4 = -0{,}75$, falsche Richtung); oder Vorzeichen vergessen und $+4/3$ angeben.`,
+        [
+          '$\\tan = y/x$, nicht $x/y$.',
+          '$y = -\\tfrac{4}{5}$, $x = +\\tfrac{3}{5}$.',
+          'Quotient bilden: $\\tan = (-4/5) \\div (3/5) = -4/3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['tan-def'] },
+      ),
     ],
 
     // ── [1] Polstellen bei α = 90° + k·180° ───────────────────────────────
@@ -4931,6 +4949,24 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 1, uses: ['tan-polstellen'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Wie viele Polstellen hat $\\tan\\alpha$ im offenen Intervall $(-360°,\\ 360°)$?',
+        4, 0, '',
+        `**Ansatz:** Polstellen bei $\\alpha = 90° + k \\cdot 180°$ — alle $k \\in \\mathbb{Z}$ aufzählen, deren Polstelle in $(-360°, 360°)$ liegt.
+
+**Rechnung:** $k = -2$: $90° - 360° = -270°$ ✓. $k = -1$: $-90°$ ✓. $k = 0$: $90°$ ✓. $k = 1$: $270°$ ✓. $k = -3$: $-450°$ (außerhalb). $k = 2$: $450°$ (außerhalb). Total: **4 Polstellen** $\\{-270°, -90°, 90°, 270°\\}$.
+
+**Probe:** Periode $180°$, Intervalllänge $720°$ → $720°/180° = 4$ Polstellen passen in ein offenes Intervall dieser Länge.
+
+**Typischer Fehler:** Nur die positiven Polstellen ($90°, 270°$) zählen und die negativen ($-90°, -270°$) vergessen.`,
+        [
+          'Formel: $\\alpha = 90° + k \\cdot 180°$. Welche $k$ liegen im Intervall?',
+          'Sowohl negative als auch positive Winkel zählen — Intervall ist symmetrisch um $0$.',
+          'Probier $k = -2, -1, 0, 1$ und prüfe, welche $\\alpha$-Werte in $(-360°, 360°)$ liegen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
     ],
 
     // ── [2] Periode von tan ist 180° ──────────────────────────────────────
@@ -4953,25 +4989,25 @@ export const trigonometrySubGoalTasks = {
         { stage: 'recognize', subGoal: 2, uses: ['tan-periode'] },
       ),
       mc(
-        'Welcher Winkel hat denselben Tangens wie $45°$?',
+        'Welcher Winkel im Bereich $(45°, 360°)$ liegt am NÄCHSTEN zu $45°$ und hat denselben Tangens-Wert?',
         ['$225°$', '$315°$', '$135°$', '$405°$'],
         0,
-        `**Ansatz:** Periode $180°$: $\\tan(\\alpha + 180°) = \\tan\\alpha$.
+        `**Ansatz:** Kleinste Periode von $\\tan$ ist $180°$. Der nächste Winkel mit gleichem Tangens ist $\\alpha + 180°$.
 
-**Rechnung:** $45° + 180° = 225°$. $\\tan 225° = \\tan 45° = 1$.
+**Rechnung:** $45° + 180° = 225°$. $\\tan 225° = \\tan(180° + 45°) = \\tan 45° = 1$. Andere Optionen: $\\tan 315° = -1$ (Q4, anderer Wert); $\\tan 135° = -1$ (Q2, anderer Wert); $405°$ hat zwar gleichen Tangens ($\\tan 405° = \\tan 45° = 1$ via $360°$-Periode), liegt aber außerhalb von $(45°, 360°)$.
 
-**Probe:** Zahlenwert: beide Quadranten (Q1 und Q3) haben positiven Tangens ✓.
+**Probe:** $\\tan 225° = \\tfrac{\\sin 225°}{\\cos 225°} = \\tfrac{-\\sqrt{2}/2}{-\\sqrt{2}/2} = 1$ ✓.
 
-**Typischer Fehler:** $135°$ (2. Q — negativ) oder $315°$ (4. Q — negativ) wählen.`,
+**Typischer Fehler:** $405°$ wählen (gleicher Wert via $360°$, aber außerhalb des erlaubten Bereichs $(45°, 360°)$); oder $135°/315°$ (Vorzeichen-Fehler — diese haben $\\tan = -1 \\neq 1$).`,
         [
-          'Periode $180°$.',
-          '$45° + 180° = ?$',
-          'ASTC: Q3 hat $\\tan > 0$.',
+          'Welche Periode hat $\\tan$? $180°$ (nicht $360°$).',
+          'Kleinste Addition für gleichen Tangens: $45° + 180° = ?$',
+          'Andere Kandidaten ($135°$, $315°$) haben $\\tan = -1$ — Vorzeichen prüfen.',
         ],
         {
-          1: '$\\tan 315° = \\tan(-45°) = -1 \\neq 1$.',
-          2: '$\\tan 135° = \\tan(180°-45°) = -\\tan 45° = -1$.',
-          3: '$405° - 360° = 45°$ — durch $360°$-Periode, aber das ist Periode, nicht $180°$-Symmetrie. Gleicher Wert, aber Frage nach $180°$-Symmetrie.',
+          1: '$\\tan 315° = \\tan(360° - 45°) = -\\tan 45° = -1 \\neq 1$ (Q4 hat $\\tan < 0$).',
+          2: '$\\tan 135° = \\tan(180° - 45°) = -\\tan 45° = -1 \\neq 1$ (Q2 hat $\\tan < 0$).',
+          3: '$\\tan 405° = \\tan(405° - 360°) = \\tan 45° = 1$ — gleicher Wert, ABER $405° > 360°$ liegt außerhalb des geforderten Bereichs.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['tan-periode'] },
       ),
@@ -5041,6 +5077,24 @@ export const trigonometrySubGoalTasks = {
           'Wert identisch, Vorzeichen beachtet.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['tan-periode'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\tan(540°)$. (2 NK)',
+        0, 0.01, '',
+        `**Ansatz:** Auf den Hauptbereich $[0°, 180°)$ via $180°$-Periode reduzieren.
+
+**Rechnung:** $540° = 3 \\cdot 180° + 0°$, also $\\tan 540° = \\tan 0° = 0$. Alternativ: $540° - 360° = 180°$, dann $\\tan 180° = \\tfrac{\\sin 180°}{\\cos 180°} = \\tfrac{0}{-1} = 0$.
+
+**Probe:** Beide Wege liefern $0$ ✓. Geometrisch: $540°$ entspricht eineinhalb Umdrehungen — der Punkt landet bei $(-1, 0)$, Steigung der Ursprungsgerade $= 0/(-1) = 0$.
+
+**Typischer Fehler:** $540°$ als Polstelle annehmen (weil „große" Zahl) — Polstellen sind aber nur $90° + k \\cdot 180°$, und $540° = 0° + 3 \\cdot 180°$ ist KEINE Polstelle.`,
+        [
+          'Periode von $\\tan$ ist $180°$.',
+          '$540° \\bmod 180° = ?$',
+          '$\\tan 0° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['tan-periode'] },
       ),
     ],
 
@@ -5169,6 +5223,30 @@ Q4: $x>0, y<0$ → $+/-=-$
         },
         { stage: 'transfer', subGoal: 3, uses: ['tan-astc'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      mc(
+        'Gegeben: $\\cos\\alpha > 0$ und $\\tan\\alpha < 0$. In welchem Quadranten liegt $\\alpha$?',
+        ['Q4', 'Q1', 'Q2', 'Q3'],
+        0,
+        `**Ansatz:** Vorzeichen-Bedingungen schrittweise mit ASTC kombinieren.
+
+**Rechnung:** $\\cos\\alpha > 0$: nur Q1 oder Q4. $\\tan\\alpha < 0$: nur Q2 oder Q4. Schnittmenge: **Q4**. Konsistenz-Check: In Q4 ist $\\cos = x > 0$ ✓ und $\\tan = y/x < 0$ (da $y < 0$, $x > 0$) ✓.
+
+**Probe:** Beispiel $\\alpha = 300°$: $\\cos 300° = +\\tfrac{1}{2} > 0$ ✓, $\\tan 300° = -\\sqrt{3} < 0$ ✓ — passt zu Q4.
+
+**Typischer Fehler:** $\\sin$ statt $\\tan$ negativ ansetzen und Q3 wählen — Q3 hat zwar $\\sin < 0$, aber $\\cos < 0$ ebenso, was die erste Bedingung verletzt.`,
+        [
+          'ASTC: Welche Quadranten erfüllen $\\cos > 0$?',
+          'Welche Quadranten erfüllen $\\tan < 0$?',
+          'Beide Bedingungen gleichzeitig: Schnittmenge.',
+        ],
+        {
+          1: 'Q1: $\\cos > 0$ ✓, aber $\\tan > 0$ ✗ — verletzt die zweite Bedingung.',
+          2: 'Q2: $\\cos < 0$ ✗ — verletzt die erste Bedingung. Hier gilt $\\tan < 0$, aber das reicht nicht.',
+          3: 'Q3: $\\cos < 0$ ✗ und $\\tan > 0$ ✗ — verletzt beide Bedingungen.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['tan-astc'] },
+      ),
     ],
 
     // ── [4] tan ist ungerade: tan(-α) = -tan α ────────────────────────────
@@ -5274,10 +5352,29 @@ Q4: $x>0, y<0$ → $+/-=-$
 
 **Typischer Fehler:** Werte positiv lassen.`,
         [
-          'Grundwerte + negieren.',
-          'Ausnahme: $0 \\to 0$.',
+          '$\\tan$ ist ungerade: Vorzeichen kippt bei negativem Argument.',
+          'Grundwerte einsetzen und negieren: $\\tan 30° = 1/\\sqrt{3}$, $\\tan 45° = 1$, $\\tan 60° = \\sqrt{3}$.',
+          'Ausnahme: $\\tan(-0°) = -0 = 0$ — Null bleibt Null.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\tan(-150°)$ und gib das Ergebnis als Dezimalzahl an. (3 NK)',
+        0.577, 0.005, '',
+        `**Ansatz:** $\\tan$ ist ungerade: $\\tan(-\\alpha) = -\\tan\\alpha$. Reduziere $\\tan 150°$ über die Periodizität ($180°$).
+
+**Rechnung:** $\\tan(-150°) = -\\tan 150°$. Periode: $\\tan 150° = \\tan(150° - 180°) = \\tan(-30°) = -\\tan 30° = -\\tfrac{1}{\\sqrt{3}}$. Damit $\\tan(-150°) = -(-\\tfrac{1}{\\sqrt{3}}) = \\tfrac{1}{\\sqrt{3}} \\approx 0{,}577$.
+
+**Probe:** $-150°$ liegt im Quadranten von $-150° + 360° = 210°$ (Q3). In Q3 ist $\\tan > 0$ ✓ (passt zu $+0{,}577$).
+
+**Typischer Fehler:** Doppelte Vorzeichen-Verwechslung — entweder bei der Reduktion $\\tan 150°$ falsch behandelt (vergisst: in Q2 ist $\\tan < 0$) oder beim äußeren Minuszeichen.`,
+        [
+          'Schritt 1: $\\tan(-\\alpha) = -\\tan\\alpha$.',
+          'Schritt 2: Reduziere $\\tan 150°$ mit Periode $180°$ auf $\\tan(-30°)$.',
+          'Schritt 3: $\\tan(-30°) = -\\tan 30° = -1/\\sqrt{3}$. Vorzeichen sammeln.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['tan-ungerade'] },
       ),
     ],
 
@@ -5395,6 +5492,35 @@ Q4: $x>0, y<0$ → $+/-=-$
           3: '$\\tan$ ist auch bei $\\alpha < 0°$ und $\\alpha \\geq 360°$ definiert (Periodizität).',
         },
         { stage: 'transfer', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      mc(
+        'Welche Aussage über die Werte von $\\tan\\alpha$ ist KORREKT?',
+        [
+          '$\\tan\\alpha$ kann jeden reellen Wert annehmen — auch sehr große positive oder sehr große negative Werte, und auch $0$.',
+          '$\\tan\\alpha$ ist immer $\\geq -1$ (kein Wert kleiner als $-1$ möglich).',
+          '$\\tan\\alpha$ liegt stets zwischen $\\sin\\alpha$ und $\\cos\\alpha$.',
+          '$\\tan\\alpha$ ist niemals $0$.',
+        ],
+        0,
+        `**Ansatz:** Wertebereich von $\\tan$ kennen: $\\mathbb{R}$ (unbeschränkt) — alle reellen Werte werden erreicht.
+
+**Rechnung:** Beispiele: $\\tan 89° \\approx 57{,}3$ (groß positiv), $\\tan 91° \\approx -57{,}3$ (groß negativ), $\\tan 0° = 0$, $\\tan 180° = 0$. Zwischen zwei Polstellen wächst $\\tan$ monoton von $-\\infty$ bis $+\\infty$ — also wird jeder reelle Wert mindestens einmal erreicht.
+
+**Probe:** $\\arctan(-5) \\approx -78{,}69°$, $\\tan(-78{,}69°) \\approx -5$ ✓ — auch sehr negative Werte sind möglich.
+
+**Typischer Fehler:** Eigenschaften von $\\sin$/$\\cos$ (beschränkt auf $[-1, 1]$) auf $\\tan$ übertragen — $\\tan$ ist als Quotient mit beliebig kleinem Nenner UNBESCHRÄNKT.`,
+        [
+          'Wertebereich von $\\tan$ — beschränkt oder unbeschränkt?',
+          'Was passiert in der Nähe einer Polstelle?',
+          'Werden auch $0$ und sehr negative Werte erreicht?',
+        ],
+        {
+          1: '$\\tan 100° \\approx -5{,}67$ und $\\tan 95° \\approx -11{,}43$ — beide $< -1$. $\\tan$ ist unbeschränkt nach unten.',
+          2: 'Bei $\\alpha = 45°$ ist $\\sin = \\cos = \\tfrac{\\sqrt{2}}{2} \\approx 0{,}71$, aber $\\tan 45° = 1 > 0{,}71$ — also nicht zwischen beiden.',
+          3: '$\\tan 0° = 0$, $\\tan 180° = 0$, $\\tan 360° = 0$ — der Wert $0$ wird sehr wohl erreicht.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['tan-wertebereich'] },
       ),
     ],
   },

@@ -230,15 +230,13 @@ export const exercises_u2 = {
     question: 'Was beschreibt $\\tan(\\alpha)$ geometrisch am Einheitskreis?',
     options: ['Den Radius', 'Die x-Koordinate', 'Das Verhältnis $y/x$ (= $\\sin/\\cos$)', 'Die Bogenlänge'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Definition von $\\tan$ als Quotient.
+    explanation: `**Ansatz:** Definition von $\\tan$ als Quotient — geometrisch die Steigung der Ursprungsgerade zum Punkt auf dem Einheitskreis.
 
-**Regel:** $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$ am Einheitskreis.
+**Rechnung:** $\\tan(\\alpha) = \\tfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\tfrac{y}{x}$ am Einheitskreis. Geometrisch: Steigung $m = \\tfrac{\\Delta y}{\\Delta x} = \\tfrac{y - 0}{x - 0} = \\tfrac{y}{x}$ der Geraden vom Ursprung zu $P = (\\cos\\alpha, \\sin\\alpha)$. Alternative Sicht: Tangente an den Einheitskreis bei $(1, 0)$ geschnitten mit dem verlängerten Ortsvektor — die Höhe dieses Schnittpunkts ist $\\tan(\\alpha)$ (Namensgeber).
 
-**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P = (\\cos\\alpha, \\sin\\alpha)$. Steigung = $\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{y - 0}{x - 0} = \\dfrac{y}{x}$.
+**Probe:** Bei $\\alpha = 45°$: $y/x = (\\tfrac{\\sqrt{2}}{2})/(\\tfrac{\\sqrt{2}}{2}) = 1 = \\tan 45°$ ✓.
 
-**Alternative Anschauung:** Zeichne die Tangente an den Einheitskreis bei $(1, 0)$. Schneide sie mit dem verlängerten Ortsvektor — die Höhe dieses Schnittpunkts ist $\\tan(\\alpha)$. Daher der Name.
-
-**Probe:** Bei $\\alpha = 45°$: $y/x = \\dfrac{\\sqrt{2}/2}{\\sqrt{2}/2} = 1 = \\tan(45°)$ ✓.`,
+**Typischer Fehler:** $\\tan$ mit einer einzelnen Koordinate ($\\sin$, $\\cos$) oder der Bogenlänge verwechseln — $\\tan$ ist immer ein Quotient $y/x$.`,
     hints: [
       'Formel: $\\tan(\\alpha) = \\dfrac{?}{?}$.',
       '$\\tan = \\sin/\\cos$ — und $\\sin$, $\\cos$ sind welche Koordinaten?',
@@ -255,15 +253,13 @@ export const exercises_u2 = {
     question: 'Warum ist $\\tan(90°)$ nicht definiert?',
     options: ['Weil $\\sin(90°) = 0$', 'Weil $\\cos(90°) = 0$ (Division durch 0)', 'Weil $90°$ zu groß ist', 'Weil $\\tan$ nur bis $45°$ gilt'],
     correctIndex: 1,
-    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Nenner kontrollieren.
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Nenner kontrollieren. Bei $\\cos\\alpha = 0$ entsteht eine Polstelle.
 
-**Rechnung:** Bei $\\alpha = 90°$: $\\sin(90°) = 1$, $\\cos(90°) = 0$. Also $\\tan(90°) = \\dfrac{1}{0}$ — Division durch Null, undefiniert.
+**Rechnung:** Bei $\\alpha = 90°$: $\\sin 90° = 1$, $\\cos 90° = 0$. Also $\\tan 90° = \\tfrac{1}{0}$ — Division durch Null, undefiniert. Geometrisch: Der Punkt liegt bei $(0, 1)$, die Gerade vom Ursprung dorthin ist senkrecht und hat keine endliche Steigung. Weitere Polstellen: $\\alpha = 90° + k \\cdot 180°$ für $k \\in \\mathbb{Z}$, also $90°, 270°, 450°, \\ldots$
 
-**Am Einheitskreis heißt das:** Der Punkt liegt bei $(0, 1)$. Die Gerade vom Ursprung dorthin ist *senkrecht* — sie hat keine endliche Steigung. Daher wächst $\\tan(\\alpha)$ für $\\alpha \\to 90°$ gegen $+\\infty$ (Polstelle).
+**Probe:** $\\sin 90° = 1 \\neq 0$ — der Zähler ist also nicht das Problem. Nur $\\cos 90° = 0$ macht den Quotienten undefiniert. Test der Polstellen-Regel: $\\cos 270° = 0$ ✓, $\\cos 450° = \\cos 90° = 0$ ✓.
 
-**Weitere Polstellen:** $\\tan(\\alpha)$ ist undefiniert bei $\\alpha = 90° + k \\cdot 180°$ für $k \\in \\mathbb{Z}$, also bei $90°, 270°, 450°, \\ldots$.
-
-**Typischer Fehler:** "$\\sin(90°) = 0$" — falsch, es ist $\\sin(90°) = 1$.`,
+**Typischer Fehler:** „$\\sin(90°) = 0$" — falsch, es ist $\\sin(90°) = 1$. Das Problem liegt am Nenner, nicht am Zähler.`,
     hints: [
       'Welche Formel? $\\tan = \\sin/\\cos$. Welche Werte bei $90°$?',
       'Division durch $0$ ist nicht definiert — welcher Wert ist $0$?',
@@ -280,21 +276,13 @@ export const exercises_u2 = {
     question: '[PRÜFUNG] $\\tan(\\alpha)$ ist positiv, wenn:',
     options: ['$\\sin$ und $\\cos$ beide positiv (1. Quadrant) oder beide negativ (3. Quadrant)', 'Nur im 1. Quadrant', '$\\sin$ positiv und $\\cos$ negativ', 'Immer'],
     correctIndex: 0,
-    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Vorzeichenregel für Quotienten.
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Vorzeichenregel für Quotienten anwenden.
 
-**Regel:** $\\dfrac{+}{+} = +$ und $\\dfrac{-}{-} = +$. Also ist $\\tan > 0$, wenn $\\sin$ und $\\cos$ **gleiche Vorzeichen** haben.
+**Rechnung:** $\\tfrac{+}{+} = +$ und $\\tfrac{-}{-} = +$ — also ist $\\tan > 0$, wenn $\\sin$ und $\\cos$ gleiche Vorzeichen haben. Quadranten: Q1 ($x > 0, y > 0$) → $\\tan > 0$. Q2 ($x < 0, y > 0$) → $\\tan < 0$. Q3 ($x < 0, y < 0$) → $\\tan > 0$. Q4 ($x > 0, y < 0$) → $\\tan < 0$. ASTC-Merkhilfe: Im 3. Quadrant ist nur **T**angens positiv ("Take").
 
-**Am Einheitskreis heißt das:**
-- 1. Quadrant: $x > 0$, $y > 0$ → $\\tan > 0$
-- 2. Quadrant: $x < 0$, $y > 0$ → $\\tan < 0$
-- 3. Quadrant: $x < 0$, $y < 0$ → $\\tan > 0$
-- 4. Quadrant: $x > 0$, $y < 0$ → $\\tan < 0$
+**Probe:** $\\tan 200° = \\tan(180° + 20°) = \\tan 20° > 0$ ✓ (3. Quadrant). $\\tan 300° = \\tan(-60°) = -\\tan 60° < 0$ ✓ (4. Quadrant).
 
-**ASTC-Merkhilfe:** Im 3. Quadrant ist nur $\\tan$ positiv ("**T**ake").
-
-**Probe:** $\\tan(200°) = \\tan(180° + 20°) = \\tan(20°) > 0$ ✓ (3. Quadrant).
-
-**Typischer Fehler:** Nur den 1. Quadrant zu sehen — $\\tan$ hat Periode $180°$, daher Positivität auch im 3. Quadrant.`,
+**Typischer Fehler:** Nur den 1. Quadrant als „positiv-Region" sehen — $\\tan$ hat Periode $180°$, daher Positivität auch im 3. Quadrant.`,
     hints: [
       'Formel: $\\tan = \\sin/\\cos$. Wann ist der Bruch positiv?',
       'Zwei Fälle: beide Zahlen positiv ODER beide negativ.',
@@ -781,13 +769,21 @@ Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln er
     steps: [
       {
         id: 'trig-2-4-s1', type: 'explanation-formal', title: 'tan als Quotient',
-        content: `$$\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$$
+        content: `| Regel | Formel | Beispiel |
+|---|---|---|
+| Definition | $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{y}{x}$ | $\\tan 45° = \\tfrac{\\sin 45°}{\\cos 45°} = 1$ |
+| Polstellen | $\\tan\\alpha$ undefiniert bei $\\alpha = 90° + k \\cdot 180°$, $k \\in \\mathbb{Z}$ | $\\tan 90°, \\tan 270°, \\tan 450°, \\ldots$ |
+| Periode | $\\tan(\\alpha + 180°) = \\tan\\alpha$ — Periode ist $180°$ (nicht $360°$!) | $\\tan 200° = \\tan 20°$ |
+| ASTC-Vorzeichen | $\\tan > 0$ in Q1, Q3 · $\\tan < 0$ in Q2, Q4 | $\\tan 210° > 0$ (Q3); $\\tan 150° < 0$ (Q2) |
+| Ungerade Funktion | $\\tan(-\\alpha) = -\\tan\\alpha$ | $\\tan(-60°) = -\\sqrt{3}$ |
+| Wertebereich | $\\tan\\colon \\mathbb{R} \\setminus \\{90° + k \\cdot 180°\\} \\to \\mathbb{R}$ (unbeschränkt) | $\\tan\\alpha = 100$ hat reelle Lösung bei $\\alpha \\approx 89{,}43°$ |
 
-**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P(\\cos\\alpha, \\sin\\alpha)$. Die Steigung der Ursprungsgerade ist $m = \\dfrac{y}{x}$.
-
-**Wichtig:** $\\tan$ ist **nicht definiert**, wenn $\\cos(\\alpha) = 0$, also bei $\\alpha = 90°, 270°, \\ldots$. Dort gibt es senkrechte Asymptoten — die Gerade ist senkrecht und hat keine endliche Steigung.
-
-**Periode:** Der Tangens hat Periode $180°$ (nicht $360°$!), weil die Steigung einer Geraden sich nach einer halben Drehung wiederholt: die Gerade zeigt zwar in die andere Richtung, die Steigung bleibt.`,
+**Geometrische Deutung:** $\\tan(\\alpha)$ ist die Steigung der Geraden vom Ursprung zum Punkt $P = (\\cos\\alpha, \\sin\\alpha)$. Bei Polstellen ist die Gerade senkrecht (Steigung undefiniert). Die Steigung wiederholt sich nach einer halben Drehung — daher Periode $180°$.`,
+      },
+      {
+        id: 'trig-2-4-s1b', type: 'visualization', title: 'tan als Steigung der Ursprungsgerade',
+        visualizationId: 'trig-explorer',
+        params: { initialAngle: 30, showTangent: true },
       },
       { id: 'trig-2-4-s2', type: 'exercise', title: 'Aufgabe 1 — tan geometrisch', exerciseRef: 'ex-trig-2-4-a' },
       { id: 'trig-2-4-s3', type: 'exercise', title: 'Aufgabe 2 — tan(90°)', exerciseRef: 'ex-trig-2-4-b' },
