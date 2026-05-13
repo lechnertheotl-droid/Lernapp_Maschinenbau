@@ -4150,4 +4150,833 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 2-3: Abstände und Schnitte
+  // SG0: Abstand Punkt–Ebene · SG1: Abstand Punkt–Gerade
+  // SG2: Abstand windschiefer Geraden · SG3: Schnitt Gerade–Ebene
+  // SG4: Schnittfälle (1 / 0=0 / Widerspruch) · SG5: Merkhilfe (Skalar- vs. Kreuzprodukt)
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-2-3': {
+    // ===== Sub-Goal 0 — Abstand Punkt–Ebene =====
+    0: [
+      // [1] recognize / true-false / d-pt-ebene
+      tag(
+        tf(
+          'Der Abstand eines Punktes $Q$ zur Ebene $E\\colon a x + b y + c z = d_0$ wird durch Division durch $\\sqrt{a^2 + b^2 + c^2}$ aus der Hesseschen Normierung berechnet.',
+          true,
+          `**Ansatz:** $\\sqrt{a^2 + b^2 + c^2} = |\\vec n|$ — Länge des Normalvektors.
+
+**Rechnung:** Aus $\\vec n \\cdot \\vec r = d_0$ wird durch Division durch $|\\vec n|$ die Hessesche Form $\\vec n_0 \\cdot \\vec r = d_0/|\\vec n|$. Setzt man $Q$ ein, ergibt sich $|\\vec n_0 \\cdot Q - d_0/|\\vec n|| = |(a q_x + b q_y + c q_z - d_0)|/|\\vec n|$ — der Abstand.
+
+**Probe:** Ebene $x = 5$ und $Q = (8, 0, 0)$: $|\\vec n| = 1$, $d = |8 - 5|/1 = 3$ ✓ (Abstand auf der $x$-Achse).
+
+**Typischer Fehler:** $|\\vec n|$ statt $\\sqrt{a^2+b^2+c^2}$ schreiben und vergessen, dass das dieselbe Größe ist — beides erzwingt die Normierung.`,
+          [
+            'Was bedeutet $\\sqrt{a^2 + b^2 + c^2}$ geometrisch?',
+            'Das ist der Betrag des Normalvektors $\\vec n = (a, b, c)$.',
+            'Die Normierung erzeugt aus $\\vec n$ einen Einheitsvektor — und macht $d_0$ zum Abstand.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['d-pt-ebene'] },
+      ),
+
+      // [2] apply-guided / multiple-choice / d-pt-ebene
+      tag(
+        mc(
+          'Ebene $E\\colon 3x + 4y = 25$. Welcher Ausdruck liefert den Abstand des Punktes $Q = (1, 2, 0)$ zu $E$?',
+          [
+            '$\\dfrac{|3 \\cdot 1 + 4 \\cdot 2 - 25|}{\\sqrt{3^2 + 4^2}}$',
+            '$\\dfrac{|3 \\cdot 1 + 4 \\cdot 2 - 25|}{3 + 4}$',
+            '$\\dfrac{3 \\cdot 1 + 4 \\cdot 2 - 25}{\\sqrt{3^2 + 4^2}}$',
+            '$\\sqrt{(3 - 1)^2 + (4 - 2)^2}$',
+          ],
+          0,
+          `**Ansatz:** Hesse-Formel $d = |a q_x + b q_y + c q_z - d_0|/\\sqrt{a^2+b^2+c^2}$ direkt aus der Koordinatenform.
+
+**Rechnung:** $a = 3, b = 4, c = 0, d_0 = 25$. Einsetzen von $Q = (1, 2, 0)$: Zähler $|3 \\cdot 1 + 4 \\cdot 2 - 25| = |11 - 25| = 14$. Nenner $\\sqrt{9 + 16} = 5$. $d = 14/5 = 2{,}8$.
+
+**Probe:** Senkrechte Projektion: $\\vec n_0 = (3/5, 4/5, 0)$, Hesse-Wert $25/5 = 5$. $\\vec n_0 \\cdot Q = 3/5 + 8/5 = 11/5 = 2{,}2$. $|2{,}2 - 5| = 2{,}8$ ✓.
+
+**Typischer Fehler:** Komponenten-Summe statt euklidische Norm ($3 + 4 = 7$ statt $5$). Oder Betragsstriche im Zähler vergessen — Abstand wäre dann negativ.`,
+          [
+            'Welche Norm verwendet man im Nenner?',
+            'Euklidische Norm: $\\sqrt{a^2 + b^2 + c^2}$, nicht $|a| + |b| + |c|$.',
+            'Betragsstriche im Zähler nicht vergessen — Abstand $\\geq 0$.',
+          ],
+          {
+            1: 'Manhattan-Norm ($3 + 4 = 7$) statt euklidische Norm ($\\sqrt{9 + 16} = 5$). Die Abstandsformel verwendet die Euklid-Norm $|\\vec n|$, weil die Hesse-Normierung diese verlangt.',
+            2: 'Betragsstriche im Zähler fehlen. Ohne Betrag käme $-14/5 = -2{,}8$ heraus — negative Abstände sind aber sinnlos. Die Vorzeichen-Information geht in den seitlich-Test (auf welcher Seite liegt $Q$?) ein, nicht in den Abstand.',
+            3: 'Das ist die Euklidische Distanz zwischen *zwei Punkten* $(3, 4)$ und $(1, 2)$ in der $xy$-Ebene — hat nichts mit dem senkrechten Abstand zur Ebene $3x + 4y = 25$ zu tun.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['d-pt-ebene'] },
+      ),
+
+      // [3] apply-independent / number-input / d-pt-ebene
+      tag(
+        ni(
+          'Berechne den Abstand des Punktes $Q = (1, 2, 0)$ von der Ebene $E\\colon 3x + 4y = 25$.',
+          2.8, 0.02, '',
+          `**Ansatz:** Hesse-Formel $d = |a q_x + b q_y + c q_z - d_0|/\\sqrt{a^2+b^2+c^2}$.
+
+**Rechnung:** Zähler: $|3 \\cdot 1 + 4 \\cdot 2 + 0 \\cdot 0 - 25| = |3 + 8 - 25| = |-14| = 14$. Nenner: $\\sqrt{9 + 16 + 0} = 5$. $d = 14/5 = 2{,}8$.
+
+**Probe:** Ein Punkt auf der Ebene: $P = (3, 4, 0)$ (da $9 + 16 = 25$). $|\\vec Q - \\vec P| = \\sqrt{4 + 4} = 2\\sqrt{2} \\approx 2{,}83$. Das ist die direkte Punkt-Punkt-Distanz; sie liegt nur dann nah am Abstand, wenn $\\vec Q - \\vec P$ etwa senkrecht zur Ebene steht — hier ist es so (beide Vektoren $\\vec n = (3,4,0)$ und $\\vec Q - \\vec P = (-2,-2,0)$ liegen in der $xy$-Ebene). Genauer: Projektion gibt $14/5 = 2{,}8$.
+
+**Typischer Fehler:** Wurzel im Nenner vergessen ($d = 14/25$). Oder $z$-Komponente von $\\vec n$ ($c = 0$) bei der Norm-Bildung übergehen — bleibt aber egal, da $0^2 = 0$.`,
+          [
+            'Zähler: $|3 + 8 - 25|$.',
+            'Nenner: $\\sqrt{9 + 16}$.',
+            '$d = 14/5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['d-pt-ebene'] },
+      ),
+
+      // [4] error-analysis / multiple-choice / d-pt-ebene "Betrag vergessen"
+      tag(
+        mc(
+          'Ein Schüler rechnet den Abstand von $Q = (0, 0, 0)$ zur Ebene $E\\colon 2x - y + 2z = 6$ und schreibt $d = \\dfrac{2 \\cdot 0 - 0 + 2 \\cdot 0 - 6}{\\sqrt{4 + 1 + 4}} = \\dfrac{-6}{3} = -2$. Welcher Einwand ist berechtigt?',
+          [
+            'Betragsstriche im Zähler vergessen — Abstand ist immer $\\geq 0$. Korrekt: $|-6|/3 = 2$.',
+            'Wurzel im Nenner falsch — eigentlich $\\sqrt{4+1+4} = 9$, nicht $3$.',
+            'Vorzeichen falsch: $d_0$ ist $-6$, nicht $+6$.',
+            '$a, b, c$ und $q_x, q_y, q_z$ sind vertauscht.',
+          ],
+          0,
+          `**Ansatz:** Abstand ist eine **Länge** — per Konstruktion nicht-negativ.
+
+**Rechnung:** Zähler: $|2 \\cdot 0 - 0 + 2 \\cdot 0 - 6| = |-6| = 6$. Nenner: $\\sqrt{4 + 1 + 4} = \\sqrt{9} = 3$. $d = 6/3 = 2$.
+
+**Probe:** Der Schüler hat algebraisch alles richtig gemacht — nur die Betragsstriche fehlen. Das Vorzeichen seines Zwischenergebnisses ($-6$) sagt geometrisch: $Q$ liegt auf der Seite, *in die der Normalvektor nicht zeigt*. Für den **Abstand** wird das Vorzeichen aber durch den Betrag verworfen.
+
+**Typischer Fehler:** "$-2$" als Abstand stehen lassen. Wer das in der Klausur abgibt, signalisiert: ich habe das Konzept "Abstand $\\geq 0$" nicht verstanden.`,
+          [
+            'Was ist eine geometrische Länge — kann sie negativ sein?',
+            'Vergleiche: Zähler in der Hesse-Formel hat $|\\ldots|$, nicht $(\\ldots)$.',
+            'Was bedeutet das Vorzeichen vor dem Betrag — und wieso wird es durch $|\\cdot|$ ignoriert?',
+          ],
+          {
+            1: '$\\sqrt{4 + 1 + 4} = \\sqrt{9} = 3$ — die Wurzel wurde sauber gezogen. Das ist nicht der Fehler.',
+            2: 'Die Koordinatenform ist $2x - y + 2z = 6$, also $d_0 = +6$. Das hat der Schüler richtig abgelesen.',
+            3: 'Reihenfolge der Faktoren in $a \\cdot q_x$ ist algebraisch egal (Kommutativität). Die Zuordnung $a = 2, b = -1, c = 2$ und $q_x = q_y = q_z = 0$ ist korrekt.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['d-pt-ebene'] },
+      ),
+
+      // [5] transfer / number-input / d-pt-ebene
+      tag(
+        ni(
+          'Wie weit liegt der Punkt $Q = (2, 1, 2)$ von der Ebene $E\\colon x + 2y - 2z = -9$ entfernt?',
+          3, 0.02, '',
+          `**Ansatz:** Hesse-Formel anwenden, $d_0 = -9$ einsetzen.
+
+**Rechnung:** Zähler: $|1 \\cdot 2 + 2 \\cdot 1 + (-2) \\cdot 2 - (-9)| = |2 + 2 - 4 + 9| = |9| = 9$. Nenner: $\\sqrt{1 + 4 + 4} = \\sqrt{9} = 3$. $d = 9/3 = 3$.
+
+**Probe:** Ein Punkt auf $E$ finden: $(- 9, 0, 0)$ erfüllt $x = -9$, also $1 \\cdot (-9) + 0 + 0 = -9$ ✓. Verbindungsvektor $Q - P = (11, 1, 2)$. Projektion auf $\\vec n_0 = (1, 2, -2)/3$: $(11 + 2 - 4)/3 = 9/3 = 3$ ✓.
+
+**Typischer Fehler:** Vorzeichenfehler bei $d_0 = -9$: $-(-9) = +9$ wird oft zu $-9$ verkürzt; dann steht im Zähler $|2 + 2 - 4 - 9| = 9$ — zufällig dasselbe! Aber bei anderen Beispielen kann dieser Fehler tödlich sein.`,
+          [
+            'Vorsicht: $d_0$ ist hier $-9$, der Term lautet $\\ldots - (-9) = \\ldots + 9$.',
+            'Zähler: $|2 + 2 - 4 + 9|$.',
+            'Nenner: $\\sqrt{1 + 4 + 4} = 3$, also $d = 9/3$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['d-pt-ebene'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Abstand Punkt–Gerade =====
+    1: [
+      // [6] recognize / true-false / d-pt-gerade
+      tag(
+        tf(
+          'Der Abstand eines Punktes zu einer Geraden wird über das Kreuzprodukt des Richtungsvektors $\\vec v$ mit dem Verbindungsvektor $\\vec Q - \\vec p$ berechnet — geteilt durch $|\\vec v|$.',
+          true,
+          `**Ansatz:** Das Kreuzprodukt $\\vec v \\times (\\vec Q - \\vec p)$ ist ein Vektor mit Länge gleich der Fläche des aufgespannten Parallelogramms.
+
+**Rechnung:** Parallelogramm-Fläche $= |\\vec v \\times (\\vec Q - \\vec p)| = |\\vec v| \\cdot h$, wobei $h$ die Höhe ist — also der senkrechte Abstand von $Q$ zur Geraden. Auflösen: $d = h = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$.
+
+**Probe:** $g\\colon \\vec r = (0,0,0) + t(1,0,0)$ und $Q = (0, 5, 0)$ — Abstand 5 (geometrisch klar). $\\vec v \\times (\\vec Q - \\vec p) = (1,0,0) \\times (0,5,0) = (0, 0, 5)$, $|\\cdot| = 5$, $|\\vec v| = 1$, $d = 5$ ✓.
+
+**Typischer Fehler:** Skalarprodukt statt Kreuzprodukt verwenden — das liefert die Projektion *entlang* der Geraden, nicht den senkrechten Abstand.`,
+          [
+            'Welche Operation erzeugt einen Vektor senkrecht zu zwei anderen?',
+            'Geometrisch: Kreuzprodukt-Betrag = Parallelogramm-Fläche.',
+            'Höhe = Fläche / Grundseite — das ist gerade der Abstand.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['d-pt-gerade'] },
+      ),
+
+      // [7] apply-guided / multiple-choice / d-pt-gerade
+      tag(
+        mc(
+          'Welche Formel liefert den Abstand eines Punktes $Q$ zur Geraden $g\\colon \\vec r = \\vec p + t \\vec v$?',
+          [
+            '$d = \\dfrac{|\\vec v \\times (\\vec Q - \\vec p)|}{|\\vec v|}$',
+            '$d = \\dfrac{|\\vec v \\cdot (\\vec Q - \\vec p)|}{|\\vec v|}$',
+            '$d = |\\vec Q - \\vec p|$',
+            '$d = |\\vec v|$',
+          ],
+          0,
+          `**Ansatz:** Kreuzprodukt für Gerade — Skalarprodukt für Ebene.
+
+**Rechnung:** Das Kreuzprodukt $\\vec v \\times (\\vec Q - \\vec p)$ liefert einen Vektor mit Betrag gleich der Parallelogramm-Fläche. Geteilt durch die Grundseite $|\\vec v|$ ergibt sich die Höhe = Abstand.
+
+**Probe:** Spezialfall $Q$ liegt auf $g$: dann ist $\\vec Q - \\vec p = s \\vec v$ parallel zu $\\vec v$, Kreuzprodukt $= \\vec 0$, $d = 0$ ✓.
+
+**Typischer Fehler:** Skalarprodukt verwenden — das misst die Projektion *entlang* $\\vec v$, nicht senkrecht dazu.`,
+          [
+            'Punkt–Gerade: Kreuzprodukt. Punkt–Ebene: Skalarprodukt.',
+            'Im Zähler steht ein Vektor-Betrag, im Nenner $|\\vec v|$ (Skalar).',
+            'Probe: Liegt $Q$ auf $g$, muss $d = 0$ herauskommen.',
+          ],
+          {
+            1: 'Skalarprodukt $\\vec v \\cdot (\\vec Q - \\vec p)$ misst den **parallelen** Anteil — also wie weit man entlang $\\vec v$ projizieren muss, um vom Stützpunkt zum Lotfußpunkt zu kommen. Das ist *nicht* der senkrechte Abstand.',
+            2: '$|\\vec Q - \\vec p|$ ist die Entfernung von $Q$ zum **Stützpunkt** $\\vec p$ — nicht zur Geraden insgesamt. Der gesuchte Abstand ist die Höhe vom Punkt auf die Gerade.',
+            3: '$|\\vec v|$ ist die Länge des Richtungsvektors — eine Eigenschaft der Geraden allein, ohne Bezug zu $Q$. Hat nichts mit dem Abstand zu tun.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['d-pt-gerade'] },
+      ),
+
+      // [8] apply-independent / number-input / d-pt-gerade
+      tag(
+        ni(
+          'Gerade $g\\colon \\vec r = (0, 0, 0) + t (1, 0, 0)$. Punkt $Q = (5, 3, 4)$. Berechne den Abstand $d$ von $Q$ zu $g$.',
+          5, 0.02, '',
+          `**Ansatz:** Formel $d = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$.
+
+**Rechnung:** $\\vec v = (1, 0, 0)$, $\\vec Q - \\vec p = (5, 3, 4)$. Kreuzprodukt: $(1,0,0) \\times (5,3,4) = (0\\cdot 4 - 0\\cdot 3,\\; 0\\cdot 5 - 1\\cdot 4,\\; 1\\cdot 3 - 0\\cdot 5) = (0, -4, 3)$. $|\\vec v \\times (\\vec Q - \\vec p)| = \\sqrt{0 + 16 + 9} = 5$. $|\\vec v| = 1$. $d = 5/1 = 5$.
+
+**Probe:** Anschaulich: $g$ ist die $x$-Achse, $Q = (5, 3, 4)$. Lotfußpunkt: $(5, 0, 0)$. Verbindung $(0, 3, 4)$, Länge $\\sqrt{9 + 16} = 5$ ✓.
+
+**Typischer Fehler:** Skalarprodukt $(1,0,0) \\cdot (5,3,4) = 5$ und dann $|5|/1 = 5$ — zufällig dasselbe Ergebnis, aber falsche Methode! Bei nicht-achsenparallelen Beispielen wird der Unterschied sichtbar.`,
+          [
+            'Bilde $\\vec Q - \\vec p$ komponentenweise.',
+            'Kreuzprodukt: $(1,0,0) \\times \\vec w$ wirft die $x$-Komponente von $\\vec w$ weg.',
+            'Betrag im Zähler, $|\\vec v| = 1$ im Nenner.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['d-pt-gerade'] },
+      ),
+
+      // [9] error-analysis / multiple-choice / d-pt-gerade "Skalar- statt Kreuzprodukt"
+      tag(
+        mc(
+          'Ein Schüler berechnet den Abstand von $Q$ zur Geraden $g\\colon \\vec r = \\vec p + t \\vec v$ als $d = |\\vec v \\cdot (\\vec Q - \\vec p)|/|\\vec v|$. Wo liegt der Fehler?',
+          [
+            'Skalarprodukt statt Kreuzprodukt. Das Skalarprodukt $\\vec v \\cdot (\\vec Q - \\vec p)$ misst die Projektion *entlang* $\\vec v$, nicht den senkrechten Abstand. Korrekt: Kreuzprodukt $\\vec v \\times (\\vec Q - \\vec p)$, dann Betrag, dann durch $|\\vec v|$ teilen.',
+            '$|\\vec v|$ im Nenner ist falsch — der Nenner sollte $|\\vec Q - \\vec p|$ sein.',
+            'Die Formel gilt nur in der $xy$-Ebene.',
+            'Der Betrag um das Skalarprodukt ist überflüssig.',
+          ],
+          0,
+          `**Ansatz:** Skalarprodukt $\\to$ parallel; Kreuzprodukt $\\to$ senkrecht.
+
+**Rechnung:** $\\vec v \\cdot (\\vec Q - \\vec p) = |\\vec v|\\cdot|\\vec Q - \\vec p|\\cdot \\cos\\alpha$ — das ist der parallele Anteil von $\\vec Q - \\vec p$ entlang $\\vec v$. Geteilt durch $|\\vec v|$ ergibt sich genau die Projektionslänge (Lotfußpunkt-Parameter). Das ist der Abstand vom Stützpunkt zum Lotfußpunkt — *nicht* der senkrechte Abstand vom Punkt zur Geraden.
+
+**Probe:** Spezialfall $Q$ auf $g$: $\\vec Q - \\vec p = s\\vec v$. Skalarprodukt $= s|\\vec v|^2$, durch $|\\vec v|$ geteilt $= s|\\vec v| \\neq 0$ (im Allgemeinen). Die "Abstand"-Formel würde fälschlich $s|\\vec v|$ liefern — aber der echte Abstand ist null.
+
+**Typischer Fehler:** "Punkt–Gerade" und "Punkt–Ebene" verwechseln. Faustregel: **Ebene $\\to$ Skalarprodukt mit $\\vec n$. Gerade $\\to$ Kreuzprodukt mit $\\vec v$.**`,
+          [
+            'Was misst das Skalarprodukt geometrisch?',
+            'Skalarprodukt $\\to$ parallel, Kreuzprodukt $\\to$ senkrecht.',
+            'Für Gerade braucht man die *senkrechte* Komponente.',
+          ],
+          {
+            1: '$|\\vec v|$ ist absolut korrekt — entspricht der Grundseite des Parallelogramms. $|\\vec Q - \\vec p|$ im Nenner wäre eine willkürliche Skalierung ohne geometrische Bedeutung.',
+            2: 'Die Formel funktioniert im gesamten 3D-Raum (und sogar in höheren Dimensionen, wenn man Kreuzprodukt entsprechend verallgemeinert). Das ist nicht das Problem.',
+            3: 'Betragsstriche sind wichtig — ohne sie könnte der Skalarprodukt-Wert negativ sein. Aber das ist nicht der Hauptfehler; der Hauptfehler ist die Wahl der Operation.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['d-pt-gerade'] },
+      ),
+
+      // [10] transfer / number-input / d-pt-gerade
+      tag(
+        ni(
+          'Gerade $g\\colon \\vec r = (0, 0, 0) + t (2, 2, 1)$. Punkt $Q = (0, 0, 3)$. Berechne den Abstand $d$.',
+          2.828, 0.02, '',
+          `**Ansatz:** Formel $d = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$ — $\\vec v$ hier nicht-achsenparallel.
+
+**Rechnung:** $\\vec v = (2, 2, 1)$, $\\vec Q - \\vec p = (0, 0, 3)$. Kreuzprodukt: $(2, 2, 1) \\times (0, 0, 3) = (2 \\cdot 3 - 1 \\cdot 0,\\; 1 \\cdot 0 - 2 \\cdot 3,\\; 2 \\cdot 0 - 2 \\cdot 0) = (6, -6, 0)$. $|\\cdot| = \\sqrt{36 + 36 + 0} = 6\\sqrt{2}$. $|\\vec v| = \\sqrt{4 + 4 + 1} = 3$. $d = 6\\sqrt{2}/3 = 2\\sqrt{2} \\approx 2{,}828$.
+
+**Probe:** Senkrechtest: $\\vec v \\cdot (6, -6, 0) = 12 - 12 + 0 = 0$ ✓. Auch $(\\vec Q - \\vec p) \\cdot (6, -6, 0) = 0$ ✓ — Kreuzprodukt steht erwartungsgemäß senkrecht auf beiden.
+
+**Typischer Fehler:** $|\\vec v|$ nicht ziehen oder als $\\sqrt{4 + 4} = 2\\sqrt{2}$ statt $\\sqrt{4 + 4 + 1} = 3$ rechnen.`,
+          [
+            'Bilde Kreuzprodukt komponentenweise.',
+            '$|\\vec v| = \\sqrt{4 + 4 + 1} = 3$ (alle drei Komponenten quadrieren).',
+            '$|\\vec v \\times (\\vec Q - \\vec p)| = 6\\sqrt{2}$, also $d = 2\\sqrt{2}$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['d-pt-gerade'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Abstand windschiefer Geraden =====
+    2: [
+      // [11] recognize / true-false / d-windschief
+      tag(
+        tf(
+          'Der Abstand zweier windschiefer Geraden ist der **kürzeste** Verbindungsabstand und wird über das Spatprodukt $(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)$ geteilt durch $|\\vec v_1 \\times \\vec v_2|$ berechnet.',
+          true,
+          `**Ansatz:** Drei Vektoren spannen einen Spat (Parallelepiped) auf. Das Spatprodukt ist sein Volumen.
+
+**Rechnung:** Das Volumen eines Spats ist Grundfläche $\\times$ Höhe. Grundfläche $= |\\vec v_1 \\times \\vec v_2|$ (Parallelogramm der beiden Richtungen). Höhe $= d$ (senkrechter Abstand der Geraden, denn die beiden Richtungsvektoren spannen die "Boden"-Ebene auf und $\\vec p_2 - \\vec p_1$ liegt darüber). Auflösen: $d = |(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)| / |\\vec v_1 \\times \\vec v_2|$.
+
+**Probe:** Liegen $g_1, g_2$ in einer Ebene (schneiden oder parallel), liegt $\\vec p_2 - \\vec p_1$ in der von $\\vec v_1, \\vec v_2$ aufgespannten Ebene — Spatprodukt $= 0$, $d = 0$. ✓
+
+**Typischer Fehler:** Spatprodukt mit "doppeltem Skalarprodukt" verwechseln — der Ausdruck $(\\vec p_2 - \\vec p_1) \\cdot \\vec v_1 \\cdot \\vec v_2$ ist Unsinn (Skalar mal Vektor mal Vektor).`,
+          [
+            'Welches Produkt aus drei Vektoren liefert eine Zahl?',
+            'Spatprodukt $= \\det$ der drei Vektoren = Volumen des Spats.',
+            'Volumen / Grundfläche = Höhe = Abstand.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['d-windschief'] },
+      ),
+
+      // [12] apply-guided / multiple-choice / d-windschief
+      tag(
+        mc(
+          'Welcher Ausdruck ist die korrekte Formel für den Abstand zweier windschiefer Geraden $g_1\\colon \\vec r = \\vec p_1 + s \\vec v_1$ und $g_2\\colon \\vec r = \\vec p_2 + t \\vec v_2$?',
+          [
+            '$d = \\dfrac{|(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)|}{|\\vec v_1 \\times \\vec v_2|}$',
+            '$d = |\\vec v_1 \\times \\vec v_2| \\cdot |\\vec p_2 - \\vec p_1|$',
+            '$d = \\dfrac{|\\vec v_1 \\times \\vec v_2|}{|\\vec p_2 - \\vec p_1|}$',
+            '$d = \\dfrac{|\\vec p_2 - \\vec p_1|}{|\\vec v_1 + \\vec v_2|}$',
+          ],
+          0,
+          `**Ansatz:** Spatprodukt geteilt durch Grundfläche.
+
+**Rechnung:** Spatprodukt $(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)$ = Volumen des aufgespannten Spats (mit Vorzeichen). Betrag und Division durch $|\\vec v_1 \\times \\vec v_2|$ liefert die Höhe = Abstand.
+
+**Probe:** Spezialfall $g_2$ schneidet $g_1$: $\\vec p_2 - \\vec p_1$ liegt in der von $\\vec v_1, \\vec v_2$ aufgespannten Ebene. Spatprodukt $= 0$, $d = 0$ ✓.
+
+**Typischer Fehler:** Skalarprodukt $\\vec v_1 \\cdot \\vec v_2$ statt Kreuzprodukt schreiben — dann steht ein Skalar im Vektor-Slot, Formel wird inkonsistent.`,
+          [
+            'Welcher der vier Ausdrücke hat die Dimension einer **Länge**?',
+            'Volumen / Fläche = Länge.',
+            'Spatprodukt im Zähler, Kreuzprodukt-Betrag im Nenner.',
+          ],
+          {
+            1: 'Multiplikation von Fläche und Länge gibt Volumen — nicht Länge. Außerdem fehlt die Division, also keine sinnvolle Abstandsformel.',
+            2: '$|\\vec v_1 \\times \\vec v_2|/|\\vec p_2 - \\vec p_1|$ wäre 1/Länge — keine Länge. Falsche Dimension.',
+            3: '$|\\vec v_1 + \\vec v_2|$ hat keine geometrische Bedeutung im Spat — Summe der Richtungsvektoren ergibt eine Diagonale, die nicht zur Höhenberechnung passt.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['d-windschief'] },
+      ),
+
+      // [13] apply-independent / number-input / d-windschief
+      tag(
+        ni(
+          'Windschiefe Geraden $g_1\\colon \\vec r = (0, 0, 0) + s(1, 0, 0)$ und $g_2\\colon \\vec r = (0, 0, 3) + t(0, 1, 0)$. Bestimme den Abstand der beiden Geraden.',
+          3, 0.02, '',
+          `**Ansatz:** Formel $d = |(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)|/|\\vec v_1 \\times \\vec v_2|$.
+
+**Rechnung:** $\\vec v_1 = (1,0,0)$, $\\vec v_2 = (0,1,0)$. Kreuzprodukt: $\\vec v_1 \\times \\vec v_2 = (0, 0, 1)$. $|\\vec v_1 \\times \\vec v_2| = 1$. $\\vec p_2 - \\vec p_1 = (0, 0, 3)$. Spatprodukt: $(0, 0, 3) \\cdot (0, 0, 1) = 3$. $d = |3|/1 = 3$.
+
+**Probe:** Anschaulich: $g_1$ ist die $x$-Achse, $g_2$ verläuft parallel zur $y$-Achse durch $(0, 0, 3)$ — der senkrechte Abstand ist offensichtlich $3$ (entlang der $z$-Achse) ✓.
+
+**Typischer Fehler:** Spatprodukt als gewöhnliches Skalarprodukt rechnen, ohne vorher $\\vec v_1 \\times \\vec v_2$ zu bilden — kommt zufällig manchmal richtig raus, aber methodisch falsch.`,
+          [
+            'Kreuzprodukt $\\vec v_1 \\times \\vec v_2$ bilden.',
+            'Dann Skalarprodukt mit $\\vec p_2 - \\vec p_1$.',
+            'Durch $|\\vec v_1 \\times \\vec v_2| = 1$ teilen.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['d-windschief'] },
+      ),
+
+      // [14] error-analysis / multiple-choice / d-windschief
+      tag(
+        mc(
+          'Ein Schüler rechnet den Abstand windschiefer Geraden als $d = |(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\cdot \\vec v_2)|/|\\vec v_1 \\cdot \\vec v_2|$. Wo liegt der Fehler?',
+          [
+            '$\\vec v_1 \\cdot \\vec v_2$ ist eine *Zahl* (Skalar), kein Vektor. Damit wird $(\\vec p_2 - \\vec p_1) \\cdot \\text{Skalar}$ sinnlos und $|\\vec v_1 \\cdot \\vec v_2|$ als Nenner irreführend. Richtig: **Kreuz**produkt $\\vec v_1 \\times \\vec v_2$ verwenden.',
+            'Das Spatprodukt selbst ist falsch — die Stützpunkte sollten nicht subtrahiert werden.',
+            'Die Reihenfolge $\\vec p_1 - \\vec p_2$ wäre richtig.',
+            'Der Betrag um das Spatprodukt ist überflüssig.',
+          ],
+          0,
+          `**Ansatz:** Dimensions-Check: Skalarprodukt $\\to$ Skalar, Kreuzprodukt $\\to$ Vektor.
+
+**Rechnung:** $\\vec v_1 \\cdot \\vec v_2 \\in \\mathbb{R}$ — eine Zahl. Das Spatprodukt verlangt aber, dass man im "mittleren Slot" einen *Vektor* hat. Korrekt: $\\vec v_1 \\times \\vec v_2 \\in \\mathbb{R}^3$ als Normalenrichtung des Spats.
+
+**Probe:** Mit dem korrekten Kreuzprodukt liefert die Formel die Höhe des Spats; mit dem Skalarprodukt würde ein Bruch von zwei Skalaren entstehen — keine geometrische Höhe.
+
+**Typischer Fehler:** "Kreuz"- und "Skalar"-Produkt verwechseln. Faustregel: Liefert die Operation einen Vektor (für senkrechte Konstruktionen), nimm Kreuzprodukt. Liefert sie eine Zahl (für Längen/Projektionen), nimm Skalarprodukt.`,
+          [
+            'Welche Operation liefert einen Skalar, welche einen Vektor?',
+            'Spatprodukt verlangt: Vektor $\\cdot$ (Vektor $\\times$ Vektor).',
+            'Eine Zahl im "Vektor"-Slot ergibt Unsinn.',
+          ],
+          {
+            1: 'Die Stützpunkt-Subtraktion ist korrekt — $\\vec p_2 - \\vec p_1$ ist der Verbindungsvektor zwischen den Geraden. Das ist nicht der Fehler.',
+            2: '$\\vec p_1 - \\vec p_2 = -(\\vec p_2 - \\vec p_1)$ — Vorzeichen kippt, aber durch den Betrag im Zähler ist das egal. Das ist nicht der Hauptfehler.',
+            3: 'Betrag im Spatprodukt ist *nötig* (Abstand $\\geq 0$). Vorzeichen-Information geht in den "Orientierungs-Test" (Drehsinn), nicht in den Abstand.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['d-windschief'] },
+      ),
+
+      // [15] transfer / number-input / d-windschief
+      tag(
+        ni(
+          'Windschiefe Geraden $g_1\\colon \\vec r = (1, 1, 0) + s(1, 0, 0)$ und $g_2\\colon \\vec r = (0, 0, 2) + t(0, 1, 1)$. Berechne den Abstand $d$ der beiden Geraden.',
+          2.121, 0.02, '',
+          `**Ansatz:** Spat-Volumen / Grundfläche.
+
+**Rechnung:** $\\vec v_1 \\times \\vec v_2 = (1,0,0) \\times (0,1,1) = (0\\cdot 1 - 0\\cdot 1,\\; 0\\cdot 0 - 1\\cdot 1,\\; 1\\cdot 1 - 0\\cdot 0) = (0, -1, 1)$. $|\\vec v_1 \\times \\vec v_2| = \\sqrt{0 + 1 + 1} = \\sqrt{2}$. $\\vec p_2 - \\vec p_1 = (0-1, 0-1, 2-0) = (-1, -1, 2)$. Spatprodukt: $(-1, -1, 2) \\cdot (0, -1, 1) = 0 + 1 + 2 = 3$. $d = |3|/\\sqrt{2} = 3/\\sqrt{2} = \\dfrac{3\\sqrt{2}}{2} \\approx 2{,}121$.
+
+**Probe:** Windschief-Check: $\\vec v_1 \\not\\parallel \\vec v_2$ ✓. Schneiden? Einsetzen: $(1+s, 1, 0) = (0, t, 2+t)$ — $y$-Gleichung $1 = t$, $z$-Gleichung $0 = 2 + t = 3$. Widerspruch ✓ (windschief).
+
+**Typischer Fehler:** Reihenfolge der Kreuzprodukt-Komponenten verwechseln — gerade bei $(0, ?, ?)$ aufpassen.`,
+          [
+            'Bilde zuerst $\\vec v_1 \\times \\vec v_2$ — Komponente für Komponente.',
+            '$|\\vec v_1 \\times \\vec v_2| = \\sqrt{0 + 1 + 1} = \\sqrt{2}$.',
+            'Spatprodukt $= 3$, also $d = 3/\\sqrt{2} = 3\\sqrt{2}/2$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['d-windschief'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Schnitt Gerade–Ebene =====
+    3: [
+      // [16] recognize / true-false / sg-ebene
+      tag(
+        tf(
+          'Um den Schnittpunkt einer Geraden $g$ mit einer Ebene $E$ zu finden, setzt man die Parameterform $\\vec r(t)$ in die Ebenengleichung ein und löst nach $t$ auf.',
+          true,
+          `**Ansatz:** Schnittpunkt erfüllt beide Gleichungen — Geraden- und Ebenenbedingung.
+
+**Rechnung:** $\\vec r(t)$ liefert für jedes $t$ einen Punkt auf $g$. Einsetzen in $E$ (Koordinaten- oder Normalenform) gibt eine *Gleichung in $t$* — eine lineare Gleichung. Lösen liefert $t^*$ (falls vorhanden); $\\vec r(t^*)$ ist dann der Schnittpunkt.
+
+**Probe:** $g\\colon \\vec r = (0,0,0) + t(1,1,1)$, $E\\colon x + y + z = 3$: $3t = 3 \\Rightarrow t = 1$, Schnittpunkt $(1, 1, 1)$. Probe: $1 + 1 + 1 = 3$ ✓.
+
+**Typischer Fehler:** Nur die $x$-Komponente in $E$ einsetzen — die Parameterdarstellung muss komponentenweise vollständig substituiert werden.`,
+          [
+            'Welche Punkte liegen auf $g$ — und welche auf $E$?',
+            'Der Schnittpunkt erfüllt beide Bedingungen gleichzeitig.',
+            'Daraus ergibt sich eine Gleichung in einer Unbekannten ($t$).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['sg-ebene'] },
+      ),
+
+      // [17] apply-guided / multiple-choice / sg-ebene
+      tag(
+        mc(
+          'Gerade $g\\colon \\vec r = (1, 0, 0) + t(0, 1, 0)$. Ebene $E\\colon x + y + z = 5$. Welche Gleichung in $t$ entsteht nach Einsetzen?',
+          [
+            '$1 + t = 5$',
+            '$t = 5$',
+            '$1 + 3t = 5$',
+            '$5t = 1$',
+          ],
+          0,
+          `**Ansatz:** $\\vec r(t)$ komponentenweise in $E$ einsetzen.
+
+**Rechnung:** $\\vec r(t) = (1, t, 0)$. In $E\\colon x + y + z = 5$: $1 + t + 0 = 5$, also $1 + t = 5$. Lösung: $t = 4$.
+
+**Probe:** $\\vec r(4) = (1, 4, 0)$, $E$-Probe: $1 + 4 + 0 = 5$ ✓.
+
+**Typischer Fehler:** Stützpunkt vergessen ($t = 5$) oder Komponenten falsch zuordnen ($1 + 3t$ als ob $\\vec v = (1,1,1)$).`,
+          [
+            'Komponenten von $\\vec r(t)$ ablesen: $x = 1$, $y = t$, $z = 0$.',
+            'Diese drei in $x + y + z = 5$ einsetzen.',
+            'Vereinfachen: $1 + t + 0 = 5$.',
+          ],
+          {
+            1: 'Stützpunkt vergessen — $x = 1 + 0 = 1$, nicht $0$. Wer den Stützpunkt nicht mitnimmt, übergeht $\\vec p$ komplett.',
+            2: 'Du hast $\\vec v = (1, 1, 1)$ angenommen statt $(0, 1, 0)$. Hier ist nur die $y$-Komponente von $t$ abhängig — die anderen bleiben fix.',
+            3: 'Vertauscht: $5t = 1$ wäre $t = 1/5$. Das wäre nur dann richtig, wenn $E\\colon 5y = 1$ wäre — nicht $x + y + z = 5$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['sg-ebene'] },
+      ),
+
+      // [18] apply-independent / number-input / sg-ebene
+      tag(
+        ni(
+          'Bestimme den Parameter $t$ des Schnittpunkts von $g\\colon \\vec r = (2, 1, 0) + t(1, -1, 2)$ mit $E\\colon x + y + z = 6$.',
+          1.5, 0.02, '',
+          `**Ansatz:** $\\vec r(t)$ in $E$ einsetzen, nach $t$ auflösen.
+
+**Rechnung:** $\\vec r(t) = (2 + t,\\; 1 - t,\\; 2t)$. Einsetzen in $x + y + z = 6$: $(2 + t) + (1 - t) + 2t = 3 + 2t = 6 \\Rightarrow 2t = 3 \\Rightarrow t = 1{,}5$.
+
+**Probe:** $\\vec r(1{,}5) = (3{,}5,\\; -0{,}5,\\; 3)$. $E$-Probe: $3{,}5 - 0{,}5 + 3 = 6$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei $-t + t = 0$ verlieren; oder $2t$ in $z$ vergessen ($t$ statt $2t$).`,
+          [
+            'Komponenten von $\\vec r(t)$ ausschreiben: $x = 2+t$, $y = 1-t$, $z = 2t$.',
+            'Summe $= 6$ liefert lineare Gleichung in $t$.',
+            '$2 + t + 1 - t + 2t = 3 + 2t = 6$, also $t = 3/2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['sg-ebene'] },
+      ),
+
+      // [19] error-analysis / multiple-choice / sg-ebene
+      tag(
+        mc(
+          'Ein Schüler will den Schnittpunkt von $g\\colon \\vec r = (0, 0, 0) + t(1, 2, 3)$ mit $E\\colon 2x - y + z = 5$ bestimmen und schreibt $t = 5$. Welche Aussage ist korrekt?',
+          [
+            'Der Schüler hat $\\vec r(t) = (t, 2t, 3t)$ nicht komponentenweise eingesetzt. Korrekt: $2t - 2t + 3t = 3t = 5 \\Rightarrow t = 5/3$, Schnittpunkt $(5/3, 10/3, 5)$.',
+            'Der Schüler hat $\\vec v$ und $\\vec p$ vertauscht — der Schnittpunkt ist trotzdem $(5, 5, 5)$.',
+            'Die Ebene muss vor dem Einsetzen in Hessesche Normalform gebracht werden.',
+            'Da $E$ kein $y$ enthält, ist $y$ unwichtig — die Rechnung ist korrekt.',
+          ],
+          0,
+          `**Ansatz:** $\\vec r(t) = (t, 2t, 3t)$ in $E\\colon 2x - y + z = 5$ einsetzen.
+
+**Rechnung:** $2 \\cdot t - (2t) + (3t) = 2t - 2t + 3t = 3t = 5$, also $t = 5/3 \\approx 1{,}667$.
+
+**Probe:** $\\vec r(5/3) = (5/3,\\; 10/3,\\; 5)$. $E$-Probe: $2 \\cdot 5/3 - 10/3 + 5 = 10/3 - 10/3 + 5 = 5$ ✓.
+
+**Typischer Fehler:** Den Geradenausdruck als Skalar einsetzen, statt komponentenweise — wie hier "$t = 5$" als ob die Gerade selbst $t$ wäre.`,
+          [
+            'Welcher Punkt auf der Geraden gehört zum Parameter $t$?',
+            '$\\vec r(t) = (t, 2t, 3t)$ — alle drei Komponenten einsetzen.',
+            'Vereinfache: $2t - 2t + 3t = 3t$, dann $= 5$.',
+          ],
+          {
+            1: '$\\vec p = (0,0,0)$ — Stützpunkt ist der Ursprung, da gibt es nichts zu vertauschen. Außerdem liegt $(5,5,5)$ nicht in $E$: $10 - 5 + 5 = 10 \\neq 5$.',
+            2: 'Hessesche Form ist *nicht* nötig für Schnittberechnung — die Koordinatenform reicht völlig. Das ist eine Verwechslung mit *Abstand*.',
+            3: 'Die $y$-Komponente $y = 2t$ ist sehr wohl wichtig, weil $-y$ in $E$ steht. Der Term $-2t$ ergibt sich daraus.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['sg-ebene'] },
+      ),
+
+      // [20] transfer / number-input / sg-ebene
+      tag(
+        ni(
+          'Gerade $g\\colon \\vec r = (1, -1, 2) + t(2, 0, -1)$. Ebene $E\\colon x + 2y - z = 0$. Bestimme den Parameter $t$ am Schnittpunkt.',
+          1, 0.02, '',
+          `**Ansatz:** $\\vec r(t)$ in $E$ einsetzen und nach $t$ auflösen.
+
+**Rechnung:** $\\vec r(t) = (1 + 2t,\\; -1,\\; 2 - t)$. Einsetzen in $x + 2y - z = 0$: $(1 + 2t) + 2(-1) - (2 - t) = 1 + 2t - 2 - 2 + t = -3 + 3t = 0 \\Rightarrow 3t = 3 \\Rightarrow t = 1$.
+
+**Probe:** $\\vec r(1) = (3,\\; -1,\\; 1)$. $E$-Probe: $3 + 2 \\cdot (-1) - 1 = 3 - 2 - 1 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei $-z$-Term verlieren: $-(2 - t) = -2 + t$, nicht $-2 - t$.`,
+          [
+            'Komponenten ausschreiben: $y = -1$ (konstant), $z = 2 - t$.',
+            'In $x + 2y - z$ einsetzen, sorgfältig die Klammern auflösen.',
+            '$-3 + 3t = 0$ gibt $t = 1$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['sg-ebene'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 4 — Schnittfälle =====
+    4: [
+      // [21] recognize / true-false / sg-faelle
+      tag(
+        tf(
+          'Entsteht beim Einsetzen einer Geraden in eine Ebene die Gleichung $0 = 0$, so liegt die Gerade vollständig *in* der Ebene.',
+          true,
+          `**Ansatz:** $0 = 0$ ist *für jedes $t$* erfüllt — also gibt es unendlich viele Schnittpunkte, was nur passiert, wenn die ganze Gerade in der Ebene liegt.
+
+**Rechnung:** Falls die Schnittgleichung sich auf $0 = 0$ reduziert, ist sie eine Identität — keine Bedingung an $t$. Jeder Geradenpunkt erfüllt $E$.
+
+**Probe:** $g\\colon \\vec r = (1, 0, 0) + t(0, 1, 0)$ und $E\\colon x = 1$. Einsetzen: $1 = 1$ — immer wahr. Tatsächlich liegen alle Geradenpunkte $(1, t, 0)$ auf $E$ ✓.
+
+**Typischer Fehler:** "Keine Lösung" interpretieren — das wäre $0 = c \\neq 0$ (Widerspruch), nicht $0 = 0$ (Identität).`,
+          [
+            'Was bedeutet $0 = 0$ als Gleichung in $t$?',
+            'Immer wahr $\\to$ jeder $t$-Wert erfüllt es.',
+            'Jeder Geradenpunkt ist Schnittpunkt $\\to$ Gerade in Ebene.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['sg-faelle'] },
+      ),
+
+      // [22] apply-guided / multiple-choice / sg-faelle
+      tag(
+        mc(
+          'Bei der Schnittberechnung Gerade $g$ mit Ebene $E$ entsteht die Gleichung $0 = 5$. Was bedeutet das geometrisch?',
+          [
+            'Die Gerade ist parallel zur Ebene und schneidet sie nicht.',
+            'Die Gerade liegt vollständig in der Ebene.',
+            'Die Gerade schneidet $E$ im Punkt $(0, 0, 5)$.',
+            'Der Schnittparameter ist $t = 5$.',
+          ],
+          0,
+          `**Ansatz:** $0 = 5$ ist ein Widerspruch — *keine* Lösung für $t$.
+
+**Rechnung:** Wenn die Schnittgleichung kein $t$ enthält und $0 = c$ mit $c \\neq 0$ liefert, ist sie nie erfüllbar. Geometrisch: $\\vec v$ liegt parallel zur Ebene ($\\vec v \\cdot \\vec n = 0$), aber der Stützpunkt nicht in $E$.
+
+**Probe:** Beispiel: $g\\colon \\vec r = (0, 0, 5) + t(1, 0, 0)$ und $E\\colon z = 0$. Einsetzen: $5 = 0$ — Widerspruch. Gerade verläuft parallel zur $xy$-Ebene auf Höhe $z = 5$, schneidet $E$ nie.
+
+**Typischer Fehler:** "$0 = 5$" mit "$t = 5$" verwechseln — Widerspruch ist *keine* Lösung, nicht $t = 5$.`,
+          [
+            'Eine Gleichung ohne $t$ — was sagt sie über die Lage aus?',
+            '$0 \\neq 5$, also unmöglich.',
+            'Keine Lösung $\\to$ kein gemeinsamer Punkt $\\to$ parallel.',
+          ],
+          {
+            1: 'Gerade in Ebene wäre $0 = 0$. $0 = 5$ ist Widerspruch — kein Punkt erfüllt $E$.',
+            2: '$(0, 0, 5)$ kommt aus den Zahlen $0$ und $5$ in der Gleichung, hat aber keinen Bezug zur tatsächlichen Geraden.',
+            3: 'Es gibt keinen Schnittparameter — die Gleichung ist nicht lösbar. "$t = 5$" wäre Lösung von "$t - 5 = 0$", nicht von "$0 = 5$".',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['sg-faelle'] },
+      ),
+
+      // [23] apply-independent / multiple-choice / sg-faelle, sg-ebene
+      tag(
+        mc(
+          'Gerade $g\\colon \\vec r = (1, 0, 0) + t(0, 1, 0)$. Ebene $E\\colon x = 1$. Bestimme die Lagebeziehung von $g$ und $E$.',
+          [
+            'Gerade liegt in der Ebene (Schnittgleichung $0 = 0$).',
+            'Gerade schneidet $E$ in genau einem Punkt.',
+            'Gerade ist parallel zu $E$ (Widerspruch $0 = c \\neq 0$).',
+            'Gerade steht senkrecht auf $E$.',
+          ],
+          0,
+          `**Ansatz:** $\\vec r(t)$ in $E$ einsetzen und Gleichungstyp analysieren.
+
+**Rechnung:** $\\vec r(t) = (1,\\; t,\\; 0)$. In $E\\colon x = 1$: $1 = 1$ — Identität. Reduktion auf $0 = 0$ $\\to$ Gerade liegt in der Ebene.
+
+**Probe:** Stützpunkt $(1, 0, 0)$ in $E$? $1 = 1$ ✓. Richtungsvektor $(0, 1, 0)$ in $E$ parallel? Normalvektor von $E$ ist $\\vec n = (1, 0, 0)$, $\\vec n \\cdot \\vec v = 0$ ✓ — Richtung liegt in der Ebene. Beide Bedingungen erfüllt: Gerade liegt in $E$.
+
+**Typischer Fehler:** Stützpunkt liegt in $E$, also "ein Schnittpunkt"? Falsch — wenn auch $\\vec v$ parallel zu $E$ ist, sind *alle* Geradenpunkte in $E$.`,
+          [
+            'Setze $\\vec r(t)$ in $E\\colon x = 1$ ein.',
+            'Welche Komponente ist konstant? Sieht die Gleichung wie $0 = 0$ aus?',
+            'Stützpunkt + Richtung beide in $E$ $\\to$ ganze Gerade in $E$.',
+          ],
+          {
+            1: 'Es gibt keinen *einzelnen* Schnittpunkt — *jeder* Geradenpunkt erfüllt $E$. Schnitt ist die gesamte Gerade.',
+            2: 'Parallel verschieden würde $1 = c$ mit $c \\neq 1$ ergeben. Hier ist die Gleichung $1 = 1$ — erfüllt.',
+            3: 'Senkrecht zu $E$ wäre $\\vec v \\parallel \\vec n$. Hier ist $\\vec v = (0, 1, 0)$ und $\\vec n = (1, 0, 0)$ — orthogonal zueinander.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['sg-faelle', 'sg-ebene'] },
+      ),
+
+      // [24] error-analysis / multiple-choice / sg-faelle "0=0 keine Lösung"
+      tag(
+        mc(
+          'Ein Schüler erhält bei der Schnittberechnung Gerade-Ebene die Gleichung $0 = 0$ und schreibt: „Keine Lösung — die Geraden schneiden sich nicht." Wo liegt der Fehler?',
+          [
+            '$0 = 0$ ist *immer wahr* — jeder Wert von $t$ erfüllt die Gleichung. Geometrisch: die Gerade liegt vollständig in der Ebene, es gibt *unendlich viele* Schnittpunkte. „Keine Lösung" wäre $0 = c \\neq 0$ (Widerspruch).',
+            '$0 = 0$ bedeutet, dass die Gerade die Ebene in genau einem Punkt $t = 0$ schneidet.',
+            '$0 = 0$ heißt, dass die Ebene singulär (nicht definiert) ist.',
+            '$0 = 0$ bedeutet, dass die Gerade die Ebene tangiert.',
+          ],
+          0,
+          `**Ansatz:** Identität versus Widerspruch unterscheiden.
+
+**Rechnung:** $0 = 0$ ist eine *Tautologie* (immer wahr). Die Lösungsmenge ist $\\{t \\in \\mathbb{R}\\}$ — alle reellen Zahlen. Geometrisch: die Gerade liegt vollständig in der Ebene.
+
+**Probe:** Konkret: $g\\colon \\vec r = (1, 0, 0) + t(0, 1, 0)$ in $E\\colon x = 1$ ergibt $1 = 1$ oder vereinfacht $0 = 0$. Stelle dir $g$ als horizontale Gerade in der Ebene $x = 1$ vor — *jeder* Punkt ist Schnittpunkt.
+
+**Typischer Fehler:** Algebraische Identität ($0 = 0$) und Widerspruch ($0 = c$) verwechseln. Faustregel: $0 = 0$ $\\to$ Gerade in Ebene; $0 = c \\neq 0$ $\\to$ parallel verschieden.`,
+          [
+            'Was ist die Lösungsmenge von $0 = 0$?',
+            'Identität $\\to$ alle $t$ erlaubt.',
+            'Geometrisch: jeder Geradenpunkt erfüllt die Ebenengleichung.',
+          ],
+          {
+            1: 'Es gibt nicht *einen* speziellen $t$-Wert — jedes $t$ erfüllt $0 = 0$. Wenn man $t = 0$ als Schnittpunkt herausgreift, ignoriert man, dass auch $t = 1, 2, \\ldots$ Schnittpunkte sind.',
+            2: 'Die Ebene ist nicht singulär — die Gleichung $0 = 0$ entsteht durch Einsetzen, nicht durch ein Problem mit $E$.',
+            3: 'Tangentialer Kontakt würde *einen* Punkt liefern (eine Lösung). $0 = 0$ liefert hingegen alle Punkte der Geraden.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['sg-faelle'] },
+      ),
+
+      // [25] transfer / sorting / sg-faelle
+      tag(
+        sorting(
+          'Ordne die drei Lagebeziehungen Gerade–Ebene nach **Anzahl der Schnittpunkte** (von keinem über genau einen zu unendlich vielen).',
+          [
+            'Parallel verschieden — Schnittgleichung $0 = c \\neq 0$ (Widerspruch) — **kein** Schnittpunkt.',
+            'Gerade schneidet Ebene — eindeutige Lösung für $t$ — **genau ein** Schnittpunkt.',
+            'Gerade liegt in der Ebene — Schnittgleichung $0 = 0$ (Identität) — **unendlich viele** Schnittpunkte.',
+          ],
+          [0, 1, 2],
+          `**Ansatz:** Drei Fälle, klassifiziert nach der Lösungsmenge der Schnittgleichung.
+
+**Rechnung:**
+- $0 = c \\neq 0$: leere Lösungsmenge $\\to$ 0 Schnittpunkte (parallel verschieden).
+- Eindeutiges $t^*$: einelementige Lösungsmenge $\\to$ 1 Schnittpunkt.
+- $0 = 0$: ganz $\\mathbb{R}$ als Lösungsmenge $\\to$ unendlich viele Schnittpunkte (Gerade in $E$).
+
+**Probe:** Jeder Fall hat ein einfaches geometrisches Bild: parallel, schneidend, enthalten. Algebraisch entspricht jedes Bild genau einer Form der Schnittgleichung.
+
+**Typischer Fehler:** $0 = 0$ und $0 = c \\neq 0$ verwechseln — der erste ist immer wahr (Gerade in Ebene), der zweite nie (parallel verschieden).`,
+          [
+            'Kein Schnittpunkt $\\to$ Widerspruch in der Gleichung.',
+            'Ein Schnittpunkt $\\to$ einzige Lösung für $t$.',
+            'Unendlich viele $\\to$ Identität $0 = 0$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['sg-faelle'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 5 — Merkhilfe (Skalar- vs. Kreuzprodukt) =====
+    5: [
+      // [26] recognize / true-false / merkhilfe
+      tag(
+        tf(
+          'Für den Abstand zu einer **Ebene** verwendet man das **Skalar**produkt mit dem Normalvektor; für den Abstand zu einer **Geraden** das **Kreuz**produkt mit dem Richtungsvektor.',
+          true,
+          `**Ansatz:** Die Faustregel folgt aus der Geometrie: Ebene wird durch Normalvektor $\\vec n$ beschrieben; Gerade durch Richtungsvektor $\\vec v$.
+
+**Rechnung:**
+- Abstand zur **Ebene**: Projektion auf $\\vec n$ $\\to$ Skalarprodukt, dann durch $|\\vec n|$. Formel: $d = |\\vec n \\cdot (\\vec Q - \\vec p)|/|\\vec n|$.
+- Abstand zur **Geraden**: Parallelogramm-Fläche mit $\\vec v$ als Grundseite $\\to$ Kreuzprodukt, dann durch $|\\vec v|$. Formel: $d = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$.
+
+**Probe:** Dimension prüfen: Skalarprodukt $\\to$ Skalar; geteilt durch Skalar $\\to$ Skalar (Länge) ✓. Kreuzprodukt $\\to$ Vektor; Betrag $\\to$ Skalar; geteilt durch Skalar $\\to$ Skalar ✓.
+
+**Typischer Fehler:** Operationen vertauschen — gerade in der Prüfung schnell durcheinander. Merkhilfe: Eb**en**e $\\to$ Skal**ar** (Skalarprodukt mit $\\vec n$); Gera**de** $\\to$ Kreuz (Kreuzprodukt mit $\\vec v$).`,
+          [
+            'Ebene wird durch welchen Vektor charakterisiert?',
+            '$\\vec n$ für Ebene, $\\vec v$ für Gerade.',
+            'Welche Operation projiziert senkrecht — Skalar oder Kreuz?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['merkhilfe'] },
+      ),
+
+      // [27] apply-guided / multiple-choice / merkhilfe
+      tag(
+        mc(
+          'Du sollst den Abstand vom Punkt $Q$ zu einer **Ebene** mit Normalvektor $\\vec n$ berechnen. Welche Operation steht im Zähler der Abstandsformel?',
+          [
+            '$|\\vec n \\cdot (\\vec Q - \\vec p)|$ (Skalarprodukt mit $\\vec n$).',
+            '$|\\vec n \\times (\\vec Q - \\vec p)|$ (Kreuzprodukt mit $\\vec n$).',
+            '$|\\vec Q - \\vec p|$ (Punkt-Stützpunkt-Abstand).',
+            '$\\vec n + (\\vec Q - \\vec p)$ (Vektorsumme).',
+          ],
+          0,
+          `**Ansatz:** Ebene $\\to$ Skalarprodukt mit $\\vec n$.
+
+**Rechnung:** Die Abstandsformel $d = |\\vec n \\cdot (\\vec Q - \\vec p)|/|\\vec n|$ projiziert $\\vec Q - \\vec p$ auf $\\vec n$ — den senkrechten Anteil. Im Zähler steht das Skalarprodukt (mit Betrag), im Nenner $|\\vec n|$.
+
+**Probe:** Spezialfall $\\vec Q - \\vec p \\perp \\vec n$: Skalarprodukt $= 0$, $d = 0$ — $\\vec Q$ liegt in der Ebene ✓.
+
+**Typischer Fehler:** Kreuzprodukt verwenden ($\\to$ würde Vektor in der Ebene liefern, nicht senkrechten Anteil).`,
+          [
+            'Welcher Vektor charakterisiert die Ebene? Wofür wird er verwendet?',
+            'Skalarprodukt $\\to$ Projektion auf eine Richtung.',
+            'Eb**en**e $\\to$ Skal**ar**.',
+          ],
+          {
+            1: 'Kreuzprodukt $\\vec n \\times (\\vec Q - \\vec p)$ liefert einen Vektor *in* der Ebene (senkrecht zu $\\vec n$). Für den Abstand braucht man den Anteil *entlang* $\\vec n$, also Skalarprodukt.',
+            2: 'Punkt-Stützpunkt-Abstand $|\\vec Q - \\vec p|$ wäre die direkte Entfernung — kommt nur dann nah am Abstand zur Ebene, wenn $\\vec Q - \\vec p$ zufällig schon senkrecht ist.',
+            3: 'Eine Vektorsumme liefert weder einen Skalar noch einen sinnvollen geometrischen Wert. Falsche Operation.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['merkhilfe'] },
+      ),
+
+      // [28] apply-independent / multiple-choice / merkhilfe, d-pt-ebene, d-pt-gerade
+      tag(
+        mc(
+          'Du sollst den Abstand vom Punkt $Q = (1, 2, 3)$ zu einer **Geraden** mit Richtungsvektor $\\vec v = (1, 0, 0)$ und Stützpunkt $\\vec p$ berechnen. Welche Operation steht im Zähler?',
+          [
+            '$|\\vec v \\times (\\vec Q - \\vec p)|$ (Kreuzprodukt mit $\\vec v$).',
+            '$|\\vec v \\cdot (\\vec Q - \\vec p)|$ (Skalarprodukt mit $\\vec v$).',
+            '$|\\vec Q - \\vec p|$ (Punkt-Stützpunkt-Abstand).',
+            '$|\\vec n \\cdot (\\vec Q - \\vec p)|$ (Skalarprodukt mit Normalvektor).',
+          ],
+          0,
+          `**Ansatz:** Gerade $\\to$ Kreuzprodukt mit $\\vec v$.
+
+**Rechnung:** Abstand Punkt–Gerade: $d = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$. Im Zähler das Kreuzprodukt (Betrag = Parallelogramm-Fläche), im Nenner $|\\vec v|$ (Grundseite des Parallelogramms).
+
+**Probe:** Geometrisch: Kreuzprodukt-Vektor steht senkrecht auf $\\vec v$ und $\\vec Q - \\vec p$ — sein Betrag ist die Höhe mal Grundseite. Höhe = Fläche / Grundseite = Abstand.
+
+**Typischer Fehler:** Skalarprodukt verwenden — das misst den parallelen Anteil (entlang der Geraden), nicht den senkrechten Abstand.`,
+          [
+            'Welcher Vektor charakterisiert die Gerade? Wofür wird er verwendet?',
+            'Kreuzprodukt $\\to$ senkrechte Konstruktion (Fläche).',
+            'Gera**de** $\\to$ Kreuzprodukt.',
+          ],
+          {
+            1: 'Skalarprodukt $\\vec v \\cdot (\\vec Q - \\vec p)$ misst den Anteil *entlang* $\\vec v$ — also wie weit der Lotfußpunkt vom Stützpunkt entfernt ist. Das ist *nicht* der Abstand vom Punkt zur Geraden.',
+            2: 'Punkt-Stützpunkt-Distanz vermischt nur den parallelen mit dem senkrechten Anteil — ohne Trennung kein Abstand.',
+            3: 'Normalvektor $\\vec n$ existiert für die Ebene, nicht für eine Gerade. Geradenformel braucht $\\vec v$.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['merkhilfe', 'd-pt-ebene', 'd-pt-gerade'] },
+      ),
+
+      // [29] error-analysis / multiple-choice / merkhilfe
+      tag(
+        mc(
+          'Ein Schüler soll den Abstand vom Punkt $Q$ zu einer Ebene mit Normalvektor $\\vec n$ und Stützpunkt $\\vec p$ berechnen und schreibt $d = |\\vec n \\times (\\vec Q - \\vec p)|/|\\vec n|$. Wo liegt der Fehler?',
+          [
+            'Bei der **Ebene** gehört das **Skalar**produkt mit $\\vec n$, nicht das Kreuzprodukt. Das Kreuzprodukt $\\vec n \\times (\\vec Q - \\vec p)$ liegt *in* der Ebene und misst nicht den senkrechten Abstand. Korrekt: $d = |\\vec n \\cdot (\\vec Q - \\vec p)|/|\\vec n|$.',
+            'Das Kreuzprodukt liefert einen Vektor, kein Skalar — Betrag macht es nicht zu einer Zahl.',
+            'Die Formel ist richtig, nur das Vorzeichen falsch.',
+            '$|\\vec n|$ im Nenner muss durch $|\\vec Q - \\vec p|$ ersetzt werden.',
+          ],
+          0,
+          `**Ansatz:** Ebene $\\to$ Skalarprodukt, Gerade $\\to$ Kreuzprodukt. Der Schüler hat die beiden vertauscht.
+
+**Rechnung:** Korrekt: $d = |\\vec n \\cdot (\\vec Q - \\vec p)|/|\\vec n|$. Der Schüler hat versehentlich die Punkt-Gerade-Formel auf einen Punkt-Ebene-Fall angewendet.
+
+**Probe:** Mit Kreuzprodukt: $\\vec n \\times (\\vec Q - \\vec p)$ steht senkrecht zu $\\vec n$ — also *in* der Ebene. Sein Betrag ist die Fläche eines Parallelogramms, das in der Ebene liegt. Geteilt durch $|\\vec n|$ ergibt sich eine Länge, die *nicht* der senkrechte Abstand ist.
+
+**Typischer Fehler:** Klausurklassiker — beide Formeln sehen sich ähnlich. Merkhilfe: **Eb-en-e $\\to$ Skal-ar**; **Gera-de $\\to$ Kreuz**.`,
+          [
+            'Was charakterisiert eine Ebene — Normalvektor oder Richtungsvektor?',
+            'Welche Operation liefert die senkrechte Projektion?',
+            'Eb**en**e $\\to$ Skal**ar**.',
+          ],
+          {
+            1: 'Der Betrag einer Vektor-Größe macht sie sehr wohl zu einer Zahl — das Problem ist die *Wahl* der Operation, nicht das Skalar-Wesen.',
+            2: 'Vorzeichen ist hier nicht das Hauptproblem — der Betrag $|\\cdot|$ macht die Formel ohnehin vorzeichenneutral.',
+            3: '$|\\vec n|$ im Nenner ist absolut richtig — die Normierung des Normalvektors gehört zur Hesse-Form.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['merkhilfe'] },
+      ),
+
+      // [30] transfer / matching / merkhilfe, d-pt-ebene, d-pt-gerade, d-windschief
+      tag(
+        matching(
+          'Ordne jedem Abstandsproblem die passende Formel zu.',
+          [
+            { left: 'Punkt $Q$ zur Ebene $a x + b y + c z = d_0$', right: '$\\dfrac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^2 + b^2 + c^2}}$' },
+            { left: 'Punkt $Q$ zur Geraden mit Stützpunkt $\\vec p$, Richtung $\\vec v$', right: '$\\dfrac{|\\vec v \\times (\\vec Q - \\vec p)|}{|\\vec v|}$' },
+            { left: 'Zwei windschiefe Geraden $g_1, g_2$', right: '$\\dfrac{|(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)|}{|\\vec v_1 \\times \\vec v_2|}$' },
+            { left: 'Zwei Punkte $A, B$ (direkte Entfernung)', right: '$|\\vec B - \\vec A|$' },
+          ],
+          `**Ansatz:** Jede Formel hat eine eindeutige geometrische Konstruktion — Skalar/Kreuz, Normal/Richtung, ein oder zwei Geraden.
+
+**Rechnung:**
+- Punkt–Ebene: Skalarprodukt mit $\\vec n = (a, b, c)$, normiert.
+- Punkt–Gerade: Kreuzprodukt mit $\\vec v$, normiert.
+- Windschiefe Geraden: Spatprodukt $(\\vec p_2-\\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)$, geteilt durch Kreuzprodukt-Betrag.
+- Punkt–Punkt: einfache Vektorbetragsdifferenz.
+
+**Probe:** Dimensions-Check: Jede Formel liefert eine Länge ($d > 0$, im Punkt-Punkt-Fall $\\geq 0$). Spezialfälle: $\\vec Q$ in $E$ $\\Rightarrow$ $d = 0$; $\\vec Q$ auf Geraden $\\Rightarrow$ $d = 0$; $g_2$ schneidet $g_1$ $\\Rightarrow$ Spatvolumen $= 0$ $\\Rightarrow$ $d = 0$.
+
+**Typischer Fehler:** Punkt-Ebene und Punkt-Gerade verwechseln; Spatprodukt-Formel für windschiefe Geraden mit der Punkt-Ebene-Formel vermengen.`,
+          [
+            'Sortiere nach: Skalarprodukt (für Ebene) oder Kreuzprodukt (für Gerade)?',
+            'Wie viele Vektoren / Geraden sind beteiligt?',
+            'Welcher Nenner taucht auf — $\\sqrt{a^2+b^2+c^2}$, $|\\vec v|$ oder $|\\vec v_1 \\times \\vec v_2|$?',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['merkhilfe', 'd-pt-ebene', 'd-pt-gerade', 'd-windschief'] },
+      ),
+    ],
+  },
 }

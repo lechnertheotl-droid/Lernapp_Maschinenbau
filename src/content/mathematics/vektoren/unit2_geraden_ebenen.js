@@ -255,17 +255,11 @@ export const exercises_vek_u2 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Der Abstand Punkt–Ebene ist die Projektion des Verbindungsvektors $\\vec{Q} - \\vec{P}$ auf die Normalenrichtung — also der "senkrechte" Anteil.
 
-**Formel:**
-$$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
+**Rechnung:** Allgemein gilt $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$. Skalarprodukt im Zähler liefert die Länge der Projektion mal $|\\vec{n}|$; Division durch $|\\vec{n}|$ normiert auf Länge $1$; Betragsstriche garantieren $d \\geq 0$.
 
-**Bedeutung der Bestandteile:**
-- $\\vec{n} \\cdot (\\vec{Q} - \\vec{P})$: Länge der Projektion $\\times |\\vec{n}|$
-- Division durch $|\\vec{n}|$: normiert den Normalvektor (auf Länge 1)
-- Betragsstriche: Abstand ist immer $\\geq 0$
+**Probe:** Liegt $\\vec{Q}$ in der Ebene, so ist $\\vec{Q} - \\vec{P}$ senkrecht zu $\\vec{n}$, $\\vec{n} \\cdot (\\vec{Q} - \\vec{P}) = 0$ und damit $d = 0$ ✓. Verschiebt man $\\vec{Q}$ um $\\lambda \\vec{n}$, wächst $d$ linear mit $|\\lambda|$ — der Abstand reagiert nur auf den senkrechten Anteil.
 
-**Typischer Fehler:**
-- $|\\vec{n} \\times (\\vec{Q} - \\vec{P})|$: Diese Formel liefert den Abstand Punkt–**Gerade**, nicht Punkt–Ebene.
-- $|\\vec{Q} - \\vec{P}|$: Ist einfach die Entfernung der beiden Punkte — das ist *nicht* der senkrechte Abstand zur Ebene.`,
+**Typischer Fehler:** Kreuzprodukt statt Skalarprodukt verwenden — das liefert den Abstand Punkt–**Gerade**. Oder $|\\vec{Q} - \\vec{P}|$ verwenden — das ist nur der Punkt-zu-Stützpunkt-Abstand, nicht der senkrechte Abstand zur Ebene.`,
     hints: [
       'Welche Operation projiziert auf die Normalenrichtung? Skalarprodukt.',
       'Formel: $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$.',
@@ -276,6 +270,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       2: '$|\\vec{Q} - \\vec{P}|$ ist einfach der Abstand zwischen $Q$ und dem Stützpunkt $P$ — das ist aber nicht der *senkrechte* Abstand zur Ebene, sondern zu einem einzelnen Punkt. Der kürzeste Abstand ergibt sich über die Projektion auf $\\vec{n}$.',
       3: '$\\vec{n} \\cdot \\vec{Q}$ hat weder Betrag noch Bezug auf einen Punkt der Ebene — das ist nur eine Zahl, nicht der Abstand. Außerdem fehlt die Normierung durch $|\\vec{n}|$. Richtig: $d = |\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|/|\\vec{n}|$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['d-pt-ebene'] },
   },
   'ex-vek-2-3-b': {
     id: 'ex-vek-2-3-b', lessonId: 'vek-2-3', type: 'number-input',
@@ -300,6 +295,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'Zähler: $|2 + 2 + 1 - 9| = 4$. Nenner: $\\sqrt{4+4+1} = 3$.',
       '$d = 4/3 \\approx 1{,}33$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['d-pt-ebene'] },
   },
   'ex-vek-2-3-c': {
     id: 'ex-vek-2-3-c', lessonId: 'vek-2-3', type: 'multiple-choice',
@@ -327,6 +323,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       1: '$t = 1$ ergibt $\\vec{r} = (1, 1, 1)$ — in $E$: $1 + 1 + 1 = 3 \\neq 6$. Zu klein. Die Gleichung $3t = 6$ liefert $t = 2$, nicht $1$.',
       3: '$t = 3$ würde $t + t + t = 9$ liefern, also $9 \\neq 6$. Du hast $t = d_0 / 2 = 6/2$ gerechnet — aber die Koeffizienten summieren sich zu $3$, nicht $2$. Richtig: $3t = 6 \\Rightarrow t = 2$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['sg-ebene'] },
   },
   'ex-vek-2-3-d': {
     id: 'ex-vek-2-3-d', lessonId: 'vek-2-3', type: 'number-input',
@@ -350,6 +347,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'In $x + y + z = 6$ einsetzen: $(1+t) + t + t = 6$.',
       '$1 + 3t = 6 \\;\\Rightarrow\\; t = 5/3$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['sg-ebene'] },
   },
   'ex-vek-2-3-mastery': {
     id: 'ex-vek-2-3-mastery', lessonId: 'vek-2-3', type: 'number-input', isMasteryCheck: true,
@@ -357,7 +355,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
     correctValue: 3,
     tolerance: 0.01,
     unit: '',
-    explanation: `**Strategie:** Hessesche Normalform. Für Ebene $a x + b y + c z = d_0$ und Punkt $Q$ gilt:
+    explanation: `**Ansatz:** Hessesche Normalform direkt aus der Koordinatenform. Für Ebene $a x + b y + c z = d_0$ und Punkt $Q$ gilt:
 $$d = \\frac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^{2} + b^{2} + c^{2}}}.$$
 
 **Rechnung:**
@@ -375,6 +373,7 @@ $$d = \\frac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^{2} + b^{2} + c^{2}}}.$$
       'Zähler: $|4 - 0 + 6 - 1| = 9$. Nenner: $\\sqrt{4+1+4} = 3$.',
       '$d = 9/3 = 3$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['d-pt-ebene'] },
   },
 
   // ── Lesson 4: Prüfungsaufgaben Analytische Geometrie ──
@@ -928,6 +927,11 @@ Idee: Projektion des Verbindungsvektors auf den Normalvektor $\\vec{n}$.
 $$d = \\frac{|\\vec{v} \\times (\\vec{Q} - \\vec{p})|}{|\\vec{v}|}$$
 
 Idee: Das Kreuzprodukt-Betrag ist die Fläche des Parallelogramms $\\vec{v}$–$(\\vec{Q}-\\vec{p})$. Fläche / Grundseite $|\\vec{v}|$ = Höhe = Abstand.
+
+**Abstand zweier windschiefer Geraden** $g_1\\colon \\vec{r} = \\vec{p}_1 + s \\vec{v}_1$ und $g_2\\colon \\vec{r} = \\vec{p}_2 + t \\vec{v}_2$:
+$$d = \\frac{|(\\vec{p}_2 - \\vec{p}_1) \\cdot (\\vec{v}_1 \\times \\vec{v}_2)|}{|\\vec{v}_1 \\times \\vec{v}_2|}$$
+
+Idee: $\\vec{v}_1 \\times \\vec{v}_2$ steht senkrecht auf beiden Richtungen — also senkrecht zum Gangsteg zwischen den Geraden. Spatprodukt $(\\vec{p}_2-\\vec{p}_1) \\cdot (\\vec{v}_1 \\times \\vec{v}_2)$ ist das Volumen des Spats; geteilt durch $|\\vec{v}_1 \\times \\vec{v}_2|$ (Grundfläche) ergibt sich die Höhe = kürzester Abstand. Voraussetzung: $\\vec{v}_1 \\not\\parallel \\vec{v}_2$ (sonst nicht windschief, sondern parallel).
 
 **Schnitt Gerade–Ebene:**
 1. Geradenpunkte $\\vec{r}(t)$ komponentenweise in die Ebenengleichung einsetzen.

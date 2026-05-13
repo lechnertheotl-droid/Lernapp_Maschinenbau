@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3435 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2676 (78 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1598 / 1598 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 402 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3465 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2708 (78 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1612 / 1612 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 408 / 1134 (36 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **217** (Lesson-Path: 54 · Goal-Tasks: 163)
-- 4-Block: 197/217 (91 %) 🟡
-- MC-wAE: 103/103 (100 %) ✅
-- Sub-Goals: 33/62 Goal-Tasks verknüpft 🔴
+- Aufgaben: **247** (Lesson-Path: 54 · Goal-Tasks: 193)
+- 4-Block: 229/247 (93 %) 🟡
+- MC-wAE: 117/117 (100 %) ✅
+- Sub-Goals: 39/62 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -319,7 +319,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-1-4` Kräfte als Vektoren (Prüfung) | 6 | 6/6 | 30 | 13/10/6/0/1 | 30/30 | 13/13 | ✅ | — |
 | `vek-2-1` Geradengleichung | 6 | 6/6 | 30 | 18/3/6/2/1 | 30/30 | 18/18 | ✅ | — |
 | `vek-2-2` Ebenengleichung | 6 | 6/6 | 35 | 18/7/7/2/1 | 35/35 | 18/18 | ✅ | — |
-| `vek-2-3` Abstände und Schnitte | 6 | 0/6 | 5 | 2/3/0/0/0 | 3/5 | 2/2 | ✅ | +6 Goal, +2 4B |
+| `vek-2-3` Abstände und Schnitte | 6 | 6/6 | 35 | 16/11/6/1/1 | 35/35 | 16/16 | ✅ | — |
 | `vek-2-4` Prüfungsaufgaben Analytische Geometrie | 6 | 0/6 | 6 | 5/1/0/0/0 | 0/6 | 5/5 | ✅ | +6 Goal, +6 4B |
 | `vek-3-1` Gemischte Aufgaben Skalar- und Kreuzprodukt | 6 | 0/6 | 6 | 3/2/1/0/0 | 2/6 | 3/3 | ✅ | +6 Goal, +4 4B |
 | `vek-3-2` Flächen- und Volumenberechnung | 6 | 0/6 | 4 | 2/2/0/0/0 | 0/4 | 2/2 | ✅ | +6 Goal, +4 4B |
@@ -6940,7 +6940,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 24 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 23 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7162,69 +7162,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-2-3` · Abstände und Schnitte
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-2` → `sp-komp`, `sp-orthogonal`, `sp-projektion`
-  - `vek-1-3` → `kp-komp`, `kp-betrag`
-  - `vek-2-1` → `g-paramform`, `g-windschief`
-  - `vek-2-2` → `e-koordform`, `e-normalform`, `e-normal-vektor`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `d-pt-ebene` — Abstand Punkt–Ebene: $d=|aq_x+bq_y+cq_z-d_0|/\sqrt{a^2+b^2+c^2}$ (SG 0)
-  2. `d-pt-gerade` — Abstand Punkt–Gerade: $d=|\vec v\times(\vec Q-\vec p)|/|\vec v|$ (SG 1)
-  3. `d-windschief` — Abstand windschiefer Geraden: $d=|(\vec p_2-\vec p_1)\cdot(\vec v_1\times\vec v_2)|/|\vec v_1\times\vec v_2|$ (SG 2)
-  4. `sg-ebene` — Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ lösen (SG 3)
-  5. `sg-faelle` — 3 Fälle: eindeutig (1 Punkt), $0=0$ (Gerade in Ebene), Widerspruch (parallel) ⇐ `sg-ebene` (SG 4)
-  6. `merkhilfe` — Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$ ⇐ `d-pt-ebene`, `d-pt-gerade` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `d-pt-ebene` · **0/5+** — Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\sqrt{a^2+b^2+c^2}$
-  - 🔴 [1] _hoch_ · Konzepte: `d-pt-gerade` · **0/5+** — Abstand Punkt–Gerade: $d = |\vec v \times (\vec Q - \vec p)|/|\vec v|$
-  - 🔴 [2] _hoch_ · Konzepte: `d-windschief` · **0/5+** — Abstand windschiefer Geraden: $d = |(\vec p_2 - \vec p_1) \cdot (\vec v_1 \times \vec v_2)|/|\vec v_1 \times \vec v_2|$
-  - 🔴 [3] _hoch_ · Konzepte: `sg-ebene` · **0/5+** — Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ auflösen
-  - 🔴 [4] _hoch_ · Konzepte: `sg-faelle` · **0/5+** — Schnittfälle: eindeutig (1 Punkt), $0 = 0$ (Gerade in Ebene), Widerspruch (parallel)
-  - 🔴 [5] _mittel_ · Konzepte: `merkhilfe` · **0/5+** — Merkhilfe: Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `d-pt-ebene` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `d-pt-ebene` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `d-pt-ebene` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `d-pt-ebene` | 1 | 0 | 🔴 | Betrag im Zähler vergessen |
-|  5 | 0 | transfer           | number-input     | `d-pt-ebene` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `d-pt-gerade` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `d-pt-gerade` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `d-pt-gerade` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `d-pt-gerade` | 1 | 0 | 🔴 | Skalarprodukt statt Kreuzprodukt |
-| 10 | 1 | transfer           | number-input     | `d-pt-gerade` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `d-windschief` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `d-windschief` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `d-windschief` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `d-windschief` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `d-windschief` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `sg-ebene` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `sg-ebene` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `sg-ebene` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `sg-ebene` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `sg-ebene` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `sg-faelle` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `sg-faelle` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `sg-faelle`, `sg-ebene` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `sg-faelle` | 1 | 0 | 🔴 | 0=0 als „keine Lösung" interpretiert |
-| 25 | 4 | transfer           | sorting          | `sg-faelle` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `merkhilfe` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `merkhilfe` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `merkhilfe`, `d-pt-ebene`, `d-pt-gerade` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `merkhilfe` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | matching         | `merkhilfe`, `d-pt-ebene`, `d-pt-gerade`, `d-windschief` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-2-3-a`, `ex-vek-2-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `la-1-1` · Was ist eine Matrix?
 
@@ -9447,7 +9384,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 51 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11217,6 +11154,67 @@ npm run build              # abschließender End-zu-End-Check
 | 30 | 5 | transfer           | number-input     | `e-hesse` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+
+#### `vek-2-3` · Abstände und Schnitte
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-2` → `sp-komp`, `sp-orthogonal`, `sp-projektion`
+  - `vek-1-3` → `kp-komp`, `kp-betrag`
+  - `vek-2-1` → `g-paramform`, `g-windschief`
+  - `vek-2-2` → `e-koordform`, `e-normalform`, `e-normal-vektor`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `d-pt-ebene` — Abstand Punkt–Ebene: $d=|aq_x+bq_y+cq_z-d_0|/\sqrt{a^2+b^2+c^2}$ (SG 0)
+  2. `d-pt-gerade` — Abstand Punkt–Gerade: $d=|\vec v\times(\vec Q-\vec p)|/|\vec v|$ (SG 1)
+  3. `d-windschief` — Abstand windschiefer Geraden: $d=|(\vec p_2-\vec p_1)\cdot(\vec v_1\times\vec v_2)|/|\vec v_1\times\vec v_2|$ (SG 2)
+  4. `sg-ebene` — Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ lösen (SG 3)
+  5. `sg-faelle` — 3 Fälle: eindeutig (1 Punkt), $0=0$ (Gerade in Ebene), Widerspruch (parallel) ⇐ `sg-ebene` (SG 4)
+  6. `merkhilfe` — Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$ ⇐ `d-pt-ebene`, `d-pt-gerade` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `d-pt-ebene` · **5/5+** — Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\sqrt{a^2+b^2+c^2}$
+  - ✅ [1] _hoch_ · Konzepte: `d-pt-gerade` · **5/5+** — Abstand Punkt–Gerade: $d = |\vec v \times (\vec Q - \vec p)|/|\vec v|$
+  - ✅ [2] _hoch_ · Konzepte: `d-windschief` · **5/5+** — Abstand windschiefer Geraden: $d = |(\vec p_2 - \vec p_1) \cdot (\vec v_1 \times \vec v_2)|/|\vec v_1 \times \vec v_2|$
+  - ✅ [3] _hoch_ · Konzepte: `sg-ebene` · **5/5+** — Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ auflösen
+  - ✅ [4] _hoch_ · Konzepte: `sg-faelle` · **5/5+** — Schnittfälle: eindeutig (1 Punkt), $0 = 0$ (Gerade in Ebene), Widerspruch (parallel)
+  - ✅ [5] _mittel_ · Konzepte: `merkhilfe` · **5/5+** — Merkhilfe: Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `d-pt-ebene` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `d-pt-ebene` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `d-pt-ebene` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `d-pt-ebene` | 1 | 1 | ✅ | Betrag im Zähler vergessen |
+|  5 | 0 | transfer           | number-input     | `d-pt-ebene` | 1 | 2 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `d-pt-gerade` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `d-pt-gerade` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `d-pt-gerade` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `d-pt-gerade` | 1 | 1 | ✅ | Skalarprodukt statt Kreuzprodukt |
+| 10 | 1 | transfer           | number-input     | `d-pt-gerade` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `d-windschief` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `d-windschief` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `d-windschief` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `d-windschief` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `d-windschief` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `sg-ebene` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sg-ebene` | 1 | 2 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `sg-ebene` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sg-ebene` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `sg-ebene` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `sg-faelle` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sg-faelle` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `sg-faelle`, `sg-ebene` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sg-faelle` | 1 | 1 | ✅ | 0=0 als „keine Lösung" interpretiert |
+| 25 | 4 | transfer           | sorting          | `sg-faelle` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `merkhilfe` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `merkhilfe` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `merkhilfe`, `d-pt-ebene`, `d-pt-gerade` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `merkhilfe` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | matching         | `merkhilfe`, `d-pt-ebene`, `d-pt-gerade`, `d-windschief` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
