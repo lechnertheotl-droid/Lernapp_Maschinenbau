@@ -2751,6 +2751,632 @@ export const differentialgleichungenSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-2-1 — Variation der Konstanten  (5 subGoals)
+  // Je ≥ 5 Aufgaben = mind. 25 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-2-1': {
+
+    // ── [0] Ansatz: C → C(x) im VdK-Verfahren ──────────────────────────
+    0: [
+      tf(
+        'Beim Verfahren *Variation der Konstanten* wird die Konstante $C$ in der homogenen Lösung $y_h = C\\,e^{-P(x)}$ durch eine unbekannte Funktion $C(x)$ ersetzt.',
+        true,
+        `**Ansatz:** Der Name sagt es: die Konstante $C$ *variiert* — sie wird zur $x$-abhängigen Funktion $C(x)$.
+
+**Rechnung:** Aus $y_h = C\\,e^{-P(x)}$ wird $y = C(x)\\,e^{-P(x)}$. Einsetzen in die inhomogene DGL liefert eine Bestimmungs­gleichung für $C(x)$.
+
+**Probe:** Mit konstantem $C$ erfüllt $y$ nur die homogene Gleichung ($y\' + p y = 0$). Erst $C(x)$ kann die rechte Seite $q(x) \\neq 0$ ausgleichen.
+
+**Typischer Fehler:** „Variation der Konstanten" als bloße Umbenennung $C \\to D$ missverstehen — gemeint ist die Aufhebung der Konstanten­natur.`,
+        [
+          'Was bedeutet „variieren"?',
+          'Aus konstantem $C$ wird die Funktion $C(x)$.',
+          'Die $e^{-P(x)}$-Struktur der homogenen Lösung bleibt erhalten.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['vdk-ansatz'] },
+      ),
+      mc(
+        'Für die DGL $y\' + 2y = q(x)$ ist die homogene Lösung $y_h = C\\,e^{-2x}$. Wie lautet der VdK-Ansatz für die inhomogene DGL?',
+        [
+          '$y = C(x)\\,e^{-2x}$',
+          '$y = C(x)\\,e^{+2x}$',
+          '$y = C\\,e^{-2x} + D(x)$',
+          '$y = e^{-2x}$',
+        ],
+        0,
+        `**Ansatz:** Den $e$-Faktor der homogenen Lösung beibehalten und nur die Konstante $C$ zur Funktion $C(x)$ machen.
+
+**Rechnung:** Homogene Lösung $y_h = C\\,e^{-2x}$ → VdK-Ansatz $y = C(x)\\,e^{-2x}$. Die Exponential­struktur bleibt unverändert; nur die Konstante variiert.
+
+**Probe:** $y\' = C\'\\,e^{-2x} - 2C\\,e^{-2x}$. Einsetzen in $y\' + 2y$: $C\'\\,e^{-2x} - 2C\\,e^{-2x} + 2C\\,e^{-2x} = C\'\\,e^{-2x} \\stackrel{!}{=} q(x)$ → $C\'(x) = q(x)\\,e^{2x}$. Die $C$-Terme heben sich heraus — das ist genau der Zweck.
+
+**Typischer Fehler:** Den $e$-Faktor weglassen oder das Vorzeichen umkehren — dann kürzen sich die $C$-Terme nicht heraus und die Methode bricht zusammen.`,
+        [
+          'Welche Struktur hat die homogene Lösung?',
+          'Welcher Teil wird zur Funktion gemacht?',
+          'Der $e^{-2x}$-Faktor bleibt unverändert.',
+        ],
+        {
+          1: 'Vorzeichen im Exponenten umgekehrt. Die homogene Lösung von $y\'+2y=0$ ist $e^{-2x}$ (negativer Exponent), nicht $e^{+2x}$. Die VdK übernimmt den Exponenten 1:1.',
+          2: 'Hier wurde additiv ein $D(x)$ angehängt — das ist nicht die Idee. VdK ersetzt $C$ multiplikativ durch $C(x)$, addiert nichts.',
+          3: 'Hier fehlt die zu bestimmende Funktion $C(x)$ — der Ansatz wäre dann gar nicht $x$-abhängig genug, um die Störung auszugleichen.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['vdk-ansatz'] },
+      ),
+      mc(
+        'Für die DGL $y\' + x\\,y = q(x)$ ist $P(x) = \\int x\\,dx = x^2/2$. Wie lautet der VdK-Ansatz?',
+        [
+          '$y = C(x)\\,e^{-x^2/2}$',
+          '$y = C(x)\\,e^{-x}$',
+          '$y = C(x)\\,e^{+x^2/2}$',
+          '$y = C(x)\\,x$',
+        ],
+        0,
+        `**Ansatz:** Erst homogene Lösung über Trennung der Variablen oder integrierenden Faktor bestimmen, dann $C$ zur Funktion $C(x)$ machen.
+
+**Rechnung:** $y\' + x y = 0 \\Rightarrow dy/y = -x\\,dx \\Rightarrow \\ln|y| = -x^2/2 + C_1 \\Rightarrow y_h = C\\,e^{-x^2/2}$. VdK-Ansatz: $y = C(x)\\,e^{-x^2/2}$.
+
+**Probe:** $P(x) = \\int p\\,dx = \\int x\\,dx = x^2/2$, also $y_h = C\\,e^{-P(x)} = C\\,e^{-x^2/2}$ ✓.
+
+**Typischer Fehler:** $P(x)$ als $x$ statt $x^2/2$ ansetzen (Stamm­funktion von $x$ ist $x^2/2$, nicht $x$). Oder Vorzeichen im Exponenten umkehren.`,
+        [
+          'Erst $P(x) = \\int p(x)\\,dx$ berechnen.',
+          '$\\int x\\,dx = x^2/2 + \\text{const}$.',
+          'Vorzeichen im Exponenten: $-P(x)$, also $-x^2/2$.',
+        ],
+        {
+          1: '$P(x) = \\int x\\,dx = x^2/2$, nicht $x$. Die Stamm­funktion von $x$ ist $x^2/2$, also kommt ein quadratischer Term in den Exponenten.',
+          2: 'Vorzeichen falsch. $y_h = C\\,e^{-P(x)}$ — der Exponent ist negativ.',
+          3: 'Kein $e$-Faktor — die homogene Lösung einer linearen DGL 1. Ordnung ist immer von der Form $e^{-P(x)}$, nie eine reine Potenz $x$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['vdk-ansatz'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\' + p(x)\\,y = q(x)$ den VdK-Ansatz als $y = C(x)$ (ohne $e^{-P(x)}$-Faktor). Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — der $e$-Faktor ist nur Schmuck.',
+          'Falsch: der VdK-Ansatz multipliziert die *homogene Lösung* mit der variablen Funktion. Mit $y = C(x)\\,e^{-P(x)}$ heben sich die $C\\,p\\,e^{-P}$-Terme heraus — das macht die Methode überhaupt erst lösbar.',
+          'Stimmt, weil $y = C(x)$ allgemein genug ist.',
+          'Falsch: der Ansatz sollte $y = C(x) / e^{-P(x)}$ heißen.',
+        ],
+        1,
+        `**Ansatz:** VdK lebt davon, dass beim Einsetzen die $C$-Terme heraus­fallen und nur $C\'(x)$ stehen bleibt. Das geht *nur* mit dem $e^{-P(x)}$-Faktor.
+
+**Rechnung:** Mit $y = C(x)\\,e^{-P}$: $y\' = C\'\\,e^{-P} - C\\,p\\,e^{-P}$. Einsetzen: $C\'\\,e^{-P} - C\\,p\\,e^{-P} + p\\,C\\,e^{-P} = C\'\\,e^{-P}$ → $C\'(x) = q\\,e^{+P}$. Klare Differenzial­gleichung erster Ordnung für $C$, durch Integration lösbar. Mit $y = C(x)$: $y\' = C\'(x)$ → $C\' + p\\,C = q$ — derselbe DGL-Typ wie vorher, keine Vereinfachung.
+
+**Probe:** Mit $e^{-P}$-Faktor reduziert sich der Schritt 3 auf eine einfache Integration. Ohne diesen Faktor entsteht eine neue lineare DGL — der Vorteil verpufft.
+
+**Typischer Fehler:** Die Methode als „mach die Konstante zur Funktion" auswendig lernen und den e-Faktor übersehen. Tatsächlich ist *die ganze homogene Lösung* (inkl. $e$-Faktor) der Ausgangs­punkt.`,
+        [
+          'Warum entsteht überhaupt eine einfache Bestimmungs­gleichung für $C(x)$?',
+          'Welche Terme heben sich beim Einsetzen heraus?',
+          'Ohne $e^{-P}$-Faktor entsteht dieselbe DGL nochmal.',
+        ],
+        {
+          0: 'Der $e$-Faktor ist *essenziell* — ohne ihn würde sich beim Einsetzen nichts vereinfachen, und die Methode hätte keinen Mehrwert gegenüber dem direkten Lösen.',
+          2: 'Eine Funktion $C(x)$ allein ohne Rahmen $e^{-P}$ produziert beim Einsetzen wieder die ursprüngliche DGL — der ganze Trick der VdK entfällt.',
+          3: '$y = C/e^{-P} = C\\,e^{+P}$ wäre die *Inverse* der homogenen Lösung — das ist nicht die VdK-Idee. Standard: multiplikativ mit $e^{-P}$, nicht dividiert.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['vdk-ansatz'] },
+      ),
+      sorting(
+        'Bringe die Schritte des Variation-der-Konstanten-Verfahrens in die richtige Reihenfolge.',
+        [
+          'Homogene Lösung $y_h = C\\,e^{-P(x)}$ mit $P(x) = \\int p(x)\\,dx$ bestimmen.',
+          'Konstante variieren: $C \\to C(x)$ — Ansatz $y = C(x)\\,e^{-P(x)}$.',
+          'Ansatz in die DGL einsetzen — die $C(x)$-Terme heben sich heraus, übrig bleibt $C\'(x)\\,e^{-P(x)} = q(x)$.',
+          'Nach $C\'(x)$ auflösen: $C\'(x) = q(x)\\,e^{P(x)}$ und integrieren: $C(x) = \\int q(x)\\,e^{P(x)}\\,dx + \\tilde C$.',
+          '$C(x)$ in den Ansatz zurücksetzen: $y(x) = C(x)\\,e^{-P(x)}$.',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Die Schritte bauen aufeinander auf — vorherige Lösung wird in den nächsten Schritt eingespeist.
+
+**Rechnung:** (1) ist Voraussetzung (homogene Lösung). (2) macht $C$ variabel. (3) ist der mechanische Einsetz-Schritt, der erst nach (1) und (2) möglich ist. (4) extrahiert $C\'$ und integriert — ohne (3) gibt es keinen Ausdruck für $C\'$. (5) setzt das fertige $C(x)$ zurück in den Ansatz aus (2).
+
+**Probe:** Beispiel $y\' + y = e^x$. (1) $y_h = C\\,e^{-x}$. (2) $y = C(x)\\,e^{-x}$. (3) Einsetzen: $C\'\\,e^{-x} - C\\,e^{-x} + C\\,e^{-x} = C\'\\,e^{-x} = e^x$. (4) $C\'(x) = e^{2x}$ → $C(x) = e^{2x}/2 + \\tilde C$. (5) $y = (e^{2x}/2 + \\tilde C)\\,e^{-x} = e^x/2 + \\tilde C\\,e^{-x}$.
+
+**Typischer Fehler:** Vor dem Einsetzen die Integration versuchen — ohne den expliziten Ausdruck für $C\'(x)$ ist nicht klar, was zu integrieren ist.`,
+        [
+          'Worauf basiert der VdK-Ansatz?',
+          'Was muss zuerst da sein, bevor man variieren kann?',
+          'Integration kommt nach dem Einsetzen — vorher kennt man $C\'(x)$ noch nicht.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['vdk-ansatz'] },
+      ),
+    ],
+
+    // ── [1] Einsetzen liefert C'(x) = q(x) e^{P(x)} ─────────────────────
+    1: [
+      tf(
+        'Nach Einsetzen des VdK-Ansatzes $y = C(x)\\,e^{-P(x)}$ in $y\' + p(x)\\,y = q(x)$ verbleibt die Bestimmungs­gleichung $C\'(x) = q(x)\\,e^{P(x)}$.',
+        true,
+        `**Ansatz:** Produktregel auf $y = C(x)\\,e^{-P}$ anwenden, in die DGL einsetzen, $C$-Terme verschwinden.
+
+**Rechnung:** $y\' = C\'\\,e^{-P} - C\\,p\\,e^{-P}$. $y\' + p\\,y = C\'\\,e^{-P} - C\\,p\\,e^{-P} + p\\,C\\,e^{-P} = C\'\\,e^{-P} = q(x)$. Mit $e^{+P}$ multiplizieren: $C\'(x) = q(x)\\,e^{P(x)}$.
+
+**Probe:** Wäre da noch ein $C(x)$-Term übrig, hätte man wieder eine vollständige DGL für $C$ — der Sinn der Methode wäre verfehlt. Das saubere Aufheben ist das Kennzeichen.
+
+**Typischer Fehler:** Vorzeichen im Exponenten verwechseln — $e^{+P}$ statt $e^{-P}$ multiplizieren (oder umgekehrt).`,
+        [
+          'Wie sieht $y\'$ aus dem Ansatz aus?',
+          'Welche Terme verschwinden beim Einsetzen?',
+          'Übrig bleibt eine reine Gleichung in $C\'(x)$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['vdk-cprime'] },
+      ),
+      mc(
+        'Für die DGL $y\' + y = x$ ergibt VdK die Bestimmungs­gleichung für $C\'(x)$. Was ist $C\'(x)$?',
+        [
+          '$C\'(x) = x\\,e^{x}$',
+          '$C\'(x) = x\\,e^{-x}$',
+          '$C\'(x) = x$',
+          '$C\'(x) = e^{x}$',
+        ],
+        0,
+        `**Ansatz:** Formel $C\'(x) = q(x)\\,e^{P(x)}$ anwenden. $p$ und $q$ identifizieren, $P(x)$ berechnen, einsetzen.
+
+**Rechnung:** Hier $p(x) = 1$, $q(x) = x$. $P(x) = \\int p\\,dx = x$. Damit $C\'(x) = q(x)\\,e^{P(x)} = x\\,e^{x}$.
+
+**Probe:** Ansatz $y = C(x)\\,e^{-x}$. $y\' = C\'\\,e^{-x} - C\\,e^{-x}$. $y\' + y = C\'\\,e^{-x} = x$ → $C\'(x) = x\\,e^{x}$ ✓.
+
+**Typischer Fehler:** Vorzeichen im Exponenten verwechseln ($e^{-P}$ statt $e^{+P}$), oder den Faktor $q(x)$ vergessen.`,
+        [
+          'Formel: $C\'(x) = q(x)\\,e^{P(x)}$.',
+          'Hier $q(x) = x$, $p(x) = 1$, $P(x) = x$.',
+          'Daraus folgt $C\'(x) = x\\,e^{x}$.',
+        ],
+        {
+          1: 'Vorzeichen im Exponenten umgekehrt. Die Formel ist $C\' = q\\,e^{+P}$, nicht $e^{-P}$. Mit $e^{-P}$ würden sich die $C$-Terme nicht heraus­heben.',
+          2: 'Der $e$-Faktor fehlt. Ohne ihn wäre $C\'$ einfach $q(x)$ — das wäre nur richtig, wenn $P(x) = 0$, also $p \\equiv 0$. Hier ist $p = 1 \\neq 0$.',
+          3: 'Der Faktor $q(x) = x$ wurde übersehen. $C\'$ ist das *Produkt* von $q$ und $e^{P}$, nicht nur $e^{P}$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['vdk-cprime'] },
+      ),
+      ni(
+        'Für die DGL $y\' + y = e^{x}$ ist $C\'(x) = q(x)\\,e^{P(x)}$. Wie groß ist $C\'(1)$ (auf 2 Dezimal­stellen)?',
+        7.39, 0.05, '',
+        `**Ansatz:** $C\'(x) = q(x)\\,e^{P(x)}$ aufstellen, dann an $x = 1$ auswerten.
+
+**Rechnung:** $p(x) = 1$, $q(x) = e^x$, $P(x) = x$. $C\'(x) = e^x \\cdot e^x = e^{2x}$. $C\'(1) = e^{2} \\approx 7{,}389$.
+
+**Probe:** Ansatz $y = C(x)\\,e^{-x}$. Einsetzen: $C\'\\,e^{-x} - C\\,e^{-x} + C\\,e^{-x} = C\'\\,e^{-x} = e^x$. Multiplikation mit $e^x$: $C\'(x) = e^{2x}$ ✓. An $x=1$: $e^2 = 7{,}3891$.
+
+**Typischer Fehler:** Den Exponenten $x + x = 2x$ als $x^2$ rechnen (Quadrat statt Faktor 2). Oder das Produkt $e^x \\cdot e^x$ als $e^x$ stehen lassen.`,
+        [
+          '$p(x) = 1$, $q(x) = e^x$, $P(x) = x$.',
+          '$C\'(x) = q\\,e^{P} = e^x \\cdot e^x = e^{2x}$.',
+          '$C\'(1) = e^2 \\approx 7{,}39$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['vdk-cprime'] },
+      ),
+      mc(
+        'Ein Lerner schreibt für $y\' + 2y = q(x)$: $C\'(x) = q(x)\\,e^{-2x}$. Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — der Exponent kommt aus der homogenen Lösung $e^{-2x}$.',
+          'Vorzeichen­fehler im Exponenten: das Multiplizieren der gekürzten Gleichung $C\'\\,e^{-P} = q$ mit $e^{+P}$ liefert $C\'(x) = q(x)\\,e^{+P(x)} = q(x)\\,e^{+2x}$, nicht $e^{-2x}$.',
+          'Falsch: $C\'$ ist immer $q(x)$ allein.',
+          'Falsch: $C\'(x)$ braucht den Faktor $p(x)$, nicht $e^{P(x)}$.',
+        ],
+        1,
+        `**Ansatz:** Den Aufhebungs­prozess gedanklich durchgehen: nach Einsetzen bleibt $C\'\\,e^{-P} = q$. Um $C\'$ allein zu isolieren, mit $e^{+P}$ multiplizieren — beide Seiten.
+
+**Rechnung:** $p = 2$, $P = 2x$. Nach Einsetzen: $C\'(x)\\,e^{-2x} = q(x)$. Beide Seiten mit $e^{+2x}$ multiplizieren: $C\'(x) = q(x)\\,e^{+2x}$. Der positive Exponent ist der Kern der Methode.
+
+**Probe:** Beispiel $q(x) = e^{2x}$ (Resonanz!): $C\'(x) = e^{2x}\\,e^{2x} = e^{4x}$ — sinnvoll. Mit Lerner-Variante: $C\'(x) = e^{2x}\\,e^{-2x} = 1$ — würde die Integration trivial machen, aber das ist nicht der richtige Wert.
+
+**Typischer Fehler:** Den Exponenten der homogenen Lösung 1:1 in $C\'$ übernehmen. Tatsächlich entsteht $C\'$ aus dem *Aufheben* dieses Exponenten — das Vorzeichen kehrt sich um.`,
+        [
+          'Wie isoliert man $C\'(x)$ aus $C\'\\,e^{-P} = q$?',
+          'Multiplikation mit $e^{+P}$ hebt $e^{-P}$ links auf.',
+          'Folge: rechts steht $q \\cdot e^{+P}$, nicht $q \\cdot e^{-P}$.',
+        ],
+        {
+          0: 'Der Exponent der homogenen Lösung ist $-P$, aber der Exponent in der Bestimmungs­gleichung für $C\'$ ist $+P$ — das *Aufheben* des $-P$-Faktors kehrt das Vorzeichen um.',
+          2: '$C\' = q$ wäre nur richtig, wenn $p \\equiv 0$, also $P \\equiv 0$. Bei nicht-trivialem $p$ ist der $e^{P}$-Faktor essentiell.',
+          3: 'Der Faktor $p(x)$ taucht *im Exponenten* auf, nicht direkt als Faktor. $P = \\int p\\,dx$ — die Stamm­funktion, nicht $p$ selbst, geht in $e^{P}$ ein.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['vdk-cprime'] },
+      ),
+      ni(
+        'Für die DGL $y\' + 2y = e^{-2x}$ ist $C\'(x) = q(x)\\,e^{P(x)}$. Wie groß ist $C\'(2)$ (auf 2 Dezimal­stellen)?',
+        1, 0.01, '',
+        `**Ansatz:** Bei Resonanz (Störung = homogene Form) vereinfacht sich das Produkt $q\\,e^{P}$ zu einer Konstanten.
+
+**Rechnung:** $p = 2$, $q = e^{-2x}$, $P = 2x$. $C\'(x) = e^{-2x} \\cdot e^{+2x} = e^{0} = 1$. Für alle $x$: $C\'(x) = 1$, also auch $C\'(2) = 1$.
+
+**Probe:** Integration: $C(x) = x + \\tilde C$. Vollständig: $y = (x + \\tilde C)\\,e^{-2x} = x\\,e^{-2x} + \\tilde C\\,e^{-2x}$. Genau die Resonanz-Form $y_p = x\\,e^{-2x}$ ✓.
+
+**Typischer Fehler:** Die Exponenten als $e^{-2x \\cdot 2x} = e^{-4x^2}$ multiplizieren (Potenzgesetz falsch). Korrekt: $e^a \\cdot e^b = e^{a+b}$, nicht $e^{a\\cdot b}$.`,
+        [
+          'Potenzgesetz: $e^a \\cdot e^b = e^{a+b}$.',
+          'Hier $a = -2x$, $b = +2x$ → $a+b = 0$.',
+          '$e^{0} = 1$ — konstant für alle $x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['vdk-cprime'] },
+      ),
+    ],
+
+    // ── [2] Allgemeine Lösung = y_h + y_p ───────────────────────────────
+    2: [
+      tf(
+        'Die allgemeine Lösung einer inhomogenen linearen DGL ist die Summe aus homogener Lösung und einer beliebigen partikulären Lösung: $y = y_h + y_p$.',
+        true,
+        `**Ansatz:** Linearität: ist $y_p$ eine spezielle Lösung der inhomogenen DGL und $y_h$ die allgemeine Lösung der homogenen DGL, dann erfüllt $y_p + y_h$ wieder die inhomogene DGL.
+
+**Rechnung:** $L[y_p + y_h] = L[y_p] + L[y_h] = q + 0 = q$. Die freie Konstante in $y_h$ liefert die einparametrige Lösungs­schar; die spezielle Lösung $y_p$ verschiebt diese Schar nur.
+
+**Probe:** Beispiel $y\' - y = e^{2x}$. $y_h = C\\,e^x$, $y_p = e^{2x}$ (eine spezielle Lösung). $y = C\\,e^x + e^{2x}$. Test: $y\' - y = (C\\,e^x + 2e^{2x}) - (C\\,e^x + e^{2x}) = e^{2x}$ ✓.
+
+**Typischer Fehler:** Nur $y_p$ angeben und $y_h$ vergessen — dann kann kein AWP mit beliebiger Anfangs­bedingung erfüllt werden.`,
+        [
+          'Was sagt der Superpositions­satz für lineare DGL?',
+          '$L[y_h] = 0$ und $L[y_p] = q$ — summieren liefert $q$.',
+          'Vollständige Lösungs­schar braucht *beide* Anteile.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['vdk-allg-loesung'] },
+      ),
+      mc(
+        'Wie lautet die allgemeine Lösung der DGL $y\' - y = e^{2x}$?',
+        [
+          '$y = C\\,e^{x} + e^{2x}$',
+          '$y = e^{2x}$',
+          '$y = C\\,e^{x}$',
+          '$y = C\\,e^{2x} + e^{x}$',
+        ],
+        0,
+        `**Ansatz:** $y_h$ aus der homogenen DGL, $y_p$ über Standard­ansatz $A\\,e^{2x}$ — dann summieren.
+
+**Rechnung:** Homogen $y\' - y = 0$ → $y_h = C\\,e^{x}$. Partikulär mit $y_p = A\\,e^{2x}$: $y_p\' - y_p = 2A\\,e^{2x} - A\\,e^{2x} = A\\,e^{2x} \\stackrel{!}{=} e^{2x}$ → $A = 1$, also $y_p = e^{2x}$. Allgemein: $y = C\\,e^x + e^{2x}$.
+
+**Probe:** $y\' - y = (C\\,e^x + 2\\,e^{2x}) - (C\\,e^x + e^{2x}) = e^{2x}$ ✓.
+
+**Typischer Fehler:** Nur $y_p$ angeben (Option B) und $y_h$ vergessen, oder die Rollen von $y_h$ und $y_p$ vertauschen (Option D — falscher Exponent in beiden Anteilen).`,
+        [
+          'Homogen: $y\' = y \\Rightarrow y_h = C\\,e^x$.',
+          'Partikulär: Ansatz $A\\,e^{2x}$, in DGL einsetzen.',
+          '$A\\,e^{2x} = e^{2x}$ → $A = 1$, dann summieren.',
+        ],
+        {
+          1: 'Hier fehlt die homogene Lösung $C\\,e^x$ — ohne die einparametrige $C$-Schar ist kein AWP mit beliebiger Anfangs­bedingung erfüllbar.',
+          2: 'Hier fehlt die partikuläre Lösung. Probe: $y = C\\,e^x$, $y\' - y = C\\,e^x - C\\,e^x = 0 \\neq e^{2x}$ — die rechte Seite wird nicht erreicht.',
+          3: 'Die Rollen sind vertauscht. Die homogene Lösung hat Exponent $+1$ (aus $\\lambda - 1 = 0$), die partikuläre Lösung hat Exponent $+2$ (aus der Störung $e^{2x}$). Beide gehören an andere Stellen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['vdk-allg-loesung'] },
+      ),
+      ni(
+        'Löse das AWP $y\' - y = e^{2x}$, $y(0) = 3$ und berechne $y(1)$ (auf 2 Dezimal­stellen).',
+        12.83, 0.05, '',
+        `**Ansatz:** Allgemeine Lösung aufschreiben, $C$ aus AB bestimmen, an Zielstelle auswerten.
+
+**Rechnung:** Allgemein: $y(x) = C\\,e^x + e^{2x}$. AB: $y(0) = C + 1 = 3 \\Rightarrow C = 2$. Damit $y(x) = 2\\,e^x + e^{2x}$, und $y(1) = 2e + e^2 \\approx 5{,}4366 + 7{,}3891 \\approx 12{,}826$.
+
+**Probe:** $y\'(1) - y(1) = (2e + 2e^2) - (2e + e^2) = e^2 \\approx 7{,}389$. Die DGL verlangt $y\'-y = e^{2x}\\big|_{x=1} = e^2$ ✓.
+
+**Typischer Fehler:** $C$ direkt gleich $y(0) = 3$ setzen — Achtung: $y_p(0) = e^0 = 1$ ist nicht null, also $C = y(0) - y_p(0) = 3 - 1 = 2$.`,
+        [
+          'Allgemein: $y = C\\,e^x + e^{2x}$.',
+          'AB: $y(0) = C + 1 = 3 \\Rightarrow C = 2$.',
+          '$y(1) = 2e + e^2 \\approx 12{,}83$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['vdk-allg-loesung'] },
+      ),
+      mc(
+        'Ein Lerner gibt für $y\' + y = 2$ als „Lösung" $y = 2$ an. Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — die partikuläre Lösung allein reicht.',
+          'Unvollständig: $y = 2$ ist eine *partikuläre* Lösung, aber die allgemeine Lösung verlangt auch den homogenen Anteil: $y = C\\,e^{-x} + 2$. Sonst kann keine AB außer $y(0) = 2$ erfüllt werden.',
+          'Falsch: $y = 2$ erfüllt die DGL gar nicht.',
+          'Falsch: die Lösung müsste $y = 2x$ heißen.',
+        ],
+        1,
+        `**Ansatz:** Eine inhomogene lineare DGL 1. Ordnung hat eine einparametrige Lösungs­schar. Die spezielle Lösung allein ist nur *ein* Mitglied dieser Schar.
+
+**Rechnung:** $y = 2$: $y\' + y = 0 + 2 = 2$ ✓ — die DGL ist erfüllt. Aber: AB-Erfüllung verlangt einen Freiheits­grad. $y \\equiv 2$ liefert $y(0) = 2$ und sonst nichts. Allgemein: $y = C\\,e^{-x} + 2$. Test: $y\' + y = -C\\,e^{-x} + C\\,e^{-x} + 2 = 2$ ✓.
+
+**Probe:** Für $y(0) = 5$ würde der Lerner-Ansatz scheitern (er liefert nur $y(0) = 2$). Mit $C\\,e^{-x} + 2$: $y(0) = C + 2 = 5 \\Rightarrow C = 3$. ✓
+
+**Typischer Fehler:** Eine spezielle Lösung als „die" Lösung interpretieren. Tatsächlich ist sie nur eine *von vielen* — der homogene Anteil unterscheidet sie alle.`,
+        [
+          'Welche Lösungs­schar gehört zur DGL 1. Ordnung?',
+          'Wie viele Freiheits­grade braucht man, um eine AB zu erfüllen?',
+          'Test: könnte die Lerner-Lösung jede AB $y(0) = y_0$ treffen?',
+        ],
+        {
+          0: 'Die Partikulärlösung allein hat keinen Freiheits­grad — sie kann keine beliebige AB erfüllen. Nur die einparametrige Schar $y_h + y_p$ kann das.',
+          2: 'Doch — $y \\equiv 2$ erfüllt $y\'+y=0+2=2$ ✓. Das Problem ist nicht die DGL-Erfüllung, sondern die fehlende $C$-Konstante.',
+          3: '$y = 2x$ erfüllt die DGL nicht: $y\' + y = 2 + 2x$, das ist nicht konstant $= 2$ — passt nur bei $x = 0$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['vdk-allg-loesung'] },
+      ),
+      ni(
+        'Löse das AWP $y\' + y = 2$, $y(0) = 5$ und berechne $y(2)$ (auf 2 Dezimal­stellen).',
+        2.41, 0.05, '',
+        `**Ansatz:** Allgemeine Lösung über Superposition: $y = y_h + y_p$. $C$ aus AB fixieren.
+
+**Rechnung:** Homogen: $y\' + y = 0 \\Rightarrow y_h = C\\,e^{-x}$. Partikulär (konstante Störung): Ansatz $y_p = A$ konstant, $y_p\' + y_p = 0 + A = 2 \\Rightarrow A = 2$. Allgemein: $y = C\\,e^{-x} + 2$. AB: $y(0) = C + 2 = 5 \\Rightarrow C = 3$. Damit $y(x) = 3\\,e^{-x} + 2$, und $y(2) = 3\\,e^{-2} + 2 \\approx 3 \\cdot 0{,}1353 + 2 \\approx 2{,}406$.
+
+**Probe:** $y\'(x) = -3\\,e^{-x}$. $y\' + y = -3\\,e^{-x} + 3\\,e^{-x} + 2 = 2$ ✓. AB: $y(0) = 3 + 2 = 5$ ✓.
+
+**Typischer Fehler:** $C = y(0) = 5$ ohne Korrektur durch $y_p(0) = 2$. Tatsächlich gilt $y(0) = C + 2$, also $C = 3$.`,
+        [
+          '$y_h = C\\,e^{-x}$, $y_p = 2$.',
+          'AB: $y(0) = C + 2 = 5 \\Rightarrow C = 3$.',
+          '$y(2) = 3\\,e^{-2} + 2 \\approx 2{,}41$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['vdk-allg-loesung'] },
+      ),
+    ],
+
+    // ── [3] Störansatz: Polynom/Exp/Trig direkte Vermutung ──────────────
+    3: [
+      tf(
+        'Bei einer Stör­funktion $q(x) = e^{\\alpha x}$ (und $\\alpha$ keine Wurzel der charakteristischen Gleichung) ist der passende Stör­ansatz $y_p = A\\,e^{\\alpha x}$.',
+        true,
+        `**Ansatz:** Bei einfachen Stör­funktionen rät man die Form der partikulären Lösung — mit unbekannten Koeffizienten, die durch Einsetzen bestimmt werden.
+
+**Rechnung:** Beispiel $y\' - y = e^{2x}$: Ansatz $y_p = A\\,e^{2x}$ (nicht-resonant, denn $2$ ist nicht Wurzel von $\\lambda - 1 = 0$). Einsetzen: $2A\\,e^{2x} - A\\,e^{2x} = A\\,e^{2x} = e^{2x}$ → $A = 1$.
+
+**Probe:** Die Stör­ansatz-Tabelle ordnet jeder Stör­funktion eine passende Ansatz-Form zu: Polynom → Polynom, Exp → Exp, Trig → Trig-Kombination, Konstante → Konstante.
+
+**Typischer Fehler:** Der „kein Resonanzfall"-Vorbehalt wird übersehen. Wenn $\\alpha$ Wurzel der char. Gleichung ist (also $e^{\\alpha x}$ schon homogene Lösung), muss der Ansatz mit $x$ multipliziert werden.`,
+        [
+          'Welche Form hat $q(x)$?',
+          'Welcher Ansatz reproduziert nach Ableiten und Einsetzen dieselbe Form?',
+          'Bei reinem Exponential: $A\\,e^{\\alpha x}$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['stoeransatz'] },
+      ),
+      mc(
+        'Welcher Stör­ansatz passt zur DGL $y\' + y = x^2 + 1$?',
+        [
+          '$y_p = A x^2 + B x + C$',
+          '$y_p = A x^2$',
+          '$y_p = A$ (Konstante)',
+          '$y_p = A\\,e^{x^2+1}$',
+        ],
+        0,
+        `**Ansatz:** Bei Polynom-Störung vom Grad $n$ ist der Ansatz ein vollständiges Polynom vom Grad $n$ — alle Koeffizienten von $x^0$ bis $x^n$ sind unbekannte Parameter.
+
+**Rechnung:** $q(x) = x^2 + 1$ ist Polynom vom Grad 2. Ansatz: $y_p = A x^2 + B x + C$. Einsetzen: $y_p\' + y_p = 2Ax + B + A x^2 + B x + C = A x^2 + (2A+B)x + (B+C) \\stackrel{!}{=} x^2 + 0\\cdot x + 1$. Koeffizienten­vergleich: $A = 1$, $2A+B = 0 \\Rightarrow B = -2$, $B+C = 1 \\Rightarrow C = 3$. Also $y_p = x^2 - 2x + 3$.
+
+**Probe:** $y_p\' + y_p = (2x - 2) + (x^2 - 2x + 3) = x^2 + 1$ ✓.
+
+**Typischer Fehler:** Nur die höchste Potenz im Ansatz ($A x^2$) — die Ableitung erzeugt niedrigere Potenzen, die im Ansatz schon vorhanden sein müssen. Konstanter Ansatz reicht erst recht nicht.`,
+        [
+          'Welcher Grad hat $q(x) = x^2 + 1$?',
+          'Ansatz muss alle Koeffizienten von $x^0$ bis $x^n$ enthalten.',
+          'Auch wenn die Stör­funktion lückenhaft ist (z. B. kein $x$-Term), bleibt der Ansatz vollständig.',
+        ],
+        {
+          1: 'Unvollständiges Polynom: die Ableitung von $A x^2$ ist $2Ax$, das erzeugt einen $x$-Term. Ohne $B x$-Term im Ansatz lässt sich der Koeffizienten­vergleich nicht erfüllen.',
+          2: 'Konstanter Ansatz $y_p = A$: $y_p\' + y_p = A = x^2 + 1$ — geht nur, wenn $x^2 + 1$ konstant wäre. Ist es nicht.',
+          3: 'Wilde Mischform: $e^{x^2+1}$ ist keine sinnvolle Ansatz-Funktion für Polynom-Störung. Stör­ansätze richten sich nach der Form der Störung, nicht nach „irgendetwas Exponential".',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['stoeransatz'] },
+      ),
+      mc(
+        'Welcher Stör­ansatz passt zur DGL $y\' - 2y = \\cos(3x)$?',
+        [
+          '$y_p = A\\cos(3x) + B\\sin(3x)$',
+          '$y_p = A\\cos(3x)$',
+          '$y_p = A\\sin(3x)$',
+          '$y_p = A\\cos(3x) \\cdot B\\sin(3x)$',
+        ],
+        0,
+        `**Ansatz:** Bei trigonometrischer Stör­funktion *immer* beide trigonometrischen Funktionen im Ansatz — Ableiten mischt sin und cos.
+
+**Rechnung:** $y_p = A\\cos(3x) + B\\sin(3x)$. $y_p\' = -3A\\sin(3x) + 3B\\cos(3x)$. Einsetzen: $y_p\' - 2y_p = (-3A\\sin - 3A\\cdot 0)\\ldots$ — vorsichtig: $y_p\' - 2y_p = (-3A\\sin(3x) + 3B\\cos(3x)) - 2(A\\cos(3x) + B\\sin(3x)) = (3B - 2A)\\cos(3x) + (-3A - 2B)\\sin(3x) \\stackrel{!}{=} \\cos(3x) + 0\\sin(3x)$. Koeffizienten­vergleich: $3B - 2A = 1$, $-3A - 2B = 0$. Aus der zweiten Gleichung: $B = -3A/2$. Einsetzen: $3(-3A/2) - 2A = -9A/2 - 2A = -13A/2 = 1 \\Rightarrow A = -2/13$, $B = 3/13$. → $y_p = -\\tfrac{2}{13}\\cos(3x) + \\tfrac{3}{13}\\sin(3x)$.
+
+**Probe:** Mit nur $A\\cos(3x)$ allein scheitert der Ansatz, weil die Ableitung einen $\\sin$-Term erzeugt, der nirgendwo angepasst werden kann.
+
+**Typischer Fehler:** Nur eine der beiden Trig-Funktionen im Ansatz — Ableiten mischt sin↔cos, daher *beide* nötig.`,
+        [
+          'Was passiert beim Ableiten von $\\cos$?',
+          '$\\cos \\to -\\sin$, $\\sin \\to +\\cos$ — beide Funktionen entstehen.',
+          'Ansatz braucht *beide*, sonst Koeffizienten­vergleich unlösbar.',
+        ],
+        {
+          1: 'Nur $\\cos(3x)$ im Ansatz — Ableiten erzeugt aber $-3A\\sin(3x)$. Ohne $B\\sin(3x)$-Term im Ansatz kann der Koeffizienten­vergleich nicht erfüllt werden.',
+          2: 'Spiegelfehler: nur $\\sin(3x)$ im Ansatz hat dasselbe Problem — Ableiten erzeugt einen $\\cos$-Term ohne Gegenstück.',
+          3: 'Das *Produkt* $\\cos \\cdot \\sin$ wäre weder Stör­funktion-Form noch sinnvolle Lösungs­vermutung. Die Stör­funktion ist additiv aus sin und cos zusammenzusetzen.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['stoeransatz'] },
+      ),
+      mc(
+        'Ein Lerner setzt für $y\' + y = \\cos(2x)$ den Stör­ansatz $y_p = A\\cos(2x)$ (nur Cosinus). Welcher Hinweis ist korrekt?',
+        [
+          'Stimmt — Cosinus reicht, weil die Stör­funktion nur Cosinus enthält.',
+          'Unvollständig: $y_p\' = -2A\\sin(2x)$ erzeugt einen $\\sin$-Term. Beim Koeffizienten­vergleich bleibt dieser sin-Term übrig und lässt sich nicht ausgleichen. Korrekt: $y_p = A\\cos(2x) + B\\sin(2x)$.',
+          'Falsch: bei Cosinus-Störung muss der Ansatz immer $A x \\cos(2x)$ heißen.',
+          'Falsch: trigonometrische DGL hat keine partikulären Lösungen.',
+        ],
+        1,
+        `**Ansatz:** Beim Ableiten von $\\cos$ entsteht $-\\sin$, beim Ableiten von $\\sin$ entsteht $+\\cos$. Daher *beide* Trig-Funktionen im Ansatz nötig.
+
+**Rechnung:** Lerner-Ansatz $y_p = A\\cos(2x)$: $y_p\' = -2A\\sin(2x)$. $y_p\' + y_p = -2A\\sin(2x) + A\\cos(2x) \\stackrel{!}{=} \\cos(2x)$. Koeffizienten­vergleich: $-2A = 0$ (sin) und $A = 1$ (cos). Widerspruch: $A$ kann nicht gleichzeitig $0$ und $1$ sein. → Ansatz unlösbar.
+
+**Probe:** Korrekter Ansatz $y_p = A\\cos(2x) + B\\sin(2x)$: $y_p\' + y_p = (A + 2B)\\cos(2x) + (B - 2A)\\sin(2x) = \\cos(2x)$. → $A + 2B = 1$, $B - 2A = 0$ → $B = 2A$, $A + 4A = 1 \\Rightarrow A = 1/5$, $B = 2/5$.
+
+**Typischer Fehler:** Den Ansatz an der *Form der Stör­funktion* festmachen, ohne zu berücksichtigen, dass die Ableitung neue Funktions­typen erzeugt.`,
+        [
+          'Was erzeugt die Ableitung des Cosinus?',
+          'Wenn im Ansatz nur eine der beiden Trig-Funktionen steht — bleibt nach Einsetzen ein nicht-ausgleichbarer Term?',
+          'Test: Koeffizienten­vergleich durchführen, Widerspruch zeigen.',
+        ],
+        {
+          0: 'Genau das ist der Trugschluss — die *Stör­funktion* enthält nur Cosinus, aber die *Ableitung* der Ansatz-Funktion erzeugt Sinus. Daher muss auch Sinus im Ansatz stehen.',
+          2: 'Das wäre der Resonanz-Fall — der gilt aber nur, wenn $\\cos(2x)$ bereits Lösung der homogenen DGL ist. Hier ist die homogene Lösung $e^{-x}$, also kein Resonanzfall.',
+          3: 'Trigonometrische DGL haben sehr wohl partikuläre Lösungen — die Stör­ansatz-Methode ist Standard für solche Probleme.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['stoeransatz'] },
+      ),
+      matching(
+        'Ordne jeder Stör­funktion den passenden Stör­ansatz zu (keine Resonanz).',
+        [
+          { left: '$q(x) = e^{2x}$', right: '$y_p = A\\,e^{2x}$' },
+          { left: '$q(x) = \\cos(2x)$', right: '$y_p = A\\cos(2x) + B\\sin(2x)$' },
+          { left: '$q(x) = x^2$', right: '$y_p = A x^2 + B x + C$' },
+          { left: '$q(x) = 5$', right: '$y_p = A$ (Konstante)' },
+        ],
+        `**Ansatz:** Tabellen­ansatz: für jede Stör­funktions­art gibt es einen passenden Standard­ansatz. Form der Stör­funktion → Form des Ansatzes.
+
+**Rechnung:**
+- Exponential $e^{\\alpha x}$ → Ansatz $A\\,e^{\\alpha x}$ (eine Konstante).
+- Trigonometrisch $\\cos(\\omega x)$ oder $\\sin(\\omega x)$ → Ansatz mit *beiden* Trig-Funktionen.
+- Polynom Grad $n$ → vollständiges Polynom Grad $n$ ($n+1$ Konstanten).
+- Konstante (Grad-0-Polynom) → konstanter Ansatz.
+
+**Probe:** Pro Ansatz nach Einsetzen Koeffizienten­vergleich durchführen — Anzahl Gleichungen = Anzahl Unbekannte → eindeutige Lösung (außer Resonanz).
+
+**Typischer Fehler:** Polynom-Ansatz unvollständig (nur höchste Potenz) oder Trig-Ansatz mit nur einer Funktion — beide Fälle scheitern beim Koeffizienten­vergleich.`,
+        [
+          'Form der Stör­funktion identifizieren.',
+          'Standard­ansatz nach Tabelle wählen.',
+          'Polynome: vollständig; Trig: beide Funktionen; Exp: eine Konstante.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['stoeransatz'] },
+      ),
+    ],
+
+    // ── [4] Resonanz-Fall: Ansatz × x ───────────────────────────────────
+    4: [
+      tf(
+        'Ist die Stör­funktion $q(x) = e^{\\alpha x}$ bereits Lösung der homogenen DGL (Resonanzfall), multipliziert man den Stör­ansatz mit $x$: $y_p = A\\,x\\,e^{\\alpha x}$.',
+        true,
+        `**Ansatz:** Bei Resonanz versagt der Standard­ansatz $A\\,e^{\\alpha x}$, weil er die homogene DGL erfüllt und nicht zur Störung beiträgt. Multiplikation mit $x$ liefert eine linear unabhängige Funktion.
+
+**Rechnung:** Beispiel $y\' - 2y = e^{2x}$: homogene Lösung $C\\,e^{2x}$. Standard­ansatz $A\\,e^{2x}$ in DGL: $2A\\,e^{2x} - 2A\\,e^{2x} = 0 \\neq e^{2x}$ — scheitert. Resonanz-Ansatz $A\\,x\\,e^{2x}$: $y_p\' = A\\,e^{2x} + 2A\\,x\\,e^{2x}$. $y_p\' - 2y_p = A\\,e^{2x} + 2A\\,x\\,e^{2x} - 2A\\,x\\,e^{2x} = A\\,e^{2x} \\stackrel{!}{=} e^{2x}$ → $A = 1$. ✓
+
+**Probe:** Mit $A = 1$: $y_p = x\\,e^{2x}$. $y_p\' = e^{2x} + 2x\\,e^{2x}$. $y_p\' - 2y_p = e^{2x} + 2x\\,e^{2x} - 2x\\,e^{2x} = e^{2x}$ ✓.
+
+**Typischer Fehler:** Den Resonanzfall nicht erkennen und am Standard­ansatz festhalten — Folge: $A$ lässt sich nicht bestimmen ($0 = q$ ist widersprüchlich).`,
+        [
+          'Wann ist der Standard­ansatz $A\\,e^{\\alpha x}$ nicht ausreichend?',
+          'Wenn $e^{\\alpha x}$ schon homogene Lösung ist, fällt der Ansatz „durch".',
+          'Reparatur: Multiplikation mit $x$ — Ansatz wird linear unabhängig.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['resonanz-ansatz'] },
+      ),
+      mc(
+        'Welcher Stör­ansatz ist für $y\' - 2y = e^{2x}$ korrekt?',
+        [
+          '$y_p = A\\,x\\,e^{2x}$',
+          '$y_p = A\\,e^{2x}$',
+          '$y_p = A\\,x^2\\,e^{2x}$',
+          '$y_p = A\\,x\\,e^{-2x}$',
+        ],
+        0,
+        `**Ansatz:** Resonanz-Check: ist $e^{2x}$ Lösung der homogenen DGL? Wenn ja → mit $x$ multiplizieren.
+
+**Rechnung:** Homogen: $y\' - 2y = 0 \\Rightarrow y_h = C\\,e^{2x}$. Stör­funktion $e^{2x}$ = homogene Form → **Resonanz**. Standard­ansatz $A\\,e^{2x}$ versagt (würde $0 = e^{2x}$ liefern). Resonanz-Ansatz: $y_p = A\\,x\\,e^{2x}$.
+
+**Probe:** $y_p\' = A\\,e^{2x} + 2A\\,x\\,e^{2x}$. $y_p\' - 2y_p = A\\,e^{2x} + 2A\\,x\\,e^{2x} - 2A\\,x\\,e^{2x} = A\\,e^{2x} = e^{2x}$ → $A = 1$.
+
+**Typischer Fehler:** Standard­ansatz versuchen, ohne Resonanz zu prüfen. Oder gleich $x^2$ multiplizieren (das ist erst bei DGL 2. Ordnung mit doppelter Resonanz nötig).`,
+        [
+          'Test: ist $e^{2x}$ Lösung der homogenen DGL?',
+          'Wenn ja → Ansatz mit $x$ multiplizieren.',
+          '$y_p = A\\,x\\,e^{2x}$ statt $A\\,e^{2x}$.',
+        ],
+        {
+          1: 'Standard­ansatz scheitert: $A\\,e^{2x}$ erfüllt die homogene DGL → $y_p\' - 2y_p = 0 \\neq e^{2x}$. Resonanz nicht erkannt.',
+          2: 'Bei DGL 1. Ordnung reicht eine Multiplikation mit $x$. Doppelte Multiplikation ($x^2$) ist erst bei Doppelwurzel der charakteristischen Gleichung (DGL 2. Ordnung) nötig.',
+          3: 'Vorzeichen im Exponenten falsch. Die homogene Lösung ist $e^{+2x}$ (aus $y\'=2y$), nicht $e^{-2x}$. Resonanz-Ansatz übernimmt den Exponenten der homogenen Lösung.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['resonanz-ansatz'] },
+      ),
+      mc(
+        'Welcher Stör­ansatz ist für $y\' + y = e^{-x}$ korrekt?',
+        [
+          '$y_p = A\\,x\\,e^{-x}$',
+          '$y_p = A\\,e^{-x}$',
+          '$y_p = A\\,x\\,e^{x}$',
+          '$y_p = A\\,\\cos(-x)$',
+        ],
+        0,
+        `**Ansatz:** Erst die homogene Lösung bestimmen, dann auf Resonanz prüfen.
+
+**Rechnung:** Homogen: $y\' + y = 0 \\Rightarrow y_h = C\\,e^{-x}$. Stör­funktion $e^{-x}$ = $y_h$-Form → Resonanz. Standard­ansatz scheitert. Resonanz-Ansatz: $y_p = A\\,x\\,e^{-x}$.
+
+**Probe:** $y_p\' = A\\,e^{-x} - A\\,x\\,e^{-x}$. $y_p\' + y_p = A\\,e^{-x} - A\\,x\\,e^{-x} + A\\,x\\,e^{-x} = A\\,e^{-x} = e^{-x}$ → $A = 1$. ✓
+
+**Typischer Fehler:** Falsches Vorzeichen im Exponenten (Optionen 3, 4) oder Resonanz nicht erkennen (Option 2).`,
+        [
+          'Homogen: $y\' = -y$ → $y_h = C\\,e^{-x}$.',
+          'Stör­funktion = $e^{-x}$ = homogene Form → Resonanz.',
+          'Ansatz mit Faktor $x$.',
+        ],
+        {
+          1: 'Standard­ansatz: $A\\,e^{-x}$ ist aber selbst homogene Lösung — $y_p\' + y_p = -A\\,e^{-x} + A\\,e^{-x} = 0 \\neq e^{-x}$. Resonanz nicht erkannt.',
+          2: 'Vorzeichen im Exponenten umgekehrt. Die homogene Lösung ist $e^{-x}$ (aus $y\' = -y$), nicht $e^{+x}$. Der Ansatz übernimmt den Exponenten der Stör­funktion und ergänzt $x$.',
+          3: 'Cosinus passt zu trigonometrischen Stör­funktionen, nicht zu exponentiellen. $\\cos(-x) = \\cos(x)$ — wohldefiniert, aber falscher Ansatz­typ.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['resonanz-ansatz'] },
+      ),
+      mc(
+        'Ein Lerner setzt für $y\' + y = e^{-x}$ den Stör­ansatz $y_p = A\\,e^{-x}$ an. Welcher Fehler liegt vor?',
+        [
+          'Resonanz nicht erkannt: $e^{-x}$ ist Lösung der homogenen DGL $y\' + y = 0$. Einsetzen liefert $y_p\' + y_p = -A\\,e^{-x} + A\\,e^{-x} = 0 \\neq e^{-x}$, also unmöglich $A$ zu bestimmen. Korrekt: $y_p = A\\,x\\,e^{-x}$.',
+          'Stimmt — Standard­ansatz reicht immer.',
+          'Falsch — der Ansatz müsste $y_p = -A\\,e^{-x}$ heißen.',
+          'Falsch — bei exponentieller Stör­funktion gibt es keine Partikulärlösung.',
+        ],
+        0,
+        `**Ansatz:** Resonanz-Test vor jedem Stör­ansatz: ist die Stör­funktion bereits Lösung der homogenen DGL?
+
+**Rechnung:** Homogen: $y\' + y = 0 \\Rightarrow y_h = C\\,e^{-x}$. Stör­funktion $e^{-x}$ stimmt mit $y_h$-Form überein (mit $C = 1$). → Resonanz! Lerner-Ansatz $A\\,e^{-x}$ erfüllt die homogene DGL: $y_p\' + y_p = -A\\,e^{-x} + A\\,e^{-x} = 0$. Aber gefordert: $= e^{-x}$. Widerspruch — $A$ existiert nicht.
+
+**Probe:** Korrekter Ansatz $y_p = A\\,x\\,e^{-x}$: $y_p\' = A\\,e^{-x} - A\\,x\\,e^{-x}$. $y_p\' + y_p = A\\,e^{-x} - A\\,x\\,e^{-x} + A\\,x\\,e^{-x} = A\\,e^{-x} = e^{-x}$ → $A = 1$, also $y_p = x\\,e^{-x}$.
+
+**Typischer Fehler:** Standard­ansatz mechanisch anwenden, ohne homogene Lösung zu prüfen. Resonanz tritt häufig auf, wenn die Stör­funktion zufällig den Eigenwert der DGL trifft.`,
+        [
+          'Was ist die homogene Lösung von $y\' + y = 0$?',
+          'Hat die Stör­funktion dieselbe Form?',
+          'Wenn ja → mit $x$ multiplizieren.',
+        ],
+        {
+          1: 'Standard­ansatz reicht *nicht* immer — bei Resonanz versagt er. Resonanz tritt auf, wenn die Stör­funktion bereits Lösung der homogenen DGL ist.',
+          2: 'Vorzeichen ist nicht das Problem. $y_p = -A\\,e^{-x}$ ist genauso homogene Lösung wie $+A\\,e^{-x}$ — eingesetzt ergibt sich wieder $0 = e^{-x}$.',
+          3: 'Doch, es gibt eine Partikulärlösung — sie heißt nur nicht $A\\,e^{-x}$, sondern $x\\,e^{-x}$. Der $x$-Faktor ist der Schlüssel.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['resonanz-ansatz'] },
+      ),
+      mc(
+        'Bei welcher der folgenden DGL liegt ein *Resonanz-Fall* vor?',
+        [
+          '$y\' - 3y = e^{3x}$',
+          '$y\' + 3y = e^{3x}$',
+          '$y\' - 3y = e^{-3x}$',
+          '$y\' - 3y = \\cos(3x)$',
+        ],
+        0,
+        `**Ansatz:** Pro DGL homogene Lösung bestimmen, dann prüfen, ob die Stör­funktion mit der homogenen Form übereinstimmt.
+
+**Rechnung:**
+- $y\' - 3y = e^{3x}$: $y_h = C\\,e^{3x}$, Stör­funktion $e^{3x}$ → **Resonanz** ✓.
+- $y\' + 3y = e^{3x}$: $y_h = C\\,e^{-3x}$, Stör­funktion $e^{3x}$ ≠ $y_h$-Form → keine Resonanz.
+- $y\' - 3y = e^{-3x}$: $y_h = C\\,e^{3x}$, Stör­funktion $e^{-3x}$ → keine Resonanz.
+- $y\' - 3y = \\cos(3x)$: $y_h = C\\,e^{3x}$, Stör­funktion $\\cos(3x)$ → keine Resonanz (andere Funktions­typen).
+
+**Probe:** Der Resonanz-Fall liegt vor, wenn der Eigenwert $\\lambda$ der homogenen DGL mit dem Exponenten der Stör­funktion übereinstimmt.
+
+**Typischer Fehler:** Bei Option 2 die Vorzeichen verwechseln und meinen, $e^{3x}$ stimme mit $e^{-3x}$ überein. Oder bei Option 4 wegen der gleichen Frequenz $3$ Resonanz vermuten — aber Cosinus und Exponential sind verschiedene Funktions­typen.`,
+        [
+          'Wie sieht die homogene Lösung der DGL aus?',
+          'Stimmt der Exponent mit dem der Stör­funktion überein?',
+          'Resonanz nur, wenn beide Funktions­typen *und* Exponenten gleich sind.',
+        ],
+        {
+          1: 'Hier ist $y_h = C\\,e^{-3x}$, die Stör­funktion ist $e^{+3x}$. Verschiedene Exponenten → keine Resonanz, Standard­ansatz $A\\,e^{3x}$ funktioniert.',
+          2: 'Vorzeichen wichtig: $y_h = C\\,e^{+3x}$ stimmt nicht mit $e^{-3x}$ überein. Keine Resonanz.',
+          3: 'Trotz gleicher Frequenz $3$ ist Cosinus kein Exponential — die Funktions­typen sind verschieden. Daher keine Resonanz (Standard­ansatz $A\\cos + B\\sin$ funktioniert).',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['resonanz-ansatz'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-2-2 — DGL-Systeme  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
