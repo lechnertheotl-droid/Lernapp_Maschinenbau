@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3299 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2529 (77 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1522 / 1522 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 374 / 1134 (33 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3329 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2560 (77 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1535 / 1535 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 380 / 1134 (34 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **220** (Lesson-Path: 94 · Goal-Tasks: 126)
-- 4-Block: 181/220 (82 %) 🟡
-- MC-wAE: 113/113 (100 %) ✅
-- Sub-Goals: 25/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **250** (Lesson-Path: 94 · Goal-Tasks: 156)
+- 4-Block: 212/250 (85 %) 🟡
+- MC-wAE: 126/126 (100 %) ✅
+- Sub-Goals: 31/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -452,7 +452,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | `int-1-3` Summenregel & Faktorregel | 4 | 4/4 | 25 | 15/3/4/2/1 | 25/25 | 15/15 | ✅ | — |
 | `int-1-4` Das bestimmte Integral | 4 | 4/4 | 25 | 12/8/4/1/0 | 25/25 | 12/12 | ✅ | — |
 | `int-1-5` Hauptsatz der Differential- und Integralrechnung | 5 | 5/5 | 29 | 16/7/5/1/0 | 29/29 | 16/16 | ✅ | — |
-| `int-2-1` Substitution | 6 | 0/6 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +6 Goal, +1 4B |
+| `int-2-1` Substitution | 6 | 6/6 | 35 | 18/9/6/2/0 | 35/35 | 18/18 | ✅ | — |
 | `int-2-2` Partielle Integration | 5 | 0/5 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +5 Goal, +1 4B |
 | `int-2-3` Partialbruchzerlegung | 6 | 0/6 | 4 | 3/1/0/0/0 | 4/4 | 3/3 | ✅ | +6 Goal |
 | `int-2-4` Gemischte Übungen | 5 | 0/5 | 6 | 4/2/0/0/0 | 6/6 | 4/4 | ✅ | +5 Goal |
@@ -7109,7 +7109,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 26 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 25 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7689,67 +7689,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-
-#### `int-2-1` · Substitution
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `int-1-2` → `int-pot-regel`, `int-1-x`, `int-exp-trig`
-  - `int-1-4` → `hauptsatz-12`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `subst-formel` — $\int f(g(x))g'(x)dx=\int f(u)du$ mit $u=g(x)$ — Kettenregel rückwärts (SG 0)
-  2. `subst-erkennen` — Substitution wählen, wenn $g'(x)$ als Faktor im Integrand erscheint ⇐ `subst-formel` (SG 1)
-  3. `subst-grenzen` — Bei bestimmtem Integral: Grenzen mit substituieren ($x=a\to u=g(a)$) ⇐ `subst-formel` (SG 2)
-  4. `subst-linear` — Lineare Substitution $u=ax+b$: $du=a\,dx$ — sehr häufig ⇐ `subst-formel` (SG 3)
-  5. `subst-trig` — Trig. Substitution: $x=\sin u$ für $\sqrt{1-x^2}$, $x=\tan u$ für $1+x^2$ ⇐ `subst-formel` (SG 4)
-  6. `log-ableitung` — $\int f'(x)/f(x)dx=\ln|f(x)|+C$ (logarithmische Ableitung) ⇐ `subst-formel` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `subst-formel` · **0/5+** — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `subst-erkennen` · **0/5+** — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
-  - 🔴 [2] _hoch_ · Konzepte: `subst-grenzen` · **0/5+** — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
-  - 🔴 [3] _hoch_ · Konzepte: `subst-linear` · **0/5+** — Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
-  - 🔴 [4] _mittel_ · Konzepte: `subst-trig` · **0/5+** — Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
-  - 🔴 [5] _hoch_ · Konzepte: `log-ableitung` · **0/5+** — Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `subst-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `subst-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `subst-formel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `subst-formel` | 1 | 0 | 🔴 | $dx$ statt $du$ |
-|  5 | 0 | transfer           | number-input     | `subst-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `subst-erkennen` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `subst-erkennen`, `subst-formel` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `subst-grenzen` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `subst-grenzen` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `subst-grenzen` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `subst-grenzen` | 1 | 0 | 🔴 | Grenzen nicht umgerechnet |
-| 15 | 2 | transfer           | number-input     | `subst-grenzen` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `subst-linear` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `subst-linear` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `subst-linear` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `subst-linear` | 1 | 0 | 🔴 | Faktor $1/a$ vergessen |
-| 20 | 3 | transfer           | number-input     | `subst-linear` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `subst-trig` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `subst-trig` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `log-ableitung` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `log-ableitung` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `log-ableitung` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `log-ableitung` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | matching         | `log-ableitung` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-int-2-1-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-2` · Partielle Integration
 
@@ -9680,7 +9619,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 46 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 47 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11287,6 +11226,65 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-goal-sg1-5`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+
+#### `int-2-1` · Substitution
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-2` → `int-pot-regel`, `int-1-x`, `int-exp-trig`
+  - `int-1-4` → `hauptsatz-12`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `subst-formel` — $\int f(g(x))g'(x)dx=\int f(u)du$ mit $u=g(x)$ — Kettenregel rückwärts (SG 0)
+  2. `subst-erkennen` — Substitution wählen, wenn $g'(x)$ als Faktor im Integrand erscheint ⇐ `subst-formel` (SG 1)
+  3. `subst-grenzen` — Bei bestimmtem Integral: Grenzen mit substituieren ($x=a\to u=g(a)$) ⇐ `subst-formel` (SG 2)
+  4. `subst-linear` — Lineare Substitution $u=ax+b$: $du=a\,dx$ — sehr häufig ⇐ `subst-formel` (SG 3)
+  5. `subst-trig` — Trig. Substitution: $x=\sin u$ für $\sqrt{1-x^2}$, $x=\tan u$ für $1+x^2$ ⇐ `subst-formel` (SG 4)
+  6. `log-ableitung` — $\int f'(x)/f(x)dx=\ln|f(x)|+C$ (logarithmische Ableitung) ⇐ `subst-formel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `subst-formel` · **5/5+** — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
+  - ✅ [1] _hoch_ · Konzepte: `subst-erkennen` · **5/5+** — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
+  - ✅ [2] _hoch_ · Konzepte: `subst-grenzen` · **5/5+** — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
+  - ✅ [3] _hoch_ · Konzepte: `subst-linear` · **5/5+** — Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
+  - ✅ [4] _mittel_ · Konzepte: `subst-trig` · **5/5+** — Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
+  - ✅ [5] _hoch_ · Konzepte: `log-ableitung` · **5/5+** — Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `subst-formel` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `subst-formel` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `subst-formel` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `subst-formel` | 1 | 1 | ✅ | $dx$ statt $du$ |
+|  5 | 0 | transfer           | number-input     | `subst-formel` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `subst-erkennen` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `subst-erkennen` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `subst-erkennen` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `subst-erkennen` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `subst-erkennen`, `subst-formel` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `subst-grenzen` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `subst-grenzen` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `subst-grenzen` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `subst-grenzen` | 1 | 1 | ✅ | Grenzen nicht umgerechnet |
+| 15 | 2 | transfer           | number-input     | `subst-grenzen` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `subst-linear` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `subst-linear` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `subst-linear` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `subst-linear` | 1 | 1 | ✅ | Faktor $1/a$ vergessen |
+| 20 | 3 | transfer           | number-input     | `subst-linear` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `subst-trig` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `subst-trig` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `subst-trig` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `subst-trig` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | multiple-choice  | `subst-trig` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `log-ableitung` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `log-ableitung` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `log-ableitung` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `log-ableitung` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | matching         | `log-ableitung` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `dgl-1-3` · Lineare DGL 1. Ordnung
 
