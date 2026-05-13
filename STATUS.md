@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3435 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2673 (78 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1606 / 1606 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 402 / 1134 (35 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3460 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2702 (78 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1620 / 1620 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 407 / 1134 (36 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **291** (Lesson-Path: 61 · Goal-Tasks: 230)
-- 4-Block: 272/291 (93 %) 🟡
-- MC-wAE: 138/138 (100 %) ✅
-- Sub-Goals: 46/57 Goal-Tasks verknüpft 🟡
+- Aufgaben: **316** (Lesson-Path: 61 · Goal-Tasks: 255)
+- 4-Block: 301/316 (95 %) 🟡
+- MC-wAE: 152/152 (100 %) ✅
+- Sub-Goals: 51/57 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -578,7 +578,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-1-2` Trennung der Variablen | 5 | 5/5 | 29 | 17/5/5/1/1 | 29/29 | 17/17 | ✅ | — |
 | `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 6/6 | 35 | 18/9/6/1/1 | 35/35 | 18/18 | ✅ | — |
 | `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 6/6 | 34 | 19/7/6/2/0 | 34/34 | 19/19 | ✅ | — |
-| `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 4 | 4/0/0/0/0 | 0/4 | 4/4 | ✅ | +5 Goal, +4 4B |
+| `dgl-2-1` Variation der Konstanten | 5 | 5/5 | 29 | 18/4/5/1/1 | 29/29 | 18/18 | ✅ | — |
 | `dgl-2-2` DGL-Systeme | 6 | 6/6 | 33 | 14/7/7/3/2 | 33/33 | 14/14 | ✅ | — |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 4 | 3/0/0/1/0 | 0/4 | 3/3 | ✅ | +6 Goal, +4 4B |
 | `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 6/6 | 41 | 19/8/8/3/3 | 41/41 | 19/19 | ✅ | — |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 98 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 97 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4463,60 +4463,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `dgl-2-1` · Variation der Konstanten
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`
-  - `dgl-1-3` → `lin1-yh`, `lin1-vdk`, `lin1-mu`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `vdk-ansatz` — Ansatz: $y_h=Ce^{-P(x)}$, dann $C\to C(x)$ (SG 0)
-  2. `vdk-cprime` — Einsetzen liefert $C'(x)=q(x)e^{P(x)}$ — eine Integration ⇐ `vdk-ansatz` (SG 1)
-  3. `vdk-allg-loesung` — Allgemeine Lösung: $y=y_h+y_p$ ⇐ `vdk-ansatz` (SG 2)
-  4. `stoeransatz` — Partikulärer Ansatz/Störansatz: bei Polynom/Exp/Trig direkte Vermutung ⇐ `vdk-allg-loesung` (SG 3)
-  5. `resonanz-ansatz` — Resonanz-Fall: Störung = homogene Lösung → Ansatz mal $x$ ⇐ `stoeransatz` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `vdk-ansatz` · **0/5+** — Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen
-  - 🔴 [1] _hoch_ · Konzepte: `vdk-cprime` · **0/5+** — Einsetzen liefert $C'(x) = q(x) e^{P(x)}$ (nur eine Integration)
-  - 🔴 [2] _hoch_ · Konzepte: `vdk-allg-loesung` · **0/5+** — Allgemeine Lösung = homogener + partikulärer Anteil
-  - 🔴 [3] _hoch_ · Konzepte: `stoeransatz` · **0/5+** — Partikulärer Ansatz (Störansatz): bei Polynom/Exp/Trig-Störung direkte Vermutung
-  - 🔴 [4] _mittel_ · Konzepte: `resonanz-ansatz` · **0/5+** — Resonanz-Fall: wenn Störung Lösung der homogenen DGL ist → Ansatz $\times x$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `vdk-ansatz` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `vdk-ansatz` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `vdk-ansatz` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `vdk-ansatz` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | sorting          | `vdk-ansatz` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `vdk-cprime` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `vdk-cprime` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `vdk-cprime` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `vdk-cprime` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `vdk-cprime` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `vdk-allg-loesung` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `vdk-allg-loesung` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `vdk-allg-loesung` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `vdk-allg-loesung` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `vdk-allg-loesung` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `stoeransatz` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `stoeransatz` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `stoeransatz` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `stoeransatz` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `stoeransatz` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `resonanz-ansatz` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `resonanz-ansatz` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `resonanz-ansatz` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `resonanz-ansatz` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `resonanz-ansatz` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-2-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-2-1-a`, `ex-dgl-2-1-b`, `ex-dgl-2-1-c`, `ex-dgl-2-1-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
 #### `dgl-2-3` · Technische Anwendungen
 
@@ -9453,7 +9399,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 51 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10607,6 +10553,58 @@ npm run build              # abschließender End-zu-End-Check
 | 25 | 4 | transfer           | multiple-choice  | `tdv-betrag` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `dgl-2-1` · Variation der Konstanten
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `dgl-1-1` → `dgl-linear`, `dgl-homogen`
+  - `dgl-1-3` → `lin1-yh`, `lin1-vdk`, `lin1-mu`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `vdk-ansatz` — Ansatz: $y_h=Ce^{-P(x)}$, dann $C\to C(x)$ (SG 0)
+  2. `vdk-cprime` — Einsetzen liefert $C'(x)=q(x)e^{P(x)}$ — eine Integration ⇐ `vdk-ansatz` (SG 1)
+  3. `vdk-allg-loesung` — Allgemeine Lösung: $y=y_h+y_p$ ⇐ `vdk-ansatz` (SG 2)
+  4. `stoeransatz` — Partikulärer Ansatz/Störansatz: bei Polynom/Exp/Trig direkte Vermutung ⇐ `vdk-allg-loesung` (SG 3)
+  5. `resonanz-ansatz` — Resonanz-Fall: Störung = homogene Lösung → Ansatz mal $x$ ⇐ `stoeransatz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `vdk-ansatz` · **5/5+** — Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen
+  - ✅ [1] _hoch_ · Konzepte: `vdk-cprime` · **5/5+** — Einsetzen liefert $C'(x) = q(x) e^{P(x)}$ (nur eine Integration)
+  - ✅ [2] _hoch_ · Konzepte: `vdk-allg-loesung` · **5/5+** — Allgemeine Lösung = homogener + partikulärer Anteil
+  - ✅ [3] _hoch_ · Konzepte: `stoeransatz` · **5/5+** — Partikulärer Ansatz (Störansatz): bei Polynom/Exp/Trig-Störung direkte Vermutung
+  - ✅ [4] _mittel_ · Konzepte: `resonanz-ansatz` · **5/5+** — Resonanz-Fall: wenn Störung Lösung der homogenen DGL ist → Ansatz $\times x$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vdk-ansatz` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vdk-ansatz` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `vdk-ansatz` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vdk-ansatz` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | sorting          | `vdk-ansatz` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `vdk-cprime` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `vdk-cprime` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `vdk-cprime` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `vdk-cprime` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `vdk-cprime` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `vdk-allg-loesung` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `vdk-allg-loesung` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `vdk-allg-loesung` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `vdk-allg-loesung` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `vdk-allg-loesung` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `stoeransatz` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `stoeransatz` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `stoeransatz` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `stoeransatz` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `stoeransatz` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `resonanz-ansatz` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `resonanz-ansatz` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `resonanz-ansatz` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `resonanz-ansatz` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | multiple-choice  | `resonanz-ansatz` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-2-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
