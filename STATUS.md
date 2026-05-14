@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3576 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2837 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1667 / 1667 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 425 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3604 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2865 (79 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1682 / 1682 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 430 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **113** (Lesson-Path: 113 · Goal-Tasks: 0)
-- 4-Block: 51/113 (45 %) 🔴
-- MC-wAE: 85/85 (100 %) ✅
-- Sub-Goals: 0/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **141** (Lesson-Path: 113 · Goal-Tasks: 28)
+- 4-Block: 79/141 (56 %) 🔴
+- MC-wAE: 100/100 (100 %) ✅
+- Sub-Goals: 5/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -382,7 +382,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | `abl-1-3` Ableitungen elementarer Funktionen | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-4` Kettenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
-| `abl-2-1` Produktregel | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
+| `abl-2-1` Produktregel | 5 | 5/5 | 34 | 20/6/5/2/1 | 34/34 | 20/20 | ✅ | — |
 | `abl-2-2` Quotientenregel | 5 | 0/5 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +5 Goal, +1 4B |
 | `abl-2-3` Kettenregel — Schritt für Schritt | 5 | 0/5 | 7 | 6/1/0/0/0 | 7/7 | 6/6 | ✅ | +5 Goal |
 | `abl-2-4` Gemischte Regeln | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 22 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 21 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7601,59 +7601,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
 - **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-4': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `abl-2-1` · Produktregel
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-1-2` → `pot-regel`, `summen-regel`, `faktor-regel`
-  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `pr-formel` — Produktregel $(f\cdot g)'=f'g+fg'$ — zwei Summanden, kreuzweise (SG 0)
-  2. `pr-falle` — Klassischer Fehler: $(fg)'\neq f'g'$ — nicht faktorweise ableiten! ⇐ `pr-formel` (SG 1)
-  3. `pr-geometrie` — Rechteck-Bild: Flächenänderung mit zwei variablen Seiten (SG 2)
-  4. `pr-dreifach` — Dreifach: $(fgh)'=f'gh+fg'h+fgh'$ ⇐ `pr-formel` (SG 3)
-  5. `pr-vereinfachen` — Nach dem Ableiten ausklammern und vereinfachen ⇐ `pr-formel` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pr-formel` · **0/5+** — Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
-  - 🔴 [1] _hoch_ · Konzepte: `pr-falle` · **0/5+** — Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
-  - 🔴 [2] _niedrig_ · Konzepte: `pr-geometrie` · **0/5+** — Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
-  - 🔴 [3] _mittel_ · Konzepte: `pr-dreifach` · **0/5+** — Dreifaches Produkt: $(fgh)' = f'gh + fg'h + fgh'$ (analog, drei Summanden)
-  - 🔴 [4] _mittel_ · Konzepte: `pr-vereinfachen` · **0/5+** — Nach dem Ableiten ausklammern und vereinfachen — Prüfer erwartet gekürzte Form
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pr-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pr-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pr-formel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `pr-formel` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `pr-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pr-falle` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pr-falle`, `pr-formel` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `pr-falle` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pr-falle` | 1 | 0 | 🔴 | Faktor-für-Faktor abgeleitet |
-| 10 | 1 | transfer           | matching         | `pr-falle`, `pr-formel` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pr-geometrie` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `pr-geometrie`, `pr-formel` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pr-dreifach` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pr-dreifach` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `pr-dreifach` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pr-dreifach` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `pr-dreifach`, `pr-formel` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `pr-vereinfachen`, `pr-formel` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | sorting          | `pr-vereinfachen`, `pr-formel` | 1 | 0 | 🔴 | Schritte ordnen |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 

@@ -23,7 +23,7 @@ export const exercises_abl_u2 = {
 
 **Probe:** Für $f(x) = x$ und $g(x) = x$ ist $fg = x^{2}$. Produktregel: $(x)' \\cdot x + x \\cdot (x)' = x + x = 2x$. Direkte Potenzregel: $(x^{2})' = 2x$. ✓
 
-**Typischer Fehler:** $(f \\cdot g)' = f' \\cdot g'$ ist *falsch*. Gegenbeispiel: $(x \\cdot x)' = x^{2})' = 2x$, aber $(x)' \\cdot (x)' = 1 \\cdot 1 = 1$.`,
+**Typischer Fehler:** $(f \\cdot g)' = f' \\cdot g'$ ist *falsch*. Gegenbeispiel: $(x \\cdot x)' = (x^{2})' = 2x$, aber $(x)' \\cdot (x)' = 1 \\cdot 1 = 1$.`,
     hints: [
       'Welche Struktur liegt vor? Ein Produkt — Produktregel anwenden.',
       'Regel: $(f \\cdot g)\' = f\' \\cdot g + f \\cdot g\'$.',
@@ -867,8 +867,16 @@ $$(f \\cdot g)' = f' \\cdot g + f \\cdot g'$$
       },
       {
         id: 'abl-2-1-s2', type: 'explanation-formal', title: 'Formel und Beispiele',
-        content: `**Produktregel:**
+        content: `**Produktregel (zwei Faktoren):**
 $$(f \\cdot g)' = f' \\cdot g + f \\cdot g'$$
+
+**Klassische Falle — Faktor-für-Faktor ist FALSCH:**
+$$(f \\cdot g)' \\;\\ne\\; f' \\cdot g'$$
+Test: $f = g = x$ ergibt $(x^2)' = 2x$, aber $f' \\cdot g' = 1 \\cdot 1 = 1$. Die Produktregel hat IMMER zwei Summanden.
+
+**Dreifaches Produkt (analoge Erweiterung):**
+$$(f \\cdot g \\cdot h)' = f' \\cdot g \\cdot h + f \\cdot g' \\cdot h + f \\cdot g \\cdot h'$$
+Pro Faktor ein Summand — in jedem Summanden ist GENAU EINE Funktion abgeleitet, die anderen stehen unverändert.
 
 **Beispiel 1:** $f(x) = x^{3} \\cdot \\sin(x)$
 $$f'(x) = 3x^{2} \\cdot \\sin(x) + x^{3} \\cdot \\cos(x)$$
@@ -877,9 +885,22 @@ $$f'(x) = 3x^{2} \\cdot \\sin(x) + x^{3} \\cdot \\cos(x)$$
 $$f'(x) = 1 \\cdot e^{x} + x \\cdot e^{x} = (1+x) \\cdot e^{x}$$
 
 **Beispiel 3:** $f(x) = x^{2} \\cdot \\ln(x)$
-$$f'(x) = 2x \\cdot \\ln(x) + x^{2} \\cdot \\dfrac{1}{x} = 2x\\ln(x) + x$$
+$$f'(x) = 2x \\cdot \\ln(x) + x^{2} \\cdot \\dfrac{1}{x} = 2x\\ln(x) + x = x(2\\ln x + 1)$$
 
-**Tipp:** Nach dem Ableiten oft *Ausklammern* — die Ergebnisse werden dadurch viel übersichtlicher.`,
+**Tipp — Klausur-Form:** Nach der Produktregel immer (1) gemeinsamen Faktor ausklammern, (2) Brüche kürzen ($x^n \\cdot \\tfrac{1}{x} = x^{n-1}$), (3) im Inneren zusammenfassen. Die rohe Summe $f'g + fg'$ verliert oft Punkte.`,
+      },
+      {
+        id: 'abl-2-1-s2b', type: 'visualization', title: 'Funktion und ihre Produktregel-Ableitung',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * Math.sin(x),                color: '#3b82f6', label: 'f(x) = x · sin(x)' },
+            { fn: (x) => Math.sin(x) + x * Math.cos(x), color: '#ef4444', label: "f'(x) = sin(x) + x · cos(x)" },
+          ],
+          xRange: [-6, 6],
+          yRange: [-6, 6],
+          showGrid: true,
+        },
       },
       { id: 'abl-2-1-s3', type: 'exercise', title: 'Aufgabe 1 — Formel', exerciseRef: 'ex-abl-2-1-a' },
       { id: 'abl-2-1-s4', type: 'exercise', title: 'Aufgabe 2 — $x^{2}\\sin x$', exerciseRef: 'ex-abl-2-1-b' },
