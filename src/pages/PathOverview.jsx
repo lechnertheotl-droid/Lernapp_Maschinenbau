@@ -101,9 +101,12 @@ export function PathOverview() {
                   const done    = doneFlags[idx]
                   const current = idx === currentIndex
                   const topic   = topicById[step.topicId]
+                  // `from: '/pfad'` mitgeben — die Lektion (und ihre Folge-Lektionen)
+                  // navigieren beim "Menü"-Klick oder Swipe-zurück damit nicht in die
+                  // Themenseite, sondern zurück in den Lernpfad.
                   const onClick = step.kind === 'lesson'
-                    ? () => navigate(`/topics/${step.topicId}/${step.lessonId}`)
-                    : () => navigate(`/üben?topic=${encodeURIComponent(step.topicId)}`)
+                    ? () => navigate(`/topics/${step.topicId}/${step.lessonId}`, { state: { from: '/pfad' } })
+                    : () => navigate(`/üben?topic=${encodeURIComponent(step.topicId)}`, { state: { from: '/pfad' } })
 
                   return (
                     <li key={`${step.kind}-${idx}`}>

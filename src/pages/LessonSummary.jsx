@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom'
 import { getLesson, getTopic } from '@/content/index'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { NotFound } from '@/components/NotFound'
@@ -11,6 +11,10 @@ import { Button } from '@/components/ui/Button'
 export function LessonSummary() {
   const { topicId, lessonId } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
+  // Ursprungs-Pfad weiterreichen: wenn die Lektion aus dem Lernpfad geöffnet wurde,
+  // soll sie nach Zusammenfassung → "Zur Lektion" wieder zurück in den Pfad führen.
+  const from = typeof location.state?.from === 'string' ? location.state.from : null
   const lesson = getLesson(topicId, lessonId)
   const topic  = getTopic(topicId)
 
@@ -92,7 +96,7 @@ export function LessonSummary() {
           size="lg"
           variant="dark"
           className="flex-1"
-          onClick={() => navigate(`/topics/${topicId}/${lessonId}`)}
+          onClick={() => navigate(`/topics/${topicId}/${lessonId}`, from ? { state: { from } } : undefined)}
         >
           Zur Lektion
         </Button>

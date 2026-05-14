@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState, useRef, lazy, Suspense } from 'react'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useEffect, useState, useMemo, useRef, lazy, Suspense } from 'react'
 import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getLesson, getAllLessons } from '@/content/index'
@@ -11,7 +11,19 @@ import { hasFormulas } from '@/components/ui/formulaTopics'
 import { NotFound } from '@/components/NotFound'
 import { LessonCompleteScreen } from '@/components/gamification/LessonCompleteScreen'
 import { useFormulaPopover } from '@/utils/formulaPopoverContext'
-import { useSwipe } from '@/hooks/useSwipe'
+import { useGestureNav } from '@/hooks/useGestureNav'
+
+// Step-Typen, bei denen ein Swipe-nach-links den "Verstanden, weiter →"-Button
+// ersetzen darf. Aufgaben-Steps (exercise/mastery-check) sind ausgenommen —
+// dort muss der User antworten, das Feedback selbst regelt den Übergang.
+const SKIPPABLE_STEP_TYPES = new Set([
+  'explanation-intuitive',
+  'explanation-formal',
+  'derivation',
+  'typical-error',
+  'visualization',
+  'reflection',
+])
 
 const SEGMENTED_PROGRESS_MAX = 7
 
@@ -25,6 +37,14 @@ const VariableGlossary = lazy(() => import('@/components/ui/VariableGlossary') .
 export function LessonView() {
   const { topicId, lessonId } = useParams()
   const navigate       = useNavigate()
+  const location       = useLocation()
+  // Ursprungspfad: wo der User die Lektion gestartet hat (z. B. "/pfad", "/topics/<id>").
+  // Wird durch die aufrufende Seite via `navigate(..., { state: { from } })` mitgegeben.
+  // Fällt sonst auf die Themenseite zurück.
+  const exitPath       = useMemo(() => {
+    const from = location.state?.from
+    return typeof from === 'string' && from.length > 0 ? from : `/topics/${topicId}`
+  }, [location.state, topicId])
   const state          = useAppState()
   const dispatch       = useAppDispatch()
   const lesson         = getLesson(topicId, lessonId)
@@ -97,11 +117,13 @@ export function LessonView() {
     }
   }
 
-  const handleGotoMenu = () => navigate(`/topics/${topicId}`)
+  const handleGotoMenu = () => navigate(exitPath)
   const handleNextLesson = () => {
     setShowComplete(false)
-    if (lesson.nextLessonId) navigate(`/topics/${topicId}/${lesson.nextLessonId}`)
-    else navigate(`/topics/${topicId}`)
+    // `from` mitgeben, damit auch die Folge-Lektion zurück in den Ursprung führt
+    // (z. B. zurück in den Lernpfad statt in die Themenseite).
+    if (lesson.nextLessonId) navigate(`/topics/${topicId}/${lesson.nextLessonId}`, { state: { from: exitPath } })
+    else navigate(exitPath)
   }
   const handleReplay = () => {
     setShowComplete(false)
@@ -109,12 +131,21 @@ export function LessonView() {
     setLessonMaxCombo(0)
   }
 
-  // Nur Swipe-nach-rechts (= einen Schritt zurück). Swipe-nach-links bewusst
-  // NICHT, weil der nächste Step erst nach Abschluss freigeschaltet wird —
-  // Swipe würde sonst Confusion beim Versuch den Schritt zu überspringen auslösen.
-  const swipeHandlers = useSwipe({
-    onSwipeRight: () => { if (safeIndex > 0) handlePrevStep() },
-    threshold: 80,
+  // Gesten-Steuerung auf Mobile (auf Desktop sind die Buttons sichtbar):
+  //   • Swipe ← (links)  → Schritt überspringen / weiter — nur bei
+  //                        Erklärungs-/Visu-/Reflexions-Steps; bei Aufgaben
+  //                        rubber-band (Antwort wird verlangt).
+  //   • Swipe → (rechts) → einen Schritt zurück; auf Step 0 rubber-band.
+  //   • Swipe ↓ (runter) → zurück zur Ursprungsseite (Pfad oder Thema) —
+  //                        nur wenn der Inhalt ganz oben ist (kein Scroll-Konflikt).
+  const scrollRef = useRef(null)
+  const canSkipCurrent = SKIPPABLE_STEP_TYPES.has(currentStep?.type)
+  const canGoBack = safeIndex > 0
+  const swipe = useGestureNav({
+    onSwipeRight: canGoBack ? handlePrevStep : undefined,
+    onSwipeLeft: canSkipCurrent ? handleStepComplete : undefined,
+    onSwipeDown: handleGotoMenu,
+    scrollContainerRef: scrollRef,
   })
 
   // Daten für den Complete-Screen (nur relevant wenn open)
@@ -143,7 +174,7 @@ export function LessonView() {
             type="button"
             onClick={handleGotoMenu}
             aria-label="Zurück zur Themenübersicht"
-            className="flex-shrink-0 inline-flex items-center gap-1.5 h-9 px-3 rounded-retro border-2 border-ink bg-white dark:bg-surface-800 dark:text-surface-100 shadow-hard-sm tap-highlight-none retro-press font-mono text-xs font-black uppercase tracking-wider"
+            className="flex-shrink-0 hidden md:inline-flex items-center gap-1.5 h-9 px-3 rounded-retro border-2 border-ink bg-white dark:bg-surface-800 dark:text-surface-100 shadow-hard-sm tap-highlight-none retro-press font-mono text-xs font-black uppercase tracking-wider"
           >
             <span aria-hidden className="text-base leading-none">≡</span>
             <span>Menü</span>
@@ -185,44 +216,54 @@ export function LessonView() {
         </div>
       </div>
 
-      {/* Step content — scrollable, mit Swipe-nach-rechts für "zurück" */}
-      <div className="flex-1 px-4 py-5 overflow-y-auto" {...swipeHandlers}>
+      {/* Step content — scrollable; Swipe nach links/rechts/unten mit Live-Drag + Snap-Back/Commit-Animation.
+          `overscroll-contain` verhindert browser-natives Pull-to-Refresh, damit Swipe-Down sauber bei uns landet. */}
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto overflow-x-hidden overscroll-contain"
+        {...swipe.handlers}
+      >
+        <div className="px-4 py-5" style={swipe.style}>
 
-        {/* Learning goals on first step */}
-        {safeIndex === 0 && lesson.learningGoals?.length > 0 && (
-          <div className="bg-lemon-light border-2 border-ink dark:border-lemon-dark rounded-retro shadow-hard-sm p-3.5 mb-4">
-            <p className="font-mono text-[10px] font-black text-ink dark:text-lemon uppercase tracking-widest mb-2">// Lernziele</p>
-            <ul className="flex flex-col gap-1.5">
-              {lesson.learningGoals.map((g, i) => (
-                <li key={i} className="text-ink text-sm flex items-start gap-2">
-                  <span className="text-primary-700 dark:text-primary-300 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
-                  <span>{g}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Learning goals on first step */}
+          {safeIndex === 0 && lesson.learningGoals?.length > 0 && (
+            <div className="bg-lemon-light border-2 border-ink dark:border-lemon-dark rounded-retro shadow-hard-sm p-3.5 mb-4">
+              <p className="font-mono text-[10px] font-black text-ink dark:text-lemon uppercase tracking-widest mb-2">// Lernziele</p>
+              <ul className="flex flex-col gap-1.5">
+                {lesson.learningGoals.map((g, i) => (
+                  <li key={i} className="text-ink text-sm flex items-start gap-2">
+                    <span className="text-primary-700 dark:text-primary-300 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
+                    <span>{g}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="animate-fade-in" key={currentStep?.id}>
+            <LessonStep
+              step={currentStep}
+              topicId={topicId}
+              lessonId={lessonId}
+              onComplete={handleStepComplete}
+            />
           </div>
-        )}
 
-        <div className="animate-fade-in" key={currentStep?.id}>
-          <LessonStep
-            step={currentStep}
-            topicId={topicId}
-            lessonId={lessonId}
-            onComplete={handleStepComplete}
-          />
-        </div>
-
-        {/* Schritt-zurück am Inhalts-Ende — klar getrennt vom Menü oben */}
-        <div className="mt-6 pt-4 border-t border-ink/15 dark:border-surface-700 pb-24 md:pb-4">
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={handlePrevStep}
-            disabled={safeIndex === 0}
-            className="font-mono uppercase tracking-wider"
-          >
-            ← Zurück
-          </Button>
+          {/* Schritt-zurück am Inhalts-Ende — nur Desktop. Auf Mobile übernimmt
+              die Swipe-Geste diese Funktion, der Button entfällt. */}
+          <div className="hidden md:block mt-6 pt-4 border-t border-ink/15 dark:border-surface-700 md:pb-4">
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={handlePrevStep}
+              disabled={safeIndex === 0}
+              className="font-mono uppercase tracking-wider"
+            >
+              ← Zurück
+            </Button>
+          </div>
+          {/* Mobile-Spacer: Platz für die floating LessonToolStrip am unteren Rand. */}
+          <div className="h-24 md:hidden" aria-hidden />
         </div>
       </div>
 
@@ -232,13 +273,13 @@ export function LessonView() {
         onOpenVariables={() => setShowVariables(true)}
         onOpenFormulas={() => setShowFormulaSheet(true)}
         onOpenCalculator={() => setShowCalculator(true)}
-        onOpenSummary={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
+        onOpenSummary={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`, { state: { from: exitPath } })}
       />
 
       {/* Lesson-Complete-Screen (Sterne, XP, Streak, Quests) */}
       <LessonCompleteScreen
         isOpen={showComplete}
-        onClose={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
+        onClose={() => { setShowComplete(false); navigate(exitPath) }}
         onNextLesson={lesson.nextLessonId ? handleNextLesson : null}
         onReplay={currentStars < 3 ? handleReplay : null}
         lessonTitle={lesson.title}
