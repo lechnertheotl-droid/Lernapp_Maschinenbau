@@ -4979,4 +4979,813 @@ export const vektorenSubGoalTasks = {
       ),
     ],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Lektion 2-4: Prüfungsaufgaben Analytische Geometrie
+  // SG0: Lotfußpunkt · SG1: Schnittgerade zweier Ebenen
+  // SG2: Gerade vs. Ebene (senkrecht/parallel) · SG3: Abstand paralleler Ebenen
+  // SG4: Spiegelpunkt · SG5: Winkel Gerade-Ebene
+  // ───────────────────────────────────────────────────────────────────────
+  'vek-2-4': {
+    // ===== Sub-Goal 0 — Lotfußpunkt =====
+    0: [
+      // [1] recognize / true-false / lotfuss
+      tag(
+        tf(
+          'Der Lotfußpunkt $F$ eines Punktes $P$ auf einer Ebene $E$ ist der nächstgelegene Ebenenpunkt zu $P$ und liegt auf der Hilfsgeraden $\\vec r = P + t \\vec n$ durch $P$ in Richtung des Normalvektors $\\vec n$.',
+          true,
+          `**Ansatz:** Der kürzeste Weg von $P$ zur Ebene ist immer senkrecht zur Ebene — also entlang $\\vec n$.
+
+**Rechnung:** Hilfsgerade $\\vec r(t) = P + t \\vec n$. Schnitt mit $E$: $\\vec r(t)$ in die Ebenengleichung einsetzen, $t = t^*$ auflösen, $F = P + t^* \\vec n$. $F$ ist definitionsgemäß der nächste Ebenenpunkt.
+
+**Probe:** $|P - F| = |t^*| \\cdot |\\vec n|$ — der senkrechte Abstand. Für jeden anderen Ebenenpunkt $Q$ gilt $|P - Q|^2 = |P - F|^2 + |F - Q|^2 \\geq |P - F|^2$ (Pythagoras, $F - Q$ liegt in $E$, also $\\perp \\vec n$). Damit $|P - F| \\leq |P - Q|$ ✓.
+
+**Typischer Fehler:** Richtungsvektor der Hilfsgeraden in der Ebene wählen (z. B. einen Spannvektor) statt $\\vec n$ — dann liegt $F$ irgendwo, nicht am senkrechten Lotfuß.`,
+          [
+            'Welche Richtung führt am kürzesten zur Ebene?',
+            'Senkrecht $\\to$ entlang Normalvektor $\\vec n$.',
+            'Hilfsgerade durch $P$ in Richtung $\\vec n$, dann Schnitt mit Ebene berechnen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['lotfuss'] },
+      ),
+
+      // [2] apply-guided / multiple-choice / lotfuss
+      tag(
+        mc(
+          '$P = (1, 2, 3)$, Ebene $E\\colon x - y + z = 0$. Welche Hilfsgerade führt zur Berechnung des Lotfußpunkts?',
+          [
+            '$\\vec r = (1, 2, 3) + t(1, -1, 1)$',
+            '$\\vec r = (1, -1, 1) + t(1, 2, 3)$',
+            '$\\vec r = (1, 2, 3) + t(1, 1, 1)$',
+            '$\\vec r = (0, 0, 0) + t(1, -1, 1)$',
+          ],
+          0,
+          `**Ansatz:** Hilfsgerade $\\vec r = P + t \\vec n$ — Stützpunkt $P$, Richtung $\\vec n$.
+
+**Rechnung:** $\\vec n = (1, -1, 1)$ aus den Koeffizienten von $E$. Stützpunkt $P = (1, 2, 3)$. Daraus $\\vec r(t) = (1, 2, 3) + t(1, -1, 1)$.
+
+**Probe:** $\\vec r(0) = P$ ✓ (Stützpunkt). Richtung $\\vec n = (1, -1, 1)$ steht senkrecht auf $E$, weil sie genau die Koeffizienten der Koordinatenform sind.
+
+**Typischer Fehler:** Stützpunkt und Richtung vertauschen ($\\vec n$ als Punkt), oder $\\vec n$ falsch ablesen (Vorzeichen von $-y$ ignorieren).`,
+          [
+            'Welche Rolle spielen $P$ und $\\vec n$ in der Hilfsgeraden?',
+            'Stützpunkt: $P$. Richtung: $\\vec n$.',
+            'Lies $\\vec n$ aus den Koeffizienten von $E$ ab — Vorzeichen beachten.',
+          ],
+          {
+            1: 'Stützpunkt und Richtung sind vertauscht: $(1, -1, 1)$ wäre nur als Richtung sinnvoll, nicht als Stützpunkt.',
+            2: '$\\vec v = (1, 1, 1)$ wäre der Normalvektor von $x + y + z = 0$, nicht von $x - y + z = 0$. Vorzeichen von $-y$ ignoriert.',
+            3: 'Stützpunkt muss $P$ sein, nicht der Ursprung — sonst startet die Hilfsgerade nicht bei $P$, und der Lotfuß bezieht sich auf einen anderen Ausgangspunkt.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['lotfuss'] },
+      ),
+
+      // [3] apply-independent / number-input / lotfuss
+      tag(
+        ni(
+          '$P = (0, 0, 0)$, Ebene $E\\colon x + y + z = 3$. Bestimme den Parameter $t$, bei dem die Hilfsgerade $\\vec r = P + t \\vec n$ die Ebene $E$ schneidet.',
+          1, 0.01, '',
+          `**Ansatz:** Hilfsgerade $\\vec r(t) = (0, 0, 0) + t (1, 1, 1) = (t, t, t)$. Schnitt mit $E$: einsetzen, nach $t$ auflösen.
+
+**Rechnung:** $t + t + t = 3 \\Rightarrow 3t = 3 \\Rightarrow t = 1$.
+
+**Probe:** Lotfußpunkt $F = (1, 1, 1)$. Probe $E$: $1 + 1 + 1 = 3$ ✓.
+
+**Typischer Fehler:** $t = 3$ statt $1$ — wenn der Faktor $3$ vor $t$ übersehen wird.`,
+          [
+            '$\\vec n = (1, 1, 1)$ aus $E$ ablesen.',
+            'Hilfsgerade: $(t, t, t)$.',
+            'In $E$: $t + t + t = 3$, also $3t = 3$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['lotfuss'] },
+      ),
+
+      // [4] error-analysis / multiple-choice / lotfuss
+      tag(
+        mc(
+          'Ein Schüler will den Lotfußpunkt von $P = (1, 1, 1)$ auf der Ebene $E\\colon x + y + z = 6$ bestimmen und schreibt die Hilfsgerade als $\\vec r = P + t \\vec v$ mit $\\vec v = (1, 1, 0)$ (einem Vektor, der in $E$ liegt). Wo liegt der Fehler?',
+          [
+            'Der Richtungsvektor der Hilfsgeraden muss $\\vec n$ (senkrecht zur Ebene) sein, nicht ein Vektor *in* der Ebene. Korrekt: $\\vec v = \\vec n = (1, 1, 1)$.',
+            'Der Stützpunkt darf nicht $P$ sein, sondern ein Punkt von $E$.',
+            'Lotfußpunkte existieren nur für Geraden, nicht für Ebenen.',
+            'Die Hilfsgerade muss zwei Parameter haben, nicht einen.',
+          ],
+          0,
+          `**Ansatz:** Lotfuß = nächster Punkt = senkrecht zur Ebene. Senkrecht $\\Leftrightarrow$ entlang $\\vec n$.
+
+**Rechnung:** Mit $\\vec v = (1, 1, 0) \\in E$ (denn $\\vec v \\cdot \\vec n = 1 + 1 + 0 = 2 \\neq 0$ — Moment, doch nicht in $E$). Setze ich $\\vec v$ in die Hilfsgerade, läuft sie nicht senkrecht zur Ebene, sondern schräg. Der Schnittpunkt wäre *ein* Ebenenpunkt, aber nicht der *nächste*.
+
+**Probe:** Korrekt: $\\vec n = (1, 1, 1)$, Hilfsgerade $(1+t, 1+t, 1+t)$. In $E$: $3 + 3t = 6 \\Rightarrow t = 1$. $F = (2, 2, 2)$, Abstand $|F - P| = \\sqrt{3}$.
+
+**Typischer Fehler:** Glauben, irgendein Vektor zur Ebene tue es — entscheidend ist die *senkrechte* Richtung. Das ist genau die Normalvektor-Definition.`,
+          [
+            'Welcher Vektor steht senkrecht auf der Ebene?',
+            '$\\vec n = $ Koeffizienten der Koordinatenform.',
+            'Der Lotfuß ist der nächste Punkt, also senkrechte Projektion entlang $\\vec n$.',
+          ],
+          {
+            1: 'Der Stützpunkt MUSS $P$ sein — die Hilfsgerade startet bei $P$ und läuft senkrecht zur Ebene. Anderer Stützpunkt $\\to$ anderer Bezugspunkt.',
+            2: 'Lotfußpunkte sind für *jede* affine Teilmenge definiert: Punkt-Gerade-Lotfuß, Punkt-Ebene-Lotfuß sind beide Standardkonzepte.',
+            3: 'Eine *Gerade* hat genau einen Parameter — zwei Parameter würde eine Ebene beschreiben. Die Hilfsgerade ist eine Gerade.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['lotfuss'] },
+      ),
+
+      // [5] transfer / number-input / lotfuss [PRÜFUNG]
+      tag(
+        ni(
+          '[PRÜFUNG] Bestimme die $x$-Koordinate des Lotfußpunkts von $P = (4, 0, 0)$ auf der Ebene $E\\colon 2x + y - 2z = 0$.',
+          2.222, 0.02, '',
+          `**Ansatz:** Hilfsgerade $\\vec r = P + t \\vec n$ mit $\\vec n = (2, 1, -2)$, dann Schnitt mit $E$.
+
+**Rechnung:** $\\vec r(t) = (4 + 2t,\\; t,\\; -2t)$. Einsetzen in $E$: $2(4 + 2t) + t - 2(-2t) = 8 + 4t + t + 4t = 8 + 9t = 0 \\Rightarrow t = -8/9$. $F_x = 4 + 2 \\cdot (-8/9) = 4 - 16/9 = (36 - 16)/9 = 20/9 \\approx 2{,}222$.
+
+**Probe:** $F = (20/9,\\; -8/9,\\; 16/9)$. $2 \\cdot 20/9 + (-8/9) - 2 \\cdot 16/9 = (40 - 8 - 32)/9 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $-2z$ verlieren: $-2(-2t) = +4t$, nicht $-4t$ — gerade in Klausuren häufig.`,
+          [
+            '$\\vec n = (2, 1, -2)$ aus $E$ ablesen.',
+            'Hilfsgerade: $(4+2t, t, -2t)$.',
+            '$2(4+2t) + t - 2(-2t) = 0$ liefert $9t = -8$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['lotfuss'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 1 — Schnittgerade zweier Ebenen =====
+    1: [
+      // [6] recognize / true-false / schnittgerade
+      tag(
+        tf(
+          'Der Richtungsvektor der Schnittgeraden zweier sich schneidender Ebenen ist das Kreuzprodukt $\\vec n_1 \\times \\vec n_2$ ihrer Normalvektoren.',
+          true,
+          `**Ansatz:** Die Schnittgerade liegt in *beiden* Ebenen und steht somit senkrecht zu *beiden* Normalvektoren.
+
+**Rechnung:** $\\vec n_1 \\times \\vec n_2$ ist per Definition senkrecht zu $\\vec n_1$ und $\\vec n_2$ — also parallel zur Schnittgeraden. Voraussetzung: $\\vec n_1 \\not\\parallel \\vec n_2$ (sonst sind die Ebenen parallel und es gibt entweder keine Schnittgerade oder die Ebenen sind identisch).
+
+**Probe:** $(\\vec n_1 \\times \\vec n_2) \\cdot \\vec n_1 = 0$ ✓ und $(\\vec n_1 \\times \\vec n_2) \\cdot \\vec n_2 = 0$ ✓ (Standardeigenschaft des Kreuzprodukts).
+
+**Typischer Fehler:** $\\vec n_1 + \\vec n_2$ statt $\\vec n_1 \\times \\vec n_2$ — die Summe liegt im Allgemeinen weder in $E_1$ noch in $E_2$.`,
+          [
+            'Welche Eigenschaft hat die Schnittgerade bzgl. beider Normalvektoren?',
+            'Senkrecht zu beiden $\\to$ Kreuzprodukt.',
+            'Voraussetzung: Normalen nicht parallel.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['schnittgerade'] },
+      ),
+
+      // [7] apply-guided / multiple-choice / schnittgerade
+      tag(
+        mc(
+          'Welcher Vektor ist Richtungsvektor der Schnittgeraden von $E_1\\colon x + 2y + z = 1$ und $E_2\\colon 2x - y + 3z = 4$?',
+          [
+            '$(7, -1, -5)$',
+            '$(3, 1, 4)$',
+            '$(-1, 3, -2)$',
+            '$(2, -2, 3)$',
+          ],
+          0,
+          `**Ansatz:** Richtungsvektor $= \\vec n_1 \\times \\vec n_2$.
+
+**Rechnung:** $\\vec n_1 = (1, 2, 1)$, $\\vec n_2 = (2, -1, 3)$. $\\vec n_1 \\times \\vec n_2 = (2 \\cdot 3 - 1 \\cdot (-1),\\; 1 \\cdot 2 - 1 \\cdot 3,\\; 1 \\cdot (-1) - 2 \\cdot 2) = (7, -1, -5)$.
+
+**Probe:** $\\vec v \\cdot \\vec n_1 = 7 - 2 - 5 = 0$ ✓ und $\\vec v \\cdot \\vec n_2 = 14 + 1 - 15 = 0$ ✓.
+
+**Typischer Fehler:** Summe $\\vec n_1 + \\vec n_2 = (3, 1, 4)$ statt Kreuzprodukt — falsches Konzept.`,
+          [
+            'Welche Operation liefert einen Vektor senkrecht zu zwei anderen?',
+            'Kreuzprodukt: $\\vec n_1 \\times \\vec n_2$.',
+            'Komponentenweise: $(n_{1y} n_{2z} - n_{1z} n_{2y},\\; n_{1z} n_{2x} - n_{1x} n_{2z},\\; n_{1x} n_{2y} - n_{1y} n_{2x})$.',
+          ],
+          {
+            1: 'Das ist die *Summe* der Normalvektoren — keine geometrische Bedeutung für die Schnittgerade. $\\vec n_1 + \\vec n_2$ liegt im Allgemeinen weder in $E_1$ noch in $E_2$.',
+            2: 'Differenz $\\vec n_1 - \\vec n_2$ liefert ebenfalls keinen Vektor in der Schnittgeraden — gleiche Logik wie bei der Summe.',
+            3: 'Komponentenweise Multiplikation der Normalvektoren — keine Vektorrechenoperation mit geometrischer Bedeutung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['schnittgerade'] },
+      ),
+
+      // [8] apply-independent / number-input / schnittgerade
+      tag(
+        ni(
+          'Bestimme die $z$-Komponente des Richtungsvektors der Schnittgeraden von $E_1\\colon x + y = 0$ und $E_2\\colon y + z = 0$.',
+          1, 0.01, '',
+          `**Ansatz:** $\\vec v = \\vec n_1 \\times \\vec n_2$.
+
+**Rechnung:** $\\vec n_1 = (1, 1, 0)$, $\\vec n_2 = (0, 1, 1)$. $v_z = n_{1x} n_{2y} - n_{1y} n_{2x} = 1 \\cdot 1 - 1 \\cdot 0 = 1$.
+
+**Probe:** Vollständig: $\\vec v = (1, -1, 1)$. Senkrecht zu $\\vec n_1$: $1 - 1 + 0 = 0$ ✓. Senkrecht zu $\\vec n_2$: $0 - 1 + 1 = 0$ ✓.
+
+**Typischer Fehler:** $z$-Komponente und $y$-Komponente verwechseln — die $z$-Formel ist $n_{1x} n_{2y} - n_{1y} n_{2x}$, nicht $n_{1y} n_{2z} - n_{1z} n_{2y}$.`,
+          [
+            'Komponente $v_z = n_{1x} n_{2y} - n_{1y} n_{2x}$ aus dem Kreuzprodukt.',
+            '$\\vec n_1 = (1, 1, 0)$, $\\vec n_2 = (0, 1, 1)$.',
+            '$v_z = 1 \\cdot 1 - 1 \\cdot 0 = 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['schnittgerade'] },
+      ),
+
+      // [9] error-analysis / multiple-choice / schnittgerade
+      tag(
+        mc(
+          'Ein Schüler berechnet die Schnittgerade zweier Ebenen mit $\\vec v = \\vec n_1 + \\vec n_2$. Wo liegt der Fehler?',
+          [
+            'Die Summe liegt im Allgemeinen weder in $E_1$ noch in $E_2$ — sie ist *nicht* senkrecht zu beiden Normalvektoren. Korrekt ist das **Kreuzprodukt** $\\vec n_1 \\times \\vec n_2$, das per Definition senkrecht auf beiden Normalen steht.',
+            'Der Schüler hätte $\\vec n_1 - \\vec n_2$ statt $\\vec n_1 + \\vec n_2$ verwenden müssen.',
+            'Die Schnittgerade hat keinen festen Richtungsvektor.',
+            '$\\vec n_1 + \\vec n_2$ ist nur falsch, wenn $|\\vec n_1| \\neq |\\vec n_2|$.',
+          ],
+          0,
+          `**Ansatz:** Schnittgerade liegt in beiden Ebenen $\\Rightarrow$ steht senkrecht zu beiden Normalen. Senkrecht zu zwei Vektoren liefert das Kreuzprodukt.
+
+**Rechnung:** $\\vec n_1 \\times \\vec n_2 \\perp \\vec n_1$ und $\\vec n_1 \\times \\vec n_2 \\perp \\vec n_2$ — das ist die definierende Eigenschaft.
+
+**Probe:** Konkret $\\vec n_1 = (1, 0, 0)$, $\\vec n_2 = (0, 1, 0)$. Summe $(1, 1, 0)$, $(1,1,0) \\cdot (1,0,0) = 1 \\neq 0$ — *nicht* senkrecht zu $\\vec n_1$. Kreuzprodukt $(0, 0, 1)$, $(0,0,1) \\cdot (1,0,0) = 0$ ✓.
+
+**Typischer Fehler:** "Summe" mit "Kreuzprodukt" verwechseln. Faustregel: Summe ergibt einen Vektor in der von $\\vec n_1, \\vec n_2$ aufgespannten Ebene; Kreuzprodukt ergibt einen Vektor *senkrecht* dazu.`,
+          [
+            'Welche Bedingung muss der Richtungsvektor erfüllen?',
+            'Senkrecht zu BEIDEN $\\vec n_1, \\vec n_2$ $\\to$ Kreuzprodukt.',
+            'Summe steht im Allgemeinen NICHT senkrecht — Skalarprodukt-Test prüfen.',
+          ],
+          {
+            1: 'Die Differenz $\\vec n_1 - \\vec n_2$ ist genauso falsch wie die Summe — beide liegen in der von $\\vec n_1, \\vec n_2$ aufgespannten Ebene, nicht senkrecht dazu.',
+            2: 'Die Schnittgerade *hat* sehr wohl einen Richtungsvektor (bis auf Skalierung eindeutig) — sie ist eine ganz normale Gerade.',
+            3: 'Die Beträge sind irrelevant. Auch bei $|\\vec n_1| = |\\vec n_2|$ ist die Summe nicht senkrecht zu beiden — die Beträge spielen für die Richtungs-Eigenschaft keine Rolle.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['schnittgerade'] },
+      ),
+
+      // [10] transfer / number-input / schnittgerade [PRÜFUNG]
+      tag(
+        ni(
+          '[PRÜFUNG] Schnittgerade von $E_1\\colon x + 2y - z = 0$ und $E_2\\colon 2x + y + z = 4$. Bestimme die $x$-Komponente eines Richtungsvektors $\\vec v = \\vec n_1 \\times \\vec n_2$.',
+          3, 0.01, '',
+          `**Ansatz:** Kreuzprodukt der beiden Normalvektoren.
+
+**Rechnung:** $\\vec n_1 = (1, 2, -1)$, $\\vec n_2 = (2, 1, 1)$. $v_x = n_{1y} n_{2z} - n_{1z} n_{2y} = 2 \\cdot 1 - (-1) \\cdot 1 = 2 + 1 = 3$.
+
+**Probe:** Vollständig: $\\vec v = (3, -3, -3)$. Senkrecht zu $\\vec n_1$: $3 - 6 + 3 = 0$ ✓. Senkrecht zu $\\vec n_2$: $6 - 3 - 3 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen im $-(-1)$ verlieren — gerade bei negativen Komponenten häufig.`,
+          [
+            '$v_x = n_{1y} n_{2z} - n_{1z} n_{2y}$.',
+            'Einsetzen: $2 \\cdot 1 - (-1) \\cdot 1$.',
+            'Doppeltes Minus: $-(-1) = +1$, also $2 + 1 = 3$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['schnittgerade'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 2 — Lage Gerade / Ebene =====
+    2: [
+      // [11] recognize / tf / g-ortho-ebene + g-parallel-ebene
+      tag(
+        tf(
+          'Eine Gerade verläuft genau dann **parallel** zur Ebene, wenn $\\vec v_g \\cdot \\vec n_E = 0$; sie steht genau dann **senkrecht** auf der Ebene, wenn $\\vec v_g \\parallel \\vec n_E$.',
+          true,
+          `**Ansatz:** Geometrisch: $\\vec n_E$ steht senkrecht auf $E$. Aus den Möglichkeiten der Geraden ergibt sich der Test.
+
+**Rechnung:**
+- $\\vec v_g \\parallel \\vec n_E$: Gerade zeigt in dieselbe Richtung wie der Normalvektor $\\to$ senkrecht zur Ebene.
+- $\\vec v_g \\perp \\vec n_E$ ($\\Leftrightarrow \\vec v_g \\cdot \\vec n_E = 0$): Gerade liegt parallel zur Ebene (möglicherweise in ihr, falls Stützpunkt $\\in E$).
+
+**Probe:** Ebene $z = 0$, $\\vec n = (0,0,1)$. Gerade entlang der $z$-Achse $\\vec v = (0,0,1) \\parallel \\vec n$ — senkrecht ✓. Gerade entlang der $x$-Achse $\\vec v = (1,0,0)$, $\\vec v \\cdot \\vec n = 0$ — parallel ✓.
+
+**Typischer Fehler:** Bedingungen vertauschen — gerade die "senkrecht auf Ebene = senkrecht auf Normalvektor"-Falle ist typisch.`,
+          [
+            'Wie liegt $\\vec n_E$ zur Ebene?',
+            'Gerade $\\perp$ Ebene heißt: Richtung der Geraden $=$ Richtung von $\\vec n_E$.',
+            'Gerade $\\parallel$ Ebene heißt: Richtung der Geraden senkrecht zu $\\vec n_E$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['g-ortho-ebene', 'g-parallel-ebene'] },
+      ),
+
+      // [12] apply-guided / mc / g-ortho-ebene
+      tag(
+        mc(
+          'Gerade $g\\colon \\vec r = (0, 0, 0) + t \\vec v$ steht senkrecht auf einer Ebene mit Normalvektor $\\vec n = (2, -1, 3)$. Welcher Richtungsvektor $\\vec v$ ist möglich?',
+          [
+            '$\\vec v = (2, -1, 3)$',
+            '$\\vec v = (1, 2, 0)$',
+            '$\\vec v = (1, 1, 1)$',
+            '$\\vec v = (3, -1, 2)$',
+          ],
+          0,
+          `**Ansatz:** Gerade $\\perp$ Ebene $\\Leftrightarrow \\vec v \\parallel \\vec n$ $\\Leftrightarrow \\vec v = k \\vec n$.
+
+**Rechnung:** $\\vec n = (2, -1, 3)$. $\\vec v = \\vec n$ erfüllt $\\vec v = 1 \\cdot \\vec n$ — also parallel und damit senkrecht zur Ebene.
+
+**Probe:** $\\vec v \\times \\vec n = (2, -1, 3) \\times (2, -1, 3) = \\vec 0$ ✓ — Kollinearität bestätigt.
+
+**Typischer Fehler:** Irgendeinen "passend aussehenden" Vektor wählen, ohne den Parallelitäts-Test zu machen.`,
+          [
+            'Wann steht eine Gerade senkrecht auf einer Ebene?',
+            '$\\vec v \\parallel \\vec n$ $\\Leftrightarrow$ $\\vec v$ ist Vielfaches von $\\vec n$.',
+            'Vielfaches: dieselben Komponenten (bis auf Skalar).',
+          ],
+          {
+            1: '$(1, 2, 0) \\cdot \\vec n = 2 - 2 + 0 = 0$ — $\\vec v \\perp \\vec n$, also Gerade *parallel* zur Ebene, nicht senkrecht.',
+            2: '$(1, 1, 1)$ ist weder parallel noch senkrecht zu $\\vec n = (2, -1, 3)$: $\\vec v \\cdot \\vec n = 2 - 1 + 3 = 4 \\neq 0$, und $\\vec v \\neq k \\vec n$ für irgendein $k$.',
+            3: '$(3, -1, 2)$ ist *nicht* parallel zu $(2, -1, 3)$ — die Komponenten sind permutiert, aber nicht skaliert. $\\vec v / \\vec n$ ergibt komponentenweise $3/2, 1, 2/3$ — kein einheitliches Verhältnis.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['g-ortho-ebene'] },
+      ),
+
+      // [13] apply-independent / mc / g-parallel-ebene
+      tag(
+        mc(
+          'Für welchen Wert von $a$ verläuft die Gerade $g$ mit Richtungsvektor $\\vec v = (a, 1, 2)$ parallel zur Ebene $E$ mit Normalvektor $\\vec n = (1, -3, 1)$?',
+          [
+            '$a = 1$',
+            '$a = -1$',
+            '$a = 3$',
+            '$a = 0$',
+          ],
+          0,
+          `**Ansatz:** Gerade $\\parallel$ Ebene $\\Leftrightarrow \\vec v \\cdot \\vec n = 0$.
+
+**Rechnung:** $\\vec v \\cdot \\vec n = a \\cdot 1 + 1 \\cdot (-3) + 2 \\cdot 1 = a - 3 + 2 = a - 1$. Setzen $= 0$: $a = 1$.
+
+**Probe:** Mit $a = 1$: $\\vec v = (1, 1, 2)$, $\\vec v \\cdot \\vec n = 1 - 3 + 2 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen verlieren ($1 + (-3) + 2 = 0$, aber Schüler rechnet $1 + 3 + 2$). Oder Skalar­produkt mit Normvergleich verwechseln.`,
+          [
+            'Bedingung für $g \\parallel E$?',
+            '$\\vec v \\cdot \\vec n = 0$.',
+            'Komponentenweise: $a - 3 + 2 = 0$.',
+          ],
+          {
+            1: '$a = -1$ liefert $\\vec v \\cdot \\vec n = -1 - 3 + 2 = -2 \\neq 0$. Vorzeichen vermutlich verwechselt.',
+            2: '$a = 3$ liefert $\\vec v \\cdot \\vec n = 3 - 3 + 2 = 2 \\neq 0$. Vermutlich $a + 3 + 2 = 0$ aus Vorzeichen-Fehler ($n_y = -3$, nicht $+3$).',
+            3: '$a = 0$ liefert $\\vec v \\cdot \\vec n = 0 - 3 + 2 = -1 \\neq 0$. Bedingung wird nicht erfüllt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['g-parallel-ebene'] },
+      ),
+
+      // [14] error-analysis / mc / g-ortho-ebene + g-parallel-ebene
+      tag(
+        mc(
+          'Ein Schüler schreibt: „Die Gerade $g$ ist parallel zur Ebene $E$, weil ihr Richtungsvektor $\\vec v$ parallel zum Normalvektor $\\vec n$ ist." Wo liegt der Fehler?',
+          [
+            'Genau das Gegenteil: $\\vec v \\parallel \\vec n$ bedeutet, dass $\\vec v$ in derselben Richtung wie $\\vec n$ zeigt — also *senkrecht* zur Ebene, nicht parallel. Parallel zur Ebene wäre $\\vec v \\perp \\vec n$ (also $\\vec v \\cdot \\vec n = 0$).',
+            '$\\vec v \\parallel \\vec n$ ist nur dann äquivalent zur Parallelität, wenn beide Einheitsvektoren sind.',
+            'Parallel zur Ebene heißt $\\vec v = \\vec n$ (gleicher Vektor).',
+            '$\\vec v \\parallel \\vec n$ hat keine geometrische Bedeutung in diesem Kontext.',
+          ],
+          0,
+          `**Ansatz:** Klassisches Vertauschen der Bedingungen.
+
+**Rechnung:** Der Normalvektor $\\vec n$ steht senkrecht auf der Ebene. Eine Gerade entlang $\\vec n$ (also $\\vec v \\parallel \\vec n$) verläuft senkrecht zur Ebene. Eine Gerade *in* oder *parallel zur* Ebene hat einen Richtungsvektor, der in der Ebene liegt — also senkrecht zu $\\vec n$, $\\vec v \\cdot \\vec n = 0$.
+
+**Probe:** Bild im Kopf: Ebene horizontal, $\\vec n$ zeigt nach oben. Gerade nach oben ($\\vec v \\parallel \\vec n$) = senkrecht zur Ebene. Gerade horizontal ($\\vec v \\perp \\vec n$) = parallel zur Ebene.
+
+**Typischer Fehler:** "Senkrecht/parallel" zwischen Vektoren mit derselben Beziehung zwischen Gerade und Ebene gleichsetzen — sie verhalten sich genau entgegengesetzt, weil $\\vec n$ schon senkrecht zur Ebene ist.`,
+          [
+            'Wie liegt $\\vec n$ zur Ebene?',
+            'Wenn $\\vec v \\parallel \\vec n$: in welche Richtung läuft die Gerade?',
+            'Senkrecht zur Ebene oder parallel?',
+          ],
+          {
+            1: 'Beträge spielen keine Rolle — die Parallelitäts-Beziehung gilt für *jede* Skalierung. Der Schüler-Fehler liegt nicht in den Beträgen.',
+            2: '$\\vec v = \\vec n$ wäre ein Spezialfall — aber dann ist Gerade $\\perp$ Ebene (steht senkrecht), nicht parallel.',
+            3: '$\\vec v \\parallel \\vec n$ hat sehr wohl Bedeutung: es ist exakt das Senkrechtigkeitskriterium für Gerade $\\perp$ Ebene.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['g-ortho-ebene', 'g-parallel-ebene'] },
+      ),
+
+      // [15] transfer / matching / g-ortho-ebene + g-parallel-ebene
+      tag(
+        matching(
+          'Ordne den Lagebeziehungen Gerade–Ebene die richtige Bedingung an Richtungsvektor $\\vec v$ und Normalvektor $\\vec n$ (und Stützpunkt $P$) zu.',
+          [
+            { left: 'Gerade senkrecht zur Ebene', right: '$\\vec v \\parallel \\vec n$' },
+            { left: 'Gerade parallel zur Ebene (außerhalb)', right: '$\\vec v \\cdot \\vec n = 0$ und $P \\notin E$' },
+            { left: 'Gerade liegt in der Ebene', right: '$\\vec v \\cdot \\vec n = 0$ und $P \\in E$' },
+            { left: 'Gerade schneidet Ebene transversal', right: '$\\vec v \\cdot \\vec n \\neq 0$' },
+          ],
+          `**Ansatz:** Vier mögliche Lagen — alle entlang derselben Logik (Vergleich zwischen $\\vec v$ und $\\vec n$) plus der Stützpunkt-Test.
+
+**Rechnung:**
+- $\\vec v \\parallel \\vec n$: Gerade $\\perp$ Ebene.
+- $\\vec v \\cdot \\vec n = 0$ (alle drei "parallel"-Varianten): Gerade verläuft in der Ebene-Richtung. Unterscheidung über den Stützpunkt — in $E$ oder daneben.
+- $\\vec v \\cdot \\vec n \\neq 0$ und $\\vec v \\not\\parallel \\vec n$: Gerade schneidet $E$ transversal in genau einem Punkt.
+
+**Probe:** Jeder der vier Fälle entspricht einem geometrischen Bild — und dem entsprechenden Lösungsbild der Schnittgleichung (siehe vek-2-3: 1 / 0 / $\\infty$ Schnittpunkte).
+
+**Typischer Fehler:** Stützpunkt-Test bei "parallel zur Ebene" vergessen — Gerade in Ebene ist ein Spezialfall von "parallel".`,
+          [
+            'Schneidet die Gerade die Ebene? Ja $\\to$ transversal. Nein $\\to$ parallel.',
+            'Parallel mit $P \\in E$: liegt in Ebene. Parallel mit $P \\notin E$: außerhalb.',
+            'Senkrecht: $\\vec v \\parallel \\vec n$ ist ein Spezialfall von "transversal" (genau ein Schnittpunkt, im rechten Winkel).',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['g-ortho-ebene', 'g-parallel-ebene'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 3 — Abstand paralleler Ebenen =====
+    3: [
+      // [16] recognize / tf / d-parallele-eb
+      tag(
+        tf(
+          'Der Abstand zweier paralleler Ebenen $E_1\\colon \\vec n \\cdot \\vec r = d_1$ und $E_2\\colon \\vec n \\cdot \\vec r = d_2$ mit *demselben* Normalvektor $\\vec n$ beträgt $d = |d_1 - d_2|/|\\vec n|$.',
+          true,
+          `**Ansatz:** Hessesche Normierung. Beide Ebenen mit $|\\vec n|$ normiert: $\\vec n_0 \\cdot \\vec r = d_i/|\\vec n|$. Differenz der normierten Konstanten ist der Abstand.
+
+**Rechnung:** Ein beliebiger Punkt $P \\in E_1$ erfüllt $\\vec n \\cdot P = d_1$. Abstand $P$ zu $E_2$: $|\\vec n \\cdot P - d_2|/|\\vec n| = |d_1 - d_2|/|\\vec n|$.
+
+**Probe:** Beispiel $E_1\\colon x + y + z = 1$, $E_2\\colon x + y + z = 4$. $d = |1 - 4|/\\sqrt{3} = 3/\\sqrt{3} = \\sqrt{3}$. Punkt $(1,0,0) \\in E_1$: Abstand zu $E_2$ direkt $|1 - 4|/\\sqrt{3} = \\sqrt{3}$ ✓.
+
+**Typischer Fehler:** Die Formel anwenden, obwohl die Normalvektoren unterschiedlich skaliert sind ($\\vec n_1 = (1,1,1)$, $\\vec n_2 = (2,2,2)$). Erst auf gleiche Form bringen.`,
+          [
+            'Welche Voraussetzung hat die Formel?',
+            'Gleicher Normalvektor $\\vec n$ in beiden Ebenengleichungen.',
+            'Dann: Differenz der Konstanten, durch $|\\vec n|$ teilen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['d-parallele-eb'] },
+      ),
+
+      // [17] apply-guided / mc / d-parallele-eb
+      tag(
+        mc(
+          'Welche der folgenden Ausdrücke berechnet korrekt den Abstand der parallelen Ebenen $E_1\\colon 2x + y - 2z = 5$ und $E_2\\colon 2x + y - 2z = 11$?',
+          [
+            '$\\dfrac{|11 - 5|}{\\sqrt{4 + 1 + 4}}$',
+            '$\\dfrac{|11 - 5|}{4 + 1 + 4}$',
+            '$|11 - 5|$',
+            '$\\dfrac{11 + 5}{\\sqrt{9}}$',
+          ],
+          0,
+          `**Ansatz:** Formel $d = |d_1 - d_2|/|\\vec n|$ mit $|\\vec n| = \\sqrt{a^2 + b^2 + c^2}$.
+
+**Rechnung:** $\\vec n = (2, 1, -2)$, $|\\vec n| = \\sqrt{4 + 1 + 4} = 3$. $d = |11 - 5|/3 = 6/3 = 2$.
+
+**Probe:** Punkt $(0, 5, 0) \\in E_1$ (denn $0 + 5 - 0 = 5$). Abstand zu $E_2$: $|0 + 5 - 0 - 11|/3 = 6/3 = 2$ ✓.
+
+**Typischer Fehler:** Norm-Quadrat statt Norm im Nenner (vergessen, Wurzel zu ziehen).`,
+          [
+            '$|\\vec n| = \\sqrt{a^2 + b^2 + c^2}$ (euklidische Norm).',
+            'Differenz der Konstanten: $|11 - 5|$.',
+            'Quotient: $6/\\sqrt{9} = 6/3 = 2$.',
+          ],
+          {
+            1: 'Norm-Quadrat statt Norm: $a^2 + b^2 + c^2 = 9$ ist $|\\vec n|^2$, nicht $|\\vec n|$. Wurzel ziehen!',
+            2: 'Nenner fehlt komplett. Ohne Normierung durch $|\\vec n|$ käme der Wert $d_0$-Differenz heraus, nicht der geometrische Abstand.',
+            3: 'Summe statt Differenz, und $\\sqrt{9} = 3$ wäre zwar korrekt — aber $|d_1 + d_2|$ hat keine geometrische Bedeutung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['d-parallele-eb'] },
+      ),
+
+      // [18] apply-independent / ni / d-parallele-eb
+      tag(
+        ni(
+          'Berechne den Abstand der parallelen Ebenen $E_1\\colon 2x + y - 2z = 5$ und $E_2\\colon 2x + y - 2z = 11$.',
+          2, 0.02, '',
+          `**Ansatz:** $d = |d_1 - d_2|/|\\vec n|$, gleicher Normalvektor.
+
+**Rechnung:** $\\vec n = (2, 1, -2)$, $|\\vec n| = \\sqrt{4 + 1 + 4} = 3$. $d = |5 - 11|/3 = 6/3 = 2$.
+
+**Probe:** Punkt $(0, 5, 0) \\in E_1$ ($0 + 5 - 0 = 5$ ✓). Abstand zu $E_2$: $|0 + 5 - 0 - 11|/3 = 6/3 = 2$ ✓.
+
+**Typischer Fehler:** Differenz vor Betrag negativ lassen, oder Wurzel vergessen.`,
+          [
+            '$|\\vec n| = \\sqrt{4+1+4} = 3$.',
+            'Differenz $|5 - 11| = 6$.',
+            '$d = 6/3 = 2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['d-parallele-eb'] },
+      ),
+
+      // [19] error-analysis / mc / d-parallele-eb (Vergleich nur bei gleichem n)
+      tag(
+        mc(
+          'Ein Schüler rechnet den Abstand der Ebenen $E_1\\colon x + y + z = 3$ und $E_2\\colon 2x + 2y + 2z = 10$ als $d = |10 - 3|/\\sqrt{1+1+1} = 7/\\sqrt{3}$. Wo liegt der Fehler?',
+          [
+            'Die Formel $d = |d_1 - d_2|/|\\vec n|$ gilt nur bei *gleichem* Normalvektor. Hier: $\\vec n_1 = (1,1,1)$, $\\vec n_2 = (2,2,2) = 2 \\vec n_1$. Erst $E_2$ durch 2 teilen: $x + y + z = 5$. Dann $d = |5 - 3|/\\sqrt{3} = 2/\\sqrt{3} \\approx 1{,}155$.',
+            '$|\\vec n_1| \\neq \\sqrt{3}$, sondern $\\sqrt{1+1+1+1}$.',
+            'Vorzeichenfehler: $|3 - 10| = -7$.',
+            'Die Formel verlangt Summe $|d_1 + d_2|$ statt Differenz.',
+          ],
+          0,
+          `**Ansatz:** Voraussetzung der Formel prüfen — identischer Normalvektor.
+
+**Rechnung:** $\\vec n_2 = 2 \\vec n_1$ — parallel, aber nicht identisch in Skalierung. Beide Ebenen auf $\\vec n_1$ bringen: $E_2/2\\colon x + y + z = 5$. Jetzt Formel anwenden: $d = |3 - 5|/\\sqrt{3} = 2/\\sqrt{3} = 2\\sqrt{3}/3 \\approx 1{,}155$.
+
+**Probe:** Punkt $(3, 0, 0) \\in E_1$ ($3 + 0 + 0 = 3$ ✓). Abstand zu $E_2$ (Originalform $2x+2y+2z=10$): $|2 \\cdot 3 + 0 + 0 - 10|/\\sqrt{4+4+4} = 4/\\sqrt{12} = 4/(2\\sqrt{3}) = 2/\\sqrt{3}$ ✓.
+
+**Typischer Fehler:** Voraussetzung "gleicher Normalvektor" überspringen — die Formel ist nicht auf unterschiedlich skalierte Normalen anwendbar, ohne erst zu normalisieren.`,
+          [
+            'Vergleiche die Normalvektoren: identisch?',
+            'Wenn nicht: erst eine Ebene umformen, sodass beide dieselbe $\\vec n$-Form haben.',
+            'Konkret: $E_2/2$ vor Formel-Anwendung.',
+          ],
+          {
+            1: '$\\sqrt{1+1+1} = \\sqrt{3}$ ist korrekt — der Schüler hat $|\\vec n_1|$ richtig berechnet. Das ist nicht der Fehler.',
+            2: 'Der Betrag $|3 - 10| = 7$ wurde korrekt gebildet (Differenz negativ, Betrag positiv). Das ist nicht der Fehler.',
+            3: 'Die Formel verlangt *Differenz*. Summe $|d_1 + d_2|$ hat keine geometrische Bedeutung. Das ist nicht der Fehler.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['d-parallele-eb'] },
+      ),
+
+      // [20] transfer / ni / d-parallele-eb [PRÜFUNG]
+      tag(
+        ni(
+          '[PRÜFUNG] Berechne den Abstand der parallelen Ebenen $E_1\\colon 3x - 2y + 6z = 14$ und $E_2\\colon 3x - 2y + 6z = -7$.',
+          3, 0.02, '',
+          `**Ansatz:** Gleicher Normalvektor — Formel direkt anwenden.
+
+**Rechnung:** $\\vec n = (3, -2, 6)$, $|\\vec n| = \\sqrt{9 + 4 + 36} = \\sqrt{49} = 7$. $d = |14 - (-7)|/7 = |21|/7 = 3$.
+
+**Probe:** $|\\vec n| = 7$ ist "schöne" Zahl — klassische Prüfungswahl. Punkt-Probe: $(0, -7, 0) \\in E_2$ (denn $0 - 2 \\cdot (-7) + 0 = 14$? Nein, $-2 \\cdot -7 = 14 \\neq -7$). Korrekt: nimm $(0, 7/2, 0) \\in E_2$? $-2 \\cdot 7/2 = -7$ ✓. Abstand zu $E_1$: $|0 - 7 + 0 - 14|/7 = 21/7 = 3$ ✓.
+
+**Typischer Fehler:** Vorzeichen bei $d_2 = -7$ verschlucken: $|14 - 7| = 7$ statt $|14 - (-7)| = 21$.`,
+          [
+            '$|\\vec n| = \\sqrt{9 + 4 + 36} = 7$.',
+            'Differenz: $|14 - (-7)| = 21$.',
+            '$d = 21/7 = 3$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['d-parallele-eb'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 4 — Spiegelpunkt =====
+    4: [
+      // [21] recognize / tf / spiegelpunkt
+      tag(
+        tf(
+          'Den Spiegelpunkt $P\'$ eines Punktes $P$ an einer Ebene erhält man mit $P\' = 2F - P$, wobei $F$ der Lotfußpunkt von $P$ auf der Ebene ist.',
+          true,
+          `**Ansatz:** Der Lotfußpunkt $F$ ist der **Mittelpunkt** zwischen $P$ und seinem Spiegelbild $P\'$.
+
+**Rechnung:** Mittelpunkt-Formel: $F = (P + P\')/2 \\Rightarrow P\' = 2F - P$.
+
+**Probe:** Konkret: $P = (0, 0, 0)$, $F = (1, 1, 1)$. $P\' = 2(1,1,1) - (0,0,0) = (2, 2, 2)$. $|F - P| = \\sqrt{3} = |P\' - F|$ ✓ — $F$ ist tatsächlich Mittelpunkt.
+
+**Typischer Fehler:** Faktor 2 vergessen ($P\' = F - P$) — dann liegt $P\'$ deutlich näher an $P$ als an der Ebene, das Spiegelungsprinzip ist verletzt.`,
+          [
+            'Wo liegt der Lotfußpunkt $F$ zwischen $P$ und $P\'$?',
+            'Mittelpunkt: $F = (P + P\')/2$.',
+            'Nach $P\'$ auflösen: $P\' = 2F - P$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['spiegelpunkt'] },
+      ),
+
+      // [22] apply-guided / mc / spiegelpunkt
+      tag(
+        mc(
+          '$P = (0, 0, 0)$. Lotfußpunkt $F = (1, 1, 1)$ auf einer Ebene. Welcher Punkt ist der Spiegelpunkt $P\'$ an dieser Ebene?',
+          [
+            '$P\' = (2, 2, 2)$',
+            '$P\' = (1, 1, 1)$',
+            '$P\' = (0{,}5,\\, 0{,}5,\\, 0{,}5)$',
+            '$P\' = (-1, -1, -1)$',
+          ],
+          0,
+          `**Ansatz:** $P\' = 2F - P$.
+
+**Rechnung:** $P\' = 2(1, 1, 1) - (0, 0, 0) = (2, 2, 2)$.
+
+**Probe:** Mittelpunkt-Check: $(P + P\')/2 = ((0,0,0) + (2,2,2))/2 = (1, 1, 1) = F$ ✓.
+
+**Typischer Fehler:** Lotfuß $F$ selbst als Spiegelpunkt nehmen — $F$ ist aber nur halb so weit von $P$ entfernt wie $P\'$.`,
+          [
+            'Formel: $P\' = 2F - P$.',
+            'Hier $P = \\vec 0$: einfach $P\' = 2F$.',
+            'Doppelt so weit wie $F$.',
+          ],
+          {
+            1: 'Das ist der Lotfußpunkt $F$ selbst — Mittelpunkt zwischen $P$ und $P\'$, nicht der Spiegelpunkt.',
+            2: '$(P + F)/2 = (0{,}5,\\,0{,}5,\\,0{,}5)$ ist der Mittelpunkt zwischen $P$ und $F$ — keine geometrische Rolle.',
+            3: '$-F$ wäre Spiegelung am Ursprung, nicht an der Ebene durch $F$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['spiegelpunkt'] },
+      ),
+
+      // [23] apply-independent / ni / spiegelpunkt + lotfuss
+      tag(
+        ni(
+          '$P = (1, 2, 3)$. Lotfußpunkt von $P$ auf einer Ebene ist $F = (3, 4, 5)$. Bestimme die $x$-Koordinate des Spiegelpunkts $P\'$.',
+          5, 0.01, '',
+          `**Ansatz:** $P\' = 2F - P$ komponentenweise.
+
+**Rechnung:** $P\'_x = 2 \\cdot 3 - 1 = 5$.
+
+**Probe:** Vollständig: $P\' = (5, 6, 7)$. Mittelpunkt $(P + P\')/2 = ((1+5)/2, (2+6)/2, (3+7)/2) = (3, 4, 5) = F$ ✓.
+
+**Typischer Fehler:** $F_x - P_x = 2$ statt $2 F_x - P_x = 5$ rechnen.`,
+          [
+            'Formel komponentenweise: $P\'_x = 2 F_x - P_x$.',
+            'Einsetzen: $2 \\cdot 3 - 1$.',
+            'Probe: Mittelpunkt von $P$ und $P\'$ muss $F$ sein.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['spiegelpunkt', 'lotfuss'] },
+      ),
+
+      // [24] error-analysis / mc / spiegelpunkt ($P' = F - P$ statt $2F - P$)
+      tag(
+        mc(
+          'Ein Schüler berechnet den Spiegelpunkt mit $P\' = F - P$. Wo liegt der Fehler?',
+          [
+            'Faktor 2 vergessen. $F$ ist der *Mittelpunkt* zwischen $P$ und $P\'$, also $F = (P + P\')/2 \\Rightarrow P\' = 2F - P$. Mit $P\' = F - P$ ist $P\'$ weder Spiegelbild noch hat es eine geometrische Bedeutung.',
+            'Statt $F - P$ müsste es $F + P$ heißen.',
+            'Spiegelpunkt benötigt $|F - P|$, nicht $F - P$.',
+            'Der Spiegelpunkt liegt immer im Ursprung — keine Formel nötig.',
+          ],
+          0,
+          `**Ansatz:** Mittelpunktbeziehung $F = (P + P\')/2$ auflösen.
+
+**Rechnung:** $F = (P + P\')/2 \\Leftrightarrow 2F = P + P\' \\Leftrightarrow P\' = 2F - P$. Der Faktor 2 kommt aus der Mittelpunkt-Definition.
+
+**Probe:** Mit $P\' = F - P$ wäre $P + P\' = F$ — also $P\'$ so gewählt, dass die Summe mit $P$ gerade $F$ ergibt. $P\'$ wäre dann *vor* $P$ gespiegelt am Ursprung von $P$ aus, was geometrisch keinen Sinn macht.
+
+**Typischer Fehler:** Mittelpunkt-Formel $M = (A + B)/2$ direkt auf "Spiegelung" anwenden, ohne den Faktor 2 zu erhalten.`,
+          [
+            'Wo liegt $F$ zwischen $P$ und $P\'$?',
+            'Mittelpunkt $\\to$ $F = (P + P\')/2$.',
+            'Nach $P\'$ auflösen $\\to$ $P\' = 2F - P$, *nicht* $F - P$.',
+          ],
+          {
+            1: '$F + P$ wäre noch falscher — das wäre weder Mittelpunkt-Beziehung noch Spiegelung. Der Faktor 2 muss erscheinen.',
+            2: 'Spiegelpunkt ist ein *Punkt*, kein Abstand — keine Beträge nötig.',
+            3: 'Spiegelpunkte hängen von der Ebene ab. Der Ursprung ist nur dann das Spiegelbild, wenn die Ebene den Ursprung halbiert.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['spiegelpunkt'] },
+      ),
+
+      // [25] transfer / ni / spiegelpunkt + lotfuss
+      tag(
+        ni(
+          '$P = (1, 1, 1)$ wird an der Ebene $E\\colon x + y + z = 6$ gespiegelt. Bestimme die Summe der Koordinaten des Spiegelpunkts $P\' = (P\'_x + P\'_y + P\'_z)$.',
+          9, 0.02, '',
+          `**Ansatz:** Lotfußpunkt $F$ berechnen, dann $P\' = 2F - P$ und Komponenten summieren.
+
+**Rechnung:** Hilfsgerade $\\vec r(t) = (1+t, 1+t, 1+t)$. In $E$: $3 + 3t = 6 \\Rightarrow t = 1$. $F = (2, 2, 2)$. $P\' = 2(2,2,2) - (1,1,1) = (3, 3, 3)$. Summe: $3 + 3 + 3 = 9$.
+
+**Probe:** $P\' \\in E$? $3 + 3 + 3 = 9 \\neq 6$ — $P\'$ liegt *nicht* in $E$ (das wäre auch falsch — $P\'$ ist Spiegelbild, nicht Lotfuß). Mittelpunkt-Check: $(P + P\')/2 = (2,2,2) = F$ ✓.
+
+**Typischer Fehler:** $F$ und $P\'$ verwechseln, oder Faktor 2 in $P\' = 2F - P$ vergessen.`,
+          [
+            'Zwei Schritte: 1) Lotfußpunkt $F$ berechnen. 2) Spiegelpunkt $P\' = 2F - P$.',
+            '$F = (2, 2, 2)$, dann $P\' = (3, 3, 3)$.',
+            'Summe der Komponenten von $P\'$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['spiegelpunkt', 'lotfuss'] },
+      ),
+    ],
+
+    // ===== Sub-Goal 5 — Winkel Gerade-Ebene =====
+    5: [
+      // [26] recognize / tf / winkel-g-eb
+      tag(
+        tf(
+          'Der Winkel $\\alpha$ zwischen einer Geraden (Richtung $\\vec v$) und einer Ebene (Normale $\\vec n$) wird über $\\sin \\alpha = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$ berechnet — nicht über $\\cos$.',
+          true,
+          `**Ansatz:** Der Normalvektor $\\vec n$ steht senkrecht zur Ebene. Der Winkel zwischen $\\vec v$ und $\\vec n$ (nennen wir ihn $\\beta$) plus dem Winkel $\\alpha$ zwischen Gerade und Ebene ergibt $90°$.
+
+**Rechnung:** $\\cos \\beta = (\\vec v \\cdot \\vec n)/(|\\vec v||\\vec n|)$ — das ist der Vektor-Vektor-Winkel. Da $\\alpha = 90° - \\beta$, folgt $\\sin \\alpha = \\cos \\beta = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$ (Betrag, damit $\\alpha \\in [0°, 90°]$).
+
+**Probe:** Spezialfall Gerade $\\perp$ Ebene: $\\vec v \\parallel \\vec n$, $|\\vec v \\cdot \\vec n| = |\\vec v||\\vec n|$, $\\sin \\alpha = 1 \\Rightarrow \\alpha = 90°$ ✓. Spezialfall Gerade $\\parallel$ Ebene: $\\vec v \\cdot \\vec n = 0$, $\\sin \\alpha = 0 \\Rightarrow \\alpha = 0°$ ✓.
+
+**Typischer Fehler:** $\\cos$ statt $\\sin$ verwenden — das gibt den Winkel zwischen $\\vec v$ und $\\vec n$, also das *Komplement* zum gesuchten Winkel.`,
+          [
+            'Wie liegt $\\vec n$ zur Ebene?',
+            'Winkel zwischen Gerade und Ebene ist nicht derselbe wie zwischen Gerade und Normalvektor.',
+            'Komplement: $\\sin \\alpha = \\cos \\beta$.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 5, uses: ['winkel-g-eb'] },
+      ),
+
+      // [27] apply-guided / mc / winkel-g-eb
+      tag(
+        mc(
+          'Welche Formel berechnet den Winkel $\\alpha$ zwischen einer Geraden (Richtung $\\vec v$) und einer Ebene (Normale $\\vec n$)?',
+          [
+            '$\\sin \\alpha = \\dfrac{|\\vec v \\cdot \\vec n|}{|\\vec v||\\vec n|}$',
+            '$\\cos \\alpha = \\dfrac{|\\vec v \\cdot \\vec n|}{|\\vec v||\\vec n|}$',
+            '$\\tan \\alpha = \\dfrac{\\vec v \\cdot \\vec n}{|\\vec v \\times \\vec n|}$',
+            '$\\sin \\alpha = \\dfrac{|\\vec v \\times \\vec n|}{|\\vec v||\\vec n|}$',
+          ],
+          0,
+          `**Ansatz:** Sinus, weil der Vektor-Vektor-Winkel zwischen $\\vec v$ und $\\vec n$ das Komplement zum gesuchten Winkel ist.
+
+**Rechnung:** $\\alpha + \\beta = 90°$ mit $\\beta = \\angle(\\vec v, \\vec n)$. Damit $\\sin \\alpha = \\cos \\beta = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$.
+
+**Probe:** Gerade in Ebene: $\\vec v \\cdot \\vec n = 0 \\Rightarrow \\sin \\alpha = 0 \\Rightarrow \\alpha = 0°$ ✓. Gerade senkrecht zur Ebene: $|\\vec v \\cdot \\vec n| = |\\vec v||\\vec n|$ $\\Rightarrow \\sin \\alpha = 1 \\Rightarrow \\alpha = 90°$ ✓.
+
+**Typischer Fehler:** $\\cos$ statt $\\sin$ — gibt den Winkel zwischen Richtungsvektor und Normalvektor, nicht zwischen Gerade und Ebene.`,
+          [
+            'Welche trigonometrische Funktion macht die Komplement-Umrechnung möglich?',
+            '$\\sin = \\cos$(Komplement).',
+            'Im Zähler steht das Skalarprodukt (mit Betrag).',
+          ],
+          {
+            1: '$\\cos$ liefert den Winkel $\\beta$ zwischen $\\vec v$ und $\\vec n$ — *nicht* zwischen Gerade und Ebene. Komplement: $\\alpha = 90° - \\beta$, also $\\sin \\alpha = \\cos \\beta$.',
+            2: '$\\tan$ taucht in keiner Standard-Winkelformel auf — und das Kreuzprodukt im Nenner wäre dimensionsmäßig auch falsch.',
+            3: 'Kreuzprodukt-Betrag dividiert durch $|\\vec v||\\vec n|$ liefert *$\\sin \\beta$* (Vektor-Vektor-Winkel). $\\sin \\beta = \\cos \\alpha$, nicht $\\sin \\alpha$.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 5, uses: ['winkel-g-eb'] },
+      ),
+
+      // [28] apply-independent / ni / winkel-g-eb
+      tag(
+        ni(
+          '$\\vec v = (1, 0, 0)$, $\\vec n = (1, 1, 0)$. Berechne den Winkel $\\alpha$ zwischen der Geraden und der Ebene in Grad.',
+          45, 0.5, '°',
+          `**Ansatz:** $\\sin \\alpha = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$.
+
+**Rechnung:** $\\vec v \\cdot \\vec n = 1 \\cdot 1 + 0 + 0 = 1$. $|\\vec v| = 1$, $|\\vec n| = \\sqrt{2}$. $\\sin \\alpha = 1/\\sqrt{2}$. $\\alpha = 45°$.
+
+**Probe:** Vektor-Vektor-Winkel zwischen $\\vec v$ und $\\vec n$: $\\cos \\beta = 1/\\sqrt{2}$, $\\beta = 45°$. Komplement $\\alpha = 90° - 45° = 45°$ ✓ (Sonderfall: hier sind $\\alpha$ und $\\beta$ gleich, weil $\\sin 45° = \\cos 45°$).
+
+**Typischer Fehler:** $\\alpha$ als Vektor-Vektor-Winkel zwischen $\\vec v$ und $\\vec n$ angeben (hier zufällig auch 45°, aber im Allgemeinen unterschiedlich).`,
+          [
+            'Skalarprodukt: $1 \\cdot 1 + 0 + 0 = 1$.',
+            'Beträge: $|\\vec v| = 1$, $|\\vec n| = \\sqrt{2}$.',
+            '$\\sin \\alpha = 1/\\sqrt{2} \\Rightarrow \\alpha = 45°$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 5, uses: ['winkel-g-eb'] },
+      ),
+
+      // [29] error-analysis / mc / winkel-g-eb (cos statt sin)
+      tag(
+        mc(
+          'Ein Schüler berechnet den Winkel zwischen Gerade $(\\vec v)$ und Ebene $(\\vec n)$ mit $\\cos \\alpha = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$. Wo liegt der Fehler?',
+          [
+            '$\\cos$ gibt den Winkel zwischen $\\vec v$ und $\\vec n$ — *nicht* zwischen Gerade und Ebene. Da $\\vec n \\perp$ Ebene, ist der gesuchte Winkel das Komplement: $\\alpha = 90° - \\beta$, also $\\sin \\alpha = \\cos \\beta = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$.',
+            '$\\cos$ ist immer negativ, $\\sin$ immer positiv.',
+            'Statt $\\cos$ muss $\\tan$ stehen.',
+            'Die Formel funktioniert nur in 2D.',
+          ],
+          0,
+          `**Ansatz:** Komplementärwinkel zwischen Gerade und Ebene.
+
+**Rechnung:** $\\beta = \\angle(\\vec v, \\vec n)$ ist der Vektor-Vektor-Winkel; $\\alpha = \\angle($Gerade, Ebene$) = 90° - \\beta$. Aus $\\cos \\beta = \\sin(90° - \\beta) = \\sin \\alpha$ folgt die richtige Formel.
+
+**Probe:** Spezialfall: Gerade $\\perp$ Ebene $\\Leftrightarrow$ $\\vec v \\parallel \\vec n$. Mit der falschen Formel: $\\cos \\alpha = 1 \\Rightarrow \\alpha = 0°$. Mit der richtigen Formel: $\\sin \\alpha = 1 \\Rightarrow \\alpha = 90°$ ✓. Geometrisch klar: senkrechte Gerade $\\to$ $\\alpha = 90°$, nicht $0°$.
+
+**Typischer Fehler:** Klassischer Klausurfehler — beim Übergang vom Vektor-Winkel zum Geraden-Ebenen-Winkel die $\\sin$/$\\cos$-Umstellung vergessen.`,
+          [
+            'Wie liegt $\\vec n$ zur Ebene? Senkrecht.',
+            'Welcher Winkel wird vom Skalarprodukt direkt gemessen?',
+            'Komplement-Trick: $\\sin \\alpha = \\cos \\beta$, wenn $\\alpha + \\beta = 90°$.',
+          ],
+          {
+            1: 'Beide Funktionen können je nach Argument positiv oder negativ sein — und durch den Betrag im Zähler werden ohnehin positive Werte erzwungen. Das ist nicht das Problem.',
+            2: '$\\tan$ kommt in der Standardformel überhaupt nicht vor. Wäre auch dimensional/geometrisch unmotiviert.',
+            3: 'Die Formel ist eine 3D-Formel (Vektoren $\\in \\mathbb{R}^3$). In 2D gibt es zwischen Gerade und Ebene gar keinen sinnvollen Winkel.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 5, uses: ['winkel-g-eb'] },
+      ),
+
+      // [30] transfer / ni / winkel-g-eb
+      tag(
+        ni(
+          '$\\vec v = (1, 1, 1)$, $\\vec n = (0, 0, 1)$. Berechne den Winkel $\\alpha$ zwischen der Geraden und der Ebene in Grad.',
+          35.26, 0.5, '°',
+          `**Ansatz:** Formel $\\sin \\alpha = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$.
+
+**Rechnung:** $\\vec v \\cdot \\vec n = 0 + 0 + 1 = 1$. $|\\vec v| = \\sqrt{3}$, $|\\vec n| = 1$. $\\sin \\alpha = 1/\\sqrt{3} \\approx 0{,}5774$. $\\alpha = \\arcsin(0{,}5774) \\approx 35{,}26°$.
+
+**Probe:** $\\vec v$ ist die "Raumdiagonale" (mit $|\\vec v| = \\sqrt{3}$), $\\vec n$ ist die $z$-Achse. Die Gerade steigt symmetrisch in alle Richtungen — der Höhenwinkel zur $xy$-Ebene ist genau $\\arctan(1/\\sqrt{2}) \\approx 35{,}26°$ (denn die Projektion auf $xy$ hat Länge $\\sqrt{2}$, die Höhe $1$). ✓
+
+**Typischer Fehler:** $\\cos \\alpha$ statt $\\sin \\alpha$ rechnen $\\to$ $\\alpha \\approx 54{,}74°$ (das wäre der Vektor-Winkel zur $z$-Achse, nicht zur $xy$-Ebene).`,
+          [
+            'Skalarprodukt: nur die $z$-Komponente trägt bei.',
+            'Beträge: $|\\vec v| = \\sqrt{3}$, $|\\vec n| = 1$.',
+            '$\\arcsin(1/\\sqrt{3}) \\approx 35{,}26°$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 5, uses: ['winkel-g-eb'] },
+      ),
+    ],
+  },
 }
