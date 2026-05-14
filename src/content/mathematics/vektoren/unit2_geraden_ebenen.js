@@ -382,24 +382,13 @@ $$d = \\frac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^{2} + b^{2} + c^{2}}}.$$
     question: '[PRÜFUNG] $g_1\\colon \\vec{r} = (1, 0, 2) + t \\cdot (1, 1, 0)$, $g_2\\colon \\vec{r} = (0, 1, 2) + s \\cdot (-1, 1, 0)$. Wie liegen die Geraden zueinander?',
     options: ['Parallel', 'Identisch', 'Schneidend', 'Windschief'],
     correctIndex: 2,
-    explanation: `**Strategie:** 1) Parallelitätstest der Richtungsvektoren. 2) Wenn nicht parallel: Gleichungssystem lösen.
+    explanation: `**Ansatz:** Lage-Test zweier Geraden in zwei Schritten: 1) Parallelitätstest der Richtungsvektoren. 2) Wenn nicht parallel, Gleichsetzungs-LGS lösen $\\to$ schneidend oder windschief.
 
-**Schritt 1 — Parallel?** $\\vec{v}_1 = (1,1,0)$, $\\vec{v}_2 = (-1,1,0)$. Gibt es $k$ mit $\\vec{v}_2 = k \\vec{v}_1$? $-1 = k \\cdot 1 \\Rightarrow k = -1$. Prüfen: $1 = -1 \\cdot 1 = -1$? Nein. Also **nicht parallel**.
+**Rechnung:** Parallelitätstest: $\\vec{v}_2 = (-1, 1, 0)$ und $\\vec{v}_1 = (1, 1, 0)$. Aus der $x$-Komponente $-1 = k \\cdot 1 \\Rightarrow k = -1$, aber $y$-Komponente $1 = -1$ — Widerspruch. Nicht parallel. Gleichsetzen: $1 + t = -s$ (I), $t = 1 + s$ (II), $2 = 2$ (III, trivial). Aus (II) $s = t - 1$, in (I) $1 + t = -(t-1) = 1 - t \\Rightarrow 2t = 0 \\Rightarrow t = 0$, $s = -1$. Schnittpunkt $\\vec{r}_1(0) = (1, 0, 2)$.
 
-**Schritt 2 — Gleichsetzen:**
-$$\\begin{aligned}
-1 + t &= -s \\quad &(\\text{I}) \\\\
-0 + t &= 1 + s \\quad &(\\text{II}) \\\\
-2 &= 2 \\quad &(\\text{III, trivial erfüllt})
-\\end{aligned}$$
+**Probe:** $\\vec{r}_2(-1) = (0, 1, 2) + (-1)(-1, 1, 0) = (1, 0, 2)$ ✓ — beide Geraden liefern denselben Punkt.
 
-Aus (II): $s = t - 1$. In (I): $1 + t = -(t - 1) = -t + 1 \\;\\Rightarrow\\; 2t = 0 \\;\\Rightarrow\\; t = 0$, $s = -1$.
-
-**Schnittpunkt:** $\\vec{r}_1(0) = (1, 0, 2)$. Probe mit $g_2$: $(0, 1, 2) + (-1)(-1, 1, 0) = (1, 0, 2)$. ✓
-
-**Ergebnis:** Die Geraden **schneiden** sich im Punkt $(1, 0, 2)$.
-
-**Typischer Fehler:** "Windschief" ohne die z-Komponente zu prüfen. Hier ist Gl. (III) trivial ($2 = 2$), also *kann* ein Schnittpunkt existieren — und wir haben ihn berechnet.`,
+**Typischer Fehler:** "Windschief" ohne die $z$-Gleichung zu prüfen. Hier ist Gl. (III) $2 = 2$ trivial erfüllt, also *kann* ein Schnittpunkt existieren — und tatsächlich liegt einer vor.`,
     hints: [
       'Erst Parallelität prüfen: $\\vec{v}_2 = k \\vec{v}_1$? Hier: nein.',
       'Dann Gleichsetzen und Gleichungssystem lösen (3 Gleichungen, 2 Unbekannte).',
@@ -421,18 +410,13 @@ Aus (II): $s = t - 1$. In (I): $1 + t = -(t - 1) = -t + 1 \\;\\Rightarrow\\; 2t 
       '$(2, -1, 2)$',
     ],
     correctIndex: 2,
-    explanation: `**Ansatz:** Der kürzeste Weg von einem Punkt zu einer Ebene ist immer *senkrecht* zur Ebene — in Richtung des Normalvektors.
+    explanation: `**Ansatz:** Der kürzeste Weg von $P$ zur Ebene $E$ ist senkrecht zur Ebene — also in Richtung $\\vec{n}$. Der Lotfußpunkt $F$ ist der Schnittpunkt der Hilfsgeraden $\\vec{r} = P + \\lambda \\vec{n}$ mit $E$ und damit *per Definition* der nächste Ebenenpunkt.
 
-**Konstruktion des Lotfußpunkts $F$:**
-1. Hilfsgerade $h\\colon \\vec{r} = P + \\lambda \\vec{n}$ durch $P$ in Richtung Normalvektor aufstellen.
-2. $\\lambda$ berechnen, bei dem $h$ die Ebene $E$ schneidet.
-3. $F = P + \\lambda \\vec{n}$ einsetzen — der Fußpunkt.
+**Rechnung:** $\\vec{n} = (2, -1, 2)$. Hilfsgerade $\\vec{r}(\\lambda) = (1+2\\lambda,\\; 2-\\lambda,\\; 3+2\\lambda)$. Einsetzen in $E$: $2(1+2\\lambda) - (2-\\lambda) + 2(3+2\\lambda) = 2 + 4\\lambda - 2 + \\lambda + 6 + 4\\lambda = 6 + 9\\lambda = 10 \\Rightarrow 9\\lambda = 4 \\Rightarrow \\lambda = 4/9$. Damit ist $F = (17/9,\\; 14/9,\\; 35/9)$ der gesuchte nächste Punkt.
 
-**Konkret hier:** $\\vec{n} = (2, -1, 2)$, $|\\vec{n}| = 3$. Hilfsgerade: $(1+2\\lambda, 2-\\lambda, 3+2\\lambda)$. In $E$: $2(1+2\\lambda) - (2-\\lambda) + 2(3+2\\lambda) = 10 \\Rightarrow 2 + 4\\lambda - 2 + \\lambda + 6 + 4\\lambda = 10 \\Rightarrow 9\\lambda = 4 \\Rightarrow \\lambda = 4/9$. $F = (1+8/9,\\; 2-4/9,\\; 3+8/9) = (17/9,\\; 14/9,\\; 35/9)$.
+**Probe:** $2 \\cdot 17/9 - 14/9 + 2 \\cdot 35/9 = (34 - 14 + 70)/9 = 90/9 = 10$ ✓ — $F$ liegt auf $E$. Liegt $P$ selbst auf $E$? $2 \\cdot 1 - 2 + 6 = 6 \\neq 10$ — nein, also ist $F \\neq P$.
 
-**Merke:** Der Fußpunkt des Lots ist *definitionsgemäß* der nächste Punkt — das ist ein allgemeines Prinzip.
-
-**Typischer Fehler:** Option A: Prüfen, ob $P$ in $E$ liegt: $2 \\cdot 1 - 2 + 2 \\cdot 3 = 6 \\neq 10$. $P \\notin E$.`,
+**Typischer Fehler:** $P$ selbst als nächsten Punkt nehmen, obwohl $P \\notin E$. Oder einen Punkt der Ebene "auf Verdacht" wählen statt das Lot zu konstruieren.`,
     hints: [
       'Der kürzeste Weg zu einer Ebene ist immer senkrecht — also parallel zum Normalvektor.',
       'Konstruiere das Lot von $P$ in Richtung $\\vec{n}$ und schneide es mit $E$.',
@@ -443,28 +427,20 @@ Aus (II): $s = t - 1$. In (I): $1 + t = -(t - 1) = -t + 1 \\;\\Rightarrow\\; 2t 
       1: 'Teste $(3, 0, 5)$: $2\\cdot 3 - 0 + 2\\cdot 5 = 16 \\neq 10$. Liegt nicht auf $E$. Selbst wenn es dort läge — der Lotfußpunkt $F$ ist per Definition der nächste Punkt, und der ist hier $(17/9, 14/9, 35/9)$.',
       3: '$(2, -1, 2)$ ist gerade der *Normalvektor* $\\vec{n}$, kein Punkt auf der Ebene. Teste: $2\\cdot 2 - (-1) + 2\\cdot 2 = 9 \\neq 10$. Der nächste Punkt ist der Lotfußpunkt, nicht der Normalvektor.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['lotfuss'] },
   },
   'ex-vek-2-4-c': {
     id: 'ex-vek-2-4-c', lessonId: 'vek-2-4', type: 'multiple-choice',
     question: '[PRÜFUNG] Zwei Ebenen $E_1\\colon x + y + z = 1$ und $E_2\\colon 2x + 2y + 2z = 5$. Wie liegen sie zueinander?',
     options: ['Identisch', 'Parallel (verschieden)', 'Schneiden sich in einer Geraden', 'Senkrecht zueinander'],
     correctIndex: 1,
-    explanation: `**Strategie:** 1) Normalvektoren vergleichen. 2) Wenn parallel: prüfen, ob identisch.
+    explanation: `**Ansatz:** Lage zweier Ebenen über Normalvektoren testen — parallel/identisch (Normalen Vielfache) versus schneidend (Normalen nicht parallel).
 
-**Schritt 1 — Normalvektoren:** $\\vec{n}_1 = (1, 1, 1)$, $\\vec{n}_2 = (2, 2, 2) = 2 \\vec{n}_1$. → Normalvektoren parallel → **Ebenen parallel**.
+**Rechnung:** $\\vec{n}_1 = (1, 1, 1)$, $\\vec{n}_2 = (2, 2, 2) = 2 \\vec{n}_1$ — Normalvektoren parallel, also Ebenen parallel. Identisch? Bringe $E_2$ auf $\\vec{n}_1$-Form (durch 2 teilen): $x + y + z = 5/2$. Vergleiche mit $E_1\\colon x + y + z = 1$ — $1 \\neq 5/2$, also *parallel und verschieden*.
 
-**Schritt 2 — Identisch?** Bringe $E_2$ auf gleiche Normalenlänge: Dividiere $E_2$ durch 2: $x + y + z = 5/2$. Vergleich mit $E_1\\colon x + y + z = 1$: rechte Seiten unterschiedlich ($1 \\neq 5/2$) → **verschieden**.
+**Probe:** Abstand $d = |5/2 - 1|/\\sqrt{3} = (3/2)/\\sqrt{3} = \\sqrt{3}/2 \\approx 0{,}87 > 0$. Positiver Abstand bestätigt: nicht identisch ✓.
 
-**Ergebnis:** Die Ebenen sind **parallel und verschieden** (also *nicht* identisch, *nicht* schneidend).
-
-**Probe — Abstand:**
-$$d = \\frac{|5/2 - 1|}{\\sqrt{3}} = \\frac{3/2}{\\sqrt{3}} = \\frac{\\sqrt{3}}{2} \\approx 0{,}87 > 0.$$
-
-Abstand $> 0$ bestätigt: nicht identisch.
-
-**Typischer Fehler:**
-- "Identisch": Verführerisch, weil $\\vec{n}_2 = 2 \\vec{n}_1$. Aber die Konstanten $d$ müssen ebenfalls im gleichen Verhältnis stehen: $2 \\cdot 1 = 2 \\neq 5$.
-- "Senkrecht": Wäre $\\vec{n}_1 \\cdot \\vec{n}_2 = 0$. Hier $= 6 \\neq 0$.`,
+**Typischer Fehler:** "Identisch" annehmen, weil $\\vec{n}_2 = 2\\vec{n}_1$ — vergessen wird, dass auch die rechten Seiten $d$ im selben Verhältnis stehen müssen: $2 \\cdot 1 = 2 \\neq 5$. Oder "senkrecht" annehmen, ohne $\\vec{n}_1 \\cdot \\vec{n}_2 = 0$ zu prüfen (hier $= 6$).`,
     hints: [
       'Parallelität: Sind die Normalvektoren Vielfache voneinander?',
       'Identisch: Zusätzlich müssen die Konstanten im gleichen Verhältnis stehen.',
@@ -482,23 +458,19 @@ Abstand $> 0$ bestätigt: nicht identisch.
     correctValue: 1.73,
     tolerance: 0.02,
     unit: '',
-    explanation: `**Strategie:** Für parallele Ebenen mit *identischem* Normalvektor:
-$$d = \\frac{|d_2 - d_1|}{|\\vec{n}|}.$$
+    explanation: `**Ansatz:** Für parallele Ebenen mit *identischem* Normalvektor gilt $d = |d_2 - d_1|/|\\vec{n}|$.
 
-**Rechnung:**
-- $\\vec{n} = (1, 1, 1)$, $|\\vec{n}| = \\sqrt{1^{2} + 1^{2} + 1^{2}} = \\sqrt{3}$.
-- $d = \\dfrac{|4 - 1|}{\\sqrt{3}} = \\dfrac{3}{\\sqrt{3}} = \\sqrt{3} \\approx 1{,}73$.
+**Rechnung:** $\\vec{n} = (1, 1, 1)$, $|\\vec{n}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}$. $d = |4 - 1|/\\sqrt{3} = 3/\\sqrt{3} = \\sqrt{3} \\approx 1{,}73$.
 
-**Probe — über einen Punkt:** Wähle $\\vec{p}_1 = (1, 0, 0) \\in E_1$. Abstand zu $E_2$: $d = |1 \\cdot 1 + 0 + 0 - 4| / \\sqrt{3} = 3/\\sqrt{3} = \\sqrt{3}$. ✓
+**Probe:** Wähle $\\vec{p}_1 = (1, 0, 0) \\in E_1$. Abstand $\\vec{p}_1$ zu $E_2$: $d = |1 + 0 + 0 - 4|/\\sqrt{3} = 3/\\sqrt{3} = \\sqrt{3}$ ✓ — selber Wert.
 
-**Achtung — gleiche Normalvektor-Form:** Falls die Ebenen z.B. als $2x + 2y + 2z = 8$ gegeben wären, erst durch 2 teilen (auf gleiche Form wie $E_1$ bringen), dann die Formel anwenden.
-
-**Typischer Fehler:** $d = |4 - 1| = 3$ — Wurzel-Nenner vergessen.`,
+**Typischer Fehler:** Wurzel-Nenner vergessen ($d = |4 - 1| = 3$). Oder die Formel anwenden, obwohl die Ebenen unterschiedliche Normalvektoren haben — erst beide auf dieselbe $\\vec{n}$-Form bringen (z. B. $E_2$ durch 2 teilen), dann subtrahieren.`,
     hints: [
       'Formel: $d = \\dfrac{|d_2 - d_1|}{|\\vec{n}|}$ (bei identischem Normalvektor).',
       '$|\\vec{n}| = \\sqrt{1+1+1} = \\sqrt{3}$.',
       '$d = 3 / \\sqrt{3} = \\sqrt{3} \\approx 1{,}73$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['d-parallele-eb'] },
   },
   'ex-vek-2-4-e': {
     id: 'ex-vek-2-4-e', lessonId: 'vek-2-4', type: 'multiple-choice',
@@ -510,15 +482,13 @@ $$d = \\frac{|d_2 - d_1|}{|\\vec{n}|}.$$
       '$|\\vec{v}| = |\\vec{n}|$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Der Normalvektor steht *per Definition* senkrecht auf der Ebene. Eine Gerade, die ebenfalls senkrecht zur Ebene steht, muss daher *parallel* zum Normalvektor sein.
+    explanation: `**Ansatz:** Der Normalvektor steht *per Definition* senkrecht auf der Ebene. Eine Gerade, die ebenfalls senkrecht zur Ebene verläuft, muss daher in *derselben Richtung* zeigen wie $\\vec{n}$ — also parallel.
 
-**Geometrisch:** Gerade ⊥ Ebene heißt: die Gerade verläuft in *genau der Richtung*, die der Normalvektor angibt. Das ist Parallelität, nicht Orthogonalität zwischen $\\vec{v}$ und $\\vec{n}$.
+**Rechnung:** Gerade $\\perp$ Ebene $\\Leftrightarrow \\vec{v} \\parallel \\vec{n} \\Leftrightarrow \\vec{v} = k \\vec{n}$ für ein $k \\neq 0$. Äquivalenter Kollinearitäts-Test: $\\vec{v} \\times \\vec{n} = \\vec{0}$.
 
-**Formel:** $\\vec{v} = k \\cdot \\vec{n}$ für ein $k \\neq 0$.
+**Probe:** Wähle Gerade $\\vec{r} = (0,0,0) + t \\vec{n}$. Sie verläuft entlang $\\vec{n}$, also senkrecht zur Ebene ✓. Skalarprodukt $\\vec{v} \\cdot \\vec{n} = k|\\vec{n}|^2 \\neq 0$ — also gerade *nicht* das Orthogonalitäts-Kriterium $\\vec{v} \\cdot \\vec{n} = 0$ (das wäre Gerade $\\parallel$ Ebene).
 
-**Test:** Richtungsvektor und Normalvektor kollinear $\\Leftrightarrow$ $\\vec{v} \\times \\vec{n} = \\vec{0}$.
-
-**Typischer Fehler:** Intuitiv "senkrecht auf der Ebene" $\\to$ "senkrecht auf etwas, das zur Ebene gehört" $\\to$ $\\vec{v} \\cdot \\vec{n} = 0$. Falsch! Der Normalvektor steht schon senkrecht auf der Ebene — alles parallel dazu ist ebenfalls senkrecht zur Ebene.`,
+**Typischer Fehler:** Intuitiv "senkrecht auf Ebene" $\\to$ "senkrecht auf etwas, das in der Ebene liegt" $\\to$ $\\vec{v} \\cdot \\vec{n} = 0$ schreiben. Falsch! Der Normalvektor steht *schon* senkrecht — alles parallel zu ihm steht ebenfalls senkrecht zur Ebene.`,
     hints: [
       'Visualisiere: Der Normalvektor $\\vec{n}$ zeigt senkrecht aus der Ebene heraus.',
       'Eine Gerade senkrecht zur Ebene zeigt in dieselbe Richtung wie $\\vec{n}$.',
@@ -529,24 +499,20 @@ $$d = \\frac{|d_2 - d_1|}{|\\vec{n}|}.$$
       2: '$\\vec{v} \\cdot \\vec{n} = 1$ hat keine geometrische Bedeutung für Senkrechtstehen. Die senkrechte Lage einer Geraden zur Ebene fordert $\\vec{v} = k\\vec{n}$ (parallel zur Normalen), dann ist $\\vec{v} \\cdot \\vec{n} = k|\\vec{n}|^{2}$ — abhängig von $k$.',
       3: 'Gleiche Beträge $|\\vec{v}| = |\\vec{n}|$ sagen nichts über die *Richtung* aus. Für "senkrecht zur Ebene" ist die Richtung entscheidend: $\\vec{v}$ muss parallel zu $\\vec{n}$ sein, also $\\vec{v} = k\\vec{n}$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['g-ortho-ebene'] },
   },
   'ex-vek-2-4-mastery': {
     id: 'ex-vek-2-4-mastery', lessonId: 'vek-2-4', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Schnittgerade zweier Ebenen $E_1\\colon x + y = 2$ und $E_2\\colon y + z = 3$. Der Richtungsvektor der Schnittgeraden ist:',
     options: ['$(1, -1, 1)$', '$(1, 1, 1)$', '$(0, 1, 0)$', '$(1, 0, -1)$'],
     correctIndex: 0,
-    explanation: `**Strategie:** Die Schnittgerade liegt in *beiden* Ebenen und ist daher *senkrecht zu beiden Normalvektoren*. Der Richtungsvektor ergibt sich aus dem Kreuzprodukt: $\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2$.
+    explanation: `**Ansatz:** Die Schnittgerade liegt in *beiden* Ebenen und steht daher senkrecht zu *beiden* Normalvektoren. Welche Operation liefert einen Vektor senkrecht zu zwei anderen? Das Kreuzprodukt $\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2$.
 
-**Rechnung:**
-- Normalvektoren aus den Koordinatenformen: $\\vec{n}_1 = (1, 1, 0)$, $\\vec{n}_2 = (0, 1, 1)$.
-- Kreuzprodukt:
-$$\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2 = \\begin{pmatrix} 1 \\cdot 1 - 0 \\cdot 1 \\\\ 0 \\cdot 0 - 1 \\cdot 1 \\\\ 1 \\cdot 1 - 1 \\cdot 0 \\end{pmatrix} = (1,\\, -1,\\, 1).$$
+**Rechnung:** $\\vec{n}_1 = (1, 1, 0)$ (aus $x + y = 2$), $\\vec{n}_2 = (0, 1, 1)$ (aus $y + z = 3$). $\\vec{v} = (1 \\cdot 1 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\cdot 1,\\; 1 \\cdot 1 - 1 \\cdot 0) = (1, -1, 1)$.
 
-**Probe:** $\\vec{v} \\cdot \\vec{n}_1 = 1 \\cdot 1 + (-1) \\cdot 1 + 1 \\cdot 0 = 0$ ✓. $\\vec{v} \\cdot \\vec{n}_2 = 1 \\cdot 0 + (-1) \\cdot 1 + 1 \\cdot 1 = 0$ ✓. Senkrecht zu beiden Normalen $\\Rightarrow$ parallel zu beiden Ebenen $\\Rightarrow$ liegt in der Schnittgeraden.
+**Probe:** $\\vec{v} \\cdot \\vec{n}_1 = 1 - 1 + 0 = 0$ ✓ und $\\vec{v} \\cdot \\vec{n}_2 = 0 - 1 + 1 = 0$ ✓ — senkrecht zu beiden Normalen, also parallel zu beiden Ebenen.
 
-**Typischer Fehler:**
-- $(1, 1, 1)$: Summe der Normalvektoren — keine geometrische Bedeutung für die Schnittgerade.
-- $(1, 0, -1)$: Vorzeichenfehler im Kreuzprodukt, typisch bei fehlender "zyklischer Reihenfolge" der Komponenten.`,
+**Typischer Fehler:** $(1, 1, 1) = \\vec{n}_1 + \\vec{n}_2$ als Schnittgeraden-Richtung benutzen (Summe statt Kreuzprodukt) — diese liegt jedoch nicht in den Ebenen. Oder Vorzeichen im Kreuzprodukt verlieren (mittlere Komponente ist $-(n_{1x} n_{2z} - n_{1z} n_{2x})$, ein Minuszeichen geht oft verloren).`,
     hints: [
       'Die Schnittgerade liegt in beiden Ebenen $\\Rightarrow$ senkrecht zu beiden Normalvektoren.',
       'Welche Operation liefert einen Vektor senkrecht zu zwei anderen? Kreuzprodukt.',
@@ -557,6 +523,7 @@ $$\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2 = \\begin{pmatrix} 1 \\cdot 1 - 0 \\c
       2: '$(0, 1, 0) = \\hat{e}_2$ liegt zwar in der $y$-Richtung, aber $(0,1,0) \\cdot \\vec{n}_1 = 1 \\neq 0$ — also nicht senkrecht zu $\\vec{n}_1$ und daher nicht in $E_1$. Der Richtungsvektor der Schnittgeraden muss *beide* Orthogonalitätsbedingungen erfüllen, was nur das Kreuzprodukt leistet.',
       3: 'Vorzeichenfehler im Kreuzprodukt — wahrscheinlich wurde die Reihenfolge der Komponenten oder ein Minuszeichen falsch gesetzt. Richtig: $\\vec{n}_1 \\times \\vec{n}_2 = (1\\cdot 1 - 0\\cdot 1,\\; 0\\cdot 0 - 1\\cdot 1,\\; 1\\cdot 1 - 1\\cdot 0) = (1, -1, 1)$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['schnittgerade'] },
   },
 }
 
@@ -1052,6 +1019,50 @@ Idee: $\\vec{v}_1 \\times \\vec{v}_2$ steht senkrecht auf beiden Richtungen — 
 - Gerade $\\parallel$ Ebene $\\Leftrightarrow$ $\\vec{v}_\\text{Ger} \\perp \\vec{n}_\\text{Eb}$, d.h. $\\vec{v} \\cdot \\vec{n} = 0$.
 
 **Prüfungs-Check am Ende jeder Aufgabe:** Vorzeichen? Einheit? Plausibilitätstest mit einem konkreten Punkt?`,
+      },
+      {
+        id: 'vek-2-4-s1b', type: 'explanation-formal', title: 'Formelübersicht: Prüfungsklassiker',
+        content: `**Lotfußpunkt $F$ von $P$ auf Ebene $E$ mit Normalvektor $\\vec{n}$:**
+
+| Schritt | Formel |
+|---------|--------|
+| Hilfsgerade | $\\vec{r}(t) = P + t \\vec{n}$ |
+| Schnitt mit $E$ | $\\vec{r}(t)$ in Ebenengleichung einsetzen, nach $t$ auflösen |
+| Lotfußpunkt | $F = P + t^* \\vec{n}$ |
+
+**Spiegelpunkt $P'$ von $P$ an einer Ebene:**
+
+$$P' = 2 F - P$$
+
+Der Lotfußpunkt $F$ ist der **Mittelpunkt** zwischen $P$ und $P'$, daher $F = (P + P')/2 \\Rightarrow P' = 2F - P$.
+
+**Schnittgerade zweier Ebenen** $E_1, E_2$ mit Normalvektoren $\\vec{n}_1, \\vec{n}_2$ (nicht parallel):
+
+| Größe | Formel |
+|-------|--------|
+| Richtungsvektor | $\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2$ |
+| Stützpunkt | beliebige Lösung des $2\\times 3$-LGS aus $E_1, E_2$ |
+
+**Lage Gerade $g$ (Richtung $\\vec{v}$) und Ebene $E$ (Normale $\\vec{n}$):**
+
+| Lage | Bedingung |
+|------|-----------|
+| Gerade $\\perp$ Ebene | $\\vec{v} \\parallel \\vec{n}$, d. h. $\\vec{v} = k \\vec{n}$ |
+| Gerade $\\parallel$ Ebene (nicht in $E$) | $\\vec{v} \\cdot \\vec{n} = 0$ und Stützpunkt $\\notin E$ |
+| Gerade liegt in $E$ | $\\vec{v} \\cdot \\vec{n} = 0$ und Stützpunkt $\\in E$ |
+| Gerade schneidet $E$ transversal | $\\vec{v} \\cdot \\vec{n} \\neq 0$ |
+
+**Abstand paralleler Ebenen** $E_1\\colon \\vec{n} \\cdot \\vec{r} = d_1$ und $E_2\\colon \\vec{n} \\cdot \\vec{r} = d_2$ (selber Normalvektor!):
+
+$$d = \\frac{|d_1 - d_2|}{|\\vec{n}|}$$
+
+Sind die Normalen unterschiedlich skaliert, *erst* beide auf dieselbe $\\vec{n}$-Form bringen, dann subtrahieren.
+
+**Winkel zwischen Gerade und Ebene** ($\\vec{v}$ Richtung der Geraden, $\\vec{n}$ Normalvektor der Ebene):
+
+$$\\sin \\alpha = \\frac{|\\vec{v} \\cdot \\vec{n}|}{|\\vec{v}| \\, |\\vec{n}|}, \\qquad 0 \\leq \\alpha \\leq 90°$$
+
+Achtung: **sin**, nicht cos! Der Vektor-Vektor-Winkel zwischen $\\vec{v}$ und $\\vec{n}$ ist das *Komplement* zu $\\alpha$, weil $\\vec{n}$ senkrecht zur Ebene steht.`,
       },
       { id: 'vek-2-4-s2', type: 'exercise', title: 'Aufgabe 1 — Lage zweier Geraden (Prüfung)', exerciseRef: 'ex-vek-2-4-a' },
       { id: 'vek-2-4-s3', type: 'exercise', title: 'Aufgabe 2 — Nächster Punkt auf Ebene (Prüfung)', exerciseRef: 'ex-vek-2-4-b' },

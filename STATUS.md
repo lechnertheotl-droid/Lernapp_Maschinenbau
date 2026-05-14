@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3666 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2922 (80 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1711 / 1711 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 441 / 1134 (39 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3702 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2966 (80 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1724 / 1724 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 447 / 1134 (39 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -199,8 +199,8 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **458** (Lesson-Path: 66 · Goal-Tasks: 392)
-- 4-Block: 448/458 (98 %) 🟡
+- Aufgaben: **464** (Lesson-Path: 66 · Goal-Tasks: 398)
+- 4-Block: 456/464 (98 %) 🟡
 - MC-wAE: 228/228 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
@@ -253,7 +253,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 36 | 20/8/5/3/0 | 36/36 | 20/20 | ✅ | — |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 39 | 15/12/8/4/0 | 39/39 | 15/15 | ✅ | — |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 39 | 21/7/6/5/0 | 39/39 | 21/21 | ✅ | — |
-| `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 33 | 18/6/4/4/1 | 31/33 | 18/18 | ✅ | +2 4B |
+| `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 39 | 18/10/5/5/1 | 39/39 | 18/18 | ✅ | — |
 | `trig-3-1` Additionstheoreme | 5 | 0/5 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +5 Goal, +3 4B |
 | `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 0/5 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +5 Goal, +3 4B |
 | `trig-3-3` Technische Anwendungen | 5 | 0/5 | 3 | 3/0/0/0/0 | 2/3 | 3/3 | ✅ | +5 Goal, +1 4B |
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **247** (Lesson-Path: 54 · Goal-Tasks: 193)
-- 4-Block: 229/247 (93 %) 🟡
-- MC-wAE: 117/117 (100 %) ✅
-- Sub-Goals: 39/62 Goal-Tasks verknüpft 🟡
+- Aufgaben: **277** (Lesson-Path: 54 · Goal-Tasks: 223)
+- 4-Block: 265/277 (96 %) 🟡
+- MC-wAE: 130/130 (100 %) ✅
+- Sub-Goals: 45/62 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -320,7 +320,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-2-1` Geradengleichung | 6 | 6/6 | 30 | 18/3/6/2/1 | 30/30 | 18/18 | ✅ | — |
 | `vek-2-2` Ebenengleichung | 6 | 6/6 | 35 | 18/7/7/2/1 | 35/35 | 18/18 | ✅ | — |
 | `vek-2-3` Abstände und Schnitte | 6 | 6/6 | 35 | 16/11/6/1/1 | 35/35 | 16/16 | ✅ | — |
-| `vek-2-4` Prüfungsaufgaben Analytische Geometrie | 6 | 0/6 | 6 | 5/1/0/0/0 | 0/6 | 5/5 | ✅ | +6 Goal, +6 4B |
+| `vek-2-4` Prüfungsaufgaben Analytische Geometrie | 6 | 6/6 | 36 | 18/11/6/1/0 | 36/36 | 18/18 | ✅ | — |
 | `vek-3-1` Gemischte Aufgaben Skalar- und Kreuzprodukt | 6 | 0/6 | 6 | 3/2/1/0/0 | 2/6 | 3/3 | ✅ | +6 Goal, +4 4B |
 | `vek-3-2` Flächen- und Volumenberechnung | 6 | 0/6 | 4 | 2/2/0/0/0 | 0/4 | 2/2 | ✅ | +6 Goal, +4 4B |
 | `vek-3-3` Technische Anwendungen | 5 | 0/5 | 4 | 3/1/0/0/0 | 0/4 | 3/3 | ✅ | +5 Goal, +4 4B |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 18 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 17 Lessons
 
 #### `abl-3-2` · Krümmung und Wendepunkte
 
@@ -7615,71 +7615,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-2` → `sp-orthogonal`, `sp-winkel`
-  - `vek-1-3` → `kp-komp`, `kp-orthog`
-  - `vek-2-2` → `e-koordform`, `e-normal-vektor`, `e-hesse`
-  - `vek-2-3` → `d-pt-ebene`, `sg-ebene`
-  - `vek-2-1` → `g-paramform`, `g-schnittpunkt`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `lotfuss` — Lotfußpunkt: Hilfsgerade $\vec r=P+t\vec n$, Schnitt mit Ebene gibt $F$ (SG 0)
-  2. `schnittgerade` — Schnittgerade zweier Ebenen: $\vec v=\vec n_1\times\vec n_2$, Punkt aus LGS (SG 1)
-  3. `g-ortho-ebene` — Gerade ⊥ Ebene $\iff\vec v_g\parallel\vec n_E$ (SG 2)
-  4. `g-parallel-ebene` — Gerade $\parallel$ Ebene $\iff\vec v_g\perp\vec n_E$ (SG 2)
-  5. `d-parallele-eb` — Abstand paralleler Ebenen: $d=|d_1-d_2|/|\vec n|$ bei gleichem $\vec n$ (SG 3)
-  6. `spiegelpunkt` — Spiegelpunkt $P'=2F-P$ mit Lotfußpunkt $F$ ⇐ `lotfuss` (SG 4)
-  7. `winkel-g-eb` — Winkel Gerade↔Ebene: $\sin\alpha=|\vec v\cdot\vec n|/(|\vec v||\vec n|)$ (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `lotfuss` · **0/5+** — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
-  - 🔴 [1] _hoch_ · Konzepte: `schnittgerade` · **0/5+** — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
-  - 🔴 [2] _hoch_ · Konzepte: `g-ortho-ebene`, `g-parallel-ebene` · **0/5+** — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
-  - 🔴 [3] _hoch_ · Konzepte: `d-parallele-eb` · **0/5+** — Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
-  - 🔴 [4] _mittel_ · Konzepte: `spiegelpunkt` · **0/5+** — Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
-  - 🔴 [5] _mittel_ · Konzepte: `winkel-g-eb` · **0/5+** — Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `lotfuss` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `lotfuss` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `lotfuss` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `lotfuss` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `lotfuss` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  6 | 1 | recognize          | true-false       | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `schnittgerade` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `schnittgerade` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 11 | 2 | recognize          | true-false       | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `g-ortho-ebene` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 | Vertauschung der Bedingungen |
-| 15 | 2 | transfer           | matching         | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `d-parallele-eb` | 1 | 0 | 🔴 | Vergleich nur bei gleichem $\vec n$ |
-| 20 | 3 | transfer           | number-input     | `d-parallele-eb` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 21 | 4 | recognize          | true-false       | `spiegelpunkt` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `spiegelpunkt` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `spiegelpunkt` | 1 | 0 | 🔴 | $P'=F-P$ statt $2F-P$ |
-| 25 | 4 | transfer           | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `winkel-g-eb` | 1 | 0 | 🔴 | cos statt sin verwendet |
-| 30 | 5 | transfer           | number-input     | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-2-4-a`, `ex-vek-2-4-b`, `ex-vek-2-4-c`, `ex-vek-2-4-d`, `ex-vek-2-4-e`, `ex-vek-2-4-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `la-1-2` · Matrizenrechnung
 
@@ -10310,67 +10245,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-#### `trig-2-5` · Alle vier Quadranten
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-2-3` → `supplement-formel`, `punktspiegelung`, `periodizitaet-360`
-  - `trig-2-4` → `tan-astc`
-  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `quadranten-grenzen` — Quadranten Q1–Q4 mit den Winkelgrenzen $0°/90°/180°/270°/360°$ (SG 0)
-  2. `astc-vollstaendig` — ASTC: Q1 alle, Q2 Sinus, Q3 Tangens, Q4 Kosinus positiv ⇐ `quadranten-grenzen` (SG 1)
-  3. `referenzwinkel-def` — Referenzwinkel = spitzer Winkel zur $x$-Achse (zu $0°$ oder $180°$) ⇐ `quadranten-grenzen` (SG 2)
-  4. `vier-schritt-reduktion` — 4-Schritt: Quadrant → Referenzwinkel → Q1-Grundwert → Vorzeichen aus ASTC ⇐ `astc-vollstaendig`, `referenzwinkel-def` (SG 3)
-  5. `standardwerte-reduktion` — Nur Q1-Grundwerte auswendig, alle anderen per Reduktion ⇐ `vier-schritt-reduktion` (SG 4)
-  6. `winkel-hauptbereich` — Winkel $\notin [0°, 360°)$ per $\alpha \bmod 360°$ reduzieren (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `quadranten-grenzen` · **5/5+** — Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$
-  - ✅ [1] _hoch_ · Konzepte: `astc-vollstaendig` · **5/5+** — ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv
-  - ✅ [2] _hoch_ · Konzepte: `referenzwinkel-def` · **5/5+** — Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)
-  - ✅ [3] _hoch_ · Konzepte: `vier-schritt-reduktion` · **5/5+** — 4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert (Q1) → Vorzeichen aus ASTC
-  - ✅ [4] _hoch_ · Konzepte: `standardwerte-reduktion` · **5/5+** — Standardwerte $\sin$/$\cos$ für $0°/30°/45°/60°/90°$ auswendig, Rest per Reduktion
-  - ✅ [5] _mittel_ · Konzepte: `winkel-hauptbereich` · **5/5+** — Winkel $> 360°$ oder $< 0°$ per $\alpha \bmod 360°$ in Hauptbereich bringen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | matching         | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | matching         | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | sorting          | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | number-input     | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 30 | 5 | transfer           | number-input     | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-5': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
 #### `trig-3-5` · Sinussatz & Cosinussatz
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
@@ -11000,6 +10874,69 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-2` → `sp-orthogonal`, `sp-winkel`
+  - `vek-1-3` → `kp-komp`, `kp-orthog`
+  - `vek-2-2` → `e-koordform`, `e-normal-vektor`, `e-hesse`
+  - `vek-2-3` → `d-pt-ebene`, `sg-ebene`
+  - `vek-2-1` → `g-paramform`, `g-schnittpunkt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lotfuss` — Lotfußpunkt: Hilfsgerade $\vec r=P+t\vec n$, Schnitt mit Ebene gibt $F$ (SG 0)
+  2. `schnittgerade` — Schnittgerade zweier Ebenen: $\vec v=\vec n_1\times\vec n_2$, Punkt aus LGS (SG 1)
+  3. `g-ortho-ebene` — Gerade ⊥ Ebene $\iff\vec v_g\parallel\vec n_E$ (SG 2)
+  4. `g-parallel-ebene` — Gerade $\parallel$ Ebene $\iff\vec v_g\perp\vec n_E$ (SG 2)
+  5. `d-parallele-eb` — Abstand paralleler Ebenen: $d=|d_1-d_2|/|\vec n|$ bei gleichem $\vec n$ (SG 3)
+  6. `spiegelpunkt` — Spiegelpunkt $P'=2F-P$ mit Lotfußpunkt $F$ ⇐ `lotfuss` (SG 4)
+  7. `winkel-g-eb` — Winkel Gerade↔Ebene: $\sin\alpha=|\vec v\cdot\vec n|/(|\vec v||\vec n|)$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `lotfuss` · **5/5+** — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
+  - ✅ [1] _hoch_ · Konzepte: `schnittgerade` · **5/5+** — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
+  - ✅ [2] _hoch_ · Konzepte: `g-ortho-ebene`, `g-parallel-ebene` · **5/5+** — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
+  - ✅ [3] _hoch_ · Konzepte: `d-parallele-eb` · **5/5+** — Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
+  - ✅ [4] _mittel_ · Konzepte: `spiegelpunkt` · **5/5+** — Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
+  - ✅ [5] _mittel_ · Konzepte: `winkel-g-eb` · **5/5+** — Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lotfuss` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lotfuss` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `lotfuss` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lotfuss` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `lotfuss` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `schnittgerade` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `schnittgerade` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `schnittgerade` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `schnittgerade` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `schnittgerade` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `g-ortho-ebene` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ | Vertauschung der Bedingungen |
+| 15 | 2 | transfer           | matching         | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `d-parallele-eb` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `d-parallele-eb` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `d-parallele-eb` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `d-parallele-eb` | 1 | 1 | ✅ | Vergleich nur bei gleichem $\vec n$ |
+| 20 | 3 | transfer           | number-input     | `d-parallele-eb` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `spiegelpunkt` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `spiegelpunkt` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `spiegelpunkt` | 1 | 1 | ✅ | $P'=F-P$ statt $2F-P$ |
+| 25 | 4 | transfer           | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `winkel-g-eb` | 1 | 1 | ✅ | cos statt sin verwendet |
+| 30 | 5 | transfer           | number-input     | `winkel-g-eb` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
