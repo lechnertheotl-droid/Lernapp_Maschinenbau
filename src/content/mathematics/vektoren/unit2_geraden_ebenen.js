@@ -115,17 +115,13 @@ export const exercises_vek_u2 = {
     question: 'Wie viele Richtungsvektoren braucht die Parameterform einer Ebene?',
     options: ['Keinen', 'Einen', 'Zwei', 'Drei'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Eine Ebene ist ein 2D-Objekt — sie hat zwei Freiheitsgrade.
+    explanation: `**Ansatz:** Eine Ebene ist ein 2D-Objekt — sie hat zwei Freiheitsgrade. Jeder Freiheitsgrad braucht einen unabhängigen Richtungsvektor.
 
-**Formel:** $\\vec{r} = \\vec{p} + s \\cdot \\vec{u} + t \\cdot \\vec{v}$ mit $s, t \\in \\mathbb{R}$.
+**Rechnung:** Parameterform $\\vec{r} = \\vec{p} + s \\cdot \\vec{u} + t \\cdot \\vec{v}$ mit $s, t \\in \\mathbb{R}$ und $\\vec{u}, \\vec{v}$ linear unabhängig. Anzahl Richtungen $=$ Dimension der Ebene $= 2$.
 
-Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht parallele) Richtungsvektoren, die in der Ebene liegen.
+**Probe:** Variiere $s, t$ unabhängig — die Punkte überstreichen ein "Blatt Papier" im Raum. Mit nur einem Parameter bekommt man eine Gerade (1D), mit drei wäre der dritte Vektor immer aus den anderen kombinierbar — also redundant.
 
-**Geometrisch:** Eine Ebene ist wie ein Blatt Papier im Raum. Um jeden Punkt auf dem Blatt zu erreichen, brauchst du zwei unabhängige Richtungen (z.B. "rechts" und "oben" auf dem Blatt).
-
-**Typischer Fehler:**
-- *Ein* Richtungsvektor liefert nur eine Gerade (1D).
-- *Drei* Richtungsvektoren sind im 3D-Raum immer linear abhängig — überflüssig.`,
+**Typischer Fehler:** Ein Richtungsvektor liefert nur eine Gerade; drei sind im 3D-Raum stets linear abhängig und damit überflüssig.`,
     hints: [
       'Wie viele Dimensionen hat eine Ebene? Welche Dimension steckt in einem Parameter?',
       'Gerade $\\to$ 1 Richtung. Fläche $\\to$ wie viele?',
@@ -136,6 +132,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       1: 'Ein Richtungsvektor liefert nur eine *Gerade*: $\\vec{r} = \\vec{p} + t\\vec{v}$ (1D). Eine Ebene (2D) braucht zwei linear unabhängige Richtungsvektoren.',
       3: 'Drei Richtungsvektoren sind im 3D-Raum immer linear abhängig — der dritte lässt sich durch die beiden anderen darstellen. Für eine Ebene reichen genau zwei linear unabhängige Richtungen.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 0, uses: ['e-paramform'] },
   },
   'ex-vek-2-2-b': {
     id: 'ex-vek-2-2-b', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -149,13 +146,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
     correctIndex: 0,
     explanation: `**Ansatz:** Interpretation des Skalarprodukts: $\\vec{a} \\cdot \\vec{b} = 0 \\;\\Leftrightarrow\\; \\vec{a} \\perp \\vec{b}$.
 
-**Rechnung:** Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ besagt: Der Verbindungsvektor $\\vec{r} - \\vec{p}$ vom Stützpunkt $\\vec{p}$ zum beliebigen Punkt $\\vec{r}$ ist **senkrecht** zum Normalvektor $\\vec{n}$.
+**Rechnung:** Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ besagt: Der Verbindungsvektor $\\vec{r} - \\vec{p}$ vom Stützpunkt $\\vec{p}$ zum beliebigen Punkt $\\vec{r}$ ist **senkrecht** zum Normalvektor $\\vec{n}$. Alle solchen Punkte $\\vec{r}$ bilden eine Ebene durch $\\vec{p}$ senkrecht zu $\\vec{n}$.
 
-**Geometrisch:** Alle Punkte $\\vec{r}$, für die $\\vec{r} - \\vec{p}$ in der zu $\\vec{n}$ senkrechten Ebene liegt, bilden genau diese **Ebene**.
+**Probe:** Setze $\\vec{r} = \\vec{p}$: $\\vec{n} \\cdot \\vec{0} = 0$ ✓ (Stützpunkt liegt in der Ebene). Setze $\\vec{r} = \\vec{p} + \\vec{u}$ mit $\\vec{u} \\perp \\vec{n}$: $\\vec{n} \\cdot \\vec{u} = 0$ ✓ (alle Querrichtungen sind erlaubt — das ist die Ebene).
 
-**Typischer Fehler:**
-- "Nur den Punkt $\\vec{p}$": Gilt zwar auch ($\\vec{0} \\cdot \\vec{n} = 0$), aber es gibt unendlich viele weitere Lösungen.
-- "Parallel zu $\\vec{n}$": Genau das Gegenteil — der Verbindungsvektor steht senkrecht zu $\\vec{n}$, nicht parallel.`,
+**Typischer Fehler:** "Parallel zu $\\vec{n}$" ist genau das Gegenteil — der Verbindungsvektor steht *senkrecht* zu $\\vec{n}$, nicht parallel.`,
     hints: [
       'Welche Bedeutung hat $\\vec{a} \\cdot \\vec{b} = 0$? Orthogonalität.',
       'Der Verbindungsvektor $\\vec{r} - \\vec{p}$ muss senkrecht auf $\\vec{n}$ stehen.',
@@ -166,6 +161,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: '$\\vec{p}$ selbst erfüllt zwar die Gleichung (denn $\\vec{n} \\cdot \\vec{0} = 0$), ist aber nicht die einzige Lösung. Alle Punkte, deren Verbindungsvektor senkrecht zu $\\vec{n}$ steht, erfüllen die Gleichung — das ist eine ganze Ebene.',
       3: 'Eine Gerade in Richtung $\\vec{n}$ wäre $\\vec{r} = \\vec{p} + t\\vec{n}$ — also *parallel* zu $\\vec{n}$. Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ beschreibt dagegen eine Ebene *senkrecht* zu $\\vec{n}$.',
     },
+    pedagogy: { stage: 'recognize', subGoal: 1, uses: ['e-normalform', 'e-normal-vektor'] },
   },
   'ex-vek-2-2-c': {
     id: 'ex-vek-2-2-c', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -199,27 +195,25 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: 'Die Koeffizienten vor $x, y, z$ müssen *direkt* der Normalvektor $\\vec{n} = (2, -1, 3)$ sein, nicht $(1, -1, 1)$. Du hast die Zahlen willkürlich auf $1$ reduziert — die Ebene $x - y + z = 5$ hätte einen ganz anderen Normalvektor.',
       3: 'Vorzeichenfehler bei $b$: $n_y = -1$, also Koeffizient $-1 \\cdot y = -y$, nicht $+y$. Außerdem ist $d = \\vec{n} \\cdot \\vec{p} = 5$. Richtige Koordinatenform: $2x - y + 3z = 5$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['e-koordform', 'e-normalform'] },
   },
   'ex-vek-2-2-d': {
     id: 'ex-vek-2-2-d', lessonId: 'vek-2-2', type: 'true-false',
     statement: 'Aus der Parameterform einer Ebene erhält man den Normalvektor durch das Kreuzprodukt der beiden Richtungsvektoren.',
     correct: true,
-    explanation: `**Wahr.** Das ist genau der Zweck des Kreuzprodukts!
+    explanation: `**Ansatz:** Wenn die Ebene $\\vec{r} = \\vec{p} + s \\vec{u} + t \\vec{v}$ lautet, spannen $\\vec{u}$ und $\\vec{v}$ die Ebene auf. Ein Normalvektor steht *senkrecht* auf beiden — genau das liefert das Kreuzprodukt.
 
-**Ansatz:** Wenn die Ebene $\\vec{r} = \\vec{p} + s \\vec{u} + t \\vec{v}$ lautet, spannen $\\vec{u}$ und $\\vec{v}$ die Ebene auf. Ein Normalvektor steht *senkrecht* auf beiden — genau das liefert $\\vec{u} \\times \\vec{v}$.
-
-**Formel:** $\\vec{n} = \\vec{u} \\times \\vec{v}$.
+**Rechnung:** $\\vec{n} = \\vec{u} \\times \\vec{v}$. Diese Konstruktion ist die Standard-Übersetzung von Parameterform $\\to$ Normalenform.
 
 **Probe:** Nach Definition des Kreuzprodukts gilt $\\vec{n} \\cdot \\vec{u} = 0$ und $\\vec{n} \\cdot \\vec{v} = 0$ — der Normalvektor steht senkrecht auf der ganzen Ebene. ✓
 
-**Achtung:** $\\vec{u}$ und $\\vec{v}$ müssen linear unabhängig sein (nicht parallel), sonst wäre $\\vec{u} \\times \\vec{v} = \\vec{0}$ und der "Normalvektor" wäre undefiniert.
-
-**Umgekehrte Richtung — Parameter aus Normalform:** Zwei beliebige Vektoren wählen, die $\\vec{n} \\cdot \\vec{u} = 0$ und $\\vec{n} \\cdot \\vec{v} = 0$ erfüllen.`,
+**Typischer Fehler:** $\\vec{u}$ und $\\vec{v}$ müssen linear unabhängig sein. Sind sie parallel, wird $\\vec{u} \\times \\vec{v} = \\vec{0}$ — kein Normalvektor, und die "Ebene" ist in Wahrheit nur eine Gerade.`,
     hints: [
       'Welche Operation liefert einen Vektor senkrecht zu zwei anderen?',
       'Das Kreuzprodukt $\\vec{u} \\times \\vec{v}$ steht senkrecht auf $\\vec{u}$ und $\\vec{v}$.',
       'Das ist genau die Eigenschaft, die ein Normalvektor braucht.',
     ],
+    pedagogy: { stage: 'recognize', subGoal: 3, uses: ['e-normal-aus-p'] },
   },
   'ex-vek-2-2-mastery': {
     id: 'ex-vek-2-2-mastery', lessonId: 'vek-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -245,6 +239,7 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       2: '$(6, 0, 0)$ ist weder aus den Koeffizienten noch aus der Gleichung ablesbar — das sieht nach der rechten Seite $6$ und zwei Nullen aus. Richtig: Koeffizienten vor $x, y, z$ ablesen, also $\\vec{n} = (3, 2, -1)$.',
       3: 'Du hast die Koeffizienten willkürlich auf $1$ reduziert. Der Normalvektor steckt *direkt* in den Koeffizienten $(3, 2, -1)$ vor $x, y, z$ — nicht normiert auf $1$.',
     },
+    pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['e-koordform'] },
   },
 
   // ── Lesson 3: Abstände und Schnitte ──
@@ -260,17 +255,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
     correctIndex: 0,
     explanation: `**Ansatz:** Der Abstand Punkt–Ebene ist die Projektion des Verbindungsvektors $\\vec{Q} - \\vec{P}$ auf die Normalenrichtung — also der "senkrechte" Anteil.
 
-**Formel:**
-$$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
+**Rechnung:** Allgemein gilt $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$. Skalarprodukt im Zähler liefert die Länge der Projektion mal $|\\vec{n}|$; Division durch $|\\vec{n}|$ normiert auf Länge $1$; Betragsstriche garantieren $d \\geq 0$.
 
-**Bedeutung der Bestandteile:**
-- $\\vec{n} \\cdot (\\vec{Q} - \\vec{P})$: Länge der Projektion $\\times |\\vec{n}|$
-- Division durch $|\\vec{n}|$: normiert den Normalvektor (auf Länge 1)
-- Betragsstriche: Abstand ist immer $\\geq 0$
+**Probe:** Liegt $\\vec{Q}$ in der Ebene, so ist $\\vec{Q} - \\vec{P}$ senkrecht zu $\\vec{n}$, $\\vec{n} \\cdot (\\vec{Q} - \\vec{P}) = 0$ und damit $d = 0$ ✓. Verschiebt man $\\vec{Q}$ um $\\lambda \\vec{n}$, wächst $d$ linear mit $|\\lambda|$ — der Abstand reagiert nur auf den senkrechten Anteil.
 
-**Typischer Fehler:**
-- $|\\vec{n} \\times (\\vec{Q} - \\vec{P})|$: Diese Formel liefert den Abstand Punkt–**Gerade**, nicht Punkt–Ebene.
-- $|\\vec{Q} - \\vec{P}|$: Ist einfach die Entfernung der beiden Punkte — das ist *nicht* der senkrechte Abstand zur Ebene.`,
+**Typischer Fehler:** Kreuzprodukt statt Skalarprodukt verwenden — das liefert den Abstand Punkt–**Gerade**. Oder $|\\vec{Q} - \\vec{P}|$ verwenden — das ist nur der Punkt-zu-Stützpunkt-Abstand, nicht der senkrechte Abstand zur Ebene.`,
     hints: [
       'Welche Operation projiziert auf die Normalenrichtung? Skalarprodukt.',
       'Formel: $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$.',
@@ -281,6 +270,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       2: '$|\\vec{Q} - \\vec{P}|$ ist einfach der Abstand zwischen $Q$ und dem Stützpunkt $P$ — das ist aber nicht der *senkrechte* Abstand zur Ebene, sondern zu einem einzelnen Punkt. Der kürzeste Abstand ergibt sich über die Projektion auf $\\vec{n}$.',
       3: '$\\vec{n} \\cdot \\vec{Q}$ hat weder Betrag noch Bezug auf einen Punkt der Ebene — das ist nur eine Zahl, nicht der Abstand. Außerdem fehlt die Normierung durch $|\\vec{n}|$. Richtig: $d = |\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|/|\\vec{n}|$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['d-pt-ebene'] },
   },
   'ex-vek-2-3-b': {
     id: 'ex-vek-2-3-b', lessonId: 'vek-2-3', type: 'number-input',
@@ -305,6 +295,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'Zähler: $|2 + 2 + 1 - 9| = 4$. Nenner: $\\sqrt{4+4+1} = 3$.',
       '$d = 4/3 \\approx 1{,}33$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['d-pt-ebene'] },
   },
   'ex-vek-2-3-c': {
     id: 'ex-vek-2-3-c', lessonId: 'vek-2-3', type: 'multiple-choice',
@@ -332,6 +323,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       1: '$t = 1$ ergibt $\\vec{r} = (1, 1, 1)$ — in $E$: $1 + 1 + 1 = 3 \\neq 6$. Zu klein. Die Gleichung $3t = 6$ liefert $t = 2$, nicht $1$.',
       3: '$t = 3$ würde $t + t + t = 9$ liefern, also $9 \\neq 6$. Du hast $t = d_0 / 2 = 6/2$ gerechnet — aber die Koeffizienten summieren sich zu $3$, nicht $2$. Richtig: $3t = 6 \\Rightarrow t = 2$.',
     },
+    pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['sg-ebene'] },
   },
   'ex-vek-2-3-d': {
     id: 'ex-vek-2-3-d', lessonId: 'vek-2-3', type: 'number-input',
@@ -355,6 +347,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'In $x + y + z = 6$ einsetzen: $(1+t) + t + t = 6$.',
       '$1 + 3t = 6 \\;\\Rightarrow\\; t = 5/3$.',
     ],
+    pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['sg-ebene'] },
   },
   'ex-vek-2-3-mastery': {
     id: 'ex-vek-2-3-mastery', lessonId: 'vek-2-3', type: 'number-input', isMasteryCheck: true,
@@ -362,7 +355,7 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
     correctValue: 3,
     tolerance: 0.01,
     unit: '',
-    explanation: `**Strategie:** Hessesche Normalform. Für Ebene $a x + b y + c z = d_0$ und Punkt $Q$ gilt:
+    explanation: `**Ansatz:** Hessesche Normalform direkt aus der Koordinatenform. Für Ebene $a x + b y + c z = d_0$ und Punkt $Q$ gilt:
 $$d = \\frac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^{2} + b^{2} + c^{2}}}.$$
 
 **Rechnung:**
@@ -380,6 +373,7 @@ $$d = \\frac{|a q_x + b q_y + c q_z - d_0|}{\\sqrt{a^{2} + b^{2} + c^{2}}}.$$
       'Zähler: $|4 - 0 + 6 - 1| = 9$. Nenner: $\\sqrt{4+1+4} = 3$.',
       '$d = 9/3 = 3$.',
     ],
+    pedagogy: { stage: 'transfer', subGoal: 0, uses: ['d-pt-ebene'] },
   },
 
   // ── Lesson 4: Prüfungsaufgaben Analytische Geometrie ──
@@ -821,7 +815,27 @@ Das heißt: Jeder Punkt $\\vec{r}$ auf der Ebene hat einen Verbindungsvektor $\\
 | Parameter $\\to$ Normal | $\\vec{n} = \\vec{u} \\times \\vec{v}$ |
 | Normal $\\to$ Koordinate | $\\vec{n} \\cdot \\vec{r} = \\vec{n} \\cdot \\vec{p}$ ausmultiplizieren |
 | Koordinate $\\to$ Normal | $\\vec{n} = (a, b, c)$ ablesen |
-| Koordinate $\\to$ Parameter | Stützpunkt $\\vec{p}$ wählen, zwei Richtungen $\\vec{u}, \\vec{v}$ mit $\\vec{n} \\cdot \\vec{u} = \\vec{n} \\cdot \\vec{v} = 0$ finden |`,
+| Koordinate $\\to$ Parameter | Stützpunkt $\\vec{p}$ wählen, zwei Richtungen $\\vec{u}, \\vec{v}$ mit $\\vec{n} \\cdot \\vec{u} = \\vec{n} \\cdot \\vec{v} = 0$ finden |
+
+**Ebene durch drei Punkte** $P_1, P_2, P_3$ (nicht-kollinear):
+
+| Schritt | Formel |
+|---------|--------|
+| Spannvektoren | $\\vec{u} = P_2 - P_1,\\;\\vec{v} = P_3 - P_1$ |
+| Normalvektor | $\\vec{n} = \\vec{u} \\times \\vec{v}$ |
+| Koordinatenform | $\\vec{n} \\cdot \\vec{r} = \\vec{n} \\cdot P_1$ |
+
+Sind $\\vec{u},\\vec{v}$ parallel ($\\vec{u} \\times \\vec{v} = \\vec{0}$), liegen die drei Punkte auf einer Geraden — *keine* eindeutige Ebene.
+
+**Hessesche Normalform:**
+
+| Form | Gleichung |
+|------|-----------|
+| Hessesche Normalform | $\\vec{n}_0 \\cdot (\\vec{r} - \\vec{p}) = 0$ mit $|\\vec{n}_0| = 1$ |
+| Normierung | $\\vec{n}_0 = \\dfrac{\\vec{n}}{|\\vec{n}|}$ |
+| Hesse aus Koordinatenform | $\\dfrac{a x + b y + c z - d_0}{\\sqrt{a^2 + b^2 + c^2}} = 0$ |
+
+Der Vorteil: für jeden Punkt $Q$ liefert $|\\vec{n}_0 \\cdot Q - d_0'|$ direkt den Abstand zur Ebene (siehe Lesson 2.3).`,
       },
       { id: 'vek-2-2-s3', type: 'exercise', title: 'Aufgabe 1 — Parameterform einer Ebene', exerciseRef: 'ex-vek-2-2-a' },
       { id: 'vek-2-2-s4', type: 'exercise', title: 'Aufgabe 2 — Bedeutung der Normalenform', exerciseRef: 'ex-vek-2-2-b' },
@@ -913,6 +927,11 @@ Idee: Projektion des Verbindungsvektors auf den Normalvektor $\\vec{n}$.
 $$d = \\frac{|\\vec{v} \\times (\\vec{Q} - \\vec{p})|}{|\\vec{v}|}$$
 
 Idee: Das Kreuzprodukt-Betrag ist die Fläche des Parallelogramms $\\vec{v}$–$(\\vec{Q}-\\vec{p})$. Fläche / Grundseite $|\\vec{v}|$ = Höhe = Abstand.
+
+**Abstand zweier windschiefer Geraden** $g_1\\colon \\vec{r} = \\vec{p}_1 + s \\vec{v}_1$ und $g_2\\colon \\vec{r} = \\vec{p}_2 + t \\vec{v}_2$:
+$$d = \\frac{|(\\vec{p}_2 - \\vec{p}_1) \\cdot (\\vec{v}_1 \\times \\vec{v}_2)|}{|\\vec{v}_1 \\times \\vec{v}_2|}$$
+
+Idee: $\\vec{v}_1 \\times \\vec{v}_2$ steht senkrecht auf beiden Richtungen — also senkrecht zum Gangsteg zwischen den Geraden. Spatprodukt $(\\vec{p}_2-\\vec{p}_1) \\cdot (\\vec{v}_1 \\times \\vec{v}_2)$ ist das Volumen des Spats; geteilt durch $|\\vec{v}_1 \\times \\vec{v}_2|$ (Grundfläche) ergibt sich die Höhe = kürzester Abstand. Voraussetzung: $\\vec{v}_1 \\not\\parallel \\vec{v}_2$ (sonst nicht windschief, sondern parallel).
 
 **Schnitt Gerade–Ebene:**
 1. Geradenpunkte $\\vec{r}(t)$ komponentenweise in die Ebenengleichung einsetzen.
