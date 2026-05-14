@@ -1668,4 +1668,812 @@ Der Student hat den Zähler als $x \\cdot 2x - x^{2} \\cdot 1 = 2x^{2} - x^{2} =
       ),
     ],
   },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // abl-2-3 — Kettenregel: Schritt für Schritt  (5 SGs × 5 Stufen = 25)
+  //   SG 0: kr-formel-fest  — [f(g(x))]' = f'(g(x)) · g'(x)
+  //   SG 1: kr-eingesetzt   — innere Funktion bleibt in äußerer Ableitung
+  //   SG 2: kr-mehrfach     — Mehrfachverkettung: Faktoren multiplizieren
+  //   SG 3: kr-linear-innen — Standardfälle (ax+b)^n, e^(ax), sin(ax)
+  //   SG 4: kr-falle-innen  — Klassiker: innere Ableitung vergessen
+  // ────────────────────────────────────────────────────────────────────────
+  'abl-2-3': {
+
+    // ── [0] kr-formel-fest — Grundformel ───────────────────────────────
+    0: [
+      // (1) recognize · true-false · kr-formel-fest
+      tag(
+        tf(
+          'Die Kettenregel lautet $[f(g(x))]\' = f\'(g(x)) \\cdot g\'(x)$ — die äußere Ableitung wird an der Stelle $g(x)$ (also der UNVERÄNDERTEN inneren Funktion) ausgewertet und MIT der inneren Ableitung multipliziert.',
+          true,
+          `**Ansatz:** Wortlaut der Kettenregel — drei Bestandteile: äußere Ableitung, innere Funktion unverändert eingesetzt, innere Ableitung als Faktor.
+
+**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$. Beachte: $f'$ wird an der Stelle $g(x)$ ausgewertet, NICHT an $g'(x)$.
+
+**Probe:** Test mit $f(x) = (x^{2})^{3} = x^{6}$, also Ableitung $6x^{5}$. Via Kettenregel: außen $u^{3} \\to 3u^{2}$ mit $u = x^{2}$, innen $x^{2} \\to 2x$. Ergibt $3(x^{2})^{2} \\cdot 2x = 3x^{4} \\cdot 2x = 6x^{5}$. ✓
+
+**Typischer Fehler:** $f'(g'(x))$ statt $f'(g(x)) \\cdot g'(x)$ — innere Funktion durch innere Ableitung ersetzt und Faktor vergessen.`,
+          [
+            'Drei Bestandteile: was bleibt eingesetzt, was wird abgeleitet, wie verknüpft?',
+            'Test mit $f = (x^2)^3 = x^6$, Ableitung $6x^5$ — passt die Formel?',
+            'Die innere FUNKTION bleibt im äußeren Term, die innere ABLEITUNG kommt als zusätzlicher Faktor.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+
+      // (2) apply-guided · multiple-choice · kr-formel-fest
+      tag(
+        mc(
+          '$f(x) = (x^{2} + 1)^{5}$. Was ist $f\'(x)$?',
+          [
+            '$10x(x^{2} + 1)^{4}$',
+            '$5(x^{2} + 1)^{4}$',
+            '$5(2x)^{4}$',
+            '$10x$',
+          ],
+          0,
+          `**Ansatz:** Verkettung: außen $u^{5}$, innen $x^{2} + 1$. Kettenregel.
+
+**Rechnung:** Äußere: $(u^{5})' = 5u^{4}$, also $5(x^{2}+1)^{4}$. Innere: $(x^{2}+1)' = 2x$. Produkt: $f'(x) = 5(x^{2}+1)^{4} \\cdot 2x = 10x(x^{2}+1)^{4}$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 0$ (Faktor $10x = 0$). Tatsächlich hat $f(x) = (x^{2}+1)^{5}$ bei $x = 0$ ein Minimum (Funktionswert $1$). ✓
+
+**Typischer Fehler:** Innere Ableitung $(x^{2}+1)' = 2x$ vergessen (Antwort B) oder die innere Funktion in der äußeren Ableitung durch innere Ableitung $2x$ ersetzt (Antwort C — also $5(2x)^{4}$ statt $5(x^{2}+1)^{4}$).`,
+          [
+            'Welche Struktur? $u^5$ mit $u = x^2 + 1$ — Kettenregel.',
+            'Einzel-Ableitungen: $(u^5)\' = 5 u^4$, $(x^2+1)\' = 2x$.',
+            'Produkt: $5(x^2+1)^4 \\cdot 2x$.',
+          ],
+          {
+            1: 'Innere Ableitung $(x^{2}+1)\' = 2x$ vergessen — der Faktor aus der Kettenregel fehlt komplett.',
+            2: 'In der äußeren Ableitung wurde die innere FUNKTION durch die innere ABLEITUNG ersetzt ($u^{4}$ mit $u = 2x$ statt $u = x^{2}+1$). Die innere Funktion muss UNVERÄNDERT bleiben.',
+            3: 'Sowohl Potenz $(x^{2}+1)^{4}$ als auch der Faktor $5$ fehlen — als wäre die Funktion bloß $x^{2}$ abgeleitet worden, ohne Verkettung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+
+      // (3) apply-independent · number-input · kr-formel-fest
+      tag(
+        ni(
+          '$f(x) = \\sqrt{x^{2} + 9}$. Berechne $f\'(4)$ (auf 2 Dezimalstellen).',
+          0.8, 0.01, '',
+          `**Ansatz:** Schreibe $\\sqrt{x^{2}+9} = (x^{2}+9)^{1/2}$, Kettenregel anwenden.
+
+**Rechnung:** Äußere: $(u^{1/2})' = \\tfrac{1}{2} u^{-1/2}$. Innere: $(x^{2}+9)' = 2x$. $f'(x) = \\tfrac{1}{2}(x^{2}+9)^{-1/2} \\cdot 2x = \\dfrac{x}{\\sqrt{x^{2}+9}}$. Bei $x = 4$: $\\sqrt{16 + 9} = \\sqrt{25} = 5$, also $f'(4) = 4/5 = 0{,}8$.
+
+**Probe:** Numerisch $\\dfrac{f(4{,}001) - f(4)}{0{,}001} \\approx 0{,}8$. ✓
+
+**Typischer Fehler:** Innere Ableitung $2x$ vergessen — dann käme $f'(4) = 1/(2 \\cdot 5) = 0{,}1$ heraus.`,
+          [
+            'Wurzel als Potenz $u^{1/2}$ schreiben.',
+            'Äußere: $(u^{1/2})\' = \\tfrac{1}{2}u^{-1/2}$, innere: $(x^2+9)\' = 2x$.',
+            'Vereinfacht: $f\'(x) = x/\\sqrt{x^2+9}$, bei $x=4$ ist $\\sqrt{25} = 5$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+
+      // (4) error-analysis · multiple-choice · kr-formel-fest
+      tag(
+        mc(
+          'Ein Student berechnet $(e^{x^{2}})\' = e^{x^{2}}$. Welcher Fehler liegt vor?',
+          [
+            'Innere Ableitung $(x^{2})\' = 2x$ vergessen — bei der Kettenregel muss die äußere Ableitung MIT der inneren Ableitung multipliziert werden. Korrekt: $2x \\cdot e^{x^{2}}$.',
+            'Korrekt — $(e^{u})\' = e^{u}$, also $(e^{x^{2}})\' = e^{x^{2}}$.',
+            'Falsch — $(e^{x^{2}})\' = e^{2x}$ (Exponent abgeleitet).',
+            'Hätte die Quotientenregel verwenden müssen.',
+          ],
+          0,
+          `**Ansatz:** Korrekt: Kettenregel mit äußerer Funktion $e^{u}$ ($u' = e^{u}$) und innerer Funktion $x^{2}$ (innere Ableitung $2x$). Produkt: $e^{x^{2}} \\cdot 2x = 2xe^{x^{2}}$.
+
+**Rechnung:** Der Student hat $(e^{u})' = e^{u}$ richtig erkannt, aber den Faktor der inneren Ableitung komplett vergessen. So fehlt der Faktor $2x$ am Ergebnis.
+
+**Probe:** Bei $x = 1$: korrekt $2 \\cdot e \\approx 5{,}44$. Studenten-Antwort: $e \\approx 2{,}72$. Differenz: Faktor $2x = 2$.
+
+**Typischer Fehler:** Klassische "Kettenregel halb angewandt" — äußere Ableitung steht, innere fehlt.`,
+          [
+            'Schreibe die Kettenregel komplett aus und vergleiche.',
+            'Innere Funktion ist $x^2$, innere Ableitung $(x^2)\' = 2x$.',
+            'Vollständige Ableitung: $e^{x^2} \\cdot 2x = 2x e^{x^2}$.',
+          ],
+          {
+            1: '$(e^{u})\' = e^{u}$ stimmt nur, wenn $u = x$. Hier ist $u = x^{2}$ — die Kettenregel verlangt einen zusätzlichen Faktor $u\' = 2x$.',
+            2: '$(e^{u})\'$ mit $u = x^{2}$ liefert $e^{u}$ (Exponent bleibt), NICHT $e^{u\'} = e^{2x}$. Der Exponent wird NICHT abgeleitet.',
+            3: 'Es liegt KEIN Quotient vor — $e^{x^{2}}$ ist eine Verkettung, kein Bruch. Kettenregel ist die richtige Wahl.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+
+      // (5) transfer · number-input · kr-formel-fest
+      tag(
+        ni(
+          '$f(x) = (\\sin x)^{3}$. Berechne $f\'(\\pi/6)$ (auf 2 Dezimalstellen).',
+          0.65, 0.01, '',
+          `**Ansatz:** Verkettung: außen $u^{3}$, innen $\\sin x$. Kettenregel.
+
+**Rechnung:** Äußere: $(u^{3})' = 3u^{2}$, also $3\\sin^{2} x$. Innere: $(\\sin x)' = \\cos x$. $f'(x) = 3\\sin^{2} x \\cdot \\cos x$. Bei $x = \\pi/6$: $\\sin(\\pi/6) = 1/2$, $\\cos(\\pi/6) = \\sqrt{3}/2$. $f'(\\pi/6) = 3 \\cdot (1/2)^{2} \\cdot \\sqrt{3}/2 = 3 \\cdot 1/4 \\cdot \\sqrt{3}/2 = 3\\sqrt{3}/8 \\approx 0{,}6495$.
+
+**Probe:** Numerisch $\\dfrac{f(\\pi/6 + 0{,}001) - f(\\pi/6)}{0{,}001} \\approx 0{,}65$. ✓
+
+**Typischer Fehler:** Innere Ableitung $\\cos x$ vergessen — dann käme $3\\sin^{2}(\\pi/6) = 3/4 = 0{,}75$ heraus.`,
+          [
+            'Schreibe $\\sin^3 x = (\\sin x)^3$ — Potenz auf einer Funktion.',
+            'Äußere $(u^3)\' = 3 u^2$, innere $(\\sin x)\' = \\cos x$.',
+            'Bei $\\pi/6$: $\\sin = 1/2$, $\\cos = \\sqrt{3}/2$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+
+      // (Bonus 0.6) apply-independent · multiple-choice · kr-formel-fest
+      tag(
+        mc(
+          '$f(x) = (x^{3} + 1)^{4}$. Was ist $f\'(x)$?',
+          [
+            '$12 x^{2} (x^{3} + 1)^{3}$',
+            '$4(x^{3} + 1)^{3}$',
+            '$4(3x^{2})^{3}$',
+            '$4(x^{3} + 1)^{3} + 12 x^{2}$',
+          ],
+          0,
+          `**Ansatz:** Verkettung: außen $u^{4}$, innen $x^{3} + 1$. Kettenregel.
+
+**Rechnung:** Äußere: $(u^{4})' = 4u^{3}$. Innere: $(x^{3} + 1)' = 3x^{2}$. $f'(x) = 4(x^{3}+1)^{3} \\cdot 3x^{2} = 12 x^{2} (x^{3}+1)^{3}$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 12 \\cdot 1 \\cdot 2^{3} = 96$. Numerisch bestätigt.
+
+**Typischer Fehler:** Innere Ableitung vergessen (B) oder innere Funktion durch innere Ableitung ersetzt (C).`,
+          [
+            'Verkettung $u^{4}$ mit $u = x^{3} + 1$ — Kettenregel.',
+            'Äußere $(u^{4})\' = 4 u^{3}$, innere $(x^{3} + 1)\' = 3x^{2}$.',
+            'Produkt: $4(x^{3} + 1)^{3} \\cdot 3x^{2}$.',
+          ],
+          {
+            1: 'Innere Ableitung $3x^{2}$ vergessen — Faktor aus der Kettenregel fehlt.',
+            2: 'Innere FUNKTION durch innere ABLEITUNG in der äußeren Ableitung ersetzt: $(3x^{2})^{3}$ statt $(x^{3}+1)^{3}$.',
+            3: 'Hier wurde der innere Ableitungsfaktor ADDIERT statt MULTIPLIZIERT — die Kettenregel ist ein Produkt, keine Summe.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['kr-formel-fest'] },
+      ),
+    ],
+
+    // ── [1] kr-eingesetzt — Innere Funktion bleibt eingesetzt ──────────
+    1: [
+      // (6) recognize · true-false · kr-eingesetzt
+      tag(
+        tf(
+          'In der äußeren Ableitung der Kettenregel wird die innere Funktion $g(x)$ UNVERÄNDERT eingesetzt — nicht etwa ihre Ableitung $g\'(x)$. Die innere Ableitung kommt als SEPARATER Faktor dazu.',
+          true,
+          `**Ansatz:** Die äußere Ableitung $f'$ wird AN DER STELLE $g(x)$ ausgewertet — die innere Funktion bleibt also als "Argument" stehen, sie wird nicht selbst abgeleitet, bevor sie eingesetzt wird.
+
+**Rechnung:** Test mit $f(x) = \\sin(x^{2})$: äußere $\\sin' = \\cos$ — die innere Funktion $x^{2}$ steht UNVERÄNDERT als Argument: $\\cos(x^{2})$. Erst dann kommt der separate Faktor $2x$ aus der inneren Ableitung dazu: $\\cos(x^{2}) \\cdot 2x$.
+
+**Probe:** Bei $x = 1$: $\\cos(1) \\cdot 2 \\approx 0{,}5403 \\cdot 2 = 1{,}0806$. Numerisch $\\dfrac{f(1{,}001) - f(1)}{0{,}001} \\approx 1{,}08$. ✓
+
+**Typischer Fehler:** $\\cos(2x)$ statt $\\cos(x^{2})$ schreiben — innere Funktion durch innere Ableitung ersetzt.`,
+          [
+            'Wo steht die innere Funktion in der Kettenregel-Formel?',
+            'Wird sie abgeleitet, BEVOR sie in $f\'$ eingesetzt wird?',
+            'Test: $(\\sin(x^2))\'$ — was ist Argument des $\\cos$?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['kr-eingesetzt'] },
+      ),
+
+      // (7) apply-guided · multiple-choice · kr-eingesetzt
+      tag(
+        mc(
+          'Bei der Ableitung von $f(x) = \\sin(x^{2} + 5)$ — was steht als Argument des $\\cos$ in der äußeren Ableitung?',
+          [
+            '$x^{2} + 5$ (die innere Funktion unverändert)',
+            '$2x$ (die innere Ableitung)',
+            '$x$ (innere Funktion ganz weggelassen)',
+            '$2x(x^{2}+5)$ (Produkt aus innerer Funktion und ihrer Ableitung)',
+          ],
+          0,
+          `**Ansatz:** $f'(x) = \\sin'(\\underline{u}) \\cdot u'$ mit $u = x^{2} + 5$ und $\\sin' = \\cos$. Argument der äußeren Ableitung ist die UNVERÄNDERTE innere Funktion.
+
+**Rechnung:** $f'(x) = \\cos(x^{2} + 5) \\cdot 2x = 2x \\cos(x^{2} + 5)$. Der Cosinus wird an der Stelle $x^{2} + 5$ (also der inneren Funktion) ausgewertet, und der Faktor $2x$ kommt aus der inneren Ableitung als zusätzliches Produkt-Element dazu.
+
+**Probe:** Bei $x = 0$: $\\cos(5) \\cdot 0 = 0$. Tatsächlich hat $f(x) = \\sin(x^{2} + 5)$ bei $x = 0$ eine waagerechte Tangente (innerste Funktion $x^{2}$ hat dort Minimum, kein Wachstum).
+
+**Typischer Fehler:** $\\cos(2x)$ statt $\\cos(x^{2}+5)$ — innere Funktion durch innere Ableitung ersetzt; Ableitung dann komplett falsch.`,
+          [
+            'Welcher Ausdruck steckt "in" der äußeren Funktion?',
+            'Bei $\\sin(u)$ ist $u = x^2 + 5$ — was steht in $\\cos(\\cdot)$?',
+            'Die innere Ableitung $2x$ steht NICHT im $\\cos$, sondern als Faktor außerhalb.',
+          ],
+          {
+            1: 'Falsche Substitution: Die innere ABLEITUNG $2x$ wurde in das $\\cos$ eingesetzt. Korrekt ist die innere FUNKTION $x^{2}+5$ — die Ableitung kommt als separater Faktor.',
+            2: '$x$ allein hat nichts mit $\\sin(x^{2}+5)$ zu tun. Die innere Funktion $x^{2}+5$ muss als Argument im $\\cos$ stehen.',
+            3: 'Innere Funktion und innere Ableitung wurden zu einem Produkt zusammengefügt — das ist eine willkürliche Mischung, nicht die Kettenregel.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['kr-eingesetzt'] },
+      ),
+
+      // (8) apply-independent · number-input · kr-eingesetzt
+      tag(
+        ni(
+          '$f(x) = e^{x^{2} - 1}$. Berechne $f\'(1)$.',
+          2, 0.01, '',
+          `**Ansatz:** Kettenregel mit äußerer Funktion $e^{u}$ und innerer Funktion $x^{2} - 1$. Die innere Funktion bleibt im Exponenten von $e$ unverändert.
+
+**Rechnung:** $f'(x) = e^{x^{2} - 1} \\cdot 2x$. Im Exponenten steht $x^{2} - 1$ (innere Funktion), der Faktor $2x$ kommt aus der inneren Ableitung. Bei $x = 1$: $e^{0} \\cdot 2 = 1 \\cdot 2 = 2$.
+
+**Probe:** Bei $x = 1$ ist $x^{2} - 1 = 0$, also $e^{0} = 1$, multipliziert mit $2 \\cdot 1 = 2$ ergibt $2$. ✓
+
+**Typischer Fehler:** Im Exponenten $2x$ statt $x^{2} - 1$ schreiben — Ergebnis wäre $e^{2} \\cdot 2 = 2 e^{2} \\approx 14{,}78$, viel zu groß.`,
+          [
+            'Äußere Funktion $e^u$ mit $u = x^2 - 1$.',
+            'Im Exponenten bleibt $x^2 - 1$ UNVERÄNDERT.',
+            'Innere Ableitung $(x^2 - 1)\' = 2x$, bei $x = 1$ ergibt $2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['kr-eingesetzt'] },
+      ),
+
+      // (9) error-analysis · multiple-choice · kr-eingesetzt
+      tag(
+        mc(
+          'Ein Student berechnet $(\\sin(x^{2}))\' = \\cos(2x)$. Welcher Fehler liegt vor?',
+          [
+            'Die innere FUNKTION ($x^{2}$) wurde in der äußeren Ableitung durch die innere ABLEITUNG ($2x$) ersetzt — und der Faktor $2x$ als zusätzlicher Multiplikator fehlt komplett. Korrekt: $\\cos(x^{2}) \\cdot 2x = 2x \\cos(x^{2})$.',
+            'Korrekt — die Kettenregel liefert genau $\\cos(2x)$.',
+            'Vorzeichenfehler: Müsste $-\\cos(2x)$ heißen.',
+            '$(x^{2})\' = x$ wäre richtig, nicht $2x$.',
+          ],
+          0,
+          `**Ansatz:** Korrekt: $\\sin' = \\cos$, anwenden auf $u = x^{2}$ (unverändert), multipliziert mit $u' = 2x$. Ergebnis: $\\cos(x^{2}) \\cdot 2x = 2x \\cos(x^{2})$.
+
+**Rechnung:** Der Student schreibt $\\cos(2x)$ — hier wurde im Argument des $\\cos$ die innere Funktion $x^{2}$ durch die innere Ableitung $2x$ ersetzt, und gleichzeitig der zusätzliche Faktor $2x$ vergessen. Doppelter Fehler in einem.
+
+**Probe:** Bei $x = \\sqrt{\\pi}$: korrekt $\\cos(\\pi) \\cdot 2\\sqrt{\\pi} = -2\\sqrt{\\pi} \\approx -3{,}54$. Studenten-Antwort: $\\cos(2\\sqrt{\\pi}) \\approx \\cos(3{,}54) \\approx -0{,}92$. Ganz anders.
+
+**Typischer Fehler:** Innere Funktion und innere Ableitung in einem Schritt verwechselt.`,
+          [
+            'Schreibe die Kettenregel komplett aus: $\\cos(\\underline{?}) \\cdot ?$.',
+            'Im Argument von $\\cos$ steht $x^{2}$ (innere Funktion), nicht $2x$.',
+            'Der Faktor $2x$ ist ein Multiplikator, kein Argument.',
+          ],
+          {
+            1: 'Numerisch verschieden bei jedem Beispiel — etwa bei $x = 1$: korrekt $2 \\cos(1) \\approx 1{,}08$, Studenten-Antwort $\\cos(2) \\approx -0{,}42$. Definitiv falsch.',
+            2: '$(\\sin)\' = +\\cos$ stimmt — kein Vorzeichenfehler. Der Fehler liegt im Argument und beim Fehlen des Faktors.',
+            3: '$(x^{2})\' = 2x$ stimmt (Potenzregel). Hier liegt der Fehler nicht.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['kr-eingesetzt'] },
+      ),
+
+      // (10) transfer · multiple-choice · kr-eingesetzt
+      tag(
+        mc(
+          'Welche der folgenden Ableitungen wendet die Kettenregel KORREKT an (innere Funktion bleibt in äußerer Ableitung eingesetzt)?',
+          [
+            '$(\\ln(x^{3} + 2))\' = \\dfrac{3x^{2}}{x^{3} + 2}$',
+            '$(\\ln(x^{3} + 2))\' = \\dfrac{1}{3x^{2}}$',
+            '$(\\ln(x^{3} + 2))\' = \\dfrac{1}{x^{3} + 2}$',
+            '$(\\ln(x^{3} + 2))\' = \\ln(3x^{2})$',
+          ],
+          0,
+          `**Ansatz:** Äußere Funktion $\\ln(u)$ mit $u = x^{3} + 2$. Ableitung $\\ln'(u) = 1/u$ — angewandt auf die UNVERÄNDERTE innere Funktion: $\\dfrac{1}{x^{3} + 2}$. Multipliziert mit innerer Ableitung $u' = 3x^{2}$ ergibt $\\dfrac{3x^{2}}{x^{3} + 2}$.
+
+**Rechnung:** Endform: $\\dfrac{3x^{2}}{x^{3} + 2}$. Im Nenner steht die UNVERÄNDERTE innere Funktion, im Zähler die innere Ableitung.
+
+**Probe:** Bei $x = 1$: $f'(1) = 3/3 = 1$. Numerisch bestätigt.
+
+**Typischer Fehler:** Innere Funktion durch innere Ableitung ersetzt ($1/(3x^{2})$, Antwort B) oder innere Ableitung ganz vergessen (Antwort C).`,
+          [
+            'Welche Funktion ist $\\ln(\\cdot)$? Was steht im Argument?',
+            'In der äußeren Ableitung $1/u$ steht $u = x^3 + 2$ unverändert.',
+            'Innere Ableitung $(x^3 + 2)\' = 3x^2$ kommt als Zähler dazu.',
+          ],
+          {
+            1: 'Im Nenner steht $3x^{2}$ — das ist die innere ABLEITUNG, nicht die innere Funktion. In der äußeren Ableitung $1/u$ muss $u = x^{3}+2$ stehen.',
+            2: 'Innere Ableitung $3x^{2}$ ganz vergessen — die Kettenregel hat einen zusätzlichen Faktor $g\'(x)$, der hier fehlt.',
+            3: '$\\ln$ wurde auf die innere Ableitung angewandt — völlig falsche Konstruktion. $(\\ln u)\' = 1/u$, nicht $\\ln u\'$.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['kr-eingesetzt'] },
+      ),
+    ],
+
+    // ── [2] kr-mehrfach — Mehrfachverkettung ────────────────────────────
+    2: [
+      // (11) recognize · true-false · kr-mehrfach
+      tag(
+        tf(
+          'Bei mehrfach verketteten Funktionen wie $h(x) = f(g(k(x)))$ multipliziert man die Ableitungen aller Schichten: $h\'(x) = f\'(g(k(x))) \\cdot g\'(k(x)) \\cdot k\'(x)$ — pro Schicht ein Faktor, von außen nach innen.',
+          true,
+          `**Ansatz:** Die Kettenregel ist "assoziativ" über Schichten — jede zusätzliche Verkettung trägt einen Faktor zur Ableitung bei.
+
+**Rechnung:** Bei drei Schichten $h = f \\circ g \\circ k$: erst die äußerste Schicht $f$ ableiten (eingesetzt $g(k(x))$), dann die mittlere Schicht $g$ ableiten (eingesetzt $k(x)$), dann die innerste Schicht $k$ ableiten. Alle drei Faktoren multiplizieren.
+
+**Probe:** Test mit $h(x) = ((x^{2})^{3}) = x^{6}$, Ableitung $6x^{5}$. Über drei Schichten $f(u) = u$ mit $u = (x^{2})^{3}$, dann $g(v) = v^{3}$ mit $v = x^{2}$, dann $k(x) = x^{2}$. Ableitungen: $f' = 1$, $g'(v) = 3v^{2} = 3x^{4}$, $k'(x) = 2x$. Produkt: $1 \\cdot 3x^{4} \\cdot 2x = 6x^{5}$. ✓
+
+**Typischer Fehler:** Nur zwei Schichten betrachten und den dritten Faktor vergessen — Ergebnis um Faktor $k'(x)$ zu klein.`,
+          [
+            'Wie viele Funktionsschichten in $f(g(k(x)))$?',
+            'Pro Schicht eine Ableitung — wie verknüpfen sie sich (Summe/Produkt)?',
+            'Test: $h = (x^2)^3 = x^6$, Ableitung $6x^5$ — passt die Formel?',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['kr-mehrfach'] },
+      ),
+
+      // (12) apply-guided · multiple-choice · kr-mehrfach
+      tag(
+        mc(
+          '$f(x) = \\sin(\\cos(2x))$. Was ist $f\'(x)$?',
+          [
+            '$-2 \\sin(2x) \\cdot \\cos(\\cos(2x))$',
+            '$2 \\sin(2x) \\cdot \\cos(\\cos(2x))$',
+            '$-\\sin(2x) \\cdot \\cos(\\cos(2x))$',
+            '$\\cos(\\cos(2x))$',
+          ],
+          0,
+          `**Ansatz:** Drei Schichten: äußerste $\\sin$, mittlere $\\cos$, innerste $2x$. Kettenregel mehrfach.
+
+**Rechnung:** Äußerste: $(\\sin u)' = \\cos u$ mit $u = \\cos(2x)$ → $\\cos(\\cos(2x))$. Mittlere: $(\\cos v)' = -\\sin v$ mit $v = 2x$ → $-\\sin(2x)$. Innerste: $(2x)' = 2$. Produkt: $f'(x) = \\cos(\\cos(2x)) \\cdot (-\\sin(2x)) \\cdot 2 = -2 \\sin(2x) \\cos(\\cos(2x))$.
+
+**Probe:** Bei $x = 0$: $\\cos(\\cos 0) \\cdot (-\\sin 0) \\cdot 2 = \\cos(1) \\cdot 0 \\cdot 2 = 0$. $f(0) = \\sin(\\cos 0) = \\sin(1)$ — bei $x = 0$ hat $\\cos(2x)$ ein Maximum, daher $f(x)$ auch — Steigung $0$. ✓
+
+**Typischer Fehler:** Vorzeichen-Fehler bei $(\\cos)' = -\\sin$ (Antwort B), innerste Ableitung $2$ vergessen (Antwort C) oder nur äußerste abgeleitet (Antwort D).`,
+          [
+            'Wie viele Schichten? Drei Faktoren erwarten.',
+            'Äußerste $\\sin\' = \\cos$, mittlere $\\cos\' = -\\sin$, innerste $(2x)\' = 2$.',
+            'Alle drei multiplizieren — Vorzeichen $-$ von $(\\cos)\'$ überlebt.',
+          ],
+          {
+            1: 'Vorzeichen-Fehler: $(\\cos v)\' = -\\sin v$, nicht $+\\sin v$. Das Minus muss in die Endform übernommen werden.',
+            2: 'Innerste Ableitung $(2x)\' = 2$ vergessen — bei dreifach verketteten Funktionen muss der Faktor jeder Schicht im Produkt stehen.',
+            3: 'Nur äußerste Ableitung berücksichtigt — die innerste Ableitung $(2x)\' = 2$ UND die mittlere Ableitung $-\\sin(2x)$ fehlen komplett.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['kr-mehrfach'] },
+      ),
+
+      // (13) apply-independent · number-input · kr-mehrfach (Doppelkette)
+      tag(
+        ni(
+          '$f(x) = (\\sin(2x))^{2}$. Berechne $f\'(\\pi/8)$.',
+          2, 0.01, '',
+          `**Ansatz:** Drei Schichten: äußerste $u^{2}$, mittlere $\\sin v$, innerste $2x$. Kettenregel zweifach.
+
+**Rechnung:** Äußerste: $(u^{2})' = 2u$ → $2\\sin(2x)$. Mittlere: $(\\sin v)' = \\cos v$ → $\\cos(2x)$. Innerste: $(2x)' = 2$. Produkt: $f'(x) = 2\\sin(2x) \\cdot \\cos(2x) \\cdot 2 = 4\\sin(2x)\\cos(2x) = 2\\sin(4x)$ (Doppelwinkel). Bei $x = \\pi/8$: $2\\sin(4 \\cdot \\pi/8) = 2\\sin(\\pi/2) = 2$.
+
+**Probe:** Bei $x = \\pi/8$: $\\sin(2x) = \\sin(\\pi/4) = \\sqrt{2}/2$, $\\cos(2x) = \\sqrt{2}/2$. $f'(\\pi/8) = 4 \\cdot \\sqrt{2}/2 \\cdot \\sqrt{2}/2 = 4 \\cdot 1/2 = 2$. ✓
+
+**Typischer Fehler:** Eine der drei Ableitungen vergessen — z.B. den Faktor $2$ aus der innersten Schicht.`,
+          [
+            'Drei Schichten: $u^2$ außen, $\\sin v$ Mitte, $2x$ innen.',
+            'Drei Ableitungen multiplizieren: $2 \\sin(2x) \\cdot \\cos(2x) \\cdot 2$.',
+            'Bei $x = \\pi/8$: $\\sin(\\pi/4) = \\cos(\\pi/4) = \\sqrt{2}/2$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['kr-mehrfach'] },
+      ),
+
+      // (14) error-analysis · multiple-choice · kr-mehrfach
+      tag(
+        mc(
+          'Ein Student berechnet $(e^{\\cos(3x)})\' = e^{\\cos(3x)} \\cdot (-\\sin(3x))$. Welcher Fehler liegt vor?',
+          [
+            'Innerste Ableitung $(3x)\' = 3$ vergessen — bei drei Schichten müssen ALLE Ableitungen multipliziert werden. Korrekt: $-3 \\sin(3x) \\cdot e^{\\cos(3x)}$.',
+            'Korrekt — bei dieser Funktion liefert die Kettenregel exakt zwei Faktoren.',
+            'Vorzeichen-Fehler bei $(\\cos)\' = -\\sin$ — sollte $+\\sin$ sein.',
+            'Quotientenregel hätte verwendet werden müssen.',
+          ],
+          0,
+          `**Ansatz:** Drei Schichten: $e^{u}$ außen, $\\cos v$ in der Mitte, $3x$ innen. Kettenregel verlangt drei Faktoren.
+
+**Rechnung:** Vollständig: $f'(x) = e^{\\cos(3x)} \\cdot (-\\sin(3x)) \\cdot 3 = -3\\sin(3x) \\cdot e^{\\cos(3x)}$. Der Student hat $e^{\\cos(3x)} \\cdot (-\\sin(3x))$ — der Faktor $3$ aus der innersten Schicht fehlt.
+
+**Probe:** Bei $x = \\pi/6$: $\\cos(\\pi/2) = 0$, $\\sin(\\pi/2) = 1$. Korrekt: $-3 \\cdot 1 \\cdot e^{0} = -3$. Studenten-Antwort: $e^{0} \\cdot (-1) = -1$. Differenz Faktor $3$.
+
+**Typischer Fehler:** Bei mehrfach verketteten Funktionen die innerste Ableitung vergessen — "Produktregel = 2 Schichten" auswendig gelernt und nicht auf drei erweitert.`,
+          [
+            'Wieviele Schichten hat $e^{\\cos(3x)}$? Drei.',
+            'Wieviele Faktoren erwartet die Kettenregel? Drei.',
+            'Der Student schreibt nur zwei — welcher fehlt?',
+          ],
+          {
+            1: 'Numerisch verschieden — bei $x = \\pi/6$ ergibt korrekt $-3$, Studenten-Antwort $-1$. Faktor $3$ macht den Unterschied.',
+            2: '$(\\cos)\' = -\\sin$ stimmt — der Student hat das richtig gemacht. Der Fehler liegt nicht im Vorzeichen.',
+            3: '$e^{\\cos(3x)}$ ist eine Verkettung, kein Quotient. Kettenregel ist die richtige Wahl.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['kr-mehrfach'] },
+      ),
+
+      // (15) transfer · sorting · kr-mehrfach
+      tag(
+        sorting(
+          'Bringe die Schritte zum Ableiten von $f(x) = \\sqrt{\\sin(3x)}$ in die richtige Reihenfolge:',
+          [
+            'Struktur erkennen: drei Schichten — $u^{1/2}$ außen, $\\sin v$ in der Mitte, $3x$ innen.',
+            'Äußerste Ableitung: $(u^{1/2})\' = \\tfrac{1}{2} u^{-1/2}$, mit $u = \\sin(3x)$ unverändert eingesetzt: $\\tfrac{1}{2\\sqrt{\\sin(3x)}}$.',
+            'Mittlere Ableitung: $(\\sin v)\' = \\cos v$, mit $v = 3x$ unverändert eingesetzt: $\\cos(3x)$.',
+            'Innerste Ableitung: $(3x)\' = 3$.',
+            'Alle drei Faktoren multiplizieren: $f\'(x) = \\dfrac{1}{2\\sqrt{\\sin(3x)}} \\cdot \\cos(3x) \\cdot 3 = \\dfrac{3 \\cos(3x)}{2 \\sqrt{\\sin(3x)}}$.',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Zuerst Struktur erkennen (Schichten zählen), dann je Schicht eine Ableitung bilden, schließlich alle multiplizieren.
+
+**Rechnung:** Begründung der Reihenfolge:
+1. Struktur: ohne Schicht-Zählung kann man die Kettenregel nicht systematisch anwenden.
+2-4. Die Ableitungen werden von außen nach innen aufgeschrieben, jeweils mit unveränderter innerer Funktion als Argument.
+5. Erst am Ende werden die Faktoren multipliziert und vereinfacht.
+
+**Probe:** Endresultat $\\dfrac{3 \\cos(3x)}{2 \\sqrt{\\sin(3x)}}$. Bei $x = \\pi/6$: $\\sin(\\pi/2) = 1$, $\\cos(\\pi/2) = 0$ → $f'(\\pi/6) = 0$. ✓
+
+**Typischer Fehler:** Schritte 2 und 3 vertauschen — die innere Funktion in der äußersten Ableitung wird dann durch die innere ABLEITUNG ersetzt.`,
+          [
+            'Welcher Schritt MUSS zuerst kommen, bevor man eine Regel anwendet?',
+            'Von außen nach innen — pro Schicht eine Ableitung.',
+            'Erst am Ende multiplizieren — sonst kommt es zu Vorzeichen-/Reihenfolgefehlern.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['kr-mehrfach'] },
+      ),
+    ],
+
+    // ── [3] kr-linear-innen — Standardfälle (ax+b)^n, e^(ax), sin(ax) ───
+    3: [
+      // (16) recognize · true-false · kr-linear-innen
+      tag(
+        tf(
+          'Bei linearer innerer Funktion $g(x) = ax + b$ ist die innere Ableitung einfach $g\'(x) = a$ (eine Konstante) — und dieser Faktor $a$ kommt bei jeder Kettenregel-Anwendung auf $(ax+b)^{n}$, $e^{ax}$, $\\sin(ax)$ etc. als zusätzlicher Faktor dazu.',
+          true,
+          `**Ansatz:** Die Ableitung einer linearen Funktion ist eine Konstante — bei Kettenregel-Anwendung wird das ein einfacher Vorfaktor.
+
+**Rechnung:** Beispiele:
+- $(\\sin(2x))' = \\cos(2x) \\cdot 2 = 2\\cos(2x)$
+- $(e^{5x})' = e^{5x} \\cdot 5 = 5 e^{5x}$
+- $((3x + 1)^{4})' = 4(3x+1)^{3} \\cdot 3 = 12(3x+1)^{3}$
+
+**Probe:** Test $(e^{3x})'$ bei $x = 0$: $3 \\cdot e^{0} = 3$. Numerisch $\\dfrac{e^{0{,}003} - 1}{0{,}001} \\approx 3$. ✓
+
+**Typischer Fehler:** Den Vorfaktor $a$ vergessen — typischer Anfänger-Fehler bei einfachen Kettenregel-Anwendungen.`,
+          [
+            'Was ist die Ableitung von $ax + b$?',
+            'Welcher Faktor kommt bei der Kettenregel auf $f(ax+b)$ dazu?',
+            'Test: $(\\sin(2x))\' = ?$ — der Faktor $2$ ist unverzichtbar.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+
+      // (17) apply-guided · multiple-choice · kr-linear-innen
+      tag(
+        mc(
+          '$f(x) = \\sin(5x)$. Was ist $f\'(x)$?',
+          [
+            '$5 \\cos(5x)$',
+            '$\\cos(5x)$',
+            '$5 \\cos(x)$',
+            '$\\cos(5)$',
+          ],
+          0,
+          `**Ansatz:** Verkettung: äußere $\\sin$, innere $5x$. Innere Ableitung $(5x)' = 5$.
+
+**Rechnung:** $f'(x) = \\cos(5x) \\cdot 5 = 5 \\cos(5x)$. Der Faktor $5$ aus der inneren Ableitung darf NICHT vergessen werden.
+
+**Probe:** Bei $x = 0$: $5 \\cos 0 = 5$. Numerisch $\\dfrac{\\sin(0{,}005)}{0{,}001} \\approx \\dfrac{0{,}005}{0{,}001} = 5$. ✓
+
+**Typischer Fehler:** Faktor $5$ vergessen (Antwort B) — Klassiker bei linearer innerer Funktion.`,
+          [
+            'Welche Regel? Verkettung $\\sin(5x)$ — Kettenregel.',
+            'Äußere $(\\sin u)\' = \\cos u$, innere $(5x)\' = 5$.',
+            'Endform: $5 \\cos(5x)$ — Faktor $5$ NICHT vergessen.',
+          ],
+          {
+            1: 'Innere Ableitung $(5x)\' = 5$ vergessen — der Faktor $5$ aus der linearen inneren Funktion muss ins Endergebnis.',
+            2: 'Innere FUNKTION $5x$ in der äußeren Ableitung durch $x$ ersetzt — der Faktor $5$ wurde in den Vorfaktor verschoben, aber das Argument von $\\cos$ wurde gleichzeitig zu $x$ "vereinfacht". Argument muss $5x$ bleiben.',
+            3: '$\\cos(5)$ ist ein KONSTANTER Wert — die Ableitung muss aber eine Funktion von $x$ sein. Vermutlich wurde $5x$ als Konstante missverstanden.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+
+      // (18) apply-independent · number-input · kr-linear-innen
+      tag(
+        ni(
+          '$f(x) = e^{3x}$. Berechne $f\'(0)$.',
+          3, 0.01, '',
+          `**Ansatz:** Verkettung: äußere $e^{u}$, innere $3x$. Innere Ableitung $(3x)' = 3$.
+
+**Rechnung:** $f'(x) = e^{3x} \\cdot 3 = 3 e^{3x}$. Bei $x = 0$: $3 \\cdot e^{0} = 3 \\cdot 1 = 3$.
+
+**Probe:** Numerisch $\\dfrac{e^{0{,}003} - 1}{0{,}001} \\approx \\dfrac{0{,}003}{0{,}001} = 3$. ✓
+
+**Typischer Fehler:** Faktor $3$ vergessen — dann käme $e^{0} = 1$ heraus.`,
+          [
+            'Verkettung $e^{3x}$ — Kettenregel mit linearer innerer Funktion.',
+            'Äußere $(e^u)\' = e^u$, innere $(3x)\' = 3$.',
+            'Endform: $3 e^{3x}$, bei $x = 0$ ist $e^0 = 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+
+      // (19) error-analysis · multiple-choice · kr-linear-innen
+      tag(
+        mc(
+          'Ein Student berechnet $((2x - 5)^{4})\' = 4(2x - 5)^{3}$. Welcher Fehler liegt vor?',
+          [
+            'Innere Ableitung $(2x - 5)\' = 2$ vergessen — bei linearer innerer Funktion ist der Faktor IMMER $a$ (hier $a = 2$). Korrekt: $8(2x - 5)^{3}$.',
+            'Korrekt — $((2x - 5)^{4})\' = 4(2x - 5)^{3}$ ist die fertige Ableitung.',
+            'Potenzregel falsch: $(u^{4})\' \\to 4u^{5}$ (Exponent erhöhen).',
+            'Die innere Funktion sollte als Vorfaktor verschoben werden: $4 \\cdot 2^{3}$.',
+          ],
+          0,
+          `**Ansatz:** Korrekt: äußere $(u^{4})' = 4u^{3}$ mit $u = 2x - 5$ unverändert, innere Ableitung $(2x - 5)' = 2$. Produkt: $4(2x-5)^{3} \\cdot 2 = 8(2x-5)^{3}$.
+
+**Rechnung:** Der Student schreibt $4(2x-5)^{3}$ — der Faktor $2$ aus der inneren Ableitung fehlt. Klassiker bei linearer innerer Funktion.
+
+**Probe:** Bei $x = 3$: korrekt $8 \\cdot 1^{3} = 8$. Studenten-Antwort: $4 \\cdot 1 = 4$. Differenz Faktor $2$.
+
+**Typischer Fehler:** Linearen Vorfaktor $a$ als "trivial" abtun und unterschlagen.`,
+          [
+            'Innere Funktion $2x - 5$ — innere Ableitung?',
+            'Vollständig: $4(2x-5)^3 \\cdot 2$.',
+            'Der Faktor $2$ aus der inneren Ableitung muss ins Ergebnis.',
+          ],
+          {
+            1: 'Numerisch falsch: bei $x = 3$ liefert die Studenten-Antwort $4$, korrekt ist $8$. Faktor $2$ fehlt.',
+            2: '$(u^{4})\' = 4 u^{3}$ ist KORREKT (Potenzregel: Exponent um $1$ reduzieren). Hier nicht der Fehler.',
+            3: 'Hier wurde die innere Funktion gar nicht in der äußeren Ableitung ersetzt, sondern als Konstante missverstanden. So entstünden andere Probleme.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+
+      // (20) transfer · matching · kr-linear-innen
+      tag(
+        matching(
+          'Ordne jeder Funktion ihre korrekte Ableitung zu (lineare innere Funktion):',
+          [
+            { left: '$(3x + 1)^{5}$',    right: '$15(3x + 1)^{4}$' },
+            { left: '$e^{-2x}$',          right: '$-2 e^{-2x}$' },
+            { left: '$\\sin(4x)$',        right: '$4 \\cos(4x)$' },
+            { left: '$\\cos(7x - 1)$',    right: '$-7 \\sin(7x - 1)$' },
+          ],
+          `**Ansatz:** Jede Funktion ist Standardfall mit linearer innerer Funktion $ax + b$ — Faktor $a$ kommt aus der inneren Ableitung.
+
+**Rechnung:**
+- $((3x+1)^{5})' = 5(3x+1)^{4} \\cdot 3 = 15(3x+1)^{4}$. ✓
+- $(e^{-2x})' = e^{-2x} \\cdot (-2) = -2 e^{-2x}$. ✓
+- $(\\sin(4x))' = \\cos(4x) \\cdot 4 = 4 \\cos(4x)$. ✓
+- $(\\cos(7x - 1))' = -\\sin(7x - 1) \\cdot 7 = -7 \\sin(7x - 1)$. ✓
+
+**Probe:** Jede rechte Seite ist eindeutig EINER linken Seite zuzuordnen — Faktoren sind alle distinkt ($15, -2, 4, -7$).
+
+**Typischer Fehler:** Bei $\\cos(7x - 1)$ das Vorzeichen von $(\\cos)' = -\\sin$ vergessen — dann fehlt das Minus, und die Zuordnung wird mehrdeutig.`,
+          [
+            'Für jede Funktion: äußere Ableitung bilden, dann mit innerem Faktor $a$ multiplizieren.',
+            'Beachte Vorzeichen: $(\\cos)\' = -\\sin$ überträgt sich.',
+            'Vergleiche die Vorfaktoren: $15, -2, 4, -7$ — alle distinkt.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+
+      // (Bonus 3.6) apply-independent · number-input · kr-linear-innen
+      tag(
+        ni(
+          '$f(x) = \\sqrt{3x + 1}$. Berechne $f\'(5)$ (auf 3 Dezimalstellen).',
+          0.375, 0.005, '',
+          `**Ansatz:** Wurzel als Potenz $(3x+1)^{1/2}$, Kettenregel mit linearer innerer Funktion.
+
+**Rechnung:** Äußere: $(u^{1/2})' = \\tfrac{1}{2} u^{-1/2}$. Innere: $(3x+1)' = 3$. $f'(x) = \\tfrac{1}{2}(3x+1)^{-1/2} \\cdot 3 = \\dfrac{3}{2\\sqrt{3x+1}}$. Bei $x = 5$: $\\sqrt{16} = 4$, also $f'(5) = \\dfrac{3}{8} = 0{,}375$.
+
+**Probe:** Numerisch $\\dfrac{f(5{,}001) - f(5)}{0{,}001} \\approx 0{,}375$. ✓
+
+**Typischer Fehler:** Faktor $3$ aus der inneren Ableitung vergessen — Ergebnis wäre dann $1/(2\\sqrt{16}) = 1/8 = 0{,}125$.`,
+          [
+            'Wurzel als $u^{1/2}$ mit $u = 3x + 1$.',
+            'Vollständig: $\\dfrac{1}{2\\sqrt{3x+1}} \\cdot 3 = \\dfrac{3}{2\\sqrt{3x+1}}$.',
+            'Bei $x = 5$: $3x + 1 = 16$, $\\sqrt{16} = 4$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['kr-linear-innen'] },
+      ),
+    ],
+
+    // ── [4] kr-falle-innen — Innere Ableitung vergessen ─────────────────
+    4: [
+      // (21) recognize · true-false · kr-falle-innen
+      tag(
+        tf(
+          'Der häufigste Fehler bei der Kettenregel ist, die innere Ableitung zu vergessen — z. B. $(\\sin(2x))\' = \\cos(2x)$ statt $2 \\cos(2x)$ zu schreiben. Der Faktor aus der inneren Ableitung darf NICHT unterschlagen werden.',
+          true,
+          `**Ansatz:** Klassischer Anfänger-Fehler — die Kettenregel wird halb angewandt: äußere Ableitung steht, innere fehlt.
+
+**Rechnung:** Test mit $f(x) = \\sin(2x)$: korrekt $f'(x) = \\cos(2x) \\cdot 2 = 2\\cos(2x)$. Bei $x = 0$: $2$, nicht $1$. Numerisch $\\dfrac{\\sin(0{,}002)}{0{,}001} \\approx 2$. ✓
+
+**Probe:** Wenn man den Faktor $2$ vergisst, ist die Ableitung um Faktor $a$ (hier $2$) zu klein — bei Klausur direkt falsche Werte.
+
+**Typischer Fehler:** $\\cos(2x)$ statt $2\\cos(2x)$ — exakt dieser Fehler ist Standard-Klausur-Stolperstein.`,
+          [
+            'Welcher Faktor entsteht aus $(2x)\'$?',
+            'Wo muss dieser Faktor stehen — als Argument oder als Multiplikator?',
+            'Test: $(\\sin(2x))\'$ bei $x = 0$ — sollte $2$ ergeben.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+
+      // (22) apply-guided · multiple-choice · kr-falle-innen
+      tag(
+        mc(
+          'Welche der folgenden Ableitungen IGNORIERT fälschlich die innere Ableitung (häufiger Anfänger-Fehler)?',
+          [
+            '$(\\sin(2x))\' = \\cos(2x)$',
+            '$(\\sin(2x))\' = 2 \\cos(2x)$',
+            '$(e^{3x})\' = 3 e^{3x}$',
+            '$((x + 1)^{5})\' = 5(x + 1)^{4}$',
+          ],
+          0,
+          `**Ansatz:** Innere Ableitung von $2x$ ist $2$, von $3x$ ist $3$, von $x + 1$ ist $1$. Multipliziert man mit $1$, "verschwindet" der Faktor optisch — das ist KEIN Fehler. Multipliziert man NICHT mit $2$ (wenn der Faktor $2$ wäre), DAS ist der Fehler.
+
+**Rechnung:**
+- $(\\sin(2x))' = \\cos(2x) \\cdot 2 = 2\\cos(2x)$ — Antwort A ($\\cos(2x)$) IGNORIERT den Faktor $2$. ✗
+- $2\\cos(2x)$ ist korrekt. ✓
+- $(e^{3x})' = 3 e^{3x}$ ist korrekt (Faktor $3$ richtig drin). ✓
+- $((x+1)^{5})' = 5(x+1)^{4} \\cdot 1 = 5(x+1)^{4}$ ist korrekt (innerer Faktor $1$ ändert nichts). ✓
+
+**Probe:** Antwort A liefert bei $x = 0$ den Wert $\\cos 0 = 1$, korrekt wäre $2 \\cos 0 = 2$. Faktor $2$ fehlt.
+
+**Typischer Fehler:** Innere Ableitung als "$1$ angenommen" oder ignoriert — bei nicht-trivialem $a$ liefert das falsche Werte.`,
+          [
+            'Welche Funktion hat eine NICHT-triviale innere Ableitung (also $\\ne 1$)?',
+            'Wo fehlt der entsprechende Vorfaktor?',
+            'Faktor $1$ "verschwindet" optisch — das ist okay. Faktor $2, 3, \\ldots$ fehlt — das ist der Fehler.',
+          ],
+          {
+            1: 'Faktor $2$ steht KORREKT drin — das ist die korrekte Anwendung der Kettenregel, kein Fehler.',
+            2: 'Faktor $3$ steht KORREKT drin — das ist die korrekte Anwendung der Kettenregel.',
+            3: '$(x + 1)\' = 1$ — der Faktor $1$ ist trivial und ändert nichts. Korrekte Anwendung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+
+      // (23) apply-independent · multiple-choice · kr-falle-innen
+      tag(
+        mc(
+          '$f(x) = \\cos(3x + 1)$. Ein Student schreibt $f\'(x) = -\\sin(3x + 1)$. Was fehlt?',
+          [
+            'Der Faktor $3$ aus der inneren Ableitung $(3x + 1)\' = 3$ — korrekt: $-3\\sin(3x + 1)$.',
+            'Das Vorzeichen — sollte $+\\sin(3x + 1)$ sein, nicht $-\\sin(3x + 1)$.',
+            'Die innere Funktion sollte als $(3x)\' = 3$ ohne $+ 1$ behandelt werden.',
+            'Nichts — die Ableitung ist korrekt.',
+          ],
+          0,
+          `**Ansatz:** $f(x) = \\cos(u)$ mit $u = 3x + 1$. Innere Ableitung $u' = 3$. Korrekt: $f'(x) = -\\sin(3x + 1) \\cdot 3 = -3\\sin(3x + 1)$.
+
+**Rechnung:** Der Student hat das Minus von $(\\cos)' = -\\sin$ und den Eingriff "innere Funktion bleibt" korrekt — nur der Vorfaktor $3$ aus $(3x+1)' = 3$ fehlt.
+
+**Probe:** Bei $x = 0$: korrekt $-3 \\sin 1 \\approx -2{,}52$. Studenten-Antwort: $-\\sin 1 \\approx -0{,}84$. Differenz Faktor $3$.
+
+**Typischer Fehler:** Bei einer Konstanten im inneren Teil ($+1$) den Vorfaktor "vergessen", weil die Konstante ja "trivial" beim Ableiten verschwindet — der Vorfaktor $a$ vor $x$ überlebt jedoch.`,
+          [
+            'Innere Funktion ist $3x + 1$ — was ist ihre Ableitung?',
+            'Welcher Faktor muss bei $-\\sin(3x+1)$ als Multiplikator stehen?',
+            '$(3x + 1)\' = 3$, nicht $1$.',
+          ],
+          {
+            1: '$(\\cos)\' = -\\sin$ — Minus ist KORREKT. Hier nicht der Fehler.',
+            2: 'Die Konstante $+1$ in $3x + 1$ verschwindet beim Ableiten, das stimmt — aber der Faktor $3$ vor $x$ bleibt: $(3x + 1)\' = 3$.',
+            3: 'Numerisch verschieden bei jedem $x$ — Faktor $3$ fehlt. Definitiv nicht korrekt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+
+      // (24) error-analysis · multiple-choice · kr-falle-innen
+      tag(
+        mc(
+          'Ein Student schreibt $(\\ln(5x))\' = \\dfrac{1}{5x}$. Welcher Fehler liegt vor?',
+          [
+            'Innere Ableitung $(5x)\' = 5$ vergessen — korrekt: $\\dfrac{1}{5x} \\cdot 5 = \\dfrac{1}{x}$. (Alternativ via $\\ln(5x) = \\ln 5 + \\ln x$ → Ableitung $1/x$.)',
+            'Korrekt — $(\\ln u)\' = 1/u$ mit $u = 5x$ ergibt direkt $1/(5x)$.',
+            'Sollte $\\dfrac{5}{x}$ sein — Vorzeichen vertauscht.',
+            'Die innere Funktion sollte $\\ln$ sein, nicht $5x$ — Zerlegung falsch.',
+          ],
+          0,
+          `**Ansatz:** $f(x) = \\ln(5x)$ — Verkettung mit $u = 5x$. Korrekt: $f'(x) = \\dfrac{1}{u} \\cdot u' = \\dfrac{1}{5x} \\cdot 5 = \\dfrac{5}{5x} = \\dfrac{1}{x}$.
+
+**Rechnung:** Alternative Plausibilisierung: $\\ln(5x) = \\ln 5 + \\ln x$ (Logarithmus-Gesetz). Ableitung: $0 + 1/x = 1/x$. Beide Wege liefern $1/x$, nicht $1/(5x)$.
+
+**Probe:** Bei $x = 1$: korrekt $1/1 = 1$. Studenten-Antwort: $1/5 = 0{,}2$. Faktor $5$ Unterschied.
+
+**Typischer Fehler:** Klassische Kettenregel-Falle — innere Ableitung wird vergessen, weil $(\\ln u)' = 1/u$ "so einfach aussieht".`,
+          [
+            'Innere Funktion ist $5x$ — was ist ihre Ableitung?',
+            'Multipliziere $1/(5x)$ mit der inneren Ableitung.',
+            'Alternativ: $\\ln(5x) = \\ln 5 + \\ln x$ — Ableitung $1/x$.',
+          ],
+          {
+            1: 'Numerisch verschieden: bei $x = 1$ ergibt korrekt $1$, Studenten-Antwort $0{,}2$. Faktor $5$ fehlt.',
+            2: 'Vorzeichen ist hier nicht das Problem — $(\\ln)\' = 1/x$ ist positiv. Der Fehler ist der vergessene Faktor $5$.',
+            3: '$5x$ ist die innere Funktion, $\\ln$ ist die äußere — Zerlegung stimmt. Der Fehler liegt im fehlenden inneren Faktor.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+
+      // (25) transfer · multiple-choice · kr-falle-innen
+      tag(
+        mc(
+          'In welchem der folgenden Ausdrücke wird die Kettenregel KORREKT angewendet (innere Ableitung berücksichtigt)?',
+          [
+            '$(e^{x^{2}})\' = 2x \\cdot e^{x^{2}}$',
+            '$(e^{x^{2}})\' = e^{x^{2}}$',
+            '$(e^{x^{2}})\' = e^{2x}$',
+            '$(e^{x^{2}})\' = 2x \\cdot e^{2x}$',
+          ],
+          0,
+          `**Ansatz:** $f(x) = e^{x^{2}}$ — Verkettung mit $u = x^{2}$. Äußere $(e^{u})' = e^{u}$ (Exponent bleibt!), innere $(x^{2})' = 2x$. Produkt: $e^{x^{2}} \\cdot 2x = 2x e^{x^{2}}$.
+
+**Rechnung:** Drei häufige Fehler:
+- Innere Ableitung vergessen: $e^{x^{2}}$ statt $2x e^{x^{2}}$.
+- Exponent abgeleitet: $e^{2x}$ — bei $(e^{u})' = e^{u}$ bleibt $u$ unverändert im Exponenten.
+- Beides kombiniert: $2x e^{2x}$ — Exponent abgeleitet UND innere Ableitung als zusätzlichen Faktor.
+
+**Probe:** Bei $x = 1$: korrekt $2 \\cdot e \\approx 5{,}44$. Antwort B: $e \\approx 2{,}72$. Antwort C: $e^{2} \\approx 7{,}39$. Antwort D: $2 e^{2} \\approx 14{,}78$. Alle deutlich verschieden.
+
+**Typischer Fehler:** "Exponent ableiten" — verbreiteter Anfänger-Irrtum bei $e^{u}$. Der Exponent BLEIBT, die innere Ableitung kommt als Faktor.`,
+          [
+            'Äußere Funktion $e^u$ — wie verändert sich $u$ in der Ableitung?',
+            'Innere Funktion $x^2$ — innere Ableitung?',
+            'Korrekte Form: $e^{x^2}$ (Exponent bleibt!) mal $2x$ (innere Ableitung).',
+          ],
+          {
+            1: 'Innere Ableitung $2x$ vergessen — der Faktor aus der Kettenregel fehlt.',
+            2: 'Der Exponent wurde "abgeleitet" zu $2x$ — bei $(e^{u})\' = e^{u}$ bleibt $u$ aber unverändert. Die innere Ableitung kommt SEPARAT als Faktor.',
+            3: 'Doppelter Fehler: Exponent abgeleitet UND innere Ableitung als Faktor genommen. Eines von beiden ist überflüssig — der Exponent muss UNVERÄNDERT bleiben.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+
+      // (Bonus 4.6) apply-independent · multiple-choice · kr-falle-innen
+      tag(
+        mc(
+          '$f(x) = \\sin(x^{2})$. Welche der folgenden Ableitungen ist KORREKT?',
+          [
+            '$f\'(x) = 2x \\cos(x^{2})$',
+            '$f\'(x) = \\cos(x^{2})$',
+            '$f\'(x) = \\cos(2x)$',
+            '$f\'(x) = 2x \\cos(2x)$',
+          ],
+          0,
+          `**Ansatz:** Verkettung mit $u = x^{2}$. Äußere $(\\sin u)' = \\cos u$ (argument bleibt), innere $(x^{2})' = 2x$.
+
+**Rechnung:** $f'(x) = \\cos(x^{2}) \\cdot 2x = 2x \\cos(x^{2})$. Wichtige Details: das $\\cos$ wird auf $x^{2}$ (innere Funktion) ausgewertet, NICHT auf $2x$ (innere Ableitung); und der Faktor $2x$ steht als separater Multiplikator.
+
+**Probe:** Bei $x = \\sqrt{\\pi}$: $f'(\\sqrt{\\pi}) = 2\\sqrt{\\pi} \\cos(\\pi) = -2\\sqrt{\\pi} \\approx -3{,}54$. Numerisch bestätigt.
+
+**Typischer Fehler:** Innere Ableitung vergessen (B), innere Funktion durch innere Ableitung ersetzt (C), beides falsch kombiniert (D).`,
+          [
+            'Äußere Funktion $\\sin u$ — was bleibt im Argument?',
+            'Innere Ableitung $(x^2)\' = 2x$ — wohin damit?',
+            'Endform: $\\cos(\\underline{x^2}) \\cdot 2x$.',
+          ],
+          {
+            1: 'Innere Ableitung $2x$ vergessen — Faktor aus der Kettenregel fehlt.',
+            2: 'Innere FUNKTION durch innere ABLEITUNG im Argument ersetzt: $\\cos(2x)$ statt $\\cos(x^{2})$. Außerdem fehlt der Faktor.',
+            3: 'Doppelter Fehler: Argument durch innere Ableitung ersetzt UND zugleich der Vorfaktor $2x$ angefügt — als wäre die Kettenregel "doppelt" angewandt worden.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+    ],
+  },
 }

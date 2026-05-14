@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3633 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2895 (80 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1698 / 1698 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 435 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3661 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2923 (80 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1713 / 1713 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 440 / 1134 (39 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **170** (Lesson-Path: 113 · Goal-Tasks: 57)
-- 4-Block: 109/170 (64 %) 🟡
-- MC-wAE: 116/116 (100 %) ✅
-- Sub-Goals: 10/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **198** (Lesson-Path: 113 · Goal-Tasks: 85)
+- 4-Block: 137/198 (69 %) 🟡
+- MC-wAE: 131/131 (100 %) ✅
+- Sub-Goals: 15/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -384,7 +384,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
 | `abl-2-1` Produktregel | 5 | 5/5 | 34 | 20/6/5/2/1 | 34/34 | 20/20 | ✅ | — |
 | `abl-2-2` Quotientenregel | 5 | 5/5 | 35 | 22/5/6/1/1 | 35/35 | 22/22 | ✅ | — |
-| `abl-2-3` Kettenregel — Schritt für Schritt | 5 | 0/5 | 7 | 6/1/0/0/0 | 7/7 | 6/6 | ✅ | +5 Goal |
+| `abl-2-3` Kettenregel — Schritt für Schritt | 5 | 5/5 | 35 | 21/7/5/1/1 | 35/35 | 21/21 | ✅ | — |
 | `abl-2-4` Gemischte Regeln | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
 | `abl-3-1` Monotonie und Extremwerte | 5 | 0/5 | 6 | 4/1/1/0/0 | 0/6 | 4/4 | ✅ | +5 Goal, +6 4B |
 | `abl-3-2` Krümmung und Wendepunkte | 5 | 0/5 | 5 | 4/1/0/0/0 | 0/5 | 4/4 | ✅ | +5 Goal, +5 4B |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 20 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 19 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7869,59 +7869,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `abl-2-3` · Kettenregel — Schritt für Schritt
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-1-4` → `kettenregel`, `aussere-finden`, `std-exp-u`, `std-sin-u`, `std-ln-u`, `mehrfach-kette`
-  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `kr-formel-fest` — Kettenregel-Formel: $[f(g(x))]'=f'(g(x))\cdot g'(x)$ — äußere mal innere Abl. (SG 0)
-  2. `kr-eingesetzt` — Innere bleibt in äußerer Ableitung eingesetzt — nicht selbst ableiten ⇐ `kr-formel-fest` (SG 1)
-  3. `kr-mehrfach` — Mehrfachverkettung: von außen nach innen multiplizieren ⇐ `kr-formel-fest` (SG 2)
-  4. `kr-linear-innen` — Standard $(ax+b)^n,\;e^{ax},\;\sin(ax)$: innere Ableitung $=a$ ⇐ `kr-formel-fest` (SG 3)
-  5. `kr-falle-innen` — Häufiger Fehler: innere Ableitung vergessen ($(\sin 2x)'=2\cos 2x$, nicht $\cos 2x$) ⇐ `kr-formel-fest` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `kr-formel-fest` · **0/5+** — Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
-  - 🔴 [1] _hoch_ · Konzepte: `kr-eingesetzt` · **0/5+** — Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
-  - 🔴 [2] _hoch_ · Konzepte: `kr-mehrfach` · **0/5+** — Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
-  - 🔴 [3] _hoch_ · Konzepte: `kr-linear-innen` · **0/5+** — Häufigste Anwendung: $(ax+b)^n$, $e^{ax}$, $\sin(ax)$ — innere Ableitung $= a$
-  - 🔴 [4] _hoch_ · Konzepte: `kr-falle-innen` · **0/5+** — Häufiger Fehler: innere Ableitung vergessen (z.B. $(\sin 2x)' = 2\cos 2x$, nicht $\cos 2x$)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kr-formel-fest` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kr-formel-fest` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `kr-formel-fest` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `kr-formel-fest` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `kr-formel-fest` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `kr-mehrfach` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `kr-mehrfach` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `kr-mehrfach` | 1 | 0 | 🔴 | Doppelkette |
-| 14 | 2 | error-analysis     | multiple-choice  | `kr-mehrfach` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | sorting          | `kr-mehrfach` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `kr-linear-innen` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `kr-linear-innen` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `kr-linear-innen` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `kr-linear-innen` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `kr-linear-innen` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `kr-falle-innen` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 ### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 22 Lessons
 

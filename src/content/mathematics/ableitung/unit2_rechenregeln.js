@@ -400,29 +400,24 @@ Ableitung: $f'(x) = \\cos(3x^{2}) \\cdot 6x = 6x\\cos(3x^{2})$.
     id: 'ex-abl-2-3-b', lessonId: 'abl-2-3', type: 'multiple-choice',
     question: '$f(x) = (5x^{3} - 2x)^{4}$. Was ist $f\'(x)$?',
     options: [
-      '$4(5x^{3} - 2x)^{3}$',
-      '$4(15x^{2} - 2)(5x^{3} - 2x)^{3}$',
       '$4(5x^{3} - 2x)^{3} \\cdot (15x^{2} - 2)$',
-      '$(20x^{3} - 8x)^{3}$',
+      '$4(5x^{3} - 2x)^{3}$',
+      '$4(15x^{2} - 2)^{3}$',
+      '$4(5x^{3} - 2x)^{4} \\cdot (15x^{2} - 2)$',
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     wrongAnswerExplanations: {
-      0: 'Innere Ableitung $(5x^3-2x)\' = 15x^2-2$ vergessen. Nur die äußere Potenzregel $4u^3$ angewandt: $4(5x^3-2x)^3$. Der Faktor der inneren Ableitung fehlt — die Kettenregel ist ein *Produkt*.',
-      1: 'Diese Antwort ist mathematisch korrekt, äquivalent zu C: $4(15x^2-2)(5x^3-2x)^3 = 4(5x^3-2x)^3\\cdot(15x^2-2)$. Nur die Reihenfolge der Faktoren unterscheidet sich — Multiplikation ist kommutativ, also gleich.',
-      3: 'Hier wurde die innere Funktion *in* die äußere gezogen: $(5x^3-2x)^4$ zu $(20x^3-8x)^3$ mit $\\cdot 4$ durchmultipliziert wäre komplett falsch. $(a)^4$ vs. $(4a)^3$ sind ganz unterschiedliche Ausdrücke — die Kettenregel funktioniert nicht so.',
+      1: 'Innere Ableitung $(5x^{3} - 2x)\' = 15x^{2} - 2$ vergessen. Nur die äußere Potenzregel $4u^{3}$ angewandt — der Faktor aus der Kettenregel fehlt.',
+      2: 'Innere FUNKTION durch innere ABLEITUNG in der äußeren Ableitung ersetzt: $u^{3}$ wurde mit $u = 15x^{2} - 2$ statt $u = 5x^{3} - 2x$ ausgewertet. Die innere Funktion muss in der äußeren Ableitung UNVERÄNDERT eingesetzt bleiben.',
+      3: 'Potenzregel falsch: Der Exponent wurde nicht von $4$ auf $3$ erniedrigt. $(u^{4})\' = 4 u^{3}$, also Exponent $3$ — hier steht aber noch $u^{4}$.',
     },
     explanation: `**Ansatz:** Verkettung: außen $u^{4}$, innen $5x^{3}-2x$. Kettenregel.
 
-**Rechnung:**
-- Äußere: $(u^{4})' = 4u^{3}$, also $4(5x^{3}-2x)^{3}$.
-- Innere: $(5x^{3}-2x)' = 15x^{2} - 2$.
-- Kettenregel: $f'(x) = 4(5x^{3}-2x)^{3} \\cdot (15x^{2}-2)$.
+**Rechnung:** Äußere: $(u^{4})' = 4u^{3}$, also $4(5x^{3}-2x)^{3}$. Innere: $(5x^{3}-2x)' = 15x^{2} - 2$. Kettenregel: $f'(x) = 4(5x^{3}-2x)^{3} \\cdot (15x^{2}-2)$.
 
-Antworten B und C sind äquivalent — nur Reihenfolge der Faktoren unterschiedlich.
+**Probe:** Bei $x=1$: $f'(1) = 4 \\cdot 3^{3} \\cdot 13 = 4 \\cdot 27 \\cdot 13 = 1404$. Numerisch $\\dfrac{f(1{,}001) - f(1)}{0{,}001} \\approx 1404$. ✓
 
-**Probe:** Bei $x=1$: $f'(1) = 4 \\cdot 3^{3} \\cdot 13 = 4 \\cdot 27 \\cdot 13 = 1404$. ✓
-
-**Typischer Fehler:** Antwort A vergisst die innere Ableitung. Antwort D potenziert die innere Ableitung fälschlich.`,
+**Typischer Fehler:** Innere Ableitung vergessen (B) oder innere Funktion in der äußeren Ableitung durch innere Ableitung ersetzt (C).`,
     hints: [
       'Welche Struktur? Verkettung $u^{4}$ mit $u = 5x^{3}-2x$ — Kettenregel.',
       'Regel: Äußere $(u^{4})\' = 4u^{3}$, innere $(5x^{3}-2x)\' = 15x^{2} - 2$.',
@@ -1116,26 +1111,46 @@ $$[f(g(x))]' = \\underbrace{f'(g(x))}_{\\text{äußere abgeleitet}} \\cdot \\und
 **Merksatz:** "Äußere Ableitung mal innere Ableitung"`,
       },
       {
-        id: 'abl-2-3-s2', type: 'explanation-formal', title: 'Beispiele und doppelte Kettenregel',
-        content: `**Kettenregel:**
+        id: 'abl-2-3-s2', type: 'explanation-formal', title: 'Formel, Standardfälle und Mehrfachverkettung',
+        content: `**Kettenregel (Grundform):**
 $$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
+Äußere Ableitung mit UNVERÄNDERTER innerer Funktion auswerten, dann mit innerer Ableitung multiplizieren.
 
-**Beispiel 1:** $h(x) = \\cos(x^{3})$
-- Äußere: $\\cos(u) \\to -\\sin(u)$
-- Innere: $x^{3} \\to 3x^{2}$
-- $h'(x) = -\\sin(x^{3}) \\cdot 3x^{2} = -3x^{2} \\sin(x^{3})$
+**Mehrfachverkettung (drei oder mehr Schichten):**
+$$[f(g(h(x)))]' = f'(g(h(x))) \\cdot g'(h(x)) \\cdot h'(x)$$
+Pro Schicht ein Faktor — alle Faktoren multiplizieren.
 
-**Beispiel 2:** $h(x) = \\sqrt{1 + x^{2}} = (1+x^{2})^{1/2}$
-- Äußere: $u^{1/2} \\to \\tfrac{1}{2}u^{-1/2}$
-- Innere: $1+x^{2} \\to 2x$
-- $h'(x) = \\tfrac{1}{2}(1+x^{2})^{-1/2} \\cdot 2x = \\dfrac{x}{\\sqrt{1+x^{2}}}$
+**Standardfälle mit linearer innerer Funktion ($g(x) = ax + b$, innere Ableitung $= a$):**
 
-**Doppelte Kettenregel** (drei Schichten):
-$h(x) = e^{\\sin(2x)}$
-- Äußerste: $e^{u} \\to e^{u}$
-- Mittlere: $\\sin(v) \\to \\cos(v)$
-- Innerste: $2x \\to 2$
-- $h'(x) = e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2 = 2\\cos(2x)e^{\\sin(2x)}$`,
+| Funktion | Ableitung |
+|---|---|
+| $(ax + b)^{n}$ | $n \\cdot a \\cdot (ax + b)^{n-1}$ |
+| $e^{ax+b}$ | $a \\cdot e^{ax+b}$ |
+| $\\sin(ax+b)$ | $a \\cdot \\cos(ax+b)$ |
+| $\\cos(ax+b)$ | $-a \\cdot \\sin(ax+b)$ |
+| $\\ln(ax+b)$ | $\\dfrac{a}{ax+b}$ |
+| $\\sqrt{ax+b}$ | $\\dfrac{a}{2\\sqrt{ax+b}}$ |
+
+**Klassische Falle:** Die innere Ableitung wird vergessen. Beispiel: $(\\sin(2x))' = 2 \\cos(2x)$ (KORREKT) statt $\\cos(2x)$ (FALSCH — Faktor $2$ fehlt). $(\\cos(3x))' = -3\\sin(3x)$ (KORREKT), nicht $-\\sin(3x)$.
+
+**Beispiel 1:** $h(x) = \\cos(x^{3})$ — äußere $\\cos(u) \\to -\\sin(u)$, innere $x^{3} \\to 3x^{2}$. $h'(x) = -\\sin(x^{3}) \\cdot 3x^{2} = -3x^{2} \\sin(x^{3})$.
+
+**Beispiel 2:** $h(x) = \\sqrt{1 + x^{2}} = (1+x^{2})^{1/2}$ — äußere $u^{1/2} \\to \\tfrac{1}{2}u^{-1/2}$, innere $1 + x^{2} \\to 2x$. $h'(x) = \\dfrac{x}{\\sqrt{1+x^{2}}}$.
+
+**Beispiel 3 (drei Schichten):** $h(x) = e^{\\sin(2x)}$ — Äußerste $(e^{u})' = e^{u}$, Mittlere $(\\sin v)' = \\cos v$, Innerste $(2x)' = 2$. $h'(x) = e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2 = 2\\cos(2x)\\,e^{\\sin(2x)}$.`,
+      },
+      {
+        id: 'abl-2-3-s2b', type: 'visualization', title: 'Kettenregel-Faktor sichtbar: $\\sin(2x)$ und Ableitung',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => Math.sin(2 * x),       color: '#3b82f6', label: 'f(x) = sin(2x)' },
+            { fn: (x) => 2 * Math.cos(2 * x), color: '#ef4444', label: "f'(x) = 2·cos(2x)" },
+          ],
+          xRange: [-Math.PI, Math.PI],
+          yRange: [-2.2, 2.2],
+          showGrid: true,
+        },
       },
       { id: 'abl-2-3-s3', type: 'exercise', title: 'Aufgabe 1 — Struktur erkennen', exerciseRef: 'ex-abl-2-3-a' },
       { id: 'abl-2-3-s4', type: 'exercise', title: 'Aufgabe 2 — Polynom-Potenz', exerciseRef: 'ex-abl-2-3-b' },
