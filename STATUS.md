@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3546 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2801 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1654 / 1654 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 419 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3576 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2837 (79 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1667 / 1667 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 425 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -270,10 +270,10 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 12
-- Aufgaben: **247** (Lesson-Path: 54 · Goal-Tasks: 193)
-- 4-Block: 229/247 (93 %) 🟡
-- MC-wAE: 117/117 (100 %) ✅
-- Sub-Goals: 39/62 Goal-Tasks verknüpft 🟡
+- Aufgaben: **277** (Lesson-Path: 54 · Goal-Tasks: 223)
+- 4-Block: 265/277 (96 %) 🟡
+- MC-wAE: 130/130 (100 %) ✅
+- Sub-Goals: 45/62 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.**
@@ -320,7 +320,7 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 | `vek-2-1` Geradengleichung | 6 | 6/6 | 30 | 18/3/6/2/1 | 30/30 | 18/18 | ✅ | — |
 | `vek-2-2` Ebenengleichung | 6 | 6/6 | 35 | 18/7/7/2/1 | 35/35 | 18/18 | ✅ | — |
 | `vek-2-3` Abstände und Schnitte | 6 | 6/6 | 35 | 16/11/6/1/1 | 35/35 | 16/16 | ✅ | — |
-| `vek-2-4` Prüfungsaufgaben Analytische Geometrie | 6 | 0/6 | 6 | 5/1/0/0/0 | 0/6 | 5/5 | ✅ | +6 Goal, +6 4B |
+| `vek-2-4` Prüfungsaufgaben Analytische Geometrie | 6 | 6/6 | 36 | 18/11/6/1/0 | 36/36 | 18/18 | ✅ | — |
 | `vek-3-1` Gemischte Aufgaben Skalar- und Kreuzprodukt | 6 | 0/6 | 6 | 3/2/1/0/0 | 2/6 | 3/3 | ✅ | +6 Goal, +4 4B |
 | `vek-3-2` Flächen- und Volumenberechnung | 6 | 0/6 | 4 | 2/2/0/0/0 | 0/4 | 2/2 | ✅ | +6 Goal, +4 4B |
 | `vek-3-3` Technische Anwendungen | 5 | 0/5 | 4 | 3/1/0/0/0 | 0/4 | 3/3 | ✅ | +5 Goal, +4 4B |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 23 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 22 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7876,71 +7876,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
-
-- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `vek-1-2` → `sp-orthogonal`, `sp-winkel`
-  - `vek-1-3` → `kp-komp`, `kp-orthog`
-  - `vek-2-2` → `e-koordform`, `e-normal-vektor`, `e-hesse`
-  - `vek-2-3` → `d-pt-ebene`, `sg-ebene`
-  - `vek-2-1` → `g-paramform`, `g-schnittpunkt`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `lotfuss` — Lotfußpunkt: Hilfsgerade $\vec r=P+t\vec n$, Schnitt mit Ebene gibt $F$ (SG 0)
-  2. `schnittgerade` — Schnittgerade zweier Ebenen: $\vec v=\vec n_1\times\vec n_2$, Punkt aus LGS (SG 1)
-  3. `g-ortho-ebene` — Gerade ⊥ Ebene $\iff\vec v_g\parallel\vec n_E$ (SG 2)
-  4. `g-parallel-ebene` — Gerade $\parallel$ Ebene $\iff\vec v_g\perp\vec n_E$ (SG 2)
-  5. `d-parallele-eb` — Abstand paralleler Ebenen: $d=|d_1-d_2|/|\vec n|$ bei gleichem $\vec n$ (SG 3)
-  6. `spiegelpunkt` — Spiegelpunkt $P'=2F-P$ mit Lotfußpunkt $F$ ⇐ `lotfuss` (SG 4)
-  7. `winkel-g-eb` — Winkel Gerade↔Ebene: $\sin\alpha=|\vec v\cdot\vec n|/(|\vec v||\vec n|)$ (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `lotfuss` · **0/5+** — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
-  - 🔴 [1] _hoch_ · Konzepte: `schnittgerade` · **0/5+** — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
-  - 🔴 [2] _hoch_ · Konzepte: `g-ortho-ebene`, `g-parallel-ebene` · **0/5+** — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
-  - 🔴 [3] _hoch_ · Konzepte: `d-parallele-eb` · **0/5+** — Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
-  - 🔴 [4] _mittel_ · Konzepte: `spiegelpunkt` · **0/5+** — Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
-  - 🔴 [5] _mittel_ · Konzepte: `winkel-g-eb` · **0/5+** — Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `lotfuss` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `lotfuss` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `lotfuss` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `lotfuss` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `lotfuss` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  6 | 1 | recognize          | true-false       | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `schnittgerade` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `schnittgerade` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `schnittgerade` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 11 | 2 | recognize          | true-false       | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `g-ortho-ebene` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 | Vertauschung der Bedingungen |
-| 15 | 2 | transfer           | matching         | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `d-parallele-eb` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `d-parallele-eb` | 1 | 0 | 🔴 | Vergleich nur bei gleichem $\vec n$ |
-| 20 | 3 | transfer           | number-input     | `d-parallele-eb` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 21 | 4 | recognize          | true-false       | `spiegelpunkt` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `spiegelpunkt` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `spiegelpunkt` | 1 | 0 | 🔴 | $P'=F-P$ statt $2F-P$ |
-| 25 | 4 | transfer           | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `winkel-g-eb` | 1 | 0 | 🔴 | cos statt sin verwendet |
-| 30 | 5 | transfer           | number-input     | `winkel-g-eb` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-vek-2-4-a`, `ex-vek-2-4-b`, `ex-vek-2-4-c`, `ex-vek-2-4-d`, `ex-vek-2-4-e`, `ex-vek-2-4-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `la-1-2` · Matrizenrechnung
 
@@ -9271,7 +9206,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 49 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11101,6 +11036,69 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/differentialgleichungen.js` unter `'dgl-1-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
+
+- **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `vek-1-2` → `sp-orthogonal`, `sp-winkel`
+  - `vek-1-3` → `kp-komp`, `kp-orthog`
+  - `vek-2-2` → `e-koordform`, `e-normal-vektor`, `e-hesse`
+  - `vek-2-3` → `d-pt-ebene`, `sg-ebene`
+  - `vek-2-1` → `g-paramform`, `g-schnittpunkt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lotfuss` — Lotfußpunkt: Hilfsgerade $\vec r=P+t\vec n$, Schnitt mit Ebene gibt $F$ (SG 0)
+  2. `schnittgerade` — Schnittgerade zweier Ebenen: $\vec v=\vec n_1\times\vec n_2$, Punkt aus LGS (SG 1)
+  3. `g-ortho-ebene` — Gerade ⊥ Ebene $\iff\vec v_g\parallel\vec n_E$ (SG 2)
+  4. `g-parallel-ebene` — Gerade $\parallel$ Ebene $\iff\vec v_g\perp\vec n_E$ (SG 2)
+  5. `d-parallele-eb` — Abstand paralleler Ebenen: $d=|d_1-d_2|/|\vec n|$ bei gleichem $\vec n$ (SG 3)
+  6. `spiegelpunkt` — Spiegelpunkt $P'=2F-P$ mit Lotfußpunkt $F$ ⇐ `lotfuss` (SG 4)
+  7. `winkel-g-eb` — Winkel Gerade↔Ebene: $\sin\alpha=|\vec v\cdot\vec n|/(|\vec v||\vec n|)$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `lotfuss` · **5/5+** — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
+  - ✅ [1] _hoch_ · Konzepte: `schnittgerade` · **5/5+** — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
+  - ✅ [2] _hoch_ · Konzepte: `g-ortho-ebene`, `g-parallel-ebene` · **5/5+** — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
+  - ✅ [3] _hoch_ · Konzepte: `d-parallele-eb` · **5/5+** — Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
+  - ✅ [4] _mittel_ · Konzepte: `spiegelpunkt` · **5/5+** — Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
+  - ✅ [5] _mittel_ · Konzepte: `winkel-g-eb` · **5/5+** — Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lotfuss` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lotfuss` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `lotfuss` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lotfuss` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `lotfuss` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `schnittgerade` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `schnittgerade` | 1 | 2 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `schnittgerade` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `schnittgerade` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `schnittgerade` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `g-ortho-ebene` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ | Vertauschung der Bedingungen |
+| 15 | 2 | transfer           | matching         | `g-ortho-ebene`, `g-parallel-ebene` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `d-parallele-eb` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `d-parallele-eb` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `d-parallele-eb` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `d-parallele-eb` | 1 | 1 | ✅ | Vergleich nur bei gleichem $\vec n$ |
+| 20 | 3 | transfer           | number-input     | `d-parallele-eb` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `spiegelpunkt` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `spiegelpunkt` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `spiegelpunkt` | 1 | 1 | ✅ | $P'=F-P$ statt $2F-P$ |
+| 25 | 4 | transfer           | number-input     | `spiegelpunkt`, `lotfuss` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `winkel-g-eb` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `winkel-g-eb` | 1 | 1 | ✅ | cos statt sin verwendet |
+| 30 | 5 | transfer           | number-input     | `winkel-g-eb` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/vektoren.js` unter `'vek-2-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-diagram`, `vector-3d`, `force-parallelogram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
