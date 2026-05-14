@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3604 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2865 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1682 / 1682 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 430 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3633 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2895 (80 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1698 / 1698 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 435 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **141** (Lesson-Path: 113 · Goal-Tasks: 28)
-- 4-Block: 79/141 (56 %) 🔴
-- MC-wAE: 100/100 (100 %) ✅
-- Sub-Goals: 5/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **170** (Lesson-Path: 113 · Goal-Tasks: 57)
+- 4-Block: 109/170 (64 %) 🟡
+- MC-wAE: 116/116 (100 %) ✅
+- Sub-Goals: 10/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -383,7 +383,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | `abl-1-4` Kettenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
 | `abl-2-1` Produktregel | 5 | 5/5 | 34 | 20/6/5/2/1 | 34/34 | 20/20 | ✅ | — |
-| `abl-2-2` Quotientenregel | 5 | 0/5 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +5 Goal, +1 4B |
+| `abl-2-2` Quotientenregel | 5 | 5/5 | 35 | 22/5/6/1/1 | 35/35 | 22/22 | ✅ | — |
 | `abl-2-3` Kettenregel — Schritt für Schritt | 5 | 0/5 | 7 | 6/1/0/0/0 | 7/7 | 6/6 | ✅ | +5 Goal |
 | `abl-2-4` Gemischte Regeln | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
 | `abl-3-1` Monotonie und Extremwerte | 5 | 0/5 | 6 | 4/1/1/0/0 | 0/6 | 4/4 | ✅ | +5 Goal, +6 4B |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 21 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 20 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -7601,60 +7601,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
 - **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-4': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-
-#### `abl-2-2` · Quotientenregel
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-2-1` → `pr-formel`
-  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `qr-formel` — Quotientenregel $(f/g)'=(f'g-fg')/g^2$ (SG 0)
-  2. `qr-naz` — NAZ-Eselsbrücke: Nenner·Abl.Zähler − Zähler·Abl.Nenner, durch $N^2$ ⇐ `qr-formel` (SG 1)
-  3. `qr-vorzeichen` — Reihenfolge im Zähler: $f'g$ ZUERST, dann minus $fg'$ ⇐ `qr-formel` (SG 2)
-  4. `qr-via-pr` — Alternative: $f/g=f\cdot g^{-1}$ mit Produkt+Kettenregel ableiten ⇐ `qr-formel` (SG 3)
-  5. `qr-defbereich` — Definitionsbereich $g(x)\neq 0$ — Polstellen separat (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `qr-formel` · **0/5+** — Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
-  - 🔴 [1] _mittel_ · Konzepte: `qr-naz` · **0/5+** — NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
-  - 🔴 [2] _hoch_ · Konzepte: `qr-vorzeichen` · **0/5+** — Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
-  - 🔴 [3] _mittel_ · Konzepte: `qr-via-pr` · **0/5+** — Alternative: $f/g = f \cdot g^{-1}$ mit Produkt- und Kettenregel ableiten
-  - 🔴 [4] _mittel_ · Konzepte: `qr-defbereich` · **0/5+** — Definitionsbereich: $g(x) \neq 0$ (Polstellen gesondert betrachten)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `qr-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `qr-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `qr-formel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `qr-formel` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `qr-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `qr-naz` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `qr-naz`, `qr-formel` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `qr-vorzeichen`, `qr-formel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 | Reihenfolge $fg'-f'g$ |
-| 15 | 2 | transfer           | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `qr-via-pr` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `qr-via-pr` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `qr-via-pr` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `qr-via-pr` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | sorting          | `qr-via-pr`, `qr-formel` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `qr-defbereich` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `qr-defbereich`, `qr-formel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-abl-2-2-a`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 

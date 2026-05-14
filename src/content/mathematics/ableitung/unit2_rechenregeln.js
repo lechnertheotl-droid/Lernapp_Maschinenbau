@@ -197,15 +197,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
     },
     explanation: `**Ansatz:** Brüche von Funktionen werden mit der Quotientenregel abgeleitet.
 
-**Rechnung:** $\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f' \\cdot g - f \\cdot g'}{g^{2}}$ (für $g(x) \\neq 0$).
+**Rechnung:** $\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f' \\cdot g - f \\cdot g'}{g^{2}}$ (für $g(x) \\neq 0$). Eselsbrücke "NAZ minus ZAN durch $N^{2}$": Nenner mal Ableitung Zähler — minus — Zähler mal Ableitung Nenner — geteilt durch Nenner zum Quadrat.
 
-**Eselsbrücke NAZ minus ZAN durch $N^{2}$:**
-- **N**enner mal **A**bleitung des **Z**ählers
-- **minus**
-- **Z**ähler mal **A**bleitung des **N**enners
-- **geteilt durch N**enner **z**um **Q**uadrat
+**Probe:** Test mit $f(x) = x^2$, $g(x) = x$ (also $\\tfrac{f}{g} = x$, Ableitung $1$): $\\dfrac{2x \\cdot x - x^2 \\cdot 1}{x^2} = \\dfrac{x^2}{x^2} = 1$. ✓ Die Formel liefert das korrekte Ergebnis.
 
-**Typischer Fehler:** $\\dfrac{f'}{g'}$ (Antwort A) ist falsch. Vorzeichen vertauschen (Antwort D) ebenfalls.`,
+**Typischer Fehler:** $\\dfrac{f'}{g'}$ (Antwort A) — Faktor-für-Faktor-Fehler. Vorzeichen im Zähler vertauschen (Antwort D, $fg' - f'g$) liefert das negative Ergebnis.`,
     hints: [
       'Welche Struktur? Bruch — Quotientenregel.',
       'Regel (NAZ): Nenner $\\times$ Abl. Zähler $-$ Zähler $\\times$ Abl. Nenner, alles durch $N^{2}$.',
@@ -274,34 +270,30 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
   },
   'ex-abl-2-2-d': {
     id: 'ex-abl-2-2-d', lessonId: 'abl-2-2', type: 'multiple-choice',
-    question: '$f(x) = \\dfrac{e^{x}}{x^{2}}$. Was ist $f\'(x)$?',
+    question: '$f(x) = \\dfrac{e^{x}}{x^{2}}$. Was ist $f\'(x)$ in einfachster Form?',
     options: [
-      '$\\dfrac{e^{x}}{2x}$',
       '$\\dfrac{e^{x}(x-2)}{x^{3}}$',
-      '$\\dfrac{e^{x}(x^{2} - 2x)}{x^{4}}$',
-      '$\\dfrac{e^{x} \\cdot x^{2} - 2x \\cdot e^{x}}{x^{4}}$',
+      '$\\dfrac{e^{x}}{2x}$',
+      '$\\dfrac{e^{x}(2-x)}{x^{3}}$',
+      '$\\dfrac{x^{2} e^{x} - 2x e^{x}}{x^{2}}$',
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     wrongAnswerExplanations: {
-      0: 'Quotientenregel nicht angewandt — stattdessen einzeln abgeleitet: $\\tfrac{(e^x)\'}{(x^2)\'} = \\tfrac{e^x}{2x}$. Das entspricht dem klassischen Fehler $\\tfrac{f\'}{g\'}$. Die richtige Formel ist $\\tfrac{f\'g - fg\'}{g^2}$ mit beiden Summanden im Zähler.',
-      1: 'Ergebnis ist zwar algebraisch *korrekt* als vereinfachte Form, ABER: Die Frage verlangt die direkte Anwendung der Quotientenregel. Die vereinfachte Form $\\tfrac{e^x(x-2)}{x^3}$ ist zu D äquivalent, aber D ist die unvereinfachte Direktform.',
-      2: 'Ergebnis ist ebenfalls algebraisch zu D äquivalent (Zähler ausgeklammert, aber Nenner noch $x^4$), also teilweise gekürzt. D ist die direkte Quotientenregel-Form — hier wurde der Zähler zusammengefasst, aber nicht durch $x^3$ gekürzt.',
+      1: 'Quotientenregel nicht angewandt — stattdessen $\\tfrac{(e^x)\'}{(x^2)\'} = \\tfrac{e^x}{2x}$ gerechnet (Faktor-für-Faktor-Fehler). Richtig: $\\tfrac{f\'g - fg\'}{g^2}$ mit beiden Summanden im Zähler.',
+      2: 'Vorzeichen-Fehler durch vertauschte Reihenfolge: $f g\' - f\' g = 2x e^x - x^2 e^x = e^x(2x - x^2) = -e^x(x^2 - 2x)$ — also genau das negative Ergebnis ($\\tfrac{e^x(2-x)}{x^3}$ statt $\\tfrac{e^x(x-2)}{x^3}$).',
+      3: 'Nenner ist $g$ statt $g^2$ — der Quotientenregel-Nenner muss IMMER quadriert werden ($x^{2}$ wird zu $(x^2)^2 = x^4$, nach Kürzen mit $x$ aus dem Zähler bleibt $x^3$).',
     },
     explanation: `**Ansatz:** Quotientenregel mit $u = e^{x}$, $v = x^{2}$.
 
-**Rechnung:**
-- $u' = e^{x}$, $v' = 2x$
-- $f'(x) = \\dfrac{e^{x} \\cdot x^{2} - e^{x} \\cdot 2x}{x^{4}} = \\dfrac{e^{x}(x^{2} - 2x)}{x^{4}} = \\dfrac{e^{x}(x-2)}{x^{3}}$.
+**Rechnung:** $u' = e^{x}$, $v' = 2x$. Damit $f'(x) = \\dfrac{e^{x} \\cdot x^{2} - e^{x} \\cdot 2x}{(x^2)^2} = \\dfrac{e^{x}(x^{2} - 2x)}{x^{4}} = \\dfrac{x \\cdot e^{x}(x - 2)}{x^{4}} = \\dfrac{e^{x}(x-2)}{x^{3}}$.
 
-Alle drei Formen (C, D und die gekürzte in B) sind mathematisch äquivalent — D ist die direkt aus der Quotientenregel.
+**Probe:** Bei $x = 1$: $f'(1) = \\dfrac{e \\cdot (1-2)}{1} = -e \\approx -2{,}72$. Numerisch $\\dfrac{f(1{,}001) - f(1)}{0{,}001} \\approx -2{,}72$. ✓
 
-**Probe:** Bei $x = 1$: $f'(1) = \\dfrac{e \\cdot 1 - 2e}{1} = -e \\approx -2{,}72$. ✓
-
-**Typischer Fehler:** $(x^{2})' = x$ statt $2x$.`,
+**Typischer Fehler:** $(x^{2})' = x$ statt $2x$, oder den Nenner $g$ nicht quadrieren.`,
     hints: [
       'Welche Regel? Quotientenregel mit $u = e^{x}$, $v = x^{2}$.',
-      'Regel: $(e^{x})\' = e^{x}$, $(x^{2})\' = 2x$.',
-      'Direktes Ergebnis (ohne Kürzen): $\\dfrac{e^{x} x^{2} - 2x e^{x}}{x^{4}}$.',
+      'Einzel-Ableitungen: $(e^{x})\' = e^{x}$, $(x^{2})\' = 2x$.',
+      'Nach $f\'g - fg\'$ und Quadrat-Nenner: $\\tfrac{e^{x}(x^{2} - 2x)}{x^{4}}$, dann mit $x$ kürzen.',
     ],
   },
   'ex-abl-2-2-transfer': {
@@ -996,15 +988,39 @@ Oder kurz: "NAZ minus ZAN durch $N^{2}$"
       {
         id: 'abl-2-2-s2', type: 'explanation-formal', title: 'Beispiele',
         content: `**Quotientenregel:**
-$$\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f' \\cdot g - f \\cdot g'}{g^{2}}$$
+$$\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f' \\cdot g - f \\cdot g'}{g^{2}} \\qquad \\text{(gültig nur für } g(x) \\ne 0\\text{)}$$
+
+**NAZ-Eselsbrücke:** "**N**enner · **A**bl. **Z**ähler — minus — **Z**ähler · **A**bl. **N**enner — durch $N^{2}$". Reihenfolge im Zähler ist KRITISCH: $f' g$ ZUERST, dann $- f g'$. Vertauschen ($f g' - f' g$) liefert das negative Ergebnis!
+
+**Alternative über Produkt+Kettenregel:** Mit $\\dfrac{f}{g} = f \\cdot g^{-1}$:
+$$\\left(\\dfrac{f}{g}\\right)' = (f \\cdot g^{-1})' = f' g^{-1} + f \\cdot (-1) g^{-2} g' = \\dfrac{f'g - fg'}{g^{2}}$$
+— exakt die Quotientenregel. Beide Wege liefern dasselbe Ergebnis.
+
+**Definitionsbereich:** Quotientenregel ist nur dort anwendbar, wo $g(x) \\ne 0$. An Nullstellen des Nenners ist $f/g$ nicht definiert (Polstelle oder hebbare Lücke); diese Stellen müssen separat untersucht werden.
 
 **Beispiel 1:** $f(x) = \\dfrac{x^{2}}{x+1}$
-$$f'(x) = \\dfrac{2x \\cdot (x+1) - x^{2} \\cdot 1}{(x+1)^{2}} = \\dfrac{x^{2} + 2x}{(x+1)^{2}}$$
+$$f'(x) = \\dfrac{2x \\cdot (x+1) - x^{2} \\cdot 1}{(x+1)^{2}} = \\dfrac{x^{2} + 2x}{(x+1)^{2}} = \\dfrac{x(x+2)}{(x+1)^{2}}$$
 
 **Beispiel 2:** $f(x) = \\dfrac{e^{x}}{x}$
-$$f'(x) = \\dfrac{e^{x} \\cdot x - e^{x} \\cdot 1}{x^{2}} = \\dfrac{e^{x}(x-1)}{x^{2}}$$
+$$f'(x) = \\dfrac{e^{x} \\cdot x - e^{x} \\cdot 1}{x^{2}} = \\dfrac{e^{x}(x-1)}{x^{2}} \\qquad (x \\ne 0)$$
 
-**Tipp:** Manchmal ist es einfacher, den Bruch als Produkt umzuschreiben und Produkt- + Kettenregel zu nutzen: $\\dfrac{1}{g} = g^{-1}$.`,
+**Beispiel 3 (Tangens):** $f(x) = \\tan x = \\dfrac{\\sin x}{\\cos x}$
+$$f'(x) = \\dfrac{\\cos x \\cdot \\cos x - \\sin x \\cdot (-\\sin x)}{\\cos^{2} x} = \\dfrac{\\cos^{2} x + \\sin^{2} x}{\\cos^{2} x} = \\dfrac{1}{\\cos^{2} x}$$
+
+**Tipp:** Nach der Quotientenregel im Zähler ausmultiplizieren, gemeinsame Faktoren kürzen — Prüfer erwarten die einfachste Form.`,
+      },
+      {
+        id: 'abl-2-2-s2b', type: 'visualization', title: 'Quotient und seine Ableitung — $\\sin x / x$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => (Math.abs(x) < 1e-6 ? 1 : Math.sin(x) / x),                                            color: '#3b82f6', label: 'f(x) = sin(x)/x' },
+            { fn: (x) => (Math.abs(x) < 1e-6 ? 0 : (x * Math.cos(x) - Math.sin(x)) / (x * x)),                color: '#ef4444', label: "f'(x) = (x cos x − sin x)/x²" },
+          ],
+          xRange: [-8, 8],
+          yRange: [-1.2, 1.2],
+          showGrid: true,
+        },
       },
       { id: 'abl-2-2-s3', type: 'exercise', title: 'Aufgabe 1 — Formel', exerciseRef: 'ex-abl-2-2-a' },
       { id: 'abl-2-2-s4', type: 'exercise', title: 'Aufgabe 2 — $x/(x+1)$', exerciseRef: 'ex-abl-2-2-b' },
