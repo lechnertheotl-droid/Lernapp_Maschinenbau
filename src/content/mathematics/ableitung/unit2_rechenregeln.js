@@ -608,35 +608,30 @@ Produkt aller: $f'(x) = e^{\\cos(3x)} \\cdot (-\\sin(3x)) \\cdot 3 = -3\\sin(3x)
   },
   'ex-abl-2-4-b': {
     id: 'ex-abl-2-4-b', lessonId: 'abl-2-4', type: 'multiple-choice',
-    question: '$f(x) = x^{2} \\cdot e^{3x}$. Was ist $f\'(x)$?',
+    question: '$f(x) = x^{2} \\cdot e^{3x}$. Was ist $f\'(x)$ in ausgeklammerter Klausur-Form?',
     options: [
-      '$2x \\cdot e^{3x} + 3x^{2} \\cdot e^{3x}$',
+      '$x e^{3x} (3x + 2)$',
       '$6x \\cdot e^{3x}$',
-      '$2x \\cdot 3e^{3x}$',
-      '$(2x + 3x^{2}) \\cdot e^{3x}$',
+      '$2x \\cdot 3 e^{3x}$',
+      '$x e^{3x} (3x - 2)$',
     ],
     correctIndex: 0,
     wrongAnswerExplanations: {
-      1: 'Produktregel komplett ignoriert: Hier wurde $x^2\\cdot e^{3x}$ so behandelt, als wäre es eine einzelne verkettete Funktion. $6x\\cdot e^{3x}$ entspricht etwa $(x^2)\'\\cdot(3e^{3x})$, also nur *ein* Summand statt zweien — die Produktregel fehlt.',
-      2: 'Klassischer Produktregel-Fehler: nur $u\'\\cdot v\' = 2x\\cdot 3e^{3x}$ gerechnet. Die beiden Hauptsummanden $u\'v = 2xe^{3x}$ und $uv\' = x^2\\cdot 3e^{3x}$ fehlen — bzw. einer ist übrig geblieben.',
-      3: 'Ergebnis ist *korrekt* und zu A äquivalent: $2xe^{3x} + 3x^2e^{3x} = (2x+3x^2)e^{3x}$. Das ist nur die ausgeklammerte Form, beide Antworten sind mathematisch gleich.',
+      1: 'Produktregel komplett ignoriert: $6x \\cdot e^{3x}$ entspricht etwa $(x^{2})\' \\cdot (3 e^{3x}) = 2x \\cdot 3 e^{3x}$ als EIN Summand — beide Summanden $u\' v$ und $u v\'$ getrennt fehlen bzw. wurden in einen zusammengezogen.',
+      2: 'Klassischer Produktregel-Fehler: nur $u\' \\cdot v\' = 2x \\cdot 3 e^{3x}$ gerechnet (Faktor-für-Faktor). Beide Summanden $u\' v + u v\' = 2x e^{3x} + 3x^{2} e^{3x}$ fehlen — nur ihr falsches Produkt wurde gebildet.',
+      3: 'Vorzeichen-Fehler beim Ausklammern: $2x e^{3x} + 3x^{2} e^{3x} = x e^{3x} (2 + 3x) = x e^{3x} (3x + 2)$, nicht $3x - 2$. Möglicherweise die Reihenfolge mit der Quotientenregel verwechselt.',
     },
-    explanation: `**Ansatz:** Produktregel + Kettenregel (siehe vorherige Aufgabe).
+    explanation: `**Ansatz:** Produktregel + Kettenregel (siehe vorherige Aufgabe), dann Klausur-Form durch Ausklammern.
 
-**Rechnung:**
-- $(x^{2})' = 2x$
-- $(e^{3x})' = 3e^{3x}$ (Kettenregel)
-- $f'(x) = 2x \\cdot e^{3x} + x^{2} \\cdot 3e^{3x}$.
+**Rechnung:** $u = x^{2}$, $u' = 2x$. $v = e^{3x}$, $v' = 3 e^{3x}$ (Kettenregel). Produktregel: $f'(x) = 2x \\cdot e^{3x} + x^{2} \\cdot 3 e^{3x}$. Ausklammern von $x e^{3x}$: $f'(x) = x e^{3x} (2 + 3x) = x e^{3x} (3x + 2)$.
 
-Ausklammern: $= e^{3x}(2x + 3x^{2}) = xe^{3x}(2 + 3x)$. Antworten A und D sind äquivalent (A direkt, D ausgeklammert).
+**Probe:** Bei $x = 0$: $f'(0) = 0 \\cdot 1 \\cdot 2 = 0$. Tatsächlich hat $x^{2} e^{3x}$ bei $x = 0$ ein Minimum mit Wert $0$. ✓ Bei $x = 1$: $1 \\cdot e^{3} \\cdot 5 = 5 e^{3} \\approx 100{,}4$. Numerisch bestätigt.
 
-**Probe:** Bei $x = 0$: $f'(0) = 0 + 0 = 0$. Tatsächlich hat $x^{2}e^{3x}$ bei $x=0$ ein Minimum mit Wert $0$. ✓
-
-**Typischer Fehler:** Nur $u' \\cdot v' = 2x \\cdot 3e^{3x}$ (Antwort C) — klassischer Produktregel-Fehler.`,
+**Typischer Fehler:** Faktor-für-Faktor (Antwort C) oder rohe Summe ohne Ausklammern (siehe ex-abl-2-1).`,
     hints: [
-      'Welche Regeln? Produktregel mit $u = x^{2}$, $v = e^{3x}$.',
-      'Regel: $u\' = 2x$. Für $v\' = (e^{3x})\'$ Kettenregel $\\Rightarrow 3e^{3x}$.',
-      'Zusammensetzen: $2x e^{3x} + x^{2} \\cdot 3e^{3x}$.',
+      'Produktregel mit $u = x^{2}$, $v = e^{3x}$ — Kettenregel im inneren $e^{3x}$.',
+      'Vollständig: $2x e^{3x} + 3x^{2} e^{3x}$.',
+      'Gemeinsamen Faktor $x e^{3x}$ ausklammern.',
     ],
   },
   'ex-abl-2-4-c': {
@@ -1230,10 +1225,10 @@ Pro Schicht ein Faktor — alle Faktoren multiplizieren.
     },
     steps: [
       {
-        id: 'abl-2-4-s1', type: 'explanation-formal', title: 'Strategie: Welche Regel zuerst?',
+        id: 'abl-2-4-s1', type: 'explanation-formal', title: 'Strategie: Struktur, Hierarchie, Spezialfälle',
         content: `In Klausuren kommen fast immer Funktionen, die **mehrere Regeln gleichzeitig** erfordern. Die Frage ist: **Welche Regel wende ich zuerst an?**
 
-**Strategie:** Schau die **äußerste Verknüpfung** an:
+**Strategie 1 — Äußerste Struktur identifizieren:**
 
 | Äußerste Struktur | Primäre Regel |
 |---|---|
@@ -1243,12 +1238,37 @@ Pro Schicht ein Faktor — alle Faktoren multiplizieren.
 
 Innerhalb der Regel brauchst du dann oft **weitere Regeln** für die einzelnen Teile.
 
-**Beispiel:** $h(x) = x^{2} \\cdot e^{\\sin(x)}$
+**Strategie 2 — Hierarchisch ableiten:**
+Erst äußerste Regel ansetzen, dann jeden inneren Teilbaustein mit seiner eigenen passenden Regel ableiten. Beispiel: $h(x) = x^{2} \\cdot e^{\\sin(x)}$ → äußerste Struktur Produkt → Produktregel, für $(e^{\\sin x})'$ Kettenregel (doppelt). $h'(x) = 2x e^{\\sin x} + x^{2} e^{\\sin x} \\cos x = x e^{\\sin x} (2 + x \\cos x)$.
 
-1. Äußerste Struktur: **Produkt** → Produktregel
-2. Für $(e^{\\sin(x)})'$: **Kettenregel** (doppelt!)
+**Strategie 3 — Vor dem Ableiten umformen:**
+Wurzeln und Brüche in Potenzschreibweise umwandeln spart oft Kettenregel/Quotientenregel:
+$$\\sqrt[n]{x} = x^{1/n}, \\qquad \\dfrac{1}{x^{n}} = x^{-n}, \\qquad \\dfrac{1}{\\sqrt{x}} = x^{-1/2}$$
+Dann reicht die einfache Potenzregel $(x^{n})' = n x^{n-1}$.
 
-$h'(x) = 2x \\cdot e^{\\sin(x)} + x^{2} \\cdot e^{\\sin(x)} \\cdot \\cos(x) = x \\cdot e^{\\sin(x)} \\cdot (2 + x\\cos(x))$`,
+**Strategie 4 — Logarithmisches Ableiten** (bei $f(x)^{g(x)}$ mit variabler Basis UND Exponent, z. B. $x^{x}$):
+1. $y = f(x)^{g(x)}$
+2. Logarithmieren: $\\ln y = g(x) \\ln f(x)$
+3. Beide Seiten differenzieren (implizit): $\\dfrac{y'}{y} = g'(x) \\ln f(x) + g(x) \\cdot \\dfrac{f'(x)}{f(x)}$
+4. Umstellen: $y' = y \\cdot \\left( g'(x) \\ln f(x) + g(x) \\cdot \\dfrac{f'(x)}{f(x)} \\right)$
+
+Standardbeispiel: $(x^{x})' = x^{x} (\\ln x + 1)$.
+
+**Strategie 5 — Vereinfachen ist Klausur-Pflicht:**
+Nach dem Ableiten gemeinsame Faktoren ausklammern, Brüche kürzen, Terme zusammenfassen. Rohe Form wie $2x e^{3x} + 3x^{2} e^{3x}$ verliert Punkte; Klausur-Form ist $x e^{3x} (3x + 2)$.`,
+      },
+      {
+        id: 'abl-2-4-s1b', type: 'visualization', title: 'Kombinierte Regel-Anwendung — $x^{2} e^{3x}$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * x * Math.exp(3 * x),                                color: '#3b82f6', label: 'f(x) = x² · e^(3x)' },
+            { fn: (x) => x * Math.exp(3 * x) * (3 * x + 2),                    color: '#ef4444', label: "f'(x) = x · e^(3x) · (3x+2)" },
+          ],
+          xRange: [-2, 1],
+          yRange: [-2, 8],
+          showGrid: true,
+        },
       },
       { id: 'abl-2-4-s2', type: 'exercise', title: 'Aufgabe 1 — Regeln erkennen', exerciseRef: 'ex-abl-2-4-a' },
       { id: 'abl-2-4-s3', type: 'exercise', title: 'Aufgabe 2 — Produkt + Kette', exerciseRef: 'ex-abl-2-4-b' },

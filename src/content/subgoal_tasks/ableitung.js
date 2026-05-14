@@ -2443,6 +2443,7 @@ Der Student hat den Zähler als $x \\cdot 2x - x^{2} \\cdot 1 = 2x^{2} - x^{2} =
         { stage: 'transfer', subGoal: 4, uses: ['kr-falle-innen'] },
       ),
 
+      // ── Bonus 4.6 (abl-2-3 SG 4) ─────────────────────────────────────
       // (Bonus 4.6) apply-independent · multiple-choice · kr-falle-innen
       tag(
         mc(
@@ -2473,6 +2474,835 @@ Der Student hat den Zähler als $x \\cdot 2x - x^{2} \\cdot 1 = 2x^{2} - x^{2} =
           },
         ),
         { stage: 'apply-independent', subGoal: 4, uses: ['kr-falle-innen'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // abl-2-4 — Gemischte Regeln  (5 SGs × 5 Stufen = 25 Matrix-Aufgaben)
+  //   SG 0: gemischt-strukt   — Äußerste Struktur identifizieren
+  //   SG 1: gemischt-hierar   — Hierarchisch von außen nach innen ableiten
+  //   SG 2: log-ableiten      — Logarithmisches Ableiten bei f(x)^g(x)
+  //   SG 3: umformen-erst     — Wurzeln/Brüche als Potenzen umschreiben
+  //   SG 4: gemischt-vereinf  — Ergebnis faktorisieren (Klausur-Form)
+  // ────────────────────────────────────────────────────────────────────────
+  'abl-2-4': {
+
+    // ── [0] gemischt-strukt — Äußerste Struktur identifizieren ─────────
+    0: [
+      // (1) recognize · true-false · gemischt-strukt
+      tag(
+        tf(
+          'Bei kombinierten Ableitungsregeln entscheidet die ÄUSSERSTE Verknüpfung (Produkt, Quotient oder Verkettung) über die ZUERST anzuwendende Regel — innere Teilfunktionen werden anschließend mit ihren jeweils eigenen Regeln abgeleitet.',
+          true,
+          `**Ansatz:** Strategische Regel: Schichten der Funktion identifizieren, äußerste zuerst behandeln.
+
+**Rechnung:** Bei $h(x) = \\dfrac{\\sin(2x)}{x+1}$ ist die äußerste Struktur ein Quotient → Quotientenregel zuerst. Im Zähler $\\sin(2x)$ braucht man INNERHALB die Kettenregel ($(2x)' = 2$).
+
+**Probe:** Wendet man die falsche Regel als erste an (z. B. Produktregel auf einen Quotienten), verheddert man sich; die Strategie "äußerste Struktur erkennen" ist eine zentrale Klausurhilfe.
+
+**Typischer Fehler:** Mittendrin loslegen ohne Struktur-Check — führt zu vergessenen oder falsch eingesetzten Regeln.`,
+          [
+            'Welche Operation findet bei der Funktion ZULETZT statt?',
+            'Diese letzte Operation bestimmt die ÄUSSERSTE Regel.',
+            'Innere Teile bekommen erst danach ihre eigenen Regeln.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 0, uses: ['gemischt-strukt'] },
+      ),
+
+      // (2) apply-guided · multiple-choice · gemischt-strukt
+      tag(
+        mc(
+          'Welche ÄUSSERSTE Struktur hat $f(x) = \\dfrac{e^{x} \\cdot \\sin x}{x^{2} + 1}$, und welche Regel wendet man als ERSTE an?',
+          [
+            'Quotient — primär Quotientenregel; im Zähler dann zusätzlich Produktregel.',
+            'Produkt — primär Produktregel (Zähler $e^{x} \\sin x$ als Hauptteil).',
+            'Verkettung — primär Kettenregel.',
+            'Summe — primär Summenregel.',
+          ],
+          0,
+          `**Ansatz:** Schaue auf die LETZTE Operation, die die Funktion strukturiert.
+
+**Rechnung:** $f(x) = \\dfrac{e^{x} \\sin x}{x^{2} + 1}$ — die äußerste Operation ist Division: oben steht $e^{x} \\sin x$, unten $x^{2} + 1$. Also Quotientenregel als primäre Regel. Erst INNERHALB des Zählers braucht man Produktregel für $e^{x} \\sin x$.
+
+**Probe:** Test: nimmt man Produktregel als erste an, übersieht man den Nenner komplett.
+
+**Typischer Fehler:** Den Zähler isoliert betrachten und sofort Produktregel-Reflex auslösen — Quotient-Struktur unterschätzt.`,
+          [
+            'Welche Operation findet als LETZTE statt?',
+            'Division → Quotientenregel als primäre.',
+            'Erst danach kümmert man sich um den Zähler.',
+          ],
+          {
+            1: 'Das Produkt $e^{x} \\sin x$ ist Teil des Zählers — ABER die äußerste Operation ist die Division durch $x^{2} + 1$. Produktregel kommt erst INNEN dran.',
+            2: 'Es gibt zwar eine Verkettung in $e^{x}$ (technisch $e^{x \\cdot 1}$), aber die äußerste Operation ist klar die Division. Kettenregel wird nur für Komponenten genutzt.',
+            3: 'Das Plus im Nenner ($x^{2} + 1$) IST eine Summe, aber die äußerste Operation ist nicht Addition, sondern die Division zwischen Zähler und Nenner.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 0, uses: ['gemischt-strukt'] },
+      ),
+
+      // (3) apply-independent · multiple-choice · gemischt-strukt
+      tag(
+        mc(
+          'Welche der folgenden Funktionen erfordert PRIMÄR die Quotientenregel?',
+          [
+            '$\\dfrac{\\sin x}{x^{2} + 1}$',
+            '$\\sin x \\cdot (x^{2} + 1)$',
+            '$\\sin(x^{2} + 1)$',
+            '$\\sin x + x^{2} + 1$',
+          ],
+          0,
+          `**Ansatz:** "Primär" bedeutet: äußerste Operation der Funktion.
+
+**Rechnung:** Bei $\\dfrac{\\sin x}{x^{2} + 1}$ ist Division äußerste Operation → Quotientenregel. Die anderen drei: Produkt → Produktregel, Verkettung → Kettenregel, Summe → Summenregel.
+
+**Probe:** Anwendung der Quotientenregel auf $\\sin(x^{2}+1)$ würde keinen Sinn machen (kein Bruch); Anwendung auf das Produkt führt zur falschen Formel.
+
+**Typischer Fehler:** Eine "scheinbare Division" sehen, wo gar keine ist — z. B. wenn ein Bruch als Konstante in der Funktion steht.`,
+          [
+            'Welche dieser Funktionen ist ein BRUCH (Division)?',
+            'Verkettung erkennt man an Klammern um eine Funktion: $\\sin(\\cdot)$.',
+            'Produkt = Multiplikation, Summe = Addition, Quotient = Division.',
+          ],
+          {
+            1: 'Das ist ein Produkt $\\sin x \\cdot (x^{2}+1)$ — Multiplikation, keine Division. Primär Produktregel.',
+            2: 'Das ist eine Verkettung: $\\sin$ angewandt auf $x^{2}+1$. Keine Division — primär Kettenregel.',
+            3: 'Das ist eine Summe $\\sin x + x^{2} + 1$ — Addition, keine Division. Termweise mit Summenregel.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['gemischt-strukt'] },
+      ),
+
+      // (4) error-analysis · multiple-choice · gemischt-strukt
+      tag(
+        mc(
+          'Ein Student schreibt: "$f(x) = \\sin(x^{2} \\cdot e^{x})$ — ich wende die PRODUKTREGEL auf $x^{2} \\cdot e^{x}$ an." Welcher Strukturfehler liegt vor?',
+          [
+            'Die ÄUSSERSTE Struktur ist die Verkettung ($\\sin(\\cdot)$), nicht das Produkt im Argument. Erst KETTENREGEL anwenden auf das gesamte $\\sin(\\ldots)$, DANN für die innere Funktion $x^{2} e^{x}$ die Produktregel zur Ermittlung ihrer Ableitung nutzen.',
+            'Korrekt — Produktregel ist die richtige primäre Regel.',
+            'Quotientenregel hätte verwendet werden müssen.',
+            'Die Funktion hat keine äußere Struktur, jede Regel passt.',
+          ],
+          0,
+          `**Ansatz:** Die äußerste Operation der Funktion identifizieren. $f$ ist $\\sin(\\text{etwas})$ — also primär eine Verkettung.
+
+**Rechnung:** Korrekte Reihenfolge: (1) Kettenregel als primär: $f'(x) = \\cos(x^{2} e^{x}) \\cdot (x^{2} e^{x})'$. (2) Produktregel für $(x^{2} e^{x})' = 2x e^{x} + x^{2} e^{x} = x e^{x} (2 + x)$. Endform: $f'(x) = \\cos(x^{2} e^{x}) \\cdot x e^{x} (2 + x)$.
+
+**Probe:** Der Student lässt das $\\sin/\\cos$ weg, wenn er nur "Produktregel" sagt — eine Ableitung von $\\sin(\\ldots)$ ohne Cosinus außen ist unmöglich.
+
+**Typischer Fehler:** Die innere Operation für die äußerste halten — Reihenfolge der Anwendung verkehren.`,
+          [
+            'Schau, welche Operation als LETZTE auf das Argument wirkt.',
+            'Bei $\\sin(\\ldots)$ ist Sinus die äußerste — Kettenregel zuerst.',
+            'Produktregel kommt erst INNEN für die Argumenten-Ableitung.',
+          ],
+          {
+            1: 'Wäre korrekt, wenn $f = x^{2} e^{x}$ direkt — aber $f = \\sin(x^{2} e^{x})$ ist eine Verkettung mit $\\sin$ außen. Kettenregel ist primär.',
+            2: 'Quotientenregel wäre nur bei einem Bruch wie $\\dfrac{x^{2}}{e^{x}}$ angemessen. Hier liegt kein Quotient vor.',
+            3: 'Doch — jede zusammengesetzte Funktion hat eine klare äußerste Struktur. Diese bestimmt zwingend die erste Regel.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 0, uses: ['gemischt-strukt'] },
+      ),
+
+      // (5) transfer · matching · gemischt-strukt
+      tag(
+        matching(
+          'Ordne jeder Funktion ihre PRIMÄRE Ableitungsregel zu (äußerste Struktur):',
+          [
+            { left: '$x \\cdot \\ln x$',         right: 'Produktregel' },
+            { left: '$\\dfrac{x^{2}}{e^{x}}$',    right: 'Quotientenregel' },
+            { left: '$\\sin(x^{3} + 1)$',         right: 'Kettenregel' },
+            { left: '$x^{3} + 2x - 1$',           right: 'Summen- und Potenzregel' },
+          ],
+          `**Ansatz:** Für jede Funktion die LETZTE Operation bestimmen — daraus ergibt sich die primäre Regel.
+
+**Rechnung:**
+- $x \\cdot \\ln x$ — letzte Operation Multiplikation → Produktregel.
+- $\\dfrac{x^{2}}{e^{x}}$ — letzte Operation Division → Quotientenregel.
+- $\\sin(x^{3} + 1)$ — letzte Operation: Sinus auf das Argument anwenden → Kettenregel.
+- $x^{3} + 2x - 1$ — letzte Operation Addition; jedem Summanden wird Potenzregel mit Faktor angewandt → Summen- und Potenzregel.
+
+**Probe:** Jede rechte Seite kommt nur einmal vor — eindeutige Zuordnung.
+
+**Typischer Fehler:** Verkettung in einer Komponente für die äußerste Operation halten (z. B. das $e^{x}$ in der zweiten Aufgabe als "Kettenregel-Kandidat" sehen — es ist aber ein Faktor, kein Argument).`,
+          [
+            'Was wird zuletzt mit dem Argument gemacht? Multipliziert, dividiert, "umhüllt"?',
+            'Bei einer Summe von Polynomtermen reicht oft Summen + Potenzregel.',
+            'Verkettung sieht man an Klammern: $f(g(x))$.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 0, uses: ['gemischt-strukt'] },
+      ),
+    ],
+
+    // ── [1] gemischt-hierar — Hierarchisch ableiten ────────────────────
+    1: [
+      // (6) recognize · true-false · gemischt-hierar
+      tag(
+        tf(
+          'Beim hierarchischen Ableiten setzt man zuerst die ÄUSSERSTE Regel an, behandelt die inneren Teilfunktionen vorerst als "Blackbox" und leitet sie danach jeweils mit ihrer eigenen passenden Regel ab — Schicht für Schicht.',
+          true,
+          `**Ansatz:** Die hierarchische Struktur einer Funktion bestimmt die Ableitungs-Reihenfolge: außen → innen.
+
+**Rechnung:** Beispiel $f(x) = \\sqrt{x \\sin x}$: außen Wurzel ($u^{1/2}$, Kettenregel), innen Produkt ($x \\sin x$, Produktregel). Hierarchisch: $f'(x) = \\dfrac{1}{2\\sqrt{x \\sin x}} \\cdot (\\sin x + x \\cos x)$.
+
+**Probe:** Man kann die innere Ableitung NICHT vor der äußeren erledigen — sonst weiß man nicht, wo der Faktor hingehört.
+
+**Typischer Fehler:** Alle Regeln "auf einmal" anwenden und die Faktoren falsch zuordnen.`,
+          [
+            'In welcher Reihenfolge baut man Verkettungen ab?',
+            'Außen zuerst — innen folgt als "Blackbox", die später eingesetzt wird.',
+            'Pro Schicht eine eigene Regel.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 1, uses: ['gemischt-hierar'] },
+      ),
+
+      // (7) apply-guided · multiple-choice · gemischt-hierar
+      tag(
+        mc(
+          '$f(x) = x^{2} \\cdot \\cos(3x)$. Wende die Regeln in der korrekten Hierarchie an. Was ist $f\'(x)$?',
+          [
+            '$2x \\cos(3x) - 3x^{2} \\sin(3x)$',
+            '$2x \\cos(3x) + 3x^{2} \\sin(3x)$',
+            '$2x \\cos(3x) - x^{2} \\sin(3x)$',
+            '$-6x \\sin(3x)$',
+          ],
+          0,
+          `**Ansatz:** Äußerste Struktur: Produkt → Produktregel. Innere Funktion $\\cos(3x)$: Kettenregel.
+
+**Rechnung:** $u = x^{2}$, $u' = 2x$. $v = \\cos(3x)$, $v' = -\\sin(3x) \\cdot 3 = -3\\sin(3x)$ (Kettenregel mit $(3x)' = 3$ und $(\\cos)' = -\\sin$). $f'(x) = 2x \\cos(3x) + x^{2} \\cdot (-3\\sin(3x)) = 2x\\cos(3x) - 3x^{2} \\sin(3x)$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 0 - 0 = 0$. $f(0) = 0 \\cdot 1 = 0$ ist Funktionswert; bei $x = 0$ hat $x^{2}\\cos(3x)$ ein Minimum, also Steigung $0$. ✓
+
+**Typischer Fehler:** Vorzeichen-Fehler bei $(\\cos)' = -\\sin$ (Antwort B) oder Faktor $3$ aus Kettenregel vergessen (Antwort C) oder gleich Faktor-für-Faktor (Antwort D).`,
+          [
+            'Äußerste Struktur Produkt — Produktregel.',
+            'Für $\\cos(3x)$: Kettenregel, innerer Faktor $3$.',
+            'Vorzeichen $(\\cos)\' = -\\sin$ beachten.',
+          ],
+          {
+            1: 'Vorzeichen-Fehler: $(\\cos)\' = -\\sin$, also kommt $-3\\sin(3x)$, nicht $+3\\sin(3x)$ — Minus überlebt.',
+            2: 'Innere Ableitung $(3x)\' = 3$ vergessen. Korrekt: $v\' = -\\sin(3x) \\cdot 3 = -3\\sin(3x)$.',
+            3: 'Faktor-für-Faktor: $u\' \\cdot v\' = 2x \\cdot (-3\\sin(3x)) = -6x\\sin(3x)$ — die beiden Summanden $u\'v + uv\'$ der Produktregel fehlen.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 1, uses: ['gemischt-hierar'] },
+      ),
+
+      // (8) apply-independent · number-input · gemischt-hierar
+      tag(
+        ni(
+          '$f(x) = \\sin x \\cdot e^{2x}$. Berechne $f\'(0)$.',
+          1, 0.01, '',
+          `**Ansatz:** Äußerste Struktur Produkt — Produktregel. Innere Funktion $e^{2x}$: Kettenregel mit Faktor $2$.
+
+**Rechnung:** $u = \\sin x$, $u' = \\cos x$. $v = e^{2x}$, $v' = 2 e^{2x}$. $f'(x) = \\cos x \\cdot e^{2x} + \\sin x \\cdot 2 e^{2x}$. Bei $x = 0$: $f'(0) = 1 \\cdot 1 + 0 \\cdot 2 = 1$.
+
+**Probe:** Numerisch $\\dfrac{f(0{,}001) - f(0)}{0{,}001} \\approx 1$. ✓
+
+**Typischer Fehler:** Faktor $2$ aus der Kettenregel im inneren $e^{2x}$ vergessen — bei $x = 0$ allerdings irrelevant, da $\\sin 0 = 0$ den Term ohnehin auslöscht.`,
+          [
+            'Produktregel mit $u = \\sin x$, $v = e^{2x}$.',
+            'Für $v$: Kettenregel, $(e^{2x})\' = 2 e^{2x}$.',
+            'Bei $x = 0$: $\\sin 0 = 0$, $\\cos 0 = 1$, $e^{0} = 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 1, uses: ['gemischt-hierar'] },
+      ),
+
+      // (9) error-analysis · multiple-choice · gemischt-hierar
+      tag(
+        mc(
+          'Ein Student berechnet $\\left(x \\cdot \\sin(2x)\\right)\' = \\sin(2x) + x \\cos(2x)$. Welcher Hierarchie-Fehler liegt vor?',
+          [
+            'Nach der äußersten Produktregel wurde im inneren Term die KETTENREGEL nicht vollständig angewandt — der Faktor $2$ aus $(2x)\' = 2$ fehlt. Korrekt: $\\sin(2x) + 2x \\cos(2x)$.',
+            'Korrekt — die Ableitung ist tatsächlich $\\sin(2x) + x\\cos(2x)$.',
+            'Vorzeichen falsch — sollte $-x\\cos(2x)$ sein.',
+            'Produktregel ist falsch — sollte $\\sin(2x) \\cdot \\cos(2x)$ ergeben.',
+          ],
+          0,
+          `**Ansatz:** Hierarchie: Produkt außen ($u v$), Verkettung innen ($\\sin(2x)$). Beide Regeln müssen voll angewendet werden.
+
+**Rechnung:** Korrekt: $u = x$, $u' = 1$. $v = \\sin(2x)$, $v' = \\cos(2x) \\cdot 2 = 2\\cos(2x)$. $f'(x) = 1 \\cdot \\sin(2x) + x \\cdot 2\\cos(2x) = \\sin(2x) + 2x \\cos(2x)$. Der Student schreibt $x \\cos(2x)$ — der Faktor $2$ fehlt.
+
+**Probe:** Bei $x = \\pi/4$: korrekt $\\sin(\\pi/2) + 2 \\cdot \\pi/4 \\cdot 0 = 1$. Studenten-Antwort: $1 + \\pi/4 \\cdot 0 = 1$ — bei $\\pi/4$ stimmt es zufällig (weil $\\cos(\\pi/2) = 0$). Bei $x = 0$: korrekt $0 + 0 = 0$, Student $0 + 0 = 0$. Bei $x = \\pi/8$: korrekt $\\sin(\\pi/4) + \\pi/4 \\cdot \\cos(\\pi/4) \\approx 0{,}707 + 0{,}555 \\approx 1{,}26$. Student: $\\sin(\\pi/4) + \\pi/8 \\cdot \\cos(\\pi/4) \\approx 0{,}707 + 0{,}278 \\approx 0{,}985$ — eindeutig falsch.
+
+**Typischer Fehler:** Bei der inneren Kettenregel den Faktor aus der inneren Ableitung "vergessen", weil die Produktregel im Vordergrund stand.`,
+          [
+            'Produktregel ist korrekt angesetzt — schau auf den zweiten Summanden.',
+            'Welche Regel braucht $\\sin(2x)$ als innere Funktion?',
+            'Faktor aus $(2x)\' = 2$ fehlt beim Student.',
+          ],
+          {
+            1: 'Numerisch falsch — der Faktor $2$ aus der inneren Kettenregel fehlt eindeutig.',
+            2: 'Vorzeichen ist korrekt — $(\\sin)\' = \\cos$ ist positiv. Der Fehler liegt im fehlenden inneren Faktor.',
+            3: 'Die Produktregel ist KORREKT angesetzt ($u\'v + uv\'$); $\\sin(2x) \\cdot \\cos(2x)$ wäre Faktor-für-Faktor und wäre noch falscher.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 1, uses: ['gemischt-hierar'] },
+      ),
+
+      // (10) transfer · sorting · gemischt-hierar, gemischt-strukt
+      tag(
+        sorting(
+          'Bringe die Schritte zum Ableiten von $f(x) = \\dfrac{\\sin(x^{2})}{x + 1}$ in die richtige Reihenfolge:',
+          [
+            'Äußerste Struktur erkennen: Bruch → Quotientenregel als primäre Regel.',
+            'Zähler-Ableitung separat mit Kettenregel: $(\\sin(x^{2}))\' = \\cos(x^{2}) \\cdot 2x = 2x \\cos(x^{2})$.',
+            'Nenner-Ableitung separat (Potenzregel): $(x + 1)\' = 1$.',
+            'Quotientenregel mit NAZ-Reihenfolge zusammensetzen: $f\'(x) = \\dfrac{2x \\cos(x^{2}) \\cdot (x + 1) - \\sin(x^{2}) \\cdot 1}{(x + 1)^{2}}$.',
+            'Optional vereinfachen / Klausur-Form ablesen.',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Hierarchisch vorgehen: zuerst Struktur erkennen, dann INNERE Bausteine vorbereiten, schließlich primäre Regel zusammensetzen.
+
+**Rechnung:** Begründung:
+1. Struktur ohne Vorab-Erkennung führt zu willkürlicher Regel-Anwendung.
+2. Innere Ableitungen MÜSSEN getrennt vorbereitet sein, weil sie in die primäre Regel eingehen.
+3. Erst nach Einzel-Ableitungen lässt sich die NAZ-Regel sauber zusammensetzen.
+4. Vereinfachen am Schluss — Klausur-Punkt.
+
+**Probe:** Test bei $x = 0$: $f'(0) = \\dfrac{0 \\cdot 1 - 0 \\cdot 1}{1} = 0$. Funktion $\\sin(0)/1 = 0$ hat dort Tiefpunkt mit waagerechter Tangente — passt.
+
+**Typischer Fehler:** Schritt 1 überspringen und direkt Produktregel ansetzen, weil "$\\sin \\cdot \\tfrac{1}{x+1}$" wie ein Produkt aussieht.`,
+          [
+            'Welchen Schritt MUSS man vor jeder Regel-Anwendung machen?',
+            'Innere Ableitungen separat — dann erst in die primäre Regel einsetzen.',
+            'Vereinfachen ist der LETZTE Schritt.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 1, uses: ['gemischt-hierar', 'gemischt-strukt'] },
+      ),
+    ],
+
+    // ── [2] log-ableiten — Logarithmisches Ableiten bei f(x)^g(x) ───────
+    2: [
+      // (11) recognize · true-false · log-ableiten
+      tag(
+        tf(
+          'Funktionen der Form $f(x)^{g(x)}$ (variabler Exponent UND variable Basis, z. B. $x^{x}$) lassen sich nicht direkt mit Potenz- oder Exponentialregel ableiten — der Standardtrick ist Logarithmieren: $\\ln y = g(x) \\ln f(x)$, dann beidseitig implizit differenzieren.',
+          true,
+          `**Ansatz:** Weder Potenzregel ($x^{n}$ mit konstantem $n$) noch Exponentialregel ($a^{x}$ mit konstantem $a$) gelten direkt, wenn BEIDE — Basis und Exponent — von $x$ abhängen. Logarithmieren reduziert das Problem auf bekannte Regeln.
+
+**Rechnung:** Schritt 1: $y = f(x)^{g(x)}$. Schritt 2: $\\ln y = g(x) \\ln f(x)$. Schritt 3: implizit ableiten — links $\\dfrac{y'}{y}$, rechts Produktregel: $g'(x) \\ln f(x) + g(x) \\cdot \\dfrac{f'(x)}{f(x)}$. Schritt 4: Umstellen $y' = y \\cdot (\\ldots)$.
+
+**Probe:** Standardbeispiel $(x^{x})' = x^{x}(\\ln x + 1)$ wird genau auf diese Weise hergeleitet.
+
+**Typischer Fehler:** Naive Potenzregel anwenden ($x \\cdot x^{x-1} = x^{x}$ — FALSCH, weil Exponent variabel) oder naive Exponentialregel ($x^{x} \\ln x$ — FALSCH, weil Basis variabel).`,
+          [
+            'Wann sind Potenz- und Exponentialregel direkt anwendbar?',
+            'Was tun, wenn beide — Basis und Exponent — von $x$ abhängen?',
+            'Logarithmus reduziert Potenzen auf Produkte ($\\ln(a^{b}) = b \\ln a$).',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+
+      // (12) apply-guided · multiple-choice · log-ableiten
+      tag(
+        mc(
+          '$f(x) = x^{x}$. Wende den Logarithmus-Trick an. Was ist $f\'(x)$?',
+          [
+            '$x^{x} (\\ln x + 1)$',
+            '$x \\cdot x^{x-1} = x^{x}$',
+            '$x^{x} \\cdot \\ln x$',
+            '$x \\cdot x^{x} \\ln x$',
+          ],
+          0,
+          `**Ansatz:** Logarithmus-Trick: $y = x^{x}$, $\\ln y = x \\ln x$, beidseitig implizit ableiten.
+
+**Rechnung:** $\\dfrac{y'}{y} = (x \\ln x)' = 1 \\cdot \\ln x + x \\cdot \\dfrac{1}{x} = \\ln x + 1$ (Produktregel auf $x \\ln x$). Damit $y' = y \\cdot (\\ln x + 1) = x^{x} (\\ln x + 1)$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 1^{1} \\cdot (\\ln 1 + 1) = 1 \\cdot 1 = 1$. Numerisch $\\dfrac{1{,}001^{1{,}001} - 1}{0{,}001} \\approx 1{,}001 \\approx 1$. ✓
+
+**Typischer Fehler:** Potenzregel naiv (B: $x^{x}$ — falsche Form für variablen Exponenten) oder Exponentialregel naiv (C: $x^{x} \\ln x$ — falsche Form für variable Basis).`,
+          [
+            'Logarithmieren: $\\ln y = x \\ln x$.',
+            'Implizit ableiten: $y\'/y = (x \\ln x)\'$.',
+            'Produktregel auf $x \\ln x$: $1 \\cdot \\ln x + x \\cdot (1/x) = \\ln x + 1$.',
+          ],
+          {
+            1: 'Potenzregel naiv — gilt nur für konstanten Exponenten. Hier ist $n = x$ variabel.',
+            2: 'Exponentialregel naiv — $(a^{x})\' = a^{x} \\ln a$ gilt nur für konstante Basis $a$. Hier variiert auch die Basis.',
+            3: 'Vermischung beider naiven Regeln plus zusätzlicher Faktor $x$ — keine korrekte Konstruktion.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+
+      // (13) apply-independent · number-input · log-ableiten ($x^x$)
+      tag(
+        ni(
+          '$f(x) = x^{x}$. Berechne $f\'(1)$.',
+          1, 0.01, '',
+          `**Ansatz:** $f'(x) = x^{x}(\\ln x + 1)$ via Logarithmus-Trick.
+
+**Rechnung:** Bei $x = 1$: $1^{1} = 1$, $\\ln 1 = 0$. $f'(1) = 1 \\cdot (0 + 1) = 1$.
+
+**Probe:** Numerisch $\\dfrac{f(1{,}001) - f(1)}{0{,}001} = \\dfrac{1{,}001^{1{,}001} - 1}{0{,}001} \\approx \\dfrac{1{,}001001 - 1}{0{,}001} \\approx 1{,}001$. ✓ Stimmt sehr gut mit $1$ überein.
+
+**Typischer Fehler:** Potenzregel naiv liefert $1^{1} = 1$ zufällig — aber an anderer Stelle (etwa $x = 2$) liefert $f'(2) = 4(\\ln 2 + 1) \\approx 6{,}77$, während die naive Potenzregel $2 \\cdot 2^{1} = 4$ liefern würde.`,
+          [
+            'Verwende $f\'(x) = x^x (\\ln x + 1)$.',
+            'Bei $x = 1$: $1^1 = 1$, $\\ln 1 = 0$.',
+            'Endergebnis: $1 \\cdot (0 + 1) = 1$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+
+      // (14) error-analysis · multiple-choice · log-ableiten
+      tag(
+        mc(
+          'Ein Student berechnet $(x^{x})\' = x \\cdot x^{x-1} = x^{x}$. Welcher Fehler liegt vor?',
+          [
+            'Potenzregel naiv angewandt — sie gilt nur, wenn der Exponent eine KONSTANTE ist. Bei $x^{x}$ ist der Exponent $x$ selbst variabel. Korrekt über Logarithmieren: $f\'(x) = x^{x} (\\ln x + 1)$.',
+            'Korrekt — Potenzregel liefert $(x^{n})\' = n x^{n-1}$, also $x \\cdot x^{x-1} = x^{x}$.',
+            'Exponentialregel hätte angewandt werden müssen: $(a^{x})\' = a^{x} \\ln a$.',
+            'Kettenregel ist die einzig richtige Methode.',
+          ],
+          0,
+          `**Ansatz:** Sowohl Potenz- als auch Exponentialregel haben eingeschränkte Anwendbarkeit. Potenzregel $(x^{n})' = n x^{n-1}$ NUR für konstantes $n$. Exponentialregel $(a^{x})' = a^{x} \\ln a$ NUR für konstantes $a$. Bei $x^{x}$ variieren beide — daher logarithmisches Ableiten.
+
+**Rechnung:** Der Student hat $n = x$ wie eine Konstante behandelt — das ergibt scheinbar $n x^{n-1} = x \\cdot x^{x-1} = x^{x}$. Korrekt via Logarithmieren: $\\ln y = x \\ln x$, $y'/y = \\ln x + 1$, $y' = x^{x}(\\ln x + 1)$.
+
+**Probe:** Test bei $x = 2$: korrekt $2^{2}(\\ln 2 + 1) \\approx 4 \\cdot 1{,}693 \\approx 6{,}77$. Studenten-Antwort: $2 \\cdot 2^{1} = 4$. Drastisch verschieden — die Studenten-Antwort liegt um Faktor $\\approx 1{,}69$ daneben.
+
+**Typischer Fehler:** "Regel funktioniert immer, wenn die Schreibweise passt" — Anwendbarkeitsbedingungen der Potenz-/Exponentialregel ignorieren.`,
+          [
+            'Wann gilt $(x^n)\' = n x^{n-1}$?',
+            'Was ist hier $n$, und ist es eine Konstante?',
+            'Bei variablem Exponenten brauchen wir den Logarithmus-Trick.',
+          ],
+          {
+            1: 'Numerisch falsch bei $x = 2$: korrekt $\\approx 6{,}77$, Studenten-Antwort $4$. Die Potenzregel gilt nur für konstanten Exponenten.',
+            2: 'Exponentialregel $(a^{x})\' = a^{x} \\ln a$ gilt nur für KONSTANTE Basis $a$. Hier variiert $a = x$ auch — nicht direkt anwendbar.',
+            3: 'Die Kettenregel ist hier nicht direkt anwendbar — $x^{x}$ ist keine klassische Verkettung mit fester innerer/äußerer Funktion.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+
+      // (15) transfer · sorting · log-ableiten
+      tag(
+        sorting(
+          'Bringe die Schritte zur Ableitung von $f(x) = x^{\\sin x}$ via logarithmischem Ableiten in die richtige Reihenfolge:',
+          [
+            'Ansatz: $y = x^{\\sin x}$ — beide Seiten logarithmieren: $\\ln y = \\sin x \\cdot \\ln x$.',
+            'Linke Seite implizit ableiten: $(\\ln y)\' = \\dfrac{y\'}{y}$.',
+            'Rechte Seite mit Produktregel ableiten: $(\\sin x \\cdot \\ln x)\' = \\cos x \\cdot \\ln x + \\sin x \\cdot \\dfrac{1}{x}$.',
+            'Gleichung umstellen: $y\' = y \\cdot \\left(\\cos x \\cdot \\ln x + \\dfrac{\\sin x}{x}\\right)$.',
+            'Rück-Einsetzen $y = x^{\\sin x}$: $f\'(x) = x^{\\sin x} \\cdot \\left(\\cos x \\cdot \\ln x + \\dfrac{\\sin x}{x}\\right)$.',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Standard-Schema für $f(x)^{g(x)}$: Logarithmieren, beide Seiten differenzieren, umstellen, rück-einsetzen.
+
+**Rechnung:** Begründung:
+1. Logarithmieren bringt den variablen Exponenten als Faktor nach unten — jetzt ist es ein Produkt, kein "Potenzturm".
+2. Linke Seite implizit — kennen wir die Form $\\dfrac{y'}{y}$.
+3. Rechte Seite Produktregel auf $\\sin x \\cdot \\ln x$.
+4. Auflösen nach $y'$.
+5. $y$ ist nichts anderes als die Ausgangsfunktion; ersetzen, um eine geschlossene Form in $x$ zu erhalten.
+
+**Probe:** Bei $x = \\pi$: $f(\\pi) = \\pi^{0} = 1$, $f'(\\pi) = 1 \\cdot (\\cos \\pi \\cdot \\ln \\pi + 0) = -\\ln \\pi \\approx -1{,}14$. Numerisch bestätigt.
+
+**Typischer Fehler:** Schritt 3 NICHT als Produktregel ansetzen (sondern $\\ln x$ als Konstante behandeln) — dann fehlt der erste Term.`,
+          [
+            'Was MUSS zuerst geschehen, bevor man ableiten kann?',
+            'Schritte 2 und 3 sind die Differentiation — links implizit, rechts mit Produktregel.',
+            'Am Ende muss $y$ wieder durch die Ausgangsfunktion ersetzt werden.',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+
+      // (Bonus 2.6) recognize · true-false · log-ableiten
+      tag(
+        tf(
+          'Logarithmisches Ableiten ist nur dann nötig, wenn SOWOHL Basis als auch Exponent von $x$ abhängen (also $f(x)^{g(x)}$); bei $a^{x}$ (konstante Basis) reicht $(a^{x})\' = a^{x} \\ln a$, bei $x^{n}$ (konstanter Exponent) reicht die Potenzregel.',
+          true,
+          `**Ansatz:** Klare Abgrenzung der drei Standardfälle:
+- $x^{n}$ ($n$ Konstante) → Potenzregel: $n x^{n-1}$.
+- $a^{x}$ ($a$ Konstante) → Exponentialregel: $a^{x} \\ln a$.
+- $f(x)^{g(x)}$ (beide variabel) → Logarithmisches Ableiten.
+
+**Rechnung:** Beispiel $2^{x}$ braucht KEIN Logarithmieren — direkt $2^{x} \\ln 2$. Beispiel $x^{3}$ braucht KEIN Logarithmieren — direkt $3 x^{2}$. Nur Beispiele wie $x^{x}$ oder $(\\sin x)^{x}$ erfordern den Logarithmus-Trick.
+
+**Probe:** Test mit $2^{x}$ bei $x = 0$: direkte Regel $2^{0} \\ln 2 = \\ln 2 \\approx 0{,}69$. Numerisch bestätigt.
+
+**Typischer Fehler:** Logarithmisches Ableiten als "Allheilmittel" verwenden und damit unnötig viel Schreibarbeit erzeugen.`,
+          [
+            'Welche Regel für $a^x$ mit konstantem $a$?',
+            'Welche Regel für $x^n$ mit konstantem $n$?',
+            'Logarithmisches Ableiten nur, wenn BEIDES variabel.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 2, uses: ['log-ableiten'] },
+      ),
+    ],
+
+    // ── [3] umformen-erst — Wurzeln/Brüche als Potenzen umschreiben ─────
+    3: [
+      // (16) recognize · true-false · umformen-erst
+      tag(
+        tf(
+          'Wurzeln $\\sqrt[n]{x}$ schreibt man vor dem Ableiten als $x^{1/n}$, und Brüche $\\dfrac{1}{x^{n}}$ als $x^{-n}$ — dann lässt sich die einfache Potenzregel $(x^{n})\' = n x^{n-1}$ anwenden statt Quotienten- oder spezieller Wurzel-Regeln.',
+          true,
+          `**Ansatz:** Wurzeln und Brüche sind nur Schreibvarianten für Potenzen mit gebrochenem bzw. negativem Exponenten.
+
+**Rechnung:** Beispiele:
+- $\\sqrt{x} = x^{1/2}$, Ableitung $\\tfrac{1}{2} x^{-1/2} = \\dfrac{1}{2\\sqrt{x}}$.
+- $\\dfrac{1}{x^{3}} = x^{-3}$, Ableitung $-3 x^{-4} = -\\dfrac{3}{x^{4}}$.
+- $\\sqrt[3]{x^{2}} = x^{2/3}$, Ableitung $\\tfrac{2}{3} x^{-1/3}$.
+
+**Probe:** Test $(1/x)' = (x^{-1})' = -x^{-2} = -1/x^{2}$ — passt zur direkten Quotientenregel-Anwendung.
+
+**Typischer Fehler:** Mit Quotienten- oder Wurzelregel anfangen, ohne vorher umzuformen — unnötig kompliziert und fehleranfällig.`,
+          [
+            'Wie kann man $\\sqrt[n]{x}$ als Potenz schreiben?',
+            'Wie kann man $1/x^n$ als Potenz schreiben?',
+            'Mit gebrochenen / negativen Exponenten reicht die Potenzregel.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+
+      // (17) apply-guided · multiple-choice · umformen-erst
+      tag(
+        mc(
+          '$f(x) = \\dfrac{1}{x^{4}}$. Schreibe als Potenz und leite ab. Was ist $f\'(x)$?',
+          [
+            '$-\\dfrac{4}{x^{5}}$',
+            '$\\dfrac{4}{x^{5}}$',
+            '$\\dfrac{1}{4 x^{3}}$',
+            '$-\\dfrac{1}{x^{3}}$',
+          ],
+          0,
+          `**Ansatz:** $\\dfrac{1}{x^{4}} = x^{-4}$, dann Potenzregel.
+
+**Rechnung:** $(x^{-4})' = -4 \\cdot x^{-4-1} = -4 x^{-5} = -\\dfrac{4}{x^{5}}$.
+
+**Probe:** Quotientenregel zur Kontrolle: $\\dfrac{0 \\cdot x^{4} - 1 \\cdot 4x^{3}}{x^{8}} = -\\dfrac{4 x^{3}}{x^{8}} = -\\dfrac{4}{x^{5}}$. ✓ Beide Wege liefern dasselbe.
+
+**Typischer Fehler:** Vorzeichen vergessen ($-n x^{n-1}$ bei negativem $n$ liefert ein Minus) oder Potenzregel falsch (z. B. $1/(4 x^{3})$ — durch $n$ geteilt statt mal $n$).`,
+          [
+            'Schreibe $1/x^4 = x^{-4}$.',
+            'Potenzregel: $(x^n)\' = n x^{n-1}$ mit $n = -4$.',
+            'Ergebnis: $-4 x^{-5} = -4/x^5$.',
+          ],
+          {
+            1: 'Vorzeichen vergessen: $(x^{-4})\' = -4 x^{-5}$ — das Minus aus negativem Exponenten muss übernommen werden.',
+            2: 'Hier wurde geteilt statt multipliziert: $(x^n)\' = n x^{n-1}$, nicht $\\tfrac{1}{n} x^{n-1}$.',
+            3: 'Exponent stimmt nicht: $n - 1 = -4 - 1 = -5$, nicht $-3$. Studenten-Antwort verringert den Exponenten um $1$, aber in falscher Richtung.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+
+      // (18) apply-independent · number-input · umformen-erst
+      tag(
+        ni(
+          '$f(x) = \\sqrt[3]{x}$. Berechne $f\'(8)$ (auf 3 Dezimalstellen).',
+          0.083, 0.005, '',
+          `**Ansatz:** $\\sqrt[3]{x} = x^{1/3}$, dann Potenzregel.
+
+**Rechnung:** $f'(x) = \\tfrac{1}{3} x^{-2/3} = \\dfrac{1}{3 x^{2/3}}$. Bei $x = 8$: $x^{2/3} = (8^{1/3})^{2} = 2^{2} = 4$. $f'(8) = \\dfrac{1}{3 \\cdot 4} = \\dfrac{1}{12} \\approx 0{,}0833$.
+
+**Probe:** Numerisch $\\dfrac{8{,}001^{1/3} - 8^{1/3}}{0{,}001} \\approx \\dfrac{2{,}0000833 - 2}{0{,}001} \\approx 0{,}083$. ✓
+
+**Typischer Fehler:** Exponent falsch reduziert ($1/3 - 1 = -2/3$, nicht etwa $-1/3$) oder $x^{2/3}$ als $x \\cdot x^{1/3}$ statt $(\\sqrt[3]{x})^{2}$ ausrechnen.`,
+          [
+            'Schreibe $\\sqrt[3]{x} = x^{1/3}$.',
+            'Potenzregel: $(1/3) x^{1/3 - 1} = (1/3) x^{-2/3}$.',
+            'Bei $x = 8$: $8^{1/3} = 2$, $8^{2/3} = 4$.',
+          ],
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+
+      // (19) error-analysis · multiple-choice · umformen-erst
+      tag(
+        mc(
+          'Ein Student leitet $f(x) = \\sqrt{x}$ ab und schreibt $f\'(x) = \\dfrac{1}{\\sqrt{x}}$. Wo liegt der Fehler?',
+          [
+            'Faktor $\\tfrac{1}{2}$ aus der Potenzregel vergessen: $(x^{1/2})\' = \\tfrac{1}{2} x^{-1/2} = \\dfrac{1}{2\\sqrt{x}}$, nicht $\\dfrac{1}{\\sqrt{x}}$.',
+            'Korrekt — die Ableitung der Wurzel ist $\\dfrac{1}{\\sqrt{x}}$.',
+            'Vorzeichen falsch — sollte $-\\dfrac{1}{\\sqrt{x}}$ sein.',
+            'Wurzeln kann man nicht direkt ableiten — Quotientenregel hätte verwendet werden müssen.',
+          ],
+          0,
+          `**Ansatz:** $\\sqrt{x} = x^{1/2}$. Potenzregel: $(x^{n})' = n x^{n-1}$ mit $n = 1/2$.
+
+**Rechnung:** $f'(x) = \\tfrac{1}{2} x^{1/2 - 1} = \\tfrac{1}{2} x^{-1/2} = \\dfrac{1}{2\\sqrt{x}}$. Der Faktor $\\tfrac{1}{2}$ aus der Potenzregel ist ESSENZIELL — Student hat ihn vergessen.
+
+**Probe:** Bei $x = 4$: korrekt $\\dfrac{1}{2 \\cdot 2} = 0{,}25$. Studenten-Antwort: $\\dfrac{1}{2} = 0{,}5$. Faktor $2$ Unterschied.
+
+**Typischer Fehler:** Bei gebrochenen Exponenten den Vorfaktor "vergessen".`,
+          [
+            'Wurzel als $x^{1/2}$ schreiben.',
+            'Potenzregel: $n = 1/2$, also Vorfaktor $1/2$.',
+            'Vollständig: $\\tfrac{1}{2\\sqrt{x}}$.',
+          ],
+          {
+            1: 'Numerisch falsch — bei $x = 4$ liefert die Studenten-Antwort $0{,}5$ statt korrekt $0{,}25$. Faktor $1/2$ fehlt.',
+            2: 'Vorzeichen ist hier nicht das Problem — $(x^{1/2})\'$ ist positiv ($1/2 > 0$). Der Faktor $1/2$ ist das Thema.',
+            3: 'Doch — Wurzeln SIND mit der Potenzregel direkt ableitbar, sobald man $\\sqrt{x} = x^{1/2}$ schreibt.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+
+      // (20) transfer · multiple-choice · umformen-erst
+      tag(
+        mc(
+          'Welche der folgenden Umformungen ist KORREKT (für späteres Ableiten mit der Potenzregel)?',
+          [
+            '$\\dfrac{1}{x \\sqrt{x}} = x^{-3/2}$',
+            '$\\dfrac{1}{x \\sqrt{x}} = x^{-1/2}$',
+            '$\\dfrac{1}{x \\sqrt{x}} = x^{3/2}$',
+            '$\\dfrac{1}{x \\sqrt{x}} = x^{-2}$',
+          ],
+          0,
+          `**Ansatz:** Exponentengesetze: $x \\cdot \\sqrt{x} = x^{1} \\cdot x^{1/2} = x^{1 + 1/2} = x^{3/2}$. Dann Kehrwert: $\\dfrac{1}{x^{3/2}} = x^{-3/2}$.
+
+**Rechnung:** Korrekt: $\\dfrac{1}{x \\sqrt{x}} = \\dfrac{1}{x^{3/2}} = x^{-3/2}$. Damit ist die Ableitung sofort: $-\\tfrac{3}{2} x^{-5/2}$.
+
+**Probe:** Bei $x = 1$: $\\dfrac{1}{1 \\cdot 1} = 1 = 1^{-3/2}$. ✓ Bei $x = 4$: $\\dfrac{1}{4 \\cdot 2} = \\tfrac{1}{8} = 4^{-3/2}$ (denn $4^{3/2} = 8$). ✓
+
+**Typischer Fehler:** Exponenten falsch addieren ($1 + 1/2 = 3/2$, nicht $1/2$ oder $2$) oder Vorzeichen des Kehrwert-Exponenten vergessen.`,
+          [
+            '$x \\sqrt{x} = x^{1} \\cdot x^{1/2}$ — Exponenten addieren?',
+            'Was wird aus dem Kehrwert mit Exponent?',
+            '$\\dfrac{1}{x^{a}} = x^{-a}$.',
+          ],
+          {
+            1: 'Exponenten falsch addiert: $1 + 1/2 = 3/2$, nicht $1/2$. Im Nenner steht $x^{3/2}$, also Kehrwert $x^{-3/2}$.',
+            2: 'Vorzeichen des Exponenten vergessen — Kehrwert macht den Exponenten NEGATIV: $\\dfrac{1}{x^{3/2}} = x^{-3/2}$, nicht $x^{+3/2}$.',
+            3: 'Hier wurde $\\sqrt{x}$ als $x^{1}$ behandelt (statt $x^{1/2}$). Dadurch wird der Exponent zu $-2$ statt $-3/2$.',
+          },
+        ),
+        { stage: 'transfer', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+
+      // (Bonus 3.6) apply-independent · multiple-choice · umformen-erst
+      tag(
+        mc(
+          '$f(x) = \\dfrac{1}{\\sqrt{x}}$. Schreibe als Potenz und leite ab. Was ist $f\'(x)$?',
+          [
+            '$-\\dfrac{1}{2 x \\sqrt{x}}$',
+            '$\\dfrac{1}{2 x \\sqrt{x}}$',
+            '$-\\dfrac{1}{\\sqrt{x}}$',
+            '$-\\dfrac{2}{x \\sqrt{x}}$',
+          ],
+          0,
+          `**Ansatz:** $\\dfrac{1}{\\sqrt{x}} = x^{-1/2}$, Potenzregel.
+
+**Rechnung:** $f'(x) = -\\tfrac{1}{2} x^{-1/2 - 1} = -\\tfrac{1}{2} x^{-3/2} = -\\dfrac{1}{2 x^{3/2}} = -\\dfrac{1}{2 x \\sqrt{x}}$ (da $x^{3/2} = x \\cdot x^{1/2} = x \\sqrt{x}$).
+
+**Probe:** Bei $x = 1$: $f'(1) = -\\tfrac{1}{2}$. Numerisch $\\dfrac{1/\\sqrt{1{,}001} - 1}{0{,}001} \\approx -0{,}5$. ✓
+
+**Typischer Fehler:** Vorzeichen vergessen oder Vorfaktor $1/2$ unterschlagen.`,
+          [
+            'Schreibe $1/\\sqrt{x} = x^{-1/2}$.',
+            'Potenzregel mit $n = -1/2$: Vorfaktor $-1/2$, Exponent $-3/2$.',
+            '$x^{-3/2} = 1/(x^{3/2}) = 1/(x \\sqrt{x})$.',
+          ],
+          {
+            1: 'Vorzeichen vergessen: bei negativem Exponenten gibt die Potenzregel ein Minus — $(x^{-1/2})\' = -\\tfrac{1}{2} x^{-3/2}$.',
+            2: 'Vorfaktor $1/2$ vergessen UND Exponent nicht reduziert. $(x^{-1/2})\'$ ist NICHT $-x^{-1/2}$.',
+            3: 'Vorfaktor falsch: korrekt ist $|-1/2|$, nicht $2$. Vermutlich Vorfaktor und Exponent verwechselt.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 3, uses: ['umformen-erst'] },
+      ),
+    ],
+
+    // ── [4] gemischt-vereinf — Ergebnisse faktorisieren ─────────────────
+    4: [
+      // (21) recognize · true-false · gemischt-vereinf
+      tag(
+        tf(
+          'Nach Anwendung mehrerer Ableitungsregeln sollte das Ergebnis möglichst faktorisiert/ausgeklammert vorliegen — in Klausuren werden Punkte für die VEREINFACHTE Form vergeben, nicht für die rohe Summe direkt nach der Produkt- oder Quotientenregel.',
+          true,
+          `**Ansatz:** Klausur-Standard: nach dem Ableiten weiterrechnen, bis das Ergebnis "fertig" aussieht.
+
+**Rechnung:** Typische Vereinfachungen: gemeinsamen Faktor ausklammern, Brüche kürzen, ähnliche Terme zusammenfassen. Beispiel: $(x^{3} e^{x})' = 3x^{2} e^{x} + x^{3} e^{x} = x^{2} e^{x}(3 + x)$ — die letzte Form ist Klausur-Form.
+
+**Probe:** Vergleich roh vs. faktorisiert: $3x^{2} e^{x} + x^{3} e^{x}$ vs. $x^{2} e^{x} (x + 3)$. Letztere macht Nullstellen ($x = 0$, $x = -3$) und Vorzeichenwechsel sofort sichtbar.
+
+**Typischer Fehler:** Die rohe Form als "fertig" markieren und Punkte für mangelnde Vereinfachung verlieren.`,
+          [
+            'Was erwartet ein Klausur-Prüfer als "Endform"?',
+            'Welche Form macht Eigenschaften wie Nullstellen sichtbar?',
+            'Standardvorschriften: ausklammern, kürzen, zusammenfassen.',
+          ],
+        ),
+        { stage: 'recognize', subGoal: 4, uses: ['gemischt-vereinf'] },
+      ),
+
+      // (22) apply-guided · multiple-choice · gemischt-vereinf
+      tag(
+        mc(
+          '$f(x) = x^{4} \\cdot \\ln x$. Was ist $f\'(x)$ in vereinfachter Form?',
+          [
+            '$x^{3} (4 \\ln x + 1)$',
+            '$x^{3} (4 \\ln x - 1)$',
+            '$4 x^{3} \\ln x + x^{4}$',
+            '$5 x^{3} \\ln x$',
+          ],
+          0,
+          `**Ansatz:** Produktregel mit $u = x^{4}$, $v = \\ln x$, dann ausklammern.
+
+**Rechnung:** $u' = 4x^{3}$, $v' = 1/x$. $f'(x) = 4x^{3} \\ln x + x^{4} \\cdot \\dfrac{1}{x} = 4x^{3} \\ln x + x^{3} = x^{3}(4 \\ln x + 1)$. Brüche kürzen ($x^{4}/x = x^{3}$), dann gemeinsamen Faktor $x^{3}$ ausklammern.
+
+**Probe:** Bei $x = 1$: $f'(1) = 1 \\cdot (0 + 1) = 1$. Numerisch $\\dfrac{f(1{,}001) - f(1)}{0{,}001} \\approx 1$. ✓
+
+**Typischer Fehler:** Bruch $x^{4} \\cdot \\tfrac{1}{x} = x^{3}$ nicht kürzen (Antwort C) oder Vorzeichen / Konstante beim Zusammenfassen falsch (Antworten B, D).`,
+          [
+            'Produktregel: $u\'v + uv\'$ mit $u = x^4$, $v = \\ln x$.',
+            'Bruch $x^4 \\cdot \\tfrac{1}{x} = x^3$ kürzen.',
+            'Gemeinsamen Faktor $x^3$ ausklammern.',
+          ],
+          {
+            1: 'Vorzeichen-Fehler: $x^{4} \\cdot \\tfrac{1}{x} = +x^{3}$, also $+1$ in der Klammer. Studenten-Antwort hat fälschlich $-1$.',
+            2: 'Bruch nicht gekürzt: $x^{4} \\cdot \\tfrac{1}{x} = x^{3}$, nicht $x^{4}$. Außerdem nicht ausgeklammert.',
+            3: 'Die beiden Summanden $4x^{3} \\ln x$ und $x^{3}$ wurden als gleichartig behandelt und addiert ($4 + 1 = 5$) — das ist unzulässig, weil der eine Faktor $\\ln x$ enthält, der andere nicht.',
+          },
+        ),
+        { stage: 'apply-guided', subGoal: 4, uses: ['gemischt-vereinf'] },
+      ),
+
+      // (23) apply-independent · multiple-choice · gemischt-vereinf
+      tag(
+        mc(
+          '$f(x) = (x^{2} - 1) \\cdot e^{2x}$. Was ist $f\'(x)$ in vereinfachter Form?',
+          [
+            '$2 e^{2x} (x^{2} + x - 1)$',
+            '$2 x e^{2x} + 2(x^{2} - 1) e^{2x}$',
+            '$2 e^{2x} (x^{2} + x + 1)$',
+            '$e^{2x} (x^{2} + x - 1)$',
+          ],
+          0,
+          `**Ansatz:** Produktregel mit Kettenregel im inneren $e^{2x}$, dann ausklammern.
+
+**Rechnung:** $u = x^{2} - 1$, $u' = 2x$. $v = e^{2x}$, $v' = 2 e^{2x}$ (Kettenregel). $f'(x) = 2x e^{2x} + (x^{2} - 1) \\cdot 2 e^{2x} = 2 e^{2x} (x + x^{2} - 1) = 2 e^{2x} (x^{2} + x - 1)$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 2 \\cdot 1 \\cdot (-1) = -2$. Numerisch bestätigt.
+
+**Typischer Fehler:** Roh stehen lassen (B), Vorzeichen beim Zusammenfassen verlieren (C), Faktor $2$ aus der Kettenregel weglassen (D).`,
+          [
+            'Produktregel mit Kettenregel im inneren $e^{2x}$.',
+            'Vollständig: $2x e^{2x} + 2(x^2 - 1) e^{2x}$.',
+            'Gemeinsamen Faktor $2 e^{2x}$ ausklammern.',
+          ],
+          {
+            1: 'Rohe Form — $e^{2x}$ steht zweimal getrennt da, was sich vermeiden lässt. Klausur-Form: $2 e^{2x} (x^{2} + x - 1)$.',
+            2: 'Vorzeichen beim Zusammenfassen verloren: $x + (x^{2} - 1) = x^{2} + x - 1$, nicht $x^{2} + x + 1$. Das $-1$ aus $x^{2} - 1$ überlebt.',
+            3: 'Faktor $2$ aus der Kettenregel $(e^{2x})\' = 2 e^{2x}$ vergessen — beide Summanden tragen einen Faktor $2$, der gemeinsam ausgeklammert wird.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['gemischt-vereinf'] },
+      ),
+
+      // (24) error-analysis · multiple-choice · gemischt-vereinf
+      tag(
+        mc(
+          'Ein Student berechnet $(\\sin x \\cdot e^{x})\' = \\cos x \\cdot e^{x} + \\sin x \\cdot e^{x}$ und gibt das als Endergebnis ab. Welcher Klausur-Punkt geht verloren?',
+          [
+            'Nicht ausgeklammert: korrekt wäre $e^{x} (\\cos x + \\sin x)$ — Klausur-Standard erwartet die faktorisierte Form.',
+            'Korrekt — die rohe Summe ist die finale Antwort.',
+            'Vorzeichen-Fehler — sollte $-\\sin x \\cdot e^{x}$ sein.',
+            '$(\\sin x)\' = \\cos x$ ist falsch — sollte $-\\sin x$ sein.',
+          ],
+          0,
+          `**Ansatz:** Beide Summanden enthalten $e^{x}$ — gemeinsamer Faktor lässt sich ausklammern.
+
+**Rechnung:** $f'(x) = e^{x}(\\cos x + \\sin x)$. Diese Form ist kompakter und macht Eigenschaften wie Nullstellen ($\\cos x = -\\sin x \\Rightarrow x = -\\pi/4 + k\\pi$) sichtbarer.
+
+**Probe:** Bei $x = 0$: roh $1 \\cdot 1 + 0 \\cdot 1 = 1$, ausgeklammert $1 \\cdot (1 + 0) = 1$. ✓ Wert stimmt — aber die Form ist nicht klausurreif.
+
+**Typischer Fehler:** Nach Anwendung der Produktregel "fertig" gefühlt — der Klausur-Punkt-Verlust kommt schleichend.`,
+          [
+            'Was haben beide Summanden gemeinsam?',
+            'Welcher Faktor lässt sich ausklammern?',
+            'Endform: $e^{x}(\\cos x + \\sin x)$.',
+          ],
+          {
+            1: 'Die rohe Summe ist algebraisch korrekt, aber NICHT die erwartete Klausur-Form — der gemeinsame Faktor $e^{x}$ muss ausgeklammert werden.',
+            2: 'Vorzeichen sind alle KORREKT: $(\\sin)\' = +\\cos$, beide Summanden mit $+$ in der Produktregel. Hier kein Vorzeichen-Fehler.',
+            3: '$(\\sin x)\' = \\cos x$ stimmt — der Student hat das richtig. Der Fehler liegt nicht in der Ableitung selbst.',
+          },
+        ),
+        { stage: 'error-analysis', subGoal: 4, uses: ['gemischt-vereinf'] },
+      ),
+
+      // (25) transfer · sorting · gemischt-vereinf
+      tag(
+        sorting(
+          'Bringe die Schritte zur ausgeklammerten Ableitung von $f(x) = x^{2} \\cdot e^{x}$ in die richtige Reihenfolge:',
+          [
+            'Struktur erkennen: Produkt mit $u = x^{2}$, $v = e^{x}$ — Produktregel.',
+            'Einzel-Ableitungen: $u\' = 2x$, $v\' = e^{x}$.',
+            'Produktregel einsetzen: $f\'(x) = 2x e^{x} + x^{2} e^{x}$.',
+            'Gemeinsamen Faktor $e^{x}$ ausklammern: $f\'(x) = e^{x}(2x + x^{2})$.',
+            'Innen zusammenfassen / nochmal ausklammern: $f\'(x) = x e^{x}(2 + x) = x(x + 2) e^{x}$.',
+          ],
+          [0, 1, 2, 3, 4],
+          `**Ansatz:** Beim Vereinfachen folgt man festen Schritten: Struktur erkennen → Bausteine bereitlegen → Regel anwenden → ausklammern → weiter vereinfachen.
+
+**Rechnung:** Begründung:
+1. Struktur identifizieren als Voraussetzung jeder Regel.
+2. Einzel-Ableitungen separat — sonst Mix-up bei Faktoren.
+3. Regel zusammenbauen, rohe Form notieren.
+4. Gemeinsamen exponentiellen Faktor ausklammern.
+5. Im Inneren weiter ausklammern ($x$ als gemeinsamer Faktor) — Klausur-Form.
+
+**Probe:** Bei $x = -2$: $f'(-2) = -2 \\cdot 0 \\cdot e^{-2} = 0$. Tatsächlich hat $x^{2} e^{x}$ bei $x = -2$ ein lokales Maximum — Steigung $0$. ✓
+
+**Typischer Fehler:** Schritt 4 mit Schritt 5 verschmelzen oder Schritt 5 ganz weglassen — die "vollständig faktorisierte" Form $x(x+2) e^{x}$ ist der Klausur-Standard.`,
+          [
+            'Was kommt VOR der eigentlichen Ableitung?',
+            'Welche Schritte gehören zum "Vereinfachen" am Ende?',
+            'Endform: $x(x+2) e^{x}$ — was kam unmittelbar davor?',
+          ],
+        ),
+        { stage: 'transfer', subGoal: 4, uses: ['gemischt-vereinf'] },
+      ),
+
+      // (Bonus 4.6) apply-independent · multiple-choice · gemischt-vereinf
+      tag(
+        mc(
+          '$f(x) = (2x + 1)^{3} \\cdot e^{x}$. Was ist $f\'(x)$ in ausgeklammerter Form?',
+          [
+            '$(2x + 1)^{2} e^{x} (2x + 7)$',
+            '$(2x + 1)^{2} e^{x} (2x - 7)$',
+            '$6 (2x + 1)^{2} e^{x}$',
+            '$(2x + 1)^{3} e^{x}$',
+          ],
+          0,
+          `**Ansatz:** Produktregel mit Kettenregel im $(2x+1)^{3}$-Term.
+
+**Rechnung:** $u = (2x+1)^{3}$, $u' = 3(2x+1)^{2} \\cdot 2 = 6(2x+1)^{2}$ (Kettenregel). $v = e^{x}$, $v' = e^{x}$. $f'(x) = 6(2x+1)^{2} e^{x} + (2x+1)^{3} e^{x} = (2x+1)^{2} e^{x} \\cdot (6 + (2x+1)) = (2x+1)^{2} e^{x} (2x + 7)$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 1 \\cdot 1 \\cdot 7 = 7$. Numerisch $\\dfrac{f(0{,}001) - f(0)}{0{,}001} \\approx 7$. ✓
+
+**Typischer Fehler:** Vorzeichen beim Zusammenfassen ($6 + 2x + 1 = 2x + 7$, nicht $2x - 7$) oder einen Summanden vergessen.`,
+          [
+            'Produktregel mit Kettenregel im $(2x+1)^3$-Faktor.',
+            'Beide Summanden teilen den Faktor $(2x+1)^2 e^x$.',
+            'In der Klammer: $6 + (2x + 1) = 2x + 7$.',
+          ],
+          {
+            1: 'Vorzeichen-Fehler bei der Klammer-Vereinfachung: $6 + 2x + 1 = 2x + 7$, nicht $2x - 7$.',
+            2: 'Zweiter Summand $(2x+1)^{3} e^{x}$ vergessen — nur die Ableitung des ersten Faktors stehen geblieben.',
+            3: 'Erster Summand $6(2x+1)^{2} e^{x}$ vergessen — nur der zweite Faktor in seiner Originalform.',
+          },
+        ),
+        { stage: 'apply-independent', subGoal: 4, uses: ['gemischt-vereinf'] },
       ),
     ],
   },
