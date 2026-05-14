@@ -580,4 +580,572 @@ export const ableitungSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // abl-1-2 · Potenzregel und Summenregel
+  // ─────────────────────────────────────────────────────────────────────────
+  'abl-1-2': {
+    // [0] Potenzregel (x^n)' = n x^{n-1}
+    0: [
+      // Zeile 1: recognize · true-false · uses=[pot-regel]
+      tf(
+        'Die Potenzregel lautet $(x^n)\' = n \\cdot x^{n-1}$. Speziell gilt damit $(x^5)\' = 5 x^4$.',
+        true,
+        `**Ansatz:** Die Potenzregel ist die Grundregel für Monome $x^n$: Der Exponent wandert als Vorfaktor nach vorn, der neue Exponent ist um $1$ kleiner.
+
+**Rechnung:** Mit $n = 5$: $(x^5)' = 5 \\cdot x^{5-1} = 5 x^4$. Allgemein: jeder Exponent wird mit dem alten Exponenten als Vorfaktor multipliziert und der Exponent um $1$ reduziert.
+
+**Probe:** Numerisch bei $x = 2$: $f'(2) = 5 \\cdot 16 = 80$. Sekantensteigung $\\dfrac{2{,}001^5 - 2^5}{0{,}001} \\approx 80{,}04$ ✓.
+
+**Typischer Fehler:** Vorfaktor vergessen ($x^4$ statt $5x^4$) oder Exponent nicht reduzieren ($5x^5$).`,
+        [
+          'Wie lautet die Standard-Form der Potenzregel?',
+          'Exponent zuerst als Vorfaktor nach vorn, dann um $1$ verringern.',
+          'Setze $n = 5$ in $(x^n)\' = n x^{n-1}$ ein.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pot-regel'] },
+      ),
+      // Zeile 2: apply-guided · multiple-choice · uses=[pot-regel]
+      mc(
+        'Welche Ableitung hat $f(x) = x^7$?',
+        ['$7 x^6$', '$7 x^7$', '$x^6$', '$6 x^7$'],
+        0,
+        `**Ansatz:** Potenzregel mit $n = 7$: Exponent als Vorfaktor, neuer Exponent um $1$ kleiner.
+
+**Rechnung:** $(x^7)' = 7 \\cdot x^{7-1} = 7 x^6$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 7 \\cdot 1 = 7$. Sekantensteigung $\\dfrac{1{,}001^7 - 1}{0{,}001} \\approx 7{,}02$ ✓.
+
+**Typischer Fehler:** Exponent nicht reduzieren ($7x^7$) oder Vorfaktor weglassen ($x^6$).`,
+        [
+          'Potenzregel: $(x^n)\' = n \\cdot x^{n-1}$.',
+          'Hier $n = 7$. Wandert nach vorn, dann minus $1$.',
+          'Endergebnis muss niedrigeren Exponenten als $x^7$ haben.',
+        ],
+        {
+          1: 'Exponent nicht reduziert. Die Potenzregel hat zwei Schritte: Vorfaktor *und* Exponent um $1$ kleiner. Hier wurde nur der Vorfaktor gesetzt.',
+          2: 'Vorfaktor vergessen. Der alte Exponent $n = 7$ muss als Vorfaktor erscheinen — $1 \\cdot x^6$ wäre $(x \\cdot \\text{etwas})\'$, aber nicht $(x^7)\'$.',
+          3: 'Verwechslung: Es muss der ALTE Exponent ($7$) als Vorfaktor stehen, nicht der neue ($6$). Außerdem wurde der Exponent nicht reduziert.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pot-regel'] },
+      ),
+      // Zeile 3: apply-independent · number-input · uses=[pot-regel]
+      ni(
+        'Berechne $f\'(2)$ für $f(x) = x^4$.',
+        32,
+        0,
+        '',
+        `**Ansatz:** Erst Potenzregel anwenden, dann $x_0 = 2$ einsetzen.
+
+**Rechnung:** $f'(x) = 4 x^3$. $f'(2) = 4 \\cdot 2^3 = 4 \\cdot 8 = 32$.
+
+**Probe:** Sekantensteigung $\\dfrac{2{,}001^4 - 2^4}{0{,}001} = \\dfrac{16{,}0320\\ldots - 16}{0{,}001} \\approx 32{,}02$ ✓.
+
+**Typischer Fehler:** $f(2) = 16$ statt $f'(2)$ angeben. Oder $2^4 = 8$ falsch berechnen.`,
+        [
+          'Erst die Ableitungsfunktion bilden.',
+          'Dann $x_0 = 2$ in $f\'(x)$ einsetzen — nicht in $f(x)$.',
+          '$2^3 = 8$, dann mit $4$ multiplizieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-regel'] },
+      ),
+      // Zeile 4: error-analysis · multiple-choice · uses=[pot-regel]
+      mc(
+        'Anna berechnet $(x^6)\' = x^5$. Was ist ihr Fehler?',
+        [
+          'Sie hat den Exponenten korrekt um $1$ reduziert, aber den Vorfaktor $n = 6$ vergessen — richtig ist $(x^6)\' = 6 x^5$.',
+          'Die Funktion $x^6$ ist nicht ableitbar.',
+          'Der Exponent muss erhöht werden, nicht reduziert.',
+          'Sie hätte zuerst den Logarithmus bilden müssen.',
+        ],
+        0,
+        `**Ansatz:** Die Potenzregel besteht aus zwei Schritten: (1) Exponent als Vorfaktor nach vorn, (2) neuen Exponenten um $1$ verringern. Anna macht nur (2).
+
+**Rechnung:** Korrekt: $(x^6)' = 6 \\cdot x^{6-1} = 6 x^5$. Annas Ergebnis $x^5$ wäre die Ableitung von $\\tfrac{1}{6}x^6$ — also nur des Bruchteils.
+
+**Probe:** Bei $x = 1$: korrektes $f'(1) = 6$, Annas Ergebnis $1^5 = 1$ — Faktor $6$ fehlt.
+
+**Typischer Fehler:** Genau dieser — den Vorfaktor "übersehen", weil er nur eine "kleine" Zahl ist. Hilft: mit $n = 6$ konkret anschreiben.`,
+        [
+          'Welche zwei Schritte hat die Potenzregel?',
+          'Vergleiche Annas Lösung mit $(x^n)\' = n x^{n-1}$ für $n = 6$.',
+          'Fehlt da was vor dem $x^5$?',
+        ],
+        {
+          1: '$x^6$ ist ein Polynom — alle Polynome sind beliebig oft differenzierbar. Annas Problem ist nicht die Existenz der Ableitung, sondern die Anwendung der Regel.',
+          2: 'Falsch: Die Potenzregel REDUZIERT den Exponenten um $1$. Eine Erhöhung wäre die Integration ($\\int x^n dx$), nicht die Ableitung.',
+          3: 'Logarithmen kommen bei der logarithmischen Ableitung von Produkten zum Einsatz, nicht bei einfachen Potenzen. Die Potenzregel ist direkt anwendbar.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pot-regel'] },
+      ),
+      // Zeile 5: transfer · multiple-choice · uses=[pot-regel]
+      mc(
+        'Was ist die Ableitung von $f(x) = x^{100}$?',
+        ['$100 x^{99}$', '$100 x^{100}$', '$99 x^{100}$', '$x^{99}$'],
+        0,
+        `**Ansatz:** Die Potenzregel funktioniert für jeden Exponenten gleich — auch für große Zahlen wie $n = 100$. Keine Sonderbehandlung nötig.
+
+**Rechnung:** $(x^{100})' = 100 \\cdot x^{100 - 1} = 100 x^{99}$.
+
+**Probe:** Allgemeines Schema: alter Exponent als Vorfaktor, neuer um $1$ kleiner. Hier $100 \\to 100$ als Faktor, $100 - 1 = 99$ als neuer Exponent.
+
+**Typischer Fehler:** Bei großen Exponenten Angst vor „Sonderfällen" — gibt es nicht. Die Regel ist universell.`,
+        [
+          'Die Potenzregel hat keine Größenbeschränkung am Exponenten.',
+          'Welchen Vorfaktor und welchen neuen Exponenten erwartet die Regel?',
+          '$n = 100$: Vorfaktor $100$, neuer Exponent $99$.',
+        ],
+        {
+          1: 'Exponent nicht reduziert. Auch bei großem $n$ muss der neue Exponent um genau $1$ kleiner sein.',
+          2: 'Vorfaktor und neuer Exponent vertauscht. Vorfaktor = alter Exponent ($100$), neuer Exponent = alter minus $1$ ($99$) — nicht umgekehrt.',
+          3: 'Vorfaktor fehlt. Ohne $100$ vor $x^{99}$ wäre das die Ableitung von $\\tfrac{1}{100} x^{100}$, nicht von $x^{100}$.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['pot-regel'] },
+      ),
+      // Bonus SG 0: apply-independent · number-input · uses=[pot-regel]
+      ni(
+        'Berechne $f\'(2)$ für $f(x) = x^5$.',
+        80,
+        0,
+        '',
+        `**Ansatz:** Potenzregel: $f'(x) = 5 x^4$. Einsetzen $x_0 = 2$.
+
+**Rechnung:** $f'(2) = 5 \\cdot 2^4 = 5 \\cdot 16 = 80$.
+
+**Probe:** Sekantensteigung $\\dfrac{2{,}001^5 - 2^5}{0{,}001} \\approx 80{,}04$ ✓.
+
+**Typischer Fehler:** $2^4$ als $8$ statt $16$ rechnen (mit $2^3$ verwechselt).`,
+        [
+          'Ableitung mit Potenzregel: Exponent vor, dann minus $1$.',
+          'Setze $x_0 = 2$ in $f\'(x) = 5 x^4$ ein.',
+          '$2^4 = 16$, dann $\\cdot 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-regel'] },
+      ),
+    ],
+
+    // [1] Summenregel / Polynome
+    1: [
+      // Zeile 6: recognize · true-false · uses=[summen-regel]
+      tf(
+        'Für jede Summe gilt $(f(x) + g(x))\' = f\'(x) + g\'(x)$. Man darf also jeden Summanden einzeln ableiten und die Ergebnisse addieren.',
+        true,
+        `**Ansatz:** Summenregel der Differentiation: Ableitung verteilt sich linear über Summen.
+
+**Rechnung:** $(f + g)' = f' + g'$ folgt direkt aus der Definition des Differentialquotienten, da Grenzwerte ebenfalls linear sind: $\\lim(a + b) = \\lim a + \\lim b$.
+
+**Probe:** $(x^2 + x)' = (x^2)' + (x)' = 2x + 1$. Numerisch bei $x = 1$: $\\dfrac{(1{,}001^2 + 1{,}001) - 2}{0{,}001} \\approx 3 = 2 \\cdot 1 + 1$ ✓.
+
+**Typischer Fehler:** Summenregel mit Produktregel verwechseln. Für Produkte gilt $(f \\cdot g)' \\neq f' \\cdot g'$.`,
+        [
+          'Wie verteilt sich die Ableitung über Summen?',
+          'Summen und Differenzen darf man Summand für Summand ableiten.',
+          'Aber Vorsicht bei Produkten — dort gilt eine andere Regel.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['summen-regel'] },
+      ),
+      // Zeile 7: apply-guided · multiple-choice · uses=[summen-regel, polynom-abl]
+      mc(
+        'Was ist die Ableitung von $f(x) = x^4 + x^2$?',
+        ['$4 x^3 + 2 x$', '$x^3 + x$', '$4 x^3 \\cdot 2 x = 8 x^4$', '$6 x^6$'],
+        0,
+        `**Ansatz:** Summenregel: jeden Summanden mit der Potenzregel einzeln ableiten, dann addieren.
+
+**Rechnung:** $(x^4)' = 4 x^3$ und $(x^2)' = 2 x$. Damit $f'(x) = 4 x^3 + 2 x$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 4 + 2 = 6$. Sekantensteigung $\\dfrac{(1{,}001^4 + 1{,}001^2) - 2}{0{,}001} \\approx 6{,}01$ ✓.
+
+**Typischer Fehler:** Summe mit Produkt verwechseln ($\\cdot$ statt $+$) oder Exponenten unverändert lassen.`,
+        [
+          'Summenregel: $(f + g)\' = f\' + g\'$.',
+          'Jeden Summanden mit der Potenzregel ableiten.',
+          'Am Ende mit $+$ verbinden, nicht mit $\\cdot$.',
+        ],
+        {
+          1: 'Vorfaktoren der Potenzregel vergessen. $(x^4)\' = 4 x^3$ (mit Faktor $4$), nicht $x^3$. Ebenso $(x^2)\' = 2 x$, nicht $x$.',
+          2: 'Summenregel mit Produktregel verwechselt. Bei *Summen* werden die Ableitungen ADDIERT, nicht multipliziert. Multiplikation gäbe das Produkt der Ableitungen, was eine andere Funktion ist.',
+          3: 'Exponenten addiert statt einzeln zu reduzieren. Die Potenzregel reduziert *jeden* Exponenten um $1$ — sie addiert keine.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['summen-regel', 'polynom-abl', 'pot-regel'] },
+      ),
+      // Zeile 8: apply-independent · number-input · uses=[polynom-abl]
+      ni(
+        'Berechne $f\'(3)$ für $f(x) = x^3 + x^2 - 7 x$.',
+        26,
+        0,
+        '',
+        `**Ansatz:** Polynom: Summen-, Faktor- und Potenzregel kombinieren.
+
+**Rechnung:** $f'(x) = 3 x^2 + 2 x - 7$. Einsetzen $x_0 = 3$: $f'(3) = 3 \\cdot 9 + 2 \\cdot 3 - 7 = 27 + 6 - 7 = 26$.
+
+**Probe:** Sekantensteigung $\\dfrac{f(3{,}001) - f(3)}{0{,}001} \\approx 26{,}03$ ✓.
+
+**Typischer Fehler:** $(-7x)' = 0$ statt $-7$ (linearen Faktor mit Konstanten verwechselt). Oder $f(3) = 27 + 9 - 21 = 15$ statt $f'(3)$ angeben.`,
+        [
+          'Erst die komplette Ableitung als neues Polynom.',
+          '$(x^3)\' = 3 x^2$, $(x^2)\' = 2 x$, $(-7 x)\' = -7$.',
+          'Dann $x_0 = 3$ einsetzen — nicht in $f(x)$, sondern in $f\'(x)$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['polynom-abl', 'summen-regel', 'pot-regel', 'faktor-regel'] },
+      ),
+      // Zeile 9: error-analysis · multiple-choice · uses=[summen-regel]
+      mc(
+        'Tom soll $(x^3 + x^5)\'$ berechnen. Er schreibt $(x^3 + x^5)\' = (x^3)\' \\cdot (x^5)\' = 3 x^2 \\cdot 5 x^4 = 15 x^6$. Was ist sein Fehler?',
+        [
+          'Er hat die Produktregel statt der Summenregel angewendet — bei Summen werden die Ableitungen *addiert*, nicht multipliziert. Richtig: $(x^3 + x^5)\' = 3 x^2 + 5 x^4$.',
+          'Die Einzelableitungen $(x^3)\'$ und $(x^5)\'$ sind falsch.',
+          '$3 x^2 \\cdot 5 x^4 = 15 x^6$ ist nicht korrekt ausmultipliziert.',
+          'Toms Ergebnis ist eigentlich korrekt, da $f$ ein Produkt ist.',
+        ],
+        0,
+        `**Ansatz:** Summenregel $(f + g)' = f' + g'$ — Verknüpfungs-OPERATION zwischen den Einzelableitungen ist Addition, nicht Multiplikation.
+
+**Rechnung:** Korrekt: $(x^3 + x^5)' = 3 x^2 + 5 x^4$. Toms Ergebnis $15 x^6$ wäre die Ableitung des PRODUKTS $x^3 \\cdot x^5 = x^8$, deren Ableitung ist aber $8 x^7$ — also nicht einmal das.
+
+**Probe:** Bei $x = 1$: korrektes $f'(1) = 3 + 5 = 8$. Toms Ergebnis $15$ — deutlich daneben.
+
+**Typischer Fehler:** Genau das — die Verknüpfungs-Operation kopieren ($+$ rein, $+$ raus). Hier hat Tom Multiplikation $\\cdot$ verwendet, obwohl in der Ausgangsfunktion ein $+$ steht.`,
+        [
+          'Welche Operation verbindet $x^3$ und $x^5$ in der ursprünglichen Funktion?',
+          'Die Summenregel sagt: dieselbe Operation gilt für die Einzelableitungen.',
+          'Tom hat $\\cdot$ verwendet, obwohl in $f$ ein $+$ steht — das ist die Produktregel.',
+        ],
+        {
+          1: '$(x^3)\' = 3 x^2$ und $(x^5)\' = 5 x^4$ sind beide korrekt (Potenzregel angewandt). Toms Fehler liegt nicht in den Einzelableitungen, sondern im Verknüpfen.',
+          2: '$3 x^2 \\cdot 5 x^4 = 15 x^{2+4} = 15 x^6$ ist arithmetisch korrekt — der Fehler ist, dass diese Multiplikation überhaupt durchgeführt wurde. Bei Summen wird ADDIERT.',
+          3: '$f(x) = x^3 + x^5$ ist eine SUMME, kein Produkt. Daher gilt die Summenregel, nicht die Produktregel.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['summen-regel', 'pot-regel'] },
+      ),
+      // Zeile 10: transfer · number-input · uses=[polynom-abl]
+      ni(
+        'Für das Polynom $f(x) = \\tfrac{1}{3} x^3 - x$ gilt $f\'(x) = x^2 - 1$. Bestimme den größten $x$-Wert, an dem die Tangente an $f$ waagerecht verläuft.',
+        1,
+        0,
+        '',
+        `**Ansatz:** Tangente waagerecht $\\Leftrightarrow$ $f'(x) = 0$. Nullstellen von $f'$ suchen, dann den größten $x$-Wert nehmen.
+
+**Rechnung:** $f'(x) = x^2 - 1 = 0 \\Leftrightarrow x^2 = 1 \\Leftrightarrow x = \\pm 1$. Größter Wert: $x = +1$.
+
+**Probe:** $f'(1) = 1 - 1 = 0$ ✓. Und $f'(-1) = 1 - 1 = 0$, aber $-1 < 1$. Also ist $x = 1$ der größte.
+
+**Typischer Fehler:** Negative Lösung vergessen und gar nicht erst überprüfen, ob es eine größere gibt. Oder fälschlich $x = \\sqrt{1} = 1$ als einzige Lösung angeben (Wurzel hat IMMER auch eine negative Lösung).`,
+        [
+          'Waagerechte Tangente bedeutet $f\'(x) = 0$.',
+          'Quadratische Gleichung $x^2 = 1$ hat ZWEI Lösungen.',
+          'Größter Wert von $\\{-1, +1\\}$ ist $+1$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['polynom-abl', 'summen-regel', 'pot-regel'] },
+      ),
+      // Bonus SG 1: recognize · true-false · uses=[summen-regel, polynom-abl]
+      tf(
+        'Die Differenzenregel folgt aus der Summenregel: $(f - g)\' = f\' - g\'$. So gilt $(x^3 - x^2)\' = 3 x^2 - 2 x$.',
+        true,
+        `**Ansatz:** Differenzen sind Summen mit negativem Vorzeichen ($f - g = f + (-g)$). Die Summenregel + Faktorregel ($(-g)' = -g'$) ergibt die Differenzenregel.
+
+**Rechnung:** $(f - g)' = (f + (-g))' = f' + (-g)' = f' - g'$. Konkret: $(x^3 - x^2)' = 3 x^2 - 2 x$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 3 - 2 = 1$. Sekantensteigung $\\dfrac{(1{,}001^3 - 1{,}001^2) - 0}{0{,}001} \\approx 1{,}00$ ✓.
+
+**Typischer Fehler:** Vorzeichen beim zweiten Summanden vergessen — also $(x^3 - x^2)' = 3 x^2 + 2 x$ schreiben statt mit Minus.`,
+        [
+          'Differenz = Summe mit negativem Summanden.',
+          'Faktorregel: konstante Vorfaktoren (auch $-1$) bleiben erhalten.',
+          'Die Vorzeichen werden NICHT durch Ableiten umgekehrt — sie wandern mit.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['summen-regel', 'polynom-abl', 'pot-regel'] },
+      ),
+    ],
+
+    // [2] Wurzeln und Kehrwerte als Potenzen
+    2: [
+      // Zeile 11: recognize · true-false · uses=[pot-negativ, pot-gebrochen]
+      tf(
+        'Vor dem Ableiten kann man $\\sqrt[3]{x}$ als $x^{1/3}$ und $\\dfrac{1}{x^2}$ als $x^{-2}$ umschreiben. Anschließend wird die Potenzregel ganz normal angewandt.',
+        true,
+        `**Ansatz:** Wurzeln und Kehrwerte sind in Wahrheit Potenzen mit rationalen oder negativen Exponenten. Dadurch wird die Potenzregel universell anwendbar.
+
+**Rechnung:** $\\sqrt[n]{x} = x^{1/n}$ und $\\dfrac{1}{x^n} = x^{-n}$. Nach dem Umschreiben gilt $(x^\\alpha)' = \\alpha x^{\\alpha - 1}$ für jeden reellen Exponenten $\\alpha$.
+
+**Probe:** $(\\sqrt[3]{x})' = (x^{1/3})' = \\tfrac{1}{3} x^{-2/3} = \\dfrac{1}{3 \\sqrt[3]{x^2}}$ — funktioniert sauber.
+
+**Typischer Fehler:** Die Wurzel oder den Bruch nicht umschreiben und dann mit „eigenen Regeln" rechnen, die meist falsch sind. Erst umschreiben, dann ableiten.`,
+        [
+          'Welche Schreibweise hat die Potenzregel als Eingabe nötig?',
+          'Wurzel = Potenz mit Bruch im Exponent ($\\sqrt[n]{x} = x^{1/n}$).',
+          'Bruch = Potenz mit negativem Exponent ($1/x^n = x^{-n}$).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pot-negativ', 'pot-gebrochen', 'pot-regel'] },
+      ),
+      // Zeile 12: apply-guided · multiple-choice · uses=[pot-gebrochen]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\sqrt[3]{x} = x^{1/3}$?',
+        [
+          '$\\dfrac{1}{3} x^{-2/3}$',
+          '$3 x^{2/3}$',
+          '$\\dfrac{1}{3} x^{4/3}$',
+          '$x^{-2/3}$',
+        ],
+        0,
+        `**Ansatz:** Potenzregel mit $n = \\tfrac{1}{3}$. Vorfaktor $\\tfrac{1}{3}$, neuer Exponent $\\tfrac{1}{3} - 1 = -\\tfrac{2}{3}$.
+
+**Rechnung:** $(x^{1/3})' = \\tfrac{1}{3} \\cdot x^{1/3 - 1} = \\tfrac{1}{3} \\cdot x^{-2/3} = \\dfrac{1}{3 \\sqrt[3]{x^2}}$.
+
+**Probe:** Bei $x = 1$: $f'(1) = \\tfrac{1}{3}$. Sekantensteigung $\\dfrac{1{,}001^{1/3} - 1}{0{,}001} \\approx 0{,}333$ ✓.
+
+**Typischer Fehler:** $\\tfrac{1}{3} - 1 = -\\tfrac{2}{3}$ falsch rechnen ($-\\tfrac{1}{3}$ oder $+\\tfrac{2}{3}$). Oder Kehrwert beim Vorfaktor bilden ($3$ statt $\\tfrac{1}{3}$).`,
+        [
+          'Schreibe die Wurzel als Potenz: $\\sqrt[3]{x} = x^{1/3}$.',
+          'Potenzregel mit $n = \\tfrac{1}{3}$: Vorfaktor = $\\tfrac{1}{3}$, neuer Exponent = $\\tfrac{1}{3} - 1$.',
+          '$\\tfrac{1}{3} - 1 = \\tfrac{1}{3} - \\tfrac{3}{3} = -\\tfrac{2}{3}$.',
+        ],
+        {
+          1: 'Vorfaktor falsch (Kehrwert): $n = \\tfrac{1}{3}$ steht als Vorfaktor, nicht $\\tfrac{1}{n} = 3$. Außerdem ist der Exponent $\\tfrac{1}{3} - 1 = -\\tfrac{2}{3}$ negativ, nicht positiv $\\tfrac{2}{3}$.',
+          2: 'Exponent falsch berechnet: $\\tfrac{1}{3} - 1 = -\\tfrac{2}{3}$, nicht $+\\tfrac{4}{3}$. Beim "minus eins" wird der Exponent KLEINER, hier sogar negativ.',
+          3: 'Vorfaktor $\\tfrac{1}{3}$ vergessen. Die Potenzregel hat den ALTEN Exponenten als Vorfaktor — bei gebrochenen Exponenten ist das ein Bruch.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pot-gebrochen', 'pot-regel'] },
+      ),
+      // Zeile 13: apply-independent · number-input · uses=[pot-negativ, pot-regel]
+      ni(
+        'Berechne $f\'(2)$ für $f(x) = \\dfrac{1}{x^3} = x^{-3}$. Gib das Ergebnis als Dezimalzahl an.',
+        -0.1875,
+        0.001,
+        '',
+        `**Ansatz:** Erst als Potenz schreiben, dann Potenzregel mit $n = -3$, dann $x_0 = 2$ einsetzen.
+
+**Rechnung:** $f'(x) = -3 \\cdot x^{-3-1} = -3 x^{-4} = -\\dfrac{3}{x^4}$. Bei $x_0 = 2$: $f'(2) = -\\dfrac{3}{2^4} = -\\dfrac{3}{16} = -0{,}1875$.
+
+**Probe:** Sekantensteigung $\\dfrac{1/2{,}001^3 - 1/2^3}{0{,}001} \\approx -0{,}1875$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen (positiv statt negativ). Oder $-3 - 1 = -2$ rechnen statt $-4$.`,
+        [
+          'Schreibe $1/x^3$ als $x^{-3}$.',
+          'Potenzregel: Vorfaktor $-3$, neuer Exponent $-3 - 1 = -4$.',
+          '$2^4 = 16$, dann $-3/16 = -0{,}1875$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pot-negativ', 'pot-regel'] },
+      ),
+      // Zeile 14: error-analysis · multiple-choice · uses=[pot-negativ]
+      mc(
+        'Lina berechnet $(x^{-4})\' = 4 x^{-5}$. Was ist ihr Fehler?',
+        [
+          'Sie hat das Vorzeichen verloren — bei negativen Exponenten wandert der NEGATIVE Wert als Vorfaktor nach vorn. Richtig: $(x^{-4})\' = -4 x^{-5}$.',
+          'Bei negativen Exponenten gilt die Potenzregel nicht.',
+          'Der neue Exponent muss $-3$ sein, nicht $-5$.',
+          '$x^{-4}$ ist nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Die Potenzregel $(x^n)' = n x^{n-1}$ gilt für JEDES reelle $n$ — der Vorfaktor übernimmt aber auch das VORZEICHEN von $n$.
+
+**Rechnung:** Mit $n = -4$: Vorfaktor $-4$, neuer Exponent $-4 - 1 = -5$. Also $(x^{-4})' = -4 x^{-5} = -\\dfrac{4}{x^5}$.
+
+**Probe:** $f(x) = 1/x^4$ ist eine fallende Funktion für $x > 0$ — Ableitung muss negativ sein, also Vorzeichen $-$ ✓.
+
+**Typischer Fehler:** Genau dieser — den Betrag des Exponenten als Vorfaktor schreiben statt den Exponenten selbst (mit Vorzeichen).`,
+        [
+          'Welches Vorzeichen hat $-4$ als Vorfaktor?',
+          '$n$ wandert MIT Vorzeichen nach vorn — der Vorfaktor ist $-4$, nicht $4$.',
+          'Vergleiche mit der Funktion: $1/x^4$ fällt für $x>0$, also $f\' < 0$.',
+        ],
+        {
+          1: 'Doch, die Potenzregel gilt für alle reellen Exponenten — auch negative und gebrochene. Linas Berechnung wäre fast korrekt, ihr fehlt nur das Vorzeichen.',
+          2: 'Der neue Exponent $-5$ ist korrekt: $-4 - 1 = -5$. Linas Fehler liegt im Vorfaktor, nicht im neuen Exponenten.',
+          3: '$x^{-4} = 1/x^4$ ist für $x \\neq 0$ definiert und differenzierbar. Es gibt keinen Grund, die Funktion abzuweisen.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pot-negativ', 'pot-regel'] },
+      ),
+      // Zeile 15: transfer · number-input · uses=[pot-gebrochen]
+      ni(
+        'Berechne $f\'(4)$ für $f(x) = \\sqrt{x}$. Gib das Ergebnis als Dezimalzahl an.',
+        0.25,
+        0.001,
+        '',
+        `**Ansatz:** $\\sqrt{x} = x^{1/2}$. Potenzregel mit $n = \\tfrac{1}{2}$, dann $x_0 = 4$ einsetzen.
+
+**Rechnung:** $f'(x) = \\tfrac{1}{2} x^{-1/2} = \\dfrac{1}{2 \\sqrt{x}}$. Bei $x_0 = 4$: $f'(4) = \\dfrac{1}{2 \\cdot 2} = \\dfrac{1}{4} = 0{,}25$.
+
+**Probe:** Sekantensteigung $\\dfrac{\\sqrt{4{,}001} - 2}{0{,}001} \\approx 0{,}2500$ ✓.
+
+**Typischer Fehler:** Vorfaktor $\\tfrac{1}{2}$ vergessen oder $\\sqrt{4} = 4$ rechnen.`,
+        [
+          'Schreibe $\\sqrt{x} = x^{1/2}$.',
+          'Potenzregel mit $n = \\tfrac{1}{2}$: $f\'(x) = \\tfrac{1}{2} x^{-1/2} = \\dfrac{1}{2 \\sqrt{x}}$.',
+          '$\\sqrt{4} = 2$, dann $\\dfrac{1}{2 \\cdot 2} = \\dfrac{1}{4}$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pot-gebrochen', 'pot-regel'] },
+      ),
+      // Bonus SG 2: apply-guided · multiple-choice · uses=[pot-gebrochen]
+      mc(
+        'Was ist die Ableitung von $f(x) = x^{3/2}$ (= $\\sqrt{x^3}$)?',
+        [
+          '$\\tfrac{3}{2} x^{1/2}$',
+          '$\\tfrac{3}{2} x^{3/2}$',
+          '$\\tfrac{2}{3} x^{1/2}$',
+          '$\\tfrac{3}{2} x^{5/2}$',
+        ],
+        0,
+        `**Ansatz:** Potenzregel mit $n = \\tfrac{3}{2}$. Vorfaktor $\\tfrac{3}{2}$, neuer Exponent $\\tfrac{3}{2} - 1 = \\tfrac{1}{2}$.
+
+**Rechnung:** $(x^{3/2})' = \\tfrac{3}{2} x^{1/2} = \\tfrac{3}{2} \\sqrt{x}$.
+
+**Probe:** Bei $x = 1$: $f'(1) = \\tfrac{3}{2} = 1{,}5$. Sekantensteigung $\\dfrac{1{,}001^{3/2} - 1}{0{,}001} \\approx 1{,}50$ ✓.
+
+**Typischer Fehler:** Den Exponenten nicht um $1$ reduzieren oder den Kehrwert nehmen.`,
+        [
+          'Potenzregel mit $n = \\tfrac{3}{2}$.',
+          '$\\tfrac{3}{2} - 1 = \\tfrac{1}{2}$ — den Exponenten subtrahieren, nicht den Bruch invertieren.',
+          'Neuer Vorfaktor = alter Exponent = $\\tfrac{3}{2}$.',
+        ],
+        {
+          1: 'Exponent nicht reduziert. $\\tfrac{3}{2} - 1 = \\tfrac{1}{2}$, nicht $\\tfrac{3}{2}$. Die Potenzregel verlangt IMMER „minus $1$".',
+          2: 'Vorfaktor invertiert. $n = \\tfrac{3}{2}$ wandert UNVERÄNDERT nach vorn — nicht als Kehrwert $\\tfrac{2}{3}$.',
+          3: 'Exponent in falsche Richtung verändert: $\\tfrac{3}{2} - 1 = \\tfrac{1}{2}$, nicht $\\tfrac{5}{2}$. Die Regel zieht ab, addiert nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pot-gebrochen', 'pot-regel'] },
+      ),
+    ],
+
+    // [3] Konstanten und Konstante Faktoren
+    3: [
+      // Zeile 16: recognize · true-false · uses=[konst-regel]
+      tf(
+        'Die Ableitung einer Konstanten ist null: $(c)\' = 0$ für jede reelle Zahl $c$. Damit gilt z. B. $(42)\' = 0$ und $(\\pi)\' = 0$.',
+        true,
+        `**Ansatz:** Eine Konstante ändert sich nicht — also ist ihre Änderungsrate null.
+
+**Rechnung:** $(c)' = \\lim_{h \\to 0} \\dfrac{c - c}{h} = \\lim_{h \\to 0} \\dfrac{0}{h} = 0$. Funktioniert für jede reelle Konstante.
+
+**Probe:** $(42)' = 0$, $(\\pi)' = 0$, $(\\sqrt{2})' = 0$ — alles korrekt, weil keine $x$-Abhängigkeit.
+
+**Typischer Fehler:** Konstanten wie Variablen behandeln (z.B. $(42)' = 42$). Aber $42$ hat keine $x$-Abhängigkeit, also keine Steigung.`,
+        [
+          'Was passiert mit dem Funktionswert, wenn $x$ sich verändert, aber $f(x) = 42$?',
+          'Konstanter Wert $\\Rightarrow$ keine Veränderung $\\Rightarrow$ Steigung $0$.',
+          'Anschaulich: $f(x) = 42$ ist eine waagerechte Gerade, deren Tangente überall Steigung $0$ hat.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['konst-regel'] },
+      ),
+      // Zeile 17: apply-guided · multiple-choice · uses=[faktor-regel, konst-regel]
+      mc(
+        'Was ist die Ableitung von $f(x) = 7 x^3 + 12$?',
+        ['$21 x^2$', '$21 x^2 + 12$', '$7 x^2 + 12$', '$21 x^3$'],
+        0,
+        `**Ansatz:** Summenregel + Faktorregel + Konstantenregel: $(7x^3)' = 7 \\cdot 3 x^2 = 21 x^2$, $(12)' = 0$.
+
+**Rechnung:** $f'(x) = 21 x^2 + 0 = 21 x^2$.
+
+**Probe:** Bei $x = 1$: $f'(1) = 21$. Sekantensteigung $\\dfrac{(7 \\cdot 1{,}001^3 + 12) - 19}{0{,}001} \\approx 21{,}02$ ✓.
+
+**Typischer Fehler:** Konstante $12$ stehen lassen (mitgeschleppt) statt auf $0$ abzuleiten.`,
+        [
+          'Summen: jeden Summanden einzeln.',
+          'Konstante: $(12)\' = 0$ — verschwindet komplett.',
+          'Faktorregel: Vorfaktor $7$ bleibt, Exponent wird reduziert.',
+        ],
+        {
+          1: 'Konstante $12$ wurde mitgeschleppt — sie hat aber Ableitung $0$. Korrekt: nur der $x$-abhängige Teil bleibt übrig.',
+          2: 'Faktorregel falsch: $(7 x^3)\' = 7 \\cdot (x^3)\' = 7 \\cdot 3 x^2 = 21 x^2$ (nicht $7 x^2$). Der $3$ aus der Potenzregel wurde vergessen. Außerdem wurde die Konstante $12$ wieder mitgeschleppt.',
+          3: 'Exponent nicht reduziert. Korrekt ist $(7 x^3)\' = 21 x^2$ (Exponent $3 \\to 2$), nicht $21 x^3$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['faktor-regel', 'konst-regel', 'pot-regel'] },
+      ),
+      // Zeile 18: apply-independent · number-input · uses=[faktor-regel, pot-regel]
+      ni(
+        'Berechne $f\'(1)$ für $f(x) = 5 x^4$.',
+        20,
+        0,
+        '',
+        `**Ansatz:** Faktorregel + Potenzregel: konstanter Faktor $5$ bleibt, $(x^4)' = 4 x^3$.
+
+**Rechnung:** $f'(x) = 5 \\cdot 4 x^3 = 20 x^3$. Bei $x_0 = 1$: $f'(1) = 20 \\cdot 1 = 20$.
+
+**Probe:** Sekantensteigung $\\dfrac{5 \\cdot 1{,}001^4 - 5}{0{,}001} \\approx 20{,}03$ ✓.
+
+**Typischer Fehler:** Vorfaktor $5$ vergessen ($4 x^3$ statt $20 x^3$) oder $1^3 = 0$ statt $1$ rechnen.`,
+        [
+          'Faktorregel: konstanter Vorfaktor bleibt erhalten.',
+          'Potenzregel auf $x^4$: $(x^4)\' = 4 x^3$.',
+          'Vorfaktoren multiplizieren: $5 \\cdot 4 = 20$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktor-regel', 'pot-regel'] },
+      ),
+      // Zeile 19: error-analysis · multiple-choice · uses=[konst-regel]
+      mc(
+        'Max berechnet $f(x) = 4 x^2 + 9$. Er gibt als Ableitung $f\'(x) = 8 x + 9$ an. Was ist sein Fehler?',
+        [
+          'Er hat die Konstante $9$ wie eine Variable behandelt — Konstanten haben Ableitung $0$. Richtig: $f\'(x) = 8 x$.',
+          '$(4 x^2)\' = 8 x$ ist falsch berechnet.',
+          'Er hätte zuerst die Konstante isolieren müssen.',
+          'Bei Polynomen müssen alle Summanden gleich behandelt werden.',
+        ],
+        0,
+        `**Ansatz:** Konstantenregel $(c)' = 0$ konsequent anwenden. Jeder Summand ohne $x$-Abhängigkeit verschwindet.
+
+**Rechnung:** Korrekt: $f'(x) = (4 x^2)' + (9)' = 8 x + 0 = 8 x$. Max hat die $9$ unverändert "abgeschrieben".
+
+**Probe:** Bei $x = 1$: korrektes $f'(1) = 8$. Sekantensteigung $\\dfrac{(4 \\cdot 1{,}001^2 + 9) - 13}{0{,}001} \\approx 8{,}00$ ✓.
+
+**Typischer Fehler:** Genau dieser — konstante Summanden „mitschleppen". Oft passiert, wenn man die Funktion einfach mit gleichem Aufbau abschreibt und nur Exponenten ändert.`,
+        [
+          'Welche Ableitungsregel gilt für Konstanten?',
+          '$(c)\' = 0$ — Konstanten verschwinden komplett, nicht nur teilweise.',
+          'Prüfe Max\'s zweiten Summanden mit der Konstantenregel.',
+        ],
+        {
+          1: '$(4 x^2)\' = 4 \\cdot 2 x = 8 x$ ist korrekt. Faktorregel + Potenzregel sauber angewandt. Max\' Fehler liegt nur beim konstanten Summanden.',
+          2: 'Konstanten müssen nicht isoliert werden — die Summenregel erlaubt das Ableiten Summand für Summand. Das eigentliche Problem ist die FALSCHE Ableitung der Konstante, nicht ihre Handhabung im Ausdruck.',
+          3: 'Im Gegenteil: bei der Summenregel werden Summanden VERSCHIEDEN behandelt — variable Summanden mit Potenzregel, Konstanten mit Konstantenregel. „Gleich behandeln" wäre der falsche Ansatz.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['konst-regel'] },
+      ),
+      // Zeile 20: transfer · matching · uses=[konst-regel, faktor-regel]
+      matching(
+        'Ordne jeder Funktion ihre Ableitung zu.',
+        [
+          { left: '$f(x) = 100$', right: '$f\'(x) = 0$' },
+          { left: '$f(x) = 5 x$', right: '$f\'(x) = 5$' },
+          { left: '$f(x) = 7 x^2$', right: '$f\'(x) = 14 x$' },
+          { left: '$f(x) = -3 x^4$', right: '$f\'(x) = -12 x^3$' },
+        ],
+        `**Ansatz:** Vier Bauteile der Ableitungsregeln: Konstante (=0), linearer Term (=Vorfaktor), Faktorregel + Potenzregel.
+
+**Rechnung:**
+- $(100)' = 0$ (Konstantenregel)
+- $(5 x)' = 5 \\cdot (x)' = 5 \\cdot 1 = 5$ (Faktor + Potenzregel mit $n = 1$)
+- $(7 x^2)' = 7 \\cdot 2 x = 14 x$
+- $(-3 x^4)' = -3 \\cdot 4 x^3 = -12 x^3$ (Vorzeichen wird mitgenommen)
+
+**Probe:** Vier verschiedene Vorfaktoren und Exponenten — jede Ableitung hat eine eindeutige Struktur. Z.B. nur $f = 5 x$ hat eine *konstante* Ableitung; nur $f = 100$ wird zu $0$.
+
+**Typischer Fehler:** $(5 x)'$ als $5 x^0 = 5$ richtig erkennen, aber bei $(7 x^2)'$ den Faktor $2$ aus der Potenzregel vergessen ($7 x$ statt $14 x$).`,
+        [
+          'Konstante: Ableitung $= 0$.',
+          'Linearer Term $c x$: Ableitung $= c$.',
+          'Faktorregel $\\cdot$ Potenzregel: Vorfaktoren multiplizieren, Exponent minus $1$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['konst-regel', 'faktor-regel', 'pot-regel'] },
+      ),
+      // Bonus SG 3: apply-independent · number-input · uses=[faktor-regel, pot-regel]
+      ni(
+        'Berechne $f\'(3)$ für $f(x) = 6 x^2 + 8$.',
+        36,
+        0,
+        '',
+        `**Ansatz:** Konstante verschwindet, Faktorregel + Potenzregel auf $6 x^2$.
+
+**Rechnung:** $f'(x) = 12 x + 0 = 12 x$. Bei $x_0 = 3$: $f'(3) = 36$.
+
+**Probe:** Sekantensteigung $\\dfrac{(6 \\cdot 3{,}001^2 + 8) - 62}{0{,}001} \\approx 36{,}01$ ✓.
+
+**Typischer Fehler:** Konstante $8$ mitnehmen oder Vorfaktor $6 \\cdot 2 = 12$ vergessen.`,
+        [
+          'Konstante $8$ hat Ableitung $0$ — wird komplett gestrichen.',
+          'Faktor $6$ bleibt, Potenzregel auf $x^2$: $6 \\cdot 2 x = 12 x$.',
+          'Bei $x_0 = 3$: $12 \\cdot 3 = 36$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktor-regel', 'konst-regel', 'pot-regel'] },
+      ),
+    ],
+  },
 }

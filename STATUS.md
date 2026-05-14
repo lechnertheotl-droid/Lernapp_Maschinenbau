@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3564 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2818 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1664 / 1664 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 423 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3588 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2842 (79 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1674 / 1674 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 427 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **137** (Lesson-Path: 113 · Goal-Tasks: 24)
-- 4-Block: 76/137 (55 %) 🔴
-- MC-wAE: 95/95 (100 %) ✅
-- Sub-Goals: 4/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **161** (Lesson-Path: 113 · Goal-Tasks: 48)
+- 4-Block: 100/161 (62 %) 🟡
+- MC-wAE: 105/105 (100 %) ✅
+- Sub-Goals: 8/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -378,7 +378,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `abl-1-1` Was ist eine Ableitung? | 4 | 4/4 | 29 | 15/6/5/2/1 | 29/29 | 15/15 | ✅ | — |
-| `abl-1-2` Potenzregel und Summenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 6/6 | 6/6 | ✅ | +4 Goal |
+| `abl-1-2` Potenzregel und Summenregel | 4 | 4/4 | 30 | 16/8/5/1/0 | 30/30 | 16/16 | ✅ | — |
 | `abl-1-3` Ableitungen elementarer Funktionen | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-4` Kettenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 22 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 21 Lessons
 
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
@@ -7403,54 +7403,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `abl-1-2` · Potenzregel und Summenregel
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-1-1` → `diff-quotient`, `tangenten-steigung`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `pot-regel` — Potenzregel $(x^n)'=nx^{n-1}$ (gilt für alle reellen $n$ im Definitionsbereich) (SG 0)
-  2. `konst-regel` — Konstante hat Ableitung 0: $(c)'=0$ (SG 3)
-  3. `faktor-regel` — Faktorregel: $(c\cdot f)'=c\cdot f'$ (SG 3)
-  4. `summen-regel` — Summenregel: $(f+g)'=f'+g'$ (SG 1)
-  5. `pot-negativ` — Negative Exponenten: $1/x^n=x^{-n}$ → Potenzregel anwenden ⇐ `pot-regel` (SG 2)
-  6. `pot-gebrochen` — Gebrochene Exponenten: $\sqrt[n]{x}=x^{1/n}$ → Potenzregel ⇐ `pot-regel` (SG 2)
-  7. `polynom-abl` — Polynom ableiten: Summen- + Faktor- + Potenzregel kombiniert ⇐ `pot-regel`, `faktor-regel`, `summen-regel` (SG 1)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pot-regel` · **0/5+** — Potenzregel $(x^n)'=nx^{n-1}$
-  - 🔴 [1] _hoch_ · Konzepte: `summen-regel`, `polynom-abl` · **0/5+** — Summenregel $(f+g)'=f'+g'$
-  - 🔴 [2] _hoch_ · Konzepte: `pot-negativ`, `pot-gebrochen` · **0/5+** — Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
-  - 🔴 [3] _mittel_ · Konzepte: `konst-regel`, `faktor-regel` · **0/5+** — Konstanten und Konstante Faktoren richtig behandeln
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pot-regel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pot-regel` | 1 | 0 | 🔴 | $f'(x)$ an Stelle $x_0$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 | Exponent nicht runtergezogen |
-|  5 | 0 | transfer           | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `summen-regel` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `summen-regel`, `polynom-abl` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `polynom-abl` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `summen-regel` | 1 | 0 | 🔴 | Summen-Produkt-Verwechslung |
-| 10 | 1 | transfer           | number-input     | `polynom-abl` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pot-negativ`, `pot-gebrochen` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pot-gebrochen` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `pot-negativ`, `pot-regel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pot-negativ` | 1 | 0 | 🔴 | Vorzeichen bei $x^{-n}$ vergessen |
-| 15 | 2 | transfer           | number-input     | `pot-gebrochen` | 1 | 0 | 🔴 | $\sqrt{x}$ |
-| 16 | 3 | recognize          | true-false       | `konst-regel` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `faktor-regel`, `konst-regel` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `faktor-regel`, `pot-regel` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `konst-regel` | 1 | 0 | 🔴 | Konstante als Variable behandelt |
-| 20 | 3 | transfer           | matching         | `konst-regel`, `faktor-regel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-1-3` · Ableitungen elementarer Funktionen
 
