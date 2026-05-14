@@ -207,8 +207,10 @@ export function PathCard({ topics, pathProgress, streak }) {
       {current && (
         <button
           onClick={() => {
-            if (current.kind === 'lesson') navigate(`/topics/${current.topicId}/${current.lessonId}`)
-            else navigate(`/üben?topic=${encodeURIComponent(current.topicId)}`)
+            // PathCard ist die "Lernpfad-Karte" auf dem Dashboard — wer hier
+            // weitermacht, will zurück in den Pfad, nicht in die Themenseite.
+            if (current.kind === 'lesson') navigate(`/topics/${current.topicId}/${current.lessonId}`, { state: { from: '/pfad' } })
+            else navigate(`/üben?topic=${encodeURIComponent(current.topicId)}`, { state: { from: '/pfad' } })
           }}
           className="w-full py-3 bg-primary-700 text-lemon font-mono font-black text-xs uppercase tracking-widest hover:bg-primary-800 transition-colors tap-highlight-none border-t-2 border-ink"
         >
