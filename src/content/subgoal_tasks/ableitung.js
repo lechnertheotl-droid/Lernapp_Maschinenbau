@@ -2331,4 +2331,787 @@ export const ableitungSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // abl-1-5 · Extremwerte und Kurvendiskussion
+  // ─────────────────────────────────────────────────────────────────────────
+  'abl-1-5': {
+    // [0] Notwendige Bedingung: f'(x_0) = 0
+    0: [
+      // Zeile 1: recognize · true-false · uses=[fprime-null]
+      tf(
+        'Wenn $f$ in $x_0$ ein lokales Extremum hat (und dort differenzierbar ist), dann muss $f\'(x_0) = 0$ gelten — die Tangente verläuft waagerecht.',
+        true,
+        `**Ansatz:** Notwendige Bedingung für lokales Extremum: waagerechte Tangente. Satz von Fermat.
+
+**Rechnung:** Ist $x_0$ ein inneres lokales Maximum, dann ist $f'(x_0) = 0$ (analog Minimum). Geometrisch: am Gipfel/Tal verläuft die Tangente waagerecht.
+
+**Probe:** $f(x) = x^2 + 5$ hat Minimum bei $x = 0$. $f'(x) = 2x$, $f'(0) = 0$ ✓.
+
+**Typischer Fehler:** Die Umkehrung „$f'(x_0) = 0 \\Rightarrow$ Extremum" annehmen. Gegenbeispiel: $f(x) = x^3$ mit $f'(0) = 0$ ist Sattelpunkt, kein Extremum.`,
+        [
+          'Welche Steigung hat eine Tangente an einem Hügel oder Tal?',
+          'Notwendige Bedingung = was bei jedem Extremum gilt.',
+          'Vorsicht: notwendig $\\neq$ hinreichend — $x^3$ erfüllt sie auch ohne Extremum.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['fprime-null'] },
+      ),
+      // Zeile 2: apply-guided · multiple-choice · uses=[fprime-null]
+      mc(
+        'Für $f(x) = x^2 - 6 x + 5$ ist $f\'(x) = 2 x - 6$. An welcher Stelle $x_0$ kann ein Extremum vorliegen?',
+        ['$x_0 = 3$', '$x_0 = -3$', '$x_0 = 6$', '$x_0 = 0$'],
+        0,
+        `**Ansatz:** Notwendige Bedingung: $f'(x_0) = 0$ — Nullstelle der Ableitung suchen.
+
+**Rechnung:** $2 x - 6 = 0 \\Leftrightarrow x = 3$. Einziger Kandidat: $x_0 = 3$.
+
+**Probe:** $f''(x) = 2 > 0$, also bei $x_0 = 3$ tatsächlich ein lokales Minimum. $f(3) = 9 - 18 + 5 = -4$.
+
+**Typischer Fehler:** Vorzeichen falsch lösen ($-3$) oder durch falsche Konstante teilen ($6$).`,
+        [
+          'Setze $f\'(x) = 0$ und löse nach $x$.',
+          '$2 x - 6 = 0 \\Rightarrow 2 x = 6 \\Rightarrow x = ?$',
+          'Vorzeichen beachten: $-6$ wandert nach rechts und wird $+6$.',
+        ],
+        {
+          1: 'Vorzeichen falsch — aus $2 x - 6 = 0$ folgt $2 x = +6$, also $x = +3$, nicht $-3$.',
+          2: 'Durch $2$ nicht geteilt — $2 x = 6$ liefert $x = 3$, nicht $x = 6$. Der Faktor $2$ vor $x$ muss noch durchdividiert werden.',
+          3: '$f\'(0) = -6 \\neq 0$ — bei $x = 0$ ist die Tangente nicht waagerecht. Die Funktion hat dort keine waagerechte Tangente und damit kein Extremum.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['fprime-null'] },
+      ),
+      // Zeile 3: apply-independent · number-input · uses=[fprime-null]
+      ni(
+        'Die Funktion $f(x) = x^3 - 12 x + 1$ hat zwei Extremum-Kandidaten (Nullstellen von $f\'$). Bestimme den POSITIVEN.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Notwendige Bedingung: $f'(x) = 0$. Quadratische Gleichung lösen, positive Lösung wählen.
+
+**Rechnung:** $f'(x) = 3 x^2 - 12 = 3(x^2 - 4) = 3(x-2)(x+2) = 0 \\Leftrightarrow x = \\pm 2$. Positiv: $x = 2$.
+
+**Probe:** $f'(2) = 12 - 12 = 0$ ✓. $f''(x) = 6 x$, $f''(2) = 12 > 0$ → lokales Minimum bei $x = 2$.
+
+**Typischer Fehler:** Nur positive Wurzel ziehen und die negative übersehen — bei dieser Aufgabe ist die negative gerade nicht gesucht, aber beim Auflisten ALLER Kandidaten muss man beide bedenken.`,
+        [
+          'Bilde $f\'(x)$ und setze gleich $0$.',
+          'Quadratische Gleichung $x^2 = 4$ hat ZWEI Lösungen.',
+          'Aus $\\pm 2$ den positiven Wert wählen.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['fprime-null'] },
+      ),
+      // Zeile 4: error-analysis · multiple-choice · uses=[fprime-null]
+      mc(
+        'Tim behauptet: „Weil $f\'(0) = 0$ bei $f(x) = x^3$, hat $f$ bei $x = 0$ ein lokales Extremum." Was ist sein Fehler?',
+        [
+          'Er hat „notwendig" mit „hinreichend" verwechselt — $f\'(x_0) = 0$ ist NOTWENDIG, aber nicht hinreichend. Bei $f(x) = x^3$ ist $x = 0$ ein Sattelpunkt (kein Extremum), weil $f\'$ kein Vorzeichen wechselt.',
+          '$f\'(0) = 0$ stimmt gar nicht für $f(x) = x^3$.',
+          'Bei Polynomen dritten Grades gibt es nie Extrema.',
+          'Er hätte den Definitionsbereich angeben müssen.',
+        ],
+        0,
+        `**Ansatz:** „Notwendig" heißt: Bedingung MUSS erfüllt sein (sonst kein Extremum). „Hinreichend" heißt: Bedingung erfüllt ⇒ garantiert Extremum. Tim setzt notwendig = hinreichend.
+
+**Rechnung:** $f(x) = x^3$: $f'(x) = 3 x^2$, $f'(0) = 0$ ✓ (notwendige Bedingung erfüllt). Aber $f$ ist überall streng monoton wachsend, also kein Extremum bei $x = 0$ — Sattelpunkt.
+
+**Probe:** $f(-0{,}1) = -0{,}001 < f(0) = 0 < f(0{,}1) = 0{,}001$ — kein Tal, kein Berg. ✓
+
+**Typischer Fehler:** Genau dieser — die Umkehrung des Satzes von Fermat fälschlich annehmen. Hilft: immer hinreichende Bedingung ($f''$-Test oder VZW von $f'$) zusätzlich prüfen.`,
+        [
+          'Was bedeutet „notwendige Bedingung"?',
+          'Erfüllt $f(x) = x^3$ bei $x = 0$ wirklich ein Extremum?',
+          'Vorzeichen von $f\' = 3 x^2$ links und rechts von $0$ — wechselt es?',
+        ],
+        {
+          1: '$(x^3)\' = 3 x^2$, bei $x = 0$: $3 \\cdot 0 = 0$. Die notwendige Bedingung IST erfüllt — Tims Fehler liegt nicht hier.',
+          2: 'Polynome dritten Grades können sehr wohl Extrema haben — z.B. $f(x) = x^3 - 3 x$ hat Max bei $x = -1$ und Min bei $x = 1$. Tims Fehler ist die fehlende hinreichende Prüfung im konkreten Fall, nicht eine grundsätzliche Aussage über Polynome.',
+          3: '$f(x) = x^3$ ist auf ganz $\\mathbb{R}$ definiert und differenzierbar. Der Definitionsbereich ist hier kein Problem.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['fprime-null'] },
+      ),
+      // Zeile 5: transfer · multiple-choice · uses=[fprime-null]
+      mc(
+        'Welche der folgenden Funktionen erfüllt die notwendige Bedingung $f\'(x_0) = 0$ in $x_0 = 1$ (also: hat dort waagerechte Tangente)?',
+        [
+          '$f(x) = (x - 1)^2$',
+          '$f(x) = x^2 - 1$',
+          '$f(x) = x^3 + 1$',
+          '$f(x) = e^x$',
+        ],
+        0,
+        `**Ansatz:** Für jede Funktion $f'(1)$ ausrechnen und prüfen, ob das Ergebnis $0$ ist.
+
+**Rechnung:**
+- $f(x) = (x-1)^2$: $f'(x) = 2(x-1)$, $f'(1) = 0$ ✓
+- $f(x) = x^2 - 1$: $f'(x) = 2 x$, $f'(1) = 2 \\neq 0$
+- $f(x) = x^3 + 1$: $f'(x) = 3 x^2$, $f'(1) = 3 \\neq 0$
+- $f(x) = e^x$: $f'(x) = e^x$, $f'(1) = e \\approx 2{,}72 \\neq 0$
+
+**Probe:** $f(x) = (x-1)^2$ hat bei $x = 1$ tatsächlich ein Minimum (Scheitelpunkt der nach oben offenen Parabel) — passt zur Aussage „waagerechte Tangente bei $x = 1$".
+
+**Typischer Fehler:** Die Funktionen ohne Ableitung anschauen und nur Funktionswerte einsetzen. Notwendige Bedingung verlangt $f'$ auswerten, nicht $f$.`,
+        [
+          'Was muss $f\'(1)$ ergeben, damit die notwendige Bedingung erfüllt ist?',
+          'Berechne $f\'(x)$ für jede Option und werte bei $x = 1$ aus.',
+          'Bei einer verschobenen Parabel $(x - a)^2$ liegt der Scheitel bei $x = a$.',
+        ],
+        {
+          1: '$f\'(x) = 2 x$, bei $x = 1$: $f\'(1) = 2 \\neq 0$. Die einfache Parabel $x^2 - 1$ hat ihren Scheitel bei $x = 0$, nicht bei $x = 1$.',
+          2: '$f\'(x) = 3 x^2$, $f\'(1) = 3 \\neq 0$. Die Kurve $x^3$ ist bei $x = 1$ streng wachsend mit Steigung $3$ — keine waagerechte Tangente.',
+          3: '$f\'(x) = e^x$, $f\'(1) = e \\approx 2{,}72 \\neq 0$. Die Exponentialfunktion hat nirgendwo waagerechte Tangente, weil $e^x > 0$ überall ist.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['fprime-null', 'pot-regel'] },
+      ),
+    ],
+
+    // [1] Hinreichend: f''-Test (Min/Max)
+    1: [
+      // Zeile 6: recognize · true-false · uses=[hin-min-max, f2prime]
+      tf(
+        'Wenn $f\'(x_0) = 0$ und $f\'\'(x_0) > 0$, liegt bei $x_0$ ein lokales Minimum. Bei $f\'\'(x_0) < 0$ entsprechend ein lokales Maximum.',
+        true,
+        `**Ansatz:** $f''$-Test als hinreichende Bedingung. Vorzeichen von $f''$ entscheidet Min/Max.
+
+**Rechnung:** $f''(x_0) > 0$ heißt linksgekrümmt (Kurve „lächelt") — die waagerechte Tangente liegt im Tal $\\Rightarrow$ Minimum. $f''(x_0) < 0$ heißt rechtsgekrümmt (Kurve „traurig") — Tangente am Gipfel $\\Rightarrow$ Maximum.
+
+**Probe:** $f(x) = x^2$ bei $x = 0$: $f''(0) = 2 > 0$ ✓ Min. $f(x) = -x^2$ bei $x = 0$: $f''(0) = -2 < 0$ ✓ Max.
+
+**Typischer Fehler:** Vorzeichen Min/Max verwechseln. Merksatz: „positives $f''$ = lächelnde Kurve = Tal = Minimum".`,
+        [
+          'Was bedeutet Linkskrümmung geometrisch?',
+          '$f\'\' > 0$ entspricht einer „Lächel-Kurve", $f\'\' < 0$ einer „Traurig-Kurve".',
+          'Tal = Minimum, Gipfel = Maximum.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['hin-min-max', 'f2prime', 'fprime-null'] },
+      ),
+      // Zeile 7: apply-guided · multiple-choice · uses=[hin-min-max]
+      mc(
+        'Für eine Funktion $f$ gilt $f\'(2) = 0$ und $f\'\'(2) = -3$. Welcher Typ Stelle liegt bei $x = 2$ vor?',
+        ['lokales Maximum', 'lokales Minimum', 'Wendepunkt', 'Sattelpunkt'],
+        0,
+        `**Ansatz:** $f''$-Test mit gegebenen Werten anwenden.
+
+**Rechnung:** $f'(2) = 0$: notwendige Bedingung erfüllt. $f''(2) = -3 < 0$: Rechtskrümmung an dieser Stelle. Hinreichende Bedingung für Maximum.
+
+**Probe:** Bei $f''(x_0) < 0$ ist die Kurve nach unten geöffnet (Gipfel-Form), die waagerechte Tangente liegt also an einem lokalen Hochpunkt.
+
+**Typischer Fehler:** $f''<0$ mit Minimum verwechseln (Vorzeichen vertauscht). Merksatz: negatives $f''$ = traurige Kurve = Gipfel = Maximum.`,
+        [
+          'Was sagt das Vorzeichen von $f\'\'$ über die Krümmung?',
+          '$f\'\' < 0$: Rechtskrümmung → Tangente am Gipfel.',
+          'Gipfel = Maximum.',
+        ],
+        {
+          1: '$f\'\' < 0$ steht für Maximum (Gipfel), nicht Minimum. Bei Minimum wäre $f\'\' > 0$ erforderlich. Merksatz: positives $f\'\'$ → Tal → Min, negatives → Gipfel → Max.',
+          2: 'Ein Wendepunkt erfordert $f\'\'(x_0) = 0$ mit VZW — hier ist $f\'\'(2) = -3 \\neq 0$, also gerade KEIN Wendepunkt-Kandidat.',
+          3: 'Sattelpunkt verlangt $f\'(x_0) = 0$ UND $f\'\'(x_0) = 0$ — die zweite Bedingung ist hier nicht erfüllt ($f\'\'(2) = -3$). Mit eindeutigem Vorzeichen von $f\'\'$ ist es ein gewöhnliches Extremum.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['hin-min-max', 'f2prime'] },
+      ),
+      // Zeile 8: apply-independent · number-input · uses=[hin-min-max, fprime-null]
+      ni(
+        'Bestimme die $x$-Koordinate des lokalen Minimums von $f(x) = \\tfrac{1}{3} x^3 - x^2 + 1$.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Vollständiges Extremum-Schema: $f'(x) = 0$ lösen, $f''$-Test für jede Lösung.
+
+**Rechnung:** $f'(x) = x^2 - 2 x = x(x - 2) = 0 \\Rightarrow x = 0$ oder $x = 2$. $f''(x) = 2 x - 2$. $f''(0) = -2 < 0$ → Max bei $x = 0$. $f''(2) = 2 > 0$ → **Minimum** bei $x = 2$.
+
+**Probe:** $f(0) = 1$, $f(2) = 8/3 - 4 + 1 = -1/3$. Tatsächlich $f(2) < f(0)$ und in der Mitte sollte Funktion fallen — passt zu „Max bei 0, Min bei 2".
+
+**Typischer Fehler:** Nur eine der beiden Lösungen von $f'(x) = 0$ als Minimum identifizieren ohne $f''$-Test.`,
+        [
+          'Erst alle Nullstellen von $f\'$ finden.',
+          '$x^2 - 2 x = x(x - 2)$ — zwei Lösungen.',
+          '$f\'\'$-Test entscheidet, welche davon Minimum ist.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['hin-min-max', 'fprime-null', 'f2prime'] },
+      ),
+      // Zeile 9: error-analysis · multiple-choice · uses=[hin-min-max]
+      mc(
+        'Hans hat für eine Funktion $f$ berechnet: $f\'(3) = 0$ und $f\'\'(3) = 5 > 0$. Er folgert: „Dort liegt ein Maximum." Was ist sein Fehler?',
+        [
+          'Er hat das Vorzeichen Min/Max getauscht. $f\'\'(x_0) > 0$ heißt Linkskrümmung (Tal) $\\Rightarrow$ **Minimum**. Maximum wäre $f\'\'(x_0) < 0$.',
+          'Er hätte $f\'\'\'(3)$ prüfen müssen.',
+          '$f\'\'(3) = 5$ kann nicht stimmen, weil $f\'$ schon $0$ ist.',
+          'Bei $f\' = 0$ liegt nie ein Maximum.',
+        ],
+        0,
+        `**Ansatz:** $f''$-Vorzeichen-Konvention: positiv ⇒ Min, negativ ⇒ Max. Hans hat sie verwechselt.
+
+**Rechnung:** Korrekt: $f''(3) = 5 > 0$ heißt Linkskrümmung — die waagerechte Tangente liegt im „lächelnden" Teil der Kurve, also im **Tal** (Minimum). Maximum verlangt $f''<0$ (rechtsgekrümmt, „traurige" Kurve).
+
+**Probe:** Beispiel $f(x) = (x - 3)^2 + 7$: $f'(x) = 2(x-3)$, $f'(3) = 0$. $f''(x) = 2 > 0$. Die Funktion hat hier ein Minimum (Scheitel der nach oben offenen Parabel) ✓.
+
+**Typischer Fehler:** Genau dieser — Vorzeichenkonvention verdrehen. Merksatz: „positiv = Tal = Min", „negativ = Gipfel = Max".`,
+        [
+          'Welche Krümmung gehört zu welchem Extremum?',
+          'Linkskrümmung („Lächeln") $\\Rightarrow$ wo liegt die Tangente?',
+          '$f\'\' > 0$ steht für Min, nicht Max.',
+        ],
+        {
+          1: '$f\'\'\'$ braucht man nur, wenn $f\'\' = 0$ und der $f\'\'$-Test versagt. Hier ist $f\'\'(3) = 5 \\neq 0$ — der $f\'\'$-Test gibt eindeutige Auskunft, nur das Vorzeichen wurde falsch interpretiert.',
+          2: 'Doch, $f\'$ und $f\'\'$ können unabhängig voneinander Werte haben. Beispiel $f(x) = x^2 - 6x + 16$: $f\'(3) = 0$ UND $f\'\'(3) = 2 > 0$ — beide Werte konsistent. Es gibt keinen Widerspruch.',
+          3: 'Doch — Maxima haben $f\'(x_0) = 0$ (waagerechte Tangente am Gipfel). Hans\' Fehler ist die FALSCHE Diagnose Min/Max, nicht die grundsätzliche Existenz von Maxima.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['hin-min-max'] },
+      ),
+      // Zeile 10: transfer · matching · uses=[hin-min-max]
+      matching(
+        'Ordne dem Vorzeichen von $f\'\'(x_0)$ (mit $f\'(x_0) = 0$) den richtigen Stellentyp zu.',
+        [
+          { left: '$f\'\'(x_0) > 0$', right: 'lokales Minimum (Tal — Linkskrümmung)' },
+          { left: '$f\'\'(x_0) < 0$', right: 'lokales Maximum (Gipfel — Rechtskrümmung)' },
+          { left: '$f\'\'(x_0) = 0$', right: '$f\'\'$-Test versagt — höhere Ableitungen oder VZW-Test nötig' },
+          { left: '$f\'\'$ existiert nicht in $x_0$', right: 'Test nicht anwendbar (z. B. Knick wie $|x|$ bei $0$)' },
+        ],
+        `**Ansatz:** Vier Fälle des $f''$-Tests bei $f'(x_0) = 0$.
+
+**Rechnung:**
+- $f''(x_0) > 0$: Linkskrümmung, „lächelnde" Kurve $\\Rightarrow$ Tal $\\Rightarrow$ Minimum
+- $f''(x_0) < 0$: Rechtskrümmung, „traurige" Kurve $\\Rightarrow$ Gipfel $\\Rightarrow$ Maximum
+- $f''(x_0) = 0$: keine Krümmungsinformation — Test versagt
+- $f''$ existiert nicht: z.B. Knickstellen, der Test ist nicht anwendbar
+
+**Probe:** Vier verschiedene Funktionen exemplifizieren jeden Fall: $x^2$ (Min), $-x^2$ (Max), $x^4$ ($f''=0$), $|x|$ (kein $f''$).
+
+**Typischer Fehler:** Drei mögliche Fälle, aber nur Min/Max erinnern und die anderen zwei vergessen — gerade $f''(x_0) = 0$ erfordert Aufmerksamkeit.`,
+        [
+          'Krümmung links/rechts entscheidet Min vs. Max.',
+          'Bei verschwindender $f\'\'$ ist der Test unbrauchbar.',
+          'An Knickstellen existiert $f\'$ nicht einmal stetig, $f\'\'$ erst recht nicht.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['hin-min-max', 'f2prime'] },
+      ),
+    ],
+
+    // [2] f''(x_0) = 0: Vorzeichenwechsel-Test
+    2: [
+      // Zeile 11: recognize · true-false · uses=[f2-null-vzw]
+      tf(
+        'Wenn $f\'(x_0) = 0$ UND $f\'\'(x_0) = 0$, gibt der $f\'\'$-Test allein KEINE Auskunft über die Art der Stelle — man muss den Vorzeichenwechsel von $f\'$ oder höhere Ableitungen prüfen.',
+        true,
+        `**Ansatz:** $f''(x_0) = 0$ bedeutet: an dieser Stelle ist die Krümmung „neutral" — der Test versagt. Drei Fälle bleiben möglich: Min, Max, Sattel.
+
+**Rechnung:** Drei Beispiele mit $f'(0) = f''(0) = 0$: $x^4$ (Min, $f'$ wechselt $-\\to+$), $-x^4$ (Max, $f'$ wechselt $+\\to-$), $x^3$ (Sattel, kein VZW).
+
+**Probe:** Vorzeichenwechsel-Test für $x^4$: $f'(x) = 4 x^3$, $f'(-0{,}1) < 0$, $f'(0{,}1) > 0$ — VZW $-\\to+$ ⇒ Min ✓.
+
+**Typischer Fehler:** Bei $f''(x_0) = 0$ vorschnell „Sattelpunkt" oder „Wendepunkt" diagnostizieren — auch Min/Max sind möglich.`,
+        [
+          'Was sagt $f\'\'(x_0) = 0$ über die Krümmungsrichtung aus?',
+          'Welche Beispiele kennt man mit $f\' = f\'\' = 0$ und Min/Max/Sattel?',
+          'Vorzeichenwechsel-Test oder höhere Ableitungen entscheiden.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['f2-null-vzw', 'hin-min-max'] },
+      ),
+      // Zeile 12: apply-guided · multiple-choice · uses=[f2-null-vzw]
+      mc(
+        'Bei $f(x) = x^4$ gilt $f\'(0) = 0$ und $f\'\'(0) = 0$. Welche Methode liefert ein eindeutiges Ergebnis über die Art der Stelle?',
+        [
+          'Vorzeichenwechsel von $f\' = 4 x^3$ links und rechts von $0$ prüfen (oder $f^{(4)}(0) = 24 > 0$ ⇒ Min)',
+          '$f\'\'$ erneut anwenden — das Ergebnis bleibt $0$.',
+          'Funktionswert $f(0) = 0$ einsetzen — der entscheidet.',
+          'Aufgabe abbrechen — es kann kein Extremum existieren.',
+        ],
+        0,
+        `**Ansatz:** Bei $f''(x_0) = 0$ braucht es ein anderes Kriterium. Erste Wahl: Vorzeichenwechsel von $f'$. Alternativ: höhere Ableitungen.
+
+**Rechnung:** $f'(x) = 4 x^3$. Links von $0$ (z.B. $x = -0{,}1$): $f' = -0{,}004 < 0$. Rechts von $0$ (z.B. $x = 0{,}1$): $f' = 0{,}004 > 0$. VZW $-\\to+$ ⇒ **Minimum**. Alternativ: $f^{(4)}(0) = 24 > 0$ → ebenfalls Minimum.
+
+**Probe:** $x^4$ hat den Wert $0$ bei $x = 0$ und ist sonst überall positiv — also ist $x = 0$ tatsächlich das globale Minimum ✓.
+
+**Typischer Fehler:** $f''$ wiederholt anwenden — bringt nichts neues. Stattdessen Vorzeichen von $f'$ in Umgebung untersuchen.`,
+        [
+          'Welcher Test funktioniert, wenn $f\'\'$ versagt?',
+          'Vorzeichenwechsel von $f\'$ um den Kandidaten herum prüfen.',
+          'Bei $f(x) = x^4$: $f\'(x) = 4 x^3$ — Vorzeichenwechsel bei $0$?',
+        ],
+        {
+          1: '$f\'\'$ erneut auswerten gibt wieder $0$ (für $f(x) = x^4$ ist $f\'\'(x) = 12 x^2$, $f\'\'(0) = 0$). Keine neue Information — Test versagt.',
+          2: 'Der Funktionswert $f(x_0)$ sagt nichts über die ART des Extremums aus, nur die HÖHE. $f(0) = 0$ wäre der Wert AM EXTREMUM, nicht das Kriterium dafür.',
+          3: 'Doch, $f(x) = x^4$ hat ein eindeutiges Minimum bei $x = 0$ — sichtbar im Graphen (überall $\\geq 0$, mit Wert $0$ nur bei $x = 0$). Aufgabe abbrechen wäre Aufgeben statt Methodenwechsel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['f2-null-vzw'] },
+      ),
+      // Zeile 13: apply-independent · multiple-choice · uses=[f2-null-vzw, fprime-null]
+      mc(
+        'Welche Aussage trifft auf $f(x) = x^4$ bei $x_0 = 0$ zu?',
+        [
+          'Lokales Minimum (Vorzeichenwechsel von $f\'$ von $-$ nach $+$)',
+          'Lokales Maximum',
+          'Sattelpunkt',
+          'Weder Min, Max noch Sattel — die Funktion ist dort nicht definiert',
+        ],
+        0,
+        `**Ansatz:** $f'$ und $f''$ in $0$ auswerten, dann VZW oder höhere Ableitungen.
+
+**Rechnung:** $f'(x) = 4 x^3$, $f'(0) = 0$ (notwendige Bed.). $f''(x) = 12 x^2$, $f''(0) = 0$ (Test versagt). VZW-Test: $f'(-1) = -4 < 0$, $f'(1) = 4 > 0$ → VZW $-\\to+$ ⇒ **lokales Minimum**.
+
+**Probe:** $f(x) = x^4 \\geq 0$ für alle $x$, $f(0) = 0$ — also ist $x = 0$ global das niedrigste — passt zur Diagnose Minimum ✓.
+
+**Typischer Fehler:** Bei $f'' = 0$ vorschnell „Sattelpunkt" sagen — gilt nur, wenn $f'$ KEINEN Vorzeichenwechsel hat. Bei $x^4$ wechselt $f'$ sehr wohl ($-\\to+$), also Minimum.`,
+        [
+          '$f\'$ und $f\'\'$ bei $0$ ergeben beide $0$ — Standard-Test versagt.',
+          'Welche Methode liefert dennoch ein Ergebnis?',
+          'Vorzeichenwechsel von $f\'(x) = 4 x^3$: links negativ, rechts positiv.',
+        ],
+        {
+          1: 'Bei einem Maximum müsste $f\'$ von $+$ nach $-$ wechseln. Hier ist $f\'(x) = 4 x^3$ links negativ und rechts positiv — also $-\\to+$, ein Minimum.',
+          2: 'Sattelpunkt verlangt KEINEN Vorzeichenwechsel von $f\'$. Bei $x^4$ wechselt $f\'$ aber sehr wohl das Vorzeichen, also kein Sattelpunkt — sondern ein echtes Extremum.',
+          3: '$f(x) = x^4$ ist ein Polynom — auf ganz $\\mathbb{R}$ definiert und differenzierbar. Definitionsbereich ist hier kein Problem.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['f2-null-vzw', 'fprime-null'] },
+      ),
+      // Zeile 14: error-analysis · multiple-choice · uses=[f2-null-vzw]
+      mc(
+        'Lukas behauptet: „Bei $f(x) = x^4$ ist $f\'\'(0) = 0$, also liegt dort ein Sattelpunkt." Was ist sein Fehler?',
+        [
+          'Aus $f\'\'(x_0) = 0$ folgt NICHT automatisch ein Sattelpunkt — man muss den Vorzeichenwechsel von $f\'$ prüfen. Bei $x^4$ wechselt $f\'$ von $-$ nach $+$ ⇒ Minimum, kein Sattel.',
+          'Er hat $f\'\'$ falsch berechnet — $(x^4)\'\' = 24 x^2$, nicht $12 x^2$.',
+          '$x^4$ ist keine ableitbare Funktion bei $x = 0$.',
+          'Er hätte zuerst $f\'(0)$ prüfen müssen.',
+        ],
+        0,
+        `**Ansatz:** Lukas verwechselt notwendige mit hinreichender Bedingung des Sattelpunkts. $f''(x_0) = 0$ ist nur ein NOTWENDIGES Indiz, dass etwas Besonderes passiert — nicht automatisch ein Sattelpunkt.
+
+**Rechnung:** Für Sattelpunkt braucht es: $f'(x_0) = 0$ UND KEIN VZW von $f'$. Bei $x^4$ wechselt $f'(x) = 4 x^3$ sehr wohl das Vorzeichen ($-\\to+$ bei $0$) — also kein Sattelpunkt, sondern Minimum.
+
+**Probe:** Sattelpunkt-Beispiel: $f(x) = x^3$ bei $0$ — hier wechselt $f'(x) = 3 x^2 \\geq 0$ KEIN Vorzeichen. $f(x) = x^4$ ist anders: $f'(x) = 4 x^3$ DURCHWECHSELT $0$.
+
+**Typischer Fehler:** Bei $f'' = 0$ reflexartig „Sattel" sagen, ohne den VZW-Test zu machen. Hilfsmittel: einen Wert links und rechts vom Kandidaten einsetzen.`,
+        [
+          'Welche zwei Bedingungen muss ein Sattelpunkt erfüllen?',
+          'Sattelpunkt: $f\' = 0$, $f\'\' = 0$ UND $f\'$ wechselt NICHT das Vorzeichen.',
+          'Bei $x^4$: wechselt $f\'$ das Vorzeichen oder nicht?',
+        ],
+        {
+          1: '$(x^4)\'\' = (4 x^3)\' = 12 x^2$ — Lukas\' Wert (implizit) ist korrekt. Sein Fehler ist die FALSCHE Schlussfolgerung aus $f\'\'(0) = 0$, nicht die Berechnung.',
+          2: '$f(x) = x^4$ ist überall beliebig oft differenzierbar — es gibt keinen Differenzierbarkeits-Engpass bei $x = 0$.',
+          3: '$f\'(0) = 0$ ist Voraussetzung, die hier erfüllt ist. Lukas\' Problem liegt nicht im Versäumen dieses Tests, sondern in der falschen Diagnose nachher.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['f2-null-vzw'] },
+      ),
+      // Zeile 15: transfer · sorting · uses=[f2-null-vzw, hin-min-max]
+      sorting(
+        'Sortiere die Schritte zur Klassifikation einer Stelle $x_0$ mit $f\'(x_0) = 0$ und $f\'\'(x_0) = 0$.',
+        [
+          'Notwendige Bedingung: $f\'(x_0) = 0$ — als Voraussetzung gegeben.',
+          'Versuche $f\'\'$-Test: $f\'\'(x_0)$ einsetzen. Falls $\\neq 0$, Art ablesen (Min/Max).',
+          'Bei $f\'\'(x_0) = 0$: alternativer Test — Vorzeichenwechsel von $f\'$ in einer Umgebung links/rechts.',
+          'Bei VZW $-\\to+$: Min. Bei $+\\to-$: Max. Bei KEINEM VZW: Sattelpunkt.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Entscheidungsbaum für Extremum-Klassifikation. Erst die einfachsten Tests, dann ausweichen auf VZW-Test bei Versagen.
+
+**Rechnung:** Reihenfolge: (1) $f' = 0$ prüfen, (2) $f''$-Test versuchen, (3) bei $f'' = 0$ auf VZW-Test ausweichen, (4) Klassifikation anhand der VZW-Struktur.
+
+**Probe:** Für $x^4$ bei $0$: (1) $f'(0) = 0$ ✓, (2) $f''(0) = 0$ — Test versagt, (3) VZW prüfen: $f'(-1) < 0$, $f'(1) > 0$, (4) VZW $-\\to+$ ⇒ Min ✓.
+
+**Typischer Fehler:** Den VZW-Test überspringen und vorschnell „Sattel" diagnostizieren bei $f'' = 0$.`,
+        [
+          'Erst notwendige Bedingung, dann hinreichende Tests.',
+          'Standard-Test ist $f\'\'$ — wenn er versagt, ausweichen.',
+          'Alternativtest: Vorzeichen von $f\'$ links/rechts vom Kandidaten.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['f2-null-vzw', 'hin-min-max', 'fprime-null'] },
+      ),
+    ],
+
+    // [3] Wendepunkt
+    3: [
+      // Zeile 16: recognize · true-false · uses=[wendepunkt]
+      tf(
+        'Ein Wendepunkt ist eine Stelle, an der die Krümmung wechselt — formal: $f\'\'(x_0) = 0$ MIT Vorzeichenwechsel (oder äquivalent $f\'\'\'(x_0) \\neq 0$).',
+        true,
+        `**Ansatz:** Wendepunkt = Krümmungswechsel. Notwendig $f''(x_0) = 0$, hinreichend VZW oder $f'''(x_0) \\neq 0$.
+
+**Rechnung:** Bei einem Wendepunkt wechselt $f''$ das Vorzeichen — die Kurve geht von Rechtskrümmung zu Linkskrümmung (oder umgekehrt). Ohne VZW wäre $x_0$ kein Wendepunkt.
+
+**Probe:** $f(x) = x^3$: $f''(x) = 6 x$, $f''(0) = 0$, VZW von $-$ (für $x<0$) nach $+$ (für $x>0$) ✓ Wendepunkt bei $x = 0$.
+
+**Typischer Fehler:** Annehmen, dass $f''(x_0) = 0$ automatisch Wendepunkt heißt. Gegenbeispiel: $f(x) = x^4$, $f''(0) = 0$ aber kein VZW — kein Wendepunkt.`,
+        [
+          'Was ist die geometrische Bedeutung eines Wendepunkts?',
+          'Krümmung wechselt = $f\'\'$ wechselt Vorzeichen.',
+          'Notwendige Bedingung allein reicht nicht — VZW (oder $f\'\'\'\\neq 0$) muss dazu.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['wendepunkt', 'f2prime'] },
+      ),
+      // Zeile 17: apply-guided · multiple-choice · uses=[wendepunkt]
+      mc(
+        'Bei welcher Funktion liegt ein Wendepunkt bei $x_0 = 0$?',
+        [
+          '$f(x) = x^3$',
+          '$f(x) = x^2$',
+          '$f(x) = x^4$',
+          '$f(x) = e^x$',
+        ],
+        0,
+        `**Ansatz:** Für jede Option $f''(0)$ und VZW von $f''$ prüfen.
+
+**Rechnung:**
+- $f(x) = x^3$: $f''(x) = 6 x$, $f''(0) = 0$ ✓. VZW: für $x < 0$ ist $f'' < 0$, für $x > 0$ ist $f'' > 0$ — VZW vorhanden ⇒ Wendepunkt
+- $f(x) = x^2$: $f''(x) = 2 > 0$ konstant — nirgends $0$, kein Wendepunkt
+- $f(x) = x^4$: $f''(x) = 12 x^2$, $f''(0) = 0$, aber $f''(x) \\geq 0$ überall — KEIN VZW, kein Wendepunkt
+- $f(x) = e^x$: $f''(x) = e^x > 0$ überall, nirgends $0$ — kein Wendepunkt
+
+**Probe:** Beim Plotten von $x^3$ sieht man bei $x = 0$ den klassischen „S-Kurven"-Wechsel: konvex → konkav (oder umgekehrt). Genau das Wendepunkt-Muster.
+
+**Typischer Fehler:** Bei $x^4$ vorschnell „Wendepunkt" diagnostizieren, weil $f''(0) = 0$ — der fehlende Vorzeichenwechsel macht es zu KEINEM Wendepunkt.`,
+        [
+          'Bei welcher Funktion wechselt $f\'\'$ das Vorzeichen bei $x = 0$?',
+          '$f\'\'(x) = 6 x$ für $f(x) = x^3$ — wie sieht das Vorzeichen links/rechts von $0$ aus?',
+          'Vorzeichenwechsel ist entscheidend, nicht nur die Nullstelle von $f\'\'$.',
+        ],
+        {
+          1: '$f(x) = x^2$ hat $f\'\'(x) = 2 > 0$ konstant — die Krümmung wechselt nie, also kein Wendepunkt.',
+          2: '$f(x) = x^4$ hat zwar $f\'\'(0) = 0$ (notwendige Bedingung erfüllt), aber $f\'\'(x) = 12 x^2 \\geq 0$ überall — KEIN Vorzeichenwechsel. Bei $x = 0$ liegt ein Minimum, kein Wendepunkt.',
+          3: '$f(x) = e^x$ hat $f\'\'(x) = e^x > 0$ überall — die Krümmung wechselt nie, kein Wendepunkt.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['wendepunkt', 'f2prime'] },
+      ),
+      // Zeile 18: apply-independent · number-input · uses=[wendepunkt]
+      ni(
+        'Bestimme die $x$-Koordinate des Wendepunkts von $f(x) = x^3 - 6 x^2 + 9 x + 1$.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Notwendige Bedingung: $f''(x) = 0$. Anschließend VZW prüfen.
+
+**Rechnung:** $f'(x) = 3 x^2 - 12 x + 9$, $f''(x) = 6 x - 12 = 0 \\Rightarrow x = 2$. VZW-Probe: $f''(1{,}9) = -0{,}6 < 0$, $f''(2{,}1) = 0{,}6 > 0$ → VZW von $-$ nach $+$ ⇒ Wendepunkt bei $x = 2$.
+
+**Probe:** Bei kubischen Funktionen ist der Wendepunkt immer das „Inflexionsmaß" zwischen Min und Max. $f'(x) = 0 \\Rightarrow 3 x^2 - 12 x + 9 = 0 \\Rightarrow x^2 - 4 x + 3 = 0 \\Rightarrow x = 1, 3$. Mittelwert: $(1 + 3)/2 = 2$ — passt zum Wendepunkt ✓.
+
+**Typischer Fehler:** $f'(x) = 0$ statt $f''(x) = 0$ lösen — das gibt Extremum-Kandidaten, nicht Wendepunkt-Kandidaten.`,
+        [
+          'Welche Ableitung muss $0$ werden für einen Wendepunkt?',
+          'Bilde $f\'\'(x)$ und löse $f\'\'(x) = 0$.',
+          'VZW-Test verifizieren: links und rechts von $x = 2$ Werte einsetzen.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['wendepunkt', 'polynom-abl'] },
+      ),
+      // Zeile 19: error-analysis · multiple-choice · uses=[wendepunkt]
+      mc(
+        'Mara berechnet für $f(x) = x^3 - 3 x^2$ den Wendepunkt. Sie kommt korrekt auf $x = 1$ und gibt als Antwort „Wendepunkt bei $x = 1$" an. Was fehlt in ihrer Antwort?',
+        [
+          'Die $y$-Koordinate. Ein Wendepunkt ist ein PUNKT $(x, y)$ in der Ebene, nicht nur eine $x$-Stelle. Hier: $f(1) = 1 - 3 = -2$, also Wendepunkt $(1, -2)$.',
+          'Sie hätte $f\'(1)$ prüfen müssen.',
+          'Sie hätte $f\'\'\'(1)$ explizit angeben müssen.',
+          'Sie hätte den Definitionsbereich angeben müssen.',
+        ],
+        0,
+        `**Ansatz:** Ein Punkt im 2D-Sinne hat IMMER zwei Koordinaten: $x$ UND $y$. Wendepunkt = $(x_0, f(x_0))$.
+
+**Rechnung:** Aus $x_0 = 1$ und $f(1) = 1 - 3 = -2$ folgt: Wendepunkt $(1, -2)$. Maras Angabe „bei $x = 1$" ist UNVOLLSTÄNDIG — sie nennt nur die Stelle, nicht den vollständigen Punkt.
+
+**Probe:** $f''(x) = 6 x - 6 = 0 \\Rightarrow x = 1$ ✓. $f''(0{,}9) = -0{,}6$, $f''(1{,}1) = 0{,}6$ — VZW vorhanden ✓. $y$-Wert: $f(1) = 1 - 3 = -2$.
+
+**Typischer Fehler:** Maras Fehler — beim Wendepunkt (und auch beim Extremum) wird oft nur die $x$-Koordinate angegeben. In der Prüfung gibt das Punktabzug, weil der vollständige Punkt $(x, y)$ verlangt ist.`,
+        [
+          'Was ist die mathematische Definition eines „Punkts" in der $xy$-Ebene?',
+          'Reicht eine $x$-Koordinate, um den Punkt eindeutig anzugeben?',
+          'Berechne $f(1)$ für den $y$-Wert.',
+        ],
+        {
+          1: '$f\'(1)$ ist nicht Teil der Wendepunkt-Bedingung — Wendepunkte können beliebige Steigungen haben (außer im Sattelpunkt-Spezialfall mit $f\'(x_0) = 0$). Maras Fehler liegt nicht hier.',
+          2: '$f\'\'\'(1)$ ist nicht zwingend explizit nötig, wenn der Vorzeichenwechsel direkt geprüft wird. Maras Fehler ist die UNVOLLSTÄNDIGE Punktangabe, nicht ein fehlender Beweis.',
+          3: '$x^3 - 3 x^2$ ist ein Polynom — überall definiert. Der Definitionsbereich ist hier nicht das Problem.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['wendepunkt'] },
+      ),
+      // Zeile 20: transfer · number-input · uses=[wendepunkt]
+      ni(
+        'Bestimme die $y$-Koordinate des Wendepunkts von $f(x) = x^3 - 6 x^2 + 9 x + 1$.',
+        3,
+        0,
+        '',
+        `**Ansatz:** Erst $x$-Koordinate des Wendepunkts ($f''(x) = 0$), dann $y = f(x)$ ausrechnen.
+
+**Rechnung:** $f''(x) = 6 x - 12 = 0 \\Rightarrow x = 2$. $f(2) = 2^3 - 6 \\cdot 4 + 9 \\cdot 2 + 1 = 8 - 24 + 18 + 1 = 3$.
+
+**Probe:** Wendepunkt-Koordinaten: $(2, 3)$. Numerisches Einsetzen bestätigt $f(2) = 8 - 24 + 18 + 1 = 3$ ✓.
+
+**Typischer Fehler:** $x$-Koordinate ($= 2$) statt $y$-Koordinate angeben. Oder $f''(2)$ statt $f(2)$ einsetzen.`,
+        [
+          'Erst $x$-Koordinate suchen (wie in Zeile 18).',
+          'Dann den $x$-Wert in das ORIGINAL $f(x)$ einsetzen — nicht in $f\'\'$.',
+          '$f(2) = 8 - 24 + 18 + 1$ — Vorzeichen sauber!',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['wendepunkt', 'polynom-abl'] },
+      ),
+    ],
+
+    // [4] Randextrema
+    4: [
+      // Zeile 21: recognize · true-false · uses=[rand-extrema]
+      tf(
+        'Auf einem abgeschlossenen Intervall $[a, b]$ können globale Extrema von $f$ sowohl im Inneren (wo $f\'(x) = 0$) als auch an den Randpunkten $x = a$ oder $x = b$ auftreten.',
+        true,
+        `**Ansatz:** Globales Maximum/Minimum auf $[a, b]$: Vergleich von INNEREN Kandidaten und Randwerten.
+
+**Rechnung:** Satz vom Maximum/Minimum: Eine stetige Funktion auf $[a, b]$ nimmt ihre Extrema an — entweder im Inneren bei $f'(x) = 0$ (notwendig differenzierbar) oder an den Randpunkten $a, b$.
+
+**Probe:** $f(x) = x^2$ auf $[-2, 1]$: innerer Kandidat $x = 0$ mit $f(0) = 0$. Randwerte $f(-2) = 4$, $f(1) = 1$. Globales Max = $4$ am LINKEN Rand ✓ (nicht innen).
+
+**Typischer Fehler:** Nur die inneren Kandidaten ($f' = 0$) prüfen und die Randwerte vergessen. Auf beschränkten Intervallen liegen die globalen Extrema oft am Rand.`,
+        [
+          'Wo kann ein globales Extremum auf $[a, b]$ liegen?',
+          'Innere Kandidaten (Notwendige Bedingung) UND Randwerte vergleichen.',
+          'Manchmal liegt das globale Max nur am Rand — kein innerer Kandidat ist erforderlich.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['rand-extrema'] },
+      ),
+      // Zeile 22: apply-guided · multiple-choice · uses=[rand-extrema]
+      mc(
+        'Um das globale Maximum von $f$ auf einem abgeschlossenen Intervall $[a, b]$ zu bestimmen, vergleicht man:',
+        [
+          'Die Funktionswerte an ALLEN inneren Extremum-Kandidaten ($f\'(x) = 0$) UND die Randwerte $f(a)$ und $f(b)$.',
+          'Nur die inneren Kandidaten (wo $f\'(x) = 0$).',
+          'Nur die Randwerte $f(a)$ und $f(b)$.',
+          'Nur die Werte von $f\'\'$ an den inneren Kandidaten.',
+        ],
+        0,
+        `**Ansatz:** Standardverfahren für globale Extrema auf $[a, b]$.
+
+**Rechnung:** Vier Schritte:
+1. Innere Kandidaten: $x_0 \\in (a, b)$ mit $f'(x_0) = 0$
+2. Funktionswerte berechnen: $f(x_0)$ für alle Kandidaten
+3. Randwerte berechnen: $f(a)$, $f(b)$
+4. Maximum/Minimum aus der gesamten Werte-Sammlung wählen
+
+**Probe:** Beispiel $f(x) = x^2$ auf $[-2, 1]$: innerer Kandidat $x = 0$ mit $f(0) = 0$, Randwerte $f(-2) = 4$, $f(1) = 1$. Max = $\\max(0, 4, 1) = 4$, am Rand $x = -2$ ✓.
+
+**Typischer Fehler:** Die Randpunkte vergessen — dann übersieht man möglicherweise das wahre Maximum.`,
+        [
+          'Welche möglichen Stellen für globale Extrema gibt es?',
+          'Innere Kandidaten UND Randpunkte zusammen.',
+          'Nur Vergleich aller Werte liefert das globale Extremum.',
+        ],
+        {
+          1: 'Wenn nur die inneren Kandidaten betrachtet werden, kann das globale Extremum übersehen werden. Beispiel: $f(x) = x$ auf $[0, 1]$ hat keinen inneren Kandidaten ($f\'(x) = 1 \\neq 0$), aber die Extrema sind an den Rändern.',
+          2: 'Nur die Randwerte zu betrachten kann ebenfalls Extrema übersehen. Beispiel: $f(x) = -x^2$ auf $[-1, 1]$ hat ein Maximum INNEN bei $x = 0$ mit $f(0) = 0$, größer als die Randwerte $f(\\pm 1) = -1$.',
+          3: '$f\'\'$ klassifiziert die Art (Min/Max) der inneren Kandidaten, beantwortet aber nicht die Frage nach dem GLOBALEN Extremum. Dafür braucht man die Funktionswerte selbst.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['rand-extrema', 'fprime-null'] },
+      ),
+      // Zeile 23: apply-independent · number-input · uses=[rand-extrema]
+      ni(
+        'Bestimme das globale Maximum von $f(x) = x^2 - 4 x$ auf dem Intervall $[0, 3]$.',
+        0,
+        0,
+        '',
+        `**Ansatz:** Innere Kandidaten + Randwerte vergleichen.
+
+**Rechnung:**
+- Innerer Kandidat: $f'(x) = 2 x - 4 = 0 \\Rightarrow x = 2 \\in (0, 3)$ ✓. $f(2) = 4 - 8 = -4$.
+- Randwerte: $f(0) = 0$, $f(3) = 9 - 12 = -3$.
+- Vergleich: $\\{-4, 0, -3\\}$. Maximum = $\\max = 0$ (am linken Rand $x = 0$).
+
+**Probe:** $f$ ist nach oben geöffnete Parabel mit Scheitel bei $x = 2$ (Minimum). Auf $[0, 3]$ liegt das Maximum am Rand, der weiter vom Scheitel entfernt ist — hier $x = 0$ (Abstand $2$) gegenüber $x = 3$ (Abstand $1$). $f(0) > f(3)$ ✓.
+
+**Typischer Fehler:** Den Wert $f(2) = -4$ als Maximum nehmen (ist aber MINIMUM). Oder nur $f'(x) = 0$ lösen, ohne Randwerte zu vergleichen.`,
+        [
+          'Drei Kandidaten: $x = 0$, $x = 2$, $x = 3$.',
+          'Funktionswerte: $f(0) = 0$, $f(2) = -4$, $f(3) = -3$.',
+          'Maximum = größter der drei Werte.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['rand-extrema', 'fprime-null'] },
+      ),
+      // Zeile 24: error-analysis · multiple-choice · uses=[rand-extrema]
+      mc(
+        'Anna soll das globale Maximum von $f(x) = x^2 - 4 x$ auf dem Intervall $[-1, 1]$ bestimmen. Sie löst $f\'(x) = 2 x - 4 = 0 \\Rightarrow x = 2$ und sagt: „Kein Maximum existiert, weil $x = 2$ außerhalb des Intervalls liegt." Was ist ihr Fehler?',
+        [
+          'Sie hat die Randextrema vergessen. Am linken Rand $x = -1$ ist $f(-1) = 1 + 4 = 5$ das globale Maximum — auch ohne inneren Kandidat existiert es immer (Satz vom Max/Min für stetige Funktionen auf $[a, b]$).',
+          '$x = 2$ liegt tatsächlich im Intervall $[-1, 1]$.',
+          '$f\'(x) = 2 x - 4$ ist falsch.',
+          'Auf beschränkten Intervallen gibt es nie Maxima.',
+        ],
+        0,
+        `**Ansatz:** Stetige Funktion auf abgeschlossenem Intervall hat IMMER Maximum und Minimum (Satz von Weierstraß). Wenn kein innerer Kandidat existiert, dann liegen sie an den Rändern.
+
+**Rechnung:** Annas innerer Kandidat $x = 2$ liegt korrekt außerhalb von $[-1, 1]$ — aber das heißt nicht, dass es kein Maximum gibt! Vergleich der Randwerte: $f(-1) = 1 + 4 = 5$, $f(1) = 1 - 4 = -3$. Globales Maximum = $f(-1) = 5$.
+
+**Probe:** $f(x) = x^2 - 4x$ ist auf $[-1, 1]$ überall fallend (Scheitel bei $x = 2$, also rechts vom Intervall — auf $[-1, 1]$ kommt die Funktion von links absteigend). Daher liegt das Max links: $f(-1) = 5$.
+
+**Typischer Fehler:** Wenn der innere Kandidat außerhalb des Intervalls liegt, „aufgeben" statt die Randwerte zu prüfen.`,
+        [
+          'Existiert nach dem Satz von Weierstraß immer ein Max auf $[a, b]$?',
+          'Wo könnte das Max liegen, wenn kein innerer Kandidat im Intervall ist?',
+          'Berechne $f(-1)$ und $f(1)$ und vergleiche.',
+        ],
+        {
+          1: '$x = 2$ liegt AUSSERHALB von $[-1, 1]$ — das Intervall reicht nur bis $1$. Annas Beobachtung ist richtig; ihr Fehler liegt in der Schlussfolgerung daraus.',
+          2: '$(x^2 - 4 x)\' = 2 x - 4$ ist korrekt. Annas Berechnung der Ableitung stimmt — sie übersieht nur die Randextrema-Möglichkeit.',
+          3: 'Doch — der Satz von Weierstraß garantiert auf jedem abgeschlossenen, beschränkten Intervall die Existenz von Max und Min für stetige Funktionen.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['rand-extrema'] },
+      ),
+      // Zeile 25: transfer · number-input · uses=[rand-extrema]
+      ni(
+        'Bestimme das globale MINIMUM von $f(x) = x^3 - 6 x^2 + 9 x$ auf dem Intervall $[0, 4]$.',
+        0,
+        0,
+        '',
+        `**Ansatz:** Innere Kandidaten + Randwerte. Mehrere innere Kandidaten möglich.
+
+**Rechnung:**
+- $f'(x) = 3 x^2 - 12 x + 9 = 3(x - 1)(x - 3) = 0 \\Rightarrow x = 1, 3$ (beide im Intervall)
+- $f''(x) = 6 x - 12$: $f''(1) = -6 < 0$ → Max bei $1$, $f''(3) = 6 > 0$ → Min bei $3$
+- Werte: $f(0) = 0$, $f(1) = 1 - 6 + 9 = 4$, $f(3) = 27 - 54 + 27 = 0$, $f(4) = 64 - 96 + 36 = 4$
+- Minimum: $\\min(0, 4, 0, 4) = 0$ (am Rand $x = 0$ UND beim inneren Minimum $x = 3$)
+
+**Probe:** Werte konsistent: globales Min = $0$, wird sowohl bei $x = 0$ als auch bei $x = 3$ angenommen.
+
+**Typischer Fehler:** Nur die innerern Werte vergleichen — dann gibt man $f(3) = 0$ an und übersieht, dass auch $f(0) = 0$ denselben Wert hat. Das Ergebnis stimmt zwar, aber die Vollständigkeit der Argumentation fehlt.`,
+        [
+          'Vier Kandidaten: $x = 0, 1, 3, 4$.',
+          'Funktionswerte: $0, 4, 0, 4$.',
+          'Min = kleinster Wert.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['rand-extrema', 'fprime-null', 'hin-min-max'] },
+      ),
+    ],
+
+    // [5] Sattelpunkt
+    5: [
+      // Zeile 26: recognize · true-false · uses=[sattel-1-5]
+      tf(
+        'Bei einem Sattelpunkt gilt $f\'(x_0) = 0$ UND $f\'\'(x_0) = 0$, der Graph hat dort eine WAAGERECHTE Tangente, aber KEIN Extremum — weil $f\'$ kein Vorzeichen wechselt. Beispiel: $f(x) = x^3$ bei $x_0 = 0$.',
+        true,
+        `**Ansatz:** Sattelpunkt = Wendepunkt MIT waagerechter Tangente (Terrassenpunkt). Sowohl $f' = 0$ als auch $f'' = 0$, aber kein Vorzeichenwechsel von $f'$.
+
+**Rechnung:** Für $f(x) = x^3$: $f'(x) = 3 x^2$, $f'(0) = 0$ ✓. $f''(x) = 6 x$, $f''(0) = 0$ ✓. VZW von $f'$? $f'(x) = 3 x^2 \\geq 0$ für alle $x$ — KEIN VZW ⇒ Sattelpunkt.
+
+**Probe:** $f(-0{,}1) = -0{,}001$, $f(0) = 0$, $f(0{,}1) = 0{,}001$ — streng monoton wachsend durch den Punkt $(0,0)$, kein Tal/Berg ✓.
+
+**Typischer Fehler:** Sattelpunkt mit Extremum verwechseln, weil beide bei $f'(x_0) = 0$ auftreten. Unterscheidung: VZW vorhanden = Extremum, kein VZW = Sattel.`,
+        [
+          'Welche zwei Bedingungen müssen für einen Sattelpunkt gelten?',
+          '$f\'(x_0) = 0$ UND $f\'\'(x_0) = 0$.',
+          'Zusätzlich: $f\'$ wechselt KEIN Vorzeichen — sonst Extremum.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['sattel-1-5', 'fprime-null', 'f2-null-vzw'] },
+      ),
+      // Zeile 27: apply-guided · multiple-choice · uses=[sattel-1-5]
+      mc(
+        'Welche Funktion hat bei $x_0 = 0$ einen Sattelpunkt?',
+        [
+          '$f(x) = x^3$',
+          '$f(x) = x^2$',
+          '$f(x) = x$',
+          '$f(x) = |x|$',
+        ],
+        0,
+        `**Ansatz:** Sattelpunkt verlangt $f'(0) = 0$ UND $f''(0) = 0$ UND keinen VZW von $f'$ bei $0$.
+
+**Rechnung:**
+- $f(x) = x^3$: $f'(0) = 0$, $f''(0) = 0$, $f' \\geq 0$ überall — KEIN VZW ⇒ Sattelpunkt ✓
+- $f(x) = x^2$: $f'(0) = 0$, ABER $f''(0) = 2 > 0$ ⇒ Minimum, kein Sattel
+- $f(x) = x$: $f'(0) = 1 \\neq 0$ — nicht einmal Extremum-Kandidat
+- $f(x) = |x|$: bei $x = 0$ NICHT differenzierbar (Knick) — Sattel-Begriff nicht anwendbar
+
+**Probe:** Bei $x^3$ ist $x = 0$ ein klassischer Sattelpunkt: waagerechte Tangente, aber Funktion läuft glatt durch — kein Tal, kein Berg.
+
+**Typischer Fehler:** $x^2$ als Sattel diagnostizieren, weil sie eine waagerechte Tangente bei $0$ hat — aber $x^2$ hat dort ein klares Minimum.`,
+        [
+          'Welche Funktion erfüllt $f\'(0) = 0$ UND $f\'\'(0) = 0$?',
+          'Bei $x^3$ sind beide null. Bei $x^2$ ist $f\'\'(0) = 2 \\neq 0$.',
+          'Bei $|x|$ ist $f$ nicht differenzierbar bei $0$.',
+        ],
+        {
+          1: '$f(x) = x^2$ hat bei $x = 0$ ein lokales Minimum (Scheitel der nach oben offenen Parabel) — $f\'\'(0) = 2 > 0$ klassifiziert es als Min, nicht Sattel.',
+          2: '$f(x) = x$ hat $f\'(x) = 1$ überall — nirgendwo waagerechte Tangente. Damit auch kein Sattelpunkt (und kein Extremum-Kandidat).',
+          3: '$f(x) = |x|$ ist bei $x = 0$ nicht differenzierbar (Knick). Sattelpunkt-Begriff verlangt Differenzierbarkeit (sogar $f\'\' = 0$), passt hier nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['sattel-1-5'] },
+      ),
+      // Zeile 28: apply-independent · multiple-choice · uses=[sattel-1-5]
+      mc(
+        'Welcher Stellentyp liegt bei $f(x) = x^5$ in $x_0 = 0$ vor?',
+        [
+          'Sattelpunkt (höhere ungerade Ableitung als erste nicht-null: $f^{(5)}(0) = 120 \\neq 0$)',
+          'Lokales Minimum',
+          'Lokales Maximum',
+          'Wendepunkt mit nicht-waagerechter Tangente',
+        ],
+        0,
+        `**Ansatz:** Wenn $f'(x_0) = 0 = f''(x_0)$, höhere Ableitungen bemühen. Die erste nicht-null Ableitung $f^{(n)}(x_0)$ entscheidet: $n$ gerade ⇒ Extremum, $n$ ungerade ⇒ Sattelpunkt.
+
+**Rechnung:** $f(x) = x^5$. $f'(x) = 5 x^4$, $f'(0) = 0$. $f''(x) = 20 x^3$, $f''(0) = 0$. $f'''(x) = 60 x^2$, $f'''(0) = 0$. $f^{(4)}(x) = 120 x$, $f^{(4)}(0) = 0$. $f^{(5)}(x) = 120 \\neq 0$. Erste nicht-null Ableitung ist die 5. (UNGERADE) → Sattelpunkt.
+
+**Probe:** $f(x) = x^5$ ist monoton wachsend ($x < 0 \\Rightarrow f < 0$, $x > 0 \\Rightarrow f > 0$, $f(0) = 0$). Kein Extremum, sondern Sattel mit waagerechter Tangente bei $0$.
+
+**Typischer Fehler:** Bei verschwindenden höheren Ableitungen vorschnell „kein Extremum" oder „Wendepunkt" sagen, ohne die ungerade/gerade-Unterscheidung zu beachten.`,
+        [
+          'Welche Ableitungen sind bei $f(x) = x^5$ in $x = 0$ alle null?',
+          'Was ist die erste nicht-null Ableitung — und welcher Ordnung?',
+          'Ungerade Ordnung ⇒ Sattelpunkt; gerade Ordnung ⇒ Extremum.',
+        ],
+        {
+          1: 'Für ein lokales Minimum müsste die erste nicht-null höhere Ableitung GERADE Ordnung mit positivem Vorzeichen sein. Hier ist sie 5. (ungerade) — also kein Min.',
+          2: 'Maximum verlangt gerade Ordnung mit negativem Vorzeichen. 5. Ordnung ist ungerade — kein Max.',
+          3: 'Bei „nicht-waagerechter Tangente"-Wendepunkt wäre $f\'(x_0) \\neq 0$. Hier ist $f\'(0) = 0$ aber — die Tangente IST waagerecht. Der spezielle Fall heißt Sattelpunkt (oder Terrassenpunkt).',
+        },
+        { stage: 'apply-independent', subGoal: 5, uses: ['sattel-1-5'] },
+      ),
+      // Zeile 29: error-analysis · multiple-choice · uses=[sattel-1-5]
+      mc(
+        'Tom rechnet: bei $f(x) = x^3$ ist $f\'(0) = 0$, also liegt bei $x = 0$ ein lokales Minimum. Was ist sein Fehler?',
+        [
+          '$f\'(x_0) = 0$ allein ist NUR notwendig, nicht hinreichend. Bei $f(x) = x^3$ wechselt $f\'(x) = 3 x^2$ KEIN Vorzeichen — es liegt ein Sattelpunkt vor, kein Extremum.',
+          'Er hätte zuerst die Nullstellen suchen müssen.',
+          '$f\'(0) = 0$ stimmt nicht — bei $f(x) = x^3$ ist $f\'(0) = 1$.',
+          'Bei Polynomen dritten Grades sind alle Stellen Minima.',
+        ],
+        0,
+        `**Ansatz:** Tom verwechselt notwendige mit hinreichender Bedingung. Bei $x^3$ ist die notwendige Bedingung erfüllt, aber die hinreichende NICHT.
+
+**Rechnung:** Korrekt: $f'(x) = 3 x^2 \\geq 0$ für alle $x$ — kein Vorzeichenwechsel. Damit ist $x = 0$ KEIN Extremum, sondern Sattelpunkt (waagerechte Tangente, Funktion läuft glatt durch).
+
+**Probe:** Bei einem Minimum wäre $f(x) > f(0) = 0$ für $x \\neq 0$ in einer Umgebung. Aber $f(-0{,}1) = -0{,}001 < 0 = f(0)$ — also gerade KEIN Minimum.
+
+**Typischer Fehler:** Genau dieser — die notwendige Bedingung mit der hinreichenden gleichsetzen. Hilft: zusätzlich Vorzeichenwechsel oder höhere Ableitungen prüfen.`,
+        [
+          'Was bedeutet „notwendige Bedingung" konkret bei Extrema?',
+          'Wechselt $f\' = 3 x^2$ bei $x = 0$ das Vorzeichen?',
+          'Ohne Vorzeichenwechsel kein Extremum — sondern was?',
+        ],
+        {
+          1: 'Nullstellen von $f$ ($f = 0$) haben mit Extrema ($f\' = 0$) erst einmal nichts zu tun. Toms Fehler ist nicht das Vergessen von Nullstellen, sondern die Fehl-Diagnose des Sattels.',
+          2: '$f\'(x) = 3 x^2$, $f\'(0) = 3 \\cdot 0 = 0$ ✓. Toms Berechnung ist korrekt — der Fehler liegt in der Schlussfolgerung.',
+          3: 'Polynome dritten Grades können Min, Max, Sattel ODER überhaupt kein Extremum haben — je nach Koeffizienten. Diese pauschale Aussage ist falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['sattel-1-5', 'fprime-null'] },
+      ),
+      // Zeile 30: transfer · matching · uses=[sattel-1-5, fprime-null]
+      matching(
+        'Ordne jeder Stelle den richtigen Typ zu (basierend auf $f\'(x_0)$ und $f\'\'(x_0)$ in Kombination mit VZW-Verhalten).',
+        [
+          { left: '$f\'(x_0) = 0$ und $f\'\'(x_0) > 0$', right: 'lokales Minimum' },
+          { left: '$f\'(x_0) = 0$ und $f\'\'(x_0) < 0$', right: 'lokales Maximum' },
+          { left: '$f\'(x_0) \\neq 0$ und $f\'\'(x_0) = 0$ mit VZW von $f\'\'$', right: 'Wendepunkt (mit nicht-waagerechter Tangente)' },
+          { left: '$f\'(x_0) = 0$ UND $f\'\'(x_0) = 0$ ohne VZW von $f\'$', right: 'Sattelpunkt (Terrassenpunkt — Wendepunkt mit waagerechter Tangente)' },
+        ],
+        `**Ansatz:** Klassifikation einer Stelle anhand des Vorzeichens von $f'$ und $f''$.
+
+**Rechnung:**
+- $f' = 0$, $f'' > 0$: klassisches Minimum (z.B. $x^2$ bei $0$)
+- $f' = 0$, $f'' < 0$: klassisches Maximum (z.B. $-x^2$ bei $0$)
+- $f' \\neq 0$, $f'' = 0$ mit VZW: Wendepunkt im Inneren der Kurve (z.B. $x^3 + x$ bei $0$)
+- $f' = 0$, $f'' = 0$, KEIN VZW von $f'$: Sattelpunkt (z.B. $x^3$ bei $0$)
+
+**Probe:** Vier verschiedene Funktionen exemplifizieren jeden Fall: $x^2$, $-x^2$, $x^3 + x$, $x^3$.
+
+**Typischer Fehler:** Sattelpunkt mit Wendepunkt verwechseln — beide haben $f'' = 0$ mit VZW von $f''$, aber Sattelpunkt zusätzlich $f' = 0$ ohne VZW von $f'$.`,
+        [
+          '$f\'$ und $f\'\'$ in Kombination unterscheiden 4 Fälle.',
+          'Vorzeichen von $f\'\'$ entscheidet Min vs. Max.',
+          'Wendepunkt mit waagerechter Tangente = Sattelpunkt.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['sattel-1-5', 'fprime-null', 'hin-min-max', 'wendepunkt'] },
+      ),
+    ],
+  },
 }

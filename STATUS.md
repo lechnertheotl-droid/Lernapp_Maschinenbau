@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3636 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2892 (80 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1696 / 1696 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 435 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3666 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2922 (80 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1711 / 1711 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 441 / 1134 (39 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **209** (Lesson-Path: 113 · Goal-Tasks: 96)
-- 4-Block: 150/209 (72 %) 🟡
-- MC-wAE: 127/127 (100 %) ✅
-- Sub-Goals: 16/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **239** (Lesson-Path: 113 · Goal-Tasks: 126)
+- 4-Block: 180/239 (75 %) 🟡
+- MC-wAE: 142/142 (100 %) ✅
+- Sub-Goals: 22/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -381,7 +381,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | `abl-1-2` Potenzregel und Summenregel | 4 | 4/4 | 30 | 16/8/5/1/0 | 30/30 | 16/16 | ✅ | — |
 | `abl-1-3` Ableitungen elementarer Funktionen | 4 | 4/4 | 30 | 17/5/5/3/0 | 30/30 | 17/17 | ✅ | — |
 | `abl-1-4` Kettenregel | 4 | 4/4 | 30 | 17/4/5/2/2 | 30/30 | 17/17 | ✅ | — |
-| `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
+| `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 6/6 | 35 | 20/6/6/2/1 | 35/35 | 20/20 | ✅ | — |
 | `abl-2-1` Produktregel | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
 | `abl-2-2` Quotientenregel | 5 | 0/5 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +5 Goal, +1 4B |
 | `abl-2-3` Kettenregel — Schritt für Schritt | 5 | 0/5 | 7 | 6/1/0/0/0 | 7/7 | 6/6 | ✅ | +5 Goal |
@@ -6827,68 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 19 Lessons
-
-#### `abl-1-5` · Extremwerte und Kurvendiskussion
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-1-1` → `extr-notwendig`
-  - `abl-1-2` → `polynom-abl`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `fprime-null` — Notwendige Bedingung Extremum: $f'(x_0)=0$ (SG 0)
-  2. `f2prime` — Zweite Ableitung $f''$ — Krümmung (SG 1)
-  3. `hin-min-max` — Hinreichend: $f''>0\Rightarrow$ Min, $f''<0\Rightarrow$ Max ⇐ `fprime-null`, `f2prime` (SG 1)
-  4. `f2-null-vzw` — $f''(x_0)=0$: Vorzeichenwechsel von $f'$ prüfen ODER höhere Ableitungen ⇐ `hin-min-max` (SG 2)
-  5. `wendepunkt` — Wendepunkt: $f''(x_0)=0$ mit VZW (oder $f'''(x_0)\neq 0$) ⇐ `f2prime` (SG 3)
-  6. `rand-extrema` — Randextrema bei $[a,b]$: $f(a)$ und $f(b)$ vergleichen ⇐ `hin-min-max` (SG 4)
-  7. `sattel-1-5` — Sattelpunkt: $f'(x_0)=0$ UND $f''(x_0)=0$ ohne VZW ⇐ `fprime-null`, `wendepunkt` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `fprime-null` · **0/5+** — Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
-  - 🔴 [1] _hoch_ · Konzepte: `hin-min-max`, `f2prime` · **0/5+** — Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
-  - 🔴 [2] _hoch_ · Konzepte: `f2-null-vzw` · **0/5+** — Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
-  - 🔴 [3] _hoch_ · Konzepte: `wendepunkt` · **0/5+** — Wendepunkt: $f''(x_0) = 0$ mit Vorzeichenwechsel (oder $f'''(x_0) \neq 0$)
-  - 🔴 [4] _mittel_ · Konzepte: `rand-extrema` · **0/5+** — Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen
-  - 🔴 [5] _mittel_ · Konzepte: `sattel-1-5` · **0/5+** — Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f' = 0$ UND $f'' = 0$)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `fprime-null` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `fprime-null` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 | Notwendig $\not\Rightarrow$ hinreichend |
-|  5 | 0 | transfer           | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `hin-min-max`, `f2prime` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `hin-min-max` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `hin-min-max`, `fprime-null` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `hin-min-max` | 1 | 0 | 🔴 | Vorzeichen Min/Max getauscht |
-| 10 | 1 | transfer           | matching         | `hin-min-max` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `f2-null-vzw` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `f2-null-vzw` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `f2-null-vzw`, `fprime-null` | 1 | 0 | 🔴 | $x^4$ bei 0 |
-| 14 | 2 | error-analysis     | multiple-choice  | `f2-null-vzw` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | sorting          | `f2-null-vzw`, `hin-min-max` | 1 | 0 | 🔴 | Entscheidungsbaum |
-| 16 | 3 | recognize          | true-false       | `wendepunkt` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `wendepunkt` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `wendepunkt` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `wendepunkt` | 1 | 0 | 🔴 | y-Wert vergessen |
-| 20 | 3 | transfer           | number-input     | `wendepunkt` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `rand-extrema` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `rand-extrema` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `rand-extrema` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `rand-extrema` | 1 | 0 | 🔴 | Rand vergessen |
-| 25 | 4 | transfer           | number-input     | `rand-extrema` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `sattel-1-5` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 | Sattel als Extremum |
-| 30 | 5 | transfer           | matching         | `sattel-1-5`, `fprime-null` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-5': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+### 🟠 Hoch (< 8 Aufgaben) — 18 Lessons
 
 #### `abl-3-2` · Krümmung und Wendepunkte
 

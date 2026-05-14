@@ -1382,7 +1382,31 @@ Praktisch: Von außen nach innen Schale für Schale ableiten, dann alle Faktoren
 
 **Unterscheidung:**
 - **Notwendig** = muss erfüllt sein, reicht aber nicht aus
-- **Hinreichend** = erfüllt bedeutet Bedingung ist garantiert`,
+- **Hinreichend** = erfüllt bedeutet Bedingung ist garantiert
+
+**Klassifikation der Stelle $x_0$ mit $f'(x_0) = 0$:**
+
+| Bedingung | Typ | Beispiel |
+|---|---|---|
+| $f''(x_0) > 0$ | lokales **Minimum** | $f(x) = x^2$ bei $x_0 = 0$ |
+| $f''(x_0) < 0$ | lokales **Maximum** | $f(x) = -x^2$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, $f'$ wechselt VZW $-\\to+$ | Minimum | $f(x) = x^4$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, $f'$ wechselt VZW $+\\to-$ | Maximum | $f(x) = -x^4$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, **kein** VZW von $f'$ | **Sattelpunkt** (Terrassenpunkt) | $f(x) = x^3$ bei $x_0 = 0$ |
+
+**Wendepunkt (allgemein, ohne $f'(x_0) = 0$-Anforderung):**
+
+$$f''(x_0) = 0 \\;\\;\\text{mit Vorzeichenwechsel von } f'' \\;\\;\\text{(oder } f'''(x_0) \\neq 0\\text{).}$$
+
+Liegt zusätzlich $f'(x_0) = 0$ vor, spricht man von einem **Sattelpunkt** (Wendepunkt mit waagerechter Tangente).
+
+**Globale Extrema auf abgeschlossenem Intervall $[a, b]$ — Randextrema-Methode:**
+
+1. Innere Kandidaten suchen: alle $x_0 \\in (a, b)$ mit $f'(x_0) = 0$.
+2. Funktionswerte berechnen: $f(x_0)$ für alle inneren Kandidaten **UND** die Randwerte $f(a)$, $f(b)$.
+3. Größter Wert = globales Maximum, kleinster Wert = globales Minimum.
+
+**Wichtig:** Auf einem ABGESCHLOSSENEN Intervall wird das globale Extremum sicher angenommen (Satz vom Maximum/Minimum bei stetiger $f$) — es kann am Rand oder im Inneren liegen.`,
       },
       {
         id: 'abl-1-5-s2', type: 'visualization', title: 'Extrema von $x^{3} - 3x$',
