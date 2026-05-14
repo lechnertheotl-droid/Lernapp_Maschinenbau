@@ -1729,4 +1729,606 @@ export const ableitungSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // abl-1-4 · Kettenregel
+  // ─────────────────────────────────────────────────────────────────────────
+  'abl-1-4': {
+    // [0] Kettenregel allgemein
+    0: [
+      // Zeile 1: recognize · true-false · uses=[kettenregel]
+      tf(
+        'Die Kettenregel lautet $[f(g(x))]\' = f\'(g(x)) \\cdot g\'(x)$: Die äußere Ableitung wird AN DER INNEREN FUNKTION ausgewertet (innere bleibt als Argument stehen) und mit der inneren Ableitung multipliziert.',
+        true,
+        `**Ansatz:** Die Kettenregel kombiniert zwei Schritte zu einem Produkt: äußere Ableitung an $g(x)$, multipliziert mit innerer Ableitung $g'(x)$.
+
+**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$. WICHTIG: $f'$ wird an $g(x)$ ausgewertet — nicht an $x$ — und der Faktor $g'(x)$ wird mitmultipliziert.
+
+**Probe:** Für $\\sin(3x)$ ist $f(u) = \\sin u$ und $g(x) = 3x$. Daraus $f'(g(x)) = \\cos(3x)$ und $g'(x) = 3$. Kettenregel: $\\cos(3x) \\cdot 3 = 3\\cos(3x)$. Bei $x = 0$: $3 \\cdot 1 = 3$ — Tangentensteigung im Ursprung ✓.
+
+**Typischer Fehler:** $f'(x) \\cdot g'(x)$ statt $f'(g(x)) \\cdot g'(x)$ — die innere Funktion fehlt als Argument der äußeren Ableitung.`,
+        [
+          'Wie verknüpft die Kettenregel die zwei Ableitungen?',
+          'Wo wird die äußere Ableitung $f\'$ ausgewertet?',
+          'Eselsbrücke: „äußere ableiten — innere stehen lassen — mal innere Ableitung".',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['kettenregel'] },
+      ),
+      // Zeile 2: apply-guided · multiple-choice · uses=[kettenregel]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\sin(5x)$?',
+        ['$5 \\cos(5x)$', '$\\cos(5x)$', '$5 \\cos x$', '$-5 \\cos(5x)$'],
+        0,
+        `**Ansatz:** Verkettung: außen $\\sin u$, innen $5x$. Kettenregel anwenden.
+
+**Rechnung:** Äußere Ableitung: $(\\sin u)' = \\cos u$, also $\\cos(5x)$. Innere Ableitung: $(5x)' = 5$. Kettenregel: $f'(x) = \\cos(5x) \\cdot 5 = 5 \\cos(5x)$.
+
+**Probe:** Bei $x = 0$: $5 \\cos 0 = 5$. Sekantensteigung $\\dfrac{\\sin(5 \\cdot 0{,}001)}{0{,}001} \\approx 5{,}00$ ✓.
+
+**Typischer Fehler:** Innere Ableitung vergessen (nur $\\cos(5x)$) oder innere Funktion im Argument weglassen ($\\cos x$ statt $\\cos(5x)$).`,
+        [
+          'Welche Funktion ist außen, welche innen?',
+          'Äußere $(\\sin u)\' = \\cos u$ mit $u = 5x$ stehen lassen.',
+          'Innere $(5x)\' = 5$ — Faktor nicht vergessen.',
+        ],
+        {
+          1: 'Innere Ableitung $5$ vergessen. Die Kettenregel verlangt das PRODUKT äußere · innere Ableitung — ohne den Faktor $5$ ist das Ergebnis um diesen Faktor zu klein.',
+          2: 'Die innere Funktion $5x$ wurde im Argument der äußeren Ableitung weggelassen. $(\\sin u)\' = \\cos u$ — wenn $u = 5x$, dann ist die Auswertung $\\cos(5x)$, nicht $\\cos x$.',
+          3: 'Vorzeichen falsch: $(\\sin u)\' = +\\cos u$ (Plus). Das Minus gehört zu $(\\cos u)\' = -\\sin u$. Hier ist die äußere Funktion $\\sin$, also bleibt das Vorzeichen positiv.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['kettenregel', 'abl-sin'] },
+      ),
+      // Zeile 3: apply-independent · number-input · uses=[kettenregel]
+      ni(
+        'Berechne $f\'(0)$ für $f(x) = (2x + 1)^3$.',
+        6,
+        0,
+        '',
+        `**Ansatz:** Verkettung: außen $u^3$, innen $2x + 1$. Kettenregel (Potenz-Kettenregel) anwenden, dann $x_0 = 0$ einsetzen.
+
+**Rechnung:** Äußere Ableitung: $(u^3)' = 3u^2$, also $3(2x+1)^2$. Innere Ableitung: $(2x+1)' = 2$. Kettenregel: $f'(x) = 3(2x+1)^2 \\cdot 2 = 6(2x+1)^2$. Bei $x_0 = 0$: $f'(0) = 6 \\cdot 1^2 = 6$.
+
+**Probe:** $f(0) = 1$, $f(0{,}001) = (1{,}002)^3 \\approx 1{,}006012$. Sekantensteigung $\\approx 6{,}012$ ✓.
+
+**Typischer Fehler:** Innere Ableitung $2$ vergessen (Ergebnis: $3 \\cdot 1 = 3$). Oder Exponent $3$ nicht reduzieren ($3(2x+1)^3$ statt $3(2x+1)^2$).`,
+        [
+          'Potenz-Kettenregel: $(u^n)\' = n \\cdot u^{n-1} \\cdot u\'$.',
+          'Äußere $(u^3)\' = 3 u^2$, innere $(2x+1)\' = 2$.',
+          'Bei $x = 0$ ist $2 \\cdot 0 + 1 = 1$, $1^2 = 1$, dann $\\cdot 6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kettenregel', 'pot-regel'] },
+      ),
+      // Zeile 4: error-analysis · multiple-choice · uses=[kettenregel]
+      mc(
+        'Lara berechnet $(e^{4x})\' = e^{4x}$. Was ist ihr Fehler?',
+        [
+          'Sie hat die innere Ableitung $(4x)\' = 4$ vergessen. Standardregel: $(e^{u(x)})\' = e^{u(x)} \\cdot u\'(x)$. Korrekt: $(e^{4x})\' = e^{4x} \\cdot 4 = 4 e^{4x}$.',
+          'Bei $e$-Funktionen gilt die Kettenregel nicht.',
+          '$e^{4x}$ ist konstant.',
+          'Sie hätte die Potenzregel $(x^n)\'$ anwenden müssen.',
+        ],
+        0,
+        `**Ansatz:** $(e^x)' = e^x$ ist eine Spezialformel — bei VERKETTUNG $e^{u(x)}$ braucht es die Kettenregel mit innerer Ableitung.
+
+**Rechnung:** Korrekt: $(e^{4x})' = e^{4x} \\cdot (4x)' = e^{4x} \\cdot 4 = 4 e^{4x}$. Laras Ergebnis $e^{4x}$ wäre nur richtig, wenn $u = x$ wäre — bei $u = 4x$ fehlt der Faktor $4$.
+
+**Probe:** Bei $x = 0$: korrektes $f'(0) = 4 \\cdot 1 = 4$. Laras Ergebnis $f'(0) = 1$ — Faktor $4$ daneben. Sekantensteigung $(e^{4 \\cdot 0{,}001} - 1)/0{,}001 \\approx 4{,}008$ bestätigt $f'(0) = 4$.
+
+**Typischer Fehler:** Genau dieser — die Grundregel $(e^x)' = e^x$ wird mechanisch übertragen, OHNE die Kettenregel anzuwenden. Faustregel: Steht im Exponenten etwas, das NICHT nur $x$ ist, dann Kettenregel.`,
+        [
+          'Sieht $e^{4x}$ aus wie $e^x$ — oder ist da eine Verkettung?',
+          'Wenn der Exponent nicht nur „$x$" ist: Kettenregel.',
+          'Standardfall: $(e^{u(x)})\' = e^{u(x)} \\cdot u\'(x)$.',
+        ],
+        {
+          1: 'Doch, die Kettenregel gilt auch für $e$-Funktionen — sie ist genau der Grund, warum bei $e^{u(x)}$ der Faktor $u\'(x)$ entsteht.',
+          2: '$e^{4x}$ ist eine wachsende Exponentialfunktion, nicht konstant. $e^0 = 1$, $e^4 \\approx 54{,}6$, $e^{8} \\approx 2981$ — Werte ändern sich stark.',
+          3: 'Die Potenzregel $(x^n)\'$ gilt nur, wenn die Variable die BASIS ist (wie bei $x^4$). Bei $e^{4x}$ ist die Variable im EXPONENTEN — Exponentialregel + Kettenregel.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['kettenregel', 'abl-exp'] },
+      ),
+      // Zeile 5: transfer · multiple-choice · uses=[kettenregel]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\cos(7x - 2)$?',
+        [
+          '$-7 \\sin(7x - 2)$',
+          '$-\\sin(7x - 2)$',
+          '$7 \\sin(7x - 2)$',
+          '$7 \\cos(7x - 2)$',
+        ],
+        0,
+        `**Ansatz:** Verkettung: außen $\\cos u$, innen $7x - 2$. Kettenregel: $-\\sin(\\text{innen}) \\cdot \\text{innere Ableitung}$.
+
+**Rechnung:** Äußere Ableitung: $(\\cos u)' = -\\sin u$, also $-\\sin(7x-2)$. Innere Ableitung: $(7x-2)' = 7$. Kettenregel: $f'(x) = -\\sin(7x-2) \\cdot 7 = -7 \\sin(7x-2)$.
+
+**Probe:** Bei $x = 2/7$ ist $7x - 2 = 0$, also $\\sin(7x-2) = 0$ und $f'(2/7) = 0$. Tatsächlich hat $\\cos$ bei Argument $0$ ein Maximum (waagerechte Tangente) ✓.
+
+**Typischer Fehler:** Innere Ableitung $7$ vergessen (Antwort B) oder Vorzeichen bei $(\\cos u)' = -\\sin u$ falsch setzen.`,
+        [
+          'Welche zwei Bausteine bringt die Kettenregel: äußere und innere Ableitung.',
+          '$(\\cos u)\' = -\\sin u$ — Minuszeichen aus dem Zyklus.',
+          '$(7x - 2)\' = 7$ — die Konstante $-2$ verschwindet beim Ableiten.',
+        ],
+        {
+          1: 'Innere Ableitung $7$ vergessen. Bei Kettenregel: äußere Ableitung MAL innere Ableitung. Ohne $7$ ist das Ergebnis um Faktor $7$ zu klein.',
+          2: 'Vorzeichen falsch: $(\\cos u)\' = -\\sin u$ hat ein MINUS — der Kosinus „bekommt" beim Ableiten das Minuszeichen, nicht der Sinus.',
+          3: 'Funktion nicht gewechselt: Die Ableitung von $\\cos$ ist $-\\sin$, nicht wieder $\\cos$. Vergleichbar mit dem Ableitungszyklus: $\\cos \\to -\\sin$, nicht $\\cos \\to \\cos$.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['kettenregel', 'abl-cos'] },
+      ),
+      // Bonus SG 0: apply-independent · number-input · uses=[kettenregel]
+      ni(
+        'Berechne $f\'(1)$ für $f(x) = (x^3 + 1)^2$.',
+        12,
+        0,
+        '',
+        `**Ansatz:** Verkettung: außen $u^2$, innen $x^3 + 1$. Potenz-Kettenregel.
+
+**Rechnung:** $f'(x) = 2(x^3 + 1) \\cdot (x^3 + 1)' = 2(x^3 + 1) \\cdot 3x^2 = 6x^2(x^3 + 1)$. Bei $x_0 = 1$: $f'(1) = 6 \\cdot 1 \\cdot 2 = 12$.
+
+**Probe:** $f(1) = 4$, $f(1{,}001) \\approx (1{,}003003 + 1)^2 \\approx 4{,}012$. Sekantensteigung $\\approx 12{,}02$ ✓.
+
+**Typischer Fehler:** Innere Ableitung $(x^3 + 1)' = 3x^2$ vergessen oder $(u^2)' = u^2$ rechnen (Exponent nicht reduziert).`,
+        [
+          '$(u^2)\' = 2 u \\cdot u\'$ — Potenz-Kettenregel.',
+          'Innere Ableitung: $(x^3 + 1)\' = 3 x^2$ (Konstante $+1$ verschwindet).',
+          'Bei $x = 1$: innere Funktion = $2$, innere Ableitung = $3$, dann $2 \\cdot 2 \\cdot 3 = 12$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kettenregel', 'pot-regel'] },
+      ),
+    ],
+
+    // [1] Verkettung / Äußere finden
+    1: [
+      // Zeile 6: recognize · true-false · uses=[verkettung, aussere-finden]
+      tf(
+        'Bei einer Verkettung $f(g(x))$ wird die INNERE Funktion $g$ zuerst auf $x$ angewandt, das Ergebnis dann an die ÄUßERE Funktion $f$ weitergegeben.',
+        true,
+        `**Ansatz:** Verkettung als „Funktionsmaschine": $x \\xrightarrow{g} g(x) \\xrightarrow{f} f(g(x))$. Innere Funktion zuerst, äußere zuletzt.
+
+**Rechnung:** Beispiel $\\sin(x^2)$ in $x = 3$ auswerten: erst $g(3) = 9$ (Quadrieren), dann $f(9) = \\sin(9) \\approx 0{,}412$. Erst innen, dann außen.
+
+**Probe:** Für die Identifikation: Stelle dir das mechanische Ablesen vor: „Was passiert ZUERST mit $x$?" → das ist die innere Funktion. „Was kommt ZULETZT?" → äußere.
+
+**Typischer Fehler:** Innen/außen verwechseln. Häufig bei $e^{2x}$: außen = $e^u$, innen = $2x$ (nicht umgekehrt).`,
+        [
+          'Was passiert mit $x$ zuerst — innere oder äußere Funktion?',
+          'Bei $\\sin(x^2)$: erst quadrieren, dann sin.',
+          'Auswertung ist „von innen nach außen" — Ableitung mit Kettenregel ebenso.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['verkettung', 'aussere-finden'] },
+      ),
+      // Zeile 7: apply-guided · multiple-choice · uses=[aussere-finden]
+      mc(
+        'Welche ist die äußere Funktion in $h(x) = (3 x^2 + 5)^4$?',
+        [
+          '$f(u) = u^4$ (Potenzieren mit $4$)',
+          '$g(x) = 3 x^2 + 5$',
+          '$3 x^2$',
+          'die Konstante $5$',
+        ],
+        0,
+        `**Ansatz:** Die äußere Funktion ist die, die ZULETZT angewandt wird — also die „Hülle" um die innere Konstruktion.
+
+**Rechnung:** Bei $(3 x^2 + 5)^4$ wird zuerst der Ausdruck $3 x^2 + 5$ gebildet (innere Funktion $g$), dann wird das Ergebnis mit $4$ potenziert (äußere Funktion $f(u) = u^4$).
+
+**Probe:** Bei $x = 1$: erst $g(1) = 3 + 5 = 8$, dann $f(8) = 8^4 = 4096$. Auch numerisch: $(3 \\cdot 1 + 5)^4 = 8^4 = 4096$ ✓.
+
+**Typischer Fehler:** Innen/außen verwechseln und $g$ als äußere ansehen. Faustregel: Was steht „rund herum" um den Rest? Hier die Potenz $u^4$.`,
+        [
+          'Stelle dir vor: $x$ wird Schritt für Schritt durch Funktionen geschickt — was kommt zuletzt?',
+          'Außen = die Operation, die man ZULETZT ausführt.',
+          'Bei $(\\ldots)^4$ steht das Potenzieren ganz außen.',
+        ],
+        {
+          1: 'Das ist die INNERE Funktion — $3 x^2 + 5$ wird zuerst gebildet, bevor die Potenz $u^4$ angewandt wird.',
+          2: 'Das ist nur ein TEIL der inneren Funktion. Die gesamte innere Funktion lautet $g(x) = 3 x^2 + 5$. Außerdem wird die äußere Funktion (Potenzieren) gefragt.',
+          3: 'Eine Konstante ist keine Funktion in dem Sinne — sie ist Teil der inneren Konstruktion $3 x^2 + 5$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['aussere-finden', 'verkettung'] },
+      ),
+      // Zeile 8: apply-independent · matching · uses=[aussere-finden, verkettung]
+      matching(
+        'Identifiziere für jede Verkettung die äußere und innere Funktion.',
+        [
+          { left: '$\\sin(x^2)$', right: 'äußere $\\sin u$ — innere $x^2$' },
+          { left: '$(2x + 3)^5$', right: 'äußere $u^5$ — innere $2x + 3$' },
+          { left: '$e^{\\ln x}$', right: 'äußere $e^u$ — innere $\\ln x$' },
+          { left: '$\\sqrt{x^3 + 1}$', right: 'äußere $\\sqrt{u}$ — innere $x^3 + 1$' },
+        ],
+        `**Ansatz:** Bei jeder Verkettung fragen: „Was passiert zuletzt?" (= äußere Funktion) und „Welcher Term sitzt im Argument?" (= innere Funktion).
+
+**Rechnung:** Vier Standardstrukturen — jeweils die Form $f(g(x))$:
+- $\\sin(x^2)$: Argument von $\\sin$ ist $x^2 \\Rightarrow$ innen $x^2$, außen $\\sin$
+- $(2x+3)^5$: Basis der Potenz ist $2x+3 \\Rightarrow$ innen $2x+3$, außen $u^5$
+- $e^{\\ln x}$: Exponent von $e$ ist $\\ln x \\Rightarrow$ innen $\\ln x$, außen $e^u$
+- $\\sqrt{x^3+1}$: Argument der Wurzel ist $x^3+1 \\Rightarrow$ innen $x^3+1$, außen $\\sqrt{u}$
+
+**Probe:** Numerisch bei $x = 1$ jeweils einsetzen: $\\sin 1 \\approx 0{,}841$, $5^5 = 3125$, $e^0 = 1$, $\\sqrt 2 \\approx 1{,}414$ — alle Werte ergeben sich aus „innen auswerten, dann außen".
+
+**Typischer Fehler:** Bei $e^{\\ln x}$: Verwechslung — innen ist $\\ln x$ (das Argument), außen ist $e^u$. Übrigens kürzt sich $e^{\\ln x} = x$ für $x > 0$.`,
+        [
+          'Was steht „rund um" den Rest — Potenz, Sinus, Wurzel, Exponential?',
+          'Was steht im Argument dieser Außenhülle?',
+          'Auswertung von innen nach außen: erst innere Funktion, dann äußere.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['aussere-finden', 'verkettung'] },
+      ),
+      // Zeile 9: error-analysis · multiple-choice · uses=[aussere-finden]
+      mc(
+        'Bei $f(x) = \\sin(2x)$ behauptet Lukas: „Hier ist $2x$ die äußere und $\\sin$ die innere Funktion." Was ist sein Fehler?',
+        [
+          'Er hat innen und außen vertauscht. Äußere = die, die ZULETZT angewandt wird → hier $\\sin u$. Innere = die, die ZUERST auf $x$ wirkt → hier $u = 2x$.',
+          'Bei trigonometrischen Funktionen darf man nicht von innen/außen sprechen.',
+          'In dieser Funktion gibt es keine Verkettung.',
+          'Lukas hat recht, weil $\\sin$ als „kleinere" Funktion zählt.',
+        ],
+        0,
+        `**Ansatz:** Reihenfolge der Auswertung: bei $\\sin(2x)$ wird zuerst $2x$ berechnet, dann darauf $\\sin$ angewandt. Was zuletzt kommt, ist außen.
+
+**Rechnung:** Korrekt: außen $\\sin u$, innen $2x$. Lukas' Vertauschung würde bedeuten: zuerst „den Sinus" anwenden (auf was?), dann mit $2x$ multiplizieren — das macht keinen Sinn.
+
+**Probe:** Auswertung bei $x = \\pi/4$: erst $2 \\cdot \\pi/4 = \\pi/2$ (innere), dann $\\sin(\\pi/2) = 1$ (äußere). Wäre $\\sin$ innen, dann wäre die Reihenfolge unsinnig.
+
+**Typischer Fehler:** Lukas verwechselt „auffälliger" mit „außen". Trigonometrische Funktionen wirken oft prominent, sind aber bei Verkettung meistens die ÄUSSERE Funktion (das Argument steht in der Klammer).`,
+        [
+          'In welcher Reihenfolge wird $f(x) = \\sin(2x)$ ausgewertet?',
+          '„Außen" = die letzte Operation auf dem Weg von $x$ zum Funktionswert.',
+          'Was steht „rund um" den Rest? $\\sin(\\ldots)$ ist die Hülle, $2x$ steht im Argument.',
+        ],
+        {
+          1: 'Doch — die Begriffe innen/außen sind allgemein anwendbar und gelten auch für trigonometrische Verkettungen. Sonst könnte man Kettenregel hier gar nicht systematisch nutzen.',
+          2: '$\\sin(2x)$ IST eine Verkettung — Argument $2x$ ist nicht einfach $x$, also wird zuerst $2x$ gebildet, dann $\\sin$ angewandt. Genau das ist eine Verkettung.',
+          3: '„Größe" oder „Auffälligkeit" entscheidet nicht. Was zählt ist die REIHENFOLGE der Operationen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['aussere-finden', 'verkettung'] },
+      ),
+      // Zeile 10: transfer · sorting · uses=[verkettung, aussere-finden, kettenregel]
+      sorting(
+        'Sortiere die Schritte zur Ableitung von $f(x) = \\cos(x^3)$ in didaktisch richtiger Reihenfolge.',
+        [
+          'Verkettung identifizieren: äußere Funktion $f(u) = \\cos u$, innere Funktion $g(x) = x^3$.',
+          'Äußere Ableitung bilden — innere als Argument stehen lassen: $(\\cos u)\' = -\\sin u \\Rightarrow -\\sin(x^3)$.',
+          'Innere Ableitung bilden: $(x^3)\' = 3 x^2$.',
+          'Kettenregel anwenden — die zwei Ableitungen multiplizieren: $f\'(x) = -\\sin(x^3) \\cdot 3 x^2 = -3 x^2 \\sin(x^3)$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Kettenregel-Workflow: erst Verkettung erkennen, dann äußere und innere getrennt ableiten, am Ende multiplizieren.
+
+**Rechnung:** Genau in dieser Reihenfolge: Strukturanalyse $\\to$ äußere Ableitung (mit innerer im Argument) $\\to$ innere Ableitung $\\to$ Produkt.
+
+**Probe:** Bei $x = 1$: $-3 \\cdot 1 \\cdot \\sin 1 \\approx -2{,}524$. Sekantensteigung $\\dfrac{\\cos(1{,}001^3) - \\cos 1}{0{,}001} \\approx -2{,}53$ ✓.
+
+**Typischer Fehler:** Schritt 2 vergessen ($\\cos u$ als $-\\sin u$ ableiten, aber das Argument $x^3$ durch $x$ ersetzen). Oder die innere Ableitung am Ende einfach addieren statt multiplizieren.`,
+        [
+          'Erst die Struktur klären, dann Ableitungen — am Ende verbinden.',
+          'Äußere Ableitung enthält die INNERE Funktion als Argument.',
+          'Letzter Schritt ist das PRODUKT der zwei Ableitungen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['verkettung', 'aussere-finden', 'kettenregel', 'abl-cos'] },
+      ),
+      // Bonus SG 1: apply-guided · multiple-choice · uses=[aussere-finden]
+      mc(
+        'Welche ist die äußere Funktion in $h(x) = \\sqrt{1 - x^2}$?',
+        [
+          '$f(u) = \\sqrt{u}$',
+          '$g(x) = 1 - x^2$',
+          '$-x^2$',
+          '$1$',
+        ],
+        0,
+        `**Ansatz:** Was passiert mit $x$ zuletzt? Erst $1 - x^2$ ausrechnen, dann die Wurzel ziehen — also ist $\\sqrt{u}$ die äußere Funktion.
+
+**Rechnung:** Auswertungsreihenfolge: $x \\to x^2 \\to 1 - x^2 \\to \\sqrt{1 - x^2}$. Die Wurzel-Operation ist die ZULETZTE — also außen.
+
+**Probe:** Bei $x = 0$: innen $1 - 0 = 1$, außen $\\sqrt{1} = 1$. Erst innere Berechnung, dann äußere Wurzel.
+
+**Typischer Fehler:** Innen/außen verwechseln. Hilft: bei Wurzeln, Logarithmen und trigonometrischen Hüllen ist meist die offensichtliche „Außenfunktion" die richtige.`,
+        [
+          'Was steht „rund um" den Rest?',
+          'Welche Operation kommt als letzte vor dem Ergebnis?',
+          'Die Wurzel ist die äußere Hülle, der polynomiale Ausdruck steckt im Argument.',
+        ],
+        {
+          1: 'Das ist die INNERE Funktion — $1 - x^2$ wird zuerst berechnet, dann darauf die Wurzel.',
+          2: 'Das ist nur EIN TEIL der inneren Funktion. Die vollständige Innere ist $1 - x^2$, nicht nur $-x^2$.',
+          3: 'Eine Konstante ist keine Funktion und auch nicht „die äußere". Gefragt ist der Funktions-Wrapper um die innere Berechnung herum.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['aussere-finden', 'verkettung'] },
+      ),
+    ],
+
+    // [2] Standardfälle: (e^u)', (sin u)', (cos u)', (ln u)'
+    2: [
+      // Zeile 11: recognize · true-false · uses=[std-exp-u, std-sin-u]
+      tf(
+        'Für die Verkettungen mit elementaren Funktionen gilt $(\\sin u)\' = \\cos u \\cdot u\'$ und $(e^u)\' = e^u \\cdot u\'$. In beiden Fällen wird die INNERE Ableitung $u\' = u\'(x)$ mitgenommen.',
+        true,
+        `**Ansatz:** Die Kettenregel verwandelt jede Grundformel in einen Standard-Fall: äußere Ableitung mit innerer als Argument, multipliziert mit der inneren Ableitung.
+
+**Rechnung:** $(\\sin u)' = (\\sin)'(u) \\cdot u' = \\cos u \\cdot u'$. Analog $(e^u)' = (e^u)' \\cdot u' = e^u \\cdot u'$ — bei $u = x$ entfällt $u'$ (weil $x' = 1$), bei $u \\neq x$ MUSS er mitgenommen werden.
+
+**Probe:** $\\sin(3x)$: $u = 3x$, $u' = 3$, also $(\\sin(3x))' = \\cos(3x) \\cdot 3 = 3 \\cos(3x)$. Bei $x = 0$: $3$ ✓.
+
+**Typischer Fehler:** $(\\sin u)' = \\cos u$ schreiben (ohne $u'$) — gilt nur bei $u = x$. Bei $u = 3x$, $u = x^2$ etc. MUSS $u'$ stehen.`,
+        [
+          'Was passiert in der Kettenregel mit der inneren Ableitung?',
+          'Standardform: $(\\sin u)\' = \\cos u \\cdot u\'$.',
+          'Wenn $u = x$ ist, wird $u\' = 1$ — und der Faktor wird unsichtbar.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['std-exp-u', 'std-sin-u', 'kettenregel'] },
+      ),
+      // Zeile 12: apply-guided · multiple-choice · uses=[std-sin-u, std-exp-u]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\sin(x^2)$?',
+        [
+          '$2 x \\cos(x^2)$',
+          '$\\cos(x^2)$',
+          '$2 x \\sin(x^2)$',
+          '$-2 x \\cos(x^2)$',
+        ],
+        0,
+        `**Ansatz:** Standardfall $(\\sin u)' = \\cos u \\cdot u'$ mit $u(x) = x^2$ und $u'(x) = 2x$.
+
+**Rechnung:** $f'(x) = \\cos(x^2) \\cdot 2 x = 2 x \\cos(x^2)$.
+
+**Probe:** Bei $x = 1$: $2 \\cdot 1 \\cdot \\cos(1) \\approx 2 \\cdot 0{,}5403 = 1{,}0806$. Sekantensteigung $(\\sin(1{,}001^2) - \\sin 1)/0{,}001 \\approx 1{,}08$ ✓.
+
+**Typischer Fehler:** Innere Ableitung $2x$ vergessen (nur $\\cos(x^2)$) oder Funktion nicht wechseln ($\\sin$ bleibt statt $\\cos$).`,
+        [
+          'Standardfall: $(\\sin u)\' = \\cos u \\cdot u\'$.',
+          'Hier $u = x^2$, $u\' = 2 x$.',
+          'Funktion wechselt: $\\sin \\to \\cos$, plus innere Ableitung.',
+        ],
+        {
+          1: 'Innere Ableitung $2 x$ vergessen. Die Kettenregel verlangt $\\cos u \\cdot u\'$ — ohne den Faktor $2 x$ ist das Ergebnis um diesen Faktor falsch.',
+          2: 'Funktion nicht gewechselt. $(\\sin)\' = \\cos$, nicht wieder $\\sin$. Das wäre $\\sin(x^2)$ selbst, mit innerer Ableitung dranmultipliziert — aber dann fehlt der Wechsel zur Ableitungsfunktion.',
+          3: 'Vorzeichen falsch: $(\\sin)\' = +\\cos$. Das Minuszeichen gehört zu $(\\cos)\' = -\\sin$, hier ist die äußere Funktion aber $\\sin$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['std-sin-u', 'kettenregel'] },
+      ),
+      // Zeile 13: apply-independent · number-input · uses=[std-ln-u]
+      ni(
+        'Berechne $f\'(2)$ für $f(x) = \\ln(x^2 + 1)$. Gib das Ergebnis als Dezimalzahl an.',
+        0.8,
+        0.001,
+        '',
+        `**Ansatz:** Logarithmische Ableitung als Standardfall: $(\\ln u)' = u'/u$ mit $u(x) = x^2 + 1$.
+
+**Rechnung:** $u'(x) = 2 x$, also $f'(x) = \\dfrac{2 x}{x^2 + 1}$. Bei $x_0 = 2$: $f'(2) = \\dfrac{4}{5} = 0{,}8$.
+
+**Probe:** Sekantensteigung $(\\ln(5{,}004) - \\ln 5)/0{,}001 \\approx 0{,}8$ ✓.
+
+**Typischer Fehler:** Innere Ableitung $u' = 2x$ vergessen und $f'(x) = 1/(x^2+1)$ schreiben — der Standardfall ist $u'/u$, nicht $1/u$.`,
+        [
+          'Logarithmische Ableitung: $(\\ln u)\' = u\'/u$.',
+          'Innere Funktion $u = x^2 + 1$, innere Ableitung $u\' = 2 x$.',
+          'Bei $x = 2$: $u = 5$, $u\' = 4$, also $4/5 = 0{,}8$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['std-ln-u', 'kettenregel'] },
+      ),
+      // Zeile 14: error-analysis · multiple-choice · uses=[std-ln-u]
+      mc(
+        'Mara berechnet $(\\ln(3 x^2))\' = \\dfrac{1}{3 x^2}$. Was ist ihr Fehler?',
+        [
+          'Sie hat $(\\ln u)\' = 1/u$ statt der korrekten Standardform $(\\ln u)\' = u\'/u$ verwendet — der Zähler $u\'$ fehlt. Korrekt: $\\dfrac{(3 x^2)\'}{3 x^2} = \\dfrac{6 x}{3 x^2} = \\dfrac{2}{x}$.',
+          'Sie hätte den Vorfaktor $3$ aus dem Logarithmus ziehen müssen.',
+          '$\\ln(3 x^2)$ ist nicht differenzierbar.',
+          'Der Nenner ist falsch — er müsste $3 x$ sein.',
+        ],
+        0,
+        `**Ansatz:** Standardfall: $(\\ln u)' = u'/u$. Bei VERKETTUNGEN MUSS die innere Ableitung im Zähler stehen — sonst entsteht die häufige Fehlformel $1/u$.
+
+**Rechnung:** Korrekt: $u(x) = 3 x^2$, $u'(x) = 6 x$. $(\\ln(3 x^2))' = \\dfrac{6 x}{3 x^2} = \\dfrac{2}{x}$. Maras Ergebnis $1/(3 x^2)$ wäre nur richtig, wenn $u(x) = x$ — was hier nicht der Fall ist.
+
+**Probe:** Bei $x = 1$: korrektes $f'(1) = 2$. Maras Ergebnis $1/3 \\approx 0{,}33$ — Faktor $6$ daneben.
+
+**Typischer Fehler:** Bei $\\ln$-Verkettungen die Formel $1/u$ statt $u'/u$ anwenden. Merksatz: „Logarithmische Ableitung = innere Ableitung GETEILT durch inneres Argument."`,
+        [
+          'Was ist die korrekte Standardform $(\\ln u)\'$?',
+          'Welcher Faktor steht im ZÄHLER der logarithmischen Ableitung?',
+          'Innere Ableitung $(3 x^2)\' = 6 x$ — fehlt in Maras Ergebnis.',
+        ],
+        {
+          1: 'Mara hätte auch $\\ln(3 x^2) = \\ln 3 + 2 \\ln x$ umformen können (Log-Gesetz), dann wäre die Ableitung $0 + 2/x = 2/x$. Aber das ist eine ALTERNATIVE Methode, nicht die Erklärung des konkreten Fehlers in ihrer Rechnung.',
+          2: '$\\ln(3 x^2)$ ist auf seinem Definitionsbereich ($x \\neq 0$) überall differenzierbar. Das Problem ist die FALSCHE Anwendung der Standardform, nicht die Existenz der Ableitung.',
+          3: 'Der Nenner $3 x^2$ ist tatsächlich korrekt — das ist die innere Funktion $u$. Maras Fehler liegt im fehlenden Zähler $u\'$, nicht im falschen Nenner.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['std-ln-u', 'kettenregel'] },
+      ),
+      // Zeile 15: transfer · matching · uses=[std-exp-u, std-sin-u, std-ln-u]
+      matching(
+        'Ordne jeder verketteten Funktion ihre Ableitung zu — die innere Ableitung ist überall mitgenommen.',
+        [
+          { left: '$\\sin(2 x)$', right: '$2 \\cos(2 x)$' },
+          { left: '$e^{3 x}$', right: '$3 e^{3 x}$' },
+          { left: '$\\ln(x^2)$', right: '$\\dfrac{2}{x}$' },
+          { left: '$\\cos(5 x)$', right: '$-5 \\sin(5 x)$' },
+        ],
+        `**Ansatz:** Jeweils Standardfall + innere Ableitung. Innere Funktion $u(x)$ ist hier immer ein Vielfaches oder eine Potenz von $x$.
+
+**Rechnung:**
+- $(\\sin(2 x))' = \\cos(2 x) \\cdot 2 = 2 \\cos(2 x)$
+- $(e^{3 x})' = e^{3 x} \\cdot 3 = 3 e^{3 x}$
+- $(\\ln(x^2))' = \\dfrac{(x^2)'}{x^2} = \\dfrac{2 x}{x^2} = \\dfrac{2}{x}$
+- $(\\cos(5 x))' = -\\sin(5 x) \\cdot 5 = -5 \\sin(5 x)$
+
+**Probe:** Bei $x = 1$: $2 \\cos 2 \\approx -0{,}832$, $3 e^3 \\approx 60{,}26$, $2/1 = 2$, $-5 \\sin 5 \\approx 4{,}795$ — vier sehr verschiedene Werte, also keine Verwechslung möglich.
+
+**Typischer Fehler:** Innere Ableitung weglassen (z.B. $\\cos(2 x)$ statt $2 \\cos(2 x)$) oder Vorzeichen bei $\\cos$ vergessen.`,
+        [
+          'Standardfälle: $(\\sin u)\' = \\cos u \\cdot u\'$, $(e^u)\' = e^u \\cdot u\'$, $(\\ln u)\' = u\'/u$, $(\\cos u)\' = -\\sin u \\cdot u\'$.',
+          'Innere Ableitung ist hier jeweils die Konstante vor $x$ oder $2x$ bei $x^2$.',
+          'Vorzeichen bei $\\cos$ NICHT vergessen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['std-exp-u', 'std-sin-u', 'std-ln-u', 'kettenregel'] },
+      ),
+      // Bonus SG 2: apply-guided · multiple-choice · uses=[std-exp-u]
+      mc(
+        'Was ist die Ableitung von $f(x) = e^{-x}$?',
+        ['$-e^{-x}$', '$e^{-x}$', '$-e^{-x-1}$', '$-x \\cdot e^{-x-1}$'],
+        0,
+        `**Ansatz:** Standardfall $(e^u)' = e^u \\cdot u'$ mit $u = -x$ und $u' = -1$.
+
+**Rechnung:** $f'(x) = e^{-x} \\cdot (-1) = -e^{-x}$.
+
+**Probe:** $e^{-x}$ ist monoton fallend (für wachsendes $x$ wird der Wert kleiner) — also muss die Ableitung negativ sein. $-e^{-x} < 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen ($e^{-x}$) oder Potenzregel falsch anwenden.`,
+        [
+          'Was ist die innere Funktion $u$ und ihre Ableitung?',
+          '$u = -x$, $u\' = -1$.',
+          '$(e^u)\' = e^u \\cdot u\' = e^{-x} \\cdot (-1) = -e^{-x}$.',
+        ],
+        {
+          1: 'Vorzeichen vergessen — die innere Ableitung $u\' = -1$ wurde ausgelassen. $e^{-x}$ allein wäre nur die unveränderte Funktion.',
+          2: 'Hier wurde die Potenzregel $(x^n)\' = n x^{n-1}$ auf eine Exponentialfunktion angewandt — falsch. Bei $e^{-x}$ ist die Variable im EXPONENTEN, nicht in der Basis.',
+          3: 'Wieder Potenzregel-Fehler, zusätzlich Vorzeichen falsch. Bei Exponentialfunktionen gilt der Standardfall $(e^u)\' = e^u \\cdot u\'$, KEINE Potenzregel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['std-exp-u', 'kettenregel'] },
+      ),
+    ],
+
+    // [3] Mehrfachverkettung
+    3: [
+      // Zeile 16: recognize · true-false · uses=[mehrfach-kette]
+      tf(
+        'Bei dreifach verketteten Funktionen $f(g(h(x)))$ multipliziert die Kettenregel ALLE DREI Ableitungen: $f\'(g(h(x))) \\cdot g\'(h(x)) \\cdot h\'(x)$.',
+        true,
+        `**Ansatz:** Die Kettenregel wird bei jeder zusätzlichen Schale ein weiteres Mal angewandt — jede Schicht trägt einen Faktor zum Produkt bei.
+
+**Rechnung:** Für $f(g(h(x)))$: erst $h$ auf $x$ angewandt, dann $g$, dann $f$. Beim Ableiten in umgekehrter Reihenfolge: $f'(g(h(x))) \\cdot [g(h(x))]' = f'(g(h(x))) \\cdot g'(h(x)) \\cdot h'(x)$. DREI Faktoren.
+
+**Probe:** Für $f(x) = e^{\\sin(2x)}$: außen $e^u$, mittel $\\sin v$, innen $2x$. Ableitung $f'(x) = e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2$ — drei Faktoren ✓.
+
+**Typischer Fehler:** Nur zwei Faktoren bilden (mittlere Schicht vergessen) oder die Auswertungsstellen verwechseln.`,
+        [
+          'Wie viele Schichten hat $f(g(h(x)))$?',
+          'Pro Schicht kommt ein Faktor in das Produkt der Kettenregel.',
+          'Innerste Schicht: nur $h\'(x)$. Mittlere: $g\'(h(x))$. Äußerste: $f\'(g(h(x)))$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['mehrfach-kette', 'kettenregel'] },
+      ),
+      // Zeile 17: apply-guided · multiple-choice · uses=[mehrfach-kette]
+      mc(
+        'Was ist die Ableitung von $f(x) = e^{\\sin x}$?',
+        [
+          '$\\cos x \\cdot e^{\\sin x}$',
+          '$e^{\\sin x}$',
+          '$e^{\\cos x}$',
+          '$\\sin x \\cdot e^{\\sin x}$',
+        ],
+        0,
+        `**Ansatz:** Standardfall $(e^u)' = e^u \\cdot u'$ mit $u(x) = \\sin x$ und $u'(x) = \\cos x$.
+
+**Rechnung:** $f'(x) = e^{\\sin x} \\cdot \\cos x = \\cos x \\cdot e^{\\sin x}$.
+
+**Probe:** Bei $x = 0$: $\\cos 0 \\cdot e^0 = 1 \\cdot 1 = 1$. Sekantensteigung $\\dfrac{e^{\\sin 0{,}001} - e^0}{0{,}001} \\approx 1{,}0005$ ✓.
+
+**Typischer Fehler:** Innere Ableitung $\\cos x$ vergessen (Antwort B) oder Funktionsnamen $\\sin/\\cos$ im Exponenten austauschen (Antwort C).`,
+        [
+          'Standardfall $(e^u)\' = e^u \\cdot u\'$.',
+          'Hier $u = \\sin x$, also $u\' = \\cos x$.',
+          '$e^{\\sin x}$ bleibt unverändert, der Faktor $\\cos x$ kommt vor (Kettenregel).',
+        ],
+        {
+          1: 'Innere Ableitung $\\cos x$ vergessen — die häufigste Falle bei $e^u$-Verkettungen. Das Ergebnis $e^{\\sin x}$ wäre nur richtig, wenn $u = x$.',
+          2: 'Funktion im Exponenten ausgetauscht — das ist nicht erlaubt. Ableiten ändert die Funktion $\\sin \\to \\cos$ NUR im FAKTOR-Term, nicht im Exponenten. $e^{\\sin x}$ behält den Sinus.',
+          3: 'Innere Ableitung falsch: $(\\sin x)\' = \\cos x$, nicht $\\sin x$. Hier wurde die Funktion nicht abgeleitet, sondern unverändert mitgenommen.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['mehrfach-kette', 'std-exp-u', 'kettenregel'] },
+      ),
+      // Zeile 18: apply-independent · number-input · uses=[mehrfach-kette]
+      ni(
+        'Berechne $f\'(0)$ für $f(x) = e^{\\sin(2x)}$.',
+        2,
+        0,
+        '',
+        `**Ansatz:** Dreifach verkettet: außen $e^u$, mittel $\\sin v$, innen $2x$. Drei Faktoren multiplizieren.
+
+**Rechnung:** $f'(x) = e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2$. Bei $x_0 = 0$: $\\sin(0) = 0$, also $e^0 = 1$ · $\\cos 0 = 1$ · $2$ = $2$.
+
+**Probe:** Sekantensteigung $\\dfrac{e^{\\sin(0{,}002)} - 1}{0{,}001} \\approx 2{,}00$ ✓.
+
+**Typischer Fehler:** Eine der drei Ableitungs-Stufen vergessen — z. B. nur $e^{\\sin(2x)} \\cdot \\cos(2x)$ ohne den $\\cdot 2$ aus der innersten Schicht.`,
+        [
+          'Wie viele Schichten hat $e^{\\sin(2x)}$?',
+          'Drei Schichten: $e^u$, $\\sin v$, $2x$.',
+          'Drei Ableitungen multiplizieren: $e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['mehrfach-kette', 'std-exp-u', 'std-sin-u', 'kettenregel'] },
+      ),
+      // Zeile 19: error-analysis · multiple-choice · uses=[mehrfach-kette]
+      mc(
+        'Tom berechnet $(\\sin(e^x))\' = \\cos(e^x)$. Was ist sein Fehler?',
+        [
+          'Er hat die innere Ableitung $(e^x)\' = e^x$ vergessen. Standardfall: $(\\sin u)\' = \\cos u \\cdot u\'$. Korrekt: $\\cos(e^x) \\cdot e^x$.',
+          'Bei mehrfach verketteten Funktionen gilt die Kettenregel nicht.',
+          '$\\sin(e^x)$ ist nicht definiert.',
+          'Er hätte $\\sin$ und $e^x$ tauschen müssen.',
+        ],
+        0,
+        `**Ansatz:** Bei Verkettung muss die innere Ableitung IMMER mitgenommen werden. Innere Funktion hier: $u(x) = e^x$, innere Ableitung $u' = e^x$.
+
+**Rechnung:** Korrekt: $(\\sin(e^x))' = \\cos(e^x) \\cdot e^x$. Toms Ergebnis $\\cos(e^x)$ wäre nur richtig, wenn $u = x$ — hier ist $u = e^x$ aber gerade nicht die Identität.
+
+**Probe:** Bei $x = 0$: korrektes $f'(0) = \\cos(1) \\cdot 1 \\approx 0{,}540$. Toms Ergebnis $\\cos(1) \\approx 0{,}540$ wäre numerisch zufällig hier dasselbe ($e^0 = 1$), aber bei $x = 1$: korrekt $\\cos(e) \\cdot e \\approx -0{,}911 \\cdot 2{,}718 \\approx -2{,}477$ vs. Tom $\\cos(e) \\approx -0{,}911$ — Faktor $e \\approx 2{,}72$ daneben.
+
+**Typischer Fehler:** Genau dieser — die Kettenregel bei „nicht offensichtlichen" inneren Funktionen vergessen. Speziell bei $e^x$ als innere Funktion ist es leicht, „nur $\\cos$" zu schreiben, weil man die Standardformel auswendig hat.`,
+        [
+          'Welcher Standardfall gilt für $(\\sin u)\'$?',
+          'Was ist die innere Ableitung von $e^x$?',
+          'Der Faktor $u\' = e^x$ darf NICHT fehlen.',
+        ],
+        {
+          1: 'Doch — die Kettenregel ist universell. Bei jeder Verkettung gilt sie, auch bei doppelten oder mehrfachen Schichten.',
+          2: '$\\sin(e^x)$ ist auf ganz $\\mathbb{R}$ definiert und differenzierbar. Toms Fehler ist die fehlerhafte Anwendung der Kettenregel, nicht ein Definitionsproblem.',
+          3: 'Innen und außen tauschen würde eine ganz ANDERE Funktion ergeben: $e^{\\sin x}$. Das ist nicht $\\sin(e^x)$. Toms Fehler liegt in der fehlenden inneren Ableitung, nicht in der Reihenfolge der Funktionen.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['mehrfach-kette', 'std-sin-u', 'kettenregel'] },
+      ),
+      // Zeile 20: transfer · sorting · uses=[mehrfach-kette, aussere-finden]
+      sorting(
+        'Sortiere die Schalen-Ableitungen für $f(x) = e^{\\sin(2 x)}$ von ÄUSSERSTER zu INNERSTER Schicht.',
+        [
+          'Äußerste Schale — $(e^u)\' = e^u$: ergibt $e^{\\sin(2x)}$.',
+          'Mittlere Schale — $(\\sin v)\' = \\cos v$: ergibt $\\cos(2x)$.',
+          'Innerste Schale — $(2x)\' = 2$: ergibt $2$.',
+          'Drei Faktoren multiplizieren: $f\'(x) = e^{\\sin(2x)} \\cdot \\cos(2x) \\cdot 2 = 2 e^{\\sin(2x)} \\cos(2x)$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Bei Mehrfachverkettung Schicht für Schicht von außen nach innen ableiten, dann alle Faktoren multiplizieren.
+
+**Rechnung:** Drei Schalen, drei Ableitungen, drei Faktoren. Jeder Faktor enthält die jeweils inneren Schichten als Argument; die Ableitung wird auf die eigene Schicht angewandt.
+
+**Probe:** Bei $x = 0$: alle drei Faktoren $e^0 = 1$, $\\cos 0 = 1$, $2$. Produkt = $2$ ✓ (passt zur Aufgabe Zeile 18).
+
+**Typischer Fehler:** Reihenfolge verwechseln (innerste zuerst statt äußerste) oder eine Schale vergessen.`,
+        [
+          'Wie viele Schalen hat $e^{\\sin(2x)}$? Was ist die äußerste?',
+          'Pro Schicht ein Faktor in das Produkt.',
+          'Innerste Schicht ist meistens die einfachste — hier nur $(2x)\' = 2$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['mehrfach-kette', 'aussere-finden', 'kettenregel', 'std-exp-u', 'std-sin-u'] },
+      ),
+      // Bonus SG 3: recognize · true-false · uses=[mehrfach-kette]
+      tf(
+        'Die Funktion $f(x) = \\sqrt{\\cos(x^2)}$ besteht aus drei Schalen — äußere $\\sqrt{\\cdot}$, mittlere $\\cos$, innerste $x^2$ — und benötigt die Kettenregel dreifach.',
+        true,
+        `**Ansatz:** Schalen abzählen: Was passiert mit $x$ in welcher Reihenfolge? Erst $x^2$ bilden, dann Kosinus darauf anwenden, dann die Wurzel.
+
+**Rechnung:** Drei Schichten: innerste $h(x) = x^2$, mittlere $g(u) = \\cos u$, äußerste $f(v) = \\sqrt{v}$. Ableitung: $f'(x) = \\dfrac{1}{2\\sqrt{\\cos(x^2)}} \\cdot (-\\sin(x^2)) \\cdot 2x = \\dfrac{-2x \\sin(x^2)}{2\\sqrt{\\cos(x^2)}} = \\dfrac{-x \\sin(x^2)}{\\sqrt{\\cos(x^2)}}$.
+
+**Probe:** Bei $x = 0$: alle drei Faktoren ergeben $\\dfrac{1}{2 \\cdot 1} \\cdot 0 \\cdot 0 = 0$. Tatsächlich hat $\\sqrt{\\cos(x^2)}$ bei $x = 0$ den Wert $1$ und ein lokales Maximum (waagerechte Tangente).
+
+**Typischer Fehler:** Nur zwei Schalen sehen ($\\sqrt{\\cos(\\cdot)}$ als „eine Schale") und die innere $x^2$ ignorieren.`,
+        [
+          'Welche Operationen werden auf $x$ nacheinander angewandt?',
+          'Bei $\\sqrt{\\cos(x^2)}$: erst quadrieren, dann Kosinus, dann Wurzel.',
+          'Jede einzelne Operation ist eine eigene Schale.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['mehrfach-kette', 'aussere-finden'] },
+      ),
+    ],
+  },
 }

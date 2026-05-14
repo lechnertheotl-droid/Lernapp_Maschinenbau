@@ -477,13 +477,13 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       2: 'Das wäre „innere Ableitung in die äußere Funktion einsetzen" — aber die Kettenregel ist ein *Produkt*, nicht ein Einsetzen. Man leitet die äußere Funktion mit der inneren als Argument ab *und* multipliziert mit der inneren Ableitung.',
       3: 'Addition statt Multiplikation: Die Kettenregel ist $f\'(g(x)) \\cdot g\'(x)$, kein Summe. Die Addition wäre die Summenregel $(f+g)\'=f\'+g\'$ — aber hier liegt keine Summe vor, sondern eine Verkettung.',
     },
-    explanation: `**Ansatz:** Bei verketteten Funktionen (Funktion in Funktion) gilt die Kettenregel.
+    explanation: `**Ansatz:** Bei verketteten Funktionen (Funktion in Funktion) gilt die Kettenregel. Die Eselsbrücke lautet: „Außen ableiten, innen stehen lassen, dann mal innere Ableitung."
 
-**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$ — äußere Ableitung (mit innerer eingesetzt) mal innere Ableitung.
+**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$ — die äußere Ableitung wird an der inneren Funktion ausgewertet (innere bleibt als Argument stehen) und mit der inneren Ableitung multipliziert.
 
-**Merkhilfe:** "Außen ableiten, innen stehen lassen, dann mal innere Ableitung."
+**Probe:** Für $f(x) = \\sin(3x)$ ist $f(u) = \\sin u$ und $g(x) = 3x$. Damit $f'(g(x)) = \\cos(3x)$ und $g'(x) = 3$. Kettenregel: $\\cos(3x) \\cdot 3 = 3\\cos(3x)$. Bei $x = 0$: $3\\cos 0 = 3$ — passt zur Tangentensteigung von $\\sin(3x)$ im Ursprung ✓.
 
-**Typischer Fehler:** $f'(x) \\cdot g'(x)$ (Antwort A) vergisst, dass in der äußeren Ableitung die *innere Funktion eingesetzt* bleiben muss.`,
+**Typischer Fehler:** $f'(x) \\cdot g'(x)$ (Antwort A) vergisst, dass in der äußeren Ableitung die *innere Funktion eingesetzt* bleiben muss. Oder $f(g'(x))$ — Verwechslung von „Produkt" und „Einsetzen".`,
     hints: [
       'Welche Regel gilt für verkettete Funktionen?',
       'Regel: $[f(g(x))]\' = f\'(g(x)) \\cdot g\'(x)$.',
@@ -1232,6 +1232,55 @@ $$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
 2. Multiplizieren mit der Ableitung der inneren Funktion
 
 **Warum der Faktor $g'$?** Die innere Funktion verändert das Argument mit einer eigenen "Geschwindigkeit". Diese Geschwindigkeit muss in die Gesamtableitung einfließen — sonst ist das Ergebnis um einen Faktor falsch skaliert.`,
+      },
+      {
+        id: 'abl-1-4-s-formal', type: 'explanation-formal', title: 'Kettenregel und Standardfälle',
+        content: `**Kettenregel (allgemein):**
+
+$$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
+
+Die äußere Ableitung wird an $g(x)$ ausgewertet (innere Funktion bleibt als Argument stehen) und mit der inneren Ableitung $g'(x)$ multipliziert.
+
+**Standardfälle als Tabelle:**
+
+| Funktion $f(x)$ | Ableitung $f'(x)$ | Hinweis |
+|---|---|---|
+| $(u(x))^n$ | $n \\cdot (u(x))^{n-1} \\cdot u'(x)$ | Potenz-Kettenregel |
+| $e^{u(x)}$ | $e^{u(x)} \\cdot u'(x)$ | $e^u$ bleibt, mal $u'$ |
+| $a^{u(x)}$ | $a^{u(x)} \\cdot \\ln a \\cdot u'(x)$ | Basis $a$: zusätzlich $\\ln a$ |
+| $\\sin(u(x))$ | $\\cos(u(x)) \\cdot u'(x)$ | $\\sin \\to \\cos$, mal $u'$ |
+| $\\cos(u(x))$ | $-\\sin(u(x)) \\cdot u'(x)$ | Minuszeichen NICHT vergessen |
+| $\\ln(u(x))$ | $\\dfrac{u'(x)}{u(x)}$ | „logarithmische Ableitung" — Quotient $u'/u$ |
+| $\\sqrt{u(x)}$ | $\\dfrac{u'(x)}{2\\sqrt{u(x)}}$ | als $(u)^{1/2}$ + Potenz-Kette |
+
+**Mehrfachverkettung — hierarchisch ableiten:**
+
+Für $f(g(h(x)))$ gilt
+$$[f(g(h(x)))]' = f'(g(h(x))) \\cdot g'(h(x)) \\cdot h'(x).$$
+
+Praktisch: Von außen nach innen Schale für Schale ableiten, dann alle Faktoren multiplizieren. Beispiel $f(x) = e^{\\sin(2x)}$:
+- äußerste: $(e^u)' = e^u$, also $e^{\\sin(2x)}$
+- mittlere: $(\\sin v)' = \\cos v$, also $\\cos(2x)$
+- innerste: $(2x)' = 2$
+- Produkt: $f'(x) = 2 e^{\\sin(2x)} \\cos(2x)$.
+
+**Typische Fehler beim Anwenden:**
+- Innere Ableitung weglassen ($(e^{4x})' = e^{4x}$ statt $4e^{4x}$)
+- Innere Funktion in der äußeren Ableitung "vergessen" ($\\cos x$ statt $\\cos(3x)$)
+- Bei $(\\ln u)'$ nur $1/u$ schreiben statt $u'/u$`,
+      },
+      {
+        id: 'abl-1-4-s-viz', type: 'visualization', title: '$\\sin(3x)$ und seine Ableitung $3\\cos(3x)$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => Math.sin(3 * x), color: '#3b82f6', label: 'sin(3x)' },
+            { fn: (x) => 3 * Math.cos(3 * x), color: '#ef4444', label: "f'(x) = 3·cos(3x)" },
+          ],
+          xRange: [-Math.PI, Math.PI],
+          yRange: [-3.5, 3.5],
+          showGrid: true,
+        },
       },
       { id: 'abl-1-4-s2', type: 'exercise', title: 'Aufgabe 1 — Formel', exerciseRef: 'ex-abl-1-4-a' },
       { id: 'abl-1-4-s3', type: 'exercise', title: 'Aufgabe 2 — $\\sin(3x)$', exerciseRef: 'ex-abl-1-4-b' },
