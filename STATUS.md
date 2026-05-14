@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3540 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2793 (79 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 3546 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2801 (79 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1654 / 1654 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 419 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -199,8 +199,8 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **458** (Lesson-Path: 66 · Goal-Tasks: 392)
-- 4-Block: 448/458 (98 %) 🟡
+- Aufgaben: **464** (Lesson-Path: 66 · Goal-Tasks: 398)
+- 4-Block: 456/464 (98 %) 🟡
 - MC-wAE: 228/228 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
@@ -253,7 +253,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 36 | 20/8/5/3/0 | 36/36 | 20/20 | ✅ | — |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 39 | 15/12/8/4/0 | 39/39 | 15/15 | ✅ | — |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 39 | 21/7/6/5/0 | 39/39 | 21/21 | ✅ | — |
-| `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 33 | 18/6/4/4/1 | 31/33 | 18/18 | ✅ | +2 4B |
+| `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 39 | 18/10/5/5/1 | 39/39 | 18/18 | ✅ | — |
 | `trig-3-1` Additionstheoreme | 5 | 0/5 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +5 Goal, +3 4B |
 | `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 0/5 | 3 | 3/0/0/0/0 | 0/3 | 3/3 | ✅ | +5 Goal, +3 4B |
 | `trig-3-3` Technische Anwendungen | 5 | 0/5 | 3 | 3/0/0/0/0 | 2/3 | 3/3 | ✅ | +5 Goal, +1 4B |
@@ -9271,7 +9271,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 49 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10471,67 +10471,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `trig-2-5` · Alle vier Quadranten
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-2-3` → `supplement-formel`, `punktspiegelung`, `periodizitaet-360`
-  - `trig-2-4` → `tan-astc`
-  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `quadranten-grenzen` — Quadranten Q1–Q4 mit den Winkelgrenzen $0°/90°/180°/270°/360°$ (SG 0)
-  2. `astc-vollstaendig` — ASTC: Q1 alle, Q2 Sinus, Q3 Tangens, Q4 Kosinus positiv ⇐ `quadranten-grenzen` (SG 1)
-  3. `referenzwinkel-def` — Referenzwinkel = spitzer Winkel zur $x$-Achse (zu $0°$ oder $180°$) ⇐ `quadranten-grenzen` (SG 2)
-  4. `vier-schritt-reduktion` — 4-Schritt: Quadrant → Referenzwinkel → Q1-Grundwert → Vorzeichen aus ASTC ⇐ `astc-vollstaendig`, `referenzwinkel-def` (SG 3)
-  5. `standardwerte-reduktion` — Nur Q1-Grundwerte auswendig, alle anderen per Reduktion ⇐ `vier-schritt-reduktion` (SG 4)
-  6. `winkel-hauptbereich` — Winkel $\notin [0°, 360°)$ per $\alpha \bmod 360°$ reduzieren (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `quadranten-grenzen` · **5/5+** — Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$
-  - ✅ [1] _hoch_ · Konzepte: `astc-vollstaendig` · **5/5+** — ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv
-  - ✅ [2] _hoch_ · Konzepte: `referenzwinkel-def` · **5/5+** — Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)
-  - ✅ [3] _hoch_ · Konzepte: `vier-schritt-reduktion` · **5/5+** — 4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert (Q1) → Vorzeichen aus ASTC
-  - ✅ [4] _hoch_ · Konzepte: `standardwerte-reduktion` · **5/5+** — Standardwerte $\sin$/$\cos$ für $0°/30°/45°/60°/90°$ auswendig, Rest per Reduktion
-  - ✅ [5] _mittel_ · Konzepte: `winkel-hauptbereich` · **5/5+** — Winkel $> 360°$ oder $< 0°$ per $\alpha \bmod 360°$ in Hauptbereich bringen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | matching         | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `quadranten-grenzen` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | matching         | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | multiple-choice  | `astc-vollstaendig` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `referenzwinkel-def` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | sorting          | `vier-schritt-reduktion` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | number-input     | `standardwerte-reduktion` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-| 30 | 5 | transfer           | number-input     | `winkel-hauptbereich` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-5': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `trig-3-5` · Sinussatz & Cosinussatz
 
