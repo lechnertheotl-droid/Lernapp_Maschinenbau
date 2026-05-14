@@ -1148,4 +1148,585 @@ export const ableitungSubGoalTasks = {
       ),
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // abl-1-3 · Ableitungen elementarer Funktionen
+  // ─────────────────────────────────────────────────────────────────────────
+  'abl-1-3': {
+    // [0] sin/cos/tan
+    0: [
+      // Zeile 1: recognize · true-false · uses=[abl-sin, abl-cos]
+      tf(
+        'Es gilt $(\\sin x)\' = \\cos x$ und $(\\cos x)\' = -\\sin x$. Das Minuszeichen entsteht beim Ableiten des KOSINUS — nicht des Sinus.',
+        true,
+        `**Ansatz:** Der trigonometrische Ableitungszyklus $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin$ zeigt: das Vorzeichen wechselt erst beim zweiten Schritt (von $\\cos$ zu $-\\sin$).
+
+**Rechnung:** $(\\sin x)' = +\\cos x$ (Sinus steigt bei $x = 0$, Steigung $+1$). $(\\cos x)' = -\\sin x$ (Kosinus fällt bei $x = \\pi/2$ von $0$ ab, Steigung $-\\sin(\\pi/2) = -1$).
+
+**Probe:** Bei $x = 0$: $\\sin'(0) = \\cos 0 = +1$, $\\cos'(0) = -\\sin 0 = 0$ — beide Vorzeichen passen zur Anschauung des Graphen.
+
+**Typischer Fehler:** Minuszeichen falsch zuordnen — z. B. $(\\sin x)' = -\\cos x$ schreiben. Merksatz: „Cosinus kriegt das Minus."`,
+        [
+          'Welche Funktion bekommt im Ableitungszyklus das Minuszeichen?',
+          'Skizziere $\\sin$ und $\\cos$ und prüfe die Steigung bei $x = 0$.',
+          'Sinus steigt bei $0$ (Steigung $+1$), Kosinus fällt bei $\\pi/2$ (Steigung $-1$).',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['abl-sin', 'abl-cos'] },
+      ),
+      // Zeile 2: apply-guided · multiple-choice · uses=[abl-sin, abl-cos]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\sin x - \\cos x$?',
+        ['$\\cos x + \\sin x$', '$\\cos x - \\sin x$', '$-\\sin x - \\cos x$', '$\\sin x - \\cos x$'],
+        0,
+        `**Ansatz:** Summenregel: $(\\sin x - \\cos x)' = (\\sin x)' - (\\cos x)'$. Wichtig: das Minuszeichen vor $\\cos x$ bleibt, und zusätzlich kommt aus $(\\cos x)' = -\\sin x$ ein zweites Minus dazu.
+
+**Rechnung:** $(\\sin x)' = \\cos x$. $(\\cos x)' = -\\sin x$. Damit $f'(x) = \\cos x - (-\\sin x) = \\cos x + \\sin x$.
+
+**Probe:** Bei $x = 0$: $f'(0) = \\cos 0 + \\sin 0 = 1 + 0 = 1$. Numerisch $\\dfrac{f(0{,}001) - f(0)}{0{,}001} \\approx 1{,}00$ ✓.
+
+**Typischer Fehler:** Das Doppel-Minus übersehen: $- (-\\sin x) = +\\sin x$.`,
+        [
+          'Summenregel: jeden Summanden einzeln ableiten.',
+          '$(\\cos x)\' = -\\sin x$. Was ergibt $- \\cdot (-\\sin x)$?',
+          'Vorzeichen sauber führen: $-1 \\cdot -1 = +1$.',
+        ],
+        {
+          1: 'Doppelminus übersehen: aus $- \\cos x$ wird beim Ableiten $- (-\\sin x) = + \\sin x$, nicht $- \\sin x$.',
+          2: 'Beide Vorzeichen falsch. Sinus wird zu $+\\cos$ (nicht $-\\sin$), Kosinus zu $-\\sin$. Hier wurden offensichtlich falsche Ableitungen verwendet.',
+          3: 'Funktion wurde nicht abgeleitet — das ist immer noch $f(x)$ selbst.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['abl-sin', 'abl-cos', 'summen-regel'] },
+      ),
+      // Zeile 3: apply-independent · number-input · uses=[abl-sin, abl-cos]
+      ni(
+        'Berechne $f\'(\\pi)$ für $f(x) = \\sin x$.',
+        -1,
+        0,
+        '',
+        `**Ansatz:** $f'(x) = \\cos x$ (Grundableitung), dann $x_0 = \\pi$ einsetzen.
+
+**Rechnung:** $f'(\\pi) = \\cos \\pi = -1$.
+
+**Probe:** Bei $x = \\pi$ hat $\\sin x$ den Wert $0$ und fällt steil — die Steigung ist negativ und beträgt $-1$, was zur Grafik passt.
+
+**Typischer Fehler:** $\\sin(\\pi) = 0$ statt $\\cos(\\pi)$ angeben — Funktionswert statt Ableitung.`,
+        [
+          'Erst die Ableitung: $(\\sin x)\' = \\cos x$.',
+          'Dann $x_0 = \\pi$ in $\\cos$ einsetzen.',
+          '$\\cos \\pi = -1$ aus dem Einheitskreis.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['abl-sin', 'abl-cos'] },
+      ),
+      // Zeile 4: error-analysis · multiple-choice · uses=[abl-cos]
+      mc(
+        'Anna schreibt $(\\cos x)\' = \\sin x$. Was ist ihr Fehler?',
+        [
+          'Sie hat das Minuszeichen vergessen — richtig ist $(\\cos x)\' = -\\sin x$. Bei $x = \\pi/2$ fällt $\\cos$ von $1$ auf $0$, also muss die Ableitung dort negativ sein.',
+          'Sie hätte stattdessen $\\cos x$ schreiben müssen, da Kosinus seine eigene Ableitung ist.',
+          'Sinus und Kosinus haben dieselbe Ableitung, also ist ihre Antwort egal.',
+          '$\\cos x$ ist nicht differenzierbar.',
+        ],
+        0,
+        `**Ansatz:** Im Ableitungszyklus $\\sin \\to \\cos \\to -\\sin \\to -\\cos$ bekommt der Kosinus das Minuszeichen — nicht der Sinus.
+
+**Rechnung:** Korrekt: $(\\cos x)' = -\\sin x$. Annas Ergebnis $+\\sin x$ hat das falsche Vorzeichen — der „klassische Cosinus-Fehler".
+
+**Probe:** Bei $x = \\pi/2$: korrektes $f'(\\pi/2) = -\\sin(\\pi/2) = -1$. Annas Ergebnis $+\\sin(\\pi/2) = +1$ — falsches Vorzeichen.
+
+**Typischer Fehler:** Genau dieser — beim schnellen Rechnen das Minuszeichen vergessen oder zum Sinus statt zum Kosinus tippen.`,
+        [
+          'Welches Vorzeichen erwartet man bei $(\\cos x)\'$?',
+          'Zeichne $\\cos x$ bei $\\pi/2$: fällt oder steigt?',
+          'Fallender Kosinus $\\Rightarrow$ negative Ableitung $\\Rightarrow$ Minus muss da sein.',
+        ],
+        {
+          1: 'Nur $e^x$ ist seine eigene Ableitung — $\\cos x$ ist es nicht. Annas Fehler liegt nicht in der Funktion, sondern im Vorzeichen.',
+          2: '$\\sin$ und $\\cos$ haben VERSCHIEDENE Ableitungen: $(\\sin x)\' = +\\cos x$ und $(\\cos x)\' = -\\sin x$. Die Vorzeichen unterscheiden sich.',
+          3: '$\\cos x$ ist auf ganz $\\mathbb{R}$ differenzierbar. Annas Aufgabe ist nicht die Differenzierbarkeit, sondern die korrekte Ableitung.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['abl-cos', 'abl-sin'] },
+      ),
+      // Zeile 5: transfer · matching · uses=[abl-sin, abl-cos, abl-tan]
+      matching(
+        'Ordne jeder trigonometrischen Funktion ihre Ableitung zu.',
+        [
+          { left: '$(\\sin x)\'$', right: '$\\cos x$' },
+          { left: '$(\\cos x)\'$', right: '$-\\sin x$' },
+          { left: '$(-\\sin x)\'$', right: '$-\\cos x$' },
+          { left: '$(\\tan x)\'$', right: '$\\dfrac{1}{\\cos^2 x}$' },
+        ],
+        `**Ansatz:** Der trigonometrische Ableitungszyklus $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin$ liefert die ersten drei Zuordnungen. $(\\tan x)'$ folgt aus der Quotientenregel.
+
+**Rechnung:**
+- $(\\sin x)' = \\cos x$ (Zyklus-Schritt 1)
+- $(\\cos x)' = -\\sin x$ (Zyklus-Schritt 2 — Minuszeichen!)
+- $(-\\sin x)' = -\\cos x$ (Faktorregel: $-1 \\cdot \\cos x$)
+- $(\\tan x)' = \\dfrac{1}{\\cos^2 x}$, herleitbar aus $\\tan = \\sin / \\cos$ + Quotientenregel.
+
+**Probe:** Bei $x = 0$: $\\sin'(0) = 1$, $\\cos'(0) = 0$, $(-\\sin)'(0) = -1$, $\\tan'(0) = 1/\\cos^2 0 = 1$ — alle Werte passen zu den Graphen.
+
+**Typischer Fehler:** $(\\cos x)'$ und $(-\\sin x)'$ verwechseln — beide haben ein Minus, aber an unterschiedlicher Stelle (vor $\\sin$ bzw. vor $\\cos$).`,
+        [
+          'Im Zyklus wandert das Vorzeichen mit der Ableitung mit.',
+          'Faktorregel: konstante Vorfaktoren (auch $-1$) bleiben erhalten.',
+          'Tangens ist Spezialfall — aus Quotientenregel oder Tabelle.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['abl-sin', 'abl-cos', 'abl-tan'] },
+      ),
+      // Bonus SG 0: recognize · true-false · uses=[abl-tan]
+      tf(
+        'Die Ableitung des Tangens lässt sich gleichwertig als $(\\tan x)\' = 1 + \\tan^2 x$ schreiben — äquivalent zu $1/\\cos^2 x$.',
+        true,
+        `**Ansatz:** $\\tan x = \\sin x / \\cos x$. Quotientenregel ergibt $\\dfrac{\\cos x \\cdot \\cos x - \\sin x \\cdot (-\\sin x)}{\\cos^2 x} = \\dfrac{\\cos^2 x + \\sin^2 x}{\\cos^2 x}$.
+
+**Rechnung:** Mit dem Pythagoras-Trigo $\\sin^2 + \\cos^2 = 1$ ist der Zähler $= 1$, also $(\\tan x)' = \\dfrac{1}{\\cos^2 x}$. Alternativ: $\\dfrac{\\cos^2 + \\sin^2}{\\cos^2} = 1 + \\dfrac{\\sin^2}{\\cos^2} = 1 + \\tan^2 x$. Beide Formen sind gleichwertig.
+
+**Probe:** Bei $x = 0$: $1/\\cos^2 0 = 1/1 = 1$ und $1 + \\tan^2 0 = 1 + 0 = 1$ ✓.
+
+**Typischer Fehler:** $(\\tan x)' = 1/\\sin^2 x$ schreiben (Sinus mit Kosinus verwechselt — der Nenner muss $\\cos^2 x$ sein, weil der ursprüngliche Quotient Kosinus im Nenner hat).`,
+        [
+          'Welche trigonometrische Identität verknüpft $\\sin^2$ und $\\cos^2$?',
+          'Pythagoras-Trigo: $\\sin^2 + \\cos^2 = 1$.',
+          'Damit lassen sich beide Formen ineinander überführen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['abl-tan', 'abl-sin', 'abl-cos'] },
+      ),
+    ],
+
+    // [1] e^x und ln x
+    1: [
+      // Zeile 6: recognize · true-false · uses=[abl-exp, abl-ln]
+      tf(
+        'Die Exponentialfunktion $e^x$ ist (bis auf konstante Faktoren) die einzige Funktion, die mit ihrer eigenen Ableitung übereinstimmt: $(e^x)\' = e^x$. Für den natürlichen Logarithmus gilt zudem $(\\ln x)\' = 1/x$ (für $x > 0$).',
+        true,
+        `**Ansatz:** Zwei zentrale Grundableitungen, die in jeder Prüfung vorkommen.
+
+**Rechnung:** $(e^x)' = e^x$ — das macht $e \\approx 2{,}71828$ zur „natürlichen" Basis. $(\\ln x)' = 1/x$ folgt aus der Umkehrfunktionsregel und ist nur für $x > 0$ definiert.
+
+**Probe:** Bei $x = 0$: $(e^x)'(0) = e^0 = 1$ — Tangentensteigung von $e^x$ im Ursprung ist $1$. Bei $x = 1$: $(\\ln x)'(1) = 1/1 = 1$ — Tangente an $\\ln x$ im Punkt $(1, 0)$ hat Steigung $1$.
+
+**Typischer Fehler:** $e^x$ wie eine Potenz $x^e$ behandeln (Variable statt Konstante im Exponent verwechselt). $(x^e)' = e \\cdot x^{e-1}$, aber $(e^x)' = e^x$ — völlig verschieden.`,
+        [
+          'Welche Funktion ist ihre eigene Ableitung?',
+          'Welche Ableitung hat der natürliche Logarithmus?',
+          '$e^x$ und $\\ln x$ sind Umkehrfunktionen voneinander.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['abl-exp', 'abl-ln'] },
+      ),
+      // Zeile 7: apply-guided · multiple-choice · uses=[abl-exp]
+      mc(
+        'Was ist die Ableitung von $f(x) = 2 e^x$?',
+        ['$2 e^x$', '$e^x$', '$2 x e^{x-1}$', '$2 e^{x-1}$'],
+        0,
+        `**Ansatz:** Faktorregel: konstanter Vorfaktor $2$ bleibt. $(e^x)' = e^x$.
+
+**Rechnung:** $f'(x) = 2 \\cdot (e^x)' = 2 \\cdot e^x = 2 e^x$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 2 \\cdot 1 = 2$. Sekantensteigung $\\dfrac{2 e^{0{,}001} - 2}{0{,}001} \\approx 2{,}001$ ✓.
+
+**Typischer Fehler:** Faktor $2$ vergessen oder die Potenzregel auf $e^x$ anwenden (Variable ist hier der Exponent, nicht die Basis).`,
+        [
+          'Faktorregel: konstante Vorfaktoren bleiben.',
+          '$(e^x)\' = e^x$ — die Funktion ist ihre eigene Ableitung.',
+          'Beachte: $e$ ist eine KONSTANTE im Exponenten, $x$ ist die Variable.',
+        ],
+        {
+          1: 'Faktor $2$ vergessen — die Faktorregel sagt: $(c \\cdot f)\' = c \\cdot f\'$, also bleibt der $2$ vor der Ableitung stehen.',
+          2: 'Potenzregel falsch angewandt. $(e^x)\' \\neq x \\cdot e^{x-1}$ — die Potenzregel gilt nur, wenn die Variable die BASIS ist (wie bei $x^n$), nicht der EXPONENT.',
+          3: 'Hier wurde der Exponent um $1$ reduziert — wieder die Potenzregel auf falscher Stelle. $e^x$ behält den Exponenten $x$, der Vorfaktor $2$ bleibt, fertig.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['abl-exp', 'faktor-regel'] },
+      ),
+      // Zeile 8: apply-independent · number-input · uses=[abl-exp, abl-ln]
+      ni(
+        'Berechne $f\'(1)$ für $f(x) = e^x + \\ln x$. Gib das Ergebnis auf 4 Dezimalstellen an.',
+        3.7183,
+        0.001,
+        '',
+        `**Ansatz:** Summenregel mit beiden Grundableitungen: $(e^x)' = e^x$ und $(\\ln x)' = 1/x$.
+
+**Rechnung:** $f'(x) = e^x + \\dfrac{1}{x}$. Bei $x_0 = 1$: $f'(1) = e^1 + 1/1 = e + 1 \\approx 2{,}7183 + 1 = 3{,}7183$.
+
+**Probe:** Numerisch: $\\dfrac{(e^{1{,}001} + \\ln 1{,}001) - (e + 0)}{0{,}001} \\approx 3{,}7187$ ✓.
+
+**Typischer Fehler:** $\\ln(1) = 0$ als Ableitungswert verwenden (statt $1/1 = 1$). Oder $e$ mit $e^1 \\approx 2{,}718$ falsch numerisch eintippen.`,
+        [
+          'Summenregel: jeden Summanden einzeln ableiten.',
+          '$(e^x)\' = e^x$, $(\\ln x)\' = 1/x$.',
+          'Bei $x = 1$: $e^1 = e \\approx 2{,}7183$, $1/1 = 1$. Addieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['abl-exp', 'abl-ln', 'summen-regel'] },
+      ),
+      // Zeile 9: error-analysis · multiple-choice · uses=[abl-exp]
+      mc(
+        'Tim berechnet $(e^x)\' = x \\cdot e^{x-1}$. Was ist sein Fehler?',
+        [
+          'Er hat die Potenzregel auf eine Exponentialfunktion angewandt — die Potenzregel $(x^n)\' = n x^{n-1}$ gilt nur, wenn die VARIABLE die Basis ist. Bei $e^x$ steht die Variable im EXPONENTEN, dort gilt $(e^x)\' = e^x$.',
+          '$e^x$ ist nicht differenzierbar.',
+          'Er hätte zuerst den Logarithmus bilden müssen.',
+          'Sein Ergebnis ist eigentlich richtig, da $e \\approx x$.',
+        ],
+        0,
+        `**Ansatz:** Zwei verschiedene Regeln NICHT verwechseln: Potenzregel $(x^n)' = n x^{n-1}$ vs. Exponentialregel $(a^x)' = a^x \\ln a$. Bei $e^x$ ist Letzteres mit $\\ln e = 1$ einschlägig.
+
+**Rechnung:** Korrekt: $(e^x)' = e^x \\cdot \\ln e = e^x \\cdot 1 = e^x$. Tims Ergebnis $x \\cdot e^{x-1}$ wäre die Ableitung der ganz anderen Funktion $g(x) = x^e$.
+
+**Probe:** Bei $x = 1$: korrektes $f'(1) = e \\approx 2{,}718$. Tims Ergebnis $1 \\cdot e^0 = 1$ — deutlich daneben.
+
+**Typischer Fehler:** Genau dieser — die zwei „Potenz"-Schreibweisen verwechseln. Merksatz: Variable als BASIS $\\Rightarrow$ Potenzregel; Variable als EXPONENT $\\Rightarrow$ Exponentialregel.`,
+        [
+          'Welche Variable steht in $e^x$ wo — Basis oder Exponent?',
+          'Welche Regel gilt für die Variable im Exponenten?',
+          'Tim hat die Potenzregel statt der Exponentialregel verwendet.',
+        ],
+        {
+          1: '$e^x$ ist auf ganz $\\mathbb{R}$ differenzierbar — sogar beliebig oft. Tims Problem ist nicht die Differenzierbarkeit, sondern die FALSCHE Regel.',
+          2: 'Logarithmieren ist eine Umformung, keine Ableitung. Auch nach $\\ln$-Anwendung müsste die richtige Ableitungsregel angewandt werden. Der direkte Weg $(e^x)\' = e^x$ ist unkomplizierter.',
+          3: 'Das ist eine numerische Falle: $e \\approx 2{,}718$, aber $e \\neq x$ als Variable. Die Konstante $e$ und die Variable $x$ sind grundsätzlich verschiedene Objekte.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['abl-exp', 'pot-regel'] },
+      ),
+      // Zeile 10: transfer · matching · uses=[abl-exp, abl-ln]
+      matching(
+        'Ordne jeder Funktion ihre Ableitung zu.',
+        [
+          { left: '$(e^x)\'$', right: '$e^x$' },
+          { left: '$(2 e^x)\'$', right: '$2 e^x$' },
+          { left: '$(\\ln x)\'$', right: '$\\dfrac{1}{x}$' },
+          { left: '$(5 \\ln x)\'$', right: '$\\dfrac{5}{x}$' },
+        ],
+        `**Ansatz:** Zwei Grundableitungen ($e^x$ und $\\ln x$) jeweils mit und ohne konstantem Vorfaktor. Die Faktorregel zieht den Faktor durch.
+
+**Rechnung:**
+- $(e^x)' = e^x$ (Grundableitung)
+- $(2 e^x)' = 2 \\cdot e^x = 2 e^x$ (Faktorregel)
+- $(\\ln x)' = 1/x$ (Grundableitung, $x > 0$)
+- $(5 \\ln x)' = 5 \\cdot 1/x = 5/x$ (Faktorregel)
+
+**Probe:** Bei $x = 1$: alle vier Ableitungen liefern $e$, $2e$, $1$, $5$ — deutlich verschieden.
+
+**Typischer Fehler:** Faktor in den Exponenten oder den Bruch falsch hineinziehen — $(2 e^x)' \\neq e^{2x}$ und $(5 \\ln x)' \\neq \\ln(5x)$.`,
+        [
+          'Faktorregel: konstanter Vorfaktor bleibt VOR der Ableitung.',
+          'Konstanten kommen NICHT in den Exponenten oder den Bruch.',
+          'Vergleiche die vier Ergebnisse — alle haben dieselbe Struktur wie ihre Ausgangsfunktion mit demselben Vorfaktor.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['abl-exp', 'abl-ln', 'faktor-regel'] },
+      ),
+      // Bonus SG 1: apply-independent · number-input · uses=[abl-ln]
+      ni(
+        'Berechne $f\'(e)$ für $f(x) = \\ln x$. Gib das Ergebnis auf 4 Dezimalstellen an.',
+        0.3679,
+        0.001,
+        '',
+        `**Ansatz:** Grundableitung $(\\ln x)' = 1/x$, dann $x_0 = e$ einsetzen.
+
+**Rechnung:** $f'(e) = 1/e \\approx 1/2{,}71828 \\approx 0{,}3679$.
+
+**Probe:** Sekantensteigung $\\dfrac{\\ln(e + 0{,}001) - \\ln e}{0{,}001} = \\dfrac{\\ln(e(1 + 0{,}001/e)) - 1}{0{,}001} \\approx 0{,}368$ ✓.
+
+**Typischer Fehler:** $\\ln(e) = 1$ als Ableitungswert verwenden (das ist der Funktionswert, nicht die Steigung).`,
+        [
+          '$(\\ln x)\' = 1/x$.',
+          'Bei $x = e$: $1/e$.',
+          '$e \\approx 2{,}71828$, also $1/e \\approx 0{,}3679$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['abl-ln'] },
+      ),
+    ],
+
+    // [2] a^x und log_a x
+    2: [
+      // Zeile 11: recognize · true-false · uses=[abl-ax]
+      tf(
+        'Die Ableitung der allgemeinen Exponentialfunktion ist $(a^x)\' = a^x \\cdot \\ln a$. Speziell für $a = e$ wird $\\ln a = \\ln e = 1$, sodass sich daraus $(e^x)\' = e^x$ ergibt.',
+        true,
+        `**Ansatz:** Die Formel $(a^x)' = a^x \\ln a$ verallgemeinert die Spezialregel $(e^x)' = e^x$ auf beliebige Basen $a > 0$.
+
+**Rechnung:** $(a^x)' = a^x \\ln a$. Für $a = e$: $\\ln e = 1$, daher $(e^x)' = e^x \\cdot 1 = e^x$ — die Spezialregel.
+
+**Probe:** Für $a = 2$, $x = 0$: $f'(0) = 2^0 \\cdot \\ln 2 = \\ln 2 \\approx 0{,}693$. Sekantensteigung $\\dfrac{2^{0{,}001} - 1}{0{,}001} \\approx 0{,}693$ ✓.
+
+**Typischer Fehler:** Faktor $\\ln a$ vergessen und $(a^x)' = a^x$ schreiben — diese Falschformel funktioniert nur für $a = e$.`,
+        [
+          'Welcher Faktor unterscheidet $(a^x)\'$ von $(e^x)\'$?',
+          'Für welche Basis $a$ wird der Faktor zu $1$?',
+          '$\\ln e = 1$ — daher ist $e$ die „natürliche" Basis.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['abl-ax', 'abl-exp'] },
+      ),
+      // Zeile 12: apply-guided · multiple-choice · uses=[abl-ax, abl-loga]
+      mc(
+        'Was ist die Ableitung von $f(x) = 2^x$?',
+        ['$2^x \\cdot \\ln 2$', '$2^x$', '$x \\cdot 2^{x-1}$', '$\\ln 2$'],
+        0,
+        `**Ansatz:** Allgemeine Exponentialregel: $(a^x)' = a^x \\cdot \\ln a$ mit $a = 2$.
+
+**Rechnung:** $(2^x)' = 2^x \\cdot \\ln 2 \\approx 2^x \\cdot 0{,}693$.
+
+**Probe:** Bei $x = 0$: $f'(0) = 1 \\cdot \\ln 2 \\approx 0{,}693$. Sekantensteigung $\\dfrac{2^{0{,}001} - 1}{0{,}001} \\approx 0{,}693$ ✓.
+
+**Typischer Fehler:** $\\ln 2$-Faktor vergessen ($(2^x)' = 2^x$) — das gilt nur für $e^x$, nicht für andere Basen.`,
+        [
+          'Verwende die Regel für allgemeine Basen: $(a^x)\' = a^x \\ln a$.',
+          'Hier ist $a = 2$.',
+          'Faktor $\\ln 2$ NICHT vergessen — das ist der Unterschied zur $e^x$-Regel.',
+        ],
+        {
+          1: '$\\ln a$ vergessen. Das funktioniert NUR für die Basis $e$, weil $\\ln e = 1$. Für andere Basen muss der Faktor $\\ln a$ stehen bleiben.',
+          2: 'Potenzregel falsch angewandt — die Variable ist der EXPONENT, nicht die Basis. $(2^x)\' \\neq x \\cdot 2^{x-1}$. Vergleichbar mit $(e^x)\'$, nur mit anderer Basis.',
+          3: '$x$-Anteil vergessen. $(2^x)\' = 2^x \\cdot \\ln 2$, nicht nur die Konstante $\\ln 2$. Die Funktion bleibt im Ergebnis als Faktor stehen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['abl-ax'] },
+      ),
+      // Zeile 13: apply-independent · number-input · uses=[abl-ax]
+      ni(
+        'Berechne $f\'(0)$ für $f(x) = 3^x$. Gib das Ergebnis auf 4 Dezimalstellen an.',
+        1.0986,
+        0.001,
+        '',
+        `**Ansatz:** $(a^x)' = a^x \\cdot \\ln a$ mit $a = 3$, dann $x_0 = 0$ einsetzen.
+
+**Rechnung:** $f'(x) = 3^x \\cdot \\ln 3$. Bei $x_0 = 0$: $f'(0) = 3^0 \\cdot \\ln 3 = 1 \\cdot \\ln 3 \\approx 1{,}0986$.
+
+**Probe:** Sekantensteigung $\\dfrac{3^{0{,}001} - 1}{0{,}001} \\approx 1{,}099$ ✓ (entspricht $\\ln 3$).
+
+**Typischer Fehler:** Faktor $\\ln 3$ vergessen und $f'(0) = 3^0 = 1$ angeben.`,
+        [
+          'Allgemeine Exponentialregel anwenden.',
+          '$3^0 = 1$, dann mit $\\ln 3$ multiplizieren.',
+          '$\\ln 3 \\approx 1{,}0986$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['abl-ax'] },
+      ),
+      // Zeile 14: error-analysis · multiple-choice · uses=[abl-ax]
+      mc(
+        'Lina berechnet $(5^x)\' = 5^x$. Was ist ihr Fehler?',
+        [
+          'Sie hat den Faktor $\\ln 5$ vergessen — die Regel ist $(a^x)\' = a^x \\cdot \\ln a$. Für $a = 5$ heißt das: $(5^x)\' = 5^x \\cdot \\ln 5$. Die einzige Basis, bei der der Faktor entfällt, ist $a = e$.',
+          '$5^x$ ist eine konstante Funktion.',
+          'Sie hätte die Potenzregel anwenden müssen.',
+          '$5^x$ ist nicht differenzierbar.',
+        ],
+        0,
+        `**Ansatz:** Linas Fehler ist ein klassischer Übertragungs-Fehler: Sie verwendet die Regel $(e^x)' = e^x$ für eine andere Basis.
+
+**Rechnung:** Korrekt: $(5^x)' = 5^x \\cdot \\ln 5$. Linas Ergebnis $5^x$ wäre nur für $a = e$ richtig — $\\ln e = 1$ macht den Faktor unsichtbar, $\\ln 5 \\approx 1{,}609 \\neq 1$.
+
+**Probe:** Bei $x = 0$: korrektes $f'(0) = 1 \\cdot \\ln 5 \\approx 1{,}609$. Linas Ergebnis $5^0 = 1$ — Faktor $\\ln 5$ fehlt.
+
+**Typischer Fehler:** Genau dieser — die Regel für $e^x$ auf $a^x$ kopieren, ohne den Basiswechsel-Faktor mitzunehmen.`,
+        [
+          'Welche Regel gilt für $(a^x)\'$ bei beliebiger Basis $a > 0$?',
+          'Wann verschwindet der Faktor $\\ln a$?',
+          'Nur für $a = e$ — bei $a = 5$ muss $\\ln 5$ stehen bleiben.',
+        ],
+        {
+          1: '$5^x$ ist eine wachsende Exponentialfunktion — nicht konstant. $5^0 = 1$, $5^1 = 5$, $5^2 = 25$ — alles verschiedene Werte.',
+          2: 'Die Potenzregel $(x^n)\'$ gilt nur bei VARIABLER Basis und KONSTANTEM Exponenten. Hier ist die Basis $5$ konstant und der Exponent $x$ variabel — also Exponentialregel.',
+          3: '$5^x$ ist auf ganz $\\mathbb{R}$ differenzierbar (sogar beliebig oft). Linas Problem ist die falsche Formel, nicht die Existenz der Ableitung.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['abl-ax', 'abl-exp'] },
+      ),
+      // Zeile 15: transfer · number-input · uses=[abl-loga]
+      ni(
+        'Berechne $f\'(2)$ für $f(x) = \\log_2 x$. Gib das Ergebnis auf 4 Dezimalstellen an.',
+        0.7213,
+        0.001,
+        '',
+        `**Ansatz:** $(\\log_a x)' = \\dfrac{1}{x \\ln a}$ mit $a = 2$.
+
+**Rechnung:** $f'(x) = \\dfrac{1}{x \\ln 2}$. Bei $x_0 = 2$: $f'(2) = \\dfrac{1}{2 \\ln 2} \\approx \\dfrac{1}{2 \\cdot 0{,}6931} \\approx \\dfrac{1}{1{,}3863} \\approx 0{,}7213$.
+
+**Probe:** Sekantensteigung $\\dfrac{\\log_2(2{,}001) - 1}{0{,}001} \\approx 0{,}7213$ ✓.
+
+**Typischer Fehler:** Faktor $\\ln 2$ vergessen und $f'(2) = 1/2 = 0{,}5$ angeben. Oder $\\log_2(2) = 1$ als Ableitungswert nehmen (Funktionswert statt Steigung).`,
+        [
+          'Allgemeine Logarithmusregel: $(\\log_a x)\' = 1/(x \\ln a)$.',
+          'Setze $a = 2$ und $x = 2$ ein.',
+          '$2 \\cdot \\ln 2 \\approx 1{,}386$, dann Kehrwert.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['abl-loga'] },
+      ),
+      // Bonus SG 2: apply-guided · multiple-choice · uses=[abl-loga]
+      mc(
+        'Was ist die Ableitung von $f(x) = \\log_5 x$?',
+        ['$\\dfrac{1}{x \\ln 5}$', '$\\dfrac{1}{x}$', '$\\dfrac{5}{x}$', '$\\dfrac{\\ln 5}{x}$'],
+        0,
+        `**Ansatz:** Allgemeine Logarithmusregel: $(\\log_a x)' = \\dfrac{1}{x \\ln a}$ mit $a = 5$.
+
+**Rechnung:** $(\\log_5 x)' = \\dfrac{1}{x \\ln 5}$.
+
+**Probe:** Bei $x = 1$: $f'(1) = \\dfrac{1}{\\ln 5} \\approx 0{,}621$ — passt zum Tangentensteigungs-Graph von $\\log_5 x$ in $(1, 0)$.
+
+**Typischer Fehler:** Faktor $\\ln 5$ vergessen oder den Faktor in den Zähler statt in den Nenner schreiben.`,
+        [
+          'Allgemeine Regel: $(\\log_a x)\' = \\dfrac{1}{x \\ln a}$.',
+          'Hier ist $a = 5$, also steht $\\ln 5$ im NENNER.',
+          'Spezialfall $a = e$: $\\ln e = 1$, daher $(\\ln x)\' = 1/x$ ohne zusätzlichen Faktor.',
+        ],
+        {
+          1: 'Faktor $\\ln 5$ im Nenner vergessen — das gilt nur für den natürlichen Logarithmus ($a = e$). Bei allgemeiner Basis $a$ muss $\\ln a$ stehen.',
+          2: 'Falscher Faktor: weder Basis noch Vorfaktor. Die Formel hat $\\ln a$, nicht $a$ selbst. $(\\log_5 x)\' \\neq 5/x$.',
+          3: '$\\ln 5$ steht im NENNER, nicht im Zähler. $\\dfrac{1}{x \\ln a}$ — der Logarithmus der Basis wird MITGETEILT, nicht aufmultipliziert.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['abl-loga'] },
+      ),
+    ],
+
+    // [3] Definitionsbereich
+    3: [
+      // Zeile 16: recognize · true-false · uses=[def-bereich]
+      tf(
+        'Die Formel $(\\ln x)\' = 1/x$ gilt nur für $x > 0$, weil der natürliche Logarithmus $\\ln x$ für $x \\le 0$ (reell) gar nicht definiert ist.',
+        true,
+        `**Ansatz:** Ableitungsformeln gelten nur dort, wo die Funktion selbst definiert und differenzierbar ist. Definitionsbereich vor dem Anwenden klären.
+
+**Rechnung:** $\\ln x = y \\Leftrightarrow e^y = x$. Da $e^y > 0$ für alle reellen $y$, kann $\\ln$ keine negative Zahl als Argument haben. Bei $x = 0$ wird $\\ln x \\to -\\infty$ (Singularität). Also: $\\ln x$ existiert nur für $x > 0$, und auch die Ableitung $(\\ln x)' = 1/x$ ist dort definiert.
+
+**Probe:** $\\ln(-1)$ oder $\\ln 0$ — beides reell nicht definiert. Erweiterung $\\ln |x|$ wäre eine andere Funktion mit erweitertem Definitionsbereich.
+
+**Typischer Fehler:** Die Formel $(\\ln x)' = 1/x$ mechanisch in negative Werte einsetzen und ein „Ergebnis" angeben.`,
+        [
+          'Für welche $x$ ist $\\ln x$ überhaupt definiert?',
+          'Die Ableitung kann nicht weiter definiert sein als die Funktion selbst.',
+          '$\\ln$: nur positive Argumente — also $x > 0$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['def-bereich', 'abl-ln'] },
+      ),
+      // Zeile 17: apply-guided · multiple-choice · uses=[def-bereich]
+      mc(
+        'Für welche $x$ gilt die Ableitungsformel $(\\ln x)\' = 1/x$ uneingeschränkt?',
+        ['$x > 0$', '$x \\neq 0$', 'alle reellen $x$', '$x \\geq 0$'],
+        0,
+        `**Ansatz:** Die Formel ist genau dort gültig, wo $\\ln x$ selbst reell und differenzierbar ist.
+
+**Rechnung:** $\\ln x$ ist (reell) nur für $x > 0$ definiert. Bei $x = 0$ divergiert sowohl $\\ln x \\to -\\infty$ als auch die Ableitung $1/x \\to +\\infty$. Für $x < 0$ existiert $\\ln x$ reell gar nicht.
+
+**Probe:** $\\ln(-1)$ ist reell nicht definiert; $\\ln(0)$ ist nicht definiert; $\\ln(1) = 0$, $\\ln(2) \\approx 0{,}693$ — beide positiv und mit Ableitung $1$ bzw. $0{,}5$ wohldefiniert.
+
+**Typischer Fehler:** $x \\neq 0$ oder $x \\geq 0$ angeben — beide schließen negative Werte zu sehr ein bzw. den Randpunkt $0$ falsch. Auch bei $x = 0$ ist $\\ln$ nicht definiert (kein Funktionswert).`,
+        [
+          'Wo ist $\\ln x$ reell definiert?',
+          'Bei $x = 0$: $\\ln 0 = ?$ — existiert nicht, divergiert.',
+          'Nur strikt positive $x$ funktionieren — $x = 0$ NICHT inklusive.',
+        ],
+        {
+          1: 'Schließt negative Werte EIN — aber $\\ln(-1)$ ist reell nicht definiert. Die Bedingung $x \\neq 0$ erlaubt $-1$, $-2$ usw., die alle nicht im Definitionsbereich liegen.',
+          2: '$\\ln(-1)$ existiert reell nicht. Auch $\\ln(0)$ ist nicht definiert. Die Formel gilt also NICHT für alle reellen $x$.',
+          3: 'Bei $x = 0$ ist $\\ln(0) = -\\infty$ (nicht definiert), und auch $1/x$ divergiert. Der Randpunkt $0$ muss ausgeschlossen werden: $x > 0$, nicht $x \\geq 0$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['def-bereich', 'abl-ln'] },
+      ),
+      // Zeile 18: apply-independent · multiple-choice · uses=[def-bereich, abl-ln]
+      mc(
+        'Welche der folgenden Ableitungs-Anwendungen ist für $x = -2$ sinnvoll definiert?',
+        [
+          '$f(x) = x^4 \\Rightarrow f\'(-2) = 4 \\cdot (-2)^3 = -32$',
+          '$f(x) = \\ln x \\Rightarrow f\'(-2) = 1/(-2) = -0{,}5$',
+          '$f(x) = \\sqrt{x} \\Rightarrow f\'(-2) = 1/(2\\sqrt{-2})$',
+          '$f(x) = \\log_5 x \\Rightarrow f\'(-2) = 1/(-2 \\cdot \\ln 5)$',
+        ],
+        0,
+        `**Ansatz:** Vor jeder Auswertung den Definitionsbereich prüfen. Polynome sind überall definiert, $\\ln$, $\\sqrt{\\cdot}$, $\\log_a$ nicht für $x \\le 0$.
+
+**Rechnung:** Nur $f(x) = x^4$ (Polynom) ist bei $x = -2$ wohldefiniert: $f(-2) = 16$, $f'(-2) = 4 \\cdot (-2)^3 = -32$. Alle anderen drei Funktionen haben Definitionsbereich $x > 0$ und können bei $x = -2$ NICHT ausgewertet werden — Formel-Anwendung wäre Unsinn.
+
+**Probe:** Sekantensteigung von $x^4$ bei $x = -2$: $\\dfrac{(-1{,}999)^4 - 16}{0{,}001} \\approx -32{,}0$ ✓ (negativ, weil $x^4$ bei $x = -2$ fällt).
+
+**Typischer Fehler:** Formeln mechanisch auf negative Werte anwenden, ohne den Definitionsbereich zu prüfen. Das liefert oft eine Zahl — aber keine korrekte Ableitung.`,
+        [
+          'Welche Funktionen erlauben negative $x$-Werte?',
+          'Polynome sind überall definiert.',
+          '$\\ln$, $\\sqrt{\\cdot}$, $\\log_a$ haben Definitionsbereich $x > 0$ (bzw. $x \\ge 0$ für die Wurzel).',
+        ],
+        {
+          1: '$\\ln(-2)$ ist reell nicht definiert — also kann auch die Ableitung dort nicht ausgewertet werden. Die Rechnung $1/(-2) = -0{,}5$ ist arithmetisch korrekt, aber inhaltlich sinnlos.',
+          2: '$\\sqrt{-2}$ ist reell nicht definiert. Der Ausdruck $1/(2\\sqrt{-2})$ ist ohne komplexe Erweiterung sinnlos.',
+          3: '$\\log_5(-2)$ ist reell nicht definiert (alle Logarithmen brauchen positives Argument). Die Rechnung wäre ohne sinnvolle Basis.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['def-bereich', 'abl-ln', 'pot-regel'] },
+      ),
+      // Zeile 19: error-analysis · multiple-choice · uses=[def-bereich]
+      mc(
+        'Max berechnet die Ableitung von $f(x) = \\ln x$ bei $x_0 = -1$ und gibt $f\'(-1) = 1/(-1) = -1$ an. Was ist sein Fehler?',
+        [
+          'Er hat den Definitionsbereich missachtet — $\\ln x$ ist für $x \\le 0$ reell nicht definiert. Bei $x = -1$ gibt es weder einen Funktionswert noch eine Ableitung, also ist der Ausdruck inhaltlich leer.',
+          'Vorzeichen falsch — richtig wäre $+1$, weil $\\ln$ überall positiv ist.',
+          'Er hätte die Potenzregel anwenden müssen.',
+          '$\\ln x$ ist immer mit $1/x$ ableitbar, sein Ergebnis ist also korrekt.',
+        ],
+        0,
+        `**Ansatz:** Bei jeder Ableitung erst den Definitionsbereich der Funktion klären. Außerhalb davon ist die Ableitung schlicht nicht definiert — egal, wie sauber die Formel arithmetisch wirkt.
+
+**Rechnung:** $\\ln(-1)$ existiert reell nicht (da kein reeller Exponent $e^y$ den Wert $-1$ ergibt). Damit ist auch $f'(-1)$ nicht definiert. Max' Rechnung $1/(-1) = -1$ ist eine reine FORMEL-Anwendung ohne semantischen Inhalt.
+
+**Probe:** $f(x) = \\ln x$ ist im Graphen nur für $x > 0$ überhaupt sichtbar — links der $y$-Achse existiert die Funktion nicht.
+
+**Typischer Fehler:** Max — die Formel mechanisch auf den unerlaubten Wert anwenden. Korrekt wäre: „Bei $x = -1$ existiert $f'(x)$ nicht, weil $f$ nicht definiert ist."`,
+        [
+          'Wo ist $\\ln x$ überhaupt definiert?',
+          'Kann die Ableitung an einer Stelle existieren, wo die Funktion nicht definiert ist?',
+          'Erst Definitionsbereich, dann Formel — niemals umgekehrt.',
+        ],
+        {
+          1: '$\\ln$ ist auf seinem Definitionsbereich ($x > 0$) immer positiv für $x > 1$ und negativ für $0 < x < 1$. Diese Aussage ist falsch — und das Vorzeichen ist nicht das Hauptproblem von Max.',
+          2: 'Die Potenzregel wäre hier ohnehin falsch (gilt nicht für $\\ln$). Max\' Problem ist nicht die Wahl der Regel, sondern dass er einen außerhalb des Definitionsbereichs liegenden Wert benutzt.',
+          3: 'Genau das ist das Missverständnis. Die Ableitung $1/x$ ist nur dort gültig, wo $\\ln x$ definiert ist — also für $x > 0$. Bei $x < 0$ ist alles offen.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['def-bereich', 'abl-ln'] },
+      ),
+      // Zeile 20: transfer · matching · uses=[def-bereich]
+      matching(
+        'Ordne jeder Funktion ihren Definitionsbereich zu.',
+        [
+          { left: '$\\ln x$', right: '$x > 0$' },
+          { left: '$\\sqrt{x}$', right: '$x \\ge 0$' },
+          { left: '$\\tan x$', right: 'alle $x$ außer $\\pi/2 + k \\pi$ mit $k \\in \\mathbb{Z}$' },
+          { left: '$\\dfrac{1}{x}$', right: '$x \\neq 0$' },
+        ],
+        `**Ansatz:** Jede elementare Funktion hat ihren typischen Definitionsbereich, der vor jeder Ableitung beachtet werden muss.
+
+**Rechnung:**
+- $\\ln x$ nur für $x > 0$ (Argument muss strikt positiv sein)
+- $\\sqrt{x}$ für $x \\ge 0$ (Argument darf $\\ge 0$ sein, bei $x = 0$ Wert $0$)
+- $\\tan x = \\sin x / \\cos x$ undefiniert dort, wo $\\cos x = 0$, also bei $x = \\pi/2 + k\\pi$
+- $1/x$ überall außer bei $x = 0$ (Division durch null)
+
+**Probe:** $\\ln(0)$ ✗, $\\sqrt{0} = 0$ ✓, $\\tan(\\pi/2)$ ✗, $1/0$ ✗ — Randpunkte konsistent mit den vier Bereichen.
+
+**Typischer Fehler:** $\\sqrt{x}$ und $\\ln x$ verwechseln ($\\sqrt{}$ erlaubt $x = 0$, $\\ln$ nicht). Oder bei $\\tan$ nur die einzelne Stelle $\\pi/2$ ausschließen statt der gesamten Familie $\\pi/2 + k\\pi$.`,
+        [
+          'Welche Funktionen verlangen positive Argumente?',
+          '$\\sqrt{0} = 0$ ist definiert, $\\ln 0$ nicht.',
+          'Tangens hat Pole bei den Nullstellen des Kosinus.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['def-bereich'] },
+      ),
+      // Bonus SG 3: apply-guided · multiple-choice · uses=[def-bereich]
+      mc(
+        'Für welche $x$ ist die Ableitungsformel $(\\sqrt{x})\' = \\dfrac{1}{2\\sqrt{x}}$ wohldefiniert?',
+        ['$x > 0$', '$x \\ge 0$', '$x \\neq 0$', 'alle reellen $x$'],
+        0,
+        `**Ansatz:** Funktion $\\sqrt{x}$ ist für $x \\ge 0$ definiert, ABER bei $x = 0$ divergiert die Ableitung $\\dfrac{1}{2 \\sqrt{0}} \\to \\infty$ — der Graph hat dort eine senkrechte Tangente.
+
+**Rechnung:** Bei $x = 0$: $\\dfrac{1}{2 \\sqrt{0}} = \\dfrac{1}{0}$ ist nicht definiert. Erst für $x > 0$ liefert die Formel einen endlichen Wert. Funktion existiert zwar in $0$, Ableitung dort nicht.
+
+**Probe:** Bei $x = 4$: $1/(2 \\cdot 2) = 0{,}25$ wohldefiniert. Bei $x = 0$: Sekantensteigung $(\\sqrt{0{,}001} - 0)/0{,}001 \\approx 31{,}6$ — und wird beliebig groß für kleinere $h$. Senkrechte Tangente, also keine endliche Ableitung.
+
+**Typischer Fehler:** Annahme, dass Definitionsbereich von $f$ und $f'$ identisch sind. Bei $\\sqrt{x}$ existiert $f(0) = 0$, aber $f'(0)$ NICHT.`,
+        [
+          'Wo ist die FUNKTION definiert? Wo ist die ABLEITUNG definiert?',
+          'Bei $x = 0$: $1/(2\\sqrt{0}) = ?$',
+          'Senkrechte Tangenten haben keine endliche Steigung.',
+        ],
+        {
+          1: 'Das ist der Definitionsbereich der FUNKTION $\\sqrt{x}$ — aber die ABLEITUNG ist bei $x = 0$ NICHT definiert (Nenner wird null). Die Randpunkt-Unterscheidung ist hier zentral.',
+          2: 'Schließt negative Werte ein, was bei $\\sqrt{x}$ nicht definiert ist. $\\sqrt{-1}$ existiert reell nicht.',
+          3: 'Negative Argumente sind ausgeschlossen ($\\sqrt{-1}$ existiert nicht reell). Die Wurzel funktioniert nicht für alle reellen $x$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['def-bereich', 'pot-gebrochen'] },
+      ),
+    ],
+  },
 }

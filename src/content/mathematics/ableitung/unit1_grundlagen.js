@@ -316,13 +316,13 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       2: 'Vorzeichen falsch und Funktion vertauscht: Das ist eher $(\\sin x)\'\'\'$ (dritte Ableitung). Die *erste* Ableitung von $\\sin x$ ist $\\cos x$ (ohne Minus) — bei $x=0$ hat $\\sin$ die positive Steigung $+1$, nicht $-1$.',
       3: '$\\tan x$ hat mit der Ableitung von $\\sin$ nichts zu tun. $\\tan x = \\tfrac{\\sin x}{\\cos x}$ ist eine *andere* Funktion und entsteht z.B. aus der Quotientenregel — nicht einfach durch Ableiten von $\\sin$.',
     },
-    explanation: `**Ansatz:** Eine der Grundableitungen, die du auswendig können musst.
+    explanation: `**Ansatz:** Eine der Grundableitungen, die du auswendig können musst — direkt aus dem trigonometrischen Ableitungszyklus.
 
-**Rechnung:** $(\\sin x)' = \\cos x$.
+**Rechnung:** $(\\sin x)' = \\cos x$. Der Ableitungszyklus lautet $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin \\to \\ldots$ — also wechselt sich nach jedem Ableiten Funktion *und* Vorzeichen ab.
 
-**Probe:** Bei $x = 0$: $\\cos 0 = 1$. Die Tangentensteigung der Sinuskurve im Ursprung ist tatsächlich $1$ (Sinus steigt bei $0$ am steilsten). ✓
+**Probe:** Bei $x = 0$: $\\cos 0 = 1$. Die Tangentensteigung der Sinuskurve im Ursprung ist tatsächlich $1$ (Sinus steigt bei $0$ am steilsten). ✓ Bei $x = \\pi/2$: $\\cos(\\pi/2) = 0$ — und tatsächlich hat $\\sin$ dort sein Maximum mit waagerechter Tangente.
 
-**Merkhilfe (Ableitungszyklus):** $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin \\to \\ldots$`,
+**Typischer Fehler:** $(\\sin x)'$ und $(\\cos x)'$ verwechseln oder das Minuszeichen falsch zuordnen. Merksatz: Das Minuszeichen entsteht beim Ableiten des KOSINUS (nicht des Sinus). $(\\sin x)' = +\\cos x$, $(\\cos x)' = -\\sin x$.`,
     hints: [
       'Welche elementare Funktion wird abgeleitet? Denk an den Ableitungszyklus der trigonometrischen Funktionen.',
       'Regel: $(\\sin x)\' = \\cos x$.',

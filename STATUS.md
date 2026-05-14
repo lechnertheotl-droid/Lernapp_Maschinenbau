@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3588 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2842 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1674 / 1674 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 427 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3612 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2867 (79 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1685 / 1685 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 431 / 1134 (38 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **161** (Lesson-Path: 113 · Goal-Tasks: 48)
-- 4-Block: 100/161 (62 %) 🟡
-- MC-wAE: 105/105 (100 %) ✅
-- Sub-Goals: 8/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **185** (Lesson-Path: 113 · Goal-Tasks: 72)
+- 4-Block: 125/185 (68 %) 🟡
+- MC-wAE: 116/116 (100 %) ✅
+- Sub-Goals: 12/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -379,7 +379,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `abl-1-1` Was ist eine Ableitung? | 4 | 4/4 | 29 | 15/6/5/2/1 | 29/29 | 15/15 | ✅ | — |
 | `abl-1-2` Potenzregel und Summenregel | 4 | 4/4 | 30 | 16/8/5/1/0 | 30/30 | 16/16 | ✅ | — |
-| `abl-1-3` Ableitungen elementarer Funktionen | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
+| `abl-1-3` Ableitungen elementarer Funktionen | 4 | 4/4 | 30 | 17/5/5/3/0 | 30/30 | 17/17 | ✅ | — |
 | `abl-1-4` Kettenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-5` Extremwerte und Kurvendiskussion | 6 | 0/6 | 5 | 5/0/0/0/0 | 5/5 | 5/5 | ✅ | +6 Goal |
 | `abl-2-1` Produktregel | 5 | 0/5 | 6 | 5/1/0/0/0 | 6/6 | 5/5 | ✅ | +5 Goal |
@@ -6827,7 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 21 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 20 Lessons
 
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
@@ -7403,57 +7403,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `abl-1-3` · Ableitungen elementarer Funktionen
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `abl-1-1` → `diff-quotient`
-  - `abl-1-2` → `pot-regel`, `summen-regel`, `faktor-regel`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `abl-sin` — $(\sin x)'=\cos x$ (SG 0)
-  2. `abl-cos` — $(\cos x)'=-\sin x$ — Minuszeichen! ⇐ `abl-sin` (SG 0)
-  3. `abl-tan` — $(\tan x)'=1/\cos^2 x = 1+\tan^2 x$ ⇐ `abl-sin`, `abl-cos` (SG 0)
-  4. `abl-exp` — $(e^x)'=e^x$ — einzige Funktion mit $f'=f$ (SG 1)
-  5. `abl-ln` — $(\ln x)'=1/x$ für $x>0$ (SG 1)
-  6. `abl-ax` — $(a^x)'=a^x\ln a$ ⇐ `abl-exp` (SG 2)
-  7. `abl-loga` — $(\log_a x)'=1/(x\ln a)$ ⇐ `abl-ln` (SG 2)
-  8. `def-bereich` — Definitionsbereich: $\ln$ nur für $x>0$, $\sqrt{x}$ nur für $x\ge 0$ (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `abl-sin`, `abl-cos`, `abl-tan` · **0/5+** — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
-  - 🔴 [1] _hoch_ · Konzepte: `abl-exp`, `abl-ln` · **0/5+** — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
-  - 🔴 [2] _mittel_ · Konzepte: `abl-ax`, `abl-loga` · **0/5+** — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
-  - 🔴 [3] _mittel_ · Konzepte: `def-bereich` · **0/5+** — Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `abl-cos` | 1 | 0 | 🔴 | Vorzeichen bei $\cos'$ vergessen |
-|  5 | 0 | transfer           | matching         | `abl-sin`, `abl-cos`, `abl-tan` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `abl-exp` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `abl-exp` | 1 | 0 | 🔴 | $(e^x)'=xe^{x-1}$ Falle |
-| 10 | 1 | transfer           | matching         | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `abl-ax` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `abl-ax`, `abl-loga` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `abl-ax` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `abl-ax` | 1 | 0 | 🔴 | Faktor $\ln a$ vergessen |
-| 15 | 2 | transfer           | number-input     | `abl-loga` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `def-bereich` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `def-bereich`, `abl-ln` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `def-bereich` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-abl-1-3-a`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-1-4` · Kettenregel
 
@@ -9172,7 +9121,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 50 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 51 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -10372,6 +10321,56 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
+#### `abl-1-3` · Ableitungen elementarer Funktionen
+
+- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-1` → `diff-quotient`
+  - `abl-1-2` → `pot-regel`, `summen-regel`, `faktor-regel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `abl-sin` — $(\sin x)'=\cos x$ (SG 0)
+  2. `abl-cos` — $(\cos x)'=-\sin x$ — Minuszeichen! ⇐ `abl-sin` (SG 0)
+  3. `abl-tan` — $(\tan x)'=1/\cos^2 x = 1+\tan^2 x$ ⇐ `abl-sin`, `abl-cos` (SG 0)
+  4. `abl-exp` — $(e^x)'=e^x$ — einzige Funktion mit $f'=f$ (SG 1)
+  5. `abl-ln` — $(\ln x)'=1/x$ für $x>0$ (SG 1)
+  6. `abl-ax` — $(a^x)'=a^x\ln a$ ⇐ `abl-exp` (SG 2)
+  7. `abl-loga` — $(\log_a x)'=1/(x\ln a)$ ⇐ `abl-ln` (SG 2)
+  8. `def-bereich` — Definitionsbereich: $\ln$ nur für $x>0$, $\sqrt{x}$ nur für $x\ge 0$ (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `abl-sin`, `abl-cos`, `abl-tan` · **6/5+** — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
+  - ✅ [1] _hoch_ · Konzepte: `abl-exp`, `abl-ln` · **6/5+** — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
+  - ✅ [2] _mittel_ · Konzepte: `abl-ax`, `abl-loga` · **6/5+** — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
+  - ✅ [3] _mittel_ · Konzepte: `def-bereich` · **6/5+** — Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `abl-sin`, `abl-cos` | 1 | 2 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `abl-sin`, `abl-cos` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `abl-sin`, `abl-cos` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `abl-cos` | 1 | 1 | ✅ | Vorzeichen bei $\cos'$ vergessen |
+|  5 | 0 | transfer           | matching         | `abl-sin`, `abl-cos`, `abl-tan` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `abl-exp`, `abl-ln` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `abl-exp` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `abl-exp`, `abl-ln` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `abl-exp` | 1 | 1 | ✅ | $(e^x)'=xe^{x-1}$ Falle |
+| 10 | 1 | transfer           | matching         | `abl-exp`, `abl-ln` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `abl-ax` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `abl-ax`, `abl-loga` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `abl-ax` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `abl-ax` | 1 | 1 | ✅ | Faktor $\ln a$ vergessen |
+| 15 | 2 | transfer           | number-input     | `abl-loga` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `def-bereich` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 2 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `def-bereich`, `abl-ln` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `def-bereich` | 1 | 1 | ✅ |  |
+
+- **Offene Aufgaben-Lücken:** 1 (Zeilen 12) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `trig-2-5` · Alle vier Quadranten
 
