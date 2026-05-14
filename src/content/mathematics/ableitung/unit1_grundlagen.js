@@ -131,19 +131,13 @@ export const exercises_abl_u1 = {
       2: 'Für einen Wendepunkt wäre $f\'\'(x_0)=0$ mit Vorzeichenwechsel nötig — hier ist aber $f\'\'(2)>0$ gegeben, also liegt *keine* verschwindende zweite Ableitung vor. Die Bedingungen $f\'=0$ und $f\'\'>0$ sind die klassische Min-Diagnose.',
       3: 'Doch, das reicht! Der hinreichende $f\'\'$-Test besagt: $f\'(x_0)=0$ und $f\'\'(x_0)>0$ $\\Rightarrow$ lokales Minimum. Beispiel $f(x)=(x-2)^2$: $f\'(2)=0$, $f\'\'(2)=2>0$, und das Minimum ist eindeutig bei $x=2$.',
     },
-    explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema.
+    explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema. Erst sicherstellen, dass die waagerechte Tangente vorliegt — danach die Krümmung als Entscheider nutzen.
 
-**Regel:**
-- $f'(x_0) = 0$: **notwendig** für ein Extremum (waagerechte Tangente, aber auch Sattelpunkt möglich).
-- $f''(x_0) > 0$: Funktion ist dort **linksgekrümmt** → die waagerechte Tangente muss ein **Tiefpunkt** sein (Minimum).
-- $f''(x_0) < 0$ hingegen → Maximum.
-- $f''(x_0) = 0$ → Test versagt, man muss anders prüfen.
+**Rechnung:** Aus $f'(2)=0$ folgt: $x=2$ ist Extremum-Kandidat (notwendige Bedingung erfüllt). $f''(2)>0$ heißt linksgekrümmt — die waagerechte Tangente liegt im „lächelnden" Teil der Kurve, also Tiefpunkt $\\Rightarrow$ **lokales Minimum**. Allgemein: $f'(x_0)=0 \\land f''(x_0)>0 \\Rightarrow$ Min · $f'(x_0)=0 \\land f''(x_0)<0 \\Rightarrow$ Max · $f''(x_0)=0 \\Rightarrow$ Test versagt.
 
-**Bildlich:** $f''>0$ heißt, die Kurve „lächelt" — eine waagerechte Tangente im lächelnden Teil ist der Tiefpunkt.
+**Probe:** $f(x) = (x-2)^2$ erfüllt beide Bedingungen: $f'(2) = 0$, $f''(2) = 2 > 0$ ✓ — und hat tatsächlich ein Minimum bei $x = 2$ (Scheitelpunkt der nach oben offenen Parabel).
 
-**Probe:** $f(x) = (x-2)^2$ bei $x=2$: $f'(2) = 0$, $f''(2) = 2 > 0$ ✓ — und tatsächlich Minimum.
-
-**Typischer Fehler:** $f''>0$ mit Maximum verwechseln. Merksatz: „$f'' > 0$ $\\Rightarrow$ Minimum" (positive Krümmung $=$ Tal).`,
+**Typischer Fehler:** Vorzeichen-Verwechslung "$f''>0$ $\\Rightarrow$ Maximum". Merksatz: positive Krümmung $=$ Tal $\\Rightarrow$ Minimum. Außerdem darf $f'(x_0)=0$ nicht vergessen werden — ohne waagerechte Tangente ist $f''$ allein nicht aussagekräftig.`,
     hints: [
       'Erst $f\'$: waagerechte Tangente = notwendige Bedingung für Extremum.',
       '$f\'\' > 0$: Krümmung nach oben (Kurve lächelt). Was liegt dann im Tangentenpunkt?',
@@ -890,7 +884,24 @@ Für $h \\to 0$ rücken die zwei Punkte zusammen, die Sekante wird zur Tangente,
 
 **Wichtige Eigenschaft:** Existiert dieser Grenzwert, heißt $f$ an der Stelle $x$ **differenzierbar**. Nicht-differenzierbar sind z.B. Knickstellen (Betrag $|x|$ bei $0$) oder Sprünge.
 
-**Notwendige Bedingung für Extremum:** $f'(x_0) = 0$ (Satz von Fermat). *Nicht hinreichend* — Sattelpunkte erfüllen diese Bedingung auch.`,
+**Tangentengleichung in $x_0$:**
+
+$$y = f'(x_0)\\,(x - x_0) + f(x_0)$$
+
+— die Gerade durch $(x_0, f(x_0))$ mit Steigung $f'(x_0)$. Aus dieser Form folgt direkt $y(x_0) = f(x_0)$ (Berührpunkt) und $y'(x) = f'(x_0)$ (konstante Tangentensteigung).
+
+**Notwendige Bedingung für Extremum:** $f'(x_0) = 0$ (Satz von Fermat). *Nicht hinreichend* — Sattelpunkte erfüllen diese Bedingung auch, etwa $f(x) = x^3$ bei $x_0 = 0$ mit $f'(0) = 0$, aber kein Extremum.
+
+**Ableitung als momentane Änderungsrate (Physik & Technik):**
+
+| Größe (Ausgang) | Ableitung nach Zeit | Bedeutung | Einheit |
+|---|---|---|---|
+| Position $s(t)$ | $s'(t) = v(t)$ | momentane Geschwindigkeit | $\\text{m/s}$ |
+| Geschwindigkeit $v(t)$ | $v'(t) = s''(t) = a(t)$ | momentane Beschleunigung | $\\text{m/s}^2$ |
+| Ladung $Q(t)$ | $Q'(t) = I(t)$ | momentane Stromstärke | $\\text{A} = \\text{C/s}$ |
+| Temperatur $T(t)$ | $T'(t)$ | momentane Erwärmungsrate | $\\text{K/s}$ |
+
+Die Einheit der Ableitung ist immer: Einheit der Ausgangsgröße $\\div$ Zeiteinheit. Damit wird der abstrakte Differentialquotient zur physikalischen Änderungsrate.`,
       },
       {
         id: 'abl-1-1-s3-limit', type: 'visualization', title: 'Grenzwert numerisch erkunden',

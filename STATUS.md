@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-13 · `npm run status`_
+_auto-generiert · 2026-05-14 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3540 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 2793 (79 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1654 / 1654 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 419 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3564 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 2818 (79 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1664 / 1664 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 423 / 1134 (37 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -332,10 +332,10 @@ _Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strö
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **113** (Lesson-Path: 113 · Goal-Tasks: 0)
-- 4-Block: 51/113 (45 %) 🔴
-- MC-wAE: 85/85 (100 %) ✅
-- Sub-Goals: 0/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **137** (Lesson-Path: 113 · Goal-Tasks: 24)
+- 4-Block: 76/137 (55 %) 🔴
+- MC-wAE: 95/95 (100 %) ✅
+- Sub-Goals: 4/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.**
@@ -377,7 +377,7 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `abl-1-1` Was ist eine Ableitung? | 4 | 0/4 | 5 | 5/0/0/0/0 | 4/5 | 5/5 | ✅ | +4 Goal, +1 4B |
+| `abl-1-1` Was ist eine Ableitung? | 4 | 4/4 | 29 | 15/6/5/2/1 | 29/29 | 15/15 | ✅ | — |
 | `abl-1-2` Potenzregel und Summenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 6/6 | 6/6 | ✅ | +4 Goal |
 | `abl-1-3` Ableitungen elementarer Funktionen | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
 | `abl-1-4` Kettenregel | 4 | 0/4 | 6 | 6/0/0/0/0 | 5/6 | 6/6 | ✅ | +4 Goal, +1 4B |
@@ -6827,58 +6827,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 23 Lessons
-
-#### `abl-1-1` · Was ist eine Ableitung?
-
-- **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `sek-steigung` — Sekantensteigung $\Delta y/\Delta x = (f(x)-f(x_0))/(x-x_0)$ (SG 0)
-  2. `tangente` — Tangente an Kurve in $(x_0, f(x_0))$ — schmiegt sich an den Graphen (SG 1)
-  3. `grenzuebergang` — Grenzübergang $h\to 0$: Sekante wird Tangente ⇐ `sek-steigung`, `tangente` (SG 0)
-  4. `diff-quotient` — Differentialquotient $f'(x_0)=\lim_{h\to 0}(f(x_0+h)-f(x_0))/h$ ⇐ `grenzuebergang` (SG 0)
-  5. `tangenten-steigung` — $f'(x_0)$ = Tangentensteigung in $x_0$ ⇐ `diff-quotient`, `tangente` (SG 1)
-  6. `tangenten-gleichung` — Tangentengleichung $y=f'(x_0)(x-x_0)+f(x_0)$ ⇐ `tangenten-steigung` (SG 1)
-  7. `vorzeichen-fprime` — $f'>0$ steigend, $f'<0$ fallend, $f'=0$ waagrecht ⇐ `tangenten-steigung` (SG 1)
-  8. `extr-notwendig` — Notwendig für Extremum: $f'(x_0)=0$ ⇐ `vorzeichen-fprime` (SG 2)
-  9. `extr-nicht-hin` — Notwendig $\not\Rightarrow$ hinreichend (Sattelpunkt $x^3$ bei 0) ⇐ `extr-notwendig` (SG 2)
-  10. `aenderungsrate` — Ableitung = momentane Änderungsrate (Physik: $v=s'$, $a=v'$) ⇐ `diff-quotient` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `sek-steigung`, `grenzuebergang`, `diff-quotient` · **0/5+** — Differenzenquotient → Differentialquotient als Grenzübergang
-  - 🔴 [1] _hoch_ · Konzepte: `tangente`, `tangenten-steigung`, `tangenten-gleichung`, `vorzeichen-fprime` · **0/5+** — Tangentensteigung aus $f'(x_0)$ ablesen
-  - 🔴 [2] _hoch_ · Konzepte: `extr-notwendig`, `extr-nicht-hin` · **0/5+** — Notwendige Extremum-Bedingung $f'(x_0)=0$
-  - 🔴 [3] _mittel_ · Konzepte: `aenderungsrate` · **0/5+** — Ableitung als Momentan-Änderungsrate physikalisch deuten
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `diff-quotient`, `sek-steigung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `diff-quotient` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `diff-quotient` | 1 | 0 | 🔴 | $f'(x_0)$ via Grenzwert |
-|  4 | 0 | error-analysis     | multiple-choice  | `grenzuebergang` | 1 | 0 | 🔴 | Grenzübergang vergessen → bleibt Sekante |
-|  5 | 0 | transfer           | sorting          | `sek-steigung`, `grenzuebergang`, `diff-quotient` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `tangenten-steigung`, `vorzeichen-fprime` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `tangenten-steigung` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `tangenten-steigung` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `vorzeichen-fprime` | 1 | 0 | 🔴 | Steigung mit Funktionswert verwechselt |
-| 10 | 1 | transfer           | number-input     | `tangenten-gleichung`, `tangenten-steigung` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `extr-notwendig`, `extr-nicht-hin` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `extr-notwendig` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `extr-notwendig` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `extr-nicht-hin` | 1 | 0 | 🔴 | Sattelpunkt als Extremum |
-| 15 | 2 | transfer           | matching         | `extr-notwendig`, `vorzeichen-fprime` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `aenderungsrate` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `aenderungsrate` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `aenderungsrate` | 1 | 0 | 🔴 | $v(t)=s'(t)$ |
-| 19 | 3 | error-analysis     | multiple-choice  | `aenderungsrate` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `aenderungsrate` | 1 | 0 | 🔴 | Größe ↔ Ableitungsbedeutung |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-abl-1-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+### 🟠 Hoch (< 8 Aufgaben) — 22 Lessons
 
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
