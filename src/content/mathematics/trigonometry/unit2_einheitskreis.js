@@ -332,21 +332,13 @@ export const exercises_u2 = {
     question: '$\\sin(210°) = $?',
     options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$-\\dfrac{1}{2}$', '$-\\dfrac{\\sqrt{3}}{2}$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Referenzwinkel finden, Vorzeichen mit ASTC setzen.
+    explanation: `**Ansatz:** Referenzwinkel finden, Vorzeichen mit ASTC setzen — 4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert → Vorzeichen.
 
-**Schritt 1 — Quadrant:** $210°$ liegt zwischen $180°$ und $270°$ → **3. Quadrant**.
+**Rechnung:** Quadrant: $210°$ liegt zwischen $180°$ und $270°$ → **3. Quadrant**. Referenzwinkel: $210° - 180° = 30°$ (Abstand zur negativen $x$-Achse). Grundwert: $\\sin 30° = \\tfrac{1}{2}$. Vorzeichen: Im 3. Quadrant ist $\\sin$ negativ (ASTC: nur „T"angens positiv) → $\\sin 210° = -\\sin 30° = -\\tfrac{1}{2}$.
 
-**Schritt 2 — Referenzwinkel:** $210° - 180° = 30°$. Der Abstand zur negativen x-Achse beträgt $30°$.
+**Probe:** Am Einheitskreis liegt der Punkt bei $210°$ auf $\\left(-\\tfrac{\\sqrt{3}}{2}, -\\tfrac{1}{2}\\right)$. Die $y$-Koordinate $= \\sin\\alpha = -\\tfrac{1}{2}$ ✓. Taschenrechner (DEG-Modus): $\\sin 210° = -0{,}5$ ✓.
 
-**Schritt 3 — Grundwert:** $\\sin(30°) = \\dfrac{1}{2}$.
-
-**Schritt 4 — Vorzeichen:** Im 3. Quadrant ist $\\sin$ negativ (ASTC: nur "T"angens positiv). Also $\\sin(210°) = -\\sin(30°) = -\\dfrac{1}{2}$.
-
-**Am Einheitskreis heißt das:** Bei $210°$ liegt der Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, -\\dfrac{1}{2}\\right)$. Die y-Koordinate ist $-\\dfrac{1}{2}$.
-
-**Probe (Taschenrechner, DEG-Modus):** $\\sin(210°) = -0{,}5$ ✓.
-
-**Typischer Fehler:** Vorzeichen vergessen und $+\\dfrac{1}{2}$ angeben, oder $\\dfrac{\\sqrt{3}}{2}$ (das wäre $\\cos$, auch mit falschem Vorzeichen).`,
+**Typischer Fehler:** Vorzeichen vergessen und $+\\tfrac{1}{2}$ angeben, oder $\\tfrac{\\sqrt{3}}{2}$ (das wäre $|\\cos 210°|$, nicht $\\sin$).`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: $210°$ ist im 3. Quadrant.',
       'Referenzwinkel: $210° - 180° = 30°$. Grundwert $\\sin(30°) = ?$',
@@ -363,21 +355,13 @@ export const exercises_u2 = {
     question: '[PRÜFUNG] $\\cos(315°) = $?',
     options: ['$-\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$-\\dfrac{1}{2}$', '$\\dfrac{1}{2}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Quadrant, Referenzwinkel, Vorzeichen.
+    explanation: `**Ansatz:** 4-Schritt-Verfahren — Quadrant → Referenzwinkel → Grundwert → Vorzeichen aus ASTC.
 
-**Schritt 1 — Quadrant:** $315°$ liegt zwischen $270°$ und $360°$ → **4. Quadrant**.
+**Rechnung:** Quadrant: $315°$ liegt zwischen $270°$ und $360°$ → **4. Quadrant**. Referenzwinkel: $360° - 315° = 45°$ (Abstand zur $x$-Achse bei $360°$). Grundwert: $\\cos 45° = \\tfrac{\\sqrt{2}}{2}$. Vorzeichen: Im 4. Quadrant ist $\\cos > 0$ (ASTC: nur „C"osinus positiv) → $\\cos 315° = +\\cos 45° = \\tfrac{\\sqrt{2}}{2}$.
 
-**Schritt 2 — Referenzwinkel:** $360° - 315° = 45°$.
+**Probe:** Am Einheitskreis liegt der Punkt bei $315°$ auf $\\left(\\tfrac{\\sqrt{2}}{2}, -\\tfrac{\\sqrt{2}}{2}\\right)$ — rechts-unten in Q4. Die $x$-Koordinate $= \\cos\\alpha = +\\tfrac{\\sqrt{2}}{2}$ ✓. Taschenrechner (DEG-Modus): $\\cos 315° \\approx 0{,}707$ ✓.
 
-**Schritt 3 — Grundwert:** $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
-
-**Schritt 4 — Vorzeichen:** Im 4. Quadrant ist $\\cos > 0$ (ASTC: nur "C"osinus positiv). Also $\\cos(315°) = +\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
-
-**Am Einheitskreis heißt das:** Bei $315°$ liegt der Punkt $\\left(\\dfrac{\\sqrt{2}}{2}, -\\dfrac{\\sqrt{2}}{2}\\right)$ im 4. Quadranten — rechts-unten. x-Koordinate ist positiv.
-
-**Probe (Taschenrechner, DEG-Modus):** $\\cos(315°) \\approx 0{,}707$ ✓.
-
-**Typischer Fehler:** Vorzeichen falsch setzen und $-\\dfrac{\\sqrt{2}}{2}$ angeben.`,
+**Typischer Fehler:** Vorzeichen falsch setzen und $-\\tfrac{\\sqrt{2}}{2}$ angeben — bei $315°$ ist man bereits im 4. Quadranten, wo $\\cos > 0$ gilt.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: $315°$ liegt im 4. Quadrant.',
       'Referenzwinkel: $360° - 315° = 45°$. Grundwert $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
@@ -868,9 +852,7 @@ Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln er
     steps: [
       {
         id: 'trig-2-5-s1', type: 'explanation-formal', title: 'Reduktionsformeln',
-        content: `Für Winkel außerhalb des 1. Quadranten: Immer auf Winkel im 1. Quadrant (Referenzwinkel) zurückführen + Vorzeichen aus ASTC.
-
-**Zusammenfassung:**
+        content: `**ASTC-Vorzeichentabelle:**
 
 | Quadrant | Winkelbereich    | $\\sin$ | $\\cos$ | $\\tan$ |
 |----------|------------------|---------|---------|---------|
@@ -879,13 +861,27 @@ Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln er
 | 3.       | $180°$–$270°$    | $-$     | $-$     | $+$     |
 | 4.       | $270°$–$360°$    | $-$     | $+$     | $-$     |
 
-**Am Einheitskreis heißt das:** Die Vorzeichen folgen direkt aus dem Quadranten — links ist $x < 0$ (also $\\cos < 0$), unten ist $y < 0$ (also $\\sin < 0$).
+**Referenzwinkel-Formel** (Abstand $\\beta \\in [0°, 90°]$ zur nächsten $x$-Achse):
 
-**Vorgehen in 4 Schritten:**
-1. Quadrant bestimmen
-2. Referenzwinkel $= $ Abstand zur nächsten x-Achsenhälfte ($0°$ oder $180°$)
-3. Grundwert im 1. Quadrant berechnen
-4. Vorzeichen aus Tabelle davorsetzen`,
+| Quadrant | Referenzwinkel $\\beta$ | Beispiel |
+|---|---|---|
+| Q1 | $\\beta = \\alpha$ | $\\alpha = 30° \\to \\beta = 30°$ |
+| Q2 | $\\beta = 180° - \\alpha$ | $\\alpha = 150° \\to \\beta = 30°$ |
+| Q3 | $\\beta = \\alpha - 180°$ | $\\alpha = 210° \\to \\beta = 30°$ |
+| Q4 | $\\beta = 360° - \\alpha$ | $\\alpha = 330° \\to \\beta = 30°$ |
+
+**Modulo-Reduktion in den Hauptbereich** $[0°, 360°)$ für $\\sin$ und $\\cos$ (Periode $360°$):
+$$\\alpha_{\\text{red}} = \\alpha - \\left\\lfloor \\tfrac{\\alpha}{360°} \\right\\rfloor \\cdot 360°$$
+
+Konkret: solange $\\alpha < 0°$ ist, $+360°$ addieren; solange $\\alpha \\geq 360°$ ist, $360°$ subtrahieren. Beispiele: $500° \\to 140°$, $-50° \\to 310°$, $800° \\to 80°$.
+
+**4-Schritt-Verfahren** zur Berechnung von $\\sin\\alpha$, $\\cos\\alpha$, $\\tan\\alpha$ für beliebiges $\\alpha$:
+1. $\\alpha$ in Hauptbereich $[0°, 360°)$ reduzieren (Modulo).
+2. Quadrant bestimmen.
+3. Referenzwinkel $\\beta$ aus der Q-Formel oben → Grundwert im 1. Quadrant ($\\sin\\beta$, $\\cos\\beta$, $\\tan\\beta$).
+4. Vorzeichen aus ASTC-Tabelle davorsetzen.
+
+**Am Einheitskreis heißt das:** Jeder Winkel — egal wie groß oder negativ — verweist auf genau einen Punkt im 1. Quadranten plus ein Vorzeichen aus der Position auf dem Kreis (links/unten = negativ).`,
       },
       {
         id: 'trig-2-5-s2', type: 'visualization', title: 'Alle Quadranten erkunden',

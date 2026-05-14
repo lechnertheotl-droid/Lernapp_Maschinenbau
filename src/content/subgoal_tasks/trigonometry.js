@@ -5650,6 +5650,29 @@ Q4: $x>0, y<0$ → $+/-=-$
         ],
         { stage: 'transfer', subGoal: 0, uses: ['quadranten-grenzen'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      matching(
+        'Ordne jedem Vorzeichen-Muster der Punktkoordinaten den passenden Quadranten zu.',
+        [
+          { left: '$x > 0,\\ y > 0$', right: 'Q1' },
+          { left: '$x < 0,\\ y > 0$', right: 'Q2' },
+          { left: '$x < 0,\\ y < 0$', right: 'Q3' },
+          { left: '$x > 0,\\ y < 0$', right: 'Q4' },
+        ],
+        `**Ansatz:** Quadranten direkt aus den Vorzeichen der Koordinaten am Einheitskreis ablesen — keine Winkelrechnung nötig.
+
+**Rechnung:** Q1 = rechts-oben ($x, y > 0$). Q2 = links-oben ($x < 0, y > 0$). Q3 = links-unten ($x, y < 0$). Q4 = rechts-unten ($x > 0, y < 0$).
+
+**Probe:** Achsen-Konvention: $x$-Achse trennt oben/unten ($y$-Vorzeichen), $y$-Achse trennt links/rechts ($x$-Vorzeichen). Vier Kombinationen → vier Quadranten.
+
+**Typischer Fehler:** Bei Q2 und Q4 die Vorzeichen vertauschen (beide haben gemischte Vorzeichen).`,
+        [
+          'Welche Achse trennt oben/unten? Welche links/rechts?',
+          'Q1 ist der „Standard-Quadrant" mit beiden Vorzeichen positiv.',
+          'Numerierung gegen den Uhrzeigersinn.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
     ],
 
     // ── [1] ASTC-Regel komplett ───────────────────────────────────────────
@@ -5773,6 +5796,24 @@ Q4: $x>0, y<0$ → $+/-=-$
         },
         { stage: 'transfer', subGoal: 1, uses: ['astc-vollstaendig'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      tf(
+        'Im 1. Quadranten ($0° < \\alpha < 90°$) sind $\\sin\\alpha$, $\\cos\\alpha$ UND $\\tan\\alpha$ gleichzeitig positiv — das ist der einzige Quadrant, in dem alle drei Funktionen das Vorzeichen $+$ haben.',
+        true,
+        `**Ansatz:** ASTC: das „A" steht für „Alle" und gehört zu Q1.
+
+**Rechnung:** Q1: $x > 0$ und $y > 0$. Damit $\\cos\\alpha = x > 0$ ✓, $\\sin\\alpha = y > 0$ ✓, $\\tan\\alpha = y/x > 0$ ✓. In allen anderen Quadranten ist mindestens eine der drei Funktionen negativ (Q2: $\\cos, \\tan < 0$; Q3: $\\sin, \\cos < 0$; Q4: $\\sin, \\tan < 0$).
+
+**Probe:** Beispiel $\\alpha = 30°$: $\\sin 30° = 0{,}5 > 0$, $\\cos 30° \\approx 0{,}866 > 0$, $\\tan 30° \\approx 0{,}577 > 0$ — alle positiv ✓.
+
+**Typischer Fehler:** Die ASTC-Reihenfolge auswendig lernen, ohne sich an den Quadranten zu erinnern — A=Q1, S=Q2, T=Q3, C=Q4.`,
+        [
+          'Was bedeutet das „A" in ASTC?',
+          'In welchem Quadranten gilt sowohl $x > 0$ als auch $y > 0$?',
+          'Folgt daraus, dass $\\tan = y/x$ ebenfalls positiv ist?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
     ],
 
     // ── [2] Referenzwinkel zur x-Achse ────────────────────────────────────
@@ -5828,8 +5869,9 @@ Q4: $x>0, y<0$ → $+/-=-$
 
 **Typischer Fehler:** $300° - 180° = 120°$ rechnen (falsche Achse).`,
         [
-          'Q4: Abstand zu $360°$.',
-          '$360 - 300 = ?$',
+          'Welcher Quadrant? $270° < 300° < 360°$ → Q4.',
+          'In Q4 ist die nächste $x$-Achsenhälfte bei $360°$.',
+          '$360° - 300° = ?$',
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel-def'] },
       ),
@@ -5865,23 +5907,41 @@ Q4: $x>0, y<0$ → $+/-=-$
         'Ordne jedem Winkel seinen Referenzwinkel zu.',
         [
           { left: '$75°$',   right: '$75°$' },
-          { left: '$165°$',  right: '$15°$' },
+          { left: '$155°$',  right: '$25°$' },
           { left: '$200°$',  right: '$20°$' },
-          { left: '$340°$',  right: '$20°$' },
+          { left: '$330°$',  right: '$30°$' },
         ],
-        `**Ansatz:** Je nach Quadrant: Q1 direkt; Q2: $180°-\\alpha$; Q3: $\\alpha-180°$; Q4: $360°-\\alpha$.
+        `**Ansatz:** Je nach Quadrant unterschiedliche Formel: Q1 direkt; Q2: $180° - \\alpha$; Q3: $\\alpha - 180°$; Q4: $360° - \\alpha$.
 
-**Rechnung:** $75° \\in$ Q1 → $75°$. $165° \\in$ Q2 → $180-165=15°$. $200° \\in$ Q3 → $200-180=20°$. $340° \\in$ Q4 → $360-340=20°$.
+**Rechnung:** $75° \\in$ Q1 → $\\beta = 75°$. $155° \\in$ Q2 → $\\beta = 180° - 155° = 25°$. $200° \\in$ Q3 → $\\beta = 200° - 180° = 20°$. $330° \\in$ Q4 → $\\beta = 360° - 330° = 30°$.
 
-**Probe:** Alle $\\in [0°, 90°]$.
+**Probe:** Alle $\\beta \\in (0°, 90°]$ — spitze Winkel ✓. Vier verschiedene Werte, eindeutig zuordenbar.
 
-**Typischer Fehler:** Quadrant falsch identifizieren.`,
+**Typischer Fehler:** Quadrant falsch identifizieren oder bei Q4 die Formel mit $180°$ statt $360°$ anwenden.`,
         [
-          'Quadrant zuerst.',
-          'Formel pro Quadrant.',
-          'Immer spitzer Winkel.',
+          'Quadrant zuerst aus den Winkelgrenzen bestimmen.',
+          'Pro Quadrant die passende Reduktions-Formel anwenden.',
+          'Ergebnis: immer ein spitzer Winkel in $(0°, 90°]$.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Bestimme den Referenzwinkel zu $\\alpha = 280°$ (in Grad).',
+        80, 0, '°',
+        `**Ansatz:** Quadrant von $\\alpha = 280°$ bestimmen, dann passende Reduktions-Formel anwenden.
+
+**Rechnung:** $270° < 280° < 360°$ → 4. Quadrant. Q4-Formel: $\\beta = 360° - \\alpha = 360° - 280° = 80°$.
+
+**Probe:** $\\beta = 80° \\in (0°, 90°]$ ✓. Zur Probe: $\\cos 280° = +\\cos 80° \\approx 0{,}174$ (Q4: $\\cos > 0$), $\\sin 280° = -\\sin 80° \\approx -0{,}985$ (Q4: $\\sin < 0$).
+
+**Typischer Fehler:** Q3-Formel ($\\alpha - 180°$) anwenden und $100°$ rechnen — der Wert wäre nicht mehr spitz. Oder Q2-Formel und negative Zahl erhalten.`,
+        [
+          'In welchem Quadranten liegt $280°$? ($270° < 280° < 360°$)',
+          'Q4-Referenzwinkel-Formel: $\\beta = 360° - \\alpha$.',
+          '$360° - 280° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel-def'] },
       ),
     ],
 
@@ -5989,10 +6049,29 @@ Q4: $x>0, y<0$ → $+/-=-$
 
 **Typischer Fehler:** Schritte mischen oder auslassen.`,
         [
-          'Reihenfolge strikt.',
-          'Erst Quadrant, zuletzt Vorzeichen.',
+          'Reihenfolge strikt: erst Quadrant, dann Referenzwinkel, dann Grundwert.',
+          'Vorzeichen aus ASTC kommt zuletzt.',
+          'Keinen Schritt überspringen — sonst riskierst du falsches Vorzeichen.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\tan 135°$ mit dem 4-Schritt-Verfahren. (3 NK)',
+        -1, 0.01, '',
+        `**Ansatz:** Schritt 1 — Quadrant: $90° < 135° < 180°$ → Q2. Schritt 2 — Referenzwinkel: $\\beta = 180° - 135° = 45°$. Schritt 3 — Grundwert: $\\tan 45° = 1$. Schritt 4 — Vorzeichen: Q2 → $\\tan < 0$ (ASTC: nur „S"inus positiv in Q2).
+
+**Rechnung:** $\\tan 135° = -\\tan 45° = -1$.
+
+**Probe:** $\\tan 135° = \\tfrac{\\sin 135°}{\\cos 135°} = \\tfrac{\\sqrt{2}/2}{-\\sqrt{2}/2} = -1$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen (Antwort $+1$, das wäre $\\tan 45°$ direkt) oder Referenzwinkel als $135°$ stehenlassen ohne Reduktion.`,
+        [
+          'Schritt 1: In welchem Quadranten liegt $135°$?',
+          'Schritt 2: Q2-Referenzwinkel-Formel $\\beta = 180° - \\alpha$.',
+          'Schritt 4: ASTC in Q2 — welches Vorzeichen hat $\\tan$?',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['vier-schritt-reduktion'] },
       ),
     ],
 
@@ -6100,6 +6179,24 @@ Q4: $x>0, y<0$ → $+/-=-$
         ],
         { stage: 'transfer', subGoal: 4, uses: ['standardwerte-reduktion'] },
       ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Berechne $\\sin 240°$ per Reduktion auf den Grundwert. (3 NK)',
+        -0.866, 0.01, '',
+        `**Ansatz:** $\\sin 240°$ über das 4-Schritt-Verfahren auf den Q1-Grundwert $\\sin 60°$ zurückführen.
+
+**Rechnung:** Quadrant: $180° < 240° < 270°$ → Q3. Referenzwinkel: $\\beta = 240° - 180° = 60°$. Grundwert: $\\sin 60° = \\tfrac{\\sqrt{3}}{2} \\approx 0{,}866$. Vorzeichen: In Q3 ist $\\sin < 0$ (ASTC: nur „T"angens positiv) → $\\sin 240° = -\\tfrac{\\sqrt{3}}{2} \\approx -0{,}866$.
+
+**Probe:** Alternativ: $\\sin 240° = \\sin(180° + 60°) = -\\sin 60° = -\\tfrac{\\sqrt{3}}{2}$ (Punktspiegelungsformel) ✓.
+
+**Typischer Fehler:** $\\sin 30°$ statt $\\sin 60°$ ablesen (Referenzwinkel verrechnet); oder Vorzeichen vergessen und $+0{,}866$ angeben — in Q3 ist $\\sin$ aber negativ.`,
+        [
+          'Welcher Quadrant? Welches Vorzeichen hat $\\sin$ dort?',
+          'Referenzwinkel zu $240°$ über die Q3-Formel ($\\alpha - 180°$).',
+          'Q1-Grundwert $\\sin 60°$ ist $\\tfrac{\\sqrt{3}}{2}$ — Vorzeichen aus ASTC ergänzen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
     ],
 
     // ── [5] Winkel > 360° oder < 0° per Modulo ───────────────────────────
@@ -6205,6 +6302,24 @@ Q4: $x>0, y<0$ → $+/-=-$
           '4-Schritt-Verfahren.',
         ],
         { stage: 'transfer', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+      // ── Bonus-Aufgabe (Deepening) ────────────────────────────────────────
+      ni(
+        'Reduziere $\\alpha = -390°$ in den Hauptbereich $[0°, 360°)$ und gib das Ergebnis in Grad an.',
+        330, 0, '°',
+        `**Ansatz:** Bei negativen Winkeln so oft $+360°$ addieren, bis das Ergebnis in $[0°, 360°)$ liegt.
+
+**Rechnung:** $-390° + 360° = -30°$ (immer noch negativ). $-390° + 720° = 330°$ ✓ — liegt im Zielbereich.
+
+**Probe:** $330° - 720° = -390°$ ✓. Am Einheitskreis: $-390° = -30°$ (eine zusätzliche Umdrehung im Uhrzeigersinn) — entspricht der Position $330°$ im Hauptbereich.
+
+**Typischer Fehler:** Nur einmal $360°$ addieren und $-30°$ stehenlassen (noch negativ); oder Vorzeichen vergessen und $390° - 360° = 30°$ rechnen.`,
+        [
+          'Bei negativen Winkeln Vielfache von $360°$ addieren.',
+          'Wie viele $360°$ müssen addiert werden, damit das Ergebnis $\\geq 0$ wird?',
+          '$-390° + 2 \\cdot 360° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['winkel-hauptbereich'] },
       ),
     ],
   },
