@@ -131,19 +131,13 @@ export const exercises_abl_u1 = {
       2: 'Für einen Wendepunkt wäre $f\'\'(x_0)=0$ mit Vorzeichenwechsel nötig — hier ist aber $f\'\'(2)>0$ gegeben, also liegt *keine* verschwindende zweite Ableitung vor. Die Bedingungen $f\'=0$ und $f\'\'>0$ sind die klassische Min-Diagnose.',
       3: 'Doch, das reicht! Der hinreichende $f\'\'$-Test besagt: $f\'(x_0)=0$ und $f\'\'(x_0)>0$ $\\Rightarrow$ lokales Minimum. Beispiel $f(x)=(x-2)^2$: $f\'(2)=0$, $f\'\'(2)=2>0$, und das Minimum ist eindeutig bei $x=2$.',
     },
-    explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema.
+    explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema. Erst sicherstellen, dass die waagerechte Tangente vorliegt — danach die Krümmung als Entscheider nutzen.
 
-**Regel:**
-- $f'(x_0) = 0$: **notwendig** für ein Extremum (waagerechte Tangente, aber auch Sattelpunkt möglich).
-- $f''(x_0) > 0$: Funktion ist dort **linksgekrümmt** → die waagerechte Tangente muss ein **Tiefpunkt** sein (Minimum).
-- $f''(x_0) < 0$ hingegen → Maximum.
-- $f''(x_0) = 0$ → Test versagt, man muss anders prüfen.
+**Rechnung:** Aus $f'(2)=0$ folgt: $x=2$ ist Extremum-Kandidat (notwendige Bedingung erfüllt). $f''(2)>0$ heißt linksgekrümmt — die waagerechte Tangente liegt im „lächelnden" Teil der Kurve, also Tiefpunkt $\\Rightarrow$ **lokales Minimum**. Allgemein: $f'(x_0)=0 \\land f''(x_0)>0 \\Rightarrow$ Min · $f'(x_0)=0 \\land f''(x_0)<0 \\Rightarrow$ Max · $f''(x_0)=0 \\Rightarrow$ Test versagt.
 
-**Bildlich:** $f''>0$ heißt, die Kurve „lächelt" — eine waagerechte Tangente im lächelnden Teil ist der Tiefpunkt.
+**Probe:** $f(x) = (x-2)^2$ erfüllt beide Bedingungen: $f'(2) = 0$, $f''(2) = 2 > 0$ ✓ — und hat tatsächlich ein Minimum bei $x = 2$ (Scheitelpunkt der nach oben offenen Parabel).
 
-**Probe:** $f(x) = (x-2)^2$ bei $x=2$: $f'(2) = 0$, $f''(2) = 2 > 0$ ✓ — und tatsächlich Minimum.
-
-**Typischer Fehler:** $f''>0$ mit Maximum verwechseln. Merksatz: „$f'' > 0$ $\\Rightarrow$ Minimum" (positive Krümmung $=$ Tal).`,
+**Typischer Fehler:** Vorzeichen-Verwechslung "$f''>0$ $\\Rightarrow$ Maximum". Merksatz: positive Krümmung $=$ Tal $\\Rightarrow$ Minimum. Außerdem darf $f'(x_0)=0$ nicht vergessen werden — ohne waagerechte Tangente ist $f''$ allein nicht aussagekräftig.`,
     hints: [
       'Erst $f\'$: waagerechte Tangente = notwendige Bedingung für Extremum.',
       '$f\'\' > 0$: Krümmung nach oben (Kurve lächelt). Was liegt dann im Tangentenpunkt?',
@@ -322,13 +316,13 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       2: 'Vorzeichen falsch und Funktion vertauscht: Das ist eher $(\\sin x)\'\'\'$ (dritte Ableitung). Die *erste* Ableitung von $\\sin x$ ist $\\cos x$ (ohne Minus) — bei $x=0$ hat $\\sin$ die positive Steigung $+1$, nicht $-1$.',
       3: '$\\tan x$ hat mit der Ableitung von $\\sin$ nichts zu tun. $\\tan x = \\tfrac{\\sin x}{\\cos x}$ ist eine *andere* Funktion und entsteht z.B. aus der Quotientenregel — nicht einfach durch Ableiten von $\\sin$.',
     },
-    explanation: `**Ansatz:** Eine der Grundableitungen, die du auswendig können musst.
+    explanation: `**Ansatz:** Eine der Grundableitungen, die du auswendig können musst — direkt aus dem trigonometrischen Ableitungszyklus.
 
-**Rechnung:** $(\\sin x)' = \\cos x$.
+**Rechnung:** $(\\sin x)' = \\cos x$. Der Ableitungszyklus lautet $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin \\to \\ldots$ — also wechselt sich nach jedem Ableiten Funktion *und* Vorzeichen ab.
 
-**Probe:** Bei $x = 0$: $\\cos 0 = 1$. Die Tangentensteigung der Sinuskurve im Ursprung ist tatsächlich $1$ (Sinus steigt bei $0$ am steilsten). ✓
+**Probe:** Bei $x = 0$: $\\cos 0 = 1$. Die Tangentensteigung der Sinuskurve im Ursprung ist tatsächlich $1$ (Sinus steigt bei $0$ am steilsten). ✓ Bei $x = \\pi/2$: $\\cos(\\pi/2) = 0$ — und tatsächlich hat $\\sin$ dort sein Maximum mit waagerechter Tangente.
 
-**Merkhilfe (Ableitungszyklus):** $\\sin \\to \\cos \\to -\\sin \\to -\\cos \\to \\sin \\to \\ldots$`,
+**Typischer Fehler:** $(\\sin x)'$ und $(\\cos x)'$ verwechseln oder das Minuszeichen falsch zuordnen. Merksatz: Das Minuszeichen entsteht beim Ableiten des KOSINUS (nicht des Sinus). $(\\sin x)' = +\\cos x$, $(\\cos x)' = -\\sin x$.`,
     hints: [
       'Welche elementare Funktion wird abgeleitet? Denk an den Ableitungszyklus der trigonometrischen Funktionen.',
       'Regel: $(\\sin x)\' = \\cos x$.',
@@ -483,13 +477,13 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       2: 'Das wäre „innere Ableitung in die äußere Funktion einsetzen" — aber die Kettenregel ist ein *Produkt*, nicht ein Einsetzen. Man leitet die äußere Funktion mit der inneren als Argument ab *und* multipliziert mit der inneren Ableitung.',
       3: 'Addition statt Multiplikation: Die Kettenregel ist $f\'(g(x)) \\cdot g\'(x)$, kein Summe. Die Addition wäre die Summenregel $(f+g)\'=f\'+g\'$ — aber hier liegt keine Summe vor, sondern eine Verkettung.',
     },
-    explanation: `**Ansatz:** Bei verketteten Funktionen (Funktion in Funktion) gilt die Kettenregel.
+    explanation: `**Ansatz:** Bei verketteten Funktionen (Funktion in Funktion) gilt die Kettenregel. Die Eselsbrücke lautet: „Außen ableiten, innen stehen lassen, dann mal innere Ableitung."
 
-**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$ — äußere Ableitung (mit innerer eingesetzt) mal innere Ableitung.
+**Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$ — die äußere Ableitung wird an der inneren Funktion ausgewertet (innere bleibt als Argument stehen) und mit der inneren Ableitung multipliziert.
 
-**Merkhilfe:** "Außen ableiten, innen stehen lassen, dann mal innere Ableitung."
+**Probe:** Für $f(x) = \\sin(3x)$ ist $f(u) = \\sin u$ und $g(x) = 3x$. Damit $f'(g(x)) = \\cos(3x)$ und $g'(x) = 3$. Kettenregel: $\\cos(3x) \\cdot 3 = 3\\cos(3x)$. Bei $x = 0$: $3\\cos 0 = 3$ — passt zur Tangentensteigung von $\\sin(3x)$ im Ursprung ✓.
 
-**Typischer Fehler:** $f'(x) \\cdot g'(x)$ (Antwort A) vergisst, dass in der äußeren Ableitung die *innere Funktion eingesetzt* bleiben muss.`,
+**Typischer Fehler:** $f'(x) \\cdot g'(x)$ (Antwort A) vergisst, dass in der äußeren Ableitung die *innere Funktion eingesetzt* bleiben muss. Oder $f(g'(x))$ — Verwechslung von „Produkt" und „Einsetzen".`,
     hints: [
       'Welche Regel gilt für verkettete Funktionen?',
       'Regel: $[f(g(x))]\' = f\'(g(x)) \\cdot g\'(x)$.',
@@ -890,7 +884,24 @@ Für $h \\to 0$ rücken die zwei Punkte zusammen, die Sekante wird zur Tangente,
 
 **Wichtige Eigenschaft:** Existiert dieser Grenzwert, heißt $f$ an der Stelle $x$ **differenzierbar**. Nicht-differenzierbar sind z.B. Knickstellen (Betrag $|x|$ bei $0$) oder Sprünge.
 
-**Notwendige Bedingung für Extremum:** $f'(x_0) = 0$ (Satz von Fermat). *Nicht hinreichend* — Sattelpunkte erfüllen diese Bedingung auch.`,
+**Tangentengleichung in $x_0$:**
+
+$$y = f'(x_0)\\,(x - x_0) + f(x_0)$$
+
+— die Gerade durch $(x_0, f(x_0))$ mit Steigung $f'(x_0)$. Aus dieser Form folgt direkt $y(x_0) = f(x_0)$ (Berührpunkt) und $y'(x) = f'(x_0)$ (konstante Tangentensteigung).
+
+**Notwendige Bedingung für Extremum:** $f'(x_0) = 0$ (Satz von Fermat). *Nicht hinreichend* — Sattelpunkte erfüllen diese Bedingung auch, etwa $f(x) = x^3$ bei $x_0 = 0$ mit $f'(0) = 0$, aber kein Extremum.
+
+**Ableitung als momentane Änderungsrate (Physik & Technik):**
+
+| Größe (Ausgang) | Ableitung nach Zeit | Bedeutung | Einheit |
+|---|---|---|---|
+| Position $s(t)$ | $s'(t) = v(t)$ | momentane Geschwindigkeit | $\\text{m/s}$ |
+| Geschwindigkeit $v(t)$ | $v'(t) = s''(t) = a(t)$ | momentane Beschleunigung | $\\text{m/s}^2$ |
+| Ladung $Q(t)$ | $Q'(t) = I(t)$ | momentane Stromstärke | $\\text{A} = \\text{C/s}$ |
+| Temperatur $T(t)$ | $T'(t)$ | momentane Erwärmungsrate | $\\text{K/s}$ |
+
+Die Einheit der Ableitung ist immer: Einheit der Ausgangsgröße $\\div$ Zeiteinheit. Damit wird der abstrakte Differentialquotient zur physikalischen Änderungsrate.`,
       },
       {
         id: 'abl-1-1-s3-limit', type: 'visualization', title: 'Grenzwert numerisch erkunden',
@@ -1222,6 +1233,55 @@ $$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
 
 **Warum der Faktor $g'$?** Die innere Funktion verändert das Argument mit einer eigenen "Geschwindigkeit". Diese Geschwindigkeit muss in die Gesamtableitung einfließen — sonst ist das Ergebnis um einen Faktor falsch skaliert.`,
       },
+      {
+        id: 'abl-1-4-s-formal', type: 'explanation-formal', title: 'Kettenregel und Standardfälle',
+        content: `**Kettenregel (allgemein):**
+
+$$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
+
+Die äußere Ableitung wird an $g(x)$ ausgewertet (innere Funktion bleibt als Argument stehen) und mit der inneren Ableitung $g'(x)$ multipliziert.
+
+**Standardfälle als Tabelle:**
+
+| Funktion $f(x)$ | Ableitung $f'(x)$ | Hinweis |
+|---|---|---|
+| $(u(x))^n$ | $n \\cdot (u(x))^{n-1} \\cdot u'(x)$ | Potenz-Kettenregel |
+| $e^{u(x)}$ | $e^{u(x)} \\cdot u'(x)$ | $e^u$ bleibt, mal $u'$ |
+| $a^{u(x)}$ | $a^{u(x)} \\cdot \\ln a \\cdot u'(x)$ | Basis $a$: zusätzlich $\\ln a$ |
+| $\\sin(u(x))$ | $\\cos(u(x)) \\cdot u'(x)$ | $\\sin \\to \\cos$, mal $u'$ |
+| $\\cos(u(x))$ | $-\\sin(u(x)) \\cdot u'(x)$ | Minuszeichen NICHT vergessen |
+| $\\ln(u(x))$ | $\\dfrac{u'(x)}{u(x)}$ | „logarithmische Ableitung" — Quotient $u'/u$ |
+| $\\sqrt{u(x)}$ | $\\dfrac{u'(x)}{2\\sqrt{u(x)}}$ | als $(u)^{1/2}$ + Potenz-Kette |
+
+**Mehrfachverkettung — hierarchisch ableiten:**
+
+Für $f(g(h(x)))$ gilt
+$$[f(g(h(x)))]' = f'(g(h(x))) \\cdot g'(h(x)) \\cdot h'(x).$$
+
+Praktisch: Von außen nach innen Schale für Schale ableiten, dann alle Faktoren multiplizieren. Beispiel $f(x) = e^{\\sin(2x)}$:
+- äußerste: $(e^u)' = e^u$, also $e^{\\sin(2x)}$
+- mittlere: $(\\sin v)' = \\cos v$, also $\\cos(2x)$
+- innerste: $(2x)' = 2$
+- Produkt: $f'(x) = 2 e^{\\sin(2x)} \\cos(2x)$.
+
+**Typische Fehler beim Anwenden:**
+- Innere Ableitung weglassen ($(e^{4x})' = e^{4x}$ statt $4e^{4x}$)
+- Innere Funktion in der äußeren Ableitung "vergessen" ($\\cos x$ statt $\\cos(3x)$)
+- Bei $(\\ln u)'$ nur $1/u$ schreiben statt $u'/u$`,
+      },
+      {
+        id: 'abl-1-4-s-viz', type: 'visualization', title: '$\\sin(3x)$ und seine Ableitung $3\\cos(3x)$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => Math.sin(3 * x), color: '#3b82f6', label: 'sin(3x)' },
+            { fn: (x) => 3 * Math.cos(3 * x), color: '#ef4444', label: "f'(x) = 3·cos(3x)" },
+          ],
+          xRange: [-Math.PI, Math.PI],
+          yRange: [-3.5, 3.5],
+          showGrid: true,
+        },
+      },
       { id: 'abl-1-4-s2', type: 'exercise', title: 'Aufgabe 1 — Formel', exerciseRef: 'ex-abl-1-4-a' },
       { id: 'abl-1-4-s3', type: 'exercise', title: 'Aufgabe 2 — $\\sin(3x)$', exerciseRef: 'ex-abl-1-4-b' },
       { id: 'abl-1-4-s4', type: 'exercise', title: 'Aufgabe 3 — $e^{x^{2}}$', exerciseRef: 'ex-abl-1-4-c' },
@@ -1322,7 +1382,31 @@ $$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
 
 **Unterscheidung:**
 - **Notwendig** = muss erfüllt sein, reicht aber nicht aus
-- **Hinreichend** = erfüllt bedeutet Bedingung ist garantiert`,
+- **Hinreichend** = erfüllt bedeutet Bedingung ist garantiert
+
+**Klassifikation der Stelle $x_0$ mit $f'(x_0) = 0$:**
+
+| Bedingung | Typ | Beispiel |
+|---|---|---|
+| $f''(x_0) > 0$ | lokales **Minimum** | $f(x) = x^2$ bei $x_0 = 0$ |
+| $f''(x_0) < 0$ | lokales **Maximum** | $f(x) = -x^2$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, $f'$ wechselt VZW $-\\to+$ | Minimum | $f(x) = x^4$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, $f'$ wechselt VZW $+\\to-$ | Maximum | $f(x) = -x^4$ bei $x_0 = 0$ |
+| $f''(x_0) = 0$, **kein** VZW von $f'$ | **Sattelpunkt** (Terrassenpunkt) | $f(x) = x^3$ bei $x_0 = 0$ |
+
+**Wendepunkt (allgemein, ohne $f'(x_0) = 0$-Anforderung):**
+
+$$f''(x_0) = 0 \\;\\;\\text{mit Vorzeichenwechsel von } f'' \\;\\;\\text{(oder } f'''(x_0) \\neq 0\\text{).}$$
+
+Liegt zusätzlich $f'(x_0) = 0$ vor, spricht man von einem **Sattelpunkt** (Wendepunkt mit waagerechter Tangente).
+
+**Globale Extrema auf abgeschlossenem Intervall $[a, b]$ — Randextrema-Methode:**
+
+1. Innere Kandidaten suchen: alle $x_0 \\in (a, b)$ mit $f'(x_0) = 0$.
+2. Funktionswerte berechnen: $f(x_0)$ für alle inneren Kandidaten **UND** die Randwerte $f(a)$, $f(b)$.
+3. Größter Wert = globales Maximum, kleinster Wert = globales Minimum.
+
+**Wichtig:** Auf einem ABGESCHLOSSENEN Intervall wird das globale Extremum sicher angenommen (Satz vom Maximum/Minimum bei stetiger $f$) — es kann am Rand oder im Inneren liegen.`,
       },
       {
         id: 'abl-1-5-s2', type: 'visualization', title: 'Extrema von $x^{3} - 3x$',
